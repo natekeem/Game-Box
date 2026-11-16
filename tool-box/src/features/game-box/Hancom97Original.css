@@ -1,0 +1,12 @@
+.hancom97-react-player{width:min(1600px,100%);margin:auto;color:#edf1f7;font-family:"Segoe UI","Malgun Gothic",sans-serif}
+.hancom97-react-toolbar{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:12px}
+.hancom97-react-toolbar small{color:#d9bd7b;font-weight:700;letter-spacing:.16em}.hancom97-react-toolbar h2{margin:2px 0 0;font-size:30px}
+.hancom97-react-actions{display:flex;gap:7px;flex-wrap:wrap}.hancom97-react-actions button{border:1px solid #536077;border-radius:4px;background:#1b2331;color:#edf1f7;padding:8px 11px;cursor:pointer}
+.hancom97-react-stage{position:relative;width:100%;aspect-ratio:3/2;background:#b4a087 var(--hancom97-crt) center/100% 100% no-repeat;filter:drop-shadow(0 18px 42px #0009)}
+.hancom97-react-screen{position:absolute;left:19.444444%;top:8.4%;width:61.111111%;aspect-ratio:4/3;overflow:hidden;border-radius:0;background:#000}
+.hancom97-react-dos{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#000;image-rendering:pixelated}
+.hancom97-react-dos canvas{object-fit:contain!important;image-rendering:pixelated!important}
+.hancom97-react-player footer{margin-top:8px;color:#d9bd7b;font-size:12px}
+.hancom97-react-player.clean{width:min(1280px,100%)}.hancom97-react-player.clean .hancom97-react-stage{aspect-ratio:4/3;background:#000;filter:none}
+.hancom97-react-player.clean .hancom97-react-screen{inset:0;width:100%;height:100%;border-radius:0;box-shadow:none}
+@media(max-width:760px){.hancom97-react-toolbar{align-items:flex-start;flex-direction:column}.hancom97-react-toolbar h2{font-size:24px}.hancom97-react-actions button{font-size:11px;padding:7px 8px}}

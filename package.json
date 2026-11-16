@@ -1,0 +1,25 @@
+{
+  "name": "tool-box-game-box",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build:original": "node scripts/build-original-player.mjs",
+    "build:hanme": "node scripts/build-hanme-player.mjs",
+    "build:pikachu": "node scripts/build-pikachu.mjs",
+    "build:roulette": "node scripts/build-roulette.mjs",
+    "build:platform": "node scripts/build-platform.mjs",
+    "build:win98": "npm --prefix vendor/win98-web-original run build",
+    "build:gamebox": "node scripts/build-game-box.mjs",
+    "build:all": "npm run build:original && npm run build:pikachu && npm run build:roulette && npm run build:platform && npm run build:win98 && npm run build:gamebox",
+    "start": "npm run build:gamebox && node scripts/serve-platform.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "emulators": "8.5.2",
+    "js-dos": "8.5.3",
+    "ws": "^8.21.0"
+  }
+}

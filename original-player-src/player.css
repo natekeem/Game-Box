@@ -1,0 +1,152 @@
+:root{color-scheme:dark;font-family:"Pretendard","Segoe UI","Malgun Gothic",sans-serif;background:#080b12;color:#edf1f7}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:radial-gradient(circle at 50% -10%,#253149 0,#111722 38%,#070a10 80%)}
+body{min-height:100vh;padding:18px}
+button{font:inherit}
+.original-player{width:min(1600px,100%);margin:0 auto}
+
+/* 타자연습 4대 천왕 상단 탭 네비게이션 */
+.version-nav-bar {
+  display: flex;
+  gap: 8px;
+  background: #111827;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #1f2937;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.version-nav-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #9ca3af;
+  margin-right: 6px;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ver-tab {
+  background: #1f2937;
+  border: 1px solid #374151;
+  color: #d1d5db;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ver-tab:hover {
+  background: #374151;
+  color: #fff;
+  border-color: #4b5563;
+  transform: translateY(-1px);
+}
+
+.ver-tab.active {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border-color: #60a5fa;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+}
+
+.ver-tab[data-ver="hanme"].active {
+  background: linear-gradient(135deg, #db2777, #be185d);
+  border-color: #f472b6;
+  box-shadow: 0 0 12px rgba(219, 39, 119, 0.4);
+}
+
+.ver-tab[data-ver="2007"].active {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.4);
+}
+
+.ver-tab[data-ver="2014"].active {
+  background: linear-gradient(135deg, #ea580c, #c2410c);
+  border-color: #fb923c;
+  box-shadow: 0 0 12px rgba(234, 88, 12, 0.4);
+}
+
+#custom-stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 30;
+  overflow: hidden;
+  display: none;
+}
+#custom-stage.active {
+  display: block;
+}
+
+.player-header{width:100%;margin:0 auto 14px;display:flex;align-items:end;justify-content:space-between;gap:18px}
+.eyebrow{margin:0 0 3px;color:#d9bd7b;font:700 10px/1.2 "Segoe UI",sans-serif;letter-spacing:.18em}
+h1{margin:0;font:800 clamp(20px,3vw,34px)/1.05 "Malgun Gothic",sans-serif;letter-spacing:-.05em}
+.player-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:7px}
+.header-link{display:inline-flex;align-items:center;text-decoration:none;border:1px solid #536077;border-radius:4px;background:#1b2331;color:#e8edf6;padding:8px 11px;font-size:12px}
+.header-link:hover,.header-link:focus-visible{background:#2b3850;border-color:#d5b76d;outline:0}
+.player-actions button{border:1px solid #536077;border-radius:4px;background:#1b2331;color:#e8edf6;padding:8px 11px;cursor:pointer}
+.player-actions button:hover,.player-actions button:focus-visible{background:#2b3850;border-color:#d5b76d;outline:0}
+.machine-wrap{width:100%;aspect-ratio:3/2;margin:auto;position:relative;filter:drop-shadow(0 18px 42px #0009)}
+.machine-stage{position:absolute;inset:0;background:#b4a087 url("./assets-terminal-1997.png") center/100% 100% no-repeat}
+/* Measured opening in the 1536x1024 background; the live 4:3 canvas fits
+   wholly inside it. No corner mask, scanlines, curvature or glass overlay. */
+.screen-glass{position:absolute;left:19.444444%;top:8.4%;width:61.111111%;aspect-ratio:4/3;overflow:hidden;border-radius:0;background:#000}
+#dos{position:absolute;inset:0;width:100%;height:100%;background:#000;overflow:hidden;image-rendering:pixelated}
+#dos canvas{object-fit:contain!important;image-rendering:pixelated!important}
+.boot-cover{position:absolute;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;background:#080c13;color:#e7ecf4;text-align:center;padding:28px;transition:opacity .35s ease,visibility .35s ease}
+.boot-cover.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.boot-cover strong{font-size:clamp(13px,1.5vw,18px)}.boot-cover span{font-size:clamp(9px,1vw,12px);color:#9aa8bb}
+.boot-led{width:9px;height:9px;border-radius:50%;background:#7be332;box-shadow:0 0 12px #6dff24;animation:pulse 1s infinite alternate}
+@keyframes pulse{to{opacity:.25}}
+.player-footer{width:100%;margin:10px auto 0;display:grid;grid-template-columns:minmax(210px,.8fr) minmax(320px,1.7fr);gap:16px;align-items:start;color:#9ca9bb;font-size:12px;line-height:1.55}
+.status{margin:0;color:#e4c982}.keyboard-note{margin:0;text-align:right}.keyboard-note strong{color:#dbe5f3}.keyboard-note kbd{border:1px solid #667084;border-bottom-width:2px;border-radius:3px;background:#171e2a;color:#fff;padding:1px 5px}
+.original-player.clean-view .player-header,.original-player.clean-view .player-footer{width:min(960px,100%)}
+.original-player.clean-view .machine-wrap{width:min(1280px,100%);aspect-ratio:4/3;filter:none}
+.original-player.clean-view .machine-stage{background:#000}
+.original-player.clean-view .screen-glass{inset:0;width:100%;height:100%;border-radius:0;box-shadow:none}
+.original-player.clean-view .screen-glass::after{display:none}
+
+/* Windows 98 Desktop App Embed Mode (?embed=win98) */
+body.win98-embed {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #000 !important;
+  overflow: hidden !important;
+  width: 100vw;
+  height: 100vh;
+}
+body.win98-embed .version-nav-bar,
+body.win98-embed .player-header,
+body.win98-embed .player-footer {
+  display: none !important;
+}
+body.win98-embed .original-player,
+body.win98-embed .machine-wrap,
+body.win98-embed .machine-stage,
+body.win98-embed .screen-glass {
+  width: 100% !important;
+  height: 100vh !important;
+  max-width: none !important;
+  aspect-ratio: unset !important;
+  inset: 0 !important;
+  left: 0 !important;
+  top: 0 !important;
+  background: #000 !important;
+  filter: none !important;
+  margin: 0 !important;
+}
+@media(max-width:760px){body{padding:10px}.player-header{align-items:flex-start;flex-direction:column}.player-actions{justify-content:flex-start}.player-actions button{padding:7px 8px;font-size:11px}.player-footer{grid-template-columns:1fr;gap:5px}.keyboard-note{text-align:left}.machine-wrap{margin-top:4px}}
+@media(prefers-reduced-motion:reduce){.boot-led{animation:none}.boot-cover{transition:none}}

@@ -1,0 +1,103 @@
+
+.countdown-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 15, 24, 0.95);
+  display: grid;
+  place-items: center;
+  z-index: 100;
+  animation: countdownFadeIn 0.3s ease-out;
+}
+
+@keyframes countdownFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.countdown-card {
+  text-align: center;
+  padding: 32px 48px;
+  background: var(--panel-strong);
+  border: 3px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.4);
+  animation: cardPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+@keyframes cardPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.countdown-card::before {
+  display: none;
+}
+
+.countdown-card::after {
+  display: none;
+}
+
+.countdown-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.countdown-icon {
+  font-size: 48px;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.countdown-icon .retro-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.countdown-card h2 {
+  font-size: clamp(14px, 3vw, 18px);
+  color: var(--accent);
+  margin-bottom: 16px;
+  letter-spacing: 3px;
+}
+
+.countdown-timer {
+  font-size: clamp(48px, 12vw, 72px);
+  font-family: "Press Start 2P", monospace;
+  color: var(--accent-mint);
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
+  margin: 16px 0;
+  animation: countPulse 1s ease-in-out infinite;
+}
+
+@keyframes countPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.countdown-card p {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+
+.countdown-overlay::before,
+.countdown-overlay::after {
+  display: none;
+}

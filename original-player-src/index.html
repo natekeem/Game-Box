@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>한컴타자연습 97 — 원본 실행</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./vendor/js-dos/js-dos.css">
+  <link rel="stylesheet" href="./player.css">
+  <script defer src="./vendor/js-dos/js-dos.js"></script>
+  <script defer src="./auth-client.js"></script>
+  <script type="module" src="./player.js"></script>
+  <script type="module" src="./multi-version-manager.js"></script>
+</head>
+<body>
+  <main class="original-player" id="player-shell">
+    <nav class="version-nav-bar" id="version-switcher" aria-label="레트로 타자 게임 2종 선택">
+      <div class="version-nav-title">🎮 타자 게임:</div>
+      <button type="button" class="ver-tab" data-ver="hanme">📜 한메타자교사 3.0 (1994)</button>
+      <button type="button" class="ver-tab active" data-ver="97">💾 한컴타자연습 97 (1997)</button>
+    </nav>
+
+    <header class="player-header">
+      <div>
+        <p class="eyebrow" id="app-eyebrow">ORIGINAL DOS PROGRAM · 1997</p>
+        <h1 id="app-title">한컴타자연습 97</h1>
+      </div>
+      <div class="player-actions" aria-label="화면 조작">
+        <a class="header-link" href="/game-box">🏛️ GAME-BOX 홈</a>
+        <a id="account-badge" class="header-link" href="/game-box/retro">🪟 RETRO DESKTOP</a>
+        <button type="button" id="toggle-frame">원본 화면만 보기</button>
+        <button type="button" id="restart">다시 시작</button>
+        <button type="button" id="fullscreen">전체 화면</button>
+      </div>
+    </header>
+
+    <section class="machine-wrap" id="machine-wrap" aria-label="모니터 속 원본 실행 화면">
+      <div class="machine-stage">
+        <div class="screen-glass">
+          <div id="dos" role="application" aria-label="원본 DOS 프로그램"></div>
+          <div id="custom-stage" role="application" aria-label="고전 게임 실행 화면"></div>
+          <div class="boot-cover" id="boot-cover">
+            <div class="boot-led" aria-hidden="true"></div>
+            <strong id="boot-title">원본 파일 확인 중</strong>
+            <span id="boot-detail">_HTTD_.EXE와 자료 파일을 준비합니다.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="player-footer">
+      <p id="status" class="status" aria-live="polite">초기화 중…</p>
+      <p class="keyboard-note">원본 DOS 프로그램이 직접 키 입력을 처리합니다. 한글 연습 시 브라우저/Windows 입력기는 영문 상태로 두고, 프로그램 안의 <strong>한글-2</strong> 글자판을 사용하세요. <kbd>Esc</kbd>는 원본의 이전 메뉴 키입니다.</p>
+    </footer>
+  </main>
+
+  <noscript>이 원본 실행기는 JavaScript와 WebAssembly가 필요합니다.</noscript>
+</body>
+</html>

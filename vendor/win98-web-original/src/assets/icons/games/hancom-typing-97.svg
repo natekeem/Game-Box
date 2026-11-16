@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+  <!-- Monitor shadow & frame -->
+  <rect x="3" y="2" width="26" height="19" fill="#000000"/>
+  <rect x="2" y="1" width="26" height="19" fill="#dfdfdf"/>
+  <rect x="3" y="2" width="24" height="17" fill="#808080"/>
+  <!-- Blue CRT Screen -->
+  <rect x="4" y="3" width="22" height="15" fill="#000080"/>
+  <rect x="5" y="4" width="20" height="3" fill="#008080"/>
+  <!-- Korean '한' pixel motif on screen -->
+  <rect x="7" y="9" width="6" height="2" fill="#ffff00"/>
+  <rect x="9" y="7" width="2" height="2" fill="#ffff00"/>
+  <rect x="8" y="12" width="4" height="3" fill="#ffffff"/>
+  <rect x="15" y="8" width="2" height="6" fill="#00ffff"/>
+  <rect x="17" y="10" width="2" height="2" fill="#00ffff"/>
+  <rect x="13" y="15" width="8" height="2" fill="#00ff00"/>
+  <!-- Monitor stand -->
+  <rect x="11" y="20" width="8" height="2" fill="#808080"/>
+  <!-- Retro mechanical keyboard in foreground -->
+  <rect x="2" y="22" width="29" height="9" fill="#000000"/>
+  <rect x="1" y="21" width="29" height="9" fill="#c0c0c0"/>
+  <rect x="2" y="22" width="27" height="7" fill="#dfdfdf"/>
+  <!-- Keycaps -->
+  <rect x="3" y="23" width="2" height="2" fill="#404040"/>
+  <rect x="6" y="23" width="2" height="2" fill="#404040"/>
+  <rect x="9" y="23" width="2" height="2" fill="#404040"/>
+  <rect x="12" y="23" width="2" height="2" fill="#404040"/>
+  <rect x="15" y="23" width="2" height="2" fill="#404040"/>
+  <rect x="18" y="23" width="2" height="2" fill="#404040"/>
+  <rect x="21" y="23" width="2" height="2" fill="#404040"/>
+  <rect x="24" y="23" width="4" height="2" fill="#000080"/>
+  <!-- Spacebar row -->
+  <rect x="3" y="26" width="4" height="2" fill="#808080"/>
+  <rect x="8" y="26" width="13" height="2" fill="#404040"/>
+  <rect x="22" y="26" width="6" height="2" fill="#800000"/>
+</svg>

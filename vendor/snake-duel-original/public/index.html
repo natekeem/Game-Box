@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snake Duel</title>
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main id="app">
+    <section id="view-lobby" class="view">
+      <h1 class="logo">Snake <span>Duel</span></h1>
+      <p class="tagline">A two-player game.</p>
+
+      <div class="mode-tabs" role="tablist">
+        <button type="button" class="mode-tab active" id="tab-online" role="tab" aria-selected="true">
+          Online <span class="mode-tab-sub">2 computers</span>
+        </button>
+        <button type="button" class="mode-tab" id="tab-local" role="tab" aria-selected="false">
+          Local <span class="mode-tab-sub">1 screen</span>
+        </button>
+      </div>
+
+      <form id="join-form" class="mode-panel" autocomplete="off">
+        <label>
+          <span>Room</span>
+          <input id="input-room" type="text" placeholder="e.g. ABC123" maxlength="24" required />
+        </label>
+        <label>
+          <span>Name</span>
+          <input id="input-name" type="text" placeholder="Your name" maxlength="16" required />
+        </label>
+        <button type="submit" id="join-button">Join game</button>
+      </form>
+
+      <form id="local-form" class="mode-panel" autocomplete="off" hidden>
+        <label>
+          <span>Player 1 &middot; WASD</span>
+          <input id="input-local-name1" type="text" placeholder="Player 1 name" maxlength="16" required />
+        </label>
+        <label>
+          <span>Player 2 &middot; Arrows</span>
+          <input id="input-local-name2" type="text" placeholder="Player 2 name" maxlength="16" required />
+        </label>
+        <button type="submit" id="local-start-button">Start game</button>
+      </form>
+
+      <p id="lobby-error" class="error" hidden></p>
+
+      <p class="legend" id="legend-online">
+        You're playing with someone on a <strong>different computer</strong> (same network or over the internet).
+        The first person to join a room controls the snake with <strong>WASD</strong>, the second with the <strong>arrow keys</strong>.
+        The game starts automatically once the second player joins.
+      </p>
+      <p class="legend" id="legend-local" hidden>
+        You're playing on <strong>one keyboard</strong>, in the same browser window.
+        Player 1 uses <strong>WASD</strong>, player 2 uses the <strong>arrow keys</strong>. The game starts immediately.
+      </p>
+    </section>
+
+    <section id="view-game" class="view" hidden>
+      <div class="scoreboard">
+        <div class="badge badge-p1" id="badge-p1">
+          <span class="badge-role">Player 1 &middot; WASD</span>
+          <span class="badge-name" id="name-p1">&mdash;</span>
+          <span class="badge-score"><span id="score-p1">0</span> pts</span>
+        </div>
+        <div class="room-tag">
+          <span class="room-tag-label" id="room-tag-label">Room</span>
+          <span id="room-code">&mdash;</span>
+        </div>
+        <div class="badge badge-p2" id="badge-p2">
+          <span class="badge-role">Player 2 &middot; Arrows</span>
+          <span class="badge-name" id="name-p2">&mdash;</span>
+          <span class="badge-score"><span id="score-p2">0</span> pts</span>
+        </div>
+      </div>
+
+      <div class="board-wrap">
+        <canvas id="board" width="600" height="400"></canvas>
+        <div id="overlay" class="overlay" hidden>
+          <div id="overlay-content"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/js/client/main.js"></script>
+</body>
+</html>
