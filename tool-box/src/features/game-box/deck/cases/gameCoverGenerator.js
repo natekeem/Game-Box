@@ -3,6 +3,12 @@
  * Generates crisp SVG artwork for each game case in the collection.
  */
 
+export function getGameCaseCoverSrc(game) {
+  return game.coverUrl && !game.coverUrl.includes('terminal-1997')
+    ? game.coverUrl
+    : generateArcadeCoverSvg(game);
+}
+
 export function generateArcadeCoverSvg(game) {
   const accent = game.caseColor || '#3b82f6';
   const label = game.discLabel || 'ARC-001';

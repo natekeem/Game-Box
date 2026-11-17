@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { ARCADE_GAMES } from '../registry/arcadeGames.js';
-import { GAME_DECK_CATEGORIES, filterDeckGames, PORTED_3D_ENGINES } from './gameDeckConfig.js';
+import { GAME_DECK_CATEGORIES, filterDeckGames } from './gameDeckConfig.js';
 import GameLauncher from '../runtime/GameLauncher.js';
 import GameCaseCard from './cases/GameCaseCard.jsx';
-import { ensureCaseStyle, lookFor, runInsert } from './cases/FinallyCaseEngine.js';
-import { generateArcadeCoverSvg } from './cases/gameCoverGenerator.js';
+import { ensureCaseStyle } from './cases/FinallyCaseEngine.js';
 import ConsoleView3D from './console/ConsoleView3D.jsx';
 
 function playCrtSound(type = 'power-on') {
@@ -55,24 +54,20 @@ function playCrtSound(type = 'power-on') {
   } catch {}
 }
 
-/**
- * GAME DECK (/game-box/deck)
- * Single Open-Source Base Transition Architecture (Channel 3 CRT TV & Retro Cartridge System)
- * - LEFT: GAME COLLECTION (Cartridge Deck with physical spine, thickness, gloss, wear)
- * - CENTER: GAME CONSOLE (Channel 3 Unified CRT TV & Cartridge host, power relay, iframe launcher)
- * - RIGHT: GAME RANKING & TECHNICAL SPEC (Realtime TOP 10 + Game Metadata)
- */
+const shouldAnimateDisc = () => !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
 export default function GameDeck({ onNavigate }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGameId, setSelectedGameId] = useState(null);
-  const [animState, setAnimState] = useState('selected'); // idle, selected, inserting, playing, ejecting
+  const [animState, setAnimState] = useState('selected');
   const [deckRankings, setDeckRankings] = useState([]);
   const [loadingRankings, setLoadingRankings] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
 
   const consoleRef = useRef(null);
-  const consoleContainerRef = useRef(null);
+  const isPlaying = animState === 'playing';
+  const isMovingDisc = animState === 'inserting' || animState === 'ejecting';
 
   const visibleGames = useMemo(
     () => filterDeckGames(selectedCategory, searchQuery),
@@ -119,24 +114,15 @@ export default function GameDeck({ onNavigate }) {
 
   // Handle case selection
   const handleSelectCase = async (gameId) => {
-    if (['inserting', 'ejecting', 'booting'].includes(animState)) {
-      return; // prevent race condition mid-animation
-    }
-
-    if (gameId === selectedGameId) return;
-
-    if (animState === 'playing') {
-      await handleEjectAndStop();
-    }
+    if (isMovingDisc || gameId === selectedGameId) return;
+    if (isPlaying) await handleEjectAndStop();
 
     setSelectedGameId(gameId);
     setAnimState('selected');
   };
 
-  // Connected 3D Case Open -> Disc Extraction -> Arc Flight -> PS2 Tray Insert Sequence
   const handleInsertAndPlay = async () => {
-    if (!selectedGame) return;
-    if (['booting', 'playing', 'ejecting', 'inserting'].includes(animState)) return;
+    if (!selectedGame || isPlaying || isMovingDisc) return;
 
     setAnimState('inserting');
 
@@ -144,24 +130,12 @@ export default function GameDeck({ onNavigate }) {
       playCrtSound('power-on');
     }
 
-    const prefersReducedMotion =
-      typeof window.matchMedia === 'function' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (consoleRef.current) {
-      if (prefersReducedMotion) {
-        await consoleRef.current.setPower(true);
-      } else {
-        await consoleRef.current.insertDisc(selectedGame);
-      }
-    }
-
+    await consoleRef.current?.insertDisc(selectedGame, { animate: shouldAnimateDisc() });
     setAnimState('playing');
   };
 
-  // Connected Eject Sequence: PS2 Tray Opens -> Disc Flies back to Case -> Case Snaps Shut
   const handleEjectAndStop = async () => {
-    if (['booting', 'ejecting', 'inserting'].includes(animState)) return;
+    if (!isPlaying) return;
 
     setAnimState('ejecting');
 
@@ -169,22 +143,9 @@ export default function GameDeck({ onNavigate }) {
       playCrtSound('power-off');
     }
 
-    const prefersReducedMotion =
-      typeof window.matchMedia === 'function' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (consoleRef.current) {
-      if (prefersReducedMotion) {
-        await consoleRef.current.setPower(false);
-      } else {
-        await consoleRef.current.ejectDisc();
-      }
-    }
-
+    await consoleRef.current?.ejectDisc({ animate: shouldAnimateDisc() });
     setAnimState('selected');
   };
-
-  const isPowerOn = animState === 'playing' || animState === 'booting';
 
   return (
     <div className="gb-deck-shell">
@@ -303,7 +264,7 @@ export default function GameDeck({ onNavigate }) {
             {/* Console Hardware Topbar */}
             <div className="gb-console-hardware-bar">
               <div className="gb-console-led-group">
-                <span className={`gb-console-led ${isPowerOn ? 'on' : 'standby'}`} />
+                <span className={`gb-console-led ${isPlaying ? 'on' : 'standby'}`} />
                 <span className="gb-console-model">
                   TOOL-BOX ARCADE DECK // {selectedGame ? selectedGame.discLabel : 'PS2 SYSTEM STANDBY'}
                 </span>
@@ -324,9 +285,8 @@ export default function GameDeck({ onNavigate }) {
               </div>
             </div>
 
-            {/* Main Stage: Interactive Screen vs 3D Console Engine */}
-            <div className="gb-console-screen" ref={consoleContainerRef}>
-              {animState === 'playing' && selectedGame ? (
+            <div className="gb-console-screen">
+              {isPlaying && selectedGame && (
                 <GameLauncher
                   title={selectedGame.name}
                   src={selectedGame.launchUrl}
@@ -334,68 +294,45 @@ export default function GameDeck({ onNavigate }) {
                   game={selectedGame}
                   onClose={handleEjectAndStop}
                 />
-              ) : (
-                <div className="gb-console-3d-stage-wrapper">
-                  {/* Three.js 3D Console Model */}
-                  <div className="gb-console-threejs-container">
-                    <ConsoleView3D ref={consoleRef} />
-                  </div>
-
-                  {/* Overlaid Console Interaction Deck */}
-                  <div className="gb-console-overlay-panel">
-                    <div className="gb-console-preview-card">
-                      {selectedGame ? (
-                        <>
-                          <span className="gb-preview-kicker">
-                            {selectedGame.genre} · {selectedGame.playersLabel} · {selectedGame.discLabel}
-                          </span>
-                          <h3>{selectedGame.name}</h3>
-                          <p>{selectedGame.description}</p>
-
-                          <div className="gb-console-action-row">
-                            <button
-                              type="button"
-                              className="gb-btn-insert-play"
-                              onClick={handleInsertAndPlay}
-                              disabled={['inserting', 'ejecting', 'booting'].includes(animState)}
-                            >
-                              ▶ PLAY (3D 케이스 개방 및 PS2 디스크 삽입)
-                            </button>
-                            <a
-                              href={selectedGame.multiplayerUrl || selectedGame.launchUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="gb-btn-standalone"
-                            >
-                              ↗ 독립 창으로 열기
-                            </a>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <span className="gb-preview-kicker">
-                            ARCADE 20 COLLECTION · SELECTION MODE
-                          </span>
-                          <h3>게임 CD 케이스를 선택하세요</h3>
-                          <p>
-                            왼쪽 진열대에서 원하는 게임 CD 케이스를 클릭하면 3D 물리 케이스가 로딩되고 콘솔 트레이 삽입 준비가 완료됩니다.
-                          </p>
-                          <div className="gb-console-action-row">
-                            <button
-                              type="button"
-                              className="gb-btn-insert-play"
-                              disabled
-                              style={{ opacity: 0.6, cursor: 'not-allowed' }}
-                            >
-                              CD 케이스를 먼저 선택해주세요
-                            </button>
-                          </div>
-                        </>
+              )}
+              <div className="gb-console-3d-stage-wrapper" hidden={isPlaying}>
+                <div className="gb-console-threejs-container">
+                  <ConsoleView3D ref={consoleRef} game={selectedGame} />
+                </div>
+                <div className="gb-console-overlay-panel">
+                  <div className="gb-console-preview-card">
+                    <span className="gb-preview-kicker">
+                      {selectedGame
+                        ? `${selectedGame.genre} · ${selectedGame.playersLabel} · ${selectedGame.discLabel}`
+                        : 'ARCADE 20 COLLECTION · SELECTION MODE'}
+                    </span>
+                    <h3>{selectedGame?.name || '게임 CD 케이스를 선택하세요'}</h3>
+                    <p>
+                      {selectedGame?.description || '진열대에서 게임을 고르고 PLAY를 누르면 CD가 케이스에서 나와 콘솔에 들어갑니다.'}
+                    </p>
+                    <div className="gb-console-action-row">
+                      <button
+                        type="button"
+                        className="gb-btn-insert-play"
+                        onClick={handleInsertAndPlay}
+                        disabled={!selectedGame || isMovingDisc}
+                      >
+                        {selectedGame ? '▶ PLAY' : 'CD 케이스를 먼저 선택해주세요'}
+                      </button>
+                      {selectedGame && (
+                        <a
+                          href={selectedGame.multiplayerUrl || selectedGame.launchUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="gb-btn-standalone"
+                        >
+                          ↗ 독립 창으로 열기
+                        </a>
                       )}
                     </div>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </section>

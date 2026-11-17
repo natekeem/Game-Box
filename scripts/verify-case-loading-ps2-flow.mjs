@@ -1,145 +1,229 @@
+import assert from 'node:assert/strict';
+import { once } from 'node:events';
+import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
-import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 import { createGameBoxServer } from '../server/http-app.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const rootDir = path.resolve(__dirname, '..');
-const artifactsDir = path.join(rootDir, 'tests', 'artifacts', 'ps2-case-flow');
-fs.mkdirSync(artifactsDir, { recursive: true });
+const rootDir = fileURLToPath(new URL('../', import.meta.url));
+const artifacts = process.env.GAME_DECK_ARTIFACTS;
+if (artifacts) await mkdir(artifacts, { recursive: true });
 
-const port = 9885;
-const staticRoot = rootDir;
-const databasePath = path.resolve(rootDir, 'data', 'game-box-test.sqlite');
-
-console.log('[PS2 CASE FLOW TEST] Starting test server on port', port);
-const { server } = createGameBoxServer({
-  staticRoot,
-  databasePath,
-  identityProvider: null,
+const canvasSelector = '.gb-console-3d-mount canvas';
+const capture = async (locator, file) => {
+  if (artifacts) await locator.screenshot({ path: path.join(artifacts, file), timeout: 15000 });
+};
+const geometry = (canvas) => canvas.evaluate((c) => {
+  const { x, y, width, height } = c.getBoundingClientRect();
+  return [x + scrollX, y + scrollY, width, height, c.width, c.height];
 });
 
-await new Promise((resolve) => server.listen(port, '127.0.0.1', resolve));
+async function verifyDeck(browser, origin, viewport, reducedMotion = 'no-preference') {
+  const page = await browser.newPage({ viewport, reducedMotion });
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  try {
+    await page.addInitScript(() => {
+      localStorage.setItem('gameBox_guest_identity_v1', JSON.stringify({
+        guestId: 'guest-ps2-case-flow',
+        nickname: 'Deck Tester',
+        isRegistered: true,
+      }));
+    });
+    await page.goto(origin + '/game-box/deck');
+    const canvas = page.locator(canvasSelector);
+    const play = page.locator('.gb-btn-insert-play');
+    const state = page.locator('.gb-console-state-badge strong');
+    const originalCanvas = await canvas.elementHandle();
+    const sameCanvas = () => originalCanvas.evaluate((c, selector) => c === document.querySelector(selector), canvasSelector);
+    const standbyGeometry = await geometry(canvas);
+    assert.equal(await state.textContent(), 'STANDBY');
+    assert.ok(await play.isDisabled());
 
-const browser = await chromium.launch({
-  executablePath: 'C:\\Users\\samsung\\AppData\\Local\\ms-playwright\\chromium-1234\\chrome-win64\\chrome.exe',
-  headless: true,
-});
+    await page.locator('.deck-case-bomberman').click();
+    await page.locator('.gb-console-preview-card h3').filter({ hasText: 'Blast Arena' }).waitFor();
+    assert.deepEqual(await geometry(canvas), standbyGeometry, 'Initial selection must not resize or shift the console');
+    await page.locator('.deck-case-snakeduel').click();
+    await page.locator('.gb-console-preview-card h3').filter({ hasText: 'Snake Duel' }).waitFor();
+    assert.deepEqual(await geometry(canvas), standbyGeometry, 'Switching games must keep the same projection');
+    assert.ok(await sameCanvas());
+    if (reducedMotion === 'no-preference') {
+      await capture(page.locator('.gb-console-unit'), 'game-deck-selected.png');
+    }
 
-const context = await browser.newContext({
-  viewport: { width: 1400, height: 900 },
-});
+    await play.click();
+    if (reducedMotion === 'no-preference') {
+      await state.filter({ hasText: 'INSERTING' }).waitFor();
+      await page.locator('.deck-case-bomberman').click();
+    }
+    const iframe = page.locator('.gb-launcher-iframe');
+    await iframe.waitFor({ timeout: reducedMotion === 'reduce' ? 2500 : 12000 });
+    assert.match(await iframe.getAttribute('src'), /game=snakeduel/);
+    assert.ok(await sameCanvas(), 'The original WebGL scene must survive game launch');
+    assert.ok(await canvas.isHidden());
 
-await context.addInitScript(() => {
-  localStorage.setItem('gameBox_guest_identity_v1', JSON.stringify({
-    guestId: 'guest-case-ps2-tester',
-    nickname: 'Ps2CaseMaster',
-    isRegistered: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  }));
-});
-
-const page = await context.newPage();
-
-console.log('1. Loading GAME DECK at /game-box/deck...');
-await page.goto(`http://127.0.0.1:${port}/game-box/deck`, { waitUntil: 'networkidle' });
-
-// STEP 1: Verify default state has NO case selected!
-console.log('2. Verifying default state: No CD case is pre-selected...');
-const activeCases = await page.$$('.deck-case-active, [data-selected="true"]');
-console.log('   Active cases count:', activeCases.length);
-
-const stateBadge = await page.textContent('.gb-console-state-badge strong');
-console.log('   Console state badge:', stateBadge);
-
-const previewTitle = await page.textContent('.gb-console-preview-card h3');
-console.log('   Console preview title:', previewTitle);
-
-if (!previewTitle.includes('선택하세요')) {
-  throw new Error(`Expected standby title, got: ${previewTitle}`);
+    await page.locator('.gb-launcher-btn-close').click();
+    await state.filter({ hasText: 'SELECTED' }).waitFor({ timeout: 12000 });
+    assert.ok(await sameCanvas(), 'Eject must return to the scene that held the disc');
+    assert.deepEqual(await geometry(canvas), standbyGeometry);
+    assert.ok(await iframe.isHidden());
+    assert.deepEqual(errors, []);
+    console.log('Deck selection, launch and eject passed (' + viewport.width + 'px, ' + reducedMotion + ')');
+  } finally {
+    await page.close();
+  }
 }
 
-const shot1 = path.join(artifactsDir, '01_default_no_case_selected.png');
-await page.screenshot({ path: shot1 });
-console.log('   Saved screenshot:', shot1);
+async function verifyDiscPath(browser, origin) {
+  const page = await browser.newPage({ viewport: { width: 720, height: 524 } });
+  try {
+    await page.route('**/deck-scene-test', (route) => route.fulfill({
+      contentType: 'text/html',
+      body: `<!doctype html><style>body{margin:0}#scene{width:720px;height:524px}</style>
+        <script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/":"/node_modules/three/"}}</script>
+        <div id="scene"></div>`,
+    }));
+    await page.goto(origin + '/deck-scene-test');
+    await page.evaluate(async () => {
+      const { Box3, Vector3, Quaternion } = await import('three');
+      const { createGameDeckConsoleScene } = await import('/tool-box/src/features/game-box/deck/console/GameDeckConsoleScene.js');
+      const { ARCADE_GAMES } = await import('/tool-box/src/features/game-box/registry/arcadeGames.js');
 
-// STEP 2: Select Snake Duel
-console.log('3. Selecting Snake Duel CD case on shelf...');
-await page.click('.deck-case-snakeduel');
-await page.waitForTimeout(400);
+      // Step frames explicitly so the pose checks and screenshots do not depend on GPU speed.
+      let now = 0, id = 0;
+      const frames = new Map();
+      Object.defineProperty(performance, 'now', { value: () => now });
+      window.requestAnimationFrame = (cb) => {
+        frames.set(++id, cb);
+        return id;
+      };
+      window.cancelAnimationFrame = (key) => frames.delete(key);
+      window.step = (ms) => {
+        now += ms;
+        const pending = [...frames.values()];
+        frames.clear();
+        pending.forEach((draw) => draw(now));
+      };
 
-const selectedTitle = await page.textContent('.gb-console-preview-card h3');
-console.log('   Selected game title in console:', selectedTitle);
-if (!selectedTitle.includes('Snake Duel')) {
-  throw new Error(`Expected Snake Duel, got: ${selectedTitle}`);
+      const game = ARCADE_GAMES.find(({ id }) => id === 'snakeduel');
+      const api = createGameDeckConsoleScene(document.getElementById('scene'));
+      await api.selectCase(game);
+      window.beginInsert = () => { window.motion = api.insertDisc(game); };
+      window.beginEject = () => { window.motion = api.ejectDisc(); };
+      const inFrame = (object) => {
+        const { min, max } = new Box3().setFromObject(object);
+        return [min.x, max.x].every((x) => [min.y, max.y].every((y) => [min.z, max.z].every((z) => {
+          const projected = new Vector3(x, y, z).project(api.camera);
+          return Math.abs(projected.x) < 0.98 && Math.abs(projected.y) < 0.98;
+        })));
+      };
+      window.pose = () => {
+        const disc = api.scene.getObjectByName('game-disc');
+        const position = disc.getWorldPosition(new Vector3());
+        const normal = new Vector3(0, 1, 0).applyQuaternion(disc.getWorldQuaternion(new Quaternion()));
+        const caseSeat = api.scene.getObjectByName('case-disc-seat');
+        const traySeat = api.scene.getObjectByName('tray-disc-seat');
+        const cover = api.scene.getObjectByName('case-hinge');
+        return {
+          disc: disc.uuid,
+          texture: disc.getObjectByName('disc-print').material.map.uuid,
+          parent: disc.parent.name,
+          hinge: cover.rotation.y,
+          centeredX: caseSeat.getWorldPosition(new Vector3()).project(api.camera).x,
+          caseDistance: caseSeat.getWorldPosition(new Vector3()).distanceTo(position),
+          trayDistance: traySeat.getWorldPosition(new Vector3()).distanceTo(position),
+          propsInFrame: inFrame(caseSeat.parent) && inFrame(traySeat.parent),
+          facing: normal.dot(api.camera.position.clone().sub(position).normalize()),
+          normal: normal.toArray(),
+          position: position.toArray(),
+        };
+      };
+    });
+    const step = (ms) => page.evaluate((elapsed) => window.step(elapsed), ms);
+    const pose = () => page.evaluate(() => window.pose());
+    const canvas = page.locator('#scene canvas');
+    await step(16);
+    const closed = await pose();
+    assert.equal(closed.parent, 'case-disc-seat');
+    assert.equal(closed.caseDistance, 0);
+    assert.ok(Math.abs(closed.centeredX) < 0.025, 'The closed case should be centered');
+    await capture(canvas, '01-case-centered.png');
+
+    await page.evaluate(() => window.beginInsert());
+    await step(690);
+    const open = await pose();
+    assert.ok(open.hinge < -2.4, 'The case must open before the disc moves');
+    assert.equal(open.caseDistance, 0);
+    assert.ok(open.normal[2] > 0.9, 'The disc must be parallel to the open case');
+    await capture(canvas, '02-disc-in-open-case.png');
+    await step(140); // Finish extending the tray before transfer begins.
+    await step(180);
+    const lifted = await pose();
+    assert.ok(lifted.caseDistance > 0.01);
+    const displacement = lifted.position.map((axis, i) => axis - open.position[i]);
+    const liftAlongFace = displacement.reduce((sum, axis, i) => sum + axis * open.normal[i], 0);
+    assert.ok(liftAlongFace / Math.hypot(...displacement) > 0.999, 'The disc must clear the hub squarely');
+    assert.deepEqual(lifted.normal, open.normal);
+
+    for (let i = 0; i < 10; i += 1) {
+      await step(110);
+      const flying = await pose();
+      assert.equal(flying.disc, closed.disc);
+      assert.equal(flying.texture, closed.texture);
+      assert.ok(flying.facing > 0.1, 'The printed face should stay visible through the turn');
+      if (i === 2) await capture(canvas, '03-disc-spin.png');
+    }
+
+    await step(160);
+    const seated = await pose();
+    assert.equal(seated.parent, 'tray-disc-seat');
+    assert.equal(seated.trayDistance, 0);
+    assert.deepEqual(seated.normal, [0, 1, 0]);
+    assert.ok(seated.propsInFrame, 'The open case and extended tray must fit in the canvas');
+    await capture(canvas, '04-disc-seated-in-tray.png');
+    await step(420);
+    const closing = await pose();
+    assert.equal(closing.trayDistance, 0);
+    assert.ok(closing.position[2] < seated.position[2] - 0.02, 'The tray must carry the disc into the console');
+    await step(400);
+    await step(350);
+    await page.evaluate(() => window.motion);
+
+    await page.evaluate(() => window.beginEject());
+    await step(830);
+    await step(1460);
+    const returned = await pose();
+    assert.equal(returned.parent, 'case-disc-seat');
+    assert.equal(returned.caseDistance, 0);
+    assert.equal(returned.disc, closed.disc);
+    assert.equal(returned.texture, closed.texture);
+    await capture(canvas, '05-disc-returned-to-case.png');
+    await step(830);
+    await page.evaluate(() => window.motion);
+    assert.deepEqual((await pose()).position, closed.position);
+    console.log('Case alignment, disc print, tray seating and reverse path passed');
+  } finally {
+    await page.close();
+  }
 }
 
-const rankingTitle = await page.textContent('.gb-deck-ranking-box h3');
-console.log('   Ranking title synchronized to:', rankingTitle);
-
-const shot2 = path.join(artifactsDir, '02_case_clicked_and_selected.png');
-await page.screenshot({ path: shot2 });
-console.log('   Saved screenshot:', shot2);
-
-// STEP 3: Click PLAY -> 3D Case appears and starts opening!
-console.log('4. Clicking PLAY to trigger 3D Case Open & PS2 Disc Insert sequence...');
-await page.click('.gb-btn-insert-play');
-
-// t = 450ms: Case loaded and starting to open
-await page.waitForTimeout(450);
-const shot3 = path.join(artifactsDir, '03_3d_case_opening_in_scene.png');
-await page.screenshot({ path: shot3 });
-console.log('   Saved screenshot:', shot3);
-
-// t = 950ms: Case fully open, disc lifted from spindle, PS2 tray open
-await page.waitForTimeout(500);
-const shot4 = path.join(artifactsDir, '04_disc_extracted_ps2_tray_open.png');
-await page.screenshot({ path: shot4 });
-console.log('   Saved screenshot:', shot4);
-
-// t = 1600ms: Disc flying along 3D arc trajectory into PS2 tray
-await page.waitForTimeout(650);
-const shot5 = path.join(artifactsDir, '05_disc_flight_arc_to_ps2_tray.png');
-await page.screenshot({ path: shot5 });
-console.log('   Saved screenshot:', shot5);
-
-// t = 2400ms: Disc seated, PS2 tray closing into console
-await page.waitForTimeout(800);
-const shot6 = path.join(artifactsDir, '06_disc_landed_tray_closing.png');
-await page.screenshot({ path: shot6 });
-console.log('   Saved screenshot:', shot6);
-
-// STEP 4: Game iframe running
-console.log('5. Waiting for game iframe mount...');
-await page.waitForSelector('.gb-launcher-iframe', { timeout: 8000 });
-const iframeSrc = await page.getAttribute('.gb-launcher-iframe', 'src');
-console.log('   Game iframe running with src:', iframeSrc);
-
-const shot7 = path.join(artifactsDir, '07_game_running_console_power_on.png');
-await page.screenshot({ path: shot7 });
-console.log('   Saved screenshot:', shot7);
-
-// STEP 5: Eject and reverse return
-console.log('6. Clicking Close / Eject button...');
-await page.click('.gb-launcher-btn-close');
-
-// Wait for eject sequence to finish
-await page.waitForFunction(() => {
-  const badge = document.querySelector('.gb-console-state-badge strong');
-  return badge && badge.textContent.trim() === 'SELECTED';
-}, { timeout: 6000 });
-
-console.log('   Successfully returned to SELECTED state.');
-const shot8 = path.join(artifactsDir, '08_ejected_cleanly_returned.png');
-await page.screenshot({ path: shot8 });
-console.log('   Saved screenshot:', shot8);
-
-await browser.close();
-server.close();
-
-console.log('\n======================================================');
-console.log('🎉 [PS2 3D CASE & DISC INSERTION VERIFICATION PASSED!]');
-console.log('All 8 frames captured with real 3D case -> arc -> PS2 tray integration.');
-console.log('======================================================');
+const { server } = createGameBoxServer({ staticRoot: path.resolve(rootDir) });
+server.listen(0, '127.0.0.1');
+await once(server, 'listening');
+try {
+  const browser = await chromium.launch({
+    executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE,
+    args: ['--enable-unsafe-swiftshader'],
+  });
+  try {
+    const origin = 'http://127.0.0.1:' + server.address().port;
+    await verifyDiscPath(browser, origin);
+    await verifyDeck(browser, origin, { width: 1400, height: 900 });
+    await verifyDeck(browser, origin, { width: 390, height: 844 }, 'reduce');
+  } finally {
+    await browser.close();
+  }
+} finally {
+  server.close();
+}

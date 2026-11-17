@@ -3021,6 +3021,9 @@ ${pick}
   }
 
   // tool-box/src/features/game-box/deck/cases/gameCoverGenerator.js
+  function getGameCaseCoverSrc(game) {
+    return game.coverUrl && !game.coverUrl.includes("terminal-1997") ? game.coverUrl : generateArcadeCoverSvg(game);
+  }
   function generateArcadeCoverSvg(game) {
     const accent = game.caseColor || "#3b82f6";
     const label = game.discLabel || "ARC-001";
@@ -3143,12 +3146,7 @@ ${pick}
     className = ""
   }) {
     const look = T2(() => lookFor(game, customSettings), [game, customSettings]);
-    const coverSrc = T2(() => {
-      if (game.coverUrl && !game.coverUrl.includes("terminal-1997")) {
-        return game.coverUrl;
-      }
-      return generateArcadeCoverSvg(game);
-    }, [game]);
+    const coverSrc = T2(() => getGameCaseCoverSrc(game), [game]);
     const handleClick = (e3) => {
       if (onClick) {
         onClick(game, e3);
@@ -17540,6 +17538,384 @@ ${pick}
      */
     static fromJSON(data) {
       return new _CylinderGeometry(data.radiusTop, data.radiusBottom, data.height, data.radialSegments, data.heightSegments, data.openEnded, data.thetaStart, data.thetaLength);
+    }
+  };
+  var Curve = class {
+    /**
+     * Constructs a new curve.
+     */
+    constructor() {
+      this.type = "Curve";
+      this.arcLengthDivisions = 200;
+      this.needsUpdate = false;
+      this.cacheArcLengths = null;
+    }
+    /**
+     * This method returns a vector in 2D or 3D space (depending on the curve definition)
+     * for the given interpolation factor.
+     *
+     * @abstract
+     * @param {number} t - A interpolation factor representing a position on the curve. Must be in the range `[0,1]`.
+     * @param {(Vector2|Vector3)} [optionalTarget] - The optional target vector the result is written to.
+     * @return {(Vector2|Vector3)} The position on the curve. It can be a 2D or 3D vector depending on the curve definition.
+     */
+    getPoint() {
+      warn("Curve: .getPoint() not implemented.");
+    }
+    /**
+     * This method returns a vector in 2D or 3D space (depending on the curve definition)
+     * for the given interpolation factor. Unlike {@link Curve#getPoint}, this method honors the length
+     * of the curve which equidistant samples.
+     *
+     * @param {number} u - A interpolation factor representing a position on the curve. Must be in the range `[0,1]`.
+     * @param {(Vector2|Vector3)} [optionalTarget] - The optional target vector the result is written to.
+     * @return {(Vector2|Vector3)} The position on the curve. It can be a 2D or 3D vector depending on the curve definition.
+     */
+    getPointAt(u4, optionalTarget) {
+      const t3 = this.getUtoTmapping(u4);
+      return this.getPoint(t3, optionalTarget);
+    }
+    /**
+     * This method samples the curve via {@link Curve#getPoint} and returns an array of points representing
+     * the curve shape.
+     *
+     * @param {number} [divisions=5] - The number of divisions.
+     * @return {Array<(Vector2|Vector3)>} An array holding the sampled curve values. The number of points is `divisions + 1`.
+     */
+    getPoints(divisions = 5) {
+      const points = [];
+      for (let d3 = 0; d3 <= divisions; d3++) {
+        points.push(this.getPoint(d3 / divisions));
+      }
+      return points;
+    }
+    // Get sequence of points using getPointAt( u )
+    /**
+     * This method samples the curve via {@link Curve#getPointAt} and returns an array of points representing
+     * the curve shape. Unlike {@link Curve#getPoints}, this method returns equi-spaced points across the entire
+     * curve.
+     *
+     * @param {number} [divisions=5] - The number of divisions.
+     * @return {Array<(Vector2|Vector3)>} An array holding the sampled curve values. The number of points is `divisions + 1`.
+     */
+    getSpacedPoints(divisions = 5) {
+      const points = [];
+      for (let d3 = 0; d3 <= divisions; d3++) {
+        points.push(this.getPointAt(d3 / divisions));
+      }
+      return points;
+    }
+    /**
+     * Returns the total arc length of the curve.
+     *
+     * @return {number} The length of the curve.
+     */
+    getLength() {
+      const lengths = this.getLengths();
+      return lengths[lengths.length - 1];
+    }
+    /**
+     * Returns an array of cumulative segment lengths of the curve.
+     *
+     * @param {number} [divisions=this.arcLengthDivisions] - The number of divisions.
+     * @return {Array<number>} An array holding the cumulative segment lengths.
+     */
+    getLengths(divisions = this.arcLengthDivisions) {
+      if (this.cacheArcLengths && this.cacheArcLengths.length === divisions + 1 && !this.needsUpdate) {
+        return this.cacheArcLengths;
+      }
+      this.needsUpdate = false;
+      const cache = [];
+      let current, last = this.getPoint(0);
+      let sum = 0;
+      cache.push(0);
+      for (let p3 = 1; p3 <= divisions; p3++) {
+        current = this.getPoint(p3 / divisions);
+        sum += current.distanceTo(last);
+        cache.push(sum);
+        last = current;
+      }
+      this.cacheArcLengths = cache;
+      return cache;
+    }
+    /**
+     * Update the cumulative segment distance cache. The method must be called
+     * every time curve parameters are changed. If an updated curve is part of a
+     * composed curve like {@link CurvePath}, this method must be called on the
+     * composed curve, too.
+     */
+    updateArcLengths() {
+      this.needsUpdate = true;
+      this.getLengths();
+    }
+    /**
+     * Given an interpolation factor in the range `[0,1]`, this method returns an updated
+     * interpolation factor in the same range that can be ued to sample equidistant points
+     * from a curve.
+     *
+     * @param {number} u - The interpolation factor.
+     * @param {?number} distance - An optional distance on the curve.
+     * @return {number} The updated interpolation factor.
+     */
+    getUtoTmapping(u4, distance = null) {
+      const arcLengths = this.getLengths();
+      let i3 = 0;
+      const il = arcLengths.length;
+      let targetArcLength;
+      if (distance) {
+        targetArcLength = distance;
+      } else {
+        targetArcLength = u4 * arcLengths[il - 1];
+      }
+      let low = 0, high = il - 1, comparison;
+      while (low <= high) {
+        i3 = Math.floor(low + (high - low) / 2);
+        comparison = arcLengths[i3] - targetArcLength;
+        if (comparison < 0) {
+          low = i3 + 1;
+        } else if (comparison > 0) {
+          high = i3 - 1;
+        } else {
+          high = i3;
+          break;
+        }
+      }
+      i3 = high;
+      if (arcLengths[i3] === targetArcLength) {
+        return i3 / (il - 1);
+      }
+      const lengthBefore = arcLengths[i3];
+      const lengthAfter = arcLengths[i3 + 1];
+      const segmentLength = lengthAfter - lengthBefore;
+      const segmentFraction = (targetArcLength - lengthBefore) / segmentLength;
+      const t3 = (i3 + segmentFraction) / (il - 1);
+      return t3;
+    }
+    /**
+     * Returns a unit vector tangent for the given interpolation factor.
+     * If the derived curve does not implement its tangent derivation,
+     * two points a small delta apart will be used to find its gradient
+     * which seems to give a reasonable approximation.
+     *
+     * @param {number} t - The interpolation factor.
+     * @param {(Vector2|Vector3)} [optionalTarget] - The optional target vector the result is written to.
+     * @return {(Vector2|Vector3)} The tangent vector.
+     */
+    getTangent(t3, optionalTarget) {
+      const delta = 1e-4;
+      let t1 = t3 - delta;
+      let t22 = t3 + delta;
+      if (t1 < 0) t1 = 0;
+      if (t22 > 1) t22 = 1;
+      const pt1 = this.getPoint(t1);
+      const pt2 = this.getPoint(t22);
+      const tangent = optionalTarget || (pt1.isVector2 ? new Vector2() : new Vector3());
+      tangent.copy(pt2).sub(pt1).normalize();
+      return tangent;
+    }
+    /**
+     * Same as {@link Curve#getTangent} but with equidistant samples.
+     *
+     * @param {number} u - The interpolation factor.
+     * @param {(Vector2|Vector3)} [optionalTarget] - The optional target vector the result is written to.
+     * @return {(Vector2|Vector3)} The tangent vector.
+     * @see {@link Curve#getPointAt}
+     */
+    getTangentAt(u4, optionalTarget) {
+      const t3 = this.getUtoTmapping(u4);
+      return this.getTangent(t3, optionalTarget);
+    }
+    /**
+     * Generates the Frenet Frames. Requires a curve definition in 3D space. Used
+     * in geometries like {@link TubeGeometry} or {@link ExtrudeGeometry}.
+     *
+     * @param {number} segments - The number of segments.
+     * @param {boolean} [closed=false] - Whether the curve is closed or not.
+     * @return {{tangents: Array<Vector3>, normals: Array<Vector3>, binormals: Array<Vector3>}} The Frenet Frames.
+     */
+    computeFrenetFrames(segments, closed = false) {
+      const normal = new Vector3();
+      const tangents = [];
+      const normals = [];
+      const binormals = [];
+      const vec = new Vector3();
+      const mat = new Matrix4();
+      for (let i3 = 0; i3 <= segments; i3++) {
+        const u4 = i3 / segments;
+        tangents[i3] = this.getTangentAt(u4, new Vector3());
+      }
+      normals[0] = new Vector3();
+      binormals[0] = new Vector3();
+      let min = Number.MAX_VALUE;
+      const tx = Math.abs(tangents[0].x);
+      const ty = Math.abs(tangents[0].y);
+      const tz = Math.abs(tangents[0].z);
+      if (tx <= min) {
+        min = tx;
+        normal.set(1, 0, 0);
+      }
+      if (ty <= min) {
+        min = ty;
+        normal.set(0, 1, 0);
+      }
+      if (tz <= min) {
+        normal.set(0, 0, 1);
+      }
+      vec.crossVectors(tangents[0], normal).normalize();
+      normals[0].crossVectors(tangents[0], vec);
+      binormals[0].crossVectors(tangents[0], normals[0]);
+      for (let i3 = 1; i3 <= segments; i3++) {
+        normals[i3] = normals[i3 - 1].clone();
+        binormals[i3] = binormals[i3 - 1].clone();
+        vec.crossVectors(tangents[i3 - 1], tangents[i3]);
+        if (vec.length() > Number.EPSILON) {
+          vec.normalize();
+          const theta = Math.acos(clamp(tangents[i3 - 1].dot(tangents[i3]), -1, 1));
+          normals[i3].applyMatrix4(mat.makeRotationAxis(vec, theta));
+        }
+        binormals[i3].crossVectors(tangents[i3], normals[i3]);
+      }
+      if (closed === true) {
+        let theta = Math.acos(clamp(normals[0].dot(normals[segments]), -1, 1));
+        theta /= segments;
+        if (tangents[0].dot(vec.crossVectors(normals[0], normals[segments])) > 0) {
+          theta = -theta;
+        }
+        for (let i3 = 1; i3 <= segments; i3++) {
+          normals[i3].applyMatrix4(mat.makeRotationAxis(tangents[i3], theta * i3));
+          binormals[i3].crossVectors(tangents[i3], normals[i3]);
+        }
+      }
+      return {
+        tangents,
+        normals,
+        binormals
+      };
+    }
+    /**
+     * Returns a new curve with copied values from this instance.
+     *
+     * @return {Curve} A clone of this instance.
+     */
+    clone() {
+      return new this.constructor().copy(this);
+    }
+    /**
+     * Copies the values of the given curve to this instance.
+     *
+     * @param {Curve} source - The curve to copy.
+     * @return {Curve} A reference to this curve.
+     */
+    copy(source) {
+      this.arcLengthDivisions = source.arcLengthDivisions;
+      this.cacheArcLengths = null;
+      return this;
+    }
+    /**
+     * Serializes the curve into JSON.
+     *
+     * @return {Object} A JSON object representing the serialized curve.
+     * @see {@link ObjectLoader#parse}
+     */
+    toJSON() {
+      const data = {
+        metadata: {
+          version: 4.7,
+          type: "Curve",
+          generator: "Curve.toJSON"
+        }
+      };
+      data.arcLengthDivisions = this.arcLengthDivisions;
+      data.type = this.type;
+      return data;
+    }
+    /**
+     * Deserializes the curve from the given JSON.
+     *
+     * @param {Object} json - The JSON holding the serialized curve.
+     * @return {Curve} A reference to this curve.
+     */
+    fromJSON(json) {
+      this.arcLengthDivisions = json.arcLengthDivisions;
+      this.cacheArcLengths = null;
+      return this;
+    }
+  };
+  function CubicBezierP0(t3, p3) {
+    const k3 = 1 - t3;
+    return k3 * k3 * k3 * p3;
+  }
+  function CubicBezierP1(t3, p3) {
+    const k3 = 1 - t3;
+    return 3 * k3 * k3 * t3 * p3;
+  }
+  function CubicBezierP2(t3, p3) {
+    return 3 * (1 - t3) * t3 * t3 * p3;
+  }
+  function CubicBezierP3(t3, p3) {
+    return t3 * t3 * t3 * p3;
+  }
+  function CubicBezier(t3, p0, p1, p22, p3) {
+    return CubicBezierP0(t3, p0) + CubicBezierP1(t3, p1) + CubicBezierP2(t3, p22) + CubicBezierP3(t3, p3);
+  }
+  var CubicBezierCurve3 = class extends Curve {
+    /**
+     * Constructs a new Cubic Bezier curve.
+     *
+     * @param {Vector3} [v0] - The start point.
+     * @param {Vector3} [v1] - The first control point.
+     * @param {Vector3} [v2] - The second control point.
+     * @param {Vector3} [v3] - The end point.
+     */
+    constructor(v0 = new Vector3(), v1 = new Vector3(), v22 = new Vector3(), v3 = new Vector3()) {
+      super();
+      this.isCubicBezierCurve3 = true;
+      this.type = "CubicBezierCurve3";
+      this.v0 = v0;
+      this.v1 = v1;
+      this.v2 = v22;
+      this.v3 = v3;
+    }
+    /**
+     * Returns a point on the curve.
+     *
+     * @param {number} t - A interpolation factor representing a position on the curve. Must be in the range `[0,1]`.
+     * @param {Vector3} [optionalTarget] - The optional target vector the result is written to.
+     * @return {Vector3} The position on the curve.
+     */
+    getPoint(t3, optionalTarget = new Vector3()) {
+      const point = optionalTarget;
+      const v0 = this.v0, v1 = this.v1, v22 = this.v2, v3 = this.v3;
+      point.set(
+        CubicBezier(t3, v0.x, v1.x, v22.x, v3.x),
+        CubicBezier(t3, v0.y, v1.y, v22.y, v3.y),
+        CubicBezier(t3, v0.z, v1.z, v22.z, v3.z)
+      );
+      return point;
+    }
+    copy(source) {
+      super.copy(source);
+      this.v0.copy(source.v0);
+      this.v1.copy(source.v1);
+      this.v2.copy(source.v2);
+      this.v3.copy(source.v3);
+      return this;
+    }
+    toJSON() {
+      const data = super.toJSON();
+      data.v0 = this.v0.toArray();
+      data.v1 = this.v1.toArray();
+      data.v2 = this.v2.toArray();
+      data.v3 = this.v3.toArray();
+      return data;
+    }
+    fromJSON(json) {
+      super.fromJSON(json);
+      this.v0.fromArray(json.v0);
+      this.v1.fromArray(json.v1);
+      this.v2.fromArray(json.v2);
+      this.v3.fromArray(json.v3);
+      return this;
     }
   };
   var PlaneGeometry = class _PlaneGeometry extends BufferGeometry {
@@ -32929,14 +33305,17 @@ void main() {
   var DISC_R = 0.06;
   var DISC_HOLE = 75e-4;
   var DISC_T = 12e-4;
+  var CASE_W = 0.134;
+  var CASE_H = 0.19;
+  var DISC_NORMAL = new Vector3(0, 1, 0);
   var LED_OFF = new Color("#ff2a1a");
   var LED_ON = new Color("#2bff6a");
   var LED_EJECT = new Color("#2a7bff");
   var EJECT_DIM = new Color("#0c1a3a");
   var ease = {
     inOut: (t3) => t3 < 0.5 ? 4 * t3 * t3 * t3 : 1 - Math.pow(-2 * t3 + 2, 3) / 2,
-    out: (t3) => 1 - Math.pow(1 - t3, 3),
-    in: (t3) => t3 * t3 * t3
+    smooth: (t3) => t3 * t3 * (3 - 2 * t3),
+    linear: (t3) => t3
   };
   function box(x0, x1, y0, y1, z0, z1, r3) {
     const g4 = new RoundedBoxGeometry((x1 - x0) * MM, (y1 - y0) * MM, (z1 - z0) * MM, 1, r3 * MM);
@@ -33163,7 +33542,7 @@ void main() {
     g4.arc(c3, c3, 16 * k3, 0, Math.PI * 2);
     g4.fill();
   }
-  function drawDiscLabel(g4, S2, game) {
+  function drawDiscLabel(g4, S2, game, coverArt) {
     const c3 = S2 / 2, R2 = S2 / 2, mm = R2 / (DISC_R / MM);
     const ring = (r0, r1) => {
       g4.beginPath();
@@ -33171,16 +33550,23 @@ void main() {
       g4.arc(c3, c3, r0, 0, Math.PI * 2, true);
     };
     g4.fillStyle = "#c3c7cf";
-    ring(0, R2);
-    g4.fill();
+    g4.fillRect(0, 0, S2, S2);
     const baseCol = game.caseColor || "#2563eb";
-    const grd = g4.createRadialGradient(c3 * 0.7, c3 * 0.6, R2 * 0.1, c3, c3, R2);
-    grd.addColorStop(0, "#ffffff");
-    grd.addColorStop(0.3, baseCol);
-    grd.addColorStop(1, "#090d16");
+    const grd = g4.createLinearGradient(0, S2, S2, 0);
+    grd.addColorStop(0, "#08111d");
+    grd.addColorStop(0.44, baseCol);
+    grd.addColorStop(0.9, "#101929");
     g4.fillStyle = grd;
-    ring(19 * mm, R2 * 0.995);
+    ring(19 * mm, R2 - 1.5 * mm);
     g4.fill();
+    if (coverArt) {
+      g4.save();
+      g4.clip();
+      g4.globalAlpha = 0.55;
+      const { naturalWidth: w3, naturalHeight: h3 } = coverArt;
+      g4.drawImage(coverArt, 0, h3 * 0.22, w3, h3 * 0.43, 0, R2 * 0.3, S2, R2 * 1.38);
+      g4.restore();
+    }
     const hub = g4.createRadialGradient(c3, c3, 7 * mm, c3, c3, 19 * mm);
     hub.addColorStop(0, "#9ea3ad");
     hub.addColorStop(0.55, "#d9dce2");
@@ -33199,16 +33585,16 @@ void main() {
     g4.arc(c3, c3, 19 * mm, 0, Math.PI * 2);
     g4.stroke();
     g4.beginPath();
-    g4.arc(c3, c3, R2 - 0.4 * mm, 0, Math.PI * 2);
+    g4.arc(c3, c3, R2 - 3.3 * mm, 0, Math.PI * 2);
     g4.stroke();
-    const title = String(game.name || "GAME-BOX").toUpperCase();
+    const title = (game.name || "GAME-BOX").split(" (")[0].toUpperCase();
     g4.fillStyle = "#ffffff";
     g4.textAlign = "center";
     g4.textBaseline = "middle";
     g4.shadowColor = "rgba(0,0,0,0.6)";
-    g4.shadowBlur = 8;
-    g4.font = `800 ${S2 * 0.08}px ${SANS}`;
-    g4.fillText(title, c3, c3 - R2 * 0.48);
+    g4.shadowBlur = 12;
+    g4.font = `900 ${S2 * 0.094}px ${SANS}`;
+    g4.fillText(title, c3, c3 - R2 * 0.56, R2 * 1.55);
     g4.shadowBlur = 0;
     g4.font = `700 ${S2 * 0.038}px monospace`;
     g4.fillStyle = "#cbd5e1";
@@ -33236,65 +33622,14 @@ void main() {
     g4.arc(c3, c3, 17 * mm, 0, Math.PI * 2);
     g4.fill();
   }
-  function drawCaseCover(g4, W4, H3, game) {
-    const baseCol = game.caseColor || "#2563eb";
-    g4.fillStyle = "#0f131a";
-    g4.fillRect(0, 0, W4, H3);
-    g4.fillStyle = "#000000";
-    g4.fillRect(0, 0, W4, H3 * 0.12);
-    g4.fillStyle = "#ffffff";
-    g4.font = `900 ${W4 * 0.055}px ${SANS}`;
-    g4.textAlign = "left";
-    g4.textBaseline = "middle";
-    g4.fillText("GAME DECK", W4 * 0.08, H3 * 0.06);
-    g4.fillStyle = "#38bdf8";
-    g4.font = `700 ${W4 * 0.038}px monospace`;
-    g4.textAlign = "right";
-    g4.fillText("PAL / NTSC", W4 * 0.92, H3 * 0.06);
-    const artY = H3 * 0.12;
-    const artH = H3 * 0.72;
-    const artGrd = g4.createLinearGradient(0, artY, W4, artY + artH);
-    artGrd.addColorStop(0, "#ffffff");
-    artGrd.addColorStop(0.18, baseCol);
-    artGrd.addColorStop(1, "#090d16");
-    g4.fillStyle = artGrd;
-    g4.fillRect(0, artY, W4, artH);
-    g4.strokeStyle = "rgba(255,255,255,0.12)";
-    g4.lineWidth = 2;
-    for (let r3 = W4 * 0.2; r3 < W4 * 0.9; r3 += W4 * 0.18) {
-      g4.beginPath();
-      g4.arc(W4 / 2, artY + artH * 0.45, r3, 0, Math.PI * 2);
-      g4.stroke();
-    }
-    g4.textAlign = "center";
-    g4.textBaseline = "middle";
-    g4.fillStyle = "#ffffff";
-    g4.shadowColor = "rgba(0,0,0,0.85)";
-    g4.shadowBlur = 14;
-    g4.font = `900 ${W4 * 0.085}px ${SANS}`;
-    const title = String(game.name || "ARCADE GAME");
-    g4.fillText(title, W4 / 2, artY + artH * 0.42);
-    g4.shadowBlur = 4;
-    g4.font = `700 ${W4 * 0.045}px ${SANS}`;
-    g4.fillStyle = "#cbd5e1";
-    g4.fillText(game.subtitle || game.genre || "ARCADE CLASSIC", W4 / 2, artY + artH * 0.55);
-    g4.shadowBlur = 0;
-    g4.fillStyle = "rgba(0,0,0,0.6)";
-    const badgeW = W4 * 0.45, badgeH = H3 * 0.045;
-    g4.fillRect((W4 - badgeW) / 2, artY + artH * 0.73, badgeW, badgeH);
-    g4.strokeStyle = "rgba(255,255,255,0.4)";
-    g4.strokeRect((W4 - badgeW) / 2, artY + artH * 0.73, badgeW, badgeH);
-    g4.font = `700 ${W4 * 0.038}px monospace`;
-    g4.fillStyle = "#38bdf8";
-    g4.fillText(game.discLabel || "ARC-001", W4 / 2, artY + artH * 0.73 + badgeH / 2);
-    g4.fillStyle = "#080a0f";
-    g4.fillRect(0, H3 * 0.84, W4, H3 * 0.16);
-    g4.fillStyle = "#94a3b8";
-    g4.font = `600 ${W4 * 0.034}px ${SANS}`;
-    g4.textAlign = "left";
-    g4.fillText(game.playersLabel || "1~2 PLAYERS", W4 * 0.08, H3 * 0.92);
-    g4.textAlign = "right";
-    g4.fillText("TOOL-BOX STUDIO", W4 * 0.92, H3 * 0.92);
+  function loadCoverImage(src) {
+    return new Promise((resolve) => {
+      const image = new Image();
+      image.crossOrigin = "anonymous";
+      image.onload = () => resolve(image);
+      image.onerror = () => resolve(null);
+      image.src = src;
+    });
   }
   function disposeObject(root) {
     if (!root) return;
@@ -33327,9 +33662,11 @@ void main() {
     scene.background = bg;
     scene.fog = new Fog(bg, 1.6, 4.2);
     const pmrem = new PMREMGenerator(renderer);
-    const envTex = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    const room = new RoomEnvironment();
+    const environment = pmrem.fromScene(room, 0.04);
+    room.dispose();
     pmrem.dispose();
-    scene.environment = envTex;
+    scene.environment = environment.texture;
     scene.environmentIntensity = 0.35;
     const camera = new PerspectiveCamera(32, 1, 0.01, 20);
     const key = new SpotLight("#fff1e0", 6, 4, 0.55, 0.85, 1.6);
@@ -33357,14 +33694,21 @@ void main() {
     floor.receiveShadow = true;
     scene.add(floor);
     const textures = [];
-    const canvasTex = (w3, h3, draw) => {
+    const colorTexture = (t3) => {
+      t3.colorSpace = SRGBColorSpace;
+      t3.anisotropy = aniso;
+      return t3;
+    };
+    const drawTexture = (w3, h3, draw) => {
       const c3 = document.createElement("canvas");
       c3.width = w3;
       c3.height = h3;
       draw(c3.getContext("2d"), w3, h3);
-      const t3 = new CanvasTexture(c3);
-      t3.colorSpace = SRGBColorSpace;
-      t3.anisotropy = aniso;
+      return colorTexture(new CanvasTexture(c3));
+    };
+    const canvasTex = (w3, h3, draw) => {
+      const t3 = drawTexture(w3, h3, draw);
+      t3.userData.shared = true;
       textures.push(t3);
       return t3;
     };
@@ -33469,6 +33813,7 @@ void main() {
     reset.position.set(0, -3.3 * MM, 1.55 * MM);
     btnPower.add(reset);
     const glowTex = radialTexture();
+    glowTex.userData.shared = true;
     textures.push(glowTex);
     const makeGlow = (color, size) => {
       const s3 = new Sprite(new SpriteMaterial({
@@ -33513,90 +33858,73 @@ void main() {
     const well = addMesh(new PlaneGeometry(TRAY_W * MM - 4e-3, TRAY_W * MM - 4e-3), new MeshStandardMaterial({ map: recessTex, roughness: 0.7, transparent: true }), tray, false);
     well.rotation.x = -Math.PI / 2;
     well.position.set(0, TRAY_Y + 1e-4, seatZ);
-    const seatLocal = new Vector3(0, TRAY_Y + DISC_T / 2 + 3e-4, seatZ);
+    const traySeat = new Object3D();
+    traySeat.name = "tray-disc-seat";
+    traySeat.position.set(0, TRAY_Y + DISC_T / 2 + 3e-4, seatZ);
+    tray.add(traySeat);
     const tweens = /* @__PURE__ */ new Set();
-    const frameCbs = /* @__PURE__ */ new Set();
-    let raf = 0, disposed = false, fullRender = true;
-    function schedule() {
+    let raf = 0, disposed = false;
+    function invalidate() {
       if (raf || disposed) return;
       raf = requestAnimationFrame(frame);
     }
     function frame(now) {
       raf = 0;
       if (disposed) return;
-      const dt = 0.016;
-      fullRender = false;
       for (const tw of [...tweens]) {
-        const p3 = Math.min((now - tw.t0) / tw.ms, 1);
+        const p3 = MathUtils.clamp((now - tw.t0) / tw.ms, 0, 1);
         tw.fn(tw.ease(p3));
         if (p3 >= 1) {
           tweens.delete(tw);
           tw.done();
         }
       }
-      for (const cb of frameCbs) cb(dt);
-      applyCamera();
       renderer.render(scene, camera);
-      if (tweens.size || frameCbs.size) schedule();
-    }
-    function invalidate() {
-      fullRender = true;
-      schedule();
+      if (tweens.size) invalidate();
     }
     function tween(ms, fn2, easing = ease.inOut) {
+      if (disposed) return Promise.resolve();
       return new Promise((done) => {
         tweens.add({ t0: performance.now(), ms, fn: fn2, ease: easing, done });
         invalidate();
       });
     }
     const lerp2 = (a3, b2, t3) => a3 + (b2 - a3) * t3;
-    const cam = { pos: new Vector3(), target: new Vector3() };
-    const camOffset = new Vector3();
-    let view = "console";
-    function fitDistance(w3, h3) {
-      const t3 = Math.tan(MathUtils.degToRad(camera.fov / 2));
-      return Math.max(h3 / 2 / t3, w3 / 2 / (t3 * camera.aspect));
-    }
-    function viewPose(name) {
-      const target = new Vector3(-5e-3, 0.05, 0);
-      const dir = new Vector3(0.48, 0.42, 1).normalize();
-      const d3 = fitDistance(0.52, 0.4);
-      return { target, pos: target.clone().addScaledVector(dir, d3) };
-    }
-    function applyCamera() {
-      camera.position.copy(cam.pos).add(camOffset);
-      camera.lookAt(cam.target);
-    }
+    const cameraTarget = new Vector3(0, 0.125, 0.035);
+    const cameraDirection = new Vector3(0.42, 0.45, 1).normalize();
+    let width = 0, height = 0;
     function resize() {
-      const w3 = container.clientWidth || 1, h3 = container.clientHeight || 1;
-      renderer.setSize(w3, h3, false);
-      camera.aspect = w3 / h3;
+      const w3 = container.clientWidth, h3 = container.clientHeight;
+      if (!w3 || !h3 || w3 === width && h3 === height) return;
+      width = w3;
+      height = h3;
+      renderer.setSize(width, height, false);
+      camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      if (!tweens.size) {
-        const p3 = viewPose(view);
-        cam.pos.copy(p3.pos);
-        cam.target.copy(p3.target);
-      }
+      const halfFrustum = Math.tan(MathUtils.degToRad(camera.fov / 2));
+      const distance = Math.max(0.465, 0.46 / camera.aspect) / (2 * halfFrustum);
+      camera.position.copy(cameraTarget).addScaledVector(cameraDirection, distance);
+      camera.lookAt(cameraTarget);
       invalidate();
     }
     const ro = new ResizeObserver(resize);
     ro.observe(container);
     resize();
-    let disc = null;
     const discUnderTex = canvasTex(512, 512, drawDiscUnderside);
-    discUnderTex.userData = { shared: true };
-    function makeDisc(game) {
-      const tex = canvasTex(1024, 1024, (g5, s3) => drawDiscLabel(g5, s3, game));
-      textures.splice(textures.indexOf(tex), 1);
+    function makeDisc(game, coverArt) {
+      const tex = drawTexture(1024, 1024, (g5, s3) => drawDiscLabel(g5, s3, game, coverArt));
       const g4 = new Group();
+      g4.name = "game-disc";
       const ring = new RingGeometry(DISC_HOLE, DISC_R, 96, 1);
-      const topMesh = new Mesh(ring, new MeshPhysicalMaterial({
+      const topMesh = new Mesh(ring, new MeshStandardMaterial({
         map: tex,
-        roughness: 0.45,
-        clearcoat: 0.3,
-        clearcoatRoughness: 0.3,
-        transparent: true
+        roughness: 0.75,
+        envMapIntensity: 0.25,
+        emissiveMap: tex,
+        emissive: "#ffffff",
+        emissiveIntensity: 0.36
       }));
+      topMesh.name = "disc-print";
       topMesh.rotation.x = -Math.PI / 2;
       topMesh.position.y = DISC_T / 2;
       const bottomMesh = new Mesh(ring, new MeshPhysicalMaterial({
@@ -33606,96 +33934,119 @@ void main() {
         metalness: 1,
         iridescence: 0.8,
         iridescenceIOR: 1.5,
-        iridescenceThicknessRange: [250, 650],
-        transparent: true
+        iridescenceThicknessRange: [250, 650]
       }));
       bottomMesh.rotation.x = Math.PI / 2;
       bottomMesh.position.y = -DISC_T / 2;
       const edgeMesh = new Mesh(
         new CylinderGeometry(DISC_R, DISC_R, DISC_T, 96, 1, true),
-        new MeshStandardMaterial({ color: "#9aa0ad", roughness: 0.3, metalness: 0.6, transparent: true })
+        new MeshStandardMaterial({ color: "#9aa0ad", roughness: 0.3, metalness: 0.6 })
       );
       g4.add(topMesh, bottomMesh, edgeMesh);
       g4.traverse((o3) => {
         if (o3.isMesh) o3.castShadow = true;
       });
-      g4.userData.setOpacity = (a3) => g4.traverse((o3) => {
-        if (o3.isMesh && o3.material) o3.material.opacity = a3;
-      });
       return g4;
     }
-    const CASE_W = 0.134;
-    const CASE_H = 0.19;
-    const CASE_D = 0.013;
-    function make3DCase(game) {
+    const caseRest = new Vector3(0, 0.214, -0.034);
+    caseRest.x = cameraTarget.x + (caseRest.z - cameraTarget.z) * cameraDirection.x / cameraDirection.z;
+    const caseTilt = new Euler(-0.1, 0.28, 0);
+    const caseRight = new Vector3(1, 0, 0).applyEuler(caseTilt);
+    function mountDisc(disc, seat) {
+      seat.add(disc);
+      disc.position.set(0, 0, 0);
+      disc.quaternion.identity();
+    }
+    function make3DCase(game, coverArt) {
       const group = new Group();
-      const backGeom = new RoundedBoxGeometry(CASE_W, CASE_H, CASE_D * 0.45, 1, 3e-3);
-      const bodyMat = new MeshPhysicalMaterial({
-        color: "#13161c",
-        roughness: 0.28,
-        metalness: 0.1,
-        clearcoat: 0.5,
-        clearcoatRoughness: 0.2,
-        transparent: true,
-        opacity: 0.96
-      });
-      const backMesh = new Mesh(backGeom, bodyMat);
-      backMesh.position.set(0, 0, -CASE_D * 0.22);
-      backMesh.castShadow = true;
-      group.add(backMesh);
-      const hubGeom = new CylinderGeometry(0.012, 0.014, 5e-3, 32);
-      const hubMat = new MeshStandardMaterial({
-        color: "#1a1f29",
-        roughness: 0.4,
-        metalness: 0.2,
-        transparent: true
-      });
-      const hubMesh = new Mesh(hubGeom, hubMat);
-      hubMesh.rotation.x = Math.PI / 2;
-      hubMesh.position.set(0, 0, 1e-3);
-      group.add(hubMesh);
-      const toothGeom = new CylinderGeometry(7e-3, 7e-3, 8e-3, 16);
-      const toothMat = new MeshStandardMaterial({ color: "#2b313e", roughness: 0.5, transparent: true });
-      const toothMesh = new Mesh(toothGeom, toothMat);
-      toothMesh.rotation.x = Math.PI / 2;
-      toothMesh.position.set(0, 0, 3e-3);
-      group.add(toothMesh);
+      group.name = "game-case";
+      group.rotation.copy(caseTilt);
+      group.position.copy(caseRest);
+      const w3 = CASE_W / (2 * MM), h3 = CASE_H / (2 * MM);
+      const plastic = new MeshPhysicalMaterial({ color: "#202634", roughness: 0.48, clearcoat: 0.24 });
+      const liner = new MeshStandardMaterial({ color: "#121720", roughness: 0.62 });
+      const hub = new MeshStandardMaterial({ color: "#505b6b", roughness: 0.42 });
+      addMesh(box(-w3, w3, -h3, h3, -6.5, -2, 1.7), plastic, group);
+      const edges = [
+        box(-w3, -w3 + 2.4, -h3, h3, -3, 4.7, 1),
+        box(w3 - 2.4, w3, -h3, h3, -3, 4.7, 1),
+        box(-w3 + 2, w3 - 2, h3 - 2.4, h3, -3, 4.7, 1),
+        box(-w3 + 2, w3 - 2, -h3, -h3 + 2.4, -3, 4.7, 1)
+      ];
+      addMesh(mergeGeometries(edges), plastic, group);
+      edges.forEach((geometry) => geometry.dispose());
+      const cylinder = (radius, depth, z3, material) => {
+        const mesh = addMesh(new CylinderGeometry(radius, radius, depth, 64), material, group);
+        mesh.rotation.x = Math.PI / 2;
+        mesh.position.z = z3;
+      };
+      cylinder(DISC_R + 3e-3, 2e-3, -11e-4, liner);
+      const ridge = addMesh(new RingGeometry(DISC_R + 8e-4, DISC_R + 24e-4, 64), plastic, group, false);
+      ridge.position.z = 1e-4;
+      cylinder(0.01, 44e-4, 2e-4, plastic);
+      cylinder(DISC_HOLE - 6e-4, 37e-4, 29e-4, hub);
+      const seat = new Object3D();
+      seat.name = "case-disc-seat";
+      seat.position.z = 3e-3;
+      seat.rotation.x = Math.PI / 2;
+      group.add(seat);
+      const disc = makeDisc(game, coverArt);
+      mountDisc(disc, seat);
       const coverPivot = new Group();
-      coverPivot.position.set(-CASE_W / 2, 0, CASE_D * 0.22);
+      coverPivot.name = "case-hinge";
+      coverPivot.position.set(-CASE_W / 2, 0, 6e-3);
       group.add(coverPivot);
-      const coverTex = canvasTex(768, 1024, (g4, w3, h3) => drawCaseCover(g4, 768, 1024, game));
-      textures.splice(textures.indexOf(coverTex), 1);
-      const frontGeom = new RoundedBoxGeometry(CASE_W, CASE_H, 2e-3, 1, 2e-3);
-      const frontMat = new MeshPhysicalMaterial({
-        map: coverTex,
-        roughness: 0.2,
-        clearcoat: 0.7,
-        clearcoatRoughness: 0.15,
-        transparent: true,
-        opacity: 0.98
-      });
-      const frontMesh = new Mesh(frontGeom, frontMat);
-      frontMesh.position.set(CASE_W / 2, 0, 0);
-      frontMesh.castShadow = true;
-      coverPivot.add(frontMesh);
-      const setOpacity = (alpha) => {
-        group.traverse((o3) => {
-          if (o3.isMesh && o3.material) {
-            o3.material.transparent = true;
-            o3.material.opacity = alpha;
-          }
-        });
-      };
-      const getSpindleWorld = () => {
-        const v3 = new Vector3(0, 0, 4e-3);
-        group.localToWorld(v3);
-        return v3;
-      };
-      return {
-        group,
-        coverPivot,
-        setOpacity,
-        getSpindleWorld
+      addMesh(box(0, 2 * w3, -h3, h3, -1.3, 1.3, 1), plastic, coverPivot);
+      for (const y3 of [-h3 + 27, h3 - 27]) {
+        addMesh(box(w3 + 42, w3 + 58, y3 - 3, y3 + 3, -3.2, -1, 0.8), liner, coverPivot);
+      }
+      if (coverArt) {
+        const map = colorTexture(new Texture(coverArt));
+        map.needsUpdate = true;
+        const print = addMesh(
+          new PlaneGeometry(CASE_W - 4e-3, CASE_H - 4e-3),
+          new MeshBasicMaterial({ map, toneMapped: false }),
+          coverPivot,
+          false
+        );
+        print.position.set(CASE_W / 2, 0, 135e-5);
+      }
+      return { id: game.id, group, coverPivot, seat, disc };
+    }
+    function poseCase(pack, open) {
+      const angle = -Math.PI * 0.84 * open;
+      pack.coverPivot.rotation.y = angle;
+      pack.group.position.copy(caseRest).addScaledVector(caseRight, CASE_W * (1 - Math.cos(angle)) / 4);
+    }
+    function makeDiscTransfer(caseSeat, traySeat2) {
+      const start = caseSeat.getWorldPosition(new Vector3());
+      const end = traySeat2.getWorldPosition(new Vector3());
+      const from = caseSeat.getWorldQuaternion(new Quaternion());
+      const to = traySeat2.getWorldQuaternion(new Quaternion());
+      const caseNormal = DISC_NORMAL.clone().applyQuaternion(from);
+      const trayNormal = DISC_NORMAL.clone().applyQuaternion(to);
+      const clearCase = start.clone().addScaledVector(caseNormal, 0.047);
+      const aboveTray = end.clone().addScaledVector(trayNormal, 0.039);
+      const arc = new CubicBezierCurve3(
+        clearCase,
+        clearCase.clone().addScaledVector(caseNormal, 0.08).add(new Vector3(0.068, 0.05, 0)),
+        aboveTray.clone().addScaledVector(trayNormal, 0.12),
+        aboveTray
+      );
+      const spin = new Quaternion();
+      return (disc, t3) => {
+        if (t3 <= 0.22) {
+          disc.position.lerpVectors(start, clearCase, ease.smooth(t3 / 0.22));
+          disc.quaternion.copy(from);
+        } else if (t3 < 0.81) {
+          const p3 = ease.smooth((t3 - 0.22) / 0.59);
+          arc.getPoint(p3, disc.position);
+          disc.quaternion.slerpQuaternions(from, to, p3);
+          disc.quaternion.multiply(spin.setFromAxisAngle(DISC_NORMAL, 2 * Math.PI * p3));
+        } else {
+          disc.position.lerpVectors(aboveTray, end, ease.smooth((t3 - 0.81) / 0.19));
+          disc.quaternion.copy(to);
+        }
       };
     }
     const trayOpenPos = () => trayClosedZ + TRAY_TRAVEL;
@@ -33725,158 +34076,98 @@ void main() {
         ejectGlow.material.opacity = on2 ? 0.8 : 0;
       }, (t3) => t3);
     }
-    function nudgeCamera(ms, amount) {
-      const dir = new Vector3().subVectors(cam.target, cam.pos).normalize();
-      return tween(ms, (t3) => {
-        camOffset.copy(dir).multiplyScalar(Math.sin(Math.PI * t3) * amount);
-      }, (t3) => t3);
-    }
     let queue = Promise.resolve();
-    const serial = (fn2) => (...args) => queue = queue.then(() => fn2(...args), () => fn2(...args));
+    const serial = (fn2) => (...args) => {
+      const run = () => disposed ? void 0 : fn2(...args);
+      return queue = queue.then(run, run);
+    };
     let activeCase = null;
-    async function doEject() {
-      if (!disc) return;
-      const d3 = disc;
-      const game = d3.userData.game;
-      blinkEject(1700);
-      setLed(LED_OFF, 600);
-      await moveTray(true, 850);
-      const caseObj = make3DCase(game || {});
-      activeCase = caseObj;
-      scene.add(caseObj.group);
-      const caseTargetPos = new Vector3(-0.11, 0.15, 0.04);
-      const caseTargetRot = new Euler(0.22, 0.38, -0.06);
-      caseObj.group.position.copy(caseTargetPos);
-      caseObj.group.rotation.copy(caseTargetRot);
-      caseObj.setOpacity(0);
-      caseObj.coverPivot.rotation.y = 0;
-      await tween(500, (t3) => {
-        const p3 = ease.out(t3);
-        caseObj.setOpacity(p3);
-        caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * p3;
-      });
-      scene.attach(d3);
-      d3.traverse((o3) => {
-        if (o3.isMesh) o3.castShadow = false;
-      });
-      const arcStart = d3.position.clone();
-      const spindleWorld = caseObj.getSpindleWorld();
-      const arcMid = new Vector3(
-        (arcStart.x + spindleWorld.x) * 0.5,
-        Math.max(arcStart.y, spindleWorld.y) + 0.07,
-        (arcStart.z + spindleWorld.z) * 0.5
-      );
-      const startRot = d3.rotation.clone();
-      const endRot = caseTargetRot.clone();
-      await tween(1e3, (t3) => {
-        const p3 = ease.inOut(t3);
-        const u4 = 1 - p3;
-        d3.position.x = u4 * u4 * arcStart.x + 2 * u4 * p3 * arcMid.x + p3 * p3 * spindleWorld.x;
-        d3.position.y = u4 * u4 * arcStart.y + 2 * u4 * p3 * arcMid.y + p3 * p3 * spindleWorld.y;
-        d3.position.z = u4 * u4 * arcStart.z + 2 * u4 * p3 * arcMid.z + p3 * p3 * spindleWorld.z;
-        d3.rotation.x = MathUtils.lerp(startRot.x, endRot.x, p3);
-        d3.rotation.y = MathUtils.lerp(startRot.y, endRot.y - Math.PI * 4, p3);
-        d3.rotation.z = MathUtils.lerp(startRot.z, endRot.z, p3);
-      });
-      d3.position.copy(spindleWorld);
-      d3.rotation.copy(endRot);
-      const closeCasePromise = tween(500, (t3) => {
-        const p3 = ease.inOut(t3);
-        caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * (1 - p3);
-        caseObj.setOpacity(1 - p3);
-        d3.userData.setOpacity(1 - p3);
-      }).then(() => {
-        disposeObject(caseObj.group);
-        scene.remove(caseObj.group);
-        if (activeCase === caseObj) activeCase = null;
-        disposeObject(d3);
-        scene.remove(d3);
-        disc = null;
-      });
-      const trayClosePromise = moveTray(false, 850);
-      await Promise.all([closeCasePromise, trayClosePromise]);
+    let pendingCase = null;
+    function selectCase(game) {
+      if (!game || disposed) return Promise.resolve(null);
+      if (pendingCase?.id === game.id) return pendingCase.ready;
+      if (activeCase?.id === game.id) {
+        pendingCase = null;
+        return Promise.resolve(activeCase);
+      }
+      const request = { id: game.id };
+      pendingCase = request;
+      request.ready = (async () => {
+        const src = getGameCaseCoverSrc(game);
+        let artwork = await loadCoverImage(src);
+        if (!artwork && game.coverUrl && src === game.coverUrl) {
+          artwork = await loadCoverImage(generateArcadeCoverSvg(game));
+        }
+        if (disposed || pendingCase !== request) return null;
+        pendingCase = null;
+        const pack = make3DCase(game, artwork);
+        if (activeCase) {
+          activeCase.disc.removeFromParent();
+          disposeObject(activeCase.disc);
+          activeCase.group.removeFromParent();
+          disposeObject(activeCase.group);
+        }
+        activeCase = pack;
+        scene.add(pack.group);
+        invalidate();
+        return pack;
+      })();
+      return request.ready;
     }
-    async function doInsert(game) {
-      if (disc) await doEject();
-      const caseObj = make3DCase(game);
-      activeCase = caseObj;
-      scene.add(caseObj.group);
-      const d3 = makeDisc(game);
-      disc = d3;
-      d3.userData.game = game;
-      scene.add(d3);
-      const caseStartPos = new Vector3(-0.11, 0.15, 0.04);
-      const caseStartRot = new Euler(0.22, 0.38, -0.06);
-      caseObj.group.position.copy(caseStartPos);
-      caseObj.group.rotation.copy(caseStartRot);
-      caseObj.setOpacity(0);
-      const spindleWorld = caseObj.getSpindleWorld();
-      d3.position.copy(spindleWorld);
-      d3.rotation.copy(caseStartRot);
-      d3.userData.setOpacity(0);
-      await tween(450, (t3) => {
-        const p3 = ease.out(t3);
-        caseObj.setOpacity(p3);
-        d3.userData.setOpacity(p3);
-        caseObj.group.position.y = caseStartPos.y + Math.sin(Math.PI * p3) * 0.01;
-      });
-      blinkEject(1600);
-      const trayOpenPromise = moveTray(true, 850);
-      await tween(650, (t3) => {
-        const p3 = ease.inOut(t3);
-        caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * p3;
-      });
-      const spindleNow = caseObj.getSpindleWorld();
-      const liftPos = spindleNow.clone().add(new Vector3(0.01, 0.05, 0.035));
-      await tween(400, (t3) => {
-        const p3 = ease.out(t3);
-        d3.position.lerpVectors(spindleNow, liftPos, p3);
-        d3.rotation.z = caseStartRot.z + 0.06 * Math.sin(Math.PI * p3);
-      });
-      await trayOpenPromise;
-      const seatWorld = seatLocal.clone();
-      seatWorld.z += trayOpenPos();
-      seatWorld.x += TRAY_X;
-      consoleGroup.localToWorld(seatWorld);
-      const arcStart = d3.position.clone();
-      const arcMid = new Vector3(
-        (arcStart.x + seatWorld.x) * 0.5,
-        Math.max(arcStart.y, seatWorld.y) + 0.065,
-        (arcStart.z + seatWorld.z) * 0.5
-      );
-      const startRot = d3.rotation.clone();
-      const endRot = new Euler(0, 0, 0);
-      await tween(1100, (t3) => {
-        const p3 = ease.inOut(t3);
-        const u4 = 1 - p3;
-        d3.position.x = u4 * u4 * arcStart.x + 2 * u4 * p3 * arcMid.x + p3 * p3 * seatWorld.x;
-        d3.position.y = u4 * u4 * arcStart.y + 2 * u4 * p3 * arcMid.y + p3 * p3 * seatWorld.y;
-        d3.position.z = u4 * u4 * arcStart.z + 2 * u4 * p3 * arcMid.z + p3 * p3 * seatWorld.z;
-        d3.rotation.x = MathUtils.lerp(startRot.x, endRot.x, p3);
-        d3.rotation.y = MathUtils.lerp(startRot.y, endRot.y + Math.PI * 4, p3);
-        d3.rotation.z = MathUtils.lerp(startRot.z, endRot.z, p3);
-      });
-      d3.position.copy(seatWorld);
-      d3.rotation.set(0, 0, 0);
-      d3.userData.setOpacity(1);
-      tray.attach(d3);
-      const closeCasePromise = tween(500, (t3) => {
-        const p3 = ease.inOut(t3);
-        caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * (1 - p3);
-        caseObj.setOpacity(1 - p3);
-      }).then(() => {
-        disposeObject(caseObj.group);
-        scene.remove(caseObj.group);
-        if (activeCase === caseObj) activeCase = null;
-      });
-      const trayClosePromise = moveTray(false, 850);
-      await Promise.all([closeCasePromise, trayClosePromise]);
-      await setLed(LED_ON, 600);
+    const trayDuration = 780;
+    const flightDuration = 1420;
+    const swingCase = (pack, open) => tween(595, (p3) => poseCase(pack, open ? p3 : 1 - p3), ease.smooth);
+    async function transferDisc(pack, inserting) {
+      const { disc, seat } = pack;
+      const sample = makeDiscTransfer(seat, traySeat);
+      scene.attach(disc);
+      await tween(flightDuration, (t3) => sample(disc, inserting ? t3 : 1 - t3), ease.linear);
+      if (!disposed) mountDisc(disc, inserting ? traySeat : seat);
+    }
+    function setDiscAtRest(pack, inserted) {
+      mountDisc(pack.disc, inserted ? traySeat : pack.seat);
+      poseCase(pack, 0);
+      tray.position.z = trayClosedZ;
+      ledMat.color.copy(inserted ? LED_ON : LED_OFF);
+      ledGlow.material.color.copy(ledMat.color);
+      invalidate();
+    }
+    async function doEject({ animate = true } = {}) {
+      const pack = activeCase;
+      if (pack?.disc.parent !== traySeat) return;
+      if (!animate) {
+        setDiscAtRest(pack, false);
+        return;
+      }
+      blinkEject(trayDuration * 2 + flightDuration);
+      setLed(LED_OFF, 450);
+      await Promise.all([moveTray(true, trayDuration), swingCase(pack, true)]);
+      if (disposed) return;
+      await transferDisc(pack, false);
+      if (disposed) return;
+      await Promise.all([moveTray(false, trayDuration), swingCase(pack, false)]);
+    }
+    async function doInsert(game, { animate = true } = {}) {
+      if (activeCase?.disc.parent === traySeat) await doEject({ animate });
+      const pack = await selectCase(game);
+      if (disposed || !pack) return;
+      if (!animate) {
+        setDiscAtRest(pack, true);
+        return;
+      }
+      blinkEject(trayDuration * 2 + flightDuration);
+      await Promise.all([moveTray(true, trayDuration), swingCase(pack, true)]);
+      if (disposed) return;
+      await transferDisc(pack, true);
+      if (disposed) return;
+      await Promise.all([moveTray(false, trayDuration), swingCase(pack, false)]);
+      await setLed(LED_ON, 300);
     }
     const api = {
       scene,
       camera,
       renderer,
+      selectCase,
       insertDisc: serial(doInsert),
       ejectDisc: serial(doEject),
       openTray: () => moveTray(true),
@@ -33884,16 +34175,17 @@ void main() {
       setPower: (on2) => setLed(on2 ? LED_ON : LED_OFF),
       invalidate,
       resize,
-      hasDisc: () => !!disc,
+      hasDisc: () => activeCase?.disc.parent === traySeat,
       dispose() {
         disposed = true;
         cancelAnimationFrame(raf);
         ro.disconnect();
+        for (const tw of tweens) tw.done();
         tweens.clear();
-        frameCbs.clear();
+        pendingCase = null;
         disposeObject(scene);
         for (const t3 of textures) t3.dispose();
-        envTex.dispose();
+        environment.dispose();
         renderer.dispose();
         renderer.domElement.remove();
       }
@@ -33904,6 +34196,7 @@ void main() {
 
   // tool-box/src/features/game-box/deck/console/ConsoleView3D.jsx
   var ConsoleView3D = D3(function ConsoleView3D2({
+    game,
     onLoaded,
     className = "",
     style = {}
@@ -33927,17 +34220,12 @@ void main() {
         sceneApiRef.current = null;
       };
     }, []);
+    h2(() => {
+      if (game) sceneApiRef.current?.selectCase(game);
+    }, [game]);
     F2(ref, () => ({
-      insertDisc: async (game) => {
-        if (sceneApiRef.current) {
-          return sceneApiRef.current.insertDisc(game);
-        }
-      },
-      ejectDisc: async () => {
-        if (sceneApiRef.current) {
-          return sceneApiRef.current.ejectDisc();
-        }
-      },
+      insertDisc: (game2, options) => sceneApiRef.current?.insertDisc(game2, options),
+      ejectDisc: (options) => sceneApiRef.current?.ejectDisc(options),
       openTray: async () => {
         if (sceneApiRef.current) {
           return sceneApiRef.current.openTray();
@@ -34033,6 +34321,7 @@ void main() {
     } catch {
     }
   }
+  var shouldAnimateDisc = () => !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
   function GameDeck({ onNavigate }) {
     const [selectedCategory, setSelectedCategory] = d2("all");
     const [searchQuery, setSearchQuery] = d2("");
@@ -34042,7 +34331,8 @@ void main() {
     const [loadingRankings, setLoadingRankings] = d2(false);
     const [soundEnabled, setSoundEnabled] = d2(true);
     const consoleRef = A2(null);
-    const consoleContainerRef = A2(null);
+    const isPlaying = animState === "playing";
+    const isMovingDisc = animState === "inserting" || animState === "ejecting";
     const visibleGames = T2(
       () => filterDeckGames(selectedCategory, searchQuery),
       [selectedCategory, searchQuery]
@@ -34078,50 +34368,29 @@ void main() {
       };
     }, [selectedGame ? selectedGame.id : null]);
     const handleSelectCase = async (gameId) => {
-      if (["inserting", "ejecting", "booting"].includes(animState)) {
-        return;
-      }
-      if (gameId === selectedGameId) return;
-      if (animState === "playing") {
-        await handleEjectAndStop();
-      }
+      if (isMovingDisc || gameId === selectedGameId) return;
+      if (isPlaying) await handleEjectAndStop();
       setSelectedGameId(gameId);
       setAnimState("selected");
     };
     const handleInsertAndPlay = async () => {
-      if (!selectedGame) return;
-      if (["booting", "playing", "ejecting", "inserting"].includes(animState)) return;
+      if (!selectedGame || isPlaying || isMovingDisc) return;
       setAnimState("inserting");
       if (soundEnabled) {
         playCrtSound("power-on");
       }
-      const prefersReducedMotion = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (consoleRef.current) {
-        if (prefersReducedMotion) {
-          await consoleRef.current.setPower(true);
-        } else {
-          await consoleRef.current.insertDisc(selectedGame);
-        }
-      }
+      await consoleRef.current?.insertDisc(selectedGame, { animate: shouldAnimateDisc() });
       setAnimState("playing");
     };
     const handleEjectAndStop = async () => {
-      if (["booting", "ejecting", "inserting"].includes(animState)) return;
+      if (!isPlaying) return;
       setAnimState("ejecting");
       if (soundEnabled) {
         playCrtSound("power-off");
       }
-      const prefersReducedMotion = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (consoleRef.current) {
-        if (prefersReducedMotion) {
-          await consoleRef.current.setPower(false);
-        } else {
-          await consoleRef.current.ejectDisc();
-        }
-      }
+      await consoleRef.current?.ejectDisc({ animate: shouldAnimateDisc() });
       setAnimState("selected");
     };
-    const isPowerOn = animState === "playing" || animState === "booting";
     return /* @__PURE__ */ u3("div", { className: "gb-deck-shell", children: [
       /* @__PURE__ */ u3("div", { className: "gb-subbar gb-subbar-dark", children: [
         /* @__PURE__ */ u3("div", { className: "gb-subbar-left", children: [
@@ -34239,7 +34508,7 @@ void main() {
         /* @__PURE__ */ u3("section", { className: "gb-deck-console-zone", "data-testid": "deck-console-zone", children: /* @__PURE__ */ u3("div", { className: "gb-console-unit", children: [
           /* @__PURE__ */ u3("div", { className: "gb-console-hardware-bar", children: [
             /* @__PURE__ */ u3("div", { className: "gb-console-led-group", children: [
-              /* @__PURE__ */ u3("span", { className: `gb-console-led ${isPowerOn ? "on" : "standby"}` }),
+              /* @__PURE__ */ u3("span", { className: `gb-console-led ${isPlaying ? "on" : "standby"}` }),
               /* @__PURE__ */ u3("span", { className: "gb-console-model", children: [
                 "TOOL-BOX ARCADE DECK // ",
                 selectedGame ? selectedGame.discLabel : "PS2 SYSTEM STANDBY"
@@ -34251,65 +34520,48 @@ void main() {
             ] }),
             /* @__PURE__ */ u3("div", { className: "gb-console-slot-status", children: animState === "playing" ? "DISC INSERTED \xB7 RUNNING" : animState === "inserting" ? "3D CASE OPENING & INSERTING DISC..." : animState === "ejecting" ? "EJECTING DISC TO 3D CASE..." : !selectedGame ? "WAITING FOR GAME SELECTION" : "READY TO INSERT PACK" })
           ] }),
-          /* @__PURE__ */ u3("div", { className: "gb-console-screen", ref: consoleContainerRef, children: animState === "playing" && selectedGame ? /* @__PURE__ */ u3(
-            GameLauncher,
-            {
-              title: selectedGame.name,
-              src: selectedGame.launchUrl,
-              aspectRatio: selectedGame.aspectRatio,
-              game: selectedGame,
-              onClose: handleEjectAndStop
-            }
-          ) : /* @__PURE__ */ u3("div", { className: "gb-console-3d-stage-wrapper", children: [
-            /* @__PURE__ */ u3("div", { className: "gb-console-threejs-container", children: /* @__PURE__ */ u3(ConsoleView3D_default, { ref: consoleRef }) }),
-            /* @__PURE__ */ u3("div", { className: "gb-console-overlay-panel", children: /* @__PURE__ */ u3("div", { className: "gb-console-preview-card", children: selectedGame ? /* @__PURE__ */ u3(S, { children: [
-              /* @__PURE__ */ u3("span", { className: "gb-preview-kicker", children: [
-                selectedGame.genre,
-                " \xB7 ",
-                selectedGame.playersLabel,
-                " \xB7 ",
-                selectedGame.discLabel
-              ] }),
-              /* @__PURE__ */ u3("h3", { children: selectedGame.name }),
-              /* @__PURE__ */ u3("p", { children: selectedGame.description }),
-              /* @__PURE__ */ u3("div", { className: "gb-console-action-row", children: [
-                /* @__PURE__ */ u3(
-                  "button",
-                  {
-                    type: "button",
-                    className: "gb-btn-insert-play",
-                    onClick: handleInsertAndPlay,
-                    disabled: ["inserting", "ejecting", "booting"].includes(animState),
-                    children: "\u25B6 PLAY (3D \uCF00\uC774\uC2A4 \uAC1C\uBC29 \uBC0F PS2 \uB514\uC2A4\uD06C \uC0BD\uC785)"
-                  }
-                ),
-                /* @__PURE__ */ u3(
-                  "a",
-                  {
-                    href: selectedGame.multiplayerUrl || selectedGame.launchUrl,
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                    className: "gb-btn-standalone",
-                    children: "\u2197 \uB3C5\uB9BD \uCC3D\uC73C\uB85C \uC5F4\uAE30"
-                  }
-                )
-              ] })
-            ] }) : /* @__PURE__ */ u3(S, { children: [
-              /* @__PURE__ */ u3("span", { className: "gb-preview-kicker", children: "ARCADE 20 COLLECTION \xB7 SELECTION MODE" }),
-              /* @__PURE__ */ u3("h3", { children: "\uAC8C\uC784 CD \uCF00\uC774\uC2A4\uB97C \uC120\uD0DD\uD558\uC138\uC694" }),
-              /* @__PURE__ */ u3("p", { children: "\uC67C\uCABD \uC9C4\uC5F4\uB300\uC5D0\uC11C \uC6D0\uD558\uB294 \uAC8C\uC784 CD \uCF00\uC774\uC2A4\uB97C \uD074\uB9AD\uD558\uBA74 3D \uBB3C\uB9AC \uCF00\uC774\uC2A4\uAC00 \uB85C\uB529\uB418\uACE0 \uCF58\uC194 \uD2B8\uB808\uC774 \uC0BD\uC785 \uC900\uBE44\uAC00 \uC644\uB8CC\uB429\uB2C8\uB2E4." }),
-              /* @__PURE__ */ u3("div", { className: "gb-console-action-row", children: /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gb-btn-insert-play",
-                  disabled: true,
-                  style: { opacity: 0.6, cursor: "not-allowed" },
-                  children: "CD \uCF00\uC774\uC2A4\uB97C \uBA3C\uC800 \uC120\uD0DD\uD574\uC8FC\uC138\uC694"
-                }
-              ) })
-            ] }) }) })
-          ] }) })
+          /* @__PURE__ */ u3("div", { className: "gb-console-screen", children: [
+            isPlaying && selectedGame && /* @__PURE__ */ u3(
+              GameLauncher,
+              {
+                title: selectedGame.name,
+                src: selectedGame.launchUrl,
+                aspectRatio: selectedGame.aspectRatio,
+                game: selectedGame,
+                onClose: handleEjectAndStop
+              }
+            ),
+            /* @__PURE__ */ u3("div", { className: "gb-console-3d-stage-wrapper", hidden: isPlaying, children: [
+              /* @__PURE__ */ u3("div", { className: "gb-console-threejs-container", children: /* @__PURE__ */ u3(ConsoleView3D_default, { ref: consoleRef, game: selectedGame }) }),
+              /* @__PURE__ */ u3("div", { className: "gb-console-overlay-panel", children: /* @__PURE__ */ u3("div", { className: "gb-console-preview-card", children: [
+                /* @__PURE__ */ u3("span", { className: "gb-preview-kicker", children: selectedGame ? `${selectedGame.genre} \xB7 ${selectedGame.playersLabel} \xB7 ${selectedGame.discLabel}` : "ARCADE 20 COLLECTION \xB7 SELECTION MODE" }),
+                /* @__PURE__ */ u3("h3", { children: selectedGame?.name || "\uAC8C\uC784 CD \uCF00\uC774\uC2A4\uB97C \uC120\uD0DD\uD558\uC138\uC694" }),
+                /* @__PURE__ */ u3("p", { children: selectedGame?.description || "\uC9C4\uC5F4\uB300\uC5D0\uC11C \uAC8C\uC784\uC744 \uACE0\uB974\uACE0 PLAY\uB97C \uB204\uB974\uBA74 CD\uAC00 \uCF00\uC774\uC2A4\uC5D0\uC11C \uB098\uC640 \uCF58\uC194\uC5D0 \uB4E4\uC5B4\uAC11\uB2C8\uB2E4." }),
+                /* @__PURE__ */ u3("div", { className: "gb-console-action-row", children: [
+                  /* @__PURE__ */ u3(
+                    "button",
+                    {
+                      type: "button",
+                      className: "gb-btn-insert-play",
+                      onClick: handleInsertAndPlay,
+                      disabled: !selectedGame || isMovingDisc,
+                      children: selectedGame ? "\u25B6 PLAY" : "CD \uCF00\uC774\uC2A4\uB97C \uBA3C\uC800 \uC120\uD0DD\uD574\uC8FC\uC138\uC694"
+                    }
+                  ),
+                  selectedGame && /* @__PURE__ */ u3(
+                    "a",
+                    {
+                      href: selectedGame.multiplayerUrl || selectedGame.launchUrl,
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                      className: "gb-btn-standalone",
+                      children: "\u2197 \uB3C5\uB9BD \uCC3D\uC73C\uB85C \uC5F4\uAE30"
+                    }
+                  )
+                ] })
+              ] }) })
+            ] })
+          ] })
         ] }) }),
         /* @__PURE__ */ u3("aside", { className: "gb-deck-ranking-zone", children: [
           /* @__PURE__ */ u3("div", { className: "gb-deck-panel-header", children: [

@@ -5,14 +5,14 @@
  * Original Author: Brayan Spagnol
  * License: BSD-2-Clause
  *
- * Direct port of procedural 3D console model, disc tray, disc insert/eject animations,
- * LED states, and camera moves. Rebranded for GAME DECK (removing third-party trademarks).
+ * Port of the procedural PS2 console, tray and LEDs, with a shared Game Deck case stage.
  */
 
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import { generateArcadeCoverSvg, getGameCaseCoverSrc } from '../cases/gameCoverGenerator.js';
 
 export const LIVE_LAYER = 1;
 const MM = 0.001;
@@ -32,6 +32,8 @@ const TRAY_W = TRAY.x1 - TRAY.x0;
 const TRAY_LEN = 0.15, TRAY_TRAVEL = 0.142;
 const TRAY_Y = 0.0475;
 const DISC_R = 0.06, DISC_HOLE = 0.0075, DISC_T = 0.0012;
+const CASE_W = 0.134, CASE_H = 0.190;
+const DISC_NORMAL = new THREE.Vector3(0, 1, 0);
 
 const LED_OFF = new THREE.Color('#ff2a1a'); // standby
 const LED_ON = new THREE.Color('#2bff6a');  // disc loaded
@@ -40,8 +42,8 @@ const EJECT_DIM = new THREE.Color('#0c1a3a');
 
 const ease = {
   inOut: (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
-  out: (t) => 1 - Math.pow(1 - t, 3),
-  in: (t) => t * t * t,
+  smooth: (t) => t * t * (3 - 2 * t),
+  linear: (t) => t,
 };
 
 function box(x0, x1, y0, y1, z0, z1, r) {
@@ -309,7 +311,7 @@ function drawRecess(g, s) {
   g.fill();
 }
 
-function drawDiscLabel(g, S, game) {
+function drawDiscLabel(g, S, game, coverArt) {
   const c = S / 2, R = S / 2, mm = R / (DISC_R / MM);
   const ring = (r0, r1) => {
     g.beginPath();
@@ -318,17 +320,25 @@ function drawDiscLabel(g, S, game) {
   };
 
   g.fillStyle = '#c3c7cf';
-  ring(0, R);
-  g.fill();
+  g.fillRect(0, 0, S, S);
 
   const baseCol = game.caseColor || '#2563eb';
-  const grd = g.createRadialGradient(c * 0.7, c * 0.6, R * 0.1, c, c, R);
-  grd.addColorStop(0, '#ffffff');
-  grd.addColorStop(0.3, baseCol);
-  grd.addColorStop(1, '#090d16');
+  const grd = g.createLinearGradient(0, S, S, 0);
+  grd.addColorStop(0, '#08111d');
+  grd.addColorStop(0.44, baseCol);
+  grd.addColorStop(0.9, '#101929');
   g.fillStyle = grd;
-  ring(19 * mm, R * 0.995);
+  ring(19 * mm, R - 1.5 * mm);
   g.fill();
+
+  if (coverArt) {
+    g.save();
+    g.clip();
+    g.globalAlpha = 0.55;
+    const { naturalWidth: w, naturalHeight: h } = coverArt;
+    g.drawImage(coverArt, 0, h * 0.22, w, h * 0.43, 0, R * 0.30, S, R * 1.38);
+    g.restore();
+  }
 
   // Clear plastic hub
   const hub = g.createRadialGradient(c, c, 7 * mm, c, c, 19 * mm);
@@ -351,18 +361,18 @@ function drawDiscLabel(g, S, game) {
   g.arc(c, c, 19 * mm, 0, Math.PI * 2);
   g.stroke();
   g.beginPath();
-  g.arc(c, c, R - 0.4 * mm, 0, Math.PI * 2);
+  g.arc(c, c, R - 3.3 * mm, 0, Math.PI * 2);
   g.stroke();
 
   // Disc typography
-  const title = String(game.name || 'GAME-BOX').toUpperCase();
+  const title = (game.name || 'GAME-BOX').split(' (')[0].toUpperCase();
   g.fillStyle = '#ffffff';
   g.textAlign = 'center';
   g.textBaseline = 'middle';
   g.shadowColor = 'rgba(0,0,0,0.6)';
-  g.shadowBlur = 8;
-  g.font = `800 ${S * 0.08}px ${SANS}`;
-  g.fillText(title, c, c - R * 0.48);
+  g.shadowBlur = 12;
+  g.font = `900 ${S * 0.094}px ${SANS}`;
+  g.fillText(title, c, c - R * 0.56, R * 1.55);
 
   g.shadowBlur = 0;
   g.font = `700 ${S * 0.038}px monospace`;
@@ -395,83 +405,14 @@ function drawDiscUnderside(g, S) {
   g.fill();
 }
 
-function drawCaseCover(g, W, H, game) {
-  const baseCol = game.caseColor || '#2563eb';
-  // Outer background
-  g.fillStyle = '#0f131a';
-  g.fillRect(0, 0, W, H);
-
-  // Top header banner (DVD/PS2 style header)
-  g.fillStyle = '#000000';
-  g.fillRect(0, 0, W, H * 0.12);
-  g.fillStyle = '#ffffff';
-  g.font = `900 ${W * 0.055}px ${SANS}`;
-  g.textAlign = 'left';
-  g.textBaseline = 'middle';
-  g.fillText('GAME DECK', W * 0.08, H * 0.06);
-
-  // Format badge
-  g.fillStyle = '#38bdf8';
-  g.font = `700 ${W * 0.038}px monospace`;
-  g.textAlign = 'right';
-  g.fillText('PAL / NTSC', W * 0.92, H * 0.06);
-
-  // Cover main artwork panel
-  const artY = H * 0.12;
-  const artH = H * 0.72;
-  const artGrd = g.createLinearGradient(0, artY, W, artY + artH);
-  artGrd.addColorStop(0, '#ffffff');
-  artGrd.addColorStop(0.18, baseCol);
-  artGrd.addColorStop(1, '#090d16');
-  g.fillStyle = artGrd;
-  g.fillRect(0, artY, W, artH);
-
-  // Decorative circles in artwork
-  g.strokeStyle = 'rgba(255,255,255,0.12)';
-  g.lineWidth = 2;
-  for (let r = W * 0.2; r < W * 0.9; r += W * 0.18) {
-    g.beginPath();
-    g.arc(W / 2, artY + artH * 0.45, r, 0, Math.PI * 2);
-    g.stroke();
-  }
-
-  // Title
-  g.textAlign = 'center';
-  g.textBaseline = 'middle';
-  g.fillStyle = '#ffffff';
-  g.shadowColor = 'rgba(0,0,0,0.85)';
-  g.shadowBlur = 14;
-  g.font = `900 ${W * 0.085}px ${SANS}`;
-
-  const title = String(game.name || 'ARCADE GAME');
-  g.fillText(title, W / 2, artY + artH * 0.42);
-
-  // Subtitle / genre
-  g.shadowBlur = 4;
-  g.font = `700 ${W * 0.045}px ${SANS}`;
-  g.fillStyle = '#cbd5e1';
-  g.fillText(game.subtitle || game.genre || 'ARCADE CLASSIC', W / 2, artY + artH * 0.55);
-
-  // Disc Label badge
-  g.shadowBlur = 0;
-  g.fillStyle = 'rgba(0,0,0,0.6)';
-  const badgeW = W * 0.45, badgeH = H * 0.045;
-  g.fillRect((W - badgeW) / 2, artY + artH * 0.73, badgeW, badgeH);
-  g.strokeStyle = 'rgba(255,255,255,0.4)';
-  g.strokeRect((W - badgeW) / 2, artY + artH * 0.73, badgeW, badgeH);
-  g.font = `700 ${W * 0.038}px monospace`;
-  g.fillStyle = '#38bdf8';
-  g.fillText(game.discLabel || 'ARC-001', W / 2, artY + artH * 0.73 + badgeH / 2);
-
-  // Bottom bar
-  g.fillStyle = '#080a0f';
-  g.fillRect(0, H * 0.84, W, H * 0.16);
-  g.fillStyle = '#94a3b8';
-  g.font = `600 ${W * 0.034}px ${SANS}`;
-  g.textAlign = 'left';
-  g.fillText(game.playersLabel || '1~2 PLAYERS', W * 0.08, H * 0.92);
-  g.textAlign = 'right';
-  g.fillText('TOOL-BOX STUDIO', W * 0.92, H * 0.92);
+function loadCoverImage(src) {
+  return new Promise((resolve) => {
+    const image = new Image();
+    image.crossOrigin = 'anonymous';
+    image.onload = () => resolve(image);
+    image.onerror = () => resolve(null);
+    image.src = src;
+  });
 }
 
 function disposeObject(root) {
@@ -511,9 +452,11 @@ export function createGameDeckConsoleScene(container, opts = {}) {
   scene.fog = new THREE.Fog(bg, 1.6, 4.2);
 
   const pmrem = new THREE.PMREMGenerator(renderer);
-  const envTex = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  const room = new RoomEnvironment();
+  const environment = pmrem.fromScene(room, 0.04);
+  room.dispose();
   pmrem.dispose();
-  scene.environment = envTex;
+  scene.environment = environment.texture;
   scene.environmentIntensity = 0.35;
 
   const camera = new THREE.PerspectiveCamera(32, 1, 0.01, 20);
@@ -551,13 +494,20 @@ export function createGameDeckConsoleScene(container, opts = {}) {
 
   // Textures and Materials
   const textures = [];
-  const canvasTex = (w, h, draw) => {
+  const colorTexture = (t) => {
+    t.colorSpace = THREE.SRGBColorSpace;
+    t.anisotropy = aniso;
+    return t;
+  };
+  const drawTexture = (w, h, draw) => {
     const c = document.createElement('canvas');
     c.width = w; c.height = h;
     draw(c.getContext('2d'), w, h);
-    const t = new THREE.CanvasTexture(c);
-    t.colorSpace = THREE.SRGBColorSpace;
-    t.anisotropy = aniso;
+    return colorTexture(new THREE.CanvasTexture(c));
+  };
+  const canvasTex = (w, h, draw) => {
+    const t = drawTexture(w, h, draw);
+    t.userData.shared = true;
     textures.push(t);
     return t;
   };
@@ -674,6 +624,7 @@ export function createGameDeckConsoleScene(container, opts = {}) {
   btnPower.add(reset);
 
   const glowTex = radialTexture();
+  glowTex.userData.shared = true;
   textures.push(glowTex);
   const makeGlow = (color, size) => {
     const s = new THREE.Sprite(new THREE.SpriteMaterial({
@@ -717,14 +668,16 @@ export function createGameDeckConsoleScene(container, opts = {}) {
   const well = addMesh(new THREE.PlaneGeometry(TRAY_W * MM - 0.004, TRAY_W * MM - 0.004), new THREE.MeshStandardMaterial({ map: recessTex, roughness: 0.7, transparent: true }), tray, false);
   well.rotation.x = -Math.PI / 2;
   well.position.set(0, TRAY_Y + 0.0001, seatZ);
-  const seatLocal = new THREE.Vector3(0, TRAY_Y + DISC_T / 2 + 0.0003, seatZ);
+  const traySeat = new THREE.Object3D();
+  traySeat.name = 'tray-disc-seat';
+  traySeat.position.set(0, TRAY_Y + DISC_T / 2 + 0.0003, seatZ);
+  tray.add(traySeat);
 
   // Tweens and render loop
   const tweens = new Set();
-  const frameCbs = new Set();
-  let raf = 0, disposed = false, fullRender = true;
+  let raf = 0, disposed = false;
 
-  function schedule() {
+  function invalidate() {
     if (raf || disposed) return;
     raf = requestAnimationFrame(frame);
   }
@@ -732,11 +685,8 @@ export function createGameDeckConsoleScene(container, opts = {}) {
   function frame(now) {
     raf = 0;
     if (disposed) return;
-    const dt = 0.016;
-    fullRender = false;
-
     for (const tw of [...tweens]) {
-      const p = Math.min((now - tw.t0) / tw.ms, 1);
+      const p = THREE.MathUtils.clamp((now - tw.t0) / tw.ms, 0, 1);
       tw.fn(tw.ease(p));
       if (p >= 1) {
         tweens.delete(tw);
@@ -744,19 +694,13 @@ export function createGameDeckConsoleScene(container, opts = {}) {
       }
     }
 
-    for (const cb of frameCbs) cb(dt);
-    applyCamera();
     renderer.render(scene, camera);
 
-    if (tweens.size || frameCbs.size) schedule();
-  }
-
-  function invalidate() {
-    fullRender = true;
-    schedule();
+    if (tweens.size) invalidate();
   }
 
   function tween(ms, fn, easing = ease.inOut) {
+    if (disposed) return Promise.resolve();
     return new Promise((done) => {
       tweens.add({ t0: performance.now(), ms, fn, ease: easing, done });
       invalidate();
@@ -764,38 +708,24 @@ export function createGameDeckConsoleScene(container, opts = {}) {
   }
   const lerp = (a, b, t) => a + (b - a) * t;
 
-  // Camera
-  const cam = { pos: new THREE.Vector3(), target: new THREE.Vector3() };
-  const camOffset = new THREE.Vector3();
-  let view = 'console';
-
-  function fitDistance(w, h) {
-    const t = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
-    return Math.max(h / 2 / t, w / 2 / (t * camera.aspect));
-  }
-
-  function viewPose(name) {
-    const target = new THREE.Vector3(-0.005, 0.05, 0.0);
-    const dir = new THREE.Vector3(0.48, 0.42, 1).normalize();
-    const d = fitDistance(0.52, 0.4);
-    return { target, pos: target.clone().addScaledVector(dir, d) };
-  }
-
-  function applyCamera() {
-    camera.position.copy(cam.pos).add(camOffset);
-    camera.lookAt(cam.target);
-  }
+  // Frame the whole loading area once, including the case and the extended tray.
+  const cameraTarget = new THREE.Vector3(0, 0.125, 0.035);
+  const cameraDirection = new THREE.Vector3(0.42, 0.45, 1).normalize();
+  let width = 0, height = 0;
 
   function resize() {
-    const w = container.clientWidth || 1, h = container.clientHeight || 1;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
+    const w = container.clientWidth, h = container.clientHeight;
+    // The launcher temporarily hides this canvas; preserve its last frame and pose.
+    if (!w || !h || (w === width && h === height)) return;
+    width = w;
+    height = h;
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
-    if (!tweens.size) {
-      const p = viewPose(view);
-      cam.pos.copy(p.pos);
-      cam.target.copy(p.target);
-    }
+    const halfFrustum = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    const distance = Math.max(0.465, 0.46 / camera.aspect) / (2 * halfFrustum);
+    camera.position.copy(cameraTarget).addScaledVector(cameraDirection, distance);
+    camera.lookAt(cameraTarget);
     invalidate();
   }
 
@@ -804,127 +734,146 @@ export function createGameDeckConsoleScene(container, opts = {}) {
   resize();
 
   // Disc mesh
-  let disc = null;
   const discUnderTex = canvasTex(512, 512, drawDiscUnderside);
-  discUnderTex.userData = { shared: true };
 
-  function makeDisc(game) {
-    const tex = canvasTex(1024, 1024, (g, s) => drawDiscLabel(g, s, game));
-    textures.splice(textures.indexOf(tex), 1);
+  function makeDisc(game, coverArt) {
+    const tex = drawTexture(1024, 1024, (g, s) => drawDiscLabel(g, s, game, coverArt));
     const g = new THREE.Group();
+    g.name = 'game-disc';
     const ring = new THREE.RingGeometry(DISC_HOLE, DISC_R, 96, 1);
-    const topMesh = new THREE.Mesh(ring, new THREE.MeshPhysicalMaterial({
-      map: tex, roughness: 0.45, clearcoat: 0.3, clearcoatRoughness: 0.3, transparent: true,
+    const topMesh = new THREE.Mesh(ring, new THREE.MeshStandardMaterial({
+      map: tex, roughness: 0.75, envMapIntensity: 0.25,
+      emissiveMap: tex, emissive: '#ffffff', emissiveIntensity: 0.36,
     }));
+    topMesh.name = 'disc-print';
     topMesh.rotation.x = -Math.PI / 2;
     topMesh.position.y = DISC_T / 2;
 
     const bottomMesh = new THREE.Mesh(ring, new THREE.MeshPhysicalMaterial({
       map: discUnderTex, color: '#cfd6ff', roughness: 0.1, metalness: 1, iridescence: 0.8, iridescenceIOR: 1.5,
-      iridescenceThicknessRange: [250, 650], transparent: true,
+      iridescenceThicknessRange: [250, 650],
     }));
     bottomMesh.rotation.x = Math.PI / 2;
     bottomMesh.position.y = -DISC_T / 2;
 
     const edgeMesh = new THREE.Mesh(
       new THREE.CylinderGeometry(DISC_R, DISC_R, DISC_T, 96, 1, true),
-      new THREE.MeshStandardMaterial({ color: '#9aa0ad', roughness: 0.3, metalness: 0.6, transparent: true }),
+      new THREE.MeshStandardMaterial({ color: '#9aa0ad', roughness: 0.3, metalness: 0.6 }),
     );
 
     g.add(topMesh, bottomMesh, edgeMesh);
     g.traverse((o) => { if (o.isMesh) o.castShadow = true; });
-    g.userData.setOpacity = (a) => g.traverse((o) => { if (o.isMesh && o.material) o.material.opacity = a; });
     return g;
   }
 
-  // 3D CD Case Geometry & Construction
-  const CASE_W = 0.134; // 134 mm width
-  const CASE_H = 0.190; // 190 mm height
-  const CASE_D = 0.013; // 13 mm thickness
+  // The back shell and its CD share a local XY plane; the lid hinges on their left edge.
+  const caseRest = new THREE.Vector3(0, 0.214, -0.034);
+  caseRest.x = cameraTarget.x + (caseRest.z - cameraTarget.z) * cameraDirection.x / cameraDirection.z;
+  const caseTilt = new THREE.Euler(-0.10, 0.28, 0);
+  const caseRight = new THREE.Vector3(1, 0, 0).applyEuler(caseTilt);
 
-  function make3DCase(game) {
+  function mountDisc(disc, seat) {
+    seat.add(disc);
+    disc.position.set(0, 0, 0);
+    disc.quaternion.identity();
+  }
+
+  function make3DCase(game, coverArt) {
     const group = new THREE.Group();
+    group.name = 'game-case';
+    group.rotation.copy(caseTilt);
+    group.position.copy(caseRest);
 
-    // 1. Back Body / Tray Plastic Shell
-    const backGeom = new RoundedBoxGeometry(CASE_W, CASE_H, CASE_D * 0.45, 1, 0.003);
-    const bodyMat = new THREE.MeshPhysicalMaterial({
-      color: '#13161c',
-      roughness: 0.28,
-      metalness: 0.1,
-      clearcoat: 0.5,
-      clearcoatRoughness: 0.2,
-      transparent: true,
-      opacity: 0.96,
-    });
-    const backMesh = new THREE.Mesh(backGeom, bodyMat);
-    backMesh.position.set(0, 0, -CASE_D * 0.22);
-    backMesh.castShadow = true;
-    group.add(backMesh);
+    const w = CASE_W / (2 * MM), h = CASE_H / (2 * MM);
+    const plastic = new THREE.MeshPhysicalMaterial({ color: '#202634', roughness: 0.48, clearcoat: 0.24 });
+    const liner = new THREE.MeshStandardMaterial({ color: '#121720', roughness: 0.62 });
+    const hub = new THREE.MeshStandardMaterial({ color: '#505b6b', roughness: 0.42 });
+    addMesh(box(-w, w, -h, h, -6.5, -2, 1.7), plastic, group);
+    const edges = [
+      box(-w, -w + 2.4, -h, h, -3, 4.7, 1),
+      box(w - 2.4, w, -h, h, -3, 4.7, 1),
+      box(-w + 2, w - 2, h - 2.4, h, -3, 4.7, 1),
+      box(-w + 2, w - 2, -h, -h + 2.4, -3, 4.7, 1),
+    ];
+    addMesh(mergeGeometries(edges), plastic, group);
+    edges.forEach((geometry) => geometry.dispose());
 
-    // 2. Tray Hub / Spindle (inside the case where disc clicks in)
-    const hubGeom = new THREE.CylinderGeometry(0.012, 0.014, 0.005, 32);
-    const hubMat = new THREE.MeshStandardMaterial({
-      color: '#1a1f29',
-      roughness: 0.4,
-      metalness: 0.2,
-      transparent: true,
-    });
-    const hubMesh = new THREE.Mesh(hubGeom, hubMat);
-    hubMesh.rotation.x = Math.PI / 2;
-    hubMesh.position.set(0, 0, 0.001);
-    group.add(hubMesh);
+    const cylinder = (radius, depth, z, material) => {
+      const mesh = addMesh(new THREE.CylinderGeometry(radius, radius, depth, 64), material, group);
+      mesh.rotation.x = Math.PI / 2;
+      mesh.position.z = z;
+    };
+    cylinder(DISC_R + 0.003, 0.002, -0.0011, liner);
+    const ridge = addMesh(new THREE.RingGeometry(DISC_R + 0.0008, DISC_R + 0.0024, 64), plastic, group, false);
+    ridge.position.z = 0.0001;
+    cylinder(0.010, 0.0044, 0.0002, plastic);
+    cylinder(DISC_HOLE - 0.0006, 0.0037, 0.0029, hub);
 
-    const toothGeom = new THREE.CylinderGeometry(0.007, 0.007, 0.008, 16);
-    const toothMat = new THREE.MeshStandardMaterial({ color: '#2b313e', roughness: 0.5, transparent: true });
-    const toothMesh = new THREE.Mesh(toothGeom, toothMat);
-    toothMesh.rotation.x = Math.PI / 2;
-    toothMesh.position.set(0, 0, 0.003);
-    group.add(toothMesh);
+    const seat = new THREE.Object3D();
+    seat.name = 'case-disc-seat';
+    seat.position.z = 0.003;
+    seat.rotation.x = Math.PI / 2; // CD label normal (+Y) points through the lid (+Z).
+    group.add(seat);
+    const disc = makeDisc(game, coverArt);
+    mountDisc(disc, seat);
 
-    // 3. Front Cover Pivot & Hinged Front Cover
-    // The spine hinge is along the left edge: x = -CASE_W / 2
     const coverPivot = new THREE.Group();
-    coverPivot.position.set(-CASE_W / 2, 0, CASE_D * 0.22);
+    coverPivot.name = 'case-hinge';
+    coverPivot.position.set(-CASE_W / 2, 0, 0.006);
     group.add(coverPivot);
+    addMesh(box(0, 2 * w, -h, h, -1.3, 1.3, 1), plastic, coverPivot);
+    for (const y of [-h + 27, h - 27]) {
+      addMesh(box(w + 42, w + 58, y - 3, y + 3, -3.2, -1, 0.8), liner, coverPivot);
+    }
 
-    // Front Cover Texture
-    const coverTex = canvasTex(768, 1024, (g, w, h) => drawCaseCover(g, 768, 1024, game));
-    textures.splice(textures.indexOf(coverTex), 1);
+    if (coverArt) {
+      const map = colorTexture(new THREE.Texture(coverArt));
+      map.needsUpdate = true;
+      const print = addMesh(new THREE.PlaneGeometry(CASE_W - 0.004, CASE_H - 0.004),
+        new THREE.MeshBasicMaterial({ map, toneMapped: false }), coverPivot, false);
+      print.position.set(CASE_W / 2, 0, 0.00135);
+    }
+    return { id: game.id, group, coverPivot, seat, disc };
+  }
 
-    const frontGeom = new RoundedBoxGeometry(CASE_W, CASE_H, 0.002, 1, 0.002);
-    const frontMat = new THREE.MeshPhysicalMaterial({
-      map: coverTex,
-      roughness: 0.2,
-      clearcoat: 0.7,
-      clearcoatRoughness: 0.15,
-      transparent: true,
-      opacity: 0.98,
-    });
-    const frontMesh = new THREE.Mesh(frontGeom, frontMat);
-    frontMesh.position.set(CASE_W / 2, 0, 0);
-    frontMesh.castShadow = true;
-    coverPivot.add(frontMesh);
+  function poseCase(pack, open) {
+    const angle = -Math.PI * 0.84 * open;
+    pack.coverPivot.rotation.y = angle;
+    // Recenter the combined silhouette as the lid swings left.
+    pack.group.position.copy(caseRest).addScaledVector(caseRight, CASE_W * (1 - Math.cos(angle)) / 4);
+  }
 
-    const setOpacity = (alpha) => {
-      group.traverse((o) => {
-        if (o.isMesh && o.material) {
-          o.material.transparent = true;
-          o.material.opacity = alpha;
-        }
-      });
-    };
+  function makeDiscTransfer(caseSeat, traySeat) {
+    const start = caseSeat.getWorldPosition(new THREE.Vector3());
+    const end = traySeat.getWorldPosition(new THREE.Vector3());
+    const from = caseSeat.getWorldQuaternion(new THREE.Quaternion());
+    const to = traySeat.getWorldQuaternion(new THREE.Quaternion());
+    const caseNormal = DISC_NORMAL.clone().applyQuaternion(from);
+    const trayNormal = DISC_NORMAL.clone().applyQuaternion(to);
+    const clearCase = start.clone().addScaledVector(caseNormal, 0.047);
+    const aboveTray = end.clone().addScaledVector(trayNormal, 0.039);
+    const arc = new THREE.CubicBezierCurve3(
+      clearCase,
+      clearCase.clone().addScaledVector(caseNormal, 0.08).add(new THREE.Vector3(0.068, 0.05, 0)),
+      aboveTray.clone().addScaledVector(trayNormal, 0.12),
+      aboveTray,
+    );
+    const spin = new THREE.Quaternion();
 
-    const getSpindleWorld = () => {
-      const v = new THREE.Vector3(0, 0, 0.004);
-      group.localToWorld(v);
-      return v;
-    };
-
-    return {
-      group,
-      coverPivot,
-      setOpacity,
-      getSpindleWorld,
+    return (disc, t) => {
+      if (t <= 0.22) {
+        disc.position.lerpVectors(start, clearCase, ease.smooth(t / 0.22));
+        disc.quaternion.copy(from);
+      } else if (t < 0.81) {
+        const p = ease.smooth((t - 0.22) / 0.59);
+        arc.getPoint(p, disc.position);
+        disc.quaternion.slerpQuaternions(from, to, p);
+        // Spin around the printed face's own normal so the label never flips over.
+        disc.quaternion.multiply(spin.setFromAxisAngle(DISC_NORMAL, 2 * Math.PI * p));
+      } else {
+        disc.position.lerpVectors(aboveTray, end, ease.smooth((t - 0.81) / 0.19));
+        disc.quaternion.copy(to);
+      }
     };
   }
 
@@ -956,211 +905,108 @@ export function createGameDeckConsoleScene(container, opts = {}) {
     }, (t) => t);
   }
 
-  function nudgeCamera(ms, amount) {
-    const dir = new THREE.Vector3().subVectors(cam.target, cam.pos).normalize();
-    return tween(ms, (t) => { camOffset.copy(dir).multiplyScalar(Math.sin(Math.PI * t) * amount); }, (t) => t);
-  }
-
   let queue = Promise.resolve();
-  const serial = (fn) => (...args) => (queue = queue.then(() => fn(...args), () => fn(...args)));
-
+  const serial = (fn) => (...args) => {
+    const run = () => disposed ? undefined : fn(...args);
+    return queue = queue.then(run, run);
+  };
   let activeCase = null;
+  let pendingCase = null;
 
-  async function doEject() {
-    if (!disc) return;
-    const d = disc;
-    const game = d.userData.game;
+  function selectCase(game) {
+    if (!game || disposed) return Promise.resolve(null);
+    if (pendingCase?.id === game.id) return pendingCase.ready;
+    if (activeCase?.id === game.id) {
+      pendingCase = null;
+      return Promise.resolve(activeCase);
+    }
 
-    blinkEject(1700);
-    setLed(LED_OFF, 600);
-
-    // 1. PS2 tray opens
-    await moveTray(true, 850);
-
-    // 2. Re-create 3D case and open it
-    const caseObj = make3DCase(game || {});
-    activeCase = caseObj;
-    scene.add(caseObj.group);
-
-    const caseTargetPos = new THREE.Vector3(-0.11, 0.15, 0.04);
-    const caseTargetRot = new THREE.Euler(0.22, 0.38, -0.06);
-    caseObj.group.position.copy(caseTargetPos);
-    caseObj.group.rotation.copy(caseTargetRot);
-    caseObj.setOpacity(0);
-    caseObj.coverPivot.rotation.y = 0;
-
-    // Fade in case and open cover
-    await tween(500, (t) => {
-      const p = ease.out(t);
-      caseObj.setOpacity(p);
-      caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * p;
-    });
-
-    scene.attach(d);
-    d.traverse((o) => { if (o.isMesh) o.castShadow = false; });
-
-    const arcStart = d.position.clone();
-    const spindleWorld = caseObj.getSpindleWorld();
-    const arcMid = new THREE.Vector3(
-      (arcStart.x + spindleWorld.x) * 0.5,
-      Math.max(arcStart.y, spindleWorld.y) + 0.07,
-      (arcStart.z + spindleWorld.z) * 0.5
-    );
-    const startRot = d.rotation.clone();
-    const endRot = caseTargetRot.clone();
-
-    // 3. Reverse flight arc from tray back into 3D case!
-    await tween(1000, (t) => {
-      const p = ease.inOut(t);
-      const u = 1 - p;
-      d.position.x = u * u * arcStart.x + 2 * u * p * arcMid.x + p * p * spindleWorld.x;
-      d.position.y = u * u * arcStart.y + 2 * u * p * arcMid.y + p * p * spindleWorld.y;
-      d.position.z = u * u * arcStart.z + 2 * u * p * arcMid.z + p * p * spindleWorld.z;
-
-      d.rotation.x = THREE.MathUtils.lerp(startRot.x, endRot.x, p);
-      d.rotation.y = THREE.MathUtils.lerp(startRot.y, endRot.y - Math.PI * 4, p);
-      d.rotation.z = THREE.MathUtils.lerp(startRot.z, endRot.z, p);
-    });
-
-    d.position.copy(spindleWorld);
-    d.rotation.copy(endRot);
-
-    // 4. Snap case shut & fade out
-    const closeCasePromise = tween(500, (t) => {
-      const p = ease.inOut(t);
-      caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * (1 - p);
-      caseObj.setOpacity(1 - p);
-      d.userData.setOpacity(1 - p);
-    }).then(() => {
-      disposeObject(caseObj.group);
-      scene.remove(caseObj.group);
-      if (activeCase === caseObj) activeCase = null;
-      disposeObject(d);
-      scene.remove(d);
-      disc = null;
-    });
-
-    // PS2 tray closes empty
-    const trayClosePromise = moveTray(false, 850);
-
-    await Promise.all([closeCasePromise, trayClosePromise]);
+    const request = { id: game.id };
+    pendingCase = request;
+    request.ready = (async () => {
+      const src = getGameCaseCoverSrc(game);
+      let artwork = await loadCoverImage(src);
+      if (!artwork && game.coverUrl && src === game.coverUrl) {
+        artwork = await loadCoverImage(generateArcadeCoverSvg(game));
+      }
+      if (disposed || pendingCase !== request) return null;
+      pendingCase = null;
+      const pack = make3DCase(game, artwork);
+      if (activeCase) {
+        activeCase.disc.removeFromParent();
+        disposeObject(activeCase.disc);
+        activeCase.group.removeFromParent();
+        disposeObject(activeCase.group);
+      }
+      activeCase = pack;
+      scene.add(pack.group);
+      invalidate();
+      return pack;
+    })();
+    return request.ready;
   }
 
-  async function doInsert(game) {
-    if (disc) await doEject();
+  const trayDuration = 780;
+  const flightDuration = 1420;
+  const swingCase = (pack, open) => tween(595, (p) => poseCase(pack, open ? p : 1 - p), ease.smooth);
 
-    // 1. Create 3D Case with game cover
-    const caseObj = make3DCase(game);
-    activeCase = caseObj;
-    scene.add(caseObj.group);
+  async function transferDisc(pack, inserting) {
+    const { disc, seat } = pack;
+    const sample = makeDiscTransfer(seat, traySeat);
+    scene.attach(disc);
+    await tween(flightDuration, (t) => sample(disc, inserting ? t : 1 - t), ease.linear);
+    if (!disposed) mountDisc(disc, inserting ? traySeat : seat);
+  }
 
-    // 2. Create Disc with game cover
-    const d = makeDisc(game);
-    disc = d;
-    d.userData.game = game;
-    scene.add(d);
+  function setDiscAtRest(pack, inserted) {
+    mountDisc(pack.disc, inserted ? traySeat : pack.seat);
+    poseCase(pack, 0);
+    tray.position.z = trayClosedZ;
+    ledMat.color.copy(inserted ? LED_ON : LED_OFF);
+    ledGlow.material.color.copy(ledMat.color);
+    invalidate();
+  }
 
-    // Position Case in 3D scene: upper-left, tilted gracefully towards camera
-    const caseStartPos = new THREE.Vector3(-0.11, 0.15, 0.04);
-    const caseStartRot = new THREE.Euler(0.22, 0.38, -0.06);
-    caseObj.group.position.copy(caseStartPos);
-    caseObj.group.rotation.copy(caseStartRot);
-    caseObj.setOpacity(0);
+  async function doEject({ animate = true } = {}) {
+    const pack = activeCase;
+    if (pack?.disc.parent !== traySeat) return;
+    if (!animate) {
+      setDiscAtRest(pack, false);
+      return;
+    }
 
-    // Disc starts seated inside the case on the spindle
-    const spindleWorld = caseObj.getSpindleWorld();
-    d.position.copy(spindleWorld);
-    d.rotation.copy(caseStartRot);
-    d.userData.setOpacity(0);
+    blinkEject(trayDuration * 2 + flightDuration);
+    setLed(LED_OFF, 450);
+    await Promise.all([moveTray(true, trayDuration), swingCase(pack, true)]);
+    if (disposed) return;
+    await transferDisc(pack, false);
+    if (disposed) return;
+    await Promise.all([moveTray(false, trayDuration), swingCase(pack, false)]);
+  }
 
-    // STEP 1: Case glides into view (fade in & hover) - 450ms
-    await tween(450, (t) => {
-      const p = ease.out(t);
-      caseObj.setOpacity(p);
-      d.userData.setOpacity(p);
-      caseObj.group.position.y = caseStartPos.y + Math.sin(Math.PI * p) * 0.01;
-    });
+  async function doInsert(game, { animate = true } = {}) {
+    if (activeCase?.disc.parent === traySeat) await doEject({ animate });
+    const pack = await selectCase(game);
+    if (disposed || !pack) return;
+    if (!animate) {
+      setDiscAtRest(pack, true);
+      return;
+    }
 
-    // STEP 2: Case swings open (-158 deg) - 650ms
-    // While case opens, PS2 console tray starts motor opening!
-    blinkEject(1600);
-    const trayOpenPromise = moveTray(true, 850);
-
-    await tween(650, (t) => {
-      const p = ease.inOut(t);
-      caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * p;
-    });
-
-    // STEP 3: Disc lifts out of case spindle (4cm forward) - 400ms
-    const spindleNow = caseObj.getSpindleWorld();
-    const liftPos = spindleNow.clone().add(new THREE.Vector3(0.01, 0.05, 0.035));
-    await tween(400, (t) => {
-      const p = ease.out(t);
-      d.position.lerpVectors(spindleNow, liftPos, p);
-      d.rotation.z = caseStartRot.z + 0.06 * Math.sin(Math.PI * p);
-    });
-
-    // Wait for PS2 tray to complete opening
-    await trayOpenPromise;
-
-    // Exact seat position on the open PS2 tray
-    const seatWorld = seatLocal.clone();
-    seatWorld.z += trayOpenPos();
-    seatWorld.x += TRAY_X;
-    consoleGroup.localToWorld(seatWorld);
-
-    // STEP 4: Flight Arc - 3D Bezier curve from case into PS2 tray! (1100ms)
-    const arcStart = d.position.clone();
-    const arcMid = new THREE.Vector3(
-      (arcStart.x + seatWorld.x) * 0.5,
-      Math.max(arcStart.y, seatWorld.y) + 0.065,
-      (arcStart.z + seatWorld.z) * 0.5
-    );
-    const startRot = d.rotation.clone();
-    const endRot = new THREE.Euler(0, 0, 0);
-
-    await tween(1100, (t) => {
-      const p = ease.inOut(t);
-      const u = 1 - p;
-      // Quadratic Bezier curve
-      d.position.x = u * u * arcStart.x + 2 * u * p * arcMid.x + p * p * seatWorld.x;
-      d.position.y = u * u * arcStart.y + 2 * u * p * arcMid.y + p * p * seatWorld.y;
-      d.position.z = u * u * arcStart.z + 2 * u * p * arcMid.z + p * p * seatWorld.z;
-
-      // Rotate: complete 2 full spins while leveling into the flat tray plane
-      d.rotation.x = THREE.MathUtils.lerp(startRot.x, endRot.x, p);
-      d.rotation.y = THREE.MathUtils.lerp(startRot.y, endRot.y + Math.PI * 4, p);
-      d.rotation.z = THREE.MathUtils.lerp(startRot.z, endRot.z, p);
-    });
-
-    // STEP 5: Soft touchdown onto spindle
-    d.position.copy(seatWorld);
-    d.rotation.set(0, 0, 0);
-    d.userData.setOpacity(1);
-    tray.attach(d);
-
-    // Case cover closes and fades out
-    const closeCasePromise = tween(500, (t) => {
-      const p = ease.inOut(t);
-      caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * (1 - p);
-      caseObj.setOpacity(1 - p);
-    }).then(() => {
-      disposeObject(caseObj.group);
-      scene.remove(caseObj.group);
-      if (activeCase === caseObj) activeCase = null;
-    });
-
-    // PS2 tray closes, pulling disc into console body!
-    const trayClosePromise = moveTray(false, 850);
-
-    await Promise.all([closeCasePromise, trayClosePromise]);
-    await setLed(LED_ON, 600);
+    blinkEject(trayDuration * 2 + flightDuration);
+    await Promise.all([moveTray(true, trayDuration), swingCase(pack, true)]);
+    if (disposed) return;
+    await transferDisc(pack, true);
+    if (disposed) return;
+    await Promise.all([moveTray(false, trayDuration), swingCase(pack, false)]);
+    await setLed(LED_ON, 300);
   }
 
   const api = {
     scene,
     camera,
     renderer,
+    selectCase,
     insertDisc: serial(doInsert),
     ejectDisc: serial(doEject),
     openTray: () => moveTray(true),
@@ -1168,16 +1014,17 @@ export function createGameDeckConsoleScene(container, opts = {}) {
     setPower: (on) => setLed(on ? LED_ON : LED_OFF),
     invalidate,
     resize,
-    hasDisc: () => !!disc,
+    hasDisc: () => activeCase?.disc.parent === traySeat,
     dispose() {
       disposed = true;
       cancelAnimationFrame(raf);
       ro.disconnect();
+      for (const tw of tweens) tw.done();
       tweens.clear();
-      frameCbs.clear();
+      pendingCase = null;
       disposeObject(scene);
       for (const t of textures) t.dispose();
-      envTex.dispose();
+      environment.dispose();
       renderer.dispose();
       renderer.domElement.remove();
     },

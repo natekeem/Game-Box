@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { lookFor, WEAR_CSS } from './FinallyCaseEngine.js';
-import { generateArcadeCoverSvg } from './gameCoverGenerator.js';
+import { getGameCaseCoverSrc } from './gameCoverGenerator.js';
 
 /**
  * GameCaseCard:
@@ -19,12 +19,7 @@ export default function GameCaseCard({
 }) {
   const look = useMemo(() => lookFor(game, customSettings), [game, customSettings]);
 
-  const coverSrc = useMemo(() => {
-    if (game.coverUrl && !game.coverUrl.includes('terminal-1997')) {
-      return game.coverUrl;
-    }
-    return generateArcadeCoverSvg(game);
-  }, [game]);
+  const coverSrc = useMemo(() => getGameCaseCoverSrc(game), [game]);
 
   const handleClick = (e) => {
     if (onClick) {

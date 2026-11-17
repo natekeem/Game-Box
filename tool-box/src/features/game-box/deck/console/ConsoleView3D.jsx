@@ -7,6 +7,7 @@ import { createGameDeckConsoleScene } from './GameDeckConsoleScene.js';
  */
 const ConsoleView3D = forwardRef(function ConsoleView3D(
   {
+    game,
     onLoaded,
     className = '',
     style = {},
@@ -37,17 +38,13 @@ const ConsoleView3D = forwardRef(function ConsoleView3D(
     };
   }, []);
 
+  useEffect(() => {
+    if (game) sceneApiRef.current?.selectCase(game);
+  }, [game]);
+
   useImperativeHandle(ref, () => ({
-    insertDisc: async (game) => {
-      if (sceneApiRef.current) {
-        return sceneApiRef.current.insertDisc(game);
-      }
-    },
-    ejectDisc: async () => {
-      if (sceneApiRef.current) {
-        return sceneApiRef.current.ejectDisc();
-      }
-    },
+    insertDisc: (game, options) => sceneApiRef.current?.insertDisc(game, options),
+    ejectDisc: (options) => sceneApiRef.current?.ejectDisc(options),
     openTray: async () => {
       if (sceneApiRef.current) {
         return sceneApiRef.current.openTray();

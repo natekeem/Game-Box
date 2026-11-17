@@ -369,9 +369,10 @@
 }
 
 .gb-console-hardware-bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
   padding: 8px 14px;
   background: #0d1117;
   border: 1px solid #262f3d;
@@ -386,7 +387,15 @@
   gap: 8px;
 }
 
+.gb-console-model,
+.gb-console-slot-status {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .gb-console-led {
+  flex: none;
   width: 9px;
   height: 9px;
   border-radius: 50%;
@@ -405,6 +414,7 @@
 .gb-console-state-badge {
   color: #94a3b8;
   font-size: 11px;
+  white-space: nowrap;
 }
 
 .gb-console-state-badge strong {
@@ -413,6 +423,7 @@
 
 .gb-console-slot-status {
   color: #64748b;
+  text-align: right;
 }
 
 .gb-console-screen {
@@ -431,20 +442,31 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  min-height: 520px;
+  flex: 1 0 auto;
   position: relative;
   background: radial-gradient(circle at 50% 40%, #151d2a 0%, #07090e 85%);
 }
 
+.gb-console-3d-stage-wrapper[hidden] {
+  display: none;
+}
+
 .gb-console-threejs-container {
-  flex: 1 1 auto;
+  flex: none;
   width: 100%;
-  min-height: 340px;
+  /* Keep the WebGL viewport independent of the selected game's text and actions. */
+  height: clamp(340px, 56vh, 620px);
   position: relative;
 }
 
+@media (max-width: 560px) {
+  .gb-console-hardware-bar { grid-template-columns: minmax(0, 1fr) auto; }
+  .gb-console-slot-status { display: none; }
+  .gb-console-threejs-container { height: clamp(300px, 102vw, 420px); }
+}
+
 .gb-console-overlay-panel {
+  flex: 1 0 auto;
   padding: 16px 24px;
   background: linear-gradient(0deg, rgba(9, 12, 16, 0.95) 0%, rgba(9, 12, 16, 0.75) 80%, transparent 100%);
   display: flex;
