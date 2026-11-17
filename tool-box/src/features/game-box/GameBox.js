@@ -4,6 +4,8 @@ import { GameEventBridge } from './runtime/GameEventBridge.js';
 import GameBoxHome from './GameBoxHome.js';
 import RetroDesktop from './retro/RetroDesktop.js';
 import GameDeck from './deck/GameDeck.js';
+import DeckLab from './deck/lab/DeckLab.jsx';
+import './deck/lab/deckLab.css';
 import './styles/gameBox.css';
 import './GameBoxHome.css';
 
@@ -11,6 +13,7 @@ function normalizeRoutePath(pathname) {
   const clean = String(pathname || '/game-box').replace(/\/+$/, '') || '/game-box';
   if (clean === '/game-box/retro') return '/game-box/retro';
   if (clean === '/game-box/deck') return '/game-box/deck';
+  if (clean === '/game-box/deck-lab') return '/game-box/deck-lab';
   return '/game-box';
 }
 
@@ -195,6 +198,8 @@ function GameBoxInner({ initialRoute }) {
         <RetroDesktop onNavigate={navigate} />
       ) : route === '/game-box/deck' ? (
         <GameDeck onNavigate={navigate} />
+      ) : route === '/game-box/deck-lab' ? (
+        <DeckLab onNavigate={navigate} />
       ) : (
         <GameBoxHome onNavigate={navigate} />
       )}

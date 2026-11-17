@@ -481,14 +481,16 @@ export function createGameBoxServer({
         return;
       }
 
-      // SPA History Route Support for /game-box, /game-box/retro, /game-box/deck
+      // SPA History Route Support for /game-box, /game-box/retro, /game-box/deck, /game-box/deck-lab
       if (
         decoded === '/game-box' ||
         decoded === '/game-box/' ||
         decoded === '/game-box/retro' ||
         decoded === '/game-box/retro/' ||
         decoded === '/game-box/deck' ||
-        decoded === '/game-box/deck/'
+        decoded === '/game-box/deck/' ||
+        decoded === '/game-box/deck-lab' ||
+        decoded === '/game-box/deck-lab/'
       ) {
         const spaHtml = path.join(wsRoot, 'game-box', 'index.html');
         if (fs.existsSync(spaHtml)) {

@@ -20,6 +20,10 @@
   "dependencies": {
     "emulators": "8.5.2",
     "js-dos": "8.5.3",
+    "three": "^0.187.0",
     "ws": "^8.21.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.1"
   }
 }

@@ -9,3 +9,5 @@ references/
 *.log
 .DS_Store
 Thumbs.db
+
+vendor-src/
