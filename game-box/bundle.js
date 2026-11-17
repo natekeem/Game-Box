@@ -33236,6 +33236,66 @@ void main() {
     g4.arc(c3, c3, 17 * mm, 0, Math.PI * 2);
     g4.fill();
   }
+  function drawCaseCover(g4, W4, H3, game) {
+    const baseCol = game.caseColor || "#2563eb";
+    g4.fillStyle = "#0f131a";
+    g4.fillRect(0, 0, W4, H3);
+    g4.fillStyle = "#000000";
+    g4.fillRect(0, 0, W4, H3 * 0.12);
+    g4.fillStyle = "#ffffff";
+    g4.font = `900 ${W4 * 0.055}px ${SANS}`;
+    g4.textAlign = "left";
+    g4.textBaseline = "middle";
+    g4.fillText("GAME DECK", W4 * 0.08, H3 * 0.06);
+    g4.fillStyle = "#38bdf8";
+    g4.font = `700 ${W4 * 0.038}px monospace`;
+    g4.textAlign = "right";
+    g4.fillText("PAL / NTSC", W4 * 0.92, H3 * 0.06);
+    const artY = H3 * 0.12;
+    const artH = H3 * 0.72;
+    const artGrd = g4.createLinearGradient(0, artY, W4, artY + artH);
+    artGrd.addColorStop(0, "#ffffff");
+    artGrd.addColorStop(0.18, baseCol);
+    artGrd.addColorStop(1, "#090d16");
+    g4.fillStyle = artGrd;
+    g4.fillRect(0, artY, W4, artH);
+    g4.strokeStyle = "rgba(255,255,255,0.12)";
+    g4.lineWidth = 2;
+    for (let r3 = W4 * 0.2; r3 < W4 * 0.9; r3 += W4 * 0.18) {
+      g4.beginPath();
+      g4.arc(W4 / 2, artY + artH * 0.45, r3, 0, Math.PI * 2);
+      g4.stroke();
+    }
+    g4.textAlign = "center";
+    g4.textBaseline = "middle";
+    g4.fillStyle = "#ffffff";
+    g4.shadowColor = "rgba(0,0,0,0.85)";
+    g4.shadowBlur = 14;
+    g4.font = `900 ${W4 * 0.085}px ${SANS}`;
+    const title = String(game.name || "ARCADE GAME");
+    g4.fillText(title, W4 / 2, artY + artH * 0.42);
+    g4.shadowBlur = 4;
+    g4.font = `700 ${W4 * 0.045}px ${SANS}`;
+    g4.fillStyle = "#cbd5e1";
+    g4.fillText(game.subtitle || game.genre || "ARCADE CLASSIC", W4 / 2, artY + artH * 0.55);
+    g4.shadowBlur = 0;
+    g4.fillStyle = "rgba(0,0,0,0.6)";
+    const badgeW = W4 * 0.45, badgeH = H3 * 0.045;
+    g4.fillRect((W4 - badgeW) / 2, artY + artH * 0.73, badgeW, badgeH);
+    g4.strokeStyle = "rgba(255,255,255,0.4)";
+    g4.strokeRect((W4 - badgeW) / 2, artY + artH * 0.73, badgeW, badgeH);
+    g4.font = `700 ${W4 * 0.038}px monospace`;
+    g4.fillStyle = "#38bdf8";
+    g4.fillText(game.discLabel || "ARC-001", W4 / 2, artY + artH * 0.73 + badgeH / 2);
+    g4.fillStyle = "#080a0f";
+    g4.fillRect(0, H3 * 0.84, W4, H3 * 0.16);
+    g4.fillStyle = "#94a3b8";
+    g4.font = `600 ${W4 * 0.034}px ${SANS}`;
+    g4.textAlign = "left";
+    g4.fillText(game.playersLabel || "1~2 PLAYERS", W4 * 0.08, H3 * 0.92);
+    g4.textAlign = "right";
+    g4.fillText("TOOL-BOX STUDIO", W4 * 0.92, H3 * 0.92);
+  }
   function disposeObject(root) {
     if (!root) return;
     root.traverse((o3) => {
@@ -33560,9 +33620,83 @@ void main() {
         if (o3.isMesh) o3.castShadow = true;
       });
       g4.userData.setOpacity = (a3) => g4.traverse((o3) => {
-        if (o3.isMesh) o3.material.opacity = a3;
+        if (o3.isMesh && o3.material) o3.material.opacity = a3;
       });
       return g4;
+    }
+    const CASE_W = 0.134;
+    const CASE_H = 0.19;
+    const CASE_D = 0.013;
+    function make3DCase(game) {
+      const group = new Group();
+      const backGeom = new RoundedBoxGeometry(CASE_W, CASE_H, CASE_D * 0.45, 1, 3e-3);
+      const bodyMat = new MeshPhysicalMaterial({
+        color: "#13161c",
+        roughness: 0.28,
+        metalness: 0.1,
+        clearcoat: 0.5,
+        clearcoatRoughness: 0.2,
+        transparent: true,
+        opacity: 0.96
+      });
+      const backMesh = new Mesh(backGeom, bodyMat);
+      backMesh.position.set(0, 0, -CASE_D * 0.22);
+      backMesh.castShadow = true;
+      group.add(backMesh);
+      const hubGeom = new CylinderGeometry(0.012, 0.014, 5e-3, 32);
+      const hubMat = new MeshStandardMaterial({
+        color: "#1a1f29",
+        roughness: 0.4,
+        metalness: 0.2,
+        transparent: true
+      });
+      const hubMesh = new Mesh(hubGeom, hubMat);
+      hubMesh.rotation.x = Math.PI / 2;
+      hubMesh.position.set(0, 0, 1e-3);
+      group.add(hubMesh);
+      const toothGeom = new CylinderGeometry(7e-3, 7e-3, 8e-3, 16);
+      const toothMat = new MeshStandardMaterial({ color: "#2b313e", roughness: 0.5, transparent: true });
+      const toothMesh = new Mesh(toothGeom, toothMat);
+      toothMesh.rotation.x = Math.PI / 2;
+      toothMesh.position.set(0, 0, 3e-3);
+      group.add(toothMesh);
+      const coverPivot = new Group();
+      coverPivot.position.set(-CASE_W / 2, 0, CASE_D * 0.22);
+      group.add(coverPivot);
+      const coverTex = canvasTex(768, 1024, (g4, w3, h3) => drawCaseCover(g4, 768, 1024, game));
+      textures.splice(textures.indexOf(coverTex), 1);
+      const frontGeom = new RoundedBoxGeometry(CASE_W, CASE_H, 2e-3, 1, 2e-3);
+      const frontMat = new MeshPhysicalMaterial({
+        map: coverTex,
+        roughness: 0.2,
+        clearcoat: 0.7,
+        clearcoatRoughness: 0.15,
+        transparent: true,
+        opacity: 0.98
+      });
+      const frontMesh = new Mesh(frontGeom, frontMat);
+      frontMesh.position.set(CASE_W / 2, 0, 0);
+      frontMesh.castShadow = true;
+      coverPivot.add(frontMesh);
+      const setOpacity = (alpha) => {
+        group.traverse((o3) => {
+          if (o3.isMesh && o3.material) {
+            o3.material.transparent = true;
+            o3.material.opacity = alpha;
+          }
+        });
+      };
+      const getSpindleWorld = () => {
+        const v3 = new Vector3(0, 0, 4e-3);
+        group.localToWorld(v3);
+        return v3;
+      };
+      return {
+        group,
+        coverPivot,
+        setOpacity,
+        getSpindleWorld
+      };
     }
     const trayOpenPos = () => trayClosedZ + TRAY_TRAVEL;
     const ejectZ = btnEject.position.z;
@@ -33599,61 +33733,145 @@ void main() {
     }
     let queue = Promise.resolve();
     const serial = (fn2) => (...args) => queue = queue.then(() => fn2(...args), () => fn2(...args));
+    let activeCase = null;
     async function doEject() {
       if (!disc) return;
       const d3 = disc;
+      const game = d3.userData.game;
       blinkEject(1700);
       setLed(LED_OFF, 600);
-      await moveTray(true);
+      await moveTray(true, 850);
+      const caseObj = make3DCase(game || {});
+      activeCase = caseObj;
+      scene.add(caseObj.group);
+      const caseTargetPos = new Vector3(-0.11, 0.15, 0.04);
+      const caseTargetRot = new Euler(0.22, 0.38, -0.06);
+      caseObj.group.position.copy(caseTargetPos);
+      caseObj.group.rotation.copy(caseTargetRot);
+      caseObj.setOpacity(0);
+      caseObj.coverPivot.rotation.y = 0;
+      await tween(500, (t3) => {
+        const p3 = ease.out(t3);
+        caseObj.setOpacity(p3);
+        caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * p3;
+      });
       scene.attach(d3);
       d3.traverse((o3) => {
         if (o3.isMesh) o3.castShadow = false;
       });
-      const p0 = d3.position.clone();
-      const p1 = camera.position.clone().lerp(p0, 0.55).add(new Vector3(0, 0.08, 0));
-      const r0 = d3.rotation.clone();
-      await tween(850, (t3) => {
-        d3.position.lerpVectors(p0, p1, t3);
-        d3.rotation.set(r0.x + t3 * 0.9, r0.y + t3 * 2.5, r0.z + t3 * 0.3);
-        d3.userData.setOpacity(1 - ease.in(t3));
-      }, ease.inOut);
-      disposeObject(d3);
-      scene.remove(d3);
-      disc = null;
-      await moveTray(false);
+      const arcStart = d3.position.clone();
+      const spindleWorld = caseObj.getSpindleWorld();
+      const arcMid = new Vector3(
+        (arcStart.x + spindleWorld.x) * 0.5,
+        Math.max(arcStart.y, spindleWorld.y) + 0.07,
+        (arcStart.z + spindleWorld.z) * 0.5
+      );
+      const startRot = d3.rotation.clone();
+      const endRot = caseTargetRot.clone();
+      await tween(1e3, (t3) => {
+        const p3 = ease.inOut(t3);
+        const u4 = 1 - p3;
+        d3.position.x = u4 * u4 * arcStart.x + 2 * u4 * p3 * arcMid.x + p3 * p3 * spindleWorld.x;
+        d3.position.y = u4 * u4 * arcStart.y + 2 * u4 * p3 * arcMid.y + p3 * p3 * spindleWorld.y;
+        d3.position.z = u4 * u4 * arcStart.z + 2 * u4 * p3 * arcMid.z + p3 * p3 * spindleWorld.z;
+        d3.rotation.x = MathUtils.lerp(startRot.x, endRot.x, p3);
+        d3.rotation.y = MathUtils.lerp(startRot.y, endRot.y - Math.PI * 4, p3);
+        d3.rotation.z = MathUtils.lerp(startRot.z, endRot.z, p3);
+      });
+      d3.position.copy(spindleWorld);
+      d3.rotation.copy(endRot);
+      const closeCasePromise = tween(500, (t3) => {
+        const p3 = ease.inOut(t3);
+        caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * (1 - p3);
+        caseObj.setOpacity(1 - p3);
+        d3.userData.setOpacity(1 - p3);
+      }).then(() => {
+        disposeObject(caseObj.group);
+        scene.remove(caseObj.group);
+        if (activeCase === caseObj) activeCase = null;
+        disposeObject(d3);
+        scene.remove(d3);
+        disc = null;
+      });
+      const trayClosePromise = moveTray(false, 850);
+      await Promise.all([closeCasePromise, trayClosePromise]);
     }
     async function doInsert(game) {
       if (disc) await doEject();
+      const caseObj = make3DCase(game);
+      activeCase = caseObj;
+      scene.add(caseObj.group);
       const d3 = makeDisc(game);
       disc = d3;
       d3.userData.game = game;
       scene.add(d3);
+      const caseStartPos = new Vector3(-0.11, 0.15, 0.04);
+      const caseStartRot = new Euler(0.22, 0.38, -0.06);
+      caseObj.group.position.copy(caseStartPos);
+      caseObj.group.rotation.copy(caseStartRot);
+      caseObj.setOpacity(0);
+      const spindleWorld = caseObj.getSpindleWorld();
+      d3.position.copy(spindleWorld);
+      d3.rotation.copy(caseStartRot);
+      d3.userData.setOpacity(0);
+      await tween(450, (t3) => {
+        const p3 = ease.out(t3);
+        caseObj.setOpacity(p3);
+        d3.userData.setOpacity(p3);
+        caseObj.group.position.y = caseStartPos.y + Math.sin(Math.PI * p3) * 0.01;
+      });
+      blinkEject(1600);
+      const trayOpenPromise = moveTray(true, 850);
+      await tween(650, (t3) => {
+        const p3 = ease.inOut(t3);
+        caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * p3;
+      });
+      const spindleNow = caseObj.getSpindleWorld();
+      const liftPos = spindleNow.clone().add(new Vector3(0.01, 0.05, 0.035));
+      await tween(400, (t3) => {
+        const p3 = ease.out(t3);
+        d3.position.lerpVectors(spindleNow, liftPos, p3);
+        d3.rotation.z = caseStartRot.z + 0.06 * Math.sin(Math.PI * p3);
+      });
+      await trayOpenPromise;
       const seatWorld = seatLocal.clone();
       seatWorld.z += trayOpenPos();
       seatWorld.x += TRAY_X;
       consoleGroup.localToWorld(seatWorld);
-      const start = camera.position.clone().lerp(seatWorld, 0.5).add(new Vector3(0, 0.12, 0));
-      d3.position.copy(start);
-      d3.userData.setOpacity(0);
-      blinkEject(1100);
-      const trayP = moveTray(true, 800);
-      const camP = nudgeCamera(2600, 0.06);
-      await tween(1300, (t3) => {
-        const p3 = ease.out(t3);
-        d3.position.lerpVectors(start, seatWorld, p3);
-        d3.position.y += Math.sin(Math.PI * p3) * 0.03;
-        const tilt = (1 - p3) * 0.9;
-        d3.rotation.set(tilt, (1 - p3) * Math.PI * 2.2, -tilt * 0.4);
-        d3.userData.setOpacity(Math.min(1, t3 * 3));
-      }, (t3) => t3);
-      await trayP;
-      await tween(180, (t3) => {
-        d3.position.y = seatWorld.y + Math.sin(Math.PI * t3) * 2e-3;
-      }, (t3) => t3);
+      const arcStart = d3.position.clone();
+      const arcMid = new Vector3(
+        (arcStart.x + seatWorld.x) * 0.5,
+        Math.max(arcStart.y, seatWorld.y) + 0.065,
+        (arcStart.z + seatWorld.z) * 0.5
+      );
+      const startRot = d3.rotation.clone();
+      const endRot = new Euler(0, 0, 0);
+      await tween(1100, (t3) => {
+        const p3 = ease.inOut(t3);
+        const u4 = 1 - p3;
+        d3.position.x = u4 * u4 * arcStart.x + 2 * u4 * p3 * arcMid.x + p3 * p3 * seatWorld.x;
+        d3.position.y = u4 * u4 * arcStart.y + 2 * u4 * p3 * arcMid.y + p3 * p3 * seatWorld.y;
+        d3.position.z = u4 * u4 * arcStart.z + 2 * u4 * p3 * arcMid.z + p3 * p3 * seatWorld.z;
+        d3.rotation.x = MathUtils.lerp(startRot.x, endRot.x, p3);
+        d3.rotation.y = MathUtils.lerp(startRot.y, endRot.y + Math.PI * 4, p3);
+        d3.rotation.z = MathUtils.lerp(startRot.z, endRot.z, p3);
+      });
+      d3.position.copy(seatWorld);
+      d3.rotation.set(0, 0, 0);
       d3.userData.setOpacity(1);
       tray.attach(d3);
-      await moveTray(false, 850);
-      await Promise.all([setLed(LED_ON, 600), camP]);
+      const closeCasePromise = tween(500, (t3) => {
+        const p3 = ease.inOut(t3);
+        caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * (1 - p3);
+        caseObj.setOpacity(1 - p3);
+      }).then(() => {
+        disposeObject(caseObj.group);
+        scene.remove(caseObj.group);
+        if (activeCase === caseObj) activeCase = null;
+      });
+      const trayClosePromise = moveTray(false, 850);
+      await Promise.all([closeCasePromise, trayClosePromise]);
+      await setLed(LED_ON, 600);
     }
     const api = {
       scene,
@@ -33818,7 +34036,7 @@ void main() {
   function GameDeck({ onNavigate }) {
     const [selectedCategory, setSelectedCategory] = d2("all");
     const [searchQuery, setSearchQuery] = d2("");
-    const [selectedGameId, setSelectedGameId] = d2(ARCADE_GAMES[0].id);
+    const [selectedGameId, setSelectedGameId] = d2(null);
     const [animState, setAnimState] = d2("selected");
     const [deckRankings, setDeckRankings] = d2([]);
     const [loadingRankings, setLoadingRankings] = d2(false);
@@ -33830,13 +34048,18 @@ void main() {
       [selectedCategory, searchQuery]
     );
     const selectedGame = T2(
-      () => ARCADE_GAMES.find((g4) => g4.id === selectedGameId) || ARCADE_GAMES[0],
+      () => selectedGameId ? ARCADE_GAMES.find((g4) => g4.id === selectedGameId) || null : null,
       [selectedGameId]
     );
     h2(() => {
       ensureCaseStyle(document);
     }, []);
     h2(() => {
+      if (!selectedGame) {
+        setDeckRankings([]);
+        setLoadingRankings(false);
+        return;
+      }
       let cancelled = false;
       setLoadingRankings(true);
       fetch(`/api/platform/rankings?gameId=${encodeURIComponent(selectedGame.id)}&includePractice=true`, {
@@ -33853,51 +34076,52 @@ void main() {
       return () => {
         cancelled = true;
       };
-    }, [selectedGame.id]);
+    }, [selectedGame ? selectedGame.id : null]);
     const handleSelectCase = async (gameId) => {
-      if (["opening", "extracting", "inserting", "ejecting"].includes(animState)) {
+      if (["inserting", "ejecting", "booting"].includes(animState)) {
         return;
       }
       if (gameId === selectedGameId) return;
-      if (animState === "playing" || animState === "ready") {
+      if (animState === "playing") {
         await handleEjectAndStop();
       }
       setSelectedGameId(gameId);
       setAnimState("selected");
     };
     const handleInsertAndPlay = async () => {
-      if (["booting", "playing", "ejecting"].includes(animState)) return;
-      setAnimState("booting");
+      if (!selectedGame) return;
+      if (["booting", "playing", "ejecting", "inserting"].includes(animState)) return;
+      setAnimState("inserting");
       if (soundEnabled) {
         playCrtSound("power-on");
       }
-      if (consoleRef.current) {
-        await consoleRef.current.insertDisc(selectedGame);
-        await consoleRef.current.setPower(true);
-      }
       const prefersReducedMotion = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (!prefersReducedMotion) {
-        await new Promise((r3) => setTimeout(r3, 450));
+      if (consoleRef.current) {
+        if (prefersReducedMotion) {
+          await consoleRef.current.setPower(true);
+        } else {
+          await consoleRef.current.insertDisc(selectedGame);
+        }
       }
       setAnimState("playing");
     };
     const handleEjectAndStop = async () => {
-      if (["booting", "ejecting"].includes(animState)) return;
+      if (["booting", "ejecting", "inserting"].includes(animState)) return;
       setAnimState("ejecting");
       if (soundEnabled) {
         playCrtSound("power-off");
       }
-      if (consoleRef.current) {
-        await consoleRef.current.ejectDisc();
-        await consoleRef.current.setPower(false);
-      }
       const prefersReducedMotion = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (!prefersReducedMotion) {
-        await new Promise((r3) => setTimeout(r3, 350));
+      if (consoleRef.current) {
+        if (prefersReducedMotion) {
+          await consoleRef.current.setPower(false);
+        } else {
+          await consoleRef.current.ejectDisc();
+        }
       }
       setAnimState("selected");
     };
-    const isPowerOn = animState === "playing" || animState === "booting" || animState === "ready";
+    const isPowerOn = animState === "playing" || animState === "booting";
     return /* @__PURE__ */ u3("div", { className: "gb-deck-shell", children: [
       /* @__PURE__ */ u3("div", { className: "gb-subbar gb-subbar-dark", children: [
         /* @__PURE__ */ u3("div", { className: "gb-subbar-left", children: [
@@ -33912,7 +34136,7 @@ void main() {
           ),
           /* @__PURE__ */ u3("span", { className: "gb-subbar-divider", children: "|" }),
           /* @__PURE__ */ u3("strong", { className: "gb-subbar-title", children: "GAME DECK \u2014 ARCADE 20 COLLECTION" }),
-          /* @__PURE__ */ u3("span", { className: "gb-subbar-hint", children: "3D \uC785\uCCB4 \uAC8C\uC784\uD329\uC744 \uC120\uD0DD\uD558\uACE0 \uCF58\uC194 \uD2B8\uB808\uC774\uC5D0 \uB514\uC2A4\uD06C\uB97C \uC7A5\uCC29\uD558\uC5EC \uAC8C\uC784\uC744 \uC2E4\uD589\uD558\uC138\uC694." })
+          /* @__PURE__ */ u3("span", { className: "gb-subbar-hint", children: "\uC67C\uCABD \uC9C4\uC5F4\uB300\uC5D0\uC11C CD \uCF00\uC774\uC2A4\uB97C \uC120\uD0DD\uD558\uACE0 PLAY\uB97C \uB204\uB974\uBA74 3D \uCF00\uC774\uC2A4\uAC00 \uAC1C\uBC29\uB418\uC5B4 PS2 \uCF58\uC194 \uD2B8\uB808\uC774\uB85C \uB514\uC2A4\uD06C\uAC00 \uC7A5\uCC29\uB429\uB2C8\uB2E4." })
         ] }),
         /* @__PURE__ */ u3("div", { className: "gb-subbar-actions", children: [
           /* @__PURE__ */ u3(
@@ -33992,7 +34216,7 @@ void main() {
             )
           ] }),
           /* @__PURE__ */ u3("div", { className: "gb-3d-shelf-container", "data-sanso-stage": "big", children: visibleGames.map((game) => {
-            const isSelected = game.id === selectedGame.id;
+            const isSelected = selectedGame && game.id === selectedGame.id;
             return /* @__PURE__ */ u3("div", { className: "gb-shelf-item-wrap", children: [
               /* @__PURE__ */ u3(
                 GameCaseCard,
@@ -34018,16 +34242,16 @@ void main() {
               /* @__PURE__ */ u3("span", { className: `gb-console-led ${isPowerOn ? "on" : "standby"}` }),
               /* @__PURE__ */ u3("span", { className: "gb-console-model", children: [
                 "TOOL-BOX ARCADE DECK // ",
-                selectedGame.discLabel
+                selectedGame ? selectedGame.discLabel : "PS2 SYSTEM STANDBY"
               ] })
             ] }),
             /* @__PURE__ */ u3("div", { className: "gb-console-state-badge", children: [
               "\uC0C1\uD0DC: ",
-              /* @__PURE__ */ u3("strong", { children: animState.toUpperCase() })
+              /* @__PURE__ */ u3("strong", { children: animState === "selected" && !selectedGame ? "STANDBY" : animState.toUpperCase() })
             ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-console-slot-status", children: animState === "playing" ? "DISC INSERTED \xB7 RUNNING" : animState === "inserting" ? "INSERTING DISC..." : animState === "ejecting" ? "EJECTING DISC..." : animState === "booting" ? "BOOTING ARCADE MATRIX..." : "READY TO INSERT PACK" })
+            /* @__PURE__ */ u3("div", { className: "gb-console-slot-status", children: animState === "playing" ? "DISC INSERTED \xB7 RUNNING" : animState === "inserting" ? "3D CASE OPENING & INSERTING DISC..." : animState === "ejecting" ? "EJECTING DISC TO 3D CASE..." : !selectedGame ? "WAITING FOR GAME SELECTION" : "READY TO INSERT PACK" })
           ] }),
-          /* @__PURE__ */ u3("div", { className: "gb-console-screen", ref: consoleContainerRef, children: animState === "playing" ? /* @__PURE__ */ u3(
+          /* @__PURE__ */ u3("div", { className: "gb-console-screen", ref: consoleContainerRef, children: animState === "playing" && selectedGame ? /* @__PURE__ */ u3(
             GameLauncher,
             {
               title: selectedGame.name,
@@ -34038,7 +34262,7 @@ void main() {
             }
           ) : /* @__PURE__ */ u3("div", { className: "gb-console-3d-stage-wrapper", children: [
             /* @__PURE__ */ u3("div", { className: "gb-console-threejs-container", children: /* @__PURE__ */ u3(ConsoleView3D_default, { ref: consoleRef }) }),
-            /* @__PURE__ */ u3("div", { className: "gb-console-overlay-panel", children: /* @__PURE__ */ u3("div", { className: "gb-console-preview-card", children: [
+            /* @__PURE__ */ u3("div", { className: "gb-console-overlay-panel", children: /* @__PURE__ */ u3("div", { className: "gb-console-preview-card", children: selectedGame ? /* @__PURE__ */ u3(S, { children: [
               /* @__PURE__ */ u3("span", { className: "gb-preview-kicker", children: [
                 selectedGame.genre,
                 " \xB7 ",
@@ -34055,17 +34279,8 @@ void main() {
                     type: "button",
                     className: "gb-btn-insert-play",
                     onClick: handleInsertAndPlay,
-                    disabled: ["opening", "extracting", "inserting", "ejecting"].includes(animState),
-                    children: "\u25B6 PLAY (3D \uB514\uC2A4\uD06C \uD2B8\uB808\uC774 \uC0BD\uC785 \uBC0F \uCF58\uC194 \uAD6C\uB3D9)"
-                  }
-                ),
-                animState === "ready" && /* @__PURE__ */ u3(
-                  "button",
-                  {
-                    type: "button",
-                    className: "gb-btn-eject-deck",
-                    onClick: handleEjectAndStop,
-                    children: "\u23CF \uB514\uC2A4\uD06C \uBC30\uCD9C"
+                    disabled: ["inserting", "ejecting", "booting"].includes(animState),
+                    children: "\u25B6 PLAY (3D \uCF00\uC774\uC2A4 \uAC1C\uBC29 \uBC0F PS2 \uB514\uC2A4\uD06C \uC0BD\uC785)"
                   }
                 ),
                 /* @__PURE__ */ u3(
@@ -34079,7 +34294,21 @@ void main() {
                   }
                 )
               ] })
-            ] }) })
+            ] }) : /* @__PURE__ */ u3(S, { children: [
+              /* @__PURE__ */ u3("span", { className: "gb-preview-kicker", children: "ARCADE 20 COLLECTION \xB7 SELECTION MODE" }),
+              /* @__PURE__ */ u3("h3", { children: "\uAC8C\uC784 CD \uCF00\uC774\uC2A4\uB97C \uC120\uD0DD\uD558\uC138\uC694" }),
+              /* @__PURE__ */ u3("p", { children: "\uC67C\uCABD \uC9C4\uC5F4\uB300\uC5D0\uC11C \uC6D0\uD558\uB294 \uAC8C\uC784 CD \uCF00\uC774\uC2A4\uB97C \uD074\uB9AD\uD558\uBA74 3D \uBB3C\uB9AC \uCF00\uC774\uC2A4\uAC00 \uB85C\uB529\uB418\uACE0 \uCF58\uC194 \uD2B8\uB808\uC774 \uC0BD\uC785 \uC900\uBE44\uAC00 \uC644\uB8CC\uB429\uB2C8\uB2E4." }),
+              /* @__PURE__ */ u3("div", { className: "gb-console-action-row", children: /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "gb-btn-insert-play",
+                  disabled: true,
+                  style: { opacity: 0.6, cursor: "not-allowed" },
+                  children: "CD \uCF00\uC774\uC2A4\uB97C \uBA3C\uC800 \uC120\uD0DD\uD574\uC8FC\uC138\uC694"
+                }
+              ) })
+            ] }) }) })
           ] }) })
         ] }) }),
         /* @__PURE__ */ u3("aside", { className: "gb-deck-ranking-zone", children: [
@@ -34087,67 +34316,78 @@ void main() {
             /* @__PURE__ */ u3("h2", { children: "GAME RANKING & SPEC" }),
             /* @__PURE__ */ u3("span", { className: "gb-deck-badge", children: "TOP 10" })
           ] }),
-          /* @__PURE__ */ u3("div", { className: "gb-deck-spec-card", children: [
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uAC8C\uC784\uBA85" }),
-              /* @__PURE__ */ u3("strong", { children: selectedGame.name })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uB514\uC2A4\uD06C \uC2DD\uBCC4\uC790" }),
-              /* @__PURE__ */ u3("code", { children: selectedGame.discLabel })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uD50C\uB808\uC774 \uC778\uC6D0" }),
-              /* @__PURE__ */ u3("strong", { children: selectedGame.playersLabel })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uD654\uBA74 \uBE44\uC728 / \uC785\uB825" }),
-              /* @__PURE__ */ u3("strong", { children: [
-                selectedGame.aspectRatio,
-                " \xB7 ",
-                selectedGame.inputDevices.join(", ")
+          selectedGame ? /* @__PURE__ */ u3(S, { children: [
+            /* @__PURE__ */ u3("div", { className: "gb-deck-spec-card", children: [
+              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+                /* @__PURE__ */ u3("span", { children: "\uAC8C\uC784\uBA85" }),
+                /* @__PURE__ */ u3("strong", { children: selectedGame.name })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+                /* @__PURE__ */ u3("span", { children: "\uB514\uC2A4\uD06C \uC2DD\uBCC4\uC790" }),
+                /* @__PURE__ */ u3("code", { children: selectedGame.discLabel })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+                /* @__PURE__ */ u3("span", { children: "\uD50C\uB808\uC774 \uC778\uC6D0" }),
+                /* @__PURE__ */ u3("strong", { children: selectedGame.playersLabel })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+                /* @__PURE__ */ u3("span", { children: "\uD654\uBA74 \uBE44\uC728 / \uC785\uB825" }),
+                /* @__PURE__ */ u3("strong", { children: [
+                  selectedGame.aspectRatio,
+                  " \xB7 ",
+                  selectedGame.inputDevices.join(", ")
+                ] })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+                /* @__PURE__ */ u3("span", { children: "\uC2E4\uD589 URL" }),
+                /* @__PURE__ */ u3("code", { children: selectedGame.launchUrl })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+                /* @__PURE__ */ u3("span", { children: "\uAE30\uB85D \uC5F0\uB3D9" }),
+                /* @__PURE__ */ u3("span", { children: selectedGame.eventSupport })
               ] })
             ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uC2E4\uD589 URL" }),
-              /* @__PURE__ */ u3("code", { children: selectedGame.launchUrl })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uAE30\uB85D \uC5F0\uB3D9" }),
-              /* @__PURE__ */ u3("span", { children: selectedGame.eventSupport })
+            /* @__PURE__ */ u3("div", { className: "gb-deck-ranking-box", children: [
+              /* @__PURE__ */ u3("h3", { children: [
+                "\u{1F3C6} ",
+                selectedGame.name,
+                " TOP 10"
+              ] }),
+              loadingRankings ? /* @__PURE__ */ u3("div", { className: "gb-deck-empty", children: "\uB7AD\uD0B9 \uB370\uC774\uD130\uB97C \uBD88\uB7EC\uC624\uB294 \uC911..." }) : deckRankings.length === 0 ? /* @__PURE__ */ u3("div", { className: "gb-deck-empty", children: [
+                "\uC544\uC9C1 \uC774 \uAC8C\uC784\uC758 \uB300\uC804 \uC644\uB8CC \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.",
+                /* @__PURE__ */ u3("br", {}),
+                "\uAC8C\uC784\uC744 \uD50C\uB808\uC774\uD558\uBA74 \uC21C\uC704\uAC00 \uC9D1\uACC4\uB429\uB2C8\uB2E4."
+              ] }) : /* @__PURE__ */ u3("table", { className: "gb-deck-table", children: [
+                /* @__PURE__ */ u3("thead", { children: /* @__PURE__ */ u3("tr", { children: [
+                  /* @__PURE__ */ u3("th", { children: "\uC21C\uC704" }),
+                  /* @__PURE__ */ u3("th", { children: "\uD50C\uB808\uC774\uC5B4" }),
+                  /* @__PURE__ */ u3("th", { children: "\uC2B9/\uD328" }),
+                  /* @__PURE__ */ u3("th", { children: "\uCD5C\uACE0\uC810" })
+                ] }) }),
+                /* @__PURE__ */ u3("tbody", { children: deckRankings.map((row, idx) => /* @__PURE__ */ u3("tr", { children: [
+                  /* @__PURE__ */ u3("td", { children: [
+                    "#",
+                    idx + 1
+                  ] }),
+                  /* @__PURE__ */ u3("td", { children: row.name }),
+                  /* @__PURE__ */ u3("td", { children: [
+                    row.wins,
+                    "\uC2B9 ",
+                    row.losses,
+                    "\uD328"
+                  ] }),
+                  /* @__PURE__ */ u3("td", { children: Math.round(row.bestScore || 0).toLocaleString() })
+                ] }, row.userId || idx)) })
+              ] })
             ] })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "gb-deck-ranking-box", children: [
-            /* @__PURE__ */ u3("h3", { children: [
-              "\u{1F3C6} ",
-              selectedGame.name,
-              " TOP 10"
-            ] }),
-            loadingRankings ? /* @__PURE__ */ u3("div", { className: "gb-deck-empty", children: "\uB7AD\uD0B9 \uB370\uC774\uD130\uB97C \uBD88\uB7EC\uC624\uB294 \uC911..." }) : deckRankings.length === 0 ? /* @__PURE__ */ u3("div", { className: "gb-deck-empty", children: [
-              "\uC544\uC9C1 \uC774 \uAC8C\uC784\uC758 \uB300\uC804 \uC644\uB8CC \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.",
+          ] }) : /* @__PURE__ */ u3("div", { className: "gb-deck-ranking-box", children: [
+            /* @__PURE__ */ u3("h3", { children: "\u{1F3C6} \uC2E4\uC2DC\uAC04 \uB7AD\uD0B9 & \uC0AC\uC591" }),
+            /* @__PURE__ */ u3("div", { className: "gb-deck-empty", style: { padding: "36px 16px", lineHeight: 1.7 }, children: [
+              "\uC67C\uCABD \uC9C4\uC5F4\uB300\uC5D0\uC11C \uC6D0\uD558\uB294 ",
+              /* @__PURE__ */ u3("strong", { children: "\uAC8C\uC784 CD \uCF00\uC774\uC2A4" }),
+              "\uB97C \uC120\uD0DD\uD558\uBA74",
               /* @__PURE__ */ u3("br", {}),
-              "\uAC8C\uC784\uC744 \uD50C\uB808\uC774\uD558\uBA74 \uC21C\uC704\uAC00 \uC9D1\uACC4\uB429\uB2C8\uB2E4."
-            ] }) : /* @__PURE__ */ u3("table", { className: "gb-deck-table", children: [
-              /* @__PURE__ */ u3("thead", { children: /* @__PURE__ */ u3("tr", { children: [
-                /* @__PURE__ */ u3("th", { children: "\uC21C\uC704" }),
-                /* @__PURE__ */ u3("th", { children: "\uD50C\uB808\uC774\uC5B4" }),
-                /* @__PURE__ */ u3("th", { children: "\uC2B9/\uD328" }),
-                /* @__PURE__ */ u3("th", { children: "\uCD5C\uACE0\uC810" })
-              ] }) }),
-              /* @__PURE__ */ u3("tbody", { children: deckRankings.map((row, idx) => /* @__PURE__ */ u3("tr", { children: [
-                /* @__PURE__ */ u3("td", { children: [
-                  "#",
-                  idx + 1
-                ] }),
-                /* @__PURE__ */ u3("td", { children: row.name }),
-                /* @__PURE__ */ u3("td", { children: [
-                  row.wins,
-                  "\uC2B9 ",
-                  row.losses,
-                  "\uD328"
-                ] }),
-                /* @__PURE__ */ u3("td", { children: Math.round(row.bestScore || 0).toLocaleString() })
-              ] }, row.userId || idx)) })
+              "\uD574\uB2F9 \uAC8C\uC784\uC758 \uACF5\uC2DD \uC0AC\uC591 \uC815\uBCF4\uC640 \uC2E4\uC2DC\uAC04 TOP 10 \uB7AD\uD0B9\uC774 \uD45C\uC2DC\uB429\uB2C8\uB2E4."
             ] })
           ] })
         ] })

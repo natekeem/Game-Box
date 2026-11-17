@@ -65,8 +65,8 @@ function playCrtSound(type = 'power-on') {
 export default function GameDeck({ onNavigate }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedGameId, setSelectedGameId] = useState(ARCADE_GAMES[0].id);
-  const [animState, setAnimState] = useState('selected'); // idle, selected, opening, extracting, inserting, booting, ready, playing, ejecting, returning
+  const [selectedGameId, setSelectedGameId] = useState(null);
+  const [animState, setAnimState] = useState('selected'); // idle, selected, inserting, playing, ejecting
   const [deckRankings, setDeckRankings] = useState([]);
   const [loadingRankings, setLoadingRankings] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
@@ -80,7 +80,7 @@ export default function GameDeck({ onNavigate }) {
   );
 
   const selectedGame = useMemo(
-    () => ARCADE_GAMES.find(g => g.id === selectedGameId) || ARCADE_GAMES[0],
+    () => (selectedGameId ? ARCADE_GAMES.find(g => g.id === selectedGameId) || null : null),
     [selectedGameId]
   );
 
@@ -91,6 +91,11 @@ export default function GameDeck({ onNavigate }) {
 
   // Fetch rankings for selected game
   useEffect(() => {
+    if (!selectedGame) {
+      setDeckRankings([]);
+      setLoadingRankings(false);
+      return;
+    }
     let cancelled = false;
     setLoadingRankings(true);
     fetch(`/api/platform/rankings?gameId=${encodeURIComponent(selectedGame.id)}&includePractice=true`, {
@@ -110,17 +115,17 @@ export default function GameDeck({ onNavigate }) {
     return () => {
       cancelled = true;
     };
-  }, [selectedGame.id]);
+  }, [selectedGame ? selectedGame.id : null]);
 
   // Handle case selection
   const handleSelectCase = async (gameId) => {
-    if (['opening', 'extracting', 'inserting', 'ejecting'].includes(animState)) {
+    if (['inserting', 'ejecting', 'booting'].includes(animState)) {
       return; // prevent race condition mid-animation
     }
 
     if (gameId === selectedGameId) return;
 
-    if (animState === 'playing' || animState === 'ready') {
+    if (animState === 'playing') {
       await handleEjectAndStop();
     }
 
@@ -128,36 +133,35 @@ export default function GameDeck({ onNavigate }) {
     setAnimState('selected');
   };
 
-  // Channel 3 Unified Boot Sequence: CRT power relay -> raster warmup -> iframe launch
-  // Completely eliminates the fragmented 2D slot-bezel and floating hole defect!
+  // Connected 3D Case Open -> Disc Extraction -> Arc Flight -> PS2 Tray Insert Sequence
   const handleInsertAndPlay = async () => {
-    if (['booting', 'playing', 'ejecting'].includes(animState)) return;
+    if (!selectedGame) return;
+    if (['booting', 'playing', 'ejecting', 'inserting'].includes(animState)) return;
 
-    setAnimState('booting');
+    setAnimState('inserting');
 
     if (soundEnabled) {
       playCrtSound('power-on');
-    }
-
-    if (consoleRef.current) {
-      await consoleRef.current.insertDisc(selectedGame);
-      await consoleRef.current.setPower(true);
     }
 
     const prefersReducedMotion =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (!prefersReducedMotion) {
-      await new Promise(r => setTimeout(r, 450));
+    if (consoleRef.current) {
+      if (prefersReducedMotion) {
+        await consoleRef.current.setPower(true);
+      } else {
+        await consoleRef.current.insertDisc(selectedGame);
+      }
     }
 
     setAnimState('playing');
   };
 
-  // Channel 3 Unified Power-Off Sequence: CRT beam collapse -> clean return to cartridge shelf
+  // Connected Eject Sequence: PS2 Tray Opens -> Disc Flies back to Case -> Case Snaps Shut
   const handleEjectAndStop = async () => {
-    if (['booting', 'ejecting'].includes(animState)) return;
+    if (['booting', 'ejecting', 'inserting'].includes(animState)) return;
 
     setAnimState('ejecting');
 
@@ -165,23 +169,22 @@ export default function GameDeck({ onNavigate }) {
       playCrtSound('power-off');
     }
 
-    if (consoleRef.current) {
-      await consoleRef.current.ejectDisc();
-      await consoleRef.current.setPower(false);
-    }
-
     const prefersReducedMotion =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (!prefersReducedMotion) {
-      await new Promise(r => setTimeout(r, 350));
+    if (consoleRef.current) {
+      if (prefersReducedMotion) {
+        await consoleRef.current.setPower(false);
+      } else {
+        await consoleRef.current.ejectDisc();
+      }
     }
 
     setAnimState('selected');
   };
 
-  const isPowerOn = animState === 'playing' || animState === 'booting' || animState === 'ready';
+  const isPowerOn = animState === 'playing' || animState === 'booting';
 
   return (
     <div className="gb-deck-shell">
@@ -198,7 +201,7 @@ export default function GameDeck({ onNavigate }) {
           <span className="gb-subbar-divider">|</span>
           <strong className="gb-subbar-title">GAME DECK — ARCADE 20 COLLECTION</strong>
           <span className="gb-subbar-hint">
-            3D 입체 게임팩을 선택하고 콘솔 트레이에 디스크를 장착하여 게임을 실행하세요.
+            왼쪽 진열대에서 CD 케이스를 선택하고 PLAY를 누르면 3D 케이스가 개방되어 PS2 콘솔 트레이로 디스크가 장착됩니다.
           </span>
         </div>
         <div className="gb-subbar-actions">
@@ -273,7 +276,7 @@ export default function GameDeck({ onNavigate }) {
           {/* 3D Case Shelf Container */}
           <div className="gb-3d-shelf-container" data-sanso-stage="big">
             {visibleGames.map(game => {
-              const isSelected = game.id === selectedGame.id;
+              const isSelected = selectedGame && game.id === selectedGame.id;
               return (
                 <div key={game.id} className="gb-shelf-item-wrap">
                   <GameCaseCard
@@ -302,28 +305,28 @@ export default function GameDeck({ onNavigate }) {
               <div className="gb-console-led-group">
                 <span className={`gb-console-led ${isPowerOn ? 'on' : 'standby'}`} />
                 <span className="gb-console-model">
-                  TOOL-BOX ARCADE DECK // {selectedGame.discLabel}
+                  TOOL-BOX ARCADE DECK // {selectedGame ? selectedGame.discLabel : 'PS2 SYSTEM STANDBY'}
                 </span>
               </div>
               <div className="gb-console-state-badge">
-                상태: <strong>{animState.toUpperCase()}</strong>
+                상태: <strong>{animState === 'selected' && !selectedGame ? 'STANDBY' : animState.toUpperCase()}</strong>
               </div>
               <div className="gb-console-slot-status">
                 {animState === 'playing'
                   ? 'DISC INSERTED · RUNNING'
                   : animState === 'inserting'
-                  ? 'INSERTING DISC...'
+                  ? '3D CASE OPENING & INSERTING DISC...'
                   : animState === 'ejecting'
-                  ? 'EJECTING DISC...'
-                  : animState === 'booting'
-                  ? 'BOOTING ARCADE MATRIX...'
+                  ? 'EJECTING DISC TO 3D CASE...'
+                  : !selectedGame
+                  ? 'WAITING FOR GAME SELECTION'
                   : 'READY TO INSERT PACK'}
               </div>
             </div>
 
             {/* Main Stage: Interactive Screen vs 3D Console Engine */}
             <div className="gb-console-screen" ref={consoleContainerRef}>
-              {animState === 'playing' ? (
+              {animState === 'playing' && selectedGame ? (
                 <GameLauncher
                   title={selectedGame.name}
                   src={selectedGame.launchUrl}
@@ -341,39 +344,54 @@ export default function GameDeck({ onNavigate }) {
                   {/* Overlaid Console Interaction Deck */}
                   <div className="gb-console-overlay-panel">
                     <div className="gb-console-preview-card">
-                      <span className="gb-preview-kicker">
-                        {selectedGame.genre} · {selectedGame.playersLabel} · {selectedGame.discLabel}
-                      </span>
-                      <h3>{selectedGame.name}</h3>
-                      <p>{selectedGame.description}</p>
+                      {selectedGame ? (
+                        <>
+                          <span className="gb-preview-kicker">
+                            {selectedGame.genre} · {selectedGame.playersLabel} · {selectedGame.discLabel}
+                          </span>
+                          <h3>{selectedGame.name}</h3>
+                          <p>{selectedGame.description}</p>
 
-                      <div className="gb-console-action-row">
-                        <button
-                          type="button"
-                          className="gb-btn-insert-play"
-                          onClick={handleInsertAndPlay}
-                          disabled={['opening', 'extracting', 'inserting', 'ejecting'].includes(animState)}
-                        >
-                          ▶ PLAY (3D 디스크 트레이 삽입 및 콘솔 구동)
-                        </button>
-                        {animState === 'ready' && (
-                          <button
-                            type="button"
-                            className="gb-btn-eject-deck"
-                            onClick={handleEjectAndStop}
-                          >
-                            ⏏ 디스크 배출
-                          </button>
-                        )}
-                        <a
-                          href={selectedGame.multiplayerUrl || selectedGame.launchUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="gb-btn-standalone"
-                        >
-                          ↗ 독립 창으로 열기
-                        </a>
-                      </div>
+                          <div className="gb-console-action-row">
+                            <button
+                              type="button"
+                              className="gb-btn-insert-play"
+                              onClick={handleInsertAndPlay}
+                              disabled={['inserting', 'ejecting', 'booting'].includes(animState)}
+                            >
+                              ▶ PLAY (3D 케이스 개방 및 PS2 디스크 삽입)
+                            </button>
+                            <a
+                              href={selectedGame.multiplayerUrl || selectedGame.launchUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="gb-btn-standalone"
+                            >
+                              ↗ 독립 창으로 열기
+                            </a>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <span className="gb-preview-kicker">
+                            ARCADE 20 COLLECTION · SELECTION MODE
+                          </span>
+                          <h3>게임 CD 케이스를 선택하세요</h3>
+                          <p>
+                            왼쪽 진열대에서 원하는 게임 CD 케이스를 클릭하면 3D 물리 케이스가 로딩되고 콘솔 트레이 삽입 준비가 완료됩니다.
+                          </p>
+                          <div className="gb-console-action-row">
+                            <button
+                              type="button"
+                              className="gb-btn-insert-play"
+                              disabled
+                              style={{ opacity: 0.6, cursor: 'not-allowed' }}
+                            >
+                              CD 케이스를 먼저 선택해주세요
+                            </button>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -389,65 +407,77 @@ export default function GameDeck({ onNavigate }) {
             <span className="gb-deck-badge">TOP 10</span>
           </div>
 
-          <div className="gb-deck-spec-card">
-            <div className="gb-spec-row">
-              <span>게임명</span>
-              <strong>{selectedGame.name}</strong>
-            </div>
-            <div className="gb-spec-row">
-              <span>디스크 식별자</span>
-              <code>{selectedGame.discLabel}</code>
-            </div>
-            <div className="gb-spec-row">
-              <span>플레이 인원</span>
-              <strong>{selectedGame.playersLabel}</strong>
-            </div>
-            <div className="gb-spec-row">
-              <span>화면 비율 / 입력</span>
-              <strong>{selectedGame.aspectRatio} · {selectedGame.inputDevices.join(', ')}</strong>
-            </div>
-            <div className="gb-spec-row">
-              <span>실행 URL</span>
-              <code>{selectedGame.launchUrl}</code>
-            </div>
-            <div className="gb-spec-row">
-              <span>기록 연동</span>
-              <span>{selectedGame.eventSupport}</span>
-            </div>
-          </div>
-
-          <div className="gb-deck-ranking-box">
-            <h3>🏆 {selectedGame.name} TOP 10</h3>
-            {loadingRankings ? (
-              <div className="gb-deck-empty">랭킹 데이터를 불러오는 중...</div>
-            ) : deckRankings.length === 0 ? (
-              <div className="gb-deck-empty">
-                아직 이 게임의 대전 완료 기록이 없습니다.<br />
-                게임을 플레이하면 순위가 집계됩니다.
+          {selectedGame ? (
+            <>
+              <div className="gb-deck-spec-card">
+                <div className="gb-spec-row">
+                  <span>게임명</span>
+                  <strong>{selectedGame.name}</strong>
+                </div>
+                <div className="gb-spec-row">
+                  <span>디스크 식별자</span>
+                  <code>{selectedGame.discLabel}</code>
+                </div>
+                <div className="gb-spec-row">
+                  <span>플레이 인원</span>
+                  <strong>{selectedGame.playersLabel}</strong>
+                </div>
+                <div className="gb-spec-row">
+                  <span>화면 비율 / 입력</span>
+                  <strong>{selectedGame.aspectRatio} · {selectedGame.inputDevices.join(', ')}</strong>
+                </div>
+                <div className="gb-spec-row">
+                  <span>실행 URL</span>
+                  <code>{selectedGame.launchUrl}</code>
+                </div>
+                <div className="gb-spec-row">
+                  <span>기록 연동</span>
+                  <span>{selectedGame.eventSupport}</span>
+                </div>
               </div>
-            ) : (
-              <table className="gb-deck-table">
-                <thead>
-                  <tr>
-                    <th>순위</th>
-                    <th>플레이어</th>
-                    <th>승/패</th>
-                    <th>최고점</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {deckRankings.map((row, idx) => (
-                    <tr key={row.userId || idx}>
-                      <td>#{idx + 1}</td>
-                      <td>{row.name}</td>
-                      <td>{row.wins}승 {row.losses}패</td>
-                      <td>{Math.round(row.bestScore || 0).toLocaleString()}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </div>
+
+              <div className="gb-deck-ranking-box">
+                <h3>🏆 {selectedGame.name} TOP 10</h3>
+                {loadingRankings ? (
+                  <div className="gb-deck-empty">랭킹 데이터를 불러오는 중...</div>
+                ) : deckRankings.length === 0 ? (
+                  <div className="gb-deck-empty">
+                    아직 이 게임의 대전 완료 기록이 없습니다.<br />
+                    게임을 플레이하면 순위가 집계됩니다.
+                  </div>
+                ) : (
+                  <table className="gb-deck-table">
+                    <thead>
+                      <tr>
+                        <th>순위</th>
+                        <th>플레이어</th>
+                        <th>승/패</th>
+                        <th>최고점</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {deckRankings.map((row, idx) => (
+                        <tr key={row.userId || idx}>
+                          <td>#{idx + 1}</td>
+                          <td>{row.name}</td>
+                          <td>{row.wins}승 {row.losses}패</td>
+                          <td>{Math.round(row.bestScore || 0).toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="gb-deck-ranking-box">
+              <h3>🏆 실시간 랭킹 &amp; 사양</h3>
+              <div className="gb-deck-empty" style={{ padding: '36px 16px', lineHeight: 1.7 }}>
+                왼쪽 진열대에서 원하는 <strong>게임 CD 케이스</strong>를 선택하면<br />
+                해당 게임의 공식 사양 정보와 실시간 TOP 10 랭킹이 표시됩니다.
+              </div>
+            </div>
+          )}
         </aside>
       </div>
     </div>

@@ -395,6 +395,85 @@ function drawDiscUnderside(g, S) {
   g.fill();
 }
 
+function drawCaseCover(g, W, H, game) {
+  const baseCol = game.caseColor || '#2563eb';
+  // Outer background
+  g.fillStyle = '#0f131a';
+  g.fillRect(0, 0, W, H);
+
+  // Top header banner (DVD/PS2 style header)
+  g.fillStyle = '#000000';
+  g.fillRect(0, 0, W, H * 0.12);
+  g.fillStyle = '#ffffff';
+  g.font = `900 ${W * 0.055}px ${SANS}`;
+  g.textAlign = 'left';
+  g.textBaseline = 'middle';
+  g.fillText('GAME DECK', W * 0.08, H * 0.06);
+
+  // Format badge
+  g.fillStyle = '#38bdf8';
+  g.font = `700 ${W * 0.038}px monospace`;
+  g.textAlign = 'right';
+  g.fillText('PAL / NTSC', W * 0.92, H * 0.06);
+
+  // Cover main artwork panel
+  const artY = H * 0.12;
+  const artH = H * 0.72;
+  const artGrd = g.createLinearGradient(0, artY, W, artY + artH);
+  artGrd.addColorStop(0, '#ffffff');
+  artGrd.addColorStop(0.18, baseCol);
+  artGrd.addColorStop(1, '#090d16');
+  g.fillStyle = artGrd;
+  g.fillRect(0, artY, W, artH);
+
+  // Decorative circles in artwork
+  g.strokeStyle = 'rgba(255,255,255,0.12)';
+  g.lineWidth = 2;
+  for (let r = W * 0.2; r < W * 0.9; r += W * 0.18) {
+    g.beginPath();
+    g.arc(W / 2, artY + artH * 0.45, r, 0, Math.PI * 2);
+    g.stroke();
+  }
+
+  // Title
+  g.textAlign = 'center';
+  g.textBaseline = 'middle';
+  g.fillStyle = '#ffffff';
+  g.shadowColor = 'rgba(0,0,0,0.85)';
+  g.shadowBlur = 14;
+  g.font = `900 ${W * 0.085}px ${SANS}`;
+
+  const title = String(game.name || 'ARCADE GAME');
+  g.fillText(title, W / 2, artY + artH * 0.42);
+
+  // Subtitle / genre
+  g.shadowBlur = 4;
+  g.font = `700 ${W * 0.045}px ${SANS}`;
+  g.fillStyle = '#cbd5e1';
+  g.fillText(game.subtitle || game.genre || 'ARCADE CLASSIC', W / 2, artY + artH * 0.55);
+
+  // Disc Label badge
+  g.shadowBlur = 0;
+  g.fillStyle = 'rgba(0,0,0,0.6)';
+  const badgeW = W * 0.45, badgeH = H * 0.045;
+  g.fillRect((W - badgeW) / 2, artY + artH * 0.73, badgeW, badgeH);
+  g.strokeStyle = 'rgba(255,255,255,0.4)';
+  g.strokeRect((W - badgeW) / 2, artY + artH * 0.73, badgeW, badgeH);
+  g.font = `700 ${W * 0.038}px monospace`;
+  g.fillStyle = '#38bdf8';
+  g.fillText(game.discLabel || 'ARC-001', W / 2, artY + artH * 0.73 + badgeH / 2);
+
+  // Bottom bar
+  g.fillStyle = '#080a0f';
+  g.fillRect(0, H * 0.84, W, H * 0.16);
+  g.fillStyle = '#94a3b8';
+  g.font = `600 ${W * 0.034}px ${SANS}`;
+  g.textAlign = 'left';
+  g.fillText(game.playersLabel || '1~2 PLAYERS', W * 0.08, H * 0.92);
+  g.textAlign = 'right';
+  g.fillText('TOOL-BOX STUDIO', W * 0.92, H * 0.92);
+}
+
 function disposeObject(root) {
   if (!root) return;
   root.traverse((o) => {
@@ -754,8 +833,99 @@ export function createGameDeckConsoleScene(container, opts = {}) {
 
     g.add(topMesh, bottomMesh, edgeMesh);
     g.traverse((o) => { if (o.isMesh) o.castShadow = true; });
-    g.userData.setOpacity = (a) => g.traverse((o) => { if (o.isMesh) o.material.opacity = a; });
+    g.userData.setOpacity = (a) => g.traverse((o) => { if (o.isMesh && o.material) o.material.opacity = a; });
     return g;
+  }
+
+  // 3D CD Case Geometry & Construction
+  const CASE_W = 0.134; // 134 mm width
+  const CASE_H = 0.190; // 190 mm height
+  const CASE_D = 0.013; // 13 mm thickness
+
+  function make3DCase(game) {
+    const group = new THREE.Group();
+
+    // 1. Back Body / Tray Plastic Shell
+    const backGeom = new RoundedBoxGeometry(CASE_W, CASE_H, CASE_D * 0.45, 1, 0.003);
+    const bodyMat = new THREE.MeshPhysicalMaterial({
+      color: '#13161c',
+      roughness: 0.28,
+      metalness: 0.1,
+      clearcoat: 0.5,
+      clearcoatRoughness: 0.2,
+      transparent: true,
+      opacity: 0.96,
+    });
+    const backMesh = new THREE.Mesh(backGeom, bodyMat);
+    backMesh.position.set(0, 0, -CASE_D * 0.22);
+    backMesh.castShadow = true;
+    group.add(backMesh);
+
+    // 2. Tray Hub / Spindle (inside the case where disc clicks in)
+    const hubGeom = new THREE.CylinderGeometry(0.012, 0.014, 0.005, 32);
+    const hubMat = new THREE.MeshStandardMaterial({
+      color: '#1a1f29',
+      roughness: 0.4,
+      metalness: 0.2,
+      transparent: true,
+    });
+    const hubMesh = new THREE.Mesh(hubGeom, hubMat);
+    hubMesh.rotation.x = Math.PI / 2;
+    hubMesh.position.set(0, 0, 0.001);
+    group.add(hubMesh);
+
+    const toothGeom = new THREE.CylinderGeometry(0.007, 0.007, 0.008, 16);
+    const toothMat = new THREE.MeshStandardMaterial({ color: '#2b313e', roughness: 0.5, transparent: true });
+    const toothMesh = new THREE.Mesh(toothGeom, toothMat);
+    toothMesh.rotation.x = Math.PI / 2;
+    toothMesh.position.set(0, 0, 0.003);
+    group.add(toothMesh);
+
+    // 3. Front Cover Pivot & Hinged Front Cover
+    // The spine hinge is along the left edge: x = -CASE_W / 2
+    const coverPivot = new THREE.Group();
+    coverPivot.position.set(-CASE_W / 2, 0, CASE_D * 0.22);
+    group.add(coverPivot);
+
+    // Front Cover Texture
+    const coverTex = canvasTex(768, 1024, (g, w, h) => drawCaseCover(g, 768, 1024, game));
+    textures.splice(textures.indexOf(coverTex), 1);
+
+    const frontGeom = new RoundedBoxGeometry(CASE_W, CASE_H, 0.002, 1, 0.002);
+    const frontMat = new THREE.MeshPhysicalMaterial({
+      map: coverTex,
+      roughness: 0.2,
+      clearcoat: 0.7,
+      clearcoatRoughness: 0.15,
+      transparent: true,
+      opacity: 0.98,
+    });
+    const frontMesh = new THREE.Mesh(frontGeom, frontMat);
+    frontMesh.position.set(CASE_W / 2, 0, 0);
+    frontMesh.castShadow = true;
+    coverPivot.add(frontMesh);
+
+    const setOpacity = (alpha) => {
+      group.traverse((o) => {
+        if (o.isMesh && o.material) {
+          o.material.transparent = true;
+          o.material.opacity = alpha;
+        }
+      });
+    };
+
+    const getSpindleWorld = () => {
+      const v = new THREE.Vector3(0, 0, 0.004);
+      group.localToWorld(v);
+      return v;
+    };
+
+    return {
+      group,
+      coverPivot,
+      setOpacity,
+      getSpindleWorld,
+    };
   }
 
   // Animation methods
@@ -794,67 +964,197 @@ export function createGameDeckConsoleScene(container, opts = {}) {
   let queue = Promise.resolve();
   const serial = (fn) => (...args) => (queue = queue.then(() => fn(...args), () => fn(...args)));
 
+  let activeCase = null;
+
   async function doEject() {
     if (!disc) return;
     const d = disc;
+    const game = d.userData.game;
+
     blinkEject(1700);
     setLed(LED_OFF, 600);
-    await moveTray(true);
+
+    // 1. PS2 tray opens
+    await moveTray(true, 850);
+
+    // 2. Re-create 3D case and open it
+    const caseObj = make3DCase(game || {});
+    activeCase = caseObj;
+    scene.add(caseObj.group);
+
+    const caseTargetPos = new THREE.Vector3(-0.11, 0.15, 0.04);
+    const caseTargetRot = new THREE.Euler(0.22, 0.38, -0.06);
+    caseObj.group.position.copy(caseTargetPos);
+    caseObj.group.rotation.copy(caseTargetRot);
+    caseObj.setOpacity(0);
+    caseObj.coverPivot.rotation.y = 0;
+
+    // Fade in case and open cover
+    await tween(500, (t) => {
+      const p = ease.out(t);
+      caseObj.setOpacity(p);
+      caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * p;
+    });
 
     scene.attach(d);
     d.traverse((o) => { if (o.isMesh) o.castShadow = false; });
-    const p0 = d.position.clone();
-    const p1 = camera.position.clone().lerp(p0, 0.55).add(new THREE.Vector3(0, 0.08, 0));
-    const r0 = d.rotation.clone();
 
-    await tween(850, (t) => {
-      d.position.lerpVectors(p0, p1, t);
-      d.rotation.set(r0.x + t * 0.9, r0.y + t * 2.5, r0.z + t * 0.3);
-      d.userData.setOpacity(1 - ease.in(t));
-    }, ease.inOut);
+    const arcStart = d.position.clone();
+    const spindleWorld = caseObj.getSpindleWorld();
+    const arcMid = new THREE.Vector3(
+      (arcStart.x + spindleWorld.x) * 0.5,
+      Math.max(arcStart.y, spindleWorld.y) + 0.07,
+      (arcStart.z + spindleWorld.z) * 0.5
+    );
+    const startRot = d.rotation.clone();
+    const endRot = caseTargetRot.clone();
 
-    disposeObject(d);
-    scene.remove(d);
-    disc = null;
-    await moveTray(false);
+    // 3. Reverse flight arc from tray back into 3D case!
+    await tween(1000, (t) => {
+      const p = ease.inOut(t);
+      const u = 1 - p;
+      d.position.x = u * u * arcStart.x + 2 * u * p * arcMid.x + p * p * spindleWorld.x;
+      d.position.y = u * u * arcStart.y + 2 * u * p * arcMid.y + p * p * spindleWorld.y;
+      d.position.z = u * u * arcStart.z + 2 * u * p * arcMid.z + p * p * spindleWorld.z;
+
+      d.rotation.x = THREE.MathUtils.lerp(startRot.x, endRot.x, p);
+      d.rotation.y = THREE.MathUtils.lerp(startRot.y, endRot.y - Math.PI * 4, p);
+      d.rotation.z = THREE.MathUtils.lerp(startRot.z, endRot.z, p);
+    });
+
+    d.position.copy(spindleWorld);
+    d.rotation.copy(endRot);
+
+    // 4. Snap case shut & fade out
+    const closeCasePromise = tween(500, (t) => {
+      const p = ease.inOut(t);
+      caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * (1 - p);
+      caseObj.setOpacity(1 - p);
+      d.userData.setOpacity(1 - p);
+    }).then(() => {
+      disposeObject(caseObj.group);
+      scene.remove(caseObj.group);
+      if (activeCase === caseObj) activeCase = null;
+      disposeObject(d);
+      scene.remove(d);
+      disc = null;
+    });
+
+    // PS2 tray closes empty
+    const trayClosePromise = moveTray(false, 850);
+
+    await Promise.all([closeCasePromise, trayClosePromise]);
   }
 
   async function doInsert(game) {
     if (disc) await doEject();
+
+    // 1. Create 3D Case with game cover
+    const caseObj = make3DCase(game);
+    activeCase = caseObj;
+    scene.add(caseObj.group);
+
+    // 2. Create Disc with game cover
     const d = makeDisc(game);
     disc = d;
     d.userData.game = game;
     scene.add(d);
 
+    // Position Case in 3D scene: upper-left, tilted gracefully towards camera
+    const caseStartPos = new THREE.Vector3(-0.11, 0.15, 0.04);
+    const caseStartRot = new THREE.Euler(0.22, 0.38, -0.06);
+    caseObj.group.position.copy(caseStartPos);
+    caseObj.group.rotation.copy(caseStartRot);
+    caseObj.setOpacity(0);
+
+    // Disc starts seated inside the case on the spindle
+    const spindleWorld = caseObj.getSpindleWorld();
+    d.position.copy(spindleWorld);
+    d.rotation.copy(caseStartRot);
+    d.userData.setOpacity(0);
+
+    // STEP 1: Case glides into view (fade in & hover) - 450ms
+    await tween(450, (t) => {
+      const p = ease.out(t);
+      caseObj.setOpacity(p);
+      d.userData.setOpacity(p);
+      caseObj.group.position.y = caseStartPos.y + Math.sin(Math.PI * p) * 0.01;
+    });
+
+    // STEP 2: Case swings open (-158 deg) - 650ms
+    // While case opens, PS2 console tray starts motor opening!
+    blinkEject(1600);
+    const trayOpenPromise = moveTray(true, 850);
+
+    await tween(650, (t) => {
+      const p = ease.inOut(t);
+      caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * p;
+    });
+
+    // STEP 3: Disc lifts out of case spindle (4cm forward) - 400ms
+    const spindleNow = caseObj.getSpindleWorld();
+    const liftPos = spindleNow.clone().add(new THREE.Vector3(0.01, 0.05, 0.035));
+    await tween(400, (t) => {
+      const p = ease.out(t);
+      d.position.lerpVectors(spindleNow, liftPos, p);
+      d.rotation.z = caseStartRot.z + 0.06 * Math.sin(Math.PI * p);
+    });
+
+    // Wait for PS2 tray to complete opening
+    await trayOpenPromise;
+
+    // Exact seat position on the open PS2 tray
     const seatWorld = seatLocal.clone();
     seatWorld.z += trayOpenPos();
     seatWorld.x += TRAY_X;
     consoleGroup.localToWorld(seatWorld);
 
-    const start = camera.position.clone().lerp(seatWorld, 0.5).add(new THREE.Vector3(0, 0.12, 0));
-    d.position.copy(start);
-    d.userData.setOpacity(0);
+    // STEP 4: Flight Arc - 3D Bezier curve from case into PS2 tray! (1100ms)
+    const arcStart = d.position.clone();
+    const arcMid = new THREE.Vector3(
+      (arcStart.x + seatWorld.x) * 0.5,
+      Math.max(arcStart.y, seatWorld.y) + 0.065,
+      (arcStart.z + seatWorld.z) * 0.5
+    );
+    const startRot = d.rotation.clone();
+    const endRot = new THREE.Euler(0, 0, 0);
 
-    blinkEject(1100);
-    const trayP = moveTray(true, 800);
-    const camP = nudgeCamera(2600, 0.06);
+    await tween(1100, (t) => {
+      const p = ease.inOut(t);
+      const u = 1 - p;
+      // Quadratic Bezier curve
+      d.position.x = u * u * arcStart.x + 2 * u * p * arcMid.x + p * p * seatWorld.x;
+      d.position.y = u * u * arcStart.y + 2 * u * p * arcMid.y + p * p * seatWorld.y;
+      d.position.z = u * u * arcStart.z + 2 * u * p * arcMid.z + p * p * seatWorld.z;
 
-    await tween(1300, (t) => {
-      const p = ease.out(t);
-      d.position.lerpVectors(start, seatWorld, p);
-      d.position.y += Math.sin(Math.PI * p) * 0.03;
-      const tilt = (1 - p) * 0.9;
-      d.rotation.set(tilt, (1 - p) * Math.PI * 2.2, -tilt * 0.4);
-      d.userData.setOpacity(Math.min(1, t * 3));
-    }, (t) => t);
+      // Rotate: complete 2 full spins while leveling into the flat tray plane
+      d.rotation.x = THREE.MathUtils.lerp(startRot.x, endRot.x, p);
+      d.rotation.y = THREE.MathUtils.lerp(startRot.y, endRot.y + Math.PI * 4, p);
+      d.rotation.z = THREE.MathUtils.lerp(startRot.z, endRot.z, p);
+    });
 
-    await trayP;
-    await tween(180, (t) => { d.position.y = seatWorld.y + Math.sin(Math.PI * t) * 0.002; }, (t) => t);
+    // STEP 5: Soft touchdown onto spindle
+    d.position.copy(seatWorld);
+    d.rotation.set(0, 0, 0);
     d.userData.setOpacity(1);
     tray.attach(d);
 
-    await moveTray(false, 850);
-    await Promise.all([setLed(LED_ON, 600), camP]);
+    // Case cover closes and fades out
+    const closeCasePromise = tween(500, (t) => {
+      const p = ease.inOut(t);
+      caseObj.coverPivot.rotation.y = -Math.PI * 0.88 * (1 - p);
+      caseObj.setOpacity(1 - p);
+    }).then(() => {
+      disposeObject(caseObj.group);
+      scene.remove(caseObj.group);
+      if (activeCase === caseObj) activeCase = null;
+    });
+
+    // PS2 tray closes, pulling disc into console body!
+    const trayClosePromise = moveTray(false, 850);
+
+    await Promise.all([closeCasePromise, trayClosePromise]);
+    await setLed(LED_ON, 600);
   }
 
   const api = {
