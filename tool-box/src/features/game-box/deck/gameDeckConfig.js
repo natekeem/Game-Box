@@ -7,6 +7,23 @@ export const GAME_DECK_CATEGORIES = Object.freeze([
   { id: 'BATTLEBOX', label: 'BATTLEBOX COLLECTION (15)' },
 ]);
 
+export const SINGLE_BASE_ENGINE = Object.freeze({
+  name: 'Channel 3 CRT TV & Retro Cartridge Architecture',
+  repo: 'dau-in/channel-3',
+  license: 'AGPL-3.0',
+  commit: 'ab85fff7bcb97b69f9fb90c531cb357ba517e4c9',
+  copyright: 'Copyright (c) 2024-2026, dau-in',
+  subLicenses: {
+    silkscreenFont: 'OFL-1.1',
+    nesCss: 'MIT',
+    peerjs: 'MIT',
+    jsnes: 'MIT / GPL-2.0',
+  },
+  unmodifiedLabEndpoint: '/game-box/deck-lab-single/',
+  vendorLocation: 'vendor/channel-3/dist/',
+  adoptionScope: '단일 TV 콘솔 프레임 및 브라운관(CRT) 래스터/글로우 파이프라인, 카트리지 거치 및 랙 시스템, 전원 릴레이/부트 시퀀스, 통합 iframe 런타임 호스팅',
+});
+
 export const PORTED_3D_ENGINES = Object.freeze([
   {
     name: 'PS2 Web 3D Console Engine',

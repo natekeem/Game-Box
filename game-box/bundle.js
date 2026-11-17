@@ -1907,6 +1907,22 @@ var ToolBoxGameBox = (() => {
     { id: "PARTY", label: "ROULETTE & PARTY (2)" },
     { id: "BATTLEBOX", label: "BATTLEBOX COLLECTION (15)" }
   ]);
+  var SINGLE_BASE_ENGINE = Object.freeze({
+    name: "Channel 3 CRT TV & Retro Cartridge Architecture",
+    repo: "dau-in/channel-3",
+    license: "AGPL-3.0",
+    commit: "ab85fff7bcb97b69f9fb90c531cb357ba517e4c9",
+    copyright: "Copyright (c) 2024-2026, dau-in",
+    subLicenses: {
+      silkscreenFont: "OFL-1.1",
+      nesCss: "MIT",
+      peerjs: "MIT",
+      jsnes: "MIT / GPL-2.0"
+    },
+    unmodifiedLabEndpoint: "/game-box/deck-lab-single/",
+    vendorLocation: "vendor/channel-3/dist/",
+    adoptionScope: "\uB2E8\uC77C TV \uCF58\uC194 \uD504\uB808\uC784 \uBC0F \uBE0C\uB77C\uC6B4\uAD00(CRT) \uB798\uC2A4\uD130/\uAE00\uB85C\uC6B0 \uD30C\uC774\uD504\uB77C\uC778, \uCE74\uD2B8\uB9AC\uC9C0 \uAC70\uCE58 \uBC0F \uB799 \uC2DC\uC2A4\uD15C, \uC804\uC6D0 \uB9B4\uB808\uC774/\uBD80\uD2B8 \uC2DC\uD000\uC2A4, \uD1B5\uD569 iframe \uB7F0\uD0C0\uC784 \uD638\uC2A4\uD305"
+  });
   var PORTED_3D_ENGINES = Object.freeze([
     {
       name: "PS2 Web 3D Console Engine",
@@ -33747,6 +33763,58 @@ void main() {
   var ConsoleView3D_default = ConsoleView3D;
 
   // tool-box/src/features/game-box/deck/GameDeck.js
+  function playCrtSound(type = "power-on") {
+    if (typeof window === "undefined") return;
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const t3 = ctx.currentTime;
+      if (type === "power-on") {
+        const click = ctx.createOscillator();
+        const clickGain = ctx.createGain();
+        click.type = "triangle";
+        click.frequency.setValueAtTime(1200, t3);
+        click.frequency.exponentialRampToValueAtTime(120, t3 + 0.03);
+        clickGain.gain.setValueAtTime(0.3, t3);
+        clickGain.gain.exponentialRampToValueAtTime(1e-3, t3 + 0.035);
+        click.connect(clickGain);
+        clickGain.connect(ctx.destination);
+        click.start(t3);
+        click.stop(t3 + 0.04);
+        const hum = ctx.createOscillator();
+        const humGain = ctx.createGain();
+        hum.type = "sine";
+        hum.frequency.setValueAtTime(180, t3 + 0.02);
+        hum.frequency.exponentialRampToValueAtTime(60, t3 + 0.35);
+        humGain.gain.setValueAtTime(0.2, t3 + 0.02);
+        humGain.gain.exponentialRampToValueAtTime(1e-3, t3 + 0.38);
+        hum.connect(humGain);
+        humGain.connect(ctx.destination);
+        hum.start(t3 + 0.02);
+        hum.stop(t3 + 0.4);
+      } else {
+        const click = ctx.createOscillator();
+        const clickGain = ctx.createGain();
+        click.type = "square";
+        click.frequency.setValueAtTime(800, t3);
+        click.frequency.exponentialRampToValueAtTime(80, t3 + 0.04);
+        clickGain.gain.setValueAtTime(0.25, t3);
+        clickGain.gain.exponentialRampToValueAtTime(1e-3, t3 + 0.045);
+        click.connect(clickGain);
+        clickGain.connect(ctx.destination);
+        click.start(t3);
+        click.stop(t3 + 0.05);
+      }
+      setTimeout(() => {
+        try {
+          ctx.close();
+        } catch {
+        }
+      }, 600);
+    } catch {
+    }
+  }
   function GameDeck({ onNavigate }) {
     const [selectedCategory, setSelectedCategory] = d2("all");
     const [searchQuery, setSearchQuery] = d2("");
@@ -33798,94 +33866,35 @@ void main() {
       setAnimState("selected");
     };
     const handleInsertAndPlay = async () => {
-      if (["opening", "extracting", "inserting", "ejecting"].includes(animState)) return;
-      setAnimState("opening");
-      const prefersReducedMotion = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (prefersReducedMotion) {
-        if (consoleRef.current) {
-          await consoleRef.current.insertDisc(selectedGame);
-          await consoleRef.current.setPower(true);
-        }
-        setAnimState("playing");
-        return;
+      if (["booting", "playing", "ejecting"].includes(animState)) return;
+      setAnimState("booting");
+      if (soundEnabled) {
+        playCrtSound("power-on");
       }
-      const selectedCaseEl = document.querySelector(`[data-game-id="${selectedGame.id}"]`);
-      const rect = selectedCaseEl ? selectedCaseEl.getBoundingClientRect() : null;
-      const consoleRect = consoleContainerRef.current ? consoleContainerRef.current.getBoundingClientRect() : null;
-      const look = lookFor(selectedGame);
-      const art = generateArcadeCoverSvg(selectedGame);
       if (consoleRef.current) {
-        consoleRef.current.openTray();
+        await consoleRef.current.insertDisc(selectedGame);
+        await consoleRef.current.setPower(true);
       }
-      await runInsert(
-        document,
-        { rect, art, look },
-        "console",
-        soundEnabled,
-        {
-          slotRect: consoleRect ? {
-            left: consoleRect.left + consoleRect.width * 0.45,
-            top: consoleRect.top + consoleRect.height * 0.5,
-            width: 80,
-            height: 20
-          } : null,
-          onStateChange: async (step) => {
-            if (step === "disc-inserting") {
-              setAnimState("inserting");
-              if (consoleRef.current) {
-                await consoleRef.current.insertDisc(selectedGame);
-              }
-            } else if (step === "disc-inserted") {
-              setAnimState("booting");
-              if (consoleRef.current) {
-                await consoleRef.current.setPower(true);
-              }
-            }
-          }
-        }
-      );
+      const prefersReducedMotion = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!prefersReducedMotion) {
+        await new Promise((r3) => setTimeout(r3, 450));
+      }
       setAnimState("playing");
     };
     const handleEjectAndStop = async () => {
-      if (["opening", "extracting", "inserting", "ejecting"].includes(animState)) return;
+      if (["booting", "ejecting"].includes(animState)) return;
       setAnimState("ejecting");
-      const prefersReducedMotion = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (prefersReducedMotion) {
-        if (consoleRef.current) {
-          await consoleRef.current.ejectDisc();
-          await consoleRef.current.setPower(false);
-        }
-        setAnimState("selected");
-        return;
+      if (soundEnabled) {
+        playCrtSound("power-off");
       }
-      const selectedCaseEl = document.querySelector(`[data-game-id="${selectedGame.id}"]`);
-      const rect = selectedCaseEl ? selectedCaseEl.getBoundingClientRect() : null;
-      const consoleRect = consoleContainerRef.current ? consoleContainerRef.current.getBoundingClientRect() : null;
-      const look = lookFor(selectedGame);
-      const art = generateArcadeCoverSvg(selectedGame);
       if (consoleRef.current) {
-        consoleRef.current.ejectDisc();
+        await consoleRef.current.ejectDisc();
+        await consoleRef.current.setPower(false);
       }
-      await runInsert(
-        document,
-        { rect, art, look },
-        "console",
-        soundEnabled,
-        {
-          eject: true,
-          slotRect: consoleRect ? {
-            left: consoleRect.left + consoleRect.width * 0.45,
-            top: consoleRect.top + consoleRect.height * 0.5,
-            width: 80,
-            height: 20
-          } : null,
-          onStateChange: (step) => {
-            if (step === "disc-returned") {
-              setAnimState("returning");
-            }
-          }
-        }
-      );
+      const prefersReducedMotion = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!prefersReducedMotion) {
+        await new Promise((r3) => setTimeout(r3, 350));
+      }
       setAnimState("selected");
     };
     const isPowerOn = animState === "playing" || animState === "booting" || animState === "ready";
@@ -33914,6 +33923,20 @@ void main() {
               onClick: () => setSoundEnabled(!soundEnabled),
               title: "\uD6A8\uACFC\uC74C \uCF1C\uAE30 / \uB044\uAE30",
               children: soundEnabled ? "\u{1F50A} SFX ON" : "\u{1F507} MUTE"
+            }
+          ),
+          /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "gb-subbar-btn",
+              onClick: () => {
+                if (typeof window !== "undefined") {
+                  window.location.href = "/game-box/deck-lab-single/";
+                }
+              },
+              title: "Channel 3 \uB2E8\uC77C \uC624\uD508\uC18C\uC2A4 \uC6D0\uBCF8 \uB3C5\uB9BD \uC2E4\uD589\uC2E4",
+              children: "\u{1F4FA} SINGLE LAB (Channel 3)"
             }
           ),
           /* @__PURE__ */ u3(

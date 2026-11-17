@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Channel 3: where the NES used to live</title>
+    <link rel="icon" href="./icons/bars.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/bars-32.png" />
+    <link rel="apple-touch-icon" href="./icons/bars-180.png" />
+
+    <!-- Link previews (WhatsApp, Telegram, Discord, Slack, X). Scrapers do not
+         run JS and do not resolve relative URLs, so og:image has to be
+         absolute. If this ever moves to its own domain, these four URLs are
+         what needs changing. -->
+    <meta name="description" content="A Nintendo Entertainment System that lives in a browser tab and behaves like a television: a real CRT pipeline, P2P netplay, 60-second rewind, and twelve homebrew games that keep working offline." />
+    <link rel="canonical" href="https://channelthree.vercel.app/" />
+    <meta name="theme-color" content="#120806" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Channel 3" />
+    <meta property="og:url" content="https://channelthree.vercel.app/" />
+    <meta property="og:title" content="Channel 3: where the NES used to live" />
+    <meta property="og:description" content="A Nintendo Entertainment System that lives in a browser tab and behaves like a television: a real CRT pipeline, P2P netplay, 60-second rewind, and twelve homebrew games that keep working offline." />
+    <meta property="og:image" content="https://channelthree.vercel.app/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="A CRT television showing the Channel 3 cartridge shelf over SMPTE colour bars, a console and a pad on the floor below." />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Channel 3: where the NES used to live" />
+    <meta name="twitter:description" content="A Nintendo Entertainment System that lives in a browser tab and behaves like a television: a real CRT pipeline, P2P netplay, 60-second rewind, and twelve homebrew games that keep working offline." />
+    <meta name="twitter:image" content="https://channelthree.vercel.app/og.png" />
+    <script type="module" crossorigin src="./assets/index-pLbrJTi-.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-MPpANOsr.css">
+  <link rel="manifest" href="./manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="./registerSW.js"></script></head>
+  <body>
+    <div id="stage">
+      <!-- static room dressing (wallpaper is on #stage; baseboard via CSS) -->
+      <div id="room-props" aria-hidden="true"></div>
+      <div id="tv-zone">
+        <div id="tv-frame" data-led="off">
+          <div id="screen-wrap">
+            <canvas id="screen" width="720" height="672"></canvas>
+
+            <div id="ui-layer">
+              <!-- ================================================ gallery -->
+              <section id="view-gallery">
+                <h1 id="brand">CHANNEL <span>3</span></h1>
+
+                <div id="carousel" aria-label="Game gallery"></div>
+                <p id="cart-meta"></p>
+                <p id="cart-count" aria-live="polite"></p>
+
+                <div id="gallery-actions">
+                  <button class="nes-btn is-primary" id="btn-play">PLAY</button>
+                  <button class="nes-btn is-error" id="btn-vs">LINK UP</button>
+                  <button class="nes-btn" id="btn-open">ADD ROM</button>
+                  <button class="nes-btn is-warning" id="btn-remove" hidden>REMOVE</button>
+                  <button class="nes-btn" id="btn-settings">CONFIG</button>
+                </div>
+                <p class="hint" id="tips">PRESS START</p>
+              </section>
+
+              <!-- ================================================== HUD -->
+              <section id="hud" hidden>
+                <div id="hud-top">
+                  <span id="rom-name"></span>
+                  <span id="hud-role" hidden></span>
+                  <span id="hud-right">
+                    <button class="nes-btn is-small" id="btn-save" disabled>SAVE</button>
+                    <button class="nes-btn is-small" id="btn-load" disabled>LOAD</button>
+                    <button class="nes-btn is-small" id="btn-shot" disabled>SHOT</button>
+                    <button class="nes-btn is-small" id="btn-label" disabled title="Use this frame as the cart label">LABEL</button>
+                    <button class="nes-btn is-small is-error" id="btn-vs-hud">LINK</button>
+                    <button class="nes-btn is-small" id="btn-settings-hud">CFG</button>
+                    <!-- exit lives here only when the chin is hidden (frameless/
+                         minimal); fullscreen is the double-tap gesture -->
+                    <button class="nes-btn is-small is-error chin-fallback" id="btn-exit-hud" title="Exit game">EXIT</button>
+                  </span>
+                </div>
+                <p id="hud-hint" class="hint">X/Z = A/B, ENTER START, K/L SAVE/LOAD, BACKSPACE REWIND, P PAUSE, F FULLSCREEN</p>
+              </section>
+
+              <!-- ============================================== VS MODE -->
+              <section id="view-vs" hidden>
+                <div class="nes-container is-dark with-title vs-box">
+                  <p class="title">LINK UP</p>
+                  <p id="vs-game" class="dim"></p>
+                  <button class="nes-btn is-error" id="btn-host">HOST GAME</button>
+                  <div id="host-code" hidden>
+                    <p class="dim">ROOM CODE: GIVE IT TO PLAYER 2</p>
+                    <p id="room-code" class="password"></p>
+                  </div>
+                  <div class="vs-divider">OR</div>
+                  <div id="join-row">
+                    <input type="text" id="join-code" class="nes-input is-dark" placeholder="CODE" maxlength="6" />
+                    <button class="nes-btn is-primary" id="btn-join">JOIN</button>
+                  </div>
+                  <p id="net-status" class="dim">OFFLINE</p>
+                  <button class="nes-btn close-x" id="btn-vs-close">X</button>
+                </div>
+              </section>
+
+              <!-- ========================================= exit confirm -->
+              <section id="view-exit" hidden>
+                <div class="nes-container is-dark with-title modal-box">
+                  <p class="title">EXIT GAME?</p>
+                  <p class="dim" id="exit-text">PROGRESS SINCE YOUR LAST SAVE WILL BE LOST.</p>
+                  <div class="modal-actions">
+                    <button class="nes-btn is-primary" id="btn-exit-save">SAVE &amp; EXIT</button>
+                    <button class="nes-btn is-error" id="btn-exit-nosave">EXIT</button>
+                    <button class="nes-btn" id="btn-exit-cancel">KEEP PLAYING</button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ====================================== continue prompt -->
+              <section id="view-continue" hidden>
+                <div class="nes-container is-dark with-title modal-box">
+                  <p class="title">SAVE DATA FOUND</p>
+                  <div id="continue-preview" hidden>
+                    <img id="continue-shot" alt="Last save" />
+                    <p id="continue-time" class="dim"></p>
+                  </div>
+                  <p class="dim">CONTINUE FROM WHERE YOU LEFT OFF?</p>
+                  <div class="modal-actions">
+                    <button class="nes-btn is-primary" id="btn-continue-load">CONTINUE</button>
+                    <button class="nes-btn" id="btn-continue-new">NEW GAME</button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ======================================== remove confirm -->
+              <section id="view-remove" hidden>
+                <div class="nes-container is-dark with-title modal-box">
+                  <p class="title" id="remove-title">REMOVE ROM?</p>
+                  <p class="dim" id="remove-text"></p>
+                  <label class="crt-row" id="remove-save-row">
+                    <input type="checkbox" class="nes-checkbox is-dark" id="remove-save" />
+                    <span>ALSO DELETE ITS SAVED GAME</span>
+                  </label>
+                  <div class="modal-actions">
+                    <button class="nes-btn is-error" id="btn-remove-yes">REMOVE</button>
+                    <button class="nes-btn" id="btn-remove-cancel">CANCEL</button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ============================================= settings -->
+              <section id="view-settings" hidden>
+                <div class="nes-container is-dark with-title settings-box">
+                  <p class="title">CONFIG</p>
+                  <div id="cfg-body">
+                    <nav id="cfg-rail" aria-label="Settings sections">
+                      <button type="button" class="cfg-tab" data-page="picture">PICTURE</button>
+                      <button type="button" class="cfg-tab" data-page="room">ROOM</button>
+                      <button type="button" class="cfg-tab" data-page="controls">CONTROLS</button>
+                      <button type="button" class="cfg-tab" data-page="system">SYSTEM</button>
+                      <button type="button" class="cfg-tab" data-page="about">ABOUT</button>
+                    </nav>
+                    <div id="cfg-pages">
+                    <section class="cfg-page" data-page="picture" hidden>
+                      <p class="cfg-lbl">TV STYLE</p>
+                      <div id="tv-cards" class="cfg-cards"></div>
+                      <select hidden id="tv-select">
+                          <option value="full">FULL SET</option>
+                          <option value="minimal">MINIMAL</option>
+                        </select>
+                      <p class="cfg-lbl">CRT PRESET</p>
+                      <div id="crt-cards" class="cfg-cards"></div>
+                      <select id="crt-preset" hidden>
+                        <option value="off">OFF (RAW PIXELS)</option>
+                        <option value="scanlines">SCANLINES</option>
+                        <option value="tube">CURVED TUBE</option>
+                        <option value="rgb">RGB MONITOR</option>
+                        <option value="vhs">WORN VHS</option>
+                        <option value="custom">CUSTOM</option>
+                      </select>
+                      <div id="crt-sliders" hidden>
+                        <label>CURVE<input type="range" id="crt-curvature" min="0" max="100" value="0" /></label>
+                        <label>SCANLINES<input type="range" id="crt-scanline" min="0" max="100" value="0" /></label>
+                        <label>MASK<input type="range" id="crt-mask" min="0" max="100" value="0" /></label>
+                        <label>GLOW<input type="range" id="crt-glow" min="0" max="100" value="0" /></label>
+                        <label>FRINGE<input type="range" id="crt-aberration" min="0" max="100" value="0" /></label>
+                        <label>VIGNETTE<input type="range" id="crt-vignette" min="0" max="100" value="0" /></label>
+                      </div>
+                      <p class="cfg-lbl">FILTER</p>
+                      <div id="filter-cards" class="cfg-cards"></div>
+                      <select hidden id="filter-select">
+                          <option value="nearest">PIXEL PERFECT</option>
+                          <option value="smooth">SMOOTH</option>
+                          <option value="epx">SCALE2X (EPX)</option>
+                        </select>
+                    </section>
+                    <section class="cfg-page" data-page="room" hidden>
+                      <p class="cfg-lbl">THEME</p>
+                      <div id="theme-cards" class="cfg-cards"></div>
+                      <select id="theme-select" hidden>
+                        <option value="famicom">FAMICOM</option>
+                        <option value="ghost">GHOST SLATE</option>
+                        <option value="twilight">TWILIGHT PURPLE</option>
+                        <option value="phosphor">PHOSPHOR GREEN</option>
+                        <option value="ice">ICE &amp; NEON</option>
+                      </select>
+                      <p class="cfg-lbl">IDLE SCREEN</p>
+                      <div id="idle-cards" class="cfg-cards"></div>
+                      <select hidden id="idle-select">
+                          <option value="previews">GAME PREVIEWS</option>
+                          <option value="static">TV STATIC</option>
+                          <option value="bars">COLOUR BARS</option>
+                          <option value="blank">BLANK TUBE</option>
+                        </select>
+                      <p class="cfg-lbl">WALL</p>
+                      <div id="wall-cards" class="cfg-cards"></div>
+                      <select hidden id="wall-select">
+                          <option value="diamonds">DIAMONDS</option>
+                          <option value="dots">DOTS</option>
+                          <option value="checker">CHECKER</option>
+                          <option value="plain">PLAIN</option>
+                        </select>
+                    </section>
+                    <section class="cfg-page" data-page="controls" hidden>
+                      <div id="pad-switches">
+                        <div class="pad-switch" id="pad-players">
+                          <button type="button" class="pad-opt" data-player="0">P1</button>
+                          <button type="button" class="pad-opt" data-player="1">P2</button>
+                        </div>
+                        <div class="pad-switch" id="pad-devices">
+                          <button type="button" class="pad-opt" data-device="key">KEYBOARD</button>
+                          <button type="button" class="pad-opt" data-device="pad">GAMEPAD</button>
+                        </div>
+                      </div>
+                      <p id="pad-notice" hidden></p>
+                      <div id="pad-diagram">
+                        <div class="pad-shell">
+                          <div class="pad-cross">
+                            <button type="button" class="pad-key" data-action="up"></button>
+                            <button type="button" class="pad-key" data-action="left"></button>
+                            <button type="button" class="pad-key" data-action="right"></button>
+                            <button type="button" class="pad-key" data-action="down"></button>
+                          </div>
+                          <div class="pad-centre">
+                            <span class="pad-slot"><button type="button" class="pad-key pad-pill" data-action="select"></button><span class="pad-print">SELECT</span></span>
+                            <span class="pad-slot"><button type="button" class="pad-key pad-pill" data-action="start"></button><span class="pad-print">START</span></span>
+                          </div>
+                          <div class="pad-faces">
+                            <span class="pad-slot"><button type="button" class="pad-key pad-round" data-action="b"></button><span class="pad-print">B</span></span>
+                            <span class="pad-slot"><button type="button" class="pad-key pad-round" data-action="a"></button><span class="pad-print">A</span></span>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="cfg-lbl">EMULATOR</p>
+                      <div id="controls-grid"></div>
+                      <button class="nes-btn is-small" id="btn-binds-reset">RESET DEFAULTS</button>
+                      <p id="binds-reset-note" hidden>CONTROLS BACK TO DEFAULTS</p>
+                      <p class="dim">PICK ONE, THEN PRESS A KEY OR PAD BUTTON. ESC CANCELS. THE STICK IS ALWAYS A D-PAD.</p>
+                      <label class="select-row touch-only">TOUCH PAD
+                        <select id="touch-select">
+                          <option value="auto">AUTO (MOBILE, NO GAMEPAD)</option>
+                          <option value="on">ALWAYS ON</option>
+                          <option value="off">OFF</option>
+                        </select>
+                      </label>
+                      <label class="select-row touch-only">TOUCH SIZE
+                        <select id="touch-size-select">
+                          <option value="s">SMALL</option>
+                          <option value="m">MEDIUM</option>
+                          <option value="l">LARGE</option>
+                        </select>
+                      </label>
+                    </section>
+                    <section class="cfg-page" data-page="system" hidden>
+                      <p class="cfg-lbl chin-only">SOUND</p>
+                      <label class="chin-only">VOLUME<input type="range" id="volume-cfg" min="0" max="100" value="100" /></label>
+                      <p class="cfg-lbl">SAVES</p>
+                      <label class="crt-row"><input type="checkbox" class="nes-checkbox is-dark" id="autosave-on" checked /><span>AUTO SAVE</span></label>
+                      <p class="cfg-lbl">MY ROMS &amp; DATA</p>
+                      <div id="my-data">
+                        <p class="dim" id="storage-usage"></p>
+                        <div id="data-row">
+                          <button class="nes-btn is-small" id="btn-backup">BACKUP SAVES</button>
+                          <button class="nes-btn is-small" id="btn-restore">RESTORE</button>
+                        </div>
+                        <button class="nes-btn is-small is-error" id="btn-wipe">DELETE ALL MY ROMS &amp; SAVES</button>
+                        <p class="dim">CLEARING THIS BROWSER'S SITE DATA (OR HISTORY) ALSO ERASES YOUR ADDED ROMS AND SAVES.</p>
+                      </div>
+                    </section>
+                    <section class="cfg-page" data-page="about" hidden>
+                      <p class="cfg-lbl">GAME CREDITS &amp; LICENSES</p>
+                      <ul id="credits-list"></ul>
+                      <p class="cfg-lbl">ABOUT</p>
+                      <ul id="about-list">
+                        <li><i class="nes-icon heart is-small"></i> MADE BY <a href="https://github.com/dau-in" target="_blank" rel="noreferrer">Dauin</a></li>
+                        <li><i class="nes-icon github is-small"></i> <a href="https://github.com/dau-in/channel-3" target="_blank" rel="noreferrer">SOURCE CODE</a></li>
+                        <li><i class="nes-icon star is-small"></i> <span>POWERED BY <a href="https://github.com/bfirsh/jsnes" target="_blank" rel="noreferrer">jsnes</a>, <a href="https://peerjs.com" target="_blank" rel="noreferrer">peerjs</a> AND <a href="https://nostalgic-css.github.io/NES.css/" target="_blank" rel="noreferrer">NES.css</a></span></li>
+                        <li><i class="nes-icon trophy is-small"></i> CRT SHADER, LOCKSTEP NETPLAY, REWIND &amp; UI BUILT FOR THIS PROJECT</li>
+                        <li><i class="nes-icon coin is-small"></i> ADDED-ROM TITLES FROM <a href="https://github.com/libretro/libretro-database" target="_blank" rel="noreferrer">libretro-database</a> (NO-INTRO)</li>
+                      </ul>
+                    </section>
+                    </div>
+                  </div>
+                  <button class="nes-btn close-x" id="btn-settings-close">X</button>
+                </div>
+              </section>
+
+              <!-- ============================================= overlays -->
+              <div id="ch-osd" hidden></div>
+              <div id="vol-osd" hidden>
+                <span class="vol-label">VOL</span>
+                <span class="vol-track"><span class="vol-fill"></span></span>
+              </div>
+              <div id="autosave-osd" hidden><span id="rec-dot"></span>AUTO&nbsp;SAVE</div>
+              <div id="no-signal" hidden>NO SIGNAL</div>
+              <div id="rew-overlay" hidden><span><i class="rew-icon"></i>REW</span></div>
+              <div id="badge" hidden></div>
+              <div id="touch-hint" class="tube-hint" hidden>TAP:&nbsp;MENU &nbsp;&nbsp; DOUBLE&nbsp;TAP:&nbsp;FULLSCREEN</div>
+              <div id="ios-hint" class="tube-hint" hidden></div>
+              <div id="toast-gamepad" hidden>
+                <svg viewBox="0 0 32 14" width="56" height="25" aria-hidden="true"><use href="#pad-shape"/></svg>
+                <span id="toast-gamepad-text"></span>
+              </div>
+              <div id="overlay" hidden>
+                <div class="drop-inner">
+                  <div class="drop-arrow"></div>
+                  <p>DROP ROMS TO ADD</p>
+                  <span class="drop-sub">.NES, MULTIPLE OK</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="tv-chin">
+            <span id="tv-brand">CHANNEL 3</span>
+            <span id="chin-right">
+              <span
+                id="volume"
+                class="chin-knob"
+                role="slider"
+                tabindex="0"
+                title="Volume"
+                aria-label="Volume"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ><span class="knob-mark"></span></span>
+              <button id="btn-power" class="chin-btn" title="Power / exit game">
+                <svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M5 1h2v5H5V1zM3 3H2v1H1v5h1v1h1v1h6v-1h1v-1h1V4h-1V3H9v2h1v3H9v1H8v1H4v-1H3V9H2V5h1V3z"/></svg>
+              </button>
+              <button id="btn-fullscreen" class="chin-btn" title="Fullscreen (F)">
+                <svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M1 1h4v2H3v2H1V1zm10 0v4H9V3H7V1h4zM1 11V7h2v2h2v2H1zm10 0H7V9h2V7h2v4z"/></svg>
+              </button>
+              <span id="led"></span>
+            </span>
+          </div>
+        </div>
+
+        <div id="floor-props">
+          <!-- the console, wired to the same power state as the TV -->
+          <div id="console-prop" aria-hidden="true">
+            <svg viewBox="0 0 46 12" width="100" height="26">
+              <rect x="0" y="1" width="46" height="11" class="prop-dark2"/>
+              <rect x="0" y="1" width="46" height="3" class="prop-plastic"/>
+              <rect x="4" y="5" width="26" height="4" class="prop-black"/>
+              <rect x="33" y="5" width="5" height="2" class="prop-black"/>
+              <rect x="33" y="8" width="5" height="2" class="prop-black"/>
+              <rect id="console-led" x="41" y="8" width="2" height="2"/>
+            </svg>
+          </div>
+
+          <!-- controller on the floor; mirrors live button presses -->
+          <div id="pad-floor" title="No gamepad">
+            <svg viewBox="0 0 32 14" width="76" height="34" aria-hidden="true">
+              <defs>
+                <g id="pad-shape">
+                  <rect x="0" y="1" width="32" height="12" fill="currentColor"/>
+                  <rect x="2" y="3" width="12" height="8" class="prop-black" opacity="0.85"/>
+                  <rect x="6" y="4" width="2" height="6" fill="currentColor"/>
+                  <rect x="4" y="6" width="6" height="2" fill="currentColor"/>
+                  <rect x="16" y="6" width="3" height="2" class="prop-black" opacity="0.85"/>
+                  <rect x="20" y="6" width="3" height="2" class="prop-black" opacity="0.85"/>
+                  <rect x="24" y="8" width="3" height="3" class="prop-black" opacity="0.85"/>
+                  <rect x="28" y="5" width="3" height="3" class="prop-black" opacity="0.85"/>
+                </g>
+              </defs>
+              <rect x="0" y="1" width="32" height="12" fill="currentColor"/>
+              <rect x="2" y="3" width="12" height="8" class="prop-black" opacity="0.88"/>
+              <!-- d-pad arms light up individually -->
+              <rect class="pf pf-up"    x="6" y="4" width="2" height="2"/>
+              <rect class="pf pf-down"  x="6" y="8" width="2" height="2"/>
+              <rect class="pf pf-left"  x="4" y="6" width="2" height="2"/>
+              <rect class="pf pf-right" x="8" y="6" width="2" height="2"/>
+              <rect x="6" y="6" width="2" height="2" class="prop-chassis"/>
+              <rect class="pf pf-select" x="16" y="6" width="3" height="2"/>
+              <rect class="pf pf-start"  x="20" y="6" width="3" height="2"/>
+              <rect class="pf pf-b" x="24" y="8" width="3" height="3"/>
+              <rect class="pf pf-a" x="28" y="5" width="3" height="3"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- on-screen touch pad (mobile); shown only while playing -->
+      <div id="touch-controls" hidden>
+        <div id="touch-dpad" aria-label="D-pad">
+          <span class="dp-arm dp-up"></span>
+          <span class="dp-arm dp-down"></span>
+          <span class="dp-arm dp-left"></span>
+          <span class="dp-arm dp-right"></span>
+          <span class="dp-center"></span>
+        </div>
+        <div id="touch-se">
+          <button class="tbtn tbtn-pill" data-btn="select" aria-label="Select">SELECT</button>
+          <button class="tbtn tbtn-pill" data-btn="start" aria-label="Start">START</button>
+        </div>
+        <div id="touch-ab">
+          <button class="tbtn tbtn-round tbtn-b" data-btn="b" aria-label="B">B</button>
+          <button class="tbtn tbtn-round tbtn-a" data-btn="a" aria-label="A">A</button>
+        </div>
+      </div>
+    </div>
+
+    <input type="file" id="rom-input" accept=".nes" multiple hidden />
+    <input type="file" id="restore-input" accept="application/json,.json" hidden />
+  </body>
+</html>

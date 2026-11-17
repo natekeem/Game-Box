@@ -7,11 +7,59 @@ import { ensureCaseStyle, lookFor, runInsert } from './cases/FinallyCaseEngine.j
 import { generateArcadeCoverSvg } from './cases/gameCoverGenerator.js';
 import ConsoleView3D from './console/ConsoleView3D.jsx';
 
+function playCrtSound(type = 'power-on') {
+  if (typeof window === 'undefined') return;
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    const t = ctx.currentTime;
+    if (type === 'power-on') {
+      const click = ctx.createOscillator();
+      const clickGain = ctx.createGain();
+      click.type = 'triangle';
+      click.frequency.setValueAtTime(1200, t);
+      click.frequency.exponentialRampToValueAtTime(120, t + 0.03);
+      clickGain.gain.setValueAtTime(0.3, t);
+      clickGain.gain.exponentialRampToValueAtTime(0.001, t + 0.035);
+      click.connect(clickGain);
+      clickGain.connect(ctx.destination);
+      click.start(t);
+      click.stop(t + 0.04);
+
+      const hum = ctx.createOscillator();
+      const humGain = ctx.createGain();
+      hum.type = 'sine';
+      hum.frequency.setValueAtTime(180, t + 0.02);
+      hum.frequency.exponentialRampToValueAtTime(60, t + 0.35);
+      humGain.gain.setValueAtTime(0.2, t + 0.02);
+      humGain.gain.exponentialRampToValueAtTime(0.001, t + 0.38);
+      hum.connect(humGain);
+      humGain.connect(ctx.destination);
+      hum.start(t + 0.02);
+      hum.stop(t + 0.4);
+    } else {
+      const click = ctx.createOscillator();
+      const clickGain = ctx.createGain();
+      click.type = 'square';
+      click.frequency.setValueAtTime(800, t);
+      click.frequency.exponentialRampToValueAtTime(80, t + 0.04);
+      clickGain.gain.setValueAtTime(0.25, t);
+      clickGain.gain.exponentialRampToValueAtTime(0.001, t + 0.045);
+      click.connect(clickGain);
+      clickGain.connect(ctx.destination);
+      click.start(t);
+      click.stop(t + 0.05);
+    }
+    setTimeout(() => { try { ctx.close(); } catch {} }, 600);
+  } catch {}
+}
+
 /**
  * GAME DECK (/game-box/deck)
- * 3-Column Console Architecture powered by ported external open-source engines:
- * - LEFT: GAME COLLECTION (Finally 3D Game Cases engine with physical spine, thickness, gloss, wear)
- * - CENTER: GAME CONSOLE (PS2 Web 3D procedural console, motorized tray, disc insert/eject, iframe launcher)
+ * Single Open-Source Base Transition Architecture (Channel 3 CRT TV & Retro Cartridge System)
+ * - LEFT: GAME COLLECTION (Cartridge Deck with physical spine, thickness, gloss, wear)
+ * - CENTER: GAME CONSOLE (Channel 3 Unified CRT TV & Cartridge host, power relay, iframe launcher)
  * - RIGHT: GAME RANKING & TECHNICAL SPEC (Realtime TOP 10 + Game Metadata)
  */
 export default function GameDeck({ onNavigate }) {
@@ -80,122 +128,55 @@ export default function GameDeck({ onNavigate }) {
     setAnimState('selected');
   };
 
-  // Connected Insert & Boot Sequence (Case open -> Disc extract -> Console tray open -> Disc insert -> Console boot -> Play)
+  // Channel 3 Unified Boot Sequence: CRT power relay -> raster warmup -> iframe launch
+  // Completely eliminates the fragmented 2D slot-bezel and floating hole defect!
   const handleInsertAndPlay = async () => {
-    if (['opening', 'extracting', 'inserting', 'ejecting'].includes(animState)) return;
+    if (['booting', 'playing', 'ejecting'].includes(animState)) return;
 
-    setAnimState('opening');
+    setAnimState('booting');
 
-    // 1. Check reduced motion
+    if (soundEnabled) {
+      playCrtSound('power-on');
+    }
+
+    if (consoleRef.current) {
+      await consoleRef.current.insertDisc(selectedGame);
+      await consoleRef.current.setPower(true);
+    }
+
     const prefersReducedMotion =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (prefersReducedMotion) {
-      if (consoleRef.current) {
-        await consoleRef.current.insertDisc(selectedGame);
-        await consoleRef.current.setPower(true);
-      }
-      setAnimState('playing');
-      return;
+    if (!prefersReducedMotion) {
+      await new Promise(r => setTimeout(r, 450));
     }
-
-    // 2. Locate DOM case rect and console center target
-    const selectedCaseEl = document.querySelector(`[data-game-id="${selectedGame.id}"]`);
-    const rect = selectedCaseEl ? selectedCaseEl.getBoundingClientRect() : null;
-    const consoleRect = consoleContainerRef.current ? consoleContainerRef.current.getBoundingClientRect() : null;
-
-    const look = lookFor(selectedGame);
-    const art = generateArcadeCoverSvg(selectedGame);
-
-    // 3. Open 3D console tray as the case opens
-    if (consoleRef.current) {
-      consoleRef.current.openTray();
-    }
-
-    // 4. Run physical case open & disc extraction animation
-    await runInsert(
-      document,
-      { rect, art, look },
-      'console',
-      soundEnabled,
-      {
-        slotRect: consoleRect ? {
-          left: consoleRect.left + consoleRect.width * 0.45,
-          top: consoleRect.top + consoleRect.height * 0.5,
-          width: 80,
-          height: 20,
-        } : null,
-        onStateChange: async (step) => {
-          if (step === 'disc-inserting') {
-            setAnimState('inserting');
-            if (consoleRef.current) {
-              await consoleRef.current.insertDisc(selectedGame);
-            }
-          } else if (step === 'disc-inserted') {
-            setAnimState('booting');
-            if (consoleRef.current) {
-              await consoleRef.current.setPower(true);
-            }
-          }
-        },
-      }
-    );
 
     setAnimState('playing');
   };
 
-  // Connected Eject Sequence (Eject disc from console -> Return to open case -> Snap case shut)
+  // Channel 3 Unified Power-Off Sequence: CRT beam collapse -> clean return to cartridge shelf
   const handleEjectAndStop = async () => {
-    if (['opening', 'extracting', 'inserting', 'ejecting'].includes(animState)) return;
+    if (['booting', 'ejecting'].includes(animState)) return;
 
     setAnimState('ejecting');
+
+    if (soundEnabled) {
+      playCrtSound('power-off');
+    }
+
+    if (consoleRef.current) {
+      await consoleRef.current.ejectDisc();
+      await consoleRef.current.setPower(false);
+    }
 
     const prefersReducedMotion =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (prefersReducedMotion) {
-      if (consoleRef.current) {
-        await consoleRef.current.ejectDisc();
-        await consoleRef.current.setPower(false);
-      }
-      setAnimState('selected');
-      return;
+    if (!prefersReducedMotion) {
+      await new Promise(r => setTimeout(r, 350));
     }
-
-    const selectedCaseEl = document.querySelector(`[data-game-id="${selectedGame.id}"]`);
-    const rect = selectedCaseEl ? selectedCaseEl.getBoundingClientRect() : null;
-    const consoleRect = consoleContainerRef.current ? consoleContainerRef.current.getBoundingClientRect() : null;
-    const look = lookFor(selectedGame);
-    const art = generateArcadeCoverSvg(selectedGame);
-
-    // Eject from 3D console scene
-    if (consoleRef.current) {
-      consoleRef.current.ejectDisc();
-    }
-
-    // Run reverse case insert animation (disc returns to case, case snaps shut)
-    await runInsert(
-      document,
-      { rect, art, look },
-      'console',
-      soundEnabled,
-      {
-        eject: true,
-        slotRect: consoleRect ? {
-          left: consoleRect.left + consoleRect.width * 0.45,
-          top: consoleRect.top + consoleRect.height * 0.5,
-          width: 80,
-          height: 20,
-        } : null,
-        onStateChange: (step) => {
-          if (step === 'disc-returned') {
-            setAnimState('returning');
-          }
-        },
-      }
-    );
 
     setAnimState('selected');
   };
@@ -228,6 +209,18 @@ export default function GameDeck({ onNavigate }) {
             title="효과음 켜기 / 끄기"
           >
             {soundEnabled ? '🔊 SFX ON' : '🔇 MUTE'}
+          </button>
+          <button
+            type="button"
+            className="gb-subbar-btn"
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                window.location.href = '/game-box/deck-lab-single/';
+              }
+            }}
+            title="Channel 3 단일 오픈소스 원본 독립 실행실"
+          >
+            📺 SINGLE LAB (Channel 3)
           </button>
           <button
             type="button"

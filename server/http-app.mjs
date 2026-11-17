@@ -481,6 +481,38 @@ export function createGameBoxServer({
         return;
       }
 
+      // Route /game-box/deck-lab-single to unmodified Channel 3 vendor build
+      if (decoded === '/game-box/deck-lab-single' || decoded === '/game-box/deck-lab-single/') {
+        const singleHtml = path.join(staticRoot, 'vendor', 'channel-3', 'dist', 'index.html');
+        if (fs.existsSync(singleHtml)) {
+          response.writeHead(200, {
+            'Content-Type': 'text/html; charset=utf-8',
+            'Content-Length': fs.statSync(singleHtml).size,
+            'Cache-Control': 'no-store',
+            'X-Content-Type-Options': 'nosniff',
+          });
+          fs.createReadStream(singleHtml).pipe(response);
+          return;
+        }
+      }
+
+      if (decoded.startsWith('/game-box/deck-lab-single/')) {
+        const subPath = decoded.replace('/game-box/deck-lab-single/', '');
+        const targetSingle = path.join(staticRoot, 'vendor', 'channel-3', 'dist', subPath);
+        if (fs.existsSync(targetSingle) && fs.statSync(targetSingle).isFile()) {
+          const ext = path.extname(targetSingle).toLowerCase();
+          const contentType = MIME.get(ext) || 'application/octet-stream';
+          response.writeHead(200, {
+            'Content-Type': contentType,
+            'Content-Length': fs.statSync(targetSingle).size,
+            'Cache-Control': 'no-store',
+            'X-Content-Type-Options': 'nosniff',
+          });
+          fs.createReadStream(targetSingle).pipe(response);
+          return;
+        }
+      }
+
       // SPA History Route Support for /game-box, /game-box/retro, /game-box/deck, /game-box/deck-lab
       if (
         decoded === '/game-box' ||
