@@ -87,12 +87,24 @@ export function createGameBoxServer({
       return platformStore.upsertUser(adapted, false);
     }
     if (!allowMockUserSwitch) return null;
+    const customNick = decodeURIComponent(String(
+      request.headers['x-gamebox-nickname'] ||
+      url.searchParams.get('nickname') ||
+      ''
+    )).trim();
     const mockId = String(
       request.headers['x-mock-user-id'] ||
       url.searchParams.get('mockUserId') ||
       MOCK_USERS[0].id
     ).trim();
-    return platformStore.getUser(mockId) || platformStore.getUser(MOCK_USERS[0].id);
+    const base = platformStore.getUser(mockId) || platformStore.getUser(MOCK_USERS[0].id);
+    if (base && customNick) {
+      return {
+        ...base,
+        name: customNick,
+      };
+    }
+    return base;
   }
 
   const server = http.createServer(async (request, response) => {
@@ -452,13 +464,8 @@ export function createGameBoxServer({
         : path.resolve(staticRoot, '..');
       const decoded = decodeURIComponent(pathname);
 
-      // Redirect legacy entrypoints and bare root (when not loading DOS typing iframe ?v=97|hanme) to /game-box
-      if (
-        decoded === '/hub.html' ||
-        decoded === '/platform.html' ||
-        decoded === '/rankings.html' ||
-        (decoded === '/' && !url.searchParams.has('v') && !url.searchParams.has('embed'))
-      ) {
+      // Redirect bare root (when not loading DOS typing iframe ?v=97|hanme) to official entrypoint /game-box
+      if (decoded === '/' && !url.searchParams.has('v') && !url.searchParams.has('embed')) {
         response.writeHead(302, { Location: '/game-box' }).end();
         return;
       }

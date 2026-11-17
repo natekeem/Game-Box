@@ -3206,8 +3206,13 @@ var GameBoxPlatform = (() => {
     const isRoomHost = !!currentRoom && roomHostId === currentUser?.id;
     const myRoomPlayer = currentRoom?.players?.find((p3) => p3.id === currentUser?.id);
     const supportsRoomBots = currentRoom?.game !== "bombergirl" && activeGameMeta?.supportsBot;
-    return /* @__PURE__ */ u3("div", { className: "gp-root", children: [
-      /* @__PURE__ */ u3("header", { className: "gp-topbar", children: [
+    const isDeckEmbed = T2(() => {
+      if (typeof window === "undefined") return false;
+      const params = new URLSearchParams(window.location.search);
+      return params.get("embed") === "deck" || window.self !== window.top;
+    }, []);
+    return /* @__PURE__ */ u3("div", { className: `gp-root ${isDeckEmbed ? "gp-deck-embed" : ""}`, children: [
+      !isDeckEmbed && /* @__PURE__ */ u3("header", { className: "gp-topbar", children: [
         /* @__PURE__ */ u3("div", { className: "gp-topbar-brand", onClick: handleLeaveCurrentRoom, style: { cursor: "pointer" }, children: [
           /* @__PURE__ */ u3("span", { className: "gp-brand-logo", children: "\u{1F3AF}" }),
           /* @__PURE__ */ u3("div", { children: [
@@ -3929,16 +3934,45 @@ var GameBoxPlatform = (() => {
       return this.mockUsers;
     }
     getCurrentUser() {
+      let guestNickname = "";
+      let guestId = "";
+      try {
+        if (typeof window !== "undefined") {
+          const params = new URLSearchParams(window.location.search);
+          guestNickname = (params.get("nickname") || "").trim();
+          guestId = (params.get("guestId") || "").trim();
+          if (!guestNickname) {
+            const raw = localStorage.getItem("gameBox_guest_identity_v1");
+            if (raw) {
+              const parsed = JSON.parse(raw);
+              guestNickname = (parsed.nickname || "").trim();
+              guestId = (parsed.guestId || "").trim();
+            }
+          }
+        }
+      } catch {
+      }
       const id = this.getSelectedMockUserId();
-      return this.mockUsers.find((u4) => u4.id === id) || this.mockUsers[0];
+      const base = this.mockUsers.find((u4) => u4.id === id) || this.mockUsers[0];
+      if (guestNickname) {
+        return {
+          ...base,
+          id: guestId || base.id,
+          name: guestNickname,
+          departmentName: "\uAC8C\uC2A4\uD2B8 \uD50C\uB808\uC774\uC5B4"
+        };
+      }
+      return base;
     }
     subscribe(listener) {
       this.listeners.add(listener);
       return () => this.listeners.delete(listener);
     }
     getHeaders() {
+      const cur = this.getCurrentUser();
       return {
-        "X-Mock-User-Id": this.getSelectedMockUserId()
+        "X-Mock-User-Id": this.getSelectedMockUserId(),
+        "X-GameBox-Nickname": encodeURIComponent(cur.name || "")
       };
     }
   };

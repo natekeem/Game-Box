@@ -48,8 +48,15 @@ export class HancomTyping97App extends IFrameApplication {
   }
 
   _createWindow() {
+    let currentNickname = '';
+    try {
+      const raw = localStorage.getItem('gameBox_guest_identity_v1');
+      if (raw) currentNickname = JSON.parse(raw)?.nickname || '';
+    } catch {}
+    const winTitle = currentNickname ? `${this.title} [플레이어: ${currentNickname}]` : this.title;
+
     const win = new window.$Window({
-      title: this.title,
+      title: winTitle,
       outerWidth: this.width,
       outerHeight: this.height,
       resizable: this.resizable,
@@ -152,6 +159,7 @@ export class HancomTyping97App extends IFrameApplication {
         background: "#000",
       });
 
+    const playerTag = currentNickname ? `👤 플레이어: <b>${currentNickname}</b> | ` : '';
     const $statusBar = window.$("<div>")
       .addClass("status-bar")
       .css({
@@ -167,7 +175,7 @@ export class HancomTyping97App extends IFrameApplication {
         userSelect: "none",
       })
       .html(
-        '<span>💡 <b>한/영 전환:</b> 영문(A) 상태에서 <b>Shift + Space</b> (또는 한/영키)</span>' +
+        `<span>${playerTag}💡 <b>한/영:</b> 영문(A) 상태에서 <b>Shift + Space</b></span>` +
         '<span>방향키 · Enter · ESC</span>'
       );
 

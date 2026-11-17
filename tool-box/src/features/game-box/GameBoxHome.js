@@ -43,39 +43,97 @@ export default function GameBoxHome({ onNavigate }) {
               <span className="gb-card-subtitle">CLASSIC GAMES</span>
               <h3 className="gb-card-title">RETRO DESKTOP</h3>
             </div>
-            <span className="gb-card-era-badge gb-badge-win98">WINDOWS 98 EDITION</span>
+            <span className="gb-card-era-badge gb-badge-win98">한글 Windows 98 EDITION</span>
           </div>
 
-          {/* Authentic Windows 98 Preview Frame */}
+          {/* Authentic Clean Windows 98 Desktop Showcase */}
           <div className="gb-retro-preview-window">
             <div className="gb-win98-titlebar">
-              <span className="gb-win98-titlebar-text">🪟 한글 Windows 98 — 레트로 게임 &amp; GAME RANKING</span>
+              <span className="gb-win98-titlebar-text">🪟 한글 Windows 98 — 추억의 컴퓨터실 에디션</span>
               <div className="gb-win98-controls">
                 <span>_</span>
                 <span>□</span>
                 <span>×</span>
               </div>
             </div>
+
             <div className="gb-win98-desktop-stage">
-              <img
-                src="/assets/win98-retro-desktop-preview.png"
-                alt="한글 Windows 98 바탕화면 및 한컴타자연습·한메타자·피카츄배구 실행 화면"
-                className="gb-win98-screenshot"
-              />
-              <div className="gb-win98-icon-strip">
-                {RETRO_GAMES.map(g => (
-                  <div key={g.id} className="gb-win98-mini-icon">
-                    <span className="gb-win98-icon-dot">▣</span>
-                    <span>{g.name}</span>
-                  </div>
-                ))}
-                <div className="gb-win98-mini-icon">
-                  <span className="gb-win98-icon-dot">📖</span>
-                  <span>게임 가이드</span>
+              {/* Left Desktop Desktop Icons (Authentic 90s Pixel Grid) */}
+              <div className="gb-win98-canvas-icons">
+                <div className="gb-win98-d-icon">
+                  <span className="gb-d-ico-glyph">🖩</span>
+                  <span className="gb-d-ico-label">한컴타자연습 97</span>
                 </div>
-                <div className="gb-win98-mini-icon">
-                  <span className="gb-win98-icon-dot">🏆</span>
-                  <span>GAME RANKING</span>
+                <div className="gb-win98-d-icon">
+                  <span className="gb-d-ico-glyph">⌨️</span>
+                  <span className="gb-d-ico-label">한메타자 3.0</span>
+                </div>
+                <div className="gb-win98-d-icon">
+                  <span className="gb-d-ico-glyph">⚡</span>
+                  <span className="gb-d-ico-label">피카츄 배구</span>
+                </div>
+                <div className="gb-win98-d-icon">
+                  <span className="gb-d-ico-glyph">📖</span>
+                  <span className="gb-d-ico-label">게임 가이드</span>
+                </div>
+                <div className="gb-win98-d-icon">
+                  <span className="gb-d-ico-glyph">🏆</span>
+                  <span className="gb-d-ico-label">GAME RANKING</span>
+                </div>
+              </div>
+
+              {/* Center-Right: Overlapping Retro Mini-Windows */}
+              <div className="gb-win98-stage-windows">
+                {/* Window 1: Hancom Acid Rain Typing */}
+                <div className="gb-win98-floating-win gb-win-typing">
+                  <div className="gb-win-bar">
+                    <span>🖩 한컴타자 97 — 산성비</span>
+                    <div className="gb-win-btn-mini">✕</div>
+                  </div>
+                  <div className="gb-win-inner-typing">
+                    <div className="gb-drop-word w1">무궁화</div>
+                    <div className="gb-drop-word w2">컴퓨터</div>
+                    <div className="gb-drop-word w3">아름다운</div>
+                    <div className="gb-typing-ocean">🌊 타자속도: 482타 / 최고기록</div>
+                  </div>
+                </div>
+
+                {/* Window 2: Pikachu Volleyball Match */}
+                <div className="gb-win98-floating-win gb-win-pika">
+                  <div className="gb-win-bar">
+                    <span>⚡ 피카츄 배구 1:1 대전</span>
+                    <div className="gb-win-btn-mini">✕</div>
+                  </div>
+                  <div className="gb-win-inner-pika">
+                    <div className="gb-pika-court">
+                      <span className="gb-pika-char p1">⚡</span>
+                      <span className="gb-pika-net">│</span>
+                      <span className="gb-pika-ball">🔴</span>
+                      <span className="gb-pika-char p2">⚡</span>
+                    </div>
+                    <div className="gb-pika-score">1P: 14 vs 2P(COM): 12</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Authentic Windows 98 Taskbar */}
+              <div className="gb-win98-stage-taskbar">
+                <button type="button" className="gb-win98-start-btn">
+                  <span className="gb-win98-flag">🪟</span>
+                  <strong>시작</strong>
+                </button>
+                <div className="gb-win98-task-tabs">
+                  <div className="gb-win98-task-tab active">
+                    🖩 한컴타자 97
+                  </div>
+                  <div className="gb-win98-task-tab">
+                    ⚡ 피카츄 배구
+                  </div>
+                </div>
+                <div className="gb-win98-task-tray">
+                  <span>한</span>
+                  <span>🔊</span>
+                  <span>오후 03:40</span>
                 </div>
               </div>
             </div>

@@ -163,6 +163,7 @@ export default function GameDeck({ onNavigate }) {
                   title={selectedGame.name}
                   src={selectedGame.launchUrl}
                   aspectRatio={selectedGame.aspectRatio}
+                  game={selectedGame}
                   onClose={() => setIsPlaying(false)}
                 />
               ) : (

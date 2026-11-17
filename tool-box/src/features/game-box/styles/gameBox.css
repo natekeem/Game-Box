@@ -120,16 +120,18 @@
 
 /* Subbar for /game-box/retro and /game-box/deck */
 .gb-subbar {
-  height: 40px;
+  min-height: 40px;
+  height: auto;
   background: #1c2128;
   border-bottom: 1px solid #30363d;
-  padding: 0 16px;
+  padding: 6px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   font-size: 12px;
   flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
 .gb-subbar-left,
@@ -536,51 +538,356 @@
   text-decoration: none;
 }
 
-/* GameLauncher inside Console */
+/* GameLauncher inside Console — Clean Minimal Arcade Bezel */
 .gb-launcher-frame-wrap {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
+  position: relative;
+  background: #090c10;
 }
 
 .gb-launcher-toolbar {
-  height: 36px;
+  height: 40px;
   background: #161b22;
-  border-bottom: 1px solid #2d3748;
-  padding: 0 12px;
+  border-bottom: 1px solid #30363d;
+  padding: 0 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 12px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.gb-launcher-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gb-launcher-led-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+.gb-launcher-title {
+  font-weight: 700;
+  color: #f1f5f9;
+  font-size: 13px;
 }
 
 .gb-launcher-actions {
   display: flex;
-  gap: 6px;
+  align-items: center;
+  gap: 8px;
+}
+
+.gb-launcher-player-badge {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  font-weight: 700;
+  font-size: 11.5px;
+  padding: 2px 8px;
+  border-radius: 12px;
 }
 
 .gb-launcher-btn {
   background: #21262d;
   border: 1px solid #30363d;
   color: #e2e8f0;
-  padding: 3px 9px;
-  border-radius: 4px;
-  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 11.5px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.gb-launcher-btn:hover {
+  background: #30363d;
+  color: #ffffff;
+  border-color: #64748b;
+}
+
+.gb-launcher-btn-guide {
+  background: linear-gradient(135deg, #1e3a8a, #0284c7);
+  color: #ffffff;
+  border: 1px solid #38bdf8;
+  padding: 4px 11px;
+}
+
+.gb-launcher-btn-guide:hover {
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.35);
 }
 
 .gb-launcher-btn-close {
   color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.gb-launcher-btn-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fecaca;
+  border-color: #ef4444;
+}
+
+.gb-launcher-stage-container {
+  flex: 1 1 auto;
+  width: 100%;
+  height: calc(100% - 40px);
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #090c10;
+  overflow: hidden;
+  position: relative;
 }
 
 .gb-launcher-iframe {
-  flex: 1 1 auto;
   width: 100%;
-  min-height: 460px;
+  height: 100%;
+  min-height: 480px;
   border: none;
   background: #000;
+  display: block;
+}
+
+/* Modal Popup: Game Manual & Control Guides (Fixed Fullscreen Overlay) */
+.gb-guide-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: gbFadeIn 0.18s ease;
+  box-sizing: border-box;
+}
+
+@keyframes gbFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gb-guide-modal-content {
+  background: #161b22;
+  border: 1px solid #38bdf8;
+  border-radius: 10px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), 0 0 24px rgba(56, 189, 248, 0.2);
+  max-width: 620px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: gbSlideUp 0.18s ease;
+}
+
+@keyframes gbSlideUp {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.gb-guide-modal-header {
+  padding: 14px 18px;
+  background: #1c2128;
+  border-bottom: 1px solid #30363d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gb-guide-header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gb-guide-header-title h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #f1f5f9;
+}
+
+.gb-guide-badge {
+  background: #0284c7;
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.gb-guide-close-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.gb-guide-close-btn:hover {
+  color: #ffffff;
+  background: #21262d;
+}
+
+.gb-guide-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.gb-guide-section h4 {
+  margin: 0 0 10px 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #38bdf8;
+  border-bottom: 1px solid #2d3748;
+  padding-bottom: 4px;
+}
+
+.gb-guide-key-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gb-guide-key-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #0d1117;
+  border: 1px solid #262c36;
+  border-radius: 6px;
+  padding: 7px 12px;
+}
+
+.gb-guide-keycap {
+  background: #21262d;
+  border: 1px solid #475569;
+  border-bottom: 2px solid #334155;
+  color: #f8fafc;
+  font-family: monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.gb-guide-keydesc {
+  font-size: 12.5px;
+  color: #cbd5e1;
+}
+
+.gb-guide-rule-list {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.gb-guide-rule-list li {
+  margin-bottom: 6px;
+}
+
+.gb-guide-tip-box {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+.gb-guide-tip-box strong {
+  color: #4ade80;
+  font-size: 12.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.gb-guide-tip-box p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #dcfce7;
+}
+
+.gb-guide-identity-note {
+  background: #0d1117;
+  border: 1px dashed #334155;
+  border-radius: 6px;
+  padding: 10px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.gb-note-icon {
+  font-size: 16px;
+}
+
+.gb-guide-identity-note strong {
+  display: block;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 3px;
+}
+
+.gb-guide-identity-note p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #cbd5e1;
+}
+
+.gb-guide-identity-note strong {
+  color: #38bdf8;
+}
+
+.gb-guide-modal-footer {
+  padding: 12px 18px;
+  background: #1c2128;
+  border-top: 1px solid #30363d;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.gb-btn-guide-confirm {
+  background: #0284c7;
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.gb-btn-guide-confirm:hover {
+  background: #0369a1;
 }
 
 /* Right Spec & Ranking Panel */

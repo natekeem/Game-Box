@@ -1,53 +1,50 @@
- .container {
-    width: 545px;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0b0f17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #game {
-    margin: auto;
+    margin: 0 auto;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.footer .alert {
-    text-align: center;
-    line-height: 35px;
-}
-
-.footer .alert img {
-    margin-top: -3px;
-    margin-right: 5px;
-}
-
-h1 {
-    line-height: 64px;
-    margin-bottom: 0;
-}
-
-.html5 {
-    background: url('../img/html5.png');
-    width: 64px;
-    height: 64px;
+#canvas {
     display: block;
-    float: left;
-    margin-right: 10px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+    border: 2px solid #2d3748;
+    border-radius: 6px;
+    background-color: #000;
 }
 
-.html5 span {
-    display: none;
-}
-
-h1 strong {
-    color: #FF4444;
-}
-
-.credits {
-    color: gray;
-}
-
-.credits a {
-    color: gray;
-    text-decoration: underline;
-}
-
-.credits a:hover {
-    color: black;
+/* Hide header, textual instructions, and footer inside the clean arcade canvas frame */
+.page-header,
+h3,
+h4,
+ul,
+i,
+hr,
+.footer {
+    display: none !important;
 }

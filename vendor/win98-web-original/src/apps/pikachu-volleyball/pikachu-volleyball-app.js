@@ -33,8 +33,15 @@ export class PikachuVolleyballApp extends IFrameApplication {
   }
 
   _createWindow() {
+    let currentNickname = '';
+    try {
+      const raw = localStorage.getItem('gameBox_guest_identity_v1');
+      if (raw) currentNickname = JSON.parse(raw)?.nickname || '';
+    } catch {}
+    const winTitle = currentNickname ? `${this.title} [플레이어: ${currentNickname}]` : this.title;
+
     const win = new window.$Window({
-      title: this.title,
+      title: winTitle,
       outerWidth: this.width,
       outerHeight: this.height,
       resizable: this.resizable,
@@ -140,6 +147,7 @@ export class PikachuVolleyballApp extends IFrameApplication {
         background: "#0d1117",
       });
 
+    const playerTag = currentNickname ? `👤 플레이어: <b>${currentNickname}</b> | ` : '';
     const $statusBar = window.$("<div>")
       .addClass("status-bar")
       .css({
@@ -155,8 +163,8 @@ export class PikachuVolleyballApp extends IFrameApplication {
         userSelect: "none",
       })
       .html(
-        '<span>⚡ <b>조작키:</b> 방향키 이동 · <b>Enter / Z</b> 스파이크 · 메뉴에서 바로 AI 대전 시작 가능</span>' +
-        '<span>SACHI SOFT 1997</span>'
+        `<span>${playerTag}⚡ <b>조작키:</b> 방향키 이동 · <b>Enter / Z</b> 스파이크</span>` +
+        '<span>피카츄 배구 (1997)</span>'
       );
 
     win.$content.append(this.$iframe, $statusBar);

@@ -379,104 +379,112 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
   const myRoomPlayer = currentRoom?.players?.find(p => p.id === currentUser?.id);
   const supportsRoomBots = currentRoom?.game !== 'bombergirl' && activeGameMeta?.supportsBot;
 
+  const isDeckEmbed = useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    const params = new URLSearchParams(window.location.search);
+    return params.get('embed') === 'deck' || window.self !== window.top;
+  }, []);
+
   return (
-    <div className="gp-root">
-      {/* Top Corporate Portal Bar */}
-      <header className="gp-topbar">
-        <div className="gp-topbar-brand" onClick={handleLeaveCurrentRoom} style={{ cursor: 'pointer' }}>
-          <span className="gp-brand-logo">🎯</span>
-          <div>
-            <h1 className="gp-brand-title">GAME-BOX 사내 미니게임 플랫폼</h1>
-            <span className="gp-brand-sub">Marble Roulette · BattleBox 15종 · Snake Duel · Bomberman · Bombergirl · CatchMind</span>
+    <div className={`gp-root ${isDeckEmbed ? 'gp-deck-embed' : ''}`}>
+      {/* Top Corporate Portal Bar (Hidden in GAME DECK embed mode to avoid 2-layer headers) */}
+      {!isDeckEmbed && (
+        <header className="gp-topbar">
+          <div className="gp-topbar-brand" onClick={handleLeaveCurrentRoom} style={{ cursor: 'pointer' }}>
+            <span className="gp-brand-logo">🎯</span>
+            <div>
+              <h1 className="gp-brand-title">GAME-BOX 사내 미니게임 플랫폼</h1>
+              <span className="gp-brand-sub">Marble Roulette · BattleBox 15종 · Snake Duel · Bomberman · Bombergirl · CatchMind</span>
+            </div>
           </div>
-        </div>
 
-        <nav className="gp-topbar-nav">
-          <button
-            type="button"
-            className={`gp-nav-btn ${activeTab === 'arcade' && !activeGameId ? 'active' : ''}`}
-            onClick={() => {
-              handleLeaveCurrentRoom();
-              setActiveTab('arcade');
-            }}
-          >
-            🎮 미니게임 로비 (20종)
-          </button>
-          <button
-            type="button"
-            className={`gp-nav-btn ${activeTab === 'events' ? 'active' : ''}`}
-            onClick={() => {
-              handleLeaveCurrentRoom();
-              setActiveTab('events');
-            }}
-          >
-            🏆 이벤트 그룹 / 대회
-          </button>
-          <button
-            type="button"
-            className={`gp-nav-btn ${activeTab === 'rankings' ? 'active' : ''}`}
-            onClick={() => {
-              handleLeaveCurrentRoom();
-              setActiveTab('rankings');
-            }}
-          >
-            📊 공식 랭킹 / 전적
-          </button>
-          <button
-            type="button"
-            className={`gp-nav-btn ${activeTab === 'win98' ? 'active' : ''}`}
-            onClick={() => {
-              handleLeaveCurrentRoom();
-              setActiveTab('win98');
-            }}
-            style={{ border: '1px solid #38bdf8' }}
-          >
-            🪟 한글 Windows 98 (타자2종·피카츄배구)
-          </button>
-        </nav>
-
-        <div className="gp-topbar-user">
-          {/* Active Event Group selector */}
-          <div className="gp-active-event-picker">
-            <label title="선택 시 공식 온라인 경기 결과가 해당 이벤트 그룹 점수로도 집계됩니다.">🏆 활성 이벤트:</label>
-            <select
-              className="gp-select gp-select-sm"
-              value={activeEventId || ''}
-              onChange={e => setActiveEventId(e.target.value || null)}
+          <nav className="gp-topbar-nav">
+            <button
+              type="button"
+              className={`gp-nav-btn ${activeTab === 'arcade' && !activeGameId ? 'active' : ''}`}
+              onClick={() => {
+                handleLeaveCurrentRoom();
+                setActiveTab('arcade');
+              }}
             >
-              <option value="">일반 공식전 (이벤트 미지정)</option>
-              {activeEventsList.map(ev => (
-                <option key={ev.id} value={ev.id}>{ev.name}</option>
-              ))}
-            </select>
-          </div>
+              🎮 미니게임 로비 (20종)
+            </button>
+            <button
+              type="button"
+              className={`gp-nav-btn ${activeTab === 'events' ? 'active' : ''}`}
+              onClick={() => {
+                handleLeaveCurrentRoom();
+                setActiveTab('events');
+              }}
+            >
+              🏆 이벤트 그룹 / 대회
+            </button>
+            <button
+              type="button"
+              className={`gp-nav-btn ${activeTab === 'rankings' ? 'active' : ''}`}
+              onClick={() => {
+                handleLeaveCurrentRoom();
+                setActiveTab('rankings');
+              }}
+            >
+              📊 공식 랭킹 / 전적
+            </button>
+            <button
+              type="button"
+              className={`gp-nav-btn ${activeTab === 'win98' ? 'active' : ''}`}
+              onClick={() => {
+                handleLeaveCurrentRoom();
+                setActiveTab('win98');
+              }}
+              style={{ border: '1px solid #38bdf8' }}
+            >
+              🪟 한글 Windows 98 (타자2종·피카츄배구)
+            </button>
+          </nav>
 
-          {/* Current Corporate User Identity */}
-          <div className="gp-user-card" title={`사번/고유ID: ${currentUser?.id}`}>
-            <span className="gp-user-dept">{currentUser?.departmentName}</span>
-            <strong className="gp-user-name">{currentUser?.name}</strong>
-          </div>
-
-          {/* Dev-Only Mock User Switcher */}
-          {userProvider.allowMockUserSwitch && (
-            <div className="gp-mock-switcher">
-              <label htmlFor="gp-mock-user-select">🧪 테스트 계정:</label>
+          <div className="gp-topbar-user">
+            {/* Active Event Group selector */}
+            <div className="gp-active-event-picker">
+              <label title="선택 시 공식 온라인 경기 결과가 해당 이벤트 그룹 점수로도 집계됩니다.">🏆 활성 이벤트:</label>
               <select
-                id="gp-mock-user-select"
                 className="gp-select gp-select-sm"
-                value={currentUser?.id || ''}
-                onChange={e => userProvider.switchMockUser(e.target.value)}
+                value={activeEventId || ''}
+                onChange={e => setActiveEventId(e.target.value || null)}
               >
-                {userProvider.listAvailableMockUsers().map(u => (
-                  <option key={u.id} value={u.id}>
-                    {u.name} ({u.departmentName})
-                  </option>
+                <option value="">일반 공식전 (이벤트 미지정)</option>
+                {activeEventsList.map(ev => (
+                  <option key={ev.id} value={ev.id}>{ev.name}</option>
                 ))}
               </select>
             </div>
-          )}
-        </div>
-      </header>
+
+            {/* Current Corporate User Identity */}
+            <div className="gp-user-card" title={`사번/고유ID: ${currentUser?.id}`}>
+              <span className="gp-user-dept">{currentUser?.departmentName}</span>
+              <strong className="gp-user-name">{currentUser?.name}</strong>
+            </div>
+
+            {/* Dev-Only Mock User Switcher */}
+            {userProvider.allowMockUserSwitch && (
+              <div className="gp-mock-switcher">
+                <label htmlFor="gp-mock-user-select">🧪 테스트 계정:</label>
+                <select
+                  id="gp-mock-user-select"
+                  className="gp-select gp-select-sm"
+                  value={currentUser?.id || ''}
+                  onChange={e => userProvider.switchMockUser(e.target.value)}
+                >
+                  {userProvider.listAvailableMockUsers().map(u => (
+                    <option key={u.id} value={u.id}>
+                      {u.name} ({u.departmentName})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </div>
+        </header>
+      )}
 
       {toastMessage && (
         <div className="gp-toast-banner" role="status">

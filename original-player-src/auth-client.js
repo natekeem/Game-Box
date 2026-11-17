@@ -134,11 +134,34 @@
     if (document.visibilityState === 'hidden') flushRecordSnapshots();
   });
 
+  function getGuestIdentity() {
+    try {
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        const urlNick = (params.get('nickname') || '').trim();
+        const urlGuestId = (params.get('guestId') || '').trim();
+        if (urlNick) {
+          return { nickname: urlNick, guestId: urlGuestId || 'guest-' + Date.now() };
+        }
+        const raw = localStorage.getItem('gameBox_guest_identity_v1');
+        if (raw) return JSON.parse(raw);
+      }
+    } catch {}
+    return null;
+  }
+
   document.addEventListener('DOMContentLoaded', async () => {
     flushAttempts();
     flushRecordSnapshots();
     const badge = document.getElementById('account-badge');
     if (!badge) return;
+    const guest = getGuestIdentity();
+    if (guest && guest.nickname) {
+      badge.textContent = `👤 ${guest.nickname}`;
+      badge.title = `게스트 식별자: ${guest.guestId || ''}`;
+      badge.href = '/game-box/retro';
+      return;
+    }
     try {
       const response = await fetch('/api/bootstrap', { headers: headers(), cache: 'no-store' });
       if (!response.ok) throw new Error(String(response.status));
@@ -147,8 +170,8 @@
       const active = context.events.find(event => event.id === window.gameBoxAuth.activeEventId());
       if (active) badge.title = `이벤트: ${active.name}`;
     } catch {
-      badge.textContent = token() ? '로그인 갱신' : '사내 로그인 필요';
-      badge.href = './rankings.html';
+      badge.textContent = token() ? '로그인 갱신' : '게스트 플레이어';
+      badge.href = '/game-box/retro';
     }
   });
 })();

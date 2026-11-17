@@ -48,8 +48,15 @@ export class HanmeTyping30App extends IFrameApplication {
   }
 
   _createWindow() {
+    let currentNickname = '';
+    try {
+      const raw = localStorage.getItem('gameBox_guest_identity_v1');
+      if (raw) currentNickname = JSON.parse(raw)?.nickname || '';
+    } catch {}
+    const winTitle = currentNickname ? `${this.title} [플레이어: ${currentNickname}]` : this.title;
+
     const win = new window.$Window({
-      title: this.title,
+      title: winTitle,
       outerWidth: this.width,
       outerHeight: this.height,
       resizable: this.resizable,
@@ -150,6 +157,7 @@ export class HanmeTyping30App extends IFrameApplication {
         background: "#000",
       });
 
+    const playerTag = currentNickname ? `👤 플레이어: <b>${currentNickname}</b> | ` : '';
     const $statusBar = window.$("<div>")
       .addClass("status-bar")
       .css({
@@ -165,8 +173,8 @@ export class HanmeTyping30App extends IFrameApplication {
         userSelect: "none",
       })
       .html(
-        '<span>🏰 <b>베네치아 타자게임 수록</b> · 한/영 전환: <b>Shift + Space</b></span>' +
-        '<span>한메타자교사 3.0 (1994)</span>'
+        `<span>${playerTag}🏰 <b>베네치아 수록</b> · 한/영: <b>Shift + Space</b></span>` +
+        '<span>한메타자교사 3.0</span>'
       );
 
     win.$content.append(this.$iframe, $statusBar);

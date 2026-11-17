@@ -80,8 +80,37 @@ export class MockUserProvider {
   }
 
   getCurrentUser() {
+    let guestNickname = '';
+    let guestId = '';
+    try {
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        guestNickname = (params.get('nickname') || '').trim();
+        guestId = (params.get('guestId') || '').trim();
+        if (!guestNickname) {
+          const raw = localStorage.getItem('gameBox_guest_identity_v1');
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            guestNickname = (parsed.nickname || '').trim();
+            guestId = (parsed.guestId || '').trim();
+          }
+        }
+      }
+    } catch {
+      // ignore parsing errors
+    }
+
     const id = this.getSelectedMockUserId();
-    return this.mockUsers.find(u => u.id === id) || this.mockUsers[0];
+    const base = this.mockUsers.find(u => u.id === id) || this.mockUsers[0];
+    if (guestNickname) {
+      return {
+        ...base,
+        id: guestId || base.id,
+        name: guestNickname,
+        departmentName: '게스트 플레이어',
+      };
+    }
+    return base;
   }
 
   subscribe(listener) {
@@ -90,8 +119,10 @@ export class MockUserProvider {
   }
 
   getHeaders() {
+    const cur = this.getCurrentUser();
     return {
       'X-Mock-User-Id': this.getSelectedMockUserId(),
+      'X-GameBox-Nickname': encodeURIComponent(cur.name || ''),
     };
   }
 }

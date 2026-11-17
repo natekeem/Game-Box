@@ -28,6 +28,70 @@
   box-sizing: border-box;
 }
 
+/* Dedicated styles when embedded in GAME DECK iframe to avoid 2-layer headers */
+.gp-root.gp-deck-embed {
+  min-height: 100% !important;
+  height: 100% !important;
+  background: #0b0f17 !important;
+  overflow: hidden !important;
+}
+
+.gp-root.gp-deck-embed .gp-topbar {
+  display: none !important;
+}
+
+.gp-root.gp-deck-embed .gp-main {
+  padding: 4px !important;
+  margin: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.gp-root.gp-deck-embed .gp-room-container {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.gp-root.gp-deck-embed .gp-room-topbar {
+  padding: 4px 12px !important;
+  background: rgba(15, 23, 42, 0.75) !important;
+  border-radius: 6px !important;
+  margin-bottom: 6px !important;
+  width: auto !important;
+  min-height: auto !important;
+  gap: 12px !important;
+}
+
+.gp-root.gp-deck-embed .gp-room-topbar h2 {
+  font-size: 13px !important;
+  margin: 0 !important;
+}
+
+.gp-root.gp-deck-embed .gp-game-icon-lg {
+  font-size: 18px !important;
+}
+
+.gp-root.gp-deck-embed .gp-active-match-area {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
 /* Top Bar */
 .gp-topbar {
   display: flex;
