@@ -40,6 +40,7 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
   if (!apiRef.current) {
     apiRef.current = new PlatformApiClient({
       baseUrl: apiBaseUrl,
+      userProvider,
       getUser: () => userProvider.getCurrentUser(),
     });
   }
@@ -96,9 +97,13 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
     if (urlGame) {
       const targetGame = getGameById(urlGame);
       if (targetGame) {
-        setTimeout(() => {
-          handleStartSoloPractice(targetGame);
-        }, 60);
+        setActiveGameId(targetGame.id);
+        const autoMode = params.get('mode');
+        if (autoMode === 'single') {
+          setTimeout(() => {
+            handleLaunchSingleVsBot(targetGame, 'normal');
+          }, 60);
+        }
       }
     }
   }, [userProvider]);
@@ -183,7 +188,7 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
     setPublicGameState(null);
   };
 
-  const handleStartSoloPractice = async (game) => {
+  const handleLaunchSingleVsBot = async (game, difficulty = 'normal') => {
     if (isRouletteGame(game.id)) {
       handleOpenMarbleRoulette();
       return;
@@ -198,11 +203,13 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
     }
     const requestId = ++launchRequestRef.current;
     try {
+      const maxBots = Math.max(1, (game.maxPlayers || 2) - 1);
+      const count = Math.min(maxBots, 1);
       const res = await api.createRoom({
         gameId: game.id,
-        mode: 'solo',
-        botCount: 0,
-        botDifficulty: 'easy',
+        mode: 'bot',
+        botCount: count,
+        botDifficulty: difficulty || 'normal',
         eventId: activeEventId,
       });
       if (requestId !== launchRequestRef.current) return;
@@ -220,6 +227,10 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
     } catch (err) {
       showToast(err.message);
     }
+  };
+
+  const handleStartSoloPractice = async (game) => {
+    return handleLaunchSingleVsBot(game, 'normal');
   };
 
   const handleOpenBotModal = (game) => {
@@ -331,7 +342,7 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
       }
     }
     setCurrentRoom(null);
-    setActiveGameId(null);
+    // Preserve activeGameId so we return to this game's dedicated waiting room instead of global catalog
     setPublicGameState(null);
     setPrivateRoleState(null);
     setMatchResult(null);
@@ -675,10 +686,10 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
                       </button>
                     )}
 
-                    {isRoomHost && (
+                    {isRoomHost ? (
                       <button
                         type="button"
-                        className="gp-btn gp-btn-primary gp-btn-lg"
+                        className="gp-btn gp-btn-primary gp-btn-lg gp-btn-start-game"
                         onClick={async () => {
                           try {
                             const res = await api.startRoom(currentRoom.code);
@@ -691,8 +702,12 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
                           }
                         }}
                       >
-                        🚀 게임 시작하기
+                        🚀 게임 시작하기 (START)
                       </button>
+                    ) : (
+                      <div className="gp-waiting-host-notice">
+                        <span>⏳ 방장이 게임을 시작하기를 기다리고 있습니다... 준비 완료를 눌러주세요.</span>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -755,7 +770,7 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
                         className="gp-btn gp-btn-secondary"
                         onClick={handleLeaveCurrentRoom}
                       >
-                        메인 로비로 이동
+                        ← 대기실로 나가기
                       </button>
                     </div>
                   </div>
@@ -820,8 +835,141 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
         ) : activeTab === 'rankings' ? (
           /* 4. Rankings & Stats Tab */
           <RankingsAndStatsView api={api} currentUser={currentUser} />
+        ) : activeGameMeta ? (
+          /* 5. Dedicated Game Waiting Room (Single Mode vs Multi Mode & Join Code) */
+          <div className="gp-game-waiting-room">
+            <div className="gp-waiting-hero">
+              <div className="gp-waiting-hero-left">
+                <span className="gp-waiting-game-icon">{activeGameMeta.icon}</span>
+                <div>
+                  <div className="gp-waiting-tag-row">
+                    <span className="gp-waiting-kicker">{activeGameMeta.category?.toUpperCase() || 'ARCADE'}</span>
+                    <span className="gp-waiting-players">1~{activeGameMeta.maxPlayers || 8}인 플레이 지원</span>
+                  </div>
+                  <h2 className="gp-waiting-game-title">{activeGameMeta.name}</h2>
+                  <p className="gp-waiting-game-desc">{activeGameMeta.description}</p>
+                </div>
+              </div>
+
+              <div className="gp-waiting-user-card">
+                <span className="gp-waiting-user-label">접속 플레이어</span>
+                <strong className="gp-waiting-user-name">👤 {currentUser?.name || '게스트'}</strong>
+                <span className="gp-waiting-user-sub">실시간 전적·랭킹 자동 연동</span>
+              </div>
+            </div>
+
+            <div className="gp-waiting-modes-grid">
+              {/* LEFT: 🤖 싱글 모드 (무조건 컴퓨터 AI BOT 대결 / 연습) */}
+              <div className="gp-mode-panel gp-mode-single">
+                <div className="gp-mode-header">
+                  <span className="gp-mode-pill pill-single">SINGLE MODE</span>
+                  <h3>🤖 싱글 모드 (컴퓨터와 대결)</h3>
+                </div>
+                <p className="gp-mode-desc">
+                  기다림 없이 즉시 컴퓨터 AI BOT과 1:1 대결을 시작합니다.
+                  AI 난이도를 선택하고 플레이를 시작하세요.
+                </p>
+
+                <div className="gp-mode-bot-select">
+                  <label>AI BOT 난이도 선택:</label>
+                  <div className="gp-diff-btn-group">
+                    <button
+                      type="button"
+                      className={`gp-diff-btn ${lobbyBotDiff === 'easy' ? 'active' : ''}`}
+                      onClick={() => setLobbyBotDiff('easy')}
+                    >
+                      쉬움 (Easy)
+                    </button>
+                    <button
+                      type="button"
+                      className={`gp-diff-btn ${lobbyBotDiff === 'normal' ? 'active' : ''}`}
+                      onClick={() => setLobbyBotDiff('normal')}
+                    >
+                      보통 (Normal)
+                    </button>
+                    <button
+                      type="button"
+                      className={`gp-diff-btn ${lobbyBotDiff === 'hard' ? 'active' : ''}`}
+                      onClick={() => setLobbyBotDiff('hard')}
+                    >
+                      어려움 (Hard)
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="gp-btn gp-btn-primary gp-btn-start-single"
+                  onClick={() => handleLaunchSingleVsBot(activeGameMeta, lobbyBotDiff)}
+                >
+                  ▶ 컴퓨터 AI와 대결 시작 (즉시 플레이)
+                </button>
+              </div>
+
+              {/* RIGHT: 🌐 멀티 모드 (온라인 대전) */}
+              <div className="gp-mode-panel gp-mode-multi">
+                <div className="gp-mode-header">
+                  <span className="gp-mode-pill pill-multi">MULTI MODE</span>
+                  <h3>🌐 멀티 모드 (온라인 대전)</h3>
+                </div>
+                <p className="gp-mode-desc">
+                  온라인 대기실을 만들어 친구를 초대하거나, 6자리 방 코드를 입력해 참가합니다.
+                  대기실에서 모든 참가자가 준비되면 방장이 게임을 시작합니다.
+                </p>
+
+                <div className="gp-multi-actions-box">
+                  {/* Action 1: 새 방 만들기 */}
+                  <div className="gp-multi-option">
+                    <div className="gp-multi-opt-info">
+                      <strong>1. 내가 방장이 되어 시작하기</strong>
+                      <span>고유 방 코드가 생성되며, 대기실에서 대기 후 방장이 게임을 시작합니다.</span>
+                    </div>
+                    <button
+                      type="button"
+                      className="gp-btn gp-btn-success"
+                      onClick={() => handleCreateOnlineRoom(activeGameMeta)}
+                    >
+                      ➕ 새 온라인 방 만들기
+                    </button>
+                  </div>
+
+                  <div className="gp-multi-divider">
+                    <span>또는</span>
+                  </div>
+
+                  {/* Action 2: 코드로 방 입장 */}
+                  <div className="gp-multi-option">
+                    <div className="gp-multi-opt-info">
+                      <strong>2. 방 코드로 대기실 입장하기</strong>
+                      <span>공유받은 방 코드를 입력하고 대기실에 참가하세요.</span>
+                    </div>
+                    <div className="gp-join-bar">
+                      <input
+                        type="text"
+                        className="gp-input gp-input-code"
+                        placeholder="방 코드 입력 (예: JVWQ)"
+                        maxLength={8}
+                        value={joinCodeInput}
+                        onChange={e => setJoinCodeInput(e.target.value.toUpperCase())}
+                        onKeyDown={e => {
+                          if (e.key === 'Enter') handleJoinRoomByCode(joinCodeInput);
+                        }}
+                      />
+                      <button
+                        type="button"
+                        className="gp-btn gp-btn-secondary"
+                        onClick={() => handleJoinRoomByCode(joinCodeInput)}
+                      >
+                        입장하기
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         ) : (
-          /* 5. Main Arcade Game Catalog (20 Games) */
+          /* 6. Main Arcade Game Catalog (20 Games) */
           <div className="gp-arcade-lobby">
             {/* Quick Online Room Join & Active Rooms Bar */}
             <section className="gp-quick-online-bar">

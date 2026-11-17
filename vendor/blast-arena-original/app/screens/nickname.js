@@ -101,6 +101,16 @@ const submitNickname = (store) => (e) => {
 export function NicknameScreen(state, store) {
   const showCoinPopup = state.ui?.coinInserted;
 
+  let defaultNick = '';
+  try {
+    const params = new URLSearchParams(window.location.search);
+    defaultNick = (params.get('nickname') || '').trim();
+    if (!defaultNick) {
+      const raw = localStorage.getItem('gameBox_guest_identity_v1');
+      if (raw) defaultNick = (JSON.parse(raw)?.nickname || '').trim();
+    }
+  } catch {}
+
   return createElement('section', { className: 'screen nickname', key: 'screen-nickname' },
     createElement('div', { className: 'card welcome-card' },
       createElement('div', { className: 'title-icon hero-icon', innerHTML: getIconSVG('bomb') }),
@@ -115,6 +125,7 @@ export function NicknameScreen(state, store) {
           name: 'nickname',
           type: 'text',
           placeholder: 'TYPE YOUR NAME...',
+          value: defaultNick,
           autofocus: true,
           maxlength: 16,
           required: true

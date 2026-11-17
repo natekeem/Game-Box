@@ -87,24 +87,35 @@ export function createGameBoxServer({
       return platformStore.upsertUser(adapted, false);
     }
     if (!allowMockUserSwitch) return null;
-    const customNick = decodeURIComponent(String(
-      request.headers['x-gamebox-nickname'] ||
-      url.searchParams.get('nickname') ||
-      ''
-    )).trim();
+    let customNick = '';
+    try {
+      customNick = decodeURIComponent(String(
+        request.headers['x-gamebox-nickname'] ||
+        url.searchParams.get('nickname') ||
+        ''
+      )).trim();
+    } catch {}
+
+    const guestIdParam = (url?.searchParams?.get('guestId') || request.headers['x-guest-id'] || '').trim();
     const mockId = String(
+      (guestIdParam.startsWith('guest-') ? guestIdParam : '') ||
       request.headers['x-mock-user-id'] ||
-      url.searchParams.get('mockUserId') ||
+      url?.searchParams?.get('mockUserId') ||
       MOCK_USERS[0].id
     ).trim();
-    const base = platformStore.getUser(mockId) || platformStore.getUser(MOCK_USERS[0].id);
-    if (base && customNick) {
-      return {
-        ...base,
-        name: customNick,
+
+    // If mockId is a guest or custom nickname is present, ensure identity matches guestId
+    if (mockId.startsWith('guest-') || (customNick && customNick !== '김성민')) {
+      const guestUser = {
+        id: mockId,
+        name: customNick || '게스트',
+        departmentId: 'dept-guest',
+        departmentName: '게스트 플레이어',
       };
+      return platformStore.upsertUser(guestUser, false);
     }
-    return base;
+
+    return platformStore.getUser(mockId) || platformStore.getUser(MOCK_USERS[0].id);
   }
 
   const server = http.createServer(async (request, response) => {

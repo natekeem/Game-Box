@@ -1002,9 +1002,11 @@ var GameBoxPlatform = (() => {
       const providerHeaders = this.userProvider?.getHeaders?.() || {};
       const currentUser = this.getUser?.() || this.userProvider?.getCurrentUser?.();
       const fallbackMockHeader = !providerHeaders["X-Mock-User-Id"] && currentUser?.id ? { "X-Mock-User-Id": currentUser.id } : {};
+      const fallbackNickHeader = !providerHeaders["X-GameBox-Nickname"] && currentUser?.name ? { "X-GameBox-Nickname": encodeURIComponent(currentUser.name) } : {};
       return {
         ...providerHeaders,
         ...fallbackMockHeader,
+        ...fallbackNickHeader,
         ...extra
       };
     }
@@ -2902,6 +2904,7 @@ var GameBoxPlatform = (() => {
     if (!apiRef.current) {
       apiRef.current = new PlatformApiClient({
         baseUrl: apiBaseUrl,
+        userProvider,
         getUser: () => userProvider.getCurrentUser()
       });
     }
@@ -2951,9 +2954,13 @@ var GameBoxPlatform = (() => {
       if (urlGame) {
         const targetGame = getGameById(urlGame);
         if (targetGame) {
-          setTimeout(() => {
-            handleStartSoloPractice(targetGame);
-          }, 60);
+          setActiveGameId(targetGame.id);
+          const autoMode = params.get("mode");
+          if (autoMode === "single") {
+            setTimeout(() => {
+              handleLaunchSingleVsBot(targetGame, "normal");
+            }, 60);
+          }
         }
       }
     }, [userProvider]);
@@ -3025,7 +3032,7 @@ var GameBoxPlatform = (() => {
       setMatchResult(null);
       setPublicGameState(null);
     };
-    const handleStartSoloPractice = async (game) => {
+    const handleLaunchSingleVsBot = async (game, difficulty = "normal") => {
       if (isRouletteGame(game.id)) {
         handleOpenMarbleRoulette();
         return;
@@ -3040,11 +3047,13 @@ var GameBoxPlatform = (() => {
       }
       const requestId = ++launchRequestRef.current;
       try {
+        const maxBots = Math.max(1, (game.maxPlayers || 2) - 1);
+        const count = Math.min(maxBots, 1);
         const res = await api.createRoom({
           gameId: game.id,
-          mode: "solo",
-          botCount: 0,
-          botDifficulty: "easy",
+          mode: "bot",
+          botCount: count,
+          botDifficulty: difficulty || "normal",
           eventId: activeEventId
         });
         if (requestId !== launchRequestRef.current) return;
@@ -3062,6 +3071,9 @@ var GameBoxPlatform = (() => {
       } catch (err) {
         showToast(err.message);
       }
+    };
+    const handleStartSoloPractice = async (game) => {
+      return handleLaunchSingleVsBot(game, "normal");
     };
     const handleOpenBotModal = (game) => {
       if (isRouletteGame(game.id)) {
@@ -3167,7 +3179,6 @@ var GameBoxPlatform = (() => {
         }
       }
       setCurrentRoom(null);
-      setActiveGameId(null);
       setPublicGameState(null);
       setPrivateRoleState(null);
       setMatchResult(null);
@@ -3477,11 +3488,11 @@ var GameBoxPlatform = (() => {
                     children: myRoomPlayer.ready ? "\uC900\uBE44 \uD574\uC81C" : "\u2713 \uC900\uBE44 \uC644\uB8CC"
                   }
                 ),
-                isRoomHost && /* @__PURE__ */ u3(
+                isRoomHost ? /* @__PURE__ */ u3(
                   "button",
                   {
                     type: "button",
-                    className: "gp-btn gp-btn-primary gp-btn-lg",
+                    className: "gp-btn gp-btn-primary gp-btn-lg gp-btn-start-game",
                     onClick: async () => {
                       try {
                         const res = await api.startRoom(currentRoom.code);
@@ -3493,9 +3504,9 @@ var GameBoxPlatform = (() => {
                         showToast(err.message);
                       }
                     },
-                    children: "\u{1F680} \uAC8C\uC784 \uC2DC\uC791\uD558\uAE30"
+                    children: "\u{1F680} \uAC8C\uC784 \uC2DC\uC791\uD558\uAE30 (START)"
                   }
-                )
+                ) : /* @__PURE__ */ u3("div", { className: "gp-waiting-host-notice", children: /* @__PURE__ */ u3("span", { children: "\u23F3 \uBC29\uC7A5\uC774 \uAC8C\uC784\uC744 \uC2DC\uC791\uD558\uAE30\uB97C \uAE30\uB2E4\uB9AC\uACE0 \uC788\uC2B5\uB2C8\uB2E4... \uC900\uBE44 \uC644\uB8CC\uB97C \uB20C\uB7EC\uC8FC\uC138\uC694." }) })
               ] })
             ] })
           ] }) : (
@@ -3553,7 +3564,7 @@ var GameBoxPlatform = (() => {
                       type: "button",
                       className: "gp-btn gp-btn-secondary",
                       onClick: handleLeaveCurrentRoom,
-                      children: "\uBA54\uC778 \uB85C\uBE44\uB85C \uC774\uB3D9"
+                      children: "\u2190 \uB300\uAE30\uC2E4\uB85C \uB098\uAC00\uAE30"
                     }
                   )
                 ] })
@@ -3627,8 +3638,143 @@ var GameBoxPlatform = (() => {
       ) : activeTab === "rankings" ? (
         /* 4. Rankings & Stats Tab */
         /* @__PURE__ */ u3(RankingsAndStatsView, { api, currentUser })
+      ) : activeGameMeta ? (
+        /* 5. Dedicated Game Waiting Room (Single Mode vs Multi Mode & Join Code) */
+        /* @__PURE__ */ u3("div", { className: "gp-game-waiting-room", children: [
+          /* @__PURE__ */ u3("div", { className: "gp-waiting-hero", children: [
+            /* @__PURE__ */ u3("div", { className: "gp-waiting-hero-left", children: [
+              /* @__PURE__ */ u3("span", { className: "gp-waiting-game-icon", children: activeGameMeta.icon }),
+              /* @__PURE__ */ u3("div", { children: [
+                /* @__PURE__ */ u3("div", { className: "gp-waiting-tag-row", children: [
+                  /* @__PURE__ */ u3("span", { className: "gp-waiting-kicker", children: activeGameMeta.category?.toUpperCase() || "ARCADE" }),
+                  /* @__PURE__ */ u3("span", { className: "gp-waiting-players", children: [
+                    "1~",
+                    activeGameMeta.maxPlayers || 8,
+                    "\uC778 \uD50C\uB808\uC774 \uC9C0\uC6D0"
+                  ] })
+                ] }),
+                /* @__PURE__ */ u3("h2", { className: "gp-waiting-game-title", children: activeGameMeta.name }),
+                /* @__PURE__ */ u3("p", { className: "gp-waiting-game-desc", children: activeGameMeta.description })
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gp-waiting-user-card", children: [
+              /* @__PURE__ */ u3("span", { className: "gp-waiting-user-label", children: "\uC811\uC18D \uD50C\uB808\uC774\uC5B4" }),
+              /* @__PURE__ */ u3("strong", { className: "gp-waiting-user-name", children: [
+                "\u{1F464} ",
+                currentUser?.name || "\uAC8C\uC2A4\uD2B8"
+              ] }),
+              /* @__PURE__ */ u3("span", { className: "gp-waiting-user-sub", children: "\uC2E4\uC2DC\uAC04 \uC804\uC801\xB7\uB7AD\uD0B9 \uC790\uB3D9 \uC5F0\uB3D9" })
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "gp-waiting-modes-grid", children: [
+            /* @__PURE__ */ u3("div", { className: "gp-mode-panel gp-mode-single", children: [
+              /* @__PURE__ */ u3("div", { className: "gp-mode-header", children: [
+                /* @__PURE__ */ u3("span", { className: "gp-mode-pill pill-single", children: "SINGLE MODE" }),
+                /* @__PURE__ */ u3("h3", { children: "\u{1F916} \uC2F1\uAE00 \uBAA8\uB4DC (\uCEF4\uD4E8\uD130\uC640 \uB300\uACB0)" })
+              ] }),
+              /* @__PURE__ */ u3("p", { className: "gp-mode-desc", children: "\uAE30\uB2E4\uB9BC \uC5C6\uC774 \uC989\uC2DC \uCEF4\uD4E8\uD130 AI BOT\uACFC 1:1 \uB300\uACB0\uC744 \uC2DC\uC791\uD569\uB2C8\uB2E4. AI \uB09C\uC774\uB3C4\uB97C \uC120\uD0DD\uD558\uACE0 \uD50C\uB808\uC774\uB97C \uC2DC\uC791\uD558\uC138\uC694." }),
+              /* @__PURE__ */ u3("div", { className: "gp-mode-bot-select", children: [
+                /* @__PURE__ */ u3("label", { children: "AI BOT \uB09C\uC774\uB3C4 \uC120\uD0DD:" }),
+                /* @__PURE__ */ u3("div", { className: "gp-diff-btn-group", children: [
+                  /* @__PURE__ */ u3(
+                    "button",
+                    {
+                      type: "button",
+                      className: `gp-diff-btn ${lobbyBotDiff === "easy" ? "active" : ""}`,
+                      onClick: () => setLobbyBotDiff("easy"),
+                      children: "\uC26C\uC6C0 (Easy)"
+                    }
+                  ),
+                  /* @__PURE__ */ u3(
+                    "button",
+                    {
+                      type: "button",
+                      className: `gp-diff-btn ${lobbyBotDiff === "normal" ? "active" : ""}`,
+                      onClick: () => setLobbyBotDiff("normal"),
+                      children: "\uBCF4\uD1B5 (Normal)"
+                    }
+                  ),
+                  /* @__PURE__ */ u3(
+                    "button",
+                    {
+                      type: "button",
+                      className: `gp-diff-btn ${lobbyBotDiff === "hard" ? "active" : ""}`,
+                      onClick: () => setLobbyBotDiff("hard"),
+                      children: "\uC5B4\uB824\uC6C0 (Hard)"
+                    }
+                  )
+                ] })
+              ] }),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "gp-btn gp-btn-primary gp-btn-start-single",
+                  onClick: () => handleLaunchSingleVsBot(activeGameMeta, lobbyBotDiff),
+                  children: "\u25B6 \uCEF4\uD4E8\uD130 AI\uC640 \uB300\uACB0 \uC2DC\uC791 (\uC989\uC2DC \uD50C\uB808\uC774)"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gp-mode-panel gp-mode-multi", children: [
+              /* @__PURE__ */ u3("div", { className: "gp-mode-header", children: [
+                /* @__PURE__ */ u3("span", { className: "gp-mode-pill pill-multi", children: "MULTI MODE" }),
+                /* @__PURE__ */ u3("h3", { children: "\u{1F310} \uBA40\uD2F0 \uBAA8\uB4DC (\uC628\uB77C\uC778 \uB300\uC804)" })
+              ] }),
+              /* @__PURE__ */ u3("p", { className: "gp-mode-desc", children: "\uC628\uB77C\uC778 \uB300\uAE30\uC2E4\uC744 \uB9CC\uB4E4\uC5B4 \uCE5C\uAD6C\uB97C \uCD08\uB300\uD558\uAC70\uB098, 6\uC790\uB9AC \uBC29 \uCF54\uB4DC\uB97C \uC785\uB825\uD574 \uCC38\uAC00\uD569\uB2C8\uB2E4. \uB300\uAE30\uC2E4\uC5D0\uC11C \uBAA8\uB4E0 \uCC38\uAC00\uC790\uAC00 \uC900\uBE44\uB418\uBA74 \uBC29\uC7A5\uC774 \uAC8C\uC784\uC744 \uC2DC\uC791\uD569\uB2C8\uB2E4." }),
+              /* @__PURE__ */ u3("div", { className: "gp-multi-actions-box", children: [
+                /* @__PURE__ */ u3("div", { className: "gp-multi-option", children: [
+                  /* @__PURE__ */ u3("div", { className: "gp-multi-opt-info", children: [
+                    /* @__PURE__ */ u3("strong", { children: "1. \uB0B4\uAC00 \uBC29\uC7A5\uC774 \uB418\uC5B4 \uC2DC\uC791\uD558\uAE30" }),
+                    /* @__PURE__ */ u3("span", { children: "\uACE0\uC720 \uBC29 \uCF54\uB4DC\uAC00 \uC0DD\uC131\uB418\uBA70, \uB300\uAE30\uC2E4\uC5D0\uC11C \uB300\uAE30 \uD6C4 \uBC29\uC7A5\uC774 \uAC8C\uC784\uC744 \uC2DC\uC791\uD569\uB2C8\uB2E4." })
+                  ] }),
+                  /* @__PURE__ */ u3(
+                    "button",
+                    {
+                      type: "button",
+                      className: "gp-btn gp-btn-success",
+                      onClick: () => handleCreateOnlineRoom(activeGameMeta),
+                      children: "\u2795 \uC0C8 \uC628\uB77C\uC778 \uBC29 \uB9CC\uB4E4\uAE30"
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ u3("div", { className: "gp-multi-divider", children: /* @__PURE__ */ u3("span", { children: "\uB610\uB294" }) }),
+                /* @__PURE__ */ u3("div", { className: "gp-multi-option", children: [
+                  /* @__PURE__ */ u3("div", { className: "gp-multi-opt-info", children: [
+                    /* @__PURE__ */ u3("strong", { children: "2. \uBC29 \uCF54\uB4DC\uB85C \uB300\uAE30\uC2E4 \uC785\uC7A5\uD558\uAE30" }),
+                    /* @__PURE__ */ u3("span", { children: "\uACF5\uC720\uBC1B\uC740 \uBC29 \uCF54\uB4DC\uB97C \uC785\uB825\uD558\uACE0 \uB300\uAE30\uC2E4\uC5D0 \uCC38\uAC00\uD558\uC138\uC694." })
+                  ] }),
+                  /* @__PURE__ */ u3("div", { className: "gp-join-bar", children: [
+                    /* @__PURE__ */ u3(
+                      "input",
+                      {
+                        type: "text",
+                        className: "gp-input gp-input-code",
+                        placeholder: "\uBC29 \uCF54\uB4DC \uC785\uB825 (\uC608: JVWQ)",
+                        maxLength: 8,
+                        value: joinCodeInput,
+                        onChange: (e3) => setJoinCodeInput(e3.target.value.toUpperCase()),
+                        onKeyDown: (e3) => {
+                          if (e3.key === "Enter") handleJoinRoomByCode(joinCodeInput);
+                        }
+                      }
+                    ),
+                    /* @__PURE__ */ u3(
+                      "button",
+                      {
+                        type: "button",
+                        className: "gp-btn gp-btn-secondary",
+                        onClick: () => handleJoinRoomByCode(joinCodeInput),
+                        children: "\uC785\uC7A5\uD558\uAE30"
+                      }
+                    )
+                  ] })
+                ] })
+              ] })
+            ] })
+          ] })
+        ] })
       ) : (
-        /* 5. Main Arcade Game Catalog (20 Games) */
+        /* 6. Main Arcade Game Catalog (20 Games) */
         /* @__PURE__ */ u3("div", { className: "gp-arcade-lobby", children: [
           /* @__PURE__ */ u3("section", { className: "gp-quick-online-bar", children: [
             /* @__PURE__ */ u3("div", { className: "gp-join-code-box", children: [
@@ -3971,8 +4117,8 @@ var GameBoxPlatform = (() => {
     getHeaders() {
       const cur = this.getCurrentUser();
       return {
-        "X-Mock-User-Id": this.getSelectedMockUserId(),
-        "X-GameBox-Nickname": encodeURIComponent(cur.name || "")
+        "X-Mock-User-Id": cur?.id || this.getSelectedMockUserId(),
+        "X-GameBox-Nickname": encodeURIComponent(cur?.name || "")
       };
     }
   };

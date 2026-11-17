@@ -20,9 +20,14 @@ export class PlatformApiClient {
       !providerHeaders['X-Mock-User-Id'] && currentUser?.id
         ? { 'X-Mock-User-Id': currentUser.id }
         : {};
+    const fallbackNickHeader =
+      !providerHeaders['X-GameBox-Nickname'] && currentUser?.name
+        ? { 'X-GameBox-Nickname': encodeURIComponent(currentUser.name) }
+        : {};
     return {
       ...providerHeaders,
       ...fallbackMockHeader,
+      ...fallbackNickHeader,
       ...extra,
     };
   }

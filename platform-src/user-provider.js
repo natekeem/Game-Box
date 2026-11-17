@@ -121,8 +121,8 @@ export class MockUserProvider {
   getHeaders() {
     const cur = this.getCurrentUser();
     return {
-      'X-Mock-User-Id': this.getSelectedMockUserId(),
-      'X-GameBox-Nickname': encodeURIComponent(cur.name || ''),
+      'X-Mock-User-Id': cur?.id || this.getSelectedMockUserId(),
+      'X-GameBox-Nickname': encodeURIComponent(cur?.name || ''),
     };
   }
 }

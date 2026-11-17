@@ -1,5 +1,5 @@
 import { createApp, createElement } from '../picojs/framework/core.js';
-import { initialRootState, setRoute } from '../game/models.js';
+import { initialRootState, setRoute, createPlayer, upsertPlayer, uid } from '../game/models.js';
 import { NicknameScreen } from './screens/nickname.js';
 import { LobbyScreen } from './screens/lobby.js';
 import { GameScreen, markPlayerHit, clearTileCache } from './screens/game.js';
@@ -242,6 +242,34 @@ function connectWebSocket() {
 
   ws.onopen = () => {
     store.setState({ websocket: { connected: true } });
+
+    // Auto-detect player nickname from URL search params or gameBox_guest_identity_v1
+    try {
+      const params = new URLSearchParams(window.location.search);
+      let autoNick = (params.get('nickname') || '').trim();
+      let autoId = (params.get('guestId') || '').trim();
+      if (!autoNick) {
+        const raw = localStorage.getItem('gameBox_guest_identity_v1');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          autoNick = (parsed.nickname || '').trim();
+          autoId = (parsed.guestId || '').trim();
+        }
+      }
+      if (autoNick) {
+        const playerId = autoId || uid('p_');
+        const player = createPlayer({ id: playerId, nickname: autoNick, x: 0, y: 0 });
+        sendMessage({ type: 'join', player_id: playerId, nickname: autoNick });
+        store.setState({
+          ...upsertPlayer(store.getState(), player),
+          session: { ...store.getState().session, nickname: autoNick, playerId, connected: true },
+          route: '#/lobby'
+        });
+        window.location.hash = '#/lobby';
+      }
+    } catch (e) {
+      console.warn('Auto join nickname failed:', e);
+    }
   };
 
   ws.onmessage = (event) => {
