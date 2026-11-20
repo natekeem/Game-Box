@@ -18,8 +18,8 @@
   text-shadow: none;
   border-bottom: 2px solid rgba(78, 229, 159, 0.3);
   box-shadow: none;
-  padding-bottom: 12px;
-  margin-bottom: 16px;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .players-section .sidebar-title::before {
@@ -43,24 +43,24 @@
 .players-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 .player-card {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px;
+  gap: 8px;
+  padding: 6px 8px;
   background: linear-gradient(
     135deg,
     rgba(26, 42, 64, 0.9) 0%,
     rgba(21, 32, 48, 0.9) 100%
   );
-  border: 2px solid var(--line);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
-  animation: playerCardSlideIn 0.4s ease-out backwards;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+  animation: playerCardSlideIn 0.3s ease-out backwards;
   position: relative;
   overflow: hidden;
 }
@@ -157,19 +157,19 @@
 
 .players-section .player-avatar,
 .player-card .player-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: "Press Start 2P", monospace;
   font-weight: 400;
   color: #0a0f1c;
-  font-size: 14px;
+  font-size: 10px;
   flex-shrink: 0;
-  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4);
-  letter-spacing: 1px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.5px;
   image-rendering: pixelated;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
   animation: avatarGlow 3s ease-in-out infinite;
@@ -246,17 +246,17 @@
 
 .player-hearts {
   font-family: "Press Start 2P", monospace;
-  font-size: 12px;
-  letter-spacing: 2px;
+  font-size: 10px;
+  letter-spacing: 1px;
   display: flex;
-  gap: 3px;
+  gap: 2px;
 }
 
 .player-hearts .icon-wrapper {
   display: inline-block;
   position: relative;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   animation: heartBeat 1.2s ease-in-out infinite;
 }
 

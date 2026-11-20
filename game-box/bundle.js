@@ -1162,7 +1162,7 @@ var ToolBoxGameBox = (() => {
     {
       id: "hancom-typing-97",
       win98AppId: "hancom-typing-97",
-      name: "\uD55C\uCEF4\uD0C0\uC790\uC5F0\uC2B5",
+      name: "\uD55C\uCEF4\uD0C0\uC790\uC5F0\uC2B5 97",
       fullTitle: "\uD55C\uCEF4\uD0C0\uC790\uC5F0\uC2B5 97 (DOS \uC6D0\uBCF8)",
       year: 1997,
       developer: "\uD55C\uAE00\uACFC\uCEF4\uD4E8\uD130",
@@ -1187,7 +1187,7 @@ var ToolBoxGameBox = (() => {
     {
       id: "hanme-typing-30",
       win98AppId: "hanme-typing-30",
-      name: "\uD55C\uBA54\uD0C0\uC790\uC5F0\uC2B5",
+      name: "\uD55C\uBA54\uD0C0\uC790\uAD50\uC0AC 3.0",
       fullTitle: "\uD55C\uBA54\uD0C0\uC790\uAD50\uC0AC 3.0 (DOS \uC6D0\uBCF8)",
       year: 1994,
       developer: "\uD55C\uBA54\uC18C\uD504\uD2B8",
@@ -1241,10 +1241,9 @@ var ToolBoxGameBox = (() => {
       genre: "ARCADE ACTION",
       caseColor: "#dc2626",
       discLabel: "BLST-001",
-      playersLabel: "1~4\uC778 (COM-BOT / \uBA40\uD2F0)",
+      playersLabel: "1~4\uC778",
       sourcePath: "vendor/blast-arena-original/ & server/original-blast-arena-adapter.mjs",
-      launchUrl: "/original-blast-arena/index.html?autobot=1",
-      multiplayerUrl: "/original-blast-arena/index.html",
+      launchUrl: "/platform/?game=bomberman",
       iframeCompatible: true,
       aspectRatio: "16:9",
       inputDevices: ["Keyboard (WASD / \uBC29\uD5A5\uD0A4 + Space)"],
@@ -1259,10 +1258,9 @@ var ToolBoxGameBox = (() => {
       genre: "CLASSIC ARCADE",
       caseColor: "#ea580c",
       discLabel: "BMbg-002",
-      playersLabel: "1~2\uC778 (AI 3\uC778 / \uC628\uB77C\uC778 2\uC778)",
+      playersLabel: "1~2\uC778",
       sourcePath: "vendor/html5-bombergirl-original/ & server/original-bombergirl-adapter.mjs",
-      launchUrl: "/original-bombergirl/index.html?mode=single",
-      multiplayerUrl: "/platform/?game=bombergirl",
+      launchUrl: "/platform/?game=bombergirl",
       iframeCompatible: true,
       aspectRatio: "4:3",
       inputDevices: ["Keyboard (\uBC29\uD5A5\uD0A4 + Space / WASD)"],
@@ -1277,7 +1275,7 @@ var ToolBoxGameBox = (() => {
       genre: "ARCADE DUEL",
       caseColor: "#16a34a",
       discLabel: "SNKD-003",
-      playersLabel: "1~2\uC778 (AI BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~2\uC778",
       sourcePath: "vendor/snake-duel-original/ & server/original-engines/snake-duel-engine.mjs",
       launchUrl: "/platform/?game=snakeduel",
       iframeCompatible: true,
@@ -1288,30 +1286,13 @@ var ToolBoxGameBox = (() => {
       description: "\uBA39\uC774\uB97C \uBA39\uC73C\uBA70 \uBAB8\uC9D1\uC744 \uD0A4\uC6B0\uACE0 \uC0C1\uB300\uC758 \uC9C4\uB85C\uB97C \uCC28\uB2E8\uD558\uB294 \uC815\uD1B5 1:1 \uC2A4\uB124\uC774\uD06C \uC544\uB808\uB098."
     },
     {
-      id: "roulette",
-      name: "Marble Roulette (\uB9C8\uBE14 \uB8F0\uB81B)",
-      subtitle: "Box2D-WASM \uAD6C\uC2AC \uB808\uC774\uC2A4 \uCD94\uCCA8\uAE30",
-      genre: "PHYSICS PARTY",
-      caseColor: "#db2777",
-      discLabel: "MRBL-004",
-      playersLabel: "1~100\uBA85 \uCD94\uCCA8",
-      sourcePath: "roulette-src/ & roulette/index.html",
-      launchUrl: "/roulette/index.html",
-      iframeCompatible: true,
-      aspectRatio: "16:9",
-      inputDevices: ["Mouse", "Keyboard"],
-      eventSupport: "\uCD94\uCCA8 \uACB0\uACFC \uBC0F \uD788\uC2A4\uD1A0\uB9AC API \uC5F0\uB3D9",
-      coverPreviewImage: "/assets/terminal-1997.png",
-      description: "Box2D \uBB3C\uB9AC \uC5D4\uC9C4 \uAE30\uBC18\uC758 \uC2E4\uC2DC\uAC04 \uAD6C\uC2AC \uB099\uD558 \uB808\uC774\uC2A4 \uBC0F \uD300/\uB2F9\uCCA8\uC790 \uCD94\uCCA8 \uB3C4\uAD6C."
-    },
-    {
       id: "drawing",
       name: "CatchMind (\uCE90\uCE58\uB9C8\uC778\uB4DC)",
       subtitle: "\uC2E4\uC2DC\uAC04 \uADF8\uB9BC \uD034\uC988 \uD30C\uD2F0 \uAC8C\uC784",
       genre: "PARTY QUIZ",
       caseColor: "#9333ea",
       discLabel: "CTCH-005",
-      playersLabel: "2~8\uC778 (AI BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~8\uC778",
       sourcePath: "platform-src/components/GamePlayStage.jsx & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=drawing",
       iframeCompatible: true,
@@ -1328,7 +1309,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX SPEED",
       caseColor: "#0284c7",
       discLabel: "BBOX-101",
-      playersLabel: "1~8\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~8\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=reaction",
       iframeCompatible: true,
@@ -1345,7 +1326,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX SPEED",
       caseColor: "#2563eb",
       discLabel: "BBOX-102",
-      playersLabel: "1~8\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~8\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=speedtyping",
       iframeCompatible: true,
@@ -1362,7 +1343,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX SPEED",
       caseColor: "#0d9488",
       discLabel: "BBOX-103",
-      playersLabel: "1~8\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~8\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=colormatch",
       iframeCompatible: true,
@@ -1379,7 +1360,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX STRATEGY",
       caseColor: "#4f46e5",
       discLabel: "BBOX-104",
-      playersLabel: "1~2\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~2\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=connectfour",
       iframeCompatible: true,
@@ -1396,7 +1377,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX STRATEGY",
       caseColor: "#6366f1",
       discLabel: "BBOX-105",
-      playersLabel: "1~2\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~2\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=tictactoe",
       iframeCompatible: true,
@@ -1413,7 +1394,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX MEMORY",
       caseColor: "#7c3aed",
       discLabel: "BBOX-106",
-      playersLabel: "1~8\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~8\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=memorymatch",
       iframeCompatible: true,
@@ -1430,7 +1411,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX MEMORY",
       caseColor: "#c026d3",
       discLabel: "BBOX-107",
-      playersLabel: "1~8\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~8\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=simonsays",
       iframeCompatible: true,
@@ -1447,7 +1428,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX WORD",
       caseColor: "#059669",
       discLabel: "BBOX-108",
-      playersLabel: "1~8\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~8\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=wordchain",
       iframeCompatible: true,
@@ -1464,7 +1445,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX WORD",
       caseColor: "#10b981",
       discLabel: "BBOX-109",
-      playersLabel: "1~8\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~8\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=anagram",
       iframeCompatible: true,
@@ -1481,7 +1462,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX MATH",
       caseColor: "#d97706",
       discLabel: "BBOX-110",
-      playersLabel: "1~8\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~8\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=mathduel",
       iframeCompatible: true,
@@ -1498,7 +1479,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX MATH",
       caseColor: "#ca8a04",
       discLabel: "BBOX-111",
-      playersLabel: "1~8\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~8\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=numberhunt",
       iframeCompatible: true,
@@ -1515,7 +1496,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX CLASSIC",
       caseColor: "#e11d48",
       discLabel: "BBOX-112",
-      playersLabel: "1~2\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~2\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=rpsarena",
       iframeCompatible: true,
@@ -1532,7 +1513,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX TRIVIA",
       caseColor: "#0891b2",
       discLabel: "BBOX-113",
-      playersLabel: "1~8\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~8\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=trivia",
       iframeCompatible: true,
@@ -1549,7 +1530,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX SPEED",
       caseColor: "#475569",
       discLabel: "BBOX-114",
-      playersLabel: "1~2\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~2\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=higherlower",
       iframeCompatible: true,
@@ -1566,7 +1547,7 @@ var ToolBoxGameBox = (() => {
       genre: "BATTLEBOX STRATEGY",
       caseColor: "#334155",
       discLabel: "BBOX-115",
-      playersLabel: "1~2\uC778 (BOT / \uC628\uB77C\uC778)",
+      playersLabel: "1~2\uC778",
       sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=oddoneout",
       iframeCompatible: true,
@@ -1578,215 +1559,110 @@ var ToolBoxGameBox = (() => {
     }
   ]);
 
+  // tool-box/src/features/game-box/registry/drawGames.js
+  var DRAW_GAMES = Object.freeze([
+    {
+      id: "roulette",
+      name: "Marble Roulette (\uB9C8\uBE14 \uB8F0\uB81B)",
+      shortName: "\uB9C8\uBE14 \uB8F0\uB81B",
+      subtitle: "Box2D \uBB3C\uB9AC \uAD6C\uC2AC \uB808\uC774\uC2A4 \uCD94\uCCA8\uAE30",
+      genre: "DRAW \xB7 PHYSICS",
+      icon: "\u{1F52E}",
+      caseColor: "#db2777",
+      discLabel: "MRBL-004",
+      playersLabel: "1~100\uBA85 \uCD94\uCCA8",
+      sourcePath: "roulette-src/ & roulette/index.html",
+      launchUrl: "/platform/?game=roulette",
+      directUrl: "/roulette/index.html",
+      aspectRatio: "16:9",
+      description: "\uCC38\uAC00\uC790 \uC774\uB984\uC744 \uC785\uB825\uD558\uACE0 \uAD6C\uC2AC \uB808\uC774\uC2A4\uB85C \uB2F9\uCCA8\uC790\uB97C \uACF5\uC815\uD558\uAC8C \uBF51\uB294 \uBB3C\uB9AC \uCD94\uCCA8\uAE30\uC785\uB2C8\uB2E4."
+    }
+  ]);
+
   // tool-box/src/features/game-box/GameBoxHome.js
   function GameBoxHome({ onNavigate }) {
-    const featuredDeckCases = ARCADE_GAMES.slice(0, 6);
+    const { identity, openNicknameModal } = useGameIdentity();
+    const packs = [
+      {
+        id: "retro",
+        route: "/game-box/retro",
+        kicker: "CLASSIC GAMES",
+        title: "RETRO DESKTOP",
+        icon: "\u{1FA9F}",
+        tagline: "\uD55C\uAE00 Windows 98 \uBC14\uD0D5\uD654\uBA74\uC5D0\uC11C \uC990\uAE30\uB294 \uCD94\uC5B5\uC758 \uAC8C\uC784",
+        items: ["\uD55C\uCEF4\uD0C0\uC790\uC5F0\uC2B5 97", "\uD55C\uBA54\uD0C0\uC790\uAD50\uC0AC 3.0", "\uD53C\uCE74\uCE04 \uBC30\uAD6C", "\uC2E4\uC2DC\uAC04 GAME RANKING"],
+        count: `${RETRO_GAMES.length}\uC885`,
+        cta: "\uB370\uC2A4\uD06C\uD1B1 \uC5F4\uAE30"
+      },
+      {
+        id: "deck",
+        route: "/game-box/deck",
+        kicker: "ARCADE COLLECTION",
+        title: "GAME DECK",
+        icon: "\u{1F3AE}",
+        tagline: "CD \uCF00\uC774\uC2A4\uB97C \uACE0\uB974\uACE0 \uCF58\uC194\uC5D0 \uB123\uC5B4 \uC2DC\uC791\uD558\uB294 \uC544\uCF00\uC774\uB4DC \xB7 \uD30C\uD2F0 \uAC8C\uC784",
+        items: ARCADE_GAMES.slice(0, 4).map((g4) => g4.name.replace(/\s*\(.*\)/, "")).concat("\uC678 \uB2E4\uC218"),
+        count: `${ARCADE_GAMES.length}\uC885`,
+        cta: "\uCF58\uC194 \uC5F4\uAE30"
+      },
+      {
+        id: "draw",
+        route: "/game-box/draw",
+        kicker: "LUCKY DRAW",
+        title: "DRAW PACK",
+        icon: "\u{1F3B2}",
+        tagline: "\uAD6C\uC2AC \uB808\uC774\uC2A4\uB85C \uACF5\uC815\uD558\uAC8C \uBF51\uB294 \uCD94\uCCA8 \xB7 \uBF51\uAE30 \uAC8C\uC784",
+        items: DRAW_GAMES.map((g4) => g4.shortName),
+        count: `${DRAW_GAMES.length}\uC885`,
+        cta: "\uBF51\uAE30 \uC2DC\uC791"
+      }
+    ];
     return /* @__PURE__ */ u3("div", { className: "gb-home-container", children: [
-      /* @__PURE__ */ u3("div", { className: "gb-home-intro-bar", children: [
+      /* @__PURE__ */ u3("section", { className: "gb-home-hero", children: [
         /* @__PURE__ */ u3("div", { children: [
-          /* @__PURE__ */ u3("span", { className: "gb-home-kicker", children: "UNIFIED WORKSPACE ARCADE & RETRO SYSTEM" }),
-          /* @__PURE__ */ u3("h2", { className: "gb-home-heading", children: "\uC6D0\uD558\uB294 \uAC8C\uC784 \uACF5\uAC04\uC744 \uC120\uD0DD\uD558\uC138\uC694" })
+          /* @__PURE__ */ u3("span", { className: "gb-home-kicker", children: "WELCOME TO GAME-BOX" }),
+          /* @__PURE__ */ u3("h2", { className: "gb-home-heading", children: "\uB2C9\uB124\uC784\uC744 \uC815\uD558\uACE0 \uAC8C\uC784\uD329\uC744 \uC120\uD0DD\uD558\uC138\uC694" }),
+          /* @__PURE__ */ u3("p", { className: "gb-home-subtext", children: "\uC5EC\uAE30\uC11C \uC815\uD55C \uB2C9\uB124\uC784\uC774 \uBAA8\uB4E0 \uAC8C\uC784\uD329\uC758 \uB300\uAE30\uC2E4\uACFC \uB7AD\uD0B9\uC5D0 \uC790\uB3D9\uC73C\uB85C \uC0AC\uC6A9\uB429\uB2C8\uB2E4. \uAC8C\uC784\uC5D0 \uB4E4\uC5B4\uAC00\uBA74 \uC2F1\uAE00(\uCEF4\uD4E8\uD130 \uB300\uACB0) \uB610\uB294 \uBA40\uD2F0(\uC989\uC2DC \uB9E4\uCE6D \xB7 \uCC38\uC5EC \uCF54\uB4DC)\uB97C \uACE0\uB97C \uC218 \uC788\uC5B4\uC694." })
         ] }),
-        /* @__PURE__ */ u3("p", { className: "gb-home-subtext", children: "1990\uB144\uB300 \uD55C\uAE00 Windows 98 \uBC14\uD0D5\uD654\uBA74\uC5D0\uC11C \uC990\uAE30\uB294 \uD0C0\uC790\xB7\uD53C\uCE74\uCE04\uBC30\uAD6C \uB7AD\uD0B9\uC804\uBD80\uD130 \uD604\uB300\uC801\uC778 \uCF58\uC194 \uB371 \uAE30\uBC18\uC758 20\uC885 \uC544\uCF00\uC774\uB4DC \uCEEC\uB809\uC158\uAE4C\uC9C0 \uD558\uB098\uC758 \uC2DC\uC2A4\uD15C\uC73C\uB85C \uC5F0\uACB0\uB429\uB2C8\uB2E4." })
+        /* @__PURE__ */ u3("div", { className: "gb-home-player", children: [
+          /* @__PURE__ */ u3("span", { className: "gb-home-player-label", children: "PLAYER" }),
+          /* @__PURE__ */ u3("strong", { className: "gb-home-player-name", children: [
+            "\u{1F464} ",
+            identity.nickname || "\uB2C9\uB124\uC784 \uBBF8\uB4F1\uB85D"
+          ] }),
+          /* @__PURE__ */ u3("button", { type: "button", className: "gb-home-player-btn", onClick: openNicknameModal, children: identity.isRegistered ? "\uB2C9\uB124\uC784 \uBCC0\uACBD" : "\uB2C9\uB124\uC784 \uB4F1\uB85D" })
+        ] })
       ] }),
-      /* @__PURE__ */ u3("div", { className: "gb-home-cards-grid", children: [
-        /* @__PURE__ */ u3(
-          "article",
-          {
-            className: "gb-entry-card gb-entry-card-retro",
-            role: "button",
-            tabIndex: 0,
-            onClick: () => onNavigate("/game-box/retro"),
-            onKeyDown: (e3) => {
-              if (e3.key === "Enter" || e3.key === " ") {
-                e3.preventDefault();
-                onNavigate("/game-box/retro");
-              }
-            },
-            children: [
-              /* @__PURE__ */ u3("div", { className: "gb-card-top-meta", children: [
-                /* @__PURE__ */ u3("div", { children: [
-                  /* @__PURE__ */ u3("span", { className: "gb-card-subtitle", children: "CLASSIC GAMES" }),
-                  /* @__PURE__ */ u3("h3", { className: "gb-card-title", children: "RETRO DESKTOP" })
-                ] }),
-                /* @__PURE__ */ u3("span", { className: "gb-card-era-badge gb-badge-win98", children: "\uD55C\uAE00 Windows 98 EDITION" })
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "gb-retro-preview-window", children: [
-                /* @__PURE__ */ u3("div", { className: "gb-win98-titlebar", children: [
-                  /* @__PURE__ */ u3("span", { className: "gb-win98-titlebar-text", children: "\u{1FA9F} \uD55C\uAE00 Windows 98 \u2014 \uCD94\uC5B5\uC758 \uCEF4\uD4E8\uD130\uC2E4 \uC5D0\uB514\uC158" }),
-                  /* @__PURE__ */ u3("div", { className: "gb-win98-controls", children: [
-                    /* @__PURE__ */ u3("span", { children: "_" }),
-                    /* @__PURE__ */ u3("span", { children: "\u25A1" }),
-                    /* @__PURE__ */ u3("span", { children: "\xD7" })
-                  ] })
-                ] }),
-                /* @__PURE__ */ u3("div", { className: "gb-win98-desktop-stage", children: [
-                  /* @__PURE__ */ u3("div", { className: "gb-win98-canvas-icons", children: [
-                    /* @__PURE__ */ u3("div", { className: "gb-win98-d-icon", children: [
-                      /* @__PURE__ */ u3("span", { className: "gb-d-ico-glyph", children: "\u{1F5A9}" }),
-                      /* @__PURE__ */ u3("span", { className: "gb-d-ico-label", children: "\uD55C\uCEF4\uD0C0\uC790\uC5F0\uC2B5 97" })
-                    ] }),
-                    /* @__PURE__ */ u3("div", { className: "gb-win98-d-icon", children: [
-                      /* @__PURE__ */ u3("span", { className: "gb-d-ico-glyph", children: "\u2328\uFE0F" }),
-                      /* @__PURE__ */ u3("span", { className: "gb-d-ico-label", children: "\uD55C\uBA54\uD0C0\uC790 3.0" })
-                    ] }),
-                    /* @__PURE__ */ u3("div", { className: "gb-win98-d-icon", children: [
-                      /* @__PURE__ */ u3("span", { className: "gb-d-ico-glyph", children: "\u26A1" }),
-                      /* @__PURE__ */ u3("span", { className: "gb-d-ico-label", children: "\uD53C\uCE74\uCE04 \uBC30\uAD6C" })
-                    ] }),
-                    /* @__PURE__ */ u3("div", { className: "gb-win98-d-icon", children: [
-                      /* @__PURE__ */ u3("span", { className: "gb-d-ico-glyph", children: "\u{1F4D6}" }),
-                      /* @__PURE__ */ u3("span", { className: "gb-d-ico-label", children: "\uAC8C\uC784 \uAC00\uC774\uB4DC" })
-                    ] }),
-                    /* @__PURE__ */ u3("div", { className: "gb-win98-d-icon", children: [
-                      /* @__PURE__ */ u3("span", { className: "gb-d-ico-glyph", children: "\u{1F3C6}" }),
-                      /* @__PURE__ */ u3("span", { className: "gb-d-ico-label", children: "GAME RANKING" })
-                    ] })
-                  ] }),
-                  /* @__PURE__ */ u3("div", { className: "gb-win98-stage-windows", children: [
-                    /* @__PURE__ */ u3("div", { className: "gb-win98-floating-win gb-win-typing", children: [
-                      /* @__PURE__ */ u3("div", { className: "gb-win-bar", children: [
-                        /* @__PURE__ */ u3("span", { children: "\u{1F5A9} \uD55C\uCEF4\uD0C0\uC790 97 \u2014 \uC0B0\uC131\uBE44" }),
-                        /* @__PURE__ */ u3("div", { className: "gb-win-btn-mini", children: "\u2715" })
-                      ] }),
-                      /* @__PURE__ */ u3("div", { className: "gb-win-inner-typing", children: [
-                        /* @__PURE__ */ u3("div", { className: "gb-drop-word w1", children: "\uBB34\uAD81\uD654" }),
-                        /* @__PURE__ */ u3("div", { className: "gb-drop-word w2", children: "\uCEF4\uD4E8\uD130" }),
-                        /* @__PURE__ */ u3("div", { className: "gb-drop-word w3", children: "\uC544\uB984\uB2E4\uC6B4" }),
-                        /* @__PURE__ */ u3("div", { className: "gb-typing-ocean", children: "\u{1F30A} \uD0C0\uC790\uC18D\uB3C4: 482\uD0C0 / \uCD5C\uACE0\uAE30\uB85D" })
-                      ] })
-                    ] }),
-                    /* @__PURE__ */ u3("div", { className: "gb-win98-floating-win gb-win-pika", children: [
-                      /* @__PURE__ */ u3("div", { className: "gb-win-bar", children: [
-                        /* @__PURE__ */ u3("span", { children: "\u26A1 \uD53C\uCE74\uCE04 \uBC30\uAD6C 1:1 \uB300\uC804" }),
-                        /* @__PURE__ */ u3("div", { className: "gb-win-btn-mini", children: "\u2715" })
-                      ] }),
-                      /* @__PURE__ */ u3("div", { className: "gb-win-inner-pika", children: [
-                        /* @__PURE__ */ u3("div", { className: "gb-pika-court", children: [
-                          /* @__PURE__ */ u3("span", { className: "gb-pika-char p1", children: "\u26A1" }),
-                          /* @__PURE__ */ u3("span", { className: "gb-pika-net", children: "\u2502" }),
-                          /* @__PURE__ */ u3("span", { className: "gb-pika-ball", children: "\u{1F534}" }),
-                          /* @__PURE__ */ u3("span", { className: "gb-pika-char p2", children: "\u26A1" })
-                        ] }),
-                        /* @__PURE__ */ u3("div", { className: "gb-pika-score", children: "1P: 14 vs 2P(COM): 12" })
-                      ] })
-                    ] })
-                  ] }),
-                  /* @__PURE__ */ u3("div", { className: "gb-win98-stage-taskbar", children: [
-                    /* @__PURE__ */ u3("button", { type: "button", className: "gb-win98-start-btn", children: [
-                      /* @__PURE__ */ u3("span", { className: "gb-win98-flag", children: "\u{1FA9F}" }),
-                      /* @__PURE__ */ u3("strong", { children: "\uC2DC\uC791" })
-                    ] }),
-                    /* @__PURE__ */ u3("div", { className: "gb-win98-task-tabs", children: [
-                      /* @__PURE__ */ u3("div", { className: "gb-win98-task-tab active", children: "\u{1F5A9} \uD55C\uCEF4\uD0C0\uC790 97" }),
-                      /* @__PURE__ */ u3("div", { className: "gb-win98-task-tab", children: "\u26A1 \uD53C\uCE74\uCE04 \uBC30\uAD6C" })
-                    ] }),
-                    /* @__PURE__ */ u3("div", { className: "gb-win98-task-tray", children: [
-                      /* @__PURE__ */ u3("span", { children: "\uD55C" }),
-                      /* @__PURE__ */ u3("span", { children: "\u{1F50A}" }),
-                      /* @__PURE__ */ u3("span", { children: "\uC624\uD6C4 03:40" })
-                    ] })
-                  ] })
-                ] })
-              ] }),
-              /* @__PURE__ */ u3("p", { className: "gb-card-desc", children: [
-                "1990\uB144\uB300 \uCEF4\uD4E8\uD130\uC2E4\uACFC \uD55C\uAE00 Windows 98 \uBC14\uD0D5\uD654\uBA74 \uD658\uACBD\uC744 \uADF8\uB300\uB85C \uCCB4\uD5D8\uD558\uB294 \uACF5\uAC04\uC785\uB2C8\uB2E4.",
-                /* @__PURE__ */ u3("strong", { children: " \uD55C\uCEF4\uD0C0\uC790\uC5F0\uC2B5 97" }),
-                ", ",
-                /* @__PURE__ */ u3("strong", { children: "\uD55C\uBA54\uD0C0\uC790\uAD50\uC0AC 3.0" }),
-                ", ",
-                /* @__PURE__ */ u3("strong", { children: "\uD53C\uCE74\uCE04 \uBC30\uAD6C" }),
-                "\uC640 \uC6B0\uCE21 \uACE0\uC815 ",
-                /* @__PURE__ */ u3("strong", { children: "GAME RANKING" }),
-                " \uCC3D\uC744 \uD1B5\uD574 \uC2E4\uC2DC\uAC04 \uC885\uBAA9\uBCC4 TOP 10 \uC21C\uC704\uB97C \uACA8\uB8F9\uB2C8\uB2E4."
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "gb-card-footer", children: [
-                /* @__PURE__ */ u3("div", { className: "gb-card-specs", children: [
-                  /* @__PURE__ */ u3("span", { children: "\uC218\uB85D: \uD0C0\uC790 2\uC885 \xB7 \uD53C\uCE74\uCE04 \uBC30\uAD6C \xB7 \uC9C0\uB8B0\uCC3E\uAE30 \xB7 \uD540\uBCFC" }),
-                  /* @__PURE__ */ u3("span", { children: "\uC2E4\uC2DC\uAC04 \uB7AD\uD0B9 \uCC3D \uC5F0\uB3D9" })
-                ] }),
-                /* @__PURE__ */ u3("span", { className: "gb-card-cta gb-cta-retro", children: "RETRO DESKTOP \uC9C4\uC785 \u2192" })
-              ] })
-            ]
-          }
-        ),
-        /* @__PURE__ */ u3(
-          "article",
-          {
-            className: "gb-entry-card gb-entry-card-deck",
-            role: "button",
-            tabIndex: 0,
-            onClick: () => onNavigate("/game-box/deck"),
-            onKeyDown: (e3) => {
-              if (e3.key === "Enter" || e3.key === " ") {
-                e3.preventDefault();
-                onNavigate("/game-box/deck");
-              }
-            },
-            children: [
-              /* @__PURE__ */ u3("div", { className: "gb-card-top-meta", children: [
-                /* @__PURE__ */ u3("div", { children: [
-                  /* @__PURE__ */ u3("span", { className: "gb-card-subtitle", children: "ARCADE COLLECTION" }),
-                  /* @__PURE__ */ u3("h3", { className: "gb-card-title", children: "GAME DECK" })
-                ] }),
-                /* @__PURE__ */ u3("span", { className: "gb-card-era-badge gb-badge-deck", children: "20 ARCADE PACKS" })
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "gb-deck-preview-stage", children: /* @__PURE__ */ u3("div", { className: "gb-deck-console-bezel", children: [
-                /* @__PURE__ */ u3("div", { className: "gb-deck-console-header", children: [
-                  /* @__PURE__ */ u3("span", { className: "gb-deck-console-led" }),
-                  /* @__PURE__ */ u3("span", { className: "gb-deck-console-label", children: "CONSOLE DISPLAY // ACTIVE COLLECTION" }),
-                  /* @__PURE__ */ u3("span", { className: "gb-deck-console-slot", children: "SLOT READY" })
-                ] }),
-                /* @__PURE__ */ u3("div", { className: "gb-deck-screen-collage", children: [
-                  /* @__PURE__ */ u3("div", { className: "gb-deck-screen-main", children: [
-                    /* @__PURE__ */ u3(
-                      "img",
-                      {
-                        src: "/pikachu-volleyball/resources/assets/images/screenshot.png",
-                        alt: "Game Deck Console Display Preview",
-                        className: "gb-deck-screen-img"
-                      }
-                    ),
-                    /* @__PURE__ */ u3("div", { className: "gb-deck-screen-overlay", children: /* @__PURE__ */ u3("span", { children: "BLAST ARENA \xB7 SNAKE DUEL \xB7 BOMBERGIRL \xB7 BATTLEBOX 15" }) })
-                  ] }),
-                  /* @__PURE__ */ u3("div", { className: "gb-deck-cases-rack", children: featuredDeckCases.map((c3) => /* @__PURE__ */ u3(
-                    "div",
-                    {
-                      className: "gb-mini-game-case",
-                      style: { "--case-color": c3.caseColor },
-                      children: [
-                        /* @__PURE__ */ u3("span", { className: "gb-mini-case-code", children: c3.discLabel }),
-                        /* @__PURE__ */ u3("strong", { className: "gb-mini-case-name", children: c3.name })
-                      ]
-                    },
-                    c3.id
-                  )) })
-                ] })
-              ] }) }),
-              /* @__PURE__ */ u3("p", { className: "gb-card-desc", children: [
-                "\uB2E4\uD06C \uADF8\uB798\uD30C\uC774\uD2B8 \uCF58\uC194\uACFC \uC2E4\uBC84 \uB370\uD06C\uC5D0 \uAC8C\uC784\uD329 \uCF00\uC774\uC2A4\uB97C \uC0BD\uC785\uD574 \uC990\uAE30\uB294 \uD604\uB300\uC801\uC778 \uC544\uCF00\uC774\uB4DC \uCEEC\uB809\uC158\uC785\uB2C8\uB2E4.",
-                /* @__PURE__ */ u3("strong", { children: " \uBD04\uBC84\uB9E8(Blast Arena)" }),
-                ", ",
-                /* @__PURE__ */ u3("strong", { children: "\uC2A4\uB124\uC774\uD06C \uB4C0\uC5BC" }),
-                ", ",
-                /* @__PURE__ */ u3("strong", { children: "\uBD04\uBC84\uAC78" }),
-                ",",
-                /* @__PURE__ */ u3("strong", { children: " \uB9C8\uBE14 \uB8F0\uB81B" }),
-                ", ",
-                /* @__PURE__ */ u3("strong", { children: "\uBC30\uD2C0\uBC15\uC2A4 15\uC885" }),
-                "\uC744 \uC9C0\uC6D0\uD569\uB2C8\uB2E4."
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "gb-card-footer", children: [
-                /* @__PURE__ */ u3("div", { className: "gb-card-specs", children: [
-                  /* @__PURE__ */ u3("span", { children: "\uC218\uB85D: \uC544\uCF00\uC774\uB4DC 3\uC885 \xB7 \uD30C\uD2F0 2\uC885 \xB7 \uBC30\uD2C0\uBC15\uC2A4 15\uC885" }),
-                  /* @__PURE__ */ u3("span", { children: "\uCF58\uC194 \uB371 & \uBA40\uD2F0 \uB85C\uBE44 \uC9C0\uC6D0" })
-                ] }),
-                /* @__PURE__ */ u3("span", { className: "gb-card-cta gb-cta-deck", children: "GAME DECK \uC9C4\uC785 \u2192" })
-              ] })
-            ]
-          }
-        )
-      ] })
+      /* @__PURE__ */ u3("div", { className: "gb-home-cards-grid", children: packs.map((pack) => /* @__PURE__ */ u3(
+        "article",
+        {
+          className: `gb-entry-card gb-entry-card-${pack.id}`,
+          role: "button",
+          tabIndex: 0,
+          onClick: () => onNavigate(pack.route),
+          onKeyDown: (e3) => {
+            if (e3.key === "Enter" || e3.key === " ") {
+              e3.preventDefault();
+              onNavigate(pack.route);
+            }
+          },
+          children: [
+            /* @__PURE__ */ u3("div", { className: "gb-card-top-meta", children: [
+              /* @__PURE__ */ u3("span", { className: "gb-card-subtitle", children: pack.kicker }),
+              /* @__PURE__ */ u3("span", { className: "gb-card-count", children: pack.count })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gb-card-visual", "aria-hidden": "true", children: /* @__PURE__ */ u3("span", { children: pack.icon }) }),
+            /* @__PURE__ */ u3("h3", { className: "gb-card-title", children: pack.title }),
+            /* @__PURE__ */ u3("p", { className: "gb-card-desc", children: pack.tagline }),
+            /* @__PURE__ */ u3("ul", { className: "gb-card-items", children: pack.items.map((item) => /* @__PURE__ */ u3("li", { children: item }, item)) }),
+            /* @__PURE__ */ u3("span", { className: "gb-card-cta", children: [
+              pack.cta,
+              " \u2192"
+            ] })
+          ]
+        },
+        pack.id
+      )) })
     ] });
   }
 
@@ -1816,95 +1692,36 @@ var ToolBoxGameBox = (() => {
         cw.focus();
       }
     };
-    return /* @__PURE__ */ u3("div", { className: "gb-retro-shell", children: [
-      /* @__PURE__ */ u3("div", { className: "gb-subbar", children: [
-        /* @__PURE__ */ u3("div", { className: "gb-subbar-left", children: [
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-subbar-back",
-              onClick: () => onNavigate("/game-box"),
-              children: "\u2190 GAME-BOX \uD648\uC73C\uB85C"
-            }
-          ),
-          /* @__PURE__ */ u3("span", { className: "gb-subbar-divider", children: "|" }),
-          /* @__PURE__ */ u3("strong", { className: "gb-subbar-title", children: "RETRO DESKTOP (Windows 98)" }),
-          /* @__PURE__ */ u3("span", { className: "gb-subbar-hint", children: "\uBC14\uD0D5\uD654\uBA74\uC758 [\uD55C\uCEF4\uD0C0\uC790\uC5F0\uC2B5], [\uD55C\uBA54\uD0C0\uC790\uC5F0\uC2B5], [\uD53C\uCE74\uCE04 \uBC30\uAD6C], [\uAC8C\uC784 \uAC00\uC774\uB4DC], \uC624\uB978\uCABD [GAME RANKING] \uCC3D\uC744 \uC774\uC6A9\uD558\uC138\uC694." })
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "gb-subbar-actions", children: [
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-subbar-btn",
-              onClick: () => sendCommandToWin98("retro-game-guide"),
-              children: "\u{1F4D6} \uAC8C\uC784 \uAC00\uC774\uB4DC \uC5F4\uAE30"
-            }
-          ),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-subbar-btn",
-              onClick: () => sendCommandToWin98("retro-ranking"),
-              children: "\u{1F3C6} GAME RANKING \uCC3D \uC5F4\uAE30"
-            }
-          ),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-subbar-btn",
-              onClick: openNicknameModal,
-              children: [
-                "\u{1F464} ",
-                identity.nickname || "\uB2C9\uB124\uC784 \uC124\uC815"
-              ]
-            }
-          ),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-subbar-btn",
-              onClick: () => onNavigate("/game-box/deck"),
-              children: "\u{1F579}\uFE0F GAME DECK \uC774\uB3D9 \u2192"
-            }
-          )
-        ] })
-      ] }),
-      /* @__PURE__ */ u3("div", { className: "gb-retro-viewport", children: /* @__PURE__ */ u3(
-        "iframe",
-        {
-          ref: iframeRef,
-          src: "/win98-web/",
-          title: "Windows 98 RETRO DESKTOP",
-          className: "gb-retro-iframe",
-          allow: "autoplay; fullscreen",
-          onLoad: () => {
-            try {
-              iframeRef.current?.contentWindow?.postMessage(
-                {
-                  source: "game-box-host",
-                  type: "identity:sync",
-                  payload: identity
-                },
-                window.location.origin
-              );
-            } catch {
-            }
+    return /* @__PURE__ */ u3("div", { className: "gb-retro-shell", children: /* @__PURE__ */ u3("div", { className: "gb-retro-viewport", children: /* @__PURE__ */ u3(
+      "iframe",
+      {
+        ref: iframeRef,
+        src: "/win98-web/",
+        title: "Windows 98 RETRO DESKTOP",
+        className: "gb-retro-iframe",
+        allow: "autoplay; fullscreen",
+        onLoad: () => {
+          try {
+            iframeRef.current?.contentWindow?.postMessage(
+              {
+                source: "game-box-host",
+                type: "identity:sync",
+                payload: identity
+              },
+              window.location.origin
+            );
+          } catch {
           }
         }
-      ) })
-    ] });
+      }
+    ) }) });
   }
 
   // tool-box/src/features/game-box/deck/gameDeckConfig.js
   var GAME_DECK_CATEGORIES = Object.freeze([
-    { id: "all", label: "ALL PACKS (20)" },
+    { id: "all", label: "ALL PACKS (19)" },
     { id: "ARCADE", label: "ARCADE ORIGINAL (3)" },
-    { id: "PARTY", label: "ROULETTE & PARTY (2)" },
+    { id: "PARTY", label: "PARTY QUIZ (1)" },
     { id: "BATTLEBOX", label: "BATTLEBOX COLLECTION (15)" }
   ]);
   var SINGLE_BASE_ENGINE = Object.freeze({
@@ -1966,159 +1783,34 @@ var ToolBoxGameBox = (() => {
   }
 
   // tool-box/src/features/game-box/runtime/GameLauncher.js
-  var DEFAULT_GAME_GUIDES = {
-    bomberman: {
-      title: "Blast Arena (\uBD04\uBC84\uB9E8)",
-      controls: [
-        { key: "\uBC29\uD5A5\uD0A4 \uB610\uB294 W, A, S, D", desc: "\uC0C1\xB7\uD558\xB7\uC88C\xB7\uC6B0 \uCE90\uB9AD\uD130 \uC774\uB3D9" },
-        { key: "Space", desc: "\uD3ED\uD0C4 \uC124\uCE58" }
-      ],
-      rules: [
-        "\uB098\uBB34 \uC0C1\uC790\uB97C \uD3ED\uD30C\uD558\uBA74 \uD3ED\uD0C4 \uAC1C\uC218(+1), \uD654\uB825(+1), \uC774\uB3D9 \uC18D\uB3C4(+1) \uAC15\uD654 \uC544\uC774\uD15C\uC774 \uB098\uC635\uB2C8\uB2E4.",
-        "\uC790\uC2E0 \uB610\uB294 \uC0C1\uB300\uC758 \uD3ED\uD0C4 \uD3ED\uBC1C \uBC18\uACBD(\uC2ED\uC790 \uBAA8\uC591 \uD654\uC5FC)\uC5D0 \uB2FF\uC73C\uBA74 \uC989\uC2DC \uD0C8\uB77D\uD569\uB2C8\uB2E4.",
-        "\uCD5C\uD6C4\uAE4C\uC9C0 \uC0DD\uC874\uD558\uB294 1\uC778\uC774 \uD574\uB2F9 \uB77C\uC6B4\uB4DC\uC758 \uC6B0\uC2B9\uC790\uAC00 \uB429\uB2C8\uB2E4."
-      ],
-      tip: "\uBCBD \uB4A4\uC5D0 \uC228\uC5B4 \uC548\uC804\uAC70\uB9AC\uB97C \uD655\uBCF4\uD558\uACE0, \uC0C1\uB300\uAC00 \uC774\uB3D9\uD560 \uD1F4\uB85C\uB97C \uC608\uCE21\uD574 \uD3ED\uD0C4\uC744 \uBC30\uCE58\uD558\uC138\uC694."
-    },
-    bombergirl: {
-      title: "HTML5 Bombergirl",
-      controls: [
-        { key: "\uBC29\uD5A5\uD0A4 (\u2191 \u2193 \u2190 \u2192)", desc: "1P \uC774\uB3D9" },
-        { key: "Space \uB610\uB294 Alt", desc: "1P \uD3ED\uD0C4 \uC124\uCE58" },
-        { key: "W, A, S, D", desc: "2P \uC774\uB3D9 (\uB85C\uCEEC 2\uC778 \uC2DC)" },
-        { key: "Shift", desc: "2P \uD3ED\uD0C4 \uC124\uCE58 (\uB85C\uCEEC 2\uC778 \uC2DC)" },
-        { key: "Enter", desc: "\uAC8C\uC784 \uC7AC\uC2DC\uC791" },
-        { key: "ESC", desc: "\uBA54\uC778 \uBA54\uB274 \uC774\uB3D9" },
-        { key: "M", desc: "\uC0AC\uC6B4\uB4DC \uCF1C\uAE30/\uB044\uAE30 (Mute)" }
-      ],
-      rules: [
-        "17\xD713 \uD074\uB798\uC2DD \uADF8\uB9AC\uB4DC\uC5D0\uC11C 3\uBA85\uC758 AI \uD50C\uB808\uC774\uC5B4\uC640 \uC11C\uBC14\uC774\uBC8C \uB300\uC804\uC744 \uD3BC\uCE69\uB2C8\uB2E4.",
-        "\uC0C1\uC790\uB97C \uD30C\uAD34\uD574 \uBD88\uAF43(\uD654\uB825 \uC99D\uAC00), \uB864\uB7EC\uC2A4\uCF00\uC774\uD2B8(\uC2A4\uD53C\uB4DC), \uD3ED\uD0C4(\uC124\uCE58 \uD55C\uB3C4 \uC99D\uAC00)\uC744 \uD68D\uB4DD\uD558\uC138\uC694.",
-        "\uD654\uC5FC\uC5D0 \uB2FF\uC73C\uBA74 \uD0C8\uB77D\uD558\uBA70 \uB9C8\uC9C0\uB9C9 1\uC778\uC774 \uC2B9\uB9AC\uD569\uB2C8\uB2E4."
-      ],
-      tip: "\uD3ED\uD0C4\uC744 \uC5F0\uC18D \uC124\uCE58\uD560 \uB54C \uC790\uC2E0\uC774 \uAC07\uD788\uC9C0 \uC54A\uB3C4\uB85D \uD0C8\uCD9C\uB85C\uB97C \uBA3C\uC800 \uACC4\uC0B0\uD558\uC138\uC694."
-    },
-    snakeduel: {
-      title: "Snake Duel (\uC2A4\uB124\uC774\uD06C \uB4C0\uC5BC)",
-      controls: [
-        { key: "\uBC29\uD5A5\uD0A4 \uB610\uB294 W, A, S, D", desc: "\uBC40 \uBA38\uB9AC \uC9C4\uD589 \uBC29\uD5A5 \uC804\uD658" }
-      ],
-      rules: [
-        "\uD544\uB4DC\uC5D0 \uC0DD\uC131\uB418\uB294 \uBA39\uC774\uB97C \uBA39\uC73C\uBA74 \uBAB8\uAE38\uC774\uAC00 1\uCE78 \uB298\uC5B4\uB098\uACE0 \uC810\uC218\uB97C \uD68D\uB4DD\uD569\uB2C8\uB2E4.",
-        "\uC678\uACFD \uBCBD\uC774\uB098 \uC790\uC2E0\uC758 \uBAB8\uD1B5, \uB610\uB294 \uC0C1\uB300 \uBC40\uC758 \uBAB8\uD1B5\uC5D0 \uCDA9\uB3CC\uD558\uBA74 \uC989\uC2DC \uD328\uBC30\uD569\uB2C8\uB2E4.",
-        "\uC0C1\uB300 \uBC40\uC774 \uC6C0\uC9C1\uC77C \uACF5\uAC04\uC744 \uBAB8\uD1B5\uC73C\uB85C \uAC00\uB450\uAC70\uB098 \uCC28\uB2E8\uD558\uB294 \uAC83\uC774 \uD575\uC2EC \uC804\uB7B5\uC785\uB2C8\uB2E4."
-      ],
-      tip: "\uCD08\uBC18\uC5D0\uB294 \uBA39\uC774\uB97C \uBA39\uC5B4 \uBAB8\uC9D1\uC744 \uBD88\uB9AC\uACE0, \uD6C4\uBC18\uC5D0\uB294 \uD544\uB4DC \uC911\uC559\uC744 \uC7A5\uC545\uD558\uC5EC \uC0C1\uB300\uB97C \uAD6C\uC11D\uC73C\uB85C \uBAA8\uC138\uC694."
-    },
-    roulette: {
-      title: "Marble Roulette (\uB9C8\uBE14 \uB8F0\uB81B)",
-      controls: [
-        { key: "\uB9C8\uC6B0\uC2A4 \uD074\uB9AD", desc: "\uCC38\uAC00\uC790 \uBA85\uB2E8 \uC785\uB825 / \uB2F9\uCCA8\uC790 \uC218 \uC124\uC815 / \uB9F5 \uC120\uD0DD" },
-        { key: "PLAY / START \uBC84\uD2BC", desc: "\uBB3C\uB9AC \uAD6C\uC2AC \uB099\uD558 \uB808\uC774\uC2A4 \uC2DC\uC791" }
-      ],
-      rules: [
-        "Box2D 2D \uBB3C\uB9AC \uC5D4\uC9C4\uC744 \uAE30\uBC18\uC73C\uB85C \uBAA8\uB4E0 \uAD6C\uC2AC\uC774 \uB3D9\uC77C\uD55C \uBB3C\uB9AC \uC870\uAC74\uC5D0\uC11C \uB808\uC774\uC2A4\uB97C \uC2DC\uC791\uD569\uB2C8\uB2E4.",
-        "\uD68C\uC804 \uD1B1\uB2C8, \uD540, \uBC18\uC0AC\uD310 \uB4F1\uC758 \uC7A5\uC560\uBB3C\uC744 \uD1B5\uACFC\uD574 \uACB0\uC2B9\uC120\uC5D0 \uAC00\uC7A5 \uBA3C\uC800(\uB610\uB294 \uC124\uC815\uB41C \uC21C\uC704) \uB3C4\uB2EC\uD55C \uAD6C\uC2AC\uC774 \uB2F9\uCCA8\uB429\uB2C8\uB2E4."
-      ],
-      tip: "\uCC38\uAC00\uC790 \uC774\uB984 \uB4A4\uC5D0 *2, *3\uC744 \uBD99\uC5EC \uAC00\uC911\uCE58\uB97C \uC8FC\uAC70\uB098, \uB9F5 \uC120\uD0DD\uC744 \uBC14\uAFD4 \uC0C9\uB2E4\uB978 \uBB3C\uB9AC \uD2B8\uB799\uC744 \uC990\uAE38 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
-    },
-    drawing: {
-      title: "CatchMind (\uCE90\uCE58\uB9C8\uC778\uB4DC)",
-      controls: [
-        { key: "\uB9C8\uC6B0\uC2A4 \uB4DC\uB798\uADF8", desc: "\uCD9C\uC81C\uC790: \uCE94\uBC84\uC2A4 \uC790\uC720 \uACE1\uC120 \uB4DC\uB85C\uC789 / \uC0C9\uC0C1\xB7\uAD75\uAE30 \uC120\uD0DD" },
-        { key: "\uD0A4\uBCF4\uB4DC \uD0C0\uC774\uD551 + Enter", desc: "\uCC38\uAC00\uC790: \uD558\uB2E8 \uCC44\uD305\uCC3D\uC5D0 \uC815\uB2F5 \uD0A4\uC6CC\uB4DC \uC2E4\uC2DC\uAC04 \uC785\uB825" }
-      ],
-      rules: [
-        "\uCD9C\uC81C\uC790\uAC00 \uC81C\uC2DC\uC5B4\uB97C \uBCF4\uACE0 \uADF8\uB9BC\uC744 \uADF8\uB9AC\uBA74 \uCC38\uAC00\uC790\uB4E4\uC740 \uCC44\uD305\uCC3D\uC5D0 \uC815\uB2F5\uC744 \uCD94\uCE21\uD574 \uB9DE\uCDA5\uB2C8\uB2E4.",
-        "\uAC00\uC7A5 \uBA3C\uC800 \uC815\uB2F5\uC744 \uB9DE\uD78C \uCC38\uAC00\uC790\uC640 \uADF8\uB9BC\uC744 \uADF8\uB9B0 \uCD9C\uC81C\uC790 \uBAA8\uB450 \uC810\uC218\uB97C \uD68D\uB4DD\uD569\uB2C8\uB2E4."
-      ],
-      tip: "\uC0AC\uBB3C\uC758 \uAC00\uC7A5 \uD2B9\uC9D5\uC801\uC778 \uD575\uC2EC \uC2E4\uB8E8\uC5E3\uBD80\uD130 \uBE60\uB974\uAC8C \uADF8\uB9AC\uB294 \uAC83\uC774 \uB4DD\uC810\uC5D0 \uC720\uB9AC\uD569\uB2C8\uB2E4."
-    },
-    reaction: {
-      title: "Reaction Battle (\uC21C\uBC1C\uB825 \uB300\uACB0)",
-      controls: [
-        { key: "\uB9C8\uC6B0\uC2A4 \uC88C\uD074\uB9AD \uB610\uB294 Space", desc: "\uC2E0\uD638 \uBC18\uC751 \uC2DC \uC989\uC2DC \uC785\uB825" }
-      ],
-      rules: [
-        "\uC2E0\uD638 \uB300\uAE30(\uBE68\uAC04\uC0C9) \uD654\uBA74\uC5D0\uC11C \uCD08\uB85D\uC0C9\uC73C\uB85C \uBC14\uB00C\uB294 \uCC30\uB098\uC5D0 \uAC00\uC7A5 \uBE60\uB974\uAC8C \uD074\uB9AD\uD558\uC138\uC694.",
-        "\uC2E0\uD638\uAC00 \uBC14\uB00C\uAE30 \uC804\uC5D0 \uBBF8\uB9AC \uD074\uB9AD\uD558\uBA74 \uBD80\uC815\uCD9C\uBC1C(\uD398\uB110\uD2F0)\uB85C \uD0C8\uB77D\uD558\uAC70\uB098 \uC2DC\uAC04\uC774 \uAC00\uC0B0\uB429\uB2C8\uB2E4."
-      ],
-      tip: "\uD654\uBA74 \uC911\uC559\uC758 \uC0C9\uC0C1 \uBCC0\uD654\uC5D0 \uC2DC\uC120\uC744 \uC9D1\uC911\uD558\uACE0 \uC2EC\uD638\uD761\uC744 \uD558\uC138\uC694."
-    },
-    speedtyping: {
-      title: "Speed Typing (\uC2A4\uD53C\uB4DC \uD0C0\uC774\uD551)",
-      controls: [
-        { key: "\uD0A4\uBCF4\uB4DC \uD55C/\uC601 \uD0C0\uC774\uD551 + Enter", desc: "\uC81C\uC2DC \uBB38\uC7A5 \uC785\uB825 \uBC0F \uC81C\uCD9C" }
-      ],
-      rules: [
-        "\uD654\uBA74\uC5D0 \uD45C\uC2DC\uB41C \uBB38\uC7A5\uC744 \uC624\uD0C0 \uC5C6\uC774 \uAC00\uC7A5 \uBE60\uB974\uAC8C \uC785\uB825\uD558\uB294 \uD50C\uB808\uC774\uC5B4\uAC00 \uC2B9\uB9AC\uD569\uB2C8\uB2E4.",
-        "\uC815\uD655\uB3C4 100%\uB97C \uC720\uC9C0\uD574\uC57C \uB77C\uC6B4\uB4DC \uC2B9\uC810\uC744 \uC628\uC804\uD788 \uD68D\uB4DD\uD569\uB2C8\uB2E4."
-      ],
-      tip: "\uD0C0\uC774\uD551 \uC18D\uB3C4\uBCF4\uB2E4 \uC624\uD0C0\uB97C \uB0B4\uC9C0 \uC54A\uB294 \uAC83\uC774 \uBC31\uC2A4\uD398\uC774\uC2A4 \uC2DC\uAC04\uC744 \uC808\uC57D\uD558\uB294 \uBE44\uACB0\uC785\uB2C8\uB2E4."
-    },
-    colormatch: {
-      title: "Color Match (\uCEEC\uB7EC \uB9E4\uCE58)",
-      controls: [
-        { key: "\uB9C8\uC6B0\uC2A4 \uD074\uB9AD \uB610\uB294 \uD0A4\uD328\uB4DC 1~4", desc: "\uC815\uB2F5 \uC0C9\uC0C1 \uBC84\uD2BC \uC120\uD0DD" }
-      ],
-      rules: [
-        '\uC2A4\uD2B8\uB8F9(Stroop) \uD6A8\uACFC \uD6C8\uB828 \uAC8C\uC784\uC785\uB2C8\uB2E4. \uAE00\uC790\uC758 \uC758\uBBF8(\uC608: "\uD30C\uB791")\uAC00 \uC544\uB2CC \uC2E4\uC81C \uAE00\uC790 \uC0C9\uC0C1(\uC608: \uBE68\uAC04\uC0C9)\uC744 \uACE8\uB77C\uC57C \uD569\uB2C8\uB2E4.',
-        "\uC81C\uD55C\uC2DC\uAC04 \uB0B4\uC5D0 \uC5F0\uC18D\uC73C\uB85C \uC62C\uBC14\uB978 \uC0C9\uC0C1\uC744 \uD074\uB9AD\uD560\uC218\uB85D \uCF64\uBCF4 \uC810\uC218\uAC00 \uB204\uC801\uB429\uB2C8\uB2E4."
-      ],
-      tip: "\uAE00\uC790\uB97C \uC18C\uB9AC \uB0B4\uC5B4 \uC77D\uC9C0 \uB9D0\uACE0, \uC2DC\uAC01\uC801\uC778 \uC0C9\uC0C1 \uC790\uCCB4\uC5D0\uB9CC \uC9D1\uC911\uD558\uC138\uC694."
-    },
-    connectfour: {
-      title: "Connect Four (\uC0AC\uBAA9)",
-      controls: [
-        { key: "\uB9C8\uC6B0\uC2A4 \uD074\uB9AD", desc: "\uB514\uC2A4\uD06C\uB97C \uB5A8\uC5B4\uB728\uB9B4 \uC5F4(1~7\uC5F4) \uC120\uD0DD" }
-      ],
-      rules: [
-        "\uC911\uB825\uC5D0 \uC758\uD574 \uB514\uC2A4\uD06C\uAC00 \uC544\uB798\uB85C \uB5A8\uC5B4\uC9C0\uB294 7\xD76 \uC218\uC9C1 \uACA9\uC790\uD310\uC785\uB2C8\uB2E4.",
-        "\uC790\uC2E0\uC758 \uC0C9\uC0C1 \uB514\uC2A4\uD06C 4\uAC1C\uB97C \uAC00\uB85C, \uC138\uB85C, \uB610\uB294 \uB300\uAC01\uC120\uC73C\uB85C \uBA3C\uC800 \uC77C\uB82C\uB85C \uB9CC\uB4DC\uB294 \uCABD\uC774 \uC2B9\uB9AC\uD569\uB2C8\uB2E4."
-      ],
-      tip: "\uAC00\uC6B4\uB370 \uC5F4(4\uC5F4)\uC744 \uC120\uC810\uD558\uBA74 \uB354 \uB9CE\uC740 \uB300\uAC01\uC120 \uBC0F \uAC00\uB85C \uC5F0\uACB0 \uAE30\uD68C\uB97C \uB9CC\uB4E4 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
-    }
-  };
   function GameLauncher({
     title,
     src,
     aspectRatio = "4:3",
-    game = null,
     onClose,
     allowFullscreen = true
   }) {
     const iframeRef = A2(null);
-    const [showGuide, setShowGuide] = d2(false);
     const { identity } = useGameIdentity();
     const effectiveSrc = T2(() => {
       if (!src) return "";
       try {
         const url = new URL(src, window.location.origin);
         url.searchParams.set("embed", "deck");
-        if (identity?.nickname) {
-          url.searchParams.set("nickname", identity.nickname);
-        }
-        if (identity?.guestId) {
-          url.searchParams.set("guestId", identity.guestId);
-        }
+        if (identity?.nickname) url.searchParams.set("nickname", identity.nickname);
+        if (identity?.guestId) url.searchParams.set("guestId", identity.guestId);
         return url.pathname + url.search;
       } catch {
         const sep = src.includes("?") ? "&" : "?";
         let res = `${src}${sep}embed=deck`;
-        if (identity?.nickname) {
-          res += `&nickname=${encodeURIComponent(identity.nickname)}`;
-        }
-        if (identity?.guestId) {
-          res += `&guestId=${encodeURIComponent(identity.guestId)}`;
-        }
+        if (identity?.nickname) res += `&nickname=${encodeURIComponent(identity.nickname)}`;
+        if (identity?.guestId) res += `&guestId=${encodeURIComponent(identity.guestId)}`;
         return res;
       }
     }, [src, identity?.nickname, identity?.guestId]);
     h2(() => {
       const iframe = iframeRef.current;
-      if (iframe) {
-        iframe.focus();
-      }
+      if (iframe) iframe.focus();
       return () => {
         if (iframe) {
           try {
@@ -2128,74 +1820,22 @@ var ToolBoxGameBox = (() => {
         }
       };
     }, [effectiveSrc]);
-    h2(() => {
-      const handleKeyDown = (e3) => {
-        if (e3.key === "Escape" && showGuide) {
-          setShowGuide(false);
-        }
-      };
-      window.addEventListener("keydown", handleKeyDown);
-      return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [showGuide]);
     const handleFullscreen = () => {
-      if (iframeRef.current?.requestFullscreen) {
-        iframeRef.current.requestFullscreen();
-      }
-    };
-    const gameKey = game?.id || "";
-    const guideInfo = DEFAULT_GAME_GUIDES[gameKey] || {
-      title: game?.name || title,
-      controls: (game?.inputDevices || ["Keyboard", "Mouse"]).map((dev) => ({
-        key: dev,
-        desc: "\uAC8C\uC784 \uB0B4 \uC548\uB0B4 \uBC0F \uD654\uBA74 \uCEE8\uD2B8\uB864\uC744 \uB530\uB974\uC138\uC694."
-      })),
-      rules: [
-        game?.description || "\uC2E4\uC2DC\uAC04 \uC810\uC218 \uBC0F \uC2B9\uD328\uAC00 \uC9D1\uACC4\uB418\uB294 \uC544\uCF00\uC774\uB4DC \uAC8C\uC784\uC785\uB2C8\uB2E4.",
-        "\uC0C1\uB300\uBC29 \uB610\uB294 AI BOT\uBCF4\uB2E4 \uB192\uC740 \uC810\uC218\uB97C \uD68D\uB4DD\uD558\uAC70\uB098 \uCD5C\uD6C4\uAE4C\uC9C0 \uC0DD\uC874\uD558\uC138\uC694."
-      ],
-      tip: "\uADDC\uCE59\uC744 \uC219\uC9C0\uD558\uACE0 \uC0C1\uB300\uC758 \uC6C0\uC9C1\uC784\uC744 \uAD00\uCC30\uD558\uC5EC \uD50C\uB808\uC774\uD558\uC138\uC694."
+      iframeRef.current?.requestFullscreen?.();
     };
     return /* @__PURE__ */ u3("div", { className: "gb-launcher-frame-wrap", "data-aspect": aspectRatio, children: [
       /* @__PURE__ */ u3("div", { className: "gb-launcher-toolbar", children: [
         /* @__PURE__ */ u3("div", { className: "gb-launcher-left", children: [
           /* @__PURE__ */ u3("span", { className: "gb-launcher-led-dot" }),
-          /* @__PURE__ */ u3("span", { className: "gb-launcher-title", children: title }),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-launcher-btn gb-launcher-btn-guide",
-              onClick: () => setShowGuide(true),
-              title: "\uAC8C\uC784 \uC870\uC791 \uBC29\uBC95 \uBC0F \uC0C1\uC138 \uADDC\uCE59 \uC548\uB0B4 \uBAA8\uB2EC \uC5F4\uAE30",
-              children: "\u{1F4D6} \uC870\uC791\uBC95 & \uAC00\uC774\uB4DC"
-            }
-          )
+          /* @__PURE__ */ u3("span", { className: "gb-launcher-title", children: title })
         ] }),
         /* @__PURE__ */ u3("div", { className: "gb-launcher-actions", children: [
-          identity?.nickname && /* @__PURE__ */ u3("span", { className: "gb-launcher-player-badge", title: "\uD604\uC7AC \uC5F0\uB3D9\uB41C \uD50C\uB808\uC774\uC5B4 \uB2C9\uB124\uC784", children: [
+          identity?.nickname && /* @__PURE__ */ u3("span", { className: "gb-launcher-player-badge", title: "\uD648\uC5D0\uC11C \uB4F1\uB85D\uD55C \uB2C9\uB124\uC784", children: [
             "\u{1F464} ",
             identity.nickname
           ] }),
-          allowFullscreen && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-launcher-btn",
-              onClick: handleFullscreen,
-              title: "\uAC8C\uC784 \uC804\uCCB4 \uD654\uBA74\uC73C\uB85C \uC804\uD658",
-              children: "\uC804\uCCB4\uD654\uBA74"
-            }
-          ),
-          onClose && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-launcher-btn gb-launcher-btn-close",
-              onClick: onClose,
-              title: "\uAC8C\uC784 \uC804\uC6D0 \uB044\uAE30 / \uD329 \uBD84\uB9AC",
-              children: "\u2715 \uC804\uC6D0 \uB044\uAE30"
-            }
-          )
+          allowFullscreen && /* @__PURE__ */ u3("button", { type: "button", className: "gb-launcher-btn", onClick: handleFullscreen, title: "\uC804\uCCB4 \uD654\uBA74", children: "\uC804\uCCB4\uD654\uBA74" }),
+          onClose && /* @__PURE__ */ u3("button", { type: "button", className: "gb-launcher-btn gb-launcher-btn-close", onClick: onClose, title: "\uC885\uB8CC", children: "\u2715 \uC885\uB8CC" })
         ] })
       ] }),
       /* @__PURE__ */ u3("div", { className: "gb-launcher-stage-container", children: /* @__PURE__ */ u3(
@@ -2207,86 +1847,7 @@ var ToolBoxGameBox = (() => {
           className: "gb-launcher-iframe",
           allow: "autoplay; fullscreen"
         }
-      ) }),
-      showGuide && /* @__PURE__ */ u3(
-        "div",
-        {
-          className: "gb-guide-modal-overlay",
-          role: "dialog",
-          "aria-modal": "true",
-          onClick: () => setShowGuide(false),
-          children: /* @__PURE__ */ u3(
-            "div",
-            {
-              className: "gb-guide-modal-content",
-              onClick: (e3) => e3.stopPropagation(),
-              children: [
-                /* @__PURE__ */ u3("div", { className: "gb-guide-modal-header", children: [
-                  /* @__PURE__ */ u3("div", { className: "gb-guide-header-title", children: [
-                    /* @__PURE__ */ u3("span", { className: "gb-guide-badge", children: "GAME MANUAL" }),
-                    /* @__PURE__ */ u3("h3", { children: [
-                      "\u{1F3AE} ",
-                      guideInfo.title,
-                      " \uC870\uC791\uBC95 & \uAC00\uC774\uB4DC"
-                    ] })
-                  ] }),
-                  /* @__PURE__ */ u3(
-                    "button",
-                    {
-                      type: "button",
-                      className: "gb-guide-close-btn",
-                      onClick: () => setShowGuide(false),
-                      title: "\uB2EB\uAE30 (ESC)",
-                      children: "\u2715"
-                    }
-                  )
-                ] }),
-                /* @__PURE__ */ u3("div", { className: "gb-guide-modal-body", children: [
-                  /* @__PURE__ */ u3("section", { className: "gb-guide-section", children: [
-                    /* @__PURE__ */ u3("h4", { children: "\u2328\uFE0F \uC870\uC791 \uBC29\uBC95" }),
-                    /* @__PURE__ */ u3("div", { className: "gb-guide-key-list", children: guideInfo.controls.map((item, idx) => /* @__PURE__ */ u3("div", { className: "gb-guide-key-row", children: [
-                      /* @__PURE__ */ u3("span", { className: "gb-guide-keycap", children: item.key }),
-                      /* @__PURE__ */ u3("span", { className: "gb-guide-keydesc", children: item.desc })
-                    ] }, idx)) })
-                  ] }),
-                  /* @__PURE__ */ u3("section", { className: "gb-guide-section", children: [
-                    /* @__PURE__ */ u3("h4", { children: "\u{1F3AF} \uAC8C\uC784 \uADDC\uCE59 & \uC2B9\uB9AC \uC870\uAC74" }),
-                    /* @__PURE__ */ u3("ul", { className: "gb-guide-rule-list", children: guideInfo.rules.map((rule, idx) => /* @__PURE__ */ u3("li", { children: rule }, idx)) })
-                  ] }),
-                  guideInfo.tip && /* @__PURE__ */ u3("section", { className: "gb-guide-section gb-guide-tip-box", children: [
-                    /* @__PURE__ */ u3("strong", { children: "\u{1F4A1} \uD50C\uB808\uC774 \uD301:" }),
-                    /* @__PURE__ */ u3("p", { children: guideInfo.tip })
-                  ] }),
-                  /* @__PURE__ */ u3("section", { className: "gb-guide-section gb-guide-identity-note", children: [
-                    /* @__PURE__ */ u3("span", { className: "gb-note-icon", children: "\u{1F464}" }),
-                    /* @__PURE__ */ u3("div", { children: [
-                      /* @__PURE__ */ u3("strong", { children: "\uD50C\uB808\uC774\uC5B4 \uB2C9\uB124\uC784 \uC790\uB3D9 \uC5F0\uB3D9 \uC548\uB0B4" }),
-                      /* @__PURE__ */ u3("p", { children: [
-                        "\uD604\uC7AC \uD50C\uB808\uC774\uC5B4 ",
-                        /* @__PURE__ */ u3("strong", { children: [
-                          "[",
-                          identity?.nickname || "\uAC8C\uC2A4\uD2B8",
-                          "]"
-                        ] }),
-                        " \uB2D8\uC758 \uB2C9\uB124\uC784\uC774 \uAC8C\uC784 \uC138\uC158\uACFC \uB7AD\uD0B9\uC5D0 \uC790\uB3D9\uC73C\uB85C \uC5F0\uACB0\uB418\uC5B4 \uC788\uC2B5\uB2C8\uB2E4. \uBCC4\uB3C4\uC758 \uC785\uB825 \uC5C6\uC774 \uB300\uC804\uC744 \uC644\uB8CC\uD558\uBA74 \uC790\uB3D9\uC73C\uB85C \uC804\uC801\uC774 \uC800\uC7A5\uB429\uB2C8\uB2E4."
-                      ] })
-                    ] })
-                  ] })
-                ] }),
-                /* @__PURE__ */ u3("div", { className: "gb-guide-modal-footer", children: /* @__PURE__ */ u3(
-                  "button",
-                  {
-                    type: "button",
-                    className: "gb-btn-guide-confirm",
-                    onClick: () => setShowGuide(false),
-                    children: "\uD655\uC778 / \uAC8C\uC784\uC73C\uB85C \uB3CC\uC544\uAC00\uAE30 (ESC)"
-                  }
-                ) })
-              ]
-            }
-          )
-        }
-      )
+      ) })
     ] });
   }
 
@@ -34391,260 +33952,236 @@ void main() {
       await consoleRef.current?.ejectDisc({ animate: shouldAnimateDisc() });
       setAnimState("selected");
     };
-    return /* @__PURE__ */ u3("div", { className: "gb-deck-shell", children: [
-      /* @__PURE__ */ u3("div", { className: "gb-subbar gb-subbar-dark", children: [
-        /* @__PURE__ */ u3("div", { className: "gb-subbar-left", children: [
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-subbar-back",
-              onClick: () => onNavigate && onNavigate("/game-box"),
-              children: "\u2190 GAME-BOX \uD648\uC73C\uB85C"
-            }
-          ),
-          /* @__PURE__ */ u3("span", { className: "gb-subbar-divider", children: "|" }),
-          /* @__PURE__ */ u3("strong", { className: "gb-subbar-title", children: "GAME DECK \u2014 ARCADE 20 COLLECTION" }),
-          /* @__PURE__ */ u3("span", { className: "gb-subbar-hint", children: "\uC67C\uCABD \uC9C4\uC5F4\uB300\uC5D0\uC11C CD \uCF00\uC774\uC2A4\uB97C \uC120\uD0DD\uD558\uACE0 PLAY\uB97C \uB204\uB974\uBA74 3D \uCF00\uC774\uC2A4\uAC00 \uAC1C\uBC29\uB418\uC5B4 PS2 \uCF58\uC194 \uD2B8\uB808\uC774\uB85C \uB514\uC2A4\uD06C\uAC00 \uC7A5\uCC29\uB429\uB2C8\uB2E4." })
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "gb-subbar-actions", children: [
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-subbar-btn",
-              onClick: () => setSoundEnabled(!soundEnabled),
-              title: "\uD6A8\uACFC\uC74C \uCF1C\uAE30 / \uB044\uAE30",
-              children: soundEnabled ? "\u{1F50A} SFX ON" : "\u{1F507} MUTE"
-            }
-          ),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-subbar-btn",
-              onClick: () => {
-                if (typeof window !== "undefined") {
-                  window.location.href = "/game-box/deck-lab-single/";
-                }
-              },
-              title: "Channel 3 \uB2E8\uC77C \uC624\uD508\uC18C\uC2A4 \uC6D0\uBCF8 \uB3C5\uB9BD \uC2E4\uD589\uC2E4",
-              children: "\u{1F4FA} SINGLE LAB (Channel 3)"
-            }
-          ),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-subbar-btn",
-              onClick: () => onNavigate && onNavigate("/game-box/deck-lab"),
-              title: "\uB3C5\uB9BD\uB41C \uAC1C\uBC1C\uC6A9 3D \uCF00\uC774\uC2A4 \uC5D4\uC9C4 \uD14C\uC2A4\uD2B8 \uD658\uACBD",
-              children: "\u{1F9EA} DECK LAB \uC774\uB3D9"
-            }
-          ),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-subbar-btn",
-              onClick: () => onNavigate && onNavigate("/game-box/retro"),
-              children: "\u{1FA9F} RETRO DESKTOP"
-            }
-          )
-        ] })
-      ] }),
-      /* @__PURE__ */ u3("div", { className: "gb-deck-grid", children: [
-        /* @__PURE__ */ u3("aside", { className: "gb-deck-collection", "data-testid": "deck-collection-zone", children: [
-          /* @__PURE__ */ u3("div", { className: "gb-deck-panel-header", children: [
+    return /* @__PURE__ */ u3("div", { className: "gb-deck-shell", children: /* @__PURE__ */ u3("div", { className: "gb-deck-grid", children: [
+      /* @__PURE__ */ u3("aside", { className: "gb-deck-collection", "data-testid": "deck-collection-zone", children: [
+        /* @__PURE__ */ u3("div", { className: "gb-deck-panel-header", children: [
+          /* @__PURE__ */ u3("div", { children: [
             /* @__PURE__ */ u3("h2", { children: "GAME COLLECTION" }),
             /* @__PURE__ */ u3("span", { className: "gb-deck-badge", children: [
               visibleGames.length,
               " 3D PACKS"
             ] })
           ] }),
-          /* @__PURE__ */ u3("div", { className: "gb-deck-filters", children: [
-            /* @__PURE__ */ u3("div", { className: "gb-deck-cat-row", children: GAME_DECK_CATEGORIES.map((cat) => /* @__PURE__ */ u3(
-              "button",
-              {
-                type: "button",
-                className: `gb-deck-cat-btn ${selectedCategory === cat.id ? "active" : ""}`,
-                onClick: () => setSelectedCategory(cat.id),
-                children: cat.label
-              },
-              cat.id
-            )) }),
-            /* @__PURE__ */ u3(
-              "input",
-              {
-                type: "search",
-                className: "gb-deck-search",
-                placeholder: "\uAC8C\uC784\uD329 \uC774\uB984, \uCF54\uB4DC, \uC7A5\uB974 \uAC80\uC0C9...",
-                value: searchQuery,
-                onChange: (e3) => setSearchQuery(e3.target.value)
-              }
-            )
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "gb-3d-shelf-container", "data-sanso-stage": "big", children: visibleGames.map((game) => {
-            const isSelected = selectedGame && game.id === selectedGame.id;
-            return /* @__PURE__ */ u3("div", { className: "gb-shelf-item-wrap", children: [
-              /* @__PURE__ */ u3(
-                GameCaseCard,
-                {
-                  game,
-                  isSelected,
-                  onClick: () => handleSelectCase(game.id),
-                  width: 130,
-                  height: 195,
-                  className: `deck-case-${game.id}`
-                }
-              ),
-              /* @__PURE__ */ u3("div", { className: "gb-shelf-item-label", children: [
-                /* @__PURE__ */ u3("span", { className: "gb-shelf-item-code", children: game.discLabel }),
-                /* @__PURE__ */ u3("strong", { className: "gb-shelf-item-title", children: game.name })
-              ] })
-            ] }, game.id);
-          }) })
+          /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "gb-sfx-toggle-btn",
+              onClick: () => setSoundEnabled(!soundEnabled),
+              title: "\uD6A8\uACFC\uC74C \uCF1C\uAE30 / \uB044\uAE30",
+              children: soundEnabled ? "\u{1F50A} SFX" : "\u{1F507} MUTE"
+            }
+          )
         ] }),
-        /* @__PURE__ */ u3("section", { className: "gb-deck-console-zone", "data-testid": "deck-console-zone", children: /* @__PURE__ */ u3("div", { className: "gb-console-unit", children: [
-          /* @__PURE__ */ u3("div", { className: "gb-console-hardware-bar", children: [
-            /* @__PURE__ */ u3("div", { className: "gb-console-led-group", children: [
-              /* @__PURE__ */ u3("span", { className: `gb-console-led ${isPlaying ? "on" : "standby"}` }),
-              /* @__PURE__ */ u3("span", { className: "gb-console-model", children: [
-                "TOOL-BOX ARCADE DECK // ",
-                selectedGame ? selectedGame.discLabel : "PS2 SYSTEM STANDBY"
-              ] })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-console-state-badge", children: [
-              "\uC0C1\uD0DC: ",
-              /* @__PURE__ */ u3("strong", { children: animState === "selected" && !selectedGame ? "STANDBY" : animState.toUpperCase() })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-console-slot-status", children: animState === "playing" ? "DISC INSERTED \xB7 RUNNING" : animState === "inserting" ? "3D CASE OPENING & INSERTING DISC..." : animState === "ejecting" ? "EJECTING DISC TO 3D CASE..." : !selectedGame ? "WAITING FOR GAME SELECTION" : "READY TO INSERT PACK" })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "gb-console-screen", children: [
-            isPlaying && selectedGame && /* @__PURE__ */ u3(
-              GameLauncher,
+        /* @__PURE__ */ u3("div", { className: "gb-deck-filters", children: [
+          /* @__PURE__ */ u3("div", { className: "gb-deck-cat-row", children: GAME_DECK_CATEGORIES.map((cat) => /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: `gb-deck-cat-btn ${selectedCategory === cat.id ? "active" : ""}`,
+              onClick: () => setSelectedCategory(cat.id),
+              children: cat.label
+            },
+            cat.id
+          )) }),
+          /* @__PURE__ */ u3(
+            "input",
+            {
+              type: "search",
+              className: "gb-deck-search",
+              placeholder: "\uAC8C\uC784\uD329 \uC774\uB984, \uCF54\uB4DC, \uC7A5\uB974 \uAC80\uC0C9...",
+              value: searchQuery,
+              onChange: (e3) => setSearchQuery(e3.target.value)
+            }
+          )
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "gb-3d-shelf-container", "data-sanso-stage": "big", children: visibleGames.map((game) => {
+          const isSelected = selectedGame && game.id === selectedGame.id;
+          return /* @__PURE__ */ u3("div", { className: "gb-shelf-item-wrap", children: [
+            /* @__PURE__ */ u3(
+              GameCaseCard,
               {
-                title: selectedGame.name,
-                src: selectedGame.launchUrl,
-                aspectRatio: selectedGame.aspectRatio,
-                game: selectedGame,
-                onClose: handleEjectAndStop
+                game,
+                isSelected,
+                onClick: () => handleSelectCase(game.id),
+                width: 130,
+                height: 195,
+                className: `deck-case-${game.id}`
               }
             ),
-            /* @__PURE__ */ u3("div", { className: "gb-console-3d-stage-wrapper", hidden: isPlaying, children: [
-              /* @__PURE__ */ u3("div", { className: "gb-console-threejs-container", children: /* @__PURE__ */ u3(ConsoleView3D_default, { ref: consoleRef, game: selectedGame }) }),
-              /* @__PURE__ */ u3("div", { className: "gb-console-overlay-panel", children: /* @__PURE__ */ u3("div", { className: "gb-console-preview-card", children: [
-                /* @__PURE__ */ u3("span", { className: "gb-preview-kicker", children: selectedGame ? `${selectedGame.genre} \xB7 ${selectedGame.playersLabel} \xB7 ${selectedGame.discLabel}` : "ARCADE 20 COLLECTION \xB7 SELECTION MODE" }),
-                /* @__PURE__ */ u3("h3", { children: selectedGame?.name || "\uAC8C\uC784 CD \uCF00\uC774\uC2A4\uB97C \uC120\uD0DD\uD558\uC138\uC694" }),
-                /* @__PURE__ */ u3("p", { children: selectedGame?.description || "\uC9C4\uC5F4\uB300\uC5D0\uC11C \uAC8C\uC784\uC744 \uACE0\uB974\uACE0 PLAY\uB97C \uB204\uB974\uBA74 CD\uAC00 \uCF00\uC774\uC2A4\uC5D0\uC11C \uB098\uC640 \uCF58\uC194\uC5D0 \uB4E4\uC5B4\uAC11\uB2C8\uB2E4." }),
-                /* @__PURE__ */ u3("div", { className: "gb-console-action-row", children: [
-                  /* @__PURE__ */ u3(
-                    "button",
-                    {
-                      type: "button",
-                      className: "gb-btn-insert-play",
-                      onClick: handleInsertAndPlay,
-                      disabled: !selectedGame || isMovingDisc,
-                      children: selectedGame ? "\u25B6 PLAY" : "CD \uCF00\uC774\uC2A4\uB97C \uBA3C\uC800 \uC120\uD0DD\uD574\uC8FC\uC138\uC694"
-                    }
-                  ),
-                  selectedGame && /* @__PURE__ */ u3(
-                    "a",
-                    {
-                      href: selectedGame.multiplayerUrl || selectedGame.launchUrl,
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                      className: "gb-btn-standalone",
-                      children: "\u2197 \uB3C5\uB9BD \uCC3D\uC73C\uB85C \uC5F4\uAE30"
-                    }
-                  )
-                ] })
-              ] }) })
+            /* @__PURE__ */ u3("div", { className: "gb-shelf-item-label", children: [
+              /* @__PURE__ */ u3("span", { className: "gb-shelf-item-code", children: game.discLabel }),
+              /* @__PURE__ */ u3("strong", { className: "gb-shelf-item-title", children: game.name })
             ] })
-          ] })
-        ] }) }),
-        /* @__PURE__ */ u3("aside", { className: "gb-deck-ranking-zone", children: [
-          /* @__PURE__ */ u3("div", { className: "gb-deck-panel-header", children: [
-            /* @__PURE__ */ u3("h2", { children: "GAME RANKING & SPEC" }),
-            /* @__PURE__ */ u3("span", { className: "gb-deck-badge", children: "TOP 10" })
+          ] }, game.id);
+        }) })
+      ] }),
+      /* @__PURE__ */ u3("section", { className: "gb-deck-console-zone", "data-testid": "deck-console-zone", children: /* @__PURE__ */ u3("div", { className: "gb-console-unit", children: [
+        /* @__PURE__ */ u3("div", { className: "gb-console-hardware-bar", children: [
+          /* @__PURE__ */ u3("div", { className: "gb-console-led-group", children: [
+            /* @__PURE__ */ u3("span", { className: `gb-console-led ${isPlaying ? "on" : "standby"}` }),
+            /* @__PURE__ */ u3("span", { className: "gb-console-model", children: [
+              "TOOL-BOX ARCADE DECK // ",
+              selectedGame ? selectedGame.discLabel : "PS2 SYSTEM STANDBY"
+            ] })
           ] }),
-          selectedGame ? /* @__PURE__ */ u3(S, { children: [
-            /* @__PURE__ */ u3("div", { className: "gb-deck-spec-card", children: [
-              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-                /* @__PURE__ */ u3("span", { children: "\uAC8C\uC784\uBA85" }),
-                /* @__PURE__ */ u3("strong", { children: selectedGame.name })
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-                /* @__PURE__ */ u3("span", { children: "\uB514\uC2A4\uD06C \uC2DD\uBCC4\uC790" }),
-                /* @__PURE__ */ u3("code", { children: selectedGame.discLabel })
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-                /* @__PURE__ */ u3("span", { children: "\uD50C\uB808\uC774 \uC778\uC6D0" }),
-                /* @__PURE__ */ u3("strong", { children: selectedGame.playersLabel })
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-                /* @__PURE__ */ u3("span", { children: "\uD654\uBA74 \uBE44\uC728 / \uC785\uB825" }),
-                /* @__PURE__ */ u3("strong", { children: [
-                  selectedGame.aspectRatio,
-                  " \xB7 ",
-                  selectedGame.inputDevices.join(", ")
-                ] })
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-                /* @__PURE__ */ u3("span", { children: "\uC2E4\uD589 URL" }),
-                /* @__PURE__ */ u3("code", { children: selectedGame.launchUrl })
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-                /* @__PURE__ */ u3("span", { children: "\uAE30\uB85D \uC5F0\uB3D9" }),
-                /* @__PURE__ */ u3("span", { children: selectedGame.eventSupport })
+          /* @__PURE__ */ u3("div", { className: "gb-console-state-badge", children: [
+            "\uC0C1\uD0DC: ",
+            /* @__PURE__ */ u3("strong", { children: animState === "selected" && !selectedGame ? "STANDBY" : animState.toUpperCase() })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "gb-console-slot-status", children: animState === "playing" ? "DISC INSERTED \xB7 RUNNING" : animState === "inserting" ? "3D CASE OPENING & INSERTING DISC..." : animState === "ejecting" ? "EJECTING DISC TO 3D CASE..." : !selectedGame ? "WAITING FOR GAME SELECTION" : "READY TO INSERT PACK" })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "gb-console-screen", children: [
+          isPlaying && selectedGame && /* @__PURE__ */ u3(
+            GameLauncher,
+            {
+              title: selectedGame.name,
+              src: selectedGame.launchUrl,
+              aspectRatio: selectedGame.aspectRatio,
+              game: selectedGame,
+              onClose: handleEjectAndStop
+            }
+          ),
+          /* @__PURE__ */ u3("div", { className: "gb-console-3d-stage-wrapper", hidden: isPlaying, children: [
+            /* @__PURE__ */ u3("div", { className: "gb-console-threejs-container", children: /* @__PURE__ */ u3(ConsoleView3D_default, { ref: consoleRef, game: selectedGame }) }),
+            /* @__PURE__ */ u3("div", { className: "gb-console-overlay-panel", children: /* @__PURE__ */ u3("div", { className: "gb-console-preview-card", children: [
+              /* @__PURE__ */ u3("span", { className: "gb-preview-kicker", children: selectedGame ? `${selectedGame.genre} \xB7 ${selectedGame.playersLabel} \xB7 ${selectedGame.discLabel}` : "ARCADE 19 COLLECTION \xB7 SELECTION MODE" }),
+              /* @__PURE__ */ u3("h3", { children: selectedGame?.name || "\uAC8C\uC784 CD \uCF00\uC774\uC2A4\uB97C \uC120\uD0DD\uD558\uC138\uC694" }),
+              /* @__PURE__ */ u3("p", { children: selectedGame?.description || "\uC9C4\uC5F4\uB300\uC5D0\uC11C \uAC8C\uC784\uC744 \uACE0\uB974\uACE0 PLAY\uB97C \uB204\uB974\uBA74 CD\uAC00 \uCF00\uC774\uC2A4\uC5D0\uC11C \uB098\uC640 \uCF58\uC194\uC5D0 \uB4E4\uC5B4\uAC11\uB2C8\uB2E4." }),
+              /* @__PURE__ */ u3("div", { className: "gb-console-action-row", children: /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "gb-btn-insert-play",
+                  onClick: handleInsertAndPlay,
+                  disabled: !selectedGame || isMovingDisc,
+                  children: selectedGame ? "\u25B6 PLAY (\uB300\uAE30\uC2E4 \uC785\uC7A5)" : "CD \uCF00\uC774\uC2A4\uB97C \uBA3C\uC800 \uC120\uD0DD\uD574\uC8FC\uC138\uC694"
+                }
+              ) })
+            ] }) })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ u3("aside", { className: "gb-deck-ranking-zone", children: [
+        /* @__PURE__ */ u3("div", { className: "gb-deck-panel-header", children: [
+          /* @__PURE__ */ u3("h2", { children: "GAME RANKING & SPEC" }),
+          /* @__PURE__ */ u3("span", { className: "gb-deck-badge", children: "TOP 10" })
+        ] }),
+        selectedGame ? /* @__PURE__ */ u3(S, { children: [
+          /* @__PURE__ */ u3("div", { className: "gb-deck-spec-card", children: [
+            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+              /* @__PURE__ */ u3("span", { children: "\uAC8C\uC784\uBA85" }),
+              /* @__PURE__ */ u3("strong", { children: selectedGame.name })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+              /* @__PURE__ */ u3("span", { children: "\uB514\uC2A4\uD06C \uC2DD\uBCC4\uC790" }),
+              /* @__PURE__ */ u3("code", { children: selectedGame.discLabel })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+              /* @__PURE__ */ u3("span", { children: "\uD50C\uB808\uC774 \uC778\uC6D0" }),
+              /* @__PURE__ */ u3("strong", { children: selectedGame.playersLabel })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+              /* @__PURE__ */ u3("span", { children: "\uD654\uBA74 \uBE44\uC728 / \uC785\uB825" }),
+              /* @__PURE__ */ u3("strong", { children: [
+                selectedGame.aspectRatio,
+                " \xB7 ",
+                selectedGame.inputDevices.join(", ")
               ] })
             ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-deck-ranking-box", children: [
-              /* @__PURE__ */ u3("h3", { children: [
-                "\u{1F3C6} ",
-                selectedGame.name,
-                " TOP 10"
-              ] }),
-              loadingRankings ? /* @__PURE__ */ u3("div", { className: "gb-deck-empty", children: "\uB7AD\uD0B9 \uB370\uC774\uD130\uB97C \uBD88\uB7EC\uC624\uB294 \uC911..." }) : deckRankings.length === 0 ? /* @__PURE__ */ u3("div", { className: "gb-deck-empty", children: [
-                "\uC544\uC9C1 \uC774 \uAC8C\uC784\uC758 \uB300\uC804 \uC644\uB8CC \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.",
-                /* @__PURE__ */ u3("br", {}),
-                "\uAC8C\uC784\uC744 \uD50C\uB808\uC774\uD558\uBA74 \uC21C\uC704\uAC00 \uC9D1\uACC4\uB429\uB2C8\uB2E4."
-              ] }) : /* @__PURE__ */ u3("table", { className: "gb-deck-table", children: [
-                /* @__PURE__ */ u3("thead", { children: /* @__PURE__ */ u3("tr", { children: [
-                  /* @__PURE__ */ u3("th", { children: "\uC21C\uC704" }),
-                  /* @__PURE__ */ u3("th", { children: "\uD50C\uB808\uC774\uC5B4" }),
-                  /* @__PURE__ */ u3("th", { children: "\uC2B9/\uD328" }),
-                  /* @__PURE__ */ u3("th", { children: "\uCD5C\uACE0\uC810" })
-                ] }) }),
-                /* @__PURE__ */ u3("tbody", { children: deckRankings.map((row, idx) => /* @__PURE__ */ u3("tr", { children: [
-                  /* @__PURE__ */ u3("td", { children: [
-                    "#",
-                    idx + 1
-                  ] }),
-                  /* @__PURE__ */ u3("td", { children: row.name }),
-                  /* @__PURE__ */ u3("td", { children: [
-                    row.wins,
-                    "\uC2B9 ",
-                    row.losses,
-                    "\uD328"
-                  ] }),
-                  /* @__PURE__ */ u3("td", { children: Math.round(row.bestScore || 0).toLocaleString() })
-                ] }, row.userId || idx)) })
-              ] })
+            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+              /* @__PURE__ */ u3("span", { children: "\uC2E4\uD589 URL" }),
+              /* @__PURE__ */ u3("code", { children: selectedGame.launchUrl })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
+              /* @__PURE__ */ u3("span", { children: "\uAE30\uB85D \uC5F0\uB3D9" }),
+              /* @__PURE__ */ u3("span", { children: selectedGame.eventSupport })
             ] })
-          ] }) : /* @__PURE__ */ u3("div", { className: "gb-deck-ranking-box", children: [
-            /* @__PURE__ */ u3("h3", { children: "\u{1F3C6} \uC2E4\uC2DC\uAC04 \uB7AD\uD0B9 & \uC0AC\uC591" }),
-            /* @__PURE__ */ u3("div", { className: "gb-deck-empty", style: { padding: "36px 16px", lineHeight: 1.7 }, children: [
-              "\uC67C\uCABD \uC9C4\uC5F4\uB300\uC5D0\uC11C \uC6D0\uD558\uB294 ",
-              /* @__PURE__ */ u3("strong", { children: "\uAC8C\uC784 CD \uCF00\uC774\uC2A4" }),
-              "\uB97C \uC120\uD0DD\uD558\uBA74",
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "gb-deck-ranking-box", children: [
+            /* @__PURE__ */ u3("h3", { children: [
+              "\u{1F3C6} ",
+              selectedGame.name,
+              " TOP 10"
+            ] }),
+            loadingRankings ? /* @__PURE__ */ u3("div", { className: "gb-deck-empty", children: "\uB7AD\uD0B9 \uB370\uC774\uD130\uB97C \uBD88\uB7EC\uC624\uB294 \uC911..." }) : deckRankings.length === 0 ? /* @__PURE__ */ u3("div", { className: "gb-deck-empty", children: [
+              "\uC544\uC9C1 \uC774 \uAC8C\uC784\uC758 \uB300\uC804 \uC644\uB8CC \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.",
               /* @__PURE__ */ u3("br", {}),
-              "\uD574\uB2F9 \uAC8C\uC784\uC758 \uACF5\uC2DD \uC0AC\uC591 \uC815\uBCF4\uC640 \uC2E4\uC2DC\uAC04 TOP 10 \uB7AD\uD0B9\uC774 \uD45C\uC2DC\uB429\uB2C8\uB2E4."
+              "\uAC8C\uC784\uC744 \uD50C\uB808\uC774\uD558\uBA74 \uC21C\uC704\uAC00 \uC9D1\uACC4\uB429\uB2C8\uB2E4."
+            ] }) : /* @__PURE__ */ u3("table", { className: "gb-deck-table", children: [
+              /* @__PURE__ */ u3("thead", { children: /* @__PURE__ */ u3("tr", { children: [
+                /* @__PURE__ */ u3("th", { children: "\uC21C\uC704" }),
+                /* @__PURE__ */ u3("th", { children: "\uD50C\uB808\uC774\uC5B4" }),
+                /* @__PURE__ */ u3("th", { children: "\uC2B9/\uD328" }),
+                /* @__PURE__ */ u3("th", { children: "\uCD5C\uACE0\uC810" })
+              ] }) }),
+              /* @__PURE__ */ u3("tbody", { children: deckRankings.map((row, idx) => /* @__PURE__ */ u3("tr", { children: [
+                /* @__PURE__ */ u3("td", { children: [
+                  "#",
+                  idx + 1
+                ] }),
+                /* @__PURE__ */ u3("td", { children: row.name }),
+                /* @__PURE__ */ u3("td", { children: [
+                  row.wins,
+                  "\uC2B9 ",
+                  row.losses,
+                  "\uD328"
+                ] }),
+                /* @__PURE__ */ u3("td", { children: Math.round(row.bestScore || 0).toLocaleString() })
+              ] }, row.userId || idx)) })
             ] })
+          ] })
+        ] }) : /* @__PURE__ */ u3("div", { className: "gb-deck-ranking-box", children: [
+          /* @__PURE__ */ u3("h3", { children: "\u{1F3C6} \uC2E4\uC2DC\uAC04 \uB7AD\uD0B9 & \uC0AC\uC591" }),
+          /* @__PURE__ */ u3("div", { className: "gb-deck-empty", style: { padding: "36px 16px", lineHeight: 1.7 }, children: [
+            "\uC67C\uCABD \uC9C4\uC5F4\uB300\uC5D0\uC11C \uC6D0\uD558\uB294 ",
+            /* @__PURE__ */ u3("strong", { children: "\uAC8C\uC784 CD \uCF00\uC774\uC2A4" }),
+            "\uB97C \uC120\uD0DD\uD558\uBA74",
+            /* @__PURE__ */ u3("br", {}),
+            "\uD574\uB2F9 \uAC8C\uC784\uC758 \uACF5\uC2DD \uC0AC\uC591 \uC815\uBCF4\uC640 \uC2E4\uC2DC\uAC04 TOP 10 \uB7AD\uD0B9\uC774 \uD45C\uC2DC\uB429\uB2C8\uB2E4."
           ] })
         ] })
       ] })
-    ] });
+    ] }) });
+  }
+
+  // tool-box/src/features/game-box/draw/DrawPack.js
+  function DrawPack({ onNavigate }) {
+    const [activeId, setActiveId] = d2(null);
+    const activeGame = DRAW_GAMES.find((g4) => g4.id === activeId) || null;
+    return /* @__PURE__ */ u3("div", { className: "gb-draw-shell", children: activeGame ? /* @__PURE__ */ u3("div", { className: "gb-draw-stage", children: /* @__PURE__ */ u3(
+      GameLauncher,
+      {
+        title: activeGame.name,
+        src: activeGame.launchUrl,
+        aspectRatio: activeGame.aspectRatio,
+        onClose: () => setActiveId(null)
+      }
+    ) }) : /* @__PURE__ */ u3("div", { className: "gb-draw-body", children: [
+      /* @__PURE__ */ u3("div", { className: "gb-draw-intro", children: [
+        /* @__PURE__ */ u3("span", { className: "gb-home-kicker", children: "LUCKY DRAW COLLECTION" }),
+        /* @__PURE__ */ u3("h2", { children: "\uBF51\uAE30 \uAC8C\uC784\uC744 \uC120\uD0DD\uD558\uC138\uC694" }),
+        /* @__PURE__ */ u3("p", { children: "\uCD94\uCCA8 \xB7 \uD300 \uB098\uB204\uAE30 \xB7 \uC21C\uC11C \uC815\uD558\uAE30 \u2014 \uD55C \uBC88\uC758 \uD074\uB9AD\uC73C\uB85C \uACF5\uC815\uD558\uAC8C \uACB0\uC815\uD569\uB2C8\uB2E4." })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "gb-draw-grid", children: DRAW_GAMES.map((game) => /* @__PURE__ */ u3(
+        "button",
+        {
+          type: "button",
+          className: "gb-draw-card",
+          style: { "--case-color": game.caseColor },
+          onClick: () => setActiveId(game.id),
+          children: [
+            /* @__PURE__ */ u3("span", { className: "gb-draw-card-icon", children: game.icon }),
+            /* @__PURE__ */ u3("span", { className: "gb-draw-card-genre", children: game.genre }),
+            /* @__PURE__ */ u3("strong", { className: "gb-draw-card-title", children: game.shortName }),
+            /* @__PURE__ */ u3("span", { className: "gb-draw-card-sub", children: game.subtitle }),
+            /* @__PURE__ */ u3("p", { children: game.description }),
+            /* @__PURE__ */ u3("span", { className: "gb-draw-card-cta", children: "\uC785\uC7A5 \u2192" })
+          ]
+        },
+        game.id
+      )) })
+    ] }) });
   }
 
   // tool-box/src/features/game-box/deck/lab/DeckLab.jsx
@@ -34864,6 +34401,7 @@ void main() {
     const clean = String(pathname || "/game-box").replace(/\/+$/, "") || "/game-box";
     if (clean === "/game-box/retro") return "/game-box/retro";
     if (clean === "/game-box/deck") return "/game-box/deck";
+    if (clean === "/game-box/draw") return "/game-box/draw";
     if (clean === "/game-box/deck-lab") return "/game-box/deck-lab";
     return "/game-box";
   }
@@ -35008,6 +34546,15 @@ void main() {
               onClick: () => navigate("/game-box/deck"),
               children: "GAME DECK (Arcade)"
             }
+          ),
+          /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: `gb-header-tab ${route === "/game-box/draw" ? "active" : ""}`,
+              onClick: () => navigate("/game-box/draw"),
+              children: "DRAW PACK (\uBF51\uAE30)"
+            }
           )
         ] }),
         /* @__PURE__ */ u3("div", { className: "gb-header-identity", children: [
@@ -35027,7 +34574,7 @@ void main() {
           )
         ] })
       ] }),
-      route === "/game-box/retro" ? /* @__PURE__ */ u3(RetroDesktop, { onNavigate: navigate }) : route === "/game-box/deck" ? /* @__PURE__ */ u3(GameDeck, { onNavigate: navigate }) : route === "/game-box/deck-lab" ? /* @__PURE__ */ u3(DeckLab, { onNavigate: navigate }) : /* @__PURE__ */ u3(GameBoxHome, { onNavigate: navigate }),
+      route === "/game-box/retro" ? /* @__PURE__ */ u3(RetroDesktop, { onNavigate: navigate }) : route === "/game-box/deck" ? /* @__PURE__ */ u3(GameDeck, { onNavigate: navigate }) : route === "/game-box/draw" ? /* @__PURE__ */ u3(DrawPack, { onNavigate: navigate }) : route === "/game-box/deck-lab" ? /* @__PURE__ */ u3(DeckLab, { onNavigate: navigate }) : /* @__PURE__ */ u3(GameBoxHome, { onNavigate: navigate }),
       /* @__PURE__ */ u3(NicknameModal, {})
     ] });
   }

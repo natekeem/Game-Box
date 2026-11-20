@@ -277,12 +277,12 @@ export const appRegistry = {
   "hancom-typing-97": {
     config: {
     id: "hancom-typing-97",
-    title: "한컴타자연습",
-    description: "1997년 오리지널 도스용 한컴타자연습 (산성비, 자리·낱말·짧은글·긴글 연습)",
+    title: "한컴타자연습 97",
+    description: "1997년 한글과컴퓨터 오리지널 한컴타자연습 (산성비, 침략자, 자리·낱말·짧은글·긴글 연습)",
     icon: ICONS.hancom97,
     category: "보조프로그램/게임",
-    width: 700,
-    height: 550,
+    width: 766,
+    height: 642,
     resizable: true,
     isSingleton: true,
   },
@@ -291,12 +291,12 @@ export const appRegistry = {
   "hanme-typing-30": {
     config: {
     id: "hanme-typing-30",
-    title: "한메타자연습",
+    title: "한메타자교사 3.0",
     description: "1994년 한메소프트 오리지널 한메타자교사 3.0 (베네치아 타자게임, 단문/장문 연습)",
     icon: ICONS.hanme30,
     category: "보조프로그램/게임",
-    width: 700,
-    height: 550,
+    width: 766,
+    height: 642,
     resizable: true,
     isSingleton: true,
   },

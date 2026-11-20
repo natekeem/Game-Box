@@ -242,7 +242,10 @@ export function createGameBoxServer({
 
         if (pathname === '/api/platform/rooms' && method === 'GET') {
           return json(response, 200, {
-            rooms: realtimeHub.listPublicRooms(url.searchParams.get('gameId') || null),
+            rooms: realtimeHub.listPublicRooms(
+              url.searchParams.get('gameId') || null,
+              url.searchParams.get('matchType') || null,
+            ),
           });
         }
 
@@ -252,6 +255,7 @@ export function createGameBoxServer({
             user: currentUser,
             gameId: body.gameId,
             mode: body.mode || 'online',
+            matchType: body.matchType === 'quick' ? 'quick' : 'code',
             botCount: body.botCount || 0,
             botDifficulty: body.botDifficulty || 'normal',
             eventId: body.eventId || null,
@@ -513,7 +517,7 @@ export function createGameBoxServer({
         }
       }
 
-      // SPA History Route Support for /game-box, /game-box/retro, /game-box/deck, /game-box/deck-lab
+      // SPA History Route Support for /game-box, /game-box/retro, /game-box/deck, /game-box/draw, /game-box/deck-lab
       if (
         decoded === '/game-box' ||
         decoded === '/game-box/' ||
@@ -521,6 +525,8 @@ export function createGameBoxServer({
         decoded === '/game-box/retro/' ||
         decoded === '/game-box/deck' ||
         decoded === '/game-box/deck/' ||
+        decoded === '/game-box/draw' ||
+        decoded === '/game-box/draw/' ||
         decoded === '/game-box/deck-lab' ||
         decoded === '/game-box/deck-lab/'
       ) {

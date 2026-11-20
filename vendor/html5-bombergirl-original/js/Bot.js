@@ -236,8 +236,16 @@ Bot = Player.extend({
             }
         }
 
-        if (!botsAlive && gGameEngine.countPlayersAlive() == 1) {
+        if (!botsAlive && gGameEngine.countPlayersAlive() >= 1) {
             gGameEngine.gameOver('win');
+        } else if (gGameEngine.spectating || gGameEngine.countPlayersAlive() == 0) {
+            var remainingBots = 0;
+            for (var k = 0; k < gGameEngine.bots.length; k++) {
+                if (gGameEngine.bots[k].alive) remainingBots++;
+            }
+            if (remainingBots <= 1) {
+                gGameEngine.gameOver('lose');
+            }
         }
     },
 

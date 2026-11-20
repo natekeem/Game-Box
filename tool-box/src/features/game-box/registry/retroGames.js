@@ -5,7 +5,7 @@ export const RETRO_GAMES = Object.freeze([
   {
     id: 'hancom-typing-97',
     win98AppId: 'hancom-typing-97',
-    name: '한컴타자연습',
+    name: '한컴타자연습 97',
     fullTitle: '한컴타자연습 97 (DOS 원본)',
     year: 1997,
     developer: '한글과컴퓨터',
@@ -30,7 +30,7 @@ export const RETRO_GAMES = Object.freeze([
   {
     id: 'hanme-typing-30',
     win98AppId: 'hanme-typing-30',
-    name: '한메타자연습',
+    name: '한메타자교사 3.0',
     fullTitle: '한메타자교사 3.0 (DOS 원본)',
     year: 1994,
     developer: '한메소프트',

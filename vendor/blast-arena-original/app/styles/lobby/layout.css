@@ -4,19 +4,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 24px;
-  min-height: 100vh;
+  padding: 8px 14px;
+  min-height: 100%;
+  height: 100%;
   width: 100%;
   background: transparent;
-  animation: lobbyFadeIn 0.5s ease-out;
-  gap: 24px;
-  padding-top: 40px;
+  animation: lobbyFadeIn 0.3s ease-out;
+  gap: 8px;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box;
 }
 
 @keyframes lobbyFadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -24,90 +27,55 @@
   }
 }
 
-
 .lobby-game-header {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  animation: headerDropIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  gap: 2px;
+  margin-top: 0px;
 }
-
-@keyframes headerDropIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-50px) scale(0.8);
-  }
-  60% {
-    transform: translateY(5px) scale(1.02);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
 
 .lobby-game-header .title-icon {
-  font-size: clamp(56px, 12vw, 88px);
+  font-size: 22px;
 }
 
 .lobby-game-header h1 {
-  font-size: clamp(24px, 4vw, 36px);
-  margin-bottom: 0;
+  font-size: 15px;
+  margin: 0;
   animation: titleGlow 2s ease-in-out infinite alternate;
 }
 
-@keyframes titleGlow {
-  0% {
-    text-shadow: 0 4px 0 rgba(0, 0, 0, 0.4), 0 0 20px rgba(248, 231, 28, 0.3);
-  }
-  100% {
-    text-shadow: 0 4px 0 rgba(0, 0, 0, 0.4), 0 0 40px rgba(248, 231, 28, 0.6);
-  }
-}
-
 .lobby-game-header .subtitle {
-  font-family: "Press Start 2P", monospace;
-  font-size: 10px;
-  color: var(--accent-cool);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  display: none;
 }
 
 .lobby-container {
   width: 100%;
   max-width: 900px;
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr 300px;
   grid-template-rows: auto 1fr auto auto;
   grid-template-areas:
     "title title"
     "players chat"
     "actions chat"
     "hint hint";
-  gap: 16px;
+  gap: 8px;
 }
-
 
 .lobby-title-section {
   grid-area: title;
   text-align: center;
-  padding: 24px;
+  padding: 8px 14px;
   background: linear-gradient(
     180deg,
     rgba(20, 35, 60, 0.95) 0%,
     rgba(15, 25, 45, 0.95) 100%
   );
-  border: 3px solid var(--accent-cool);
-  border-radius: 16px;
-  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.5), 0 0 40px rgba(75, 243, 255, 0.15),
+  border: 2px solid var(--accent-cool);
+  border-radius: 10px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), 0 0 20px rgba(75, 243, 255, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
@@ -180,11 +148,13 @@
 }
 
 .lobby-icon {
-  font-size: 42px;
+  font-size: 18px;
   color: var(--accent);
-  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.5), 0 0 30px rgba(248, 231, 28, 0.5);
-  display: block;
-  margin-bottom: 10px;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(248, 231, 28, 0.5);
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-right: 6px;
+  vertical-align: middle;
   animation: iconFloat 3s ease-in-out infinite;
 }
 
@@ -194,43 +164,46 @@
     transform: translateY(0) rotate(0deg);
   }
   25% {
-    transform: translateY(-4px) rotate(-3deg);
+    transform: translateY(-2px) rotate(-3deg);
   }
   75% {
-    transform: translateY(-4px) rotate(3deg);
+    transform: translateY(-2px) rotate(3deg);
   }
 }
 
 .lobby-title-section h1 {
-  font-size: clamp(20px, 4vw, 28px);
-  margin-bottom: 10px;
+  font-size: 15px;
+  margin: 0 0 2px 0;
+  display: inline-block;
   background: linear-gradient(180deg, #fff 0%, #a8d8ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-shadow: none;
-  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.5));
   animation: titlePulse 2s ease-in-out infinite;
 }
 
 @keyframes titlePulse {
   0%,
   100% {
-    filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.5))
-      drop-shadow(0 0 10px rgba(75, 243, 255, 0.3));
+    filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 8px rgba(75, 243, 255, 0.3));
   }
   50% {
-    filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.5))
-      drop-shadow(0 0 20px rgba(75, 243, 255, 0.5));
+    filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 14px rgba(75, 243, 255, 0.5));
   }
 }
 
 .lobby-status-text {
   font-family: "Press Start 2P", monospace;
-  font-size: 10px;
+  font-size: 8px;
   color: var(--accent-cool);
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  display: block;
+  margin-top: 2px;
   animation: statusBlink 2s ease-in-out infinite;
 }
 
@@ -252,10 +225,10 @@
     rgba(20, 35, 60, 0.85) 0%,
     rgba(15, 25, 45, 0.85) 100%
   );
-  border: 3px solid var(--line);
-  border-radius: 14px;
-  padding: 18px;
-  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.4),
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 12px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   animation: sectionSlideIn 0.5s ease-out 0.1s both;
   position: relative;
@@ -277,14 +250,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
-  padding-bottom: 14px;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
   border-bottom: 2px solid var(--line);
 }
 
 .players-count {
   font-family: "Press Start 2P", monospace;
-  font-size: 11px;
+  font-size: 9px;
   color: var(--accent-cool);
   text-shadow: 0 0 10px rgba(75, 243, 255, 0.3);
 }
@@ -296,10 +269,10 @@
 }
 
 .progress-track {
-  height: 10px;
+  height: 8px;
   background: var(--panel-strong);
-  border: 2px solid var(--line);
-  border-radius: 5px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
   overflow: hidden;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -330,21 +303,21 @@
 .players-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 6px;
 }
 
 .lobby-player-card {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px;
+  gap: 8px;
+  padding: 6px 10px;
   background: linear-gradient(
     135deg,
     rgba(15, 25, 45, 0.8) 0%,
     rgba(20, 30, 50, 0.6) 100%
   );
   border: 2px solid var(--line);
-  border-radius: 10px;
+  border-radius: 8px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -444,16 +417,16 @@
 }
 
 .lobby-player-avatar {
-  width: 46px;
-  height: 46px;
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
   display: grid;
   place-items: center;
   font-family: "Press Start 2P", monospace;
-  font-size: 15px;
+  font-size: 11px;
   color: #0a0f18;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
   position: relative;
   transition: transform 0.3s ease;
 }
@@ -564,17 +537,18 @@
   grid-area: actions;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 14px;
+  gap: 8px;
   animation: sectionSlideIn 0.5s ease-out 0.2s both;
 }
 
 .lobby-ready-btn {
-  padding: 18px 22px;
-  font-size: 14px;
+  padding: 8px 14px;
+  font-size: 11px;
   background: linear-gradient(180deg, var(--accent-mint) 0%, #2bb383 100%);
-  border: 3px solid #0a0f18;
+  border: 2px solid #0a0f18;
   color: #0a0f18;
-  box-shadow: 0 6px 0 #1a5a50;
+  border-radius: 8px;
+  box-shadow: 0 4px 0 #1a5a50;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
   position: relative;
   overflow: hidden;
@@ -589,8 +563,8 @@
 }
 
 .lobby-ready-btn .icon-wrapper .retro-icon {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.3));
 }
 
@@ -667,16 +641,17 @@
 }
 
 .lobby-leave-btn {
-  padding: 18px 16px;
-  font-size: 11px;
+  padding: 8px 12px;
+  font-size: 10px;
+  border-radius: 8px;
   background: linear-gradient(
     180deg,
     var(--panel-strong) 0%,
     rgba(15, 25, 45, 0.9) 100%
   );
-  border: 3px solid var(--line);
+  border: 2px solid var(--line);
   color: var(--muted);
-  box-shadow: 0 6px 0 #0a1322;
+  box-shadow: 0 4px 0 #0a1322;
   transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
@@ -690,8 +665,8 @@
 }
 
 .lobby-leave-btn .icon-wrapper .retro-icon {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
   filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.3));
 }
 
@@ -715,30 +690,30 @@
 .lobby-leave-btn:hover {
   color: var(--accent-hot);
   border-color: var(--accent-hot);
-  transform: translateY(-3px);
-  box-shadow: 0 9px 0 #0a1322, 0 0 20px rgba(255, 77, 109, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #0a1322, 0 0 15px rgba(255, 77, 109, 0.2);
 }
 
 .lobby-leave-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 4px 0 #0a1322;
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 #0a1322;
 }
 
 .lobby-hint {
   grid-area: hint;
   text-align: center;
   font-family: "Press Start 2P", monospace;
-  font-size: 10px;
+  font-size: 8px;
   color: var(--accent);
-  padding: 16px 24px;
+  padding: 6px 14px;
   background: linear-gradient(
     135deg,
     rgba(248, 231, 28, 0.12) 0%,
     rgba(255, 180, 0, 0.08) 50%,
     rgba(248, 231, 28, 0.12) 100%
   );
-  border: 3px solid rgba(248, 231, 28, 0.5);
-  border-radius: 12px;
+  border: 2px solid rgba(248, 231, 28, 0.5);
+  border-radius: 8px;
   animation: hintPulse 2s ease-in-out infinite,
     hintFloat 3s ease-in-out infinite;
   position: relative;

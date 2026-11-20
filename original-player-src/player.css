@@ -148,5 +148,20 @@ body.win98-embed .screen-glass {
   filter: none !important;
   margin: 0 !important;
 }
+body.win98-embed #dos {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  inset: 0 !important;
+}
+body.win98-embed #dos canvas {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  image-rendering: pixelated !important;
+}
 @media(max-width:760px){body{padding:10px}.player-header{align-items:flex-start;flex-direction:column}.player-actions{justify-content:flex-start}.player-actions button{padding:7px 8px;font-size:11px}.player-footer{grid-template-columns:1fr;gap:5px}.keyboard-note{text-align:left}.machine-wrap{margin-top:4px}}
 @media(prefers-reduced-motion:reduce){.boot-led{animation:none}.boot-cover{transition:none}}

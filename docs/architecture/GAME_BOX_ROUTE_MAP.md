@@ -8,17 +8,20 @@
 
 ```text
 /game-box
-    ├── GAME-BOX HOME (메인 헤더 + LEFT: RETRO DESKTOP 카드 / RIGHT: GAME DECK 카드)
+    ├── GAME-BOX HOME (메인 헤더 + 3대 진입 카드: RETRO DESKTOP / GAME DECK / DRAW PACK)
     │
 /game-box/retro
     ├── Windows 98 RETRO DESKTOP (한글 Windows 98 바탕화면 + 우측 GAME RANKING 창 + 게임 가이드)
     │
 /game-box/deck
-    └── GAME DECK (LEFT: 20종 게임 케이스 컬렉션 + CENTER: 게임 콘솔 + RIGHT: 랭킹 및 스펙 패널)
+    ├── GAME DECK (LEFT: 19종 게임 케이스 컬렉션 + CENTER: 통일 대기실 및 콘솔 스테이지 + RIGHT: 랭킹 및 스펙 패널)
+    │
+/game-box/draw
+    └── DRAW PACK (마블 룰렛 추첨기 + 사내 부서/임직원 명단 불러오기/저장 + 실시간 추첨 결과 기록)
 ```
 
 - **직접 URL 접근 / 새로고침 / 뒤로 가기 지원**:
-  - `server/http-app.mjs`에서 `/game-box`, `/game-box/retro`, `/game-box/deck` 경로 요청 시 모두 `game-box/index.html`을 반환하고, 클라이언트 `GameBox.js`가 `window.location.pathname` 및 `popstate` 이벤트를 감지하여 즉시 해당 화면을 렌더링합니다.
+  - `server/http-app.mjs`에서 `/game-box`, `/game-box/retro`, `/game-box/deck`, `/game-box/draw` 경로 요청 시 모두 `game-box/index.html`을 반환하고, 클라이언트 `GameBox.js`가 `window.location.pathname` 및 `popstate` 이벤트를 감지하여 즉시 해당 화면을 렌더링합니다.
   - Tool Box 본 프로젝트(React Router v6)로 이식할 때도 `<Route path="/game-box/*" element={<GameBox />} />` 형태로 1:1 매핑됩니다.
 
 ---
@@ -34,9 +37,9 @@
 | **한메타자교사 3.0** | `/?v=hanme&embed=win98` | `win98-web` 내부 `HanmeTyping30App` (`$Window`) | `hanme-typing-3.jsdos` (`HTT.EXE`) 실행 |
 | **피카츄 배구** | `/pikachu-volleyball/ko/index.html?embed=win98` | `win98-web` 내부 `PikachuVolleyballApp` (`$Window`) | 허브 상단바 숨김 및 `postMessage` 브리지 활성화 |
 | **Blast Arena (봄버맨)** | `/original-blast-arena/index.html?autobot=1` | `/game-box/deck` (`GameLauncher.js`) | WebSocket 권위 서버 연동 |
-| **HTML5 Bombergirl** | `/original-bombergirl/index.html?mode=single` | `/game-box/deck` (`GameLauncher.js`) | 17×13 원본 캔버스 엔진 |
-| **Marble Roulette** | `/roulette/index.html` | `/game-box/deck` (`GameLauncher.js`) | Box2D-WASM 구슬 추첨기 |
-| **Snake Duel / CatchMind / BattleBox 15종** | `/platform/?game=<gameId>` | `/game-box/deck` (`GameLauncher.js`) | 선택된 단일 게임만 온디맨드 로드 |
+| **HTML5 Bombergirl** | `/original-bombergirl/index.html?mode=single` | `/game-box/deck` (`GameLauncher.js`) | 17×13 원본 캔버스 엔진, 사망 후 관전 지원 |
+| **Marble Roulette** | `/roulette/index.html` | `/game-box/draw` (`MarbleRouletteView.jsx`) | Box2D-WASM 구슬 추첨기, 사내 명단 연동 |
+| **Snake Duel / CatchMind / BattleBox 15종** | `/platform/?game=<gameId>` | `/game-box/deck` (`GameLauncher.js`) | 통일 대기실 (싱글 BOT / 멀티 매칭) |
 
 ---
 

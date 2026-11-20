@@ -1,36 +1,38 @@
-/* GameBoxHome.css — Scoped under .gb-shell so host Tool Box styles are never polluted */
+/* GameBoxHome.css — GAME-BOX 홈(3 게임팩) + DRAW PACK. .gb-shell 하위에서만 적용 */
 
 .gb-home-container {
-  max-width: 1400px;
+  max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
-  padding: 28px 28px 48px;
+  padding: 32px 28px 56px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
 }
 
-.gb-home-intro-bar {
+/* ── 상단: 안내 + 플레이어(닉네임) ───────────────────────────── */
+.gb-home-hero {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
-  padding-bottom: 16px;
+  padding-bottom: 22px;
   border-bottom: 1px solid #262c36;
 }
 
 .gb-home-kicker {
   display: block;
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: #94a3b8;
-  margin-bottom: 4px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #38bdf8;
+  margin-bottom: 6px;
 }
 
 .gb-home-heading {
-  margin: 0;
-  font-size: 24px;
+  margin: 0 0 8px;
+  font-size: 26px;
   font-weight: 800;
   color: #f1f5f9;
   letter-spacing: -0.02em;
@@ -38,607 +40,242 @@
 
 .gb-home-subtext {
   margin: 0;
-  max-width: 580px;
+  max-width: 600px;
   font-size: 13.5px;
-  line-height: 1.55;
+  line-height: 1.6;
   color: #94a3b8;
 }
 
-/* Two Large Entry Cards — Identical Grid Structure, Distinct Visual Identity */
+.gb-home-player {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 220px;
+  padding: 14px 18px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+}
+
+.gb-home-player-label {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #64748b;
+}
+
+.gb-home-player-name {
+  font-size: 18px;
+  color: #f8fafc;
+  word-break: break-all;
+}
+
+.gb-home-player-btn {
+  margin-top: 2px;
+  background: #1d4ed8;
+  border: 0;
+  color: #fff;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gb-home-player-btn:hover {
+  background: #2563eb;
+}
+
+/* ── 3개의 게임팩 카드 ────────────────────────────────────────── */
 .gb-home-cards-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
   align-items: stretch;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1000px) {
   .gb-home-cards-grid {
     grid-template-columns: 1fr;
   }
 }
 
 .gb-entry-card {
+  --pack-a: #38bdf8;
+  --pack-b: #0f172a;
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  border-radius: 10px;
+  gap: 10px;
+  padding: 22px;
+  border-radius: 16px;
   cursor: pointer;
+  color: #e2e8f0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--pack-a) 14%, #121821) 0%, #0f1319 100%);
+  border: 1px solid color-mix(in srgb, var(--pack-a) 38%, #1f2937);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
   outline: none;
+}
+
+.gb-entry-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--pack-a);
+  box-shadow: 0 20px 44px color-mix(in srgb, var(--pack-a) 28%, rgba(0, 0, 0, 0.5));
 }
 
 .gb-entry-card:focus-visible {
   box-shadow: 0 0 0 3px #38bdf8;
 }
 
-/* LEFT CARD: RETRO DESKTOP (Sleek Dark Slate Chassis + Authentic Teal Win98 Screen) */
-.gb-entry-card-retro {
-  background: linear-gradient(180deg, #182330 0%, #0f1722 100%);
-  color: #e2e8f0;
-  border: 1px solid #1e3a47;
-  border-radius: 8px;
-  box-shadow: inset 0 1px 0 rgba(56, 189, 248, 0.15), 0 14px 32px rgba(0, 0, 0, 0.45);
-}
-
-.gb-entry-card-retro:hover {
-  transform: translateY(-3px);
-  border-color: #0d9488;
-  box-shadow: inset 0 1px 0 rgba(45, 212, 191, 0.25), 0 18px 40px rgba(13, 148, 136, 0.3);
-}
-
-/* RIGHT CARD: GAME DECK (Dark Graphite + Brushed Silver Console Theme) */
-.gb-entry-card-deck {
-  background: linear-gradient(180deg, #1b2028 0%, #12161c 100%);
-  color: #e2e8f0;
-  border: 1px solid #334155;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 14px 32px rgba(0, 0, 0, 0.45);
-}
-
-.gb-entry-card-deck:hover {
-  transform: translateY(-3px);
-  border-color: #64748b;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 18px 40px rgba(0, 0, 0, 0.65);
-}
+.gb-entry-card-retro { --pack-a: #14b8a6; }
+.gb-entry-card-deck { --pack-a: #6366f1; }
+.gb-entry-card-draw { --pack-a: #ec4899; }
 
 .gb-card-top-meta {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
 }
 
 .gb-card-subtitle {
-  display: block;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.14em;
-  margin-bottom: 3px;
+  color: var(--pack-a);
 }
 
-.gb-entry-card-retro .gb-card-subtitle {
-  color: #38bdf8;
+.gb-card-count {
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 999px;
+  color: #e2e8f0;
+  background: rgba(148, 163, 184, 0.14);
 }
 
-.gb-entry-card-deck .gb-card-subtitle {
-  color: #94a3b8;
+.gb-card-visual {
+  height: 120px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  font-size: 56px;
+  background:
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--pack-a) 35%, transparent), transparent 60%),
+    #0b0f15;
+  border: 1px solid rgba(148, 163, 184, 0.14);
 }
 
 .gb-card-title {
-  margin: 0;
-  font-size: 26px;
+  margin: 4px 0 0;
+  font-size: 24px;
   font-weight: 900;
   letter-spacing: -0.02em;
-}
-
-.gb-entry-card-retro .gb-card-title {
-  color: #f0fdfa;
-}
-
-.gb-entry-card-deck .gb-card-title {
   color: #f8fafc;
 }
 
-.gb-card-era-badge {
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 9px;
-  white-space: nowrap;
-}
-
-.gb-badge-win98 {
-  background: #008080;
-  color: #ffffff;
-  border: 1px solid #14b8a6;
-  border-radius: 4px;
-}
-
-.gb-badge-deck {
-  background: #27303f;
-  color: #cbd5e1;
-  border: 1px solid #475569;
-  border-radius: 4px;
-}
-
-/* Retro Desktop Preview Window (Authentic Windows 98 Monitor Frame) */
-.gb-retro-preview-window {
-  background: #c0c0c0;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #404040;
-  border-bottom: 2px solid #404040;
-  padding: 3px;
-  margin-bottom: 18px;
-  border-radius: 4px;
-  box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080, 0 6px 18px rgba(0, 0, 0, 0.4);
-}
-
-.gb-win98-titlebar {
-  background: linear-gradient(90deg, #000080, #1084d0);
-  color: #ffffff;
-  padding: 4px 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11.5px;
-  font-weight: bold;
-  font-family: "굴림", "Gulim", sans-serif;
-  margin-bottom: 3px;
-}
-
-.gb-win98-controls {
-  display: flex;
-  gap: 2px;
-}
-
-.gb-win98-controls span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 15px;
-  height: 14px;
-  background: #c0c0c0;
-  color: #000000;
-  font-size: 10px;
-  border-top: 1px solid #ffffff;
-  border-left: 1px solid #ffffff;
-  border-right: 1px solid #404040;
-  border-bottom: 1px solid #404040;
-}
-
-/* Windows 98 Clean Teal Desktop Canvas */
-.gb-win98-desktop-stage {
-  background: #008080;
-  border: 2px inset #808080;
-  position: relative;
-  height: 250px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  user-select: none;
-}
-
-/* Desktop Icons on the left */
-.gb-win98-canvas-icons {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 2;
-}
-
-.gb-win98-d-icon {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 2px 4px;
-  border: 1px dotted transparent;
-  cursor: default;
-}
-
-.gb-win98-d-icon:hover {
-  background: rgba(0, 0, 128, 0.45);
-  border-color: #38bdf8;
-}
-
-.gb-d-ico-glyph {
-  font-size: 14px;
-  filter: drop-shadow(1px 1px 0 rgba(0,0,0,0.5));
-}
-
-.gb-d-ico-label {
-  font-size: 11px;
-  font-weight: 700;
-  color: #ffffff;
-  text-shadow: 1px 1px 2px #000000;
-  font-family: "굴림", "Gulim", "Malgun Gothic", sans-serif;
-  white-space: nowrap;
-}
-
-/* Overlapping Mini-Windows in Center-Right */
-.gb-win98-stage-windows {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  left: 140px;
-  bottom: 34px;
-  pointer-events: none;
-}
-
-.gb-win98-floating-win {
-  position: absolute;
-  background: #c0c0c0;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #404040;
-  border-bottom: 2px solid #404040;
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
-  font-family: "굴림", "Gulim", sans-serif;
-}
-
-.gb-win-typing {
-  top: 0;
-  right: 0;
-  width: 200px;
-  height: 110px;
-  z-index: 3;
-}
-
-.gb-win-pika {
-  bottom: 0;
-  right: 30px;
-  width: 190px;
-  height: 95px;
-  z-index: 4;
-}
-
-.gb-win-bar {
-  background: linear-gradient(90deg, #000080, #1084d0);
-  color: #ffffff;
-  padding: 2px 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 10px;
-  font-weight: bold;
-}
-
-.gb-win-btn-mini {
-  width: 11px;
-  height: 11px;
-  background: #c0c0c0;
-  color: #000000;
-  font-size: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top: 1px solid #fff;
-  border-left: 1px solid #fff;
-  border-right: 1px solid #404040;
-  border-bottom: 1px solid #404040;
-}
-
-.gb-win-inner-typing {
-  background: #000040;
-  height: calc(100% - 19px);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 4px;
-}
-
-.gb-drop-word {
-  color: #ffff00;
-  font-size: 10px;
-  font-weight: bold;
-  position: absolute;
-}
-.gb-drop-word.w1 { top: 6px; left: 16px; color: #38bdf8; }
-.gb-drop-word.w2 { top: 28px; left: 70px; color: #4ade80; }
-.gb-drop-word.w3 { top: 50px; left: 120px; color: #f43f5e; }
-
-.gb-typing-ocean {
-  margin-top: auto;
-  background: #000080;
-  color: #ffffff;
-  font-size: 9.5px;
-  padding: 2px 4px;
-  text-align: center;
-  border-top: 1px solid #38bdf8;
-}
-
-.gb-win-inner-pika {
-  background: #87ceeb;
-  height: calc(100% - 19px);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.gb-pika-court {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  height: 52px;
-  background: linear-gradient(180deg, #87ceeb 60%, #e0cda9 60%);
-  padding: 0 10px;
-}
-
-.gb-pika-char {
-  font-size: 16px;
-}
-.gb-pika-ball {
-  font-size: 10px;
-  margin-bottom: 22px;
-}
-.gb-pika-net {
-  color: #ffffff;
-  font-weight: bold;
-}
-
-.gb-pika-score {
-  background: #1e293b;
-  color: #facc15;
-  font-size: 9px;
-  text-align: center;
-  padding: 2px;
-  font-weight: bold;
-}
-
-/* Authentic Windows 98 Taskbar at Stage Bottom */
-.gb-win98-stage-taskbar {
-  margin-top: auto;
-  background: #c0c0c0;
-  border-top: 2px solid #ffffff;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  padding: 0 4px;
-  gap: 4px;
-  z-index: 10;
-  box-sizing: border-box;
-}
-
-.gb-win98-start-btn {
-  background: #c0c0c0;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #404040;
-  border-bottom: 2px solid #404040;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 7px;
-  font-size: 11px;
-  font-weight: bold;
-  color: #000000;
-  cursor: pointer;
-  height: 22px;
-}
-
-.gb-win98-task-tabs {
-  display: flex;
-  gap: 3px;
-  flex: 1;
-}
-
-.gb-win98-task-tab {
-  background: #dfdfdf;
-  border-top: 1px solid #ffffff;
-  border-left: 1px solid #ffffff;
-  border-right: 1px solid #404040;
-  border-bottom: 1px solid #404040;
-  font-size: 10.5px;
-  font-weight: bold;
-  color: #000000;
-  padding: 2px 8px;
-  display: flex;
-  align-items: center;
-  height: 20px;
-}
-
-.gb-win98-task-tab.active {
-  background: #c0c0c0;
-  border-top: 1px solid #404040;
-  border-left: 1px solid #404040;
-  border-right: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
-  box-shadow: inset 1px 1px 0 #808080;
-}
-
-.gb-win98-task-tray {
-  border: 1px inset #808080;
-  padding: 1px 6px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 10px;
-  color: #000000;
-  background: #d4d0c8;
-}
-
-/* Game Deck Console & Case Rack Preview */
-.gb-deck-preview-stage {
-  margin-bottom: 18px;
-}
-
-.gb-deck-console-bezel {
-  background: #0d1015;
-  border: 1px solid #334155;
-  border-radius: 6px;
-  padding: 10px;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-.gb-deck-console-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding-bottom: 8px;
-  margin-bottom: 8px;
-  border-bottom: 1px solid #1e293b;
-  font-family: monospace;
-  font-size: 11px;
-  color: #94a3b8;
-}
-
-.gb-deck-console-led {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 8px #22c55e;
-  display: inline-block;
-}
-
-.gb-deck-console-slot {
-  color: #cbd5e1;
-  background: #1e293b;
-  padding: 2px 6px;
-  border-radius: 3px;
-}
-
-.gb-deck-screen-collage {
-  display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: 10px;
-  height: 230px;
-}
-
-.gb-deck-screen-main {
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid #334155;
-  background: #000000;
-}
-
-.gb-deck-screen-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  opacity: 0.88;
-}
-
-.gb-deck-screen-overlay {
-  position: absolute;
-  inset: auto 0 0 0;
-  background: linear-gradient(0deg, rgba(9, 12, 16, 0.95), transparent);
-  padding: 18px 8px 6px;
-  font-family: monospace;
-  font-size: 10px;
-  color: #e2e8f0;
-  letter-spacing: 0.05em;
-}
-
-.gb-deck-cases-rack {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  overflow: hidden;
-}
-
-.gb-mini-game-case {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 8px;
-  background: #181f29;
-  border: 1px solid #2d3748;
-  border-left: 4px solid var(--case-color, #64748b);
-  border-radius: 3px;
-  font-size: 11px;
-}
-
-.gb-mini-case-code {
-  font-family: monospace;
-  font-size: 10px;
-  color: #94a3b8;
-  background: #0f141c;
-  padding: 1px 4px;
-  border-radius: 2px;
-}
-
-.gb-mini-case-name {
-  color: #f1f5f9;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .gb-card-desc {
-  margin: 0 0 18px;
+  margin: 0;
   font-size: 13.5px;
-  line-height: 1.6;
-  flex: 1 1 auto;
+  line-height: 1.55;
+  color: #aab4c3;
+  min-height: 42px;
 }
 
-.gb-entry-card-retro .gb-card-desc {
-  color: #cbd5e1;
-}
-
-.gb-entry-card-deck .gb-card-desc {
-  color: #cbd5e1;
-}
-
-.gb-card-footer {
+.gb-card-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
-.gb-card-specs {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.gb-card-items li {
   font-size: 11.5px;
-  opacity: 0.85;
+  padding: 3px 9px;
+  border-radius: 6px;
+  color: #cbd5e1;
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.16);
 }
 
 .gb-card-cta {
-  padding: 9px 18px;
-  font-size: 13px;
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 14px;
   font-weight: 800;
-  white-space: nowrap;
+  color: var(--pack-a);
 }
 
-.gb-cta-retro {
-  background: linear-gradient(135deg, #0d9488, #0f766e);
-  color: #ffffff;
-  border: 1px solid #2dd4bf;
-  border-radius: 5px;
-  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
-  transition: all 0.15s ease;
+/* ── DRAW PACK 페이지 ─────────────────────────────────────────── */
+.gb-draw-shell {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 56px);
 }
 
-.gb-entry-card-retro:hover .gb-cta-retro {
-  background: linear-gradient(135deg, #14b8a6, #0d9488);
-  box-shadow: 0 6px 16px rgba(45, 212, 191, 0.45);
+.gb-draw-body {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 24px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
-.gb-cta-deck {
-  background: #e2e8f0;
-  color: #0f172a;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  transition: all 0.15s ease;
+.gb-draw-intro h2 {
+  margin: 4px 0 6px;
+  font-size: 26px;
+  color: #f8fafc;
 }
 
-.gb-entry-card-deck:hover .gb-cta-deck {
-  background: #ffffff;
-  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.25);
+.gb-draw-intro p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.gb-draw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.gb-draw-card {
+  --case-color: #ec4899;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 22px;
+  text-align: left;
+  cursor: pointer;
+  color: #e2e8f0;
+  font: inherit;
+  border-radius: 16px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--case-color) 16%, #121821) 0%, #0f1319 100%);
+  border: 1px solid color-mix(in srgb, var(--case-color) 45%, #1f2937);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.gb-draw-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--case-color) 30%, rgba(0, 0, 0, 0.5));
+}
+
+.gb-draw-card-icon { font-size: 44px; }
+.gb-draw-card-genre { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: var(--case-color); }
+.gb-draw-card-title { font-size: 22px; color: #f8fafc; }
+.gb-draw-card-sub { font-size: 12.5px; color: #94a3b8; }
+.gb-draw-card p { margin: 6px 0 0; font-size: 13.5px; line-height: 1.55; color: #aab4c3; }
+.gb-draw-card-cta { margin-top: 10px; font-weight: 800; color: var(--case-color); }
+
+.gb-draw-stage {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: calc(100vh - 56px - 42px);
 }

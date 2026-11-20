@@ -61,6 +61,9 @@ var GameBoxPlatform = (() => {
     var e3 = { type: n2, props: t3, key: i3, ref: r3, __k: null, __: null, __b: 0, __e: null, __c: null, constructor: void 0, __v: null == o3 ? ++u : o3, __i: -1, __u: 0 };
     return null == o3 && null != l.vnode && l.vnode(e3), e3;
   }
+  function M() {
+    return { current: null };
+  }
   function S(n2) {
     return n2.children;
   }
@@ -161,29 +164,29 @@ var GameBoxPlatform = (() => {
     };
   }
   function q(n2, u4, t3, i3, r3, o3, e3, f4, c3, a3) {
-    var s3, h3, p3, v3, y3, d3, _3, k3, x3, M3, I2, P4, A4, H3, T4, j4, F3 = u4.type;
+    var s3, h3, p3, v3, y3, d3, _3, k4, x4, M3, I3, P4, A4, H3, T4, j4, F4 = u4.type;
     if (void 0 !== u4.constructor) return null;
     128 & t3.__u && (c3 = !!(32 & t3.__u), o3 = [f4 = u4.__e = t3.__e]), (s3 = l.__b) && s3(u4);
-    n: if ("function" == typeof F3) {
+    n: if ("function" == typeof F4) {
       h3 = e3.length;
       try {
-        if (x3 = u4.props, M3 = F3.prototype && F3.prototype.render, I2 = (s3 = F3.contextType) && i3[s3.__c], P4 = s3 ? I2 ? I2.props.value : s3.__ : i3, t3.__c ? k3 = (p3 = u4.__c = t3.__c).__ = p3.__E : (M3 ? u4.__c = p3 = new F3(x3, P4) : (u4.__c = p3 = new C(x3, P4), p3.constructor = F3, p3.render = Q), I2 && I2.sub(p3), p3.state || (p3.state = {}), p3.__n = i3, v3 = p3.__d = true, p3.__h = [], p3._sb = []), M3 && null == p3.__s && (p3.__s = p3.state), M3 && null != F3.getDerivedStateFromProps && (p3.__s == p3.state && (p3.__s = m({}, p3.__s)), m(p3.__s, F3.getDerivedStateFromProps(x3, p3.__s))), y3 = p3.props, d3 = p3.state, p3.__v = u4, v3) M3 && null == F3.getDerivedStateFromProps && null != p3.componentWillMount && p3.componentWillMount(), M3 && null != p3.componentDidMount && p3.__h.push(p3.componentDidMount);
+        if (x4 = u4.props, M3 = F4.prototype && F4.prototype.render, I3 = (s3 = F4.contextType) && i3[s3.__c], P4 = s3 ? I3 ? I3.props.value : s3.__ : i3, t3.__c ? k4 = (p3 = u4.__c = t3.__c).__ = p3.__E : (M3 ? u4.__c = p3 = new F4(x4, P4) : (u4.__c = p3 = new C(x4, P4), p3.constructor = F4, p3.render = Q), I3 && I3.sub(p3), p3.state || (p3.state = {}), p3.__n = i3, v3 = p3.__d = true, p3.__h = [], p3._sb = []), M3 && null == p3.__s && (p3.__s = p3.state), M3 && null != F4.getDerivedStateFromProps && (p3.__s == p3.state && (p3.__s = m({}, p3.__s)), m(p3.__s, F4.getDerivedStateFromProps(x4, p3.__s))), y3 = p3.props, d3 = p3.state, p3.__v = u4, v3) M3 && null == F4.getDerivedStateFromProps && null != p3.componentWillMount && p3.componentWillMount(), M3 && null != p3.componentDidMount && p3.__h.push(p3.componentDidMount);
         else {
-          if (M3 && null == F3.getDerivedStateFromProps && x3 !== y3 && null != p3.componentWillReceiveProps && p3.componentWillReceiveProps(x3, P4), u4.__v == t3.__v || !p3.__e && null != p3.shouldComponentUpdate && false === p3.shouldComponentUpdate(x3, p3.__s, P4)) {
-            u4.__v != t3.__v && (p3.props = x3, p3.state = p3.__s, p3.__d = false), u4.__e = t3.__e, u4.__k = t3.__k, u4.__k.some(function(n3) {
+          if (M3 && null == F4.getDerivedStateFromProps && x4 !== y3 && null != p3.componentWillReceiveProps && p3.componentWillReceiveProps(x4, P4), u4.__v == t3.__v || !p3.__e && null != p3.shouldComponentUpdate && false === p3.shouldComponentUpdate(x4, p3.__s, P4)) {
+            u4.__v != t3.__v && (p3.props = x4, p3.state = p3.__s, p3.__d = false), u4.__e = t3.__e, u4.__k = t3.__k, u4.__k.some(function(n3) {
               n3 && (n3.__ = u4);
             }), w.push.apply(p3.__h, p3._sb), p3._sb = [], p3.__h.length && e3.push(p3), f4 = $(t3);
             break n;
           }
-          null != p3.componentWillUpdate && p3.componentWillUpdate(x3, p3.__s, P4), M3 && null != p3.componentDidUpdate && p3.__h.push(function() {
+          null != p3.componentWillUpdate && p3.componentWillUpdate(x4, p3.__s, P4), M3 && null != p3.componentDidUpdate && p3.__h.push(function() {
             p3.componentDidUpdate(y3, d3, _3);
           });
         }
-        if (p3.context = P4, p3.props = x3, p3.__P = n2, p3.__e = false, A4 = l.__r, H3 = 0, M3) p3.state = p3.__s, p3.__d = false, A4 && A4(u4), s3 = p3.render(p3.props, p3.state, p3.context), w.push.apply(p3.__h, p3._sb), p3._sb = [];
+        if (p3.context = P4, p3.props = x4, p3.__P = n2, p3.__e = false, A4 = l.__r, H3 = 0, M3) p3.state = p3.__s, p3.__d = false, A4 && A4(u4), s3 = p3.render(p3.props, p3.state, p3.context), w.push.apply(p3.__h, p3._sb), p3._sb = [];
         else do {
           p3.__d = false, A4 && A4(u4), s3 = p3.render(p3.props, p3.state, p3.context), p3.state = p3.__s;
         } while (p3.__d && ++H3 < 25);
-        p3.state = p3.__s, null != p3.getChildContext && (i3 = m(m({}, i3), p3.getChildContext())), M3 && !v3 && null != p3.getSnapshotBeforeUpdate && (_3 = p3.getSnapshotBeforeUpdate(y3, d3)), T4 = null != s3 && s3.type === S && null == s3.key ? E(s3.props.children) : s3, f4 = L(n2, g(T4) ? T4 : [T4], u4, t3, i3, r3, o3, e3, f4, c3, a3), p3.base = u4.__e, u4.__u &= -161, p3.__h.length && e3.push(p3), k3 && (p3.__E = p3.__ = null);
+        p3.state = p3.__s, null != p3.getChildContext && (i3 = m(m({}, i3), p3.getChildContext())), M3 && !v3 && null != p3.getSnapshotBeforeUpdate && (_3 = p3.getSnapshotBeforeUpdate(y3, d3)), T4 = null != s3 && s3.type === S && null == s3.key ? E(s3.props.children) : s3, f4 = L(n2, g(T4) ? T4 : [T4], u4, t3, i3, r3, o3, e3, f4, c3, a3), p3.base = u4.__e, u4.__u &= -161, p3.__h.length && e3.push(p3), k4 && (p3.__E = p3.__ = null);
       } catch (n3) {
         if (e3.length = h3, u4.__v = null, c3 || null != o3) {
           if (n3.then) {
@@ -215,25 +218,25 @@ var GameBoxPlatform = (() => {
     return "object" != typeof n2 || null == n2 || n2.__b > 0 ? n2 : g(n2) ? n2.map(E) : void 0 !== n2.constructor ? null : m({}, n2);
   }
   function G(u4, t3, i3, r3, o3, e3, f4, c3, a3) {
-    var s3, h3, p3, v3, y3, w3, _3, m3 = i3.props || d, k3 = t3.props, x3 = t3.type;
-    if ("svg" == x3 ? o3 = "http://www.w3.org/2000/svg" : "math" == x3 ? o3 = "http://www.w3.org/1998/Math/MathML" : o3 || (o3 = "http://www.w3.org/1999/xhtml"), null != e3) {
-      for (s3 = 0; s3 < e3.length; s3++) if ((y3 = e3[s3]) && "setAttribute" in y3 == !!x3 && (x3 ? y3.localName == x3 : 3 == y3.nodeType)) {
+    var s3, h3, p3, v3, y3, w4, _3, m3 = i3.props || d, k4 = t3.props, x4 = t3.type;
+    if ("svg" == x4 ? o3 = "http://www.w3.org/2000/svg" : "math" == x4 ? o3 = "http://www.w3.org/1998/Math/MathML" : o3 || (o3 = "http://www.w3.org/1999/xhtml"), null != e3) {
+      for (s3 = 0; s3 < e3.length; s3++) if ((y3 = e3[s3]) && "setAttribute" in y3 == !!x4 && (x4 ? y3.localName == x4 : 3 == y3.nodeType)) {
         u4 = y3, e3[s3] = null;
         break;
       }
     }
     if (null == u4) {
-      if (null == x3) return document.createTextNode(k3);
-      u4 = document.createElementNS(o3, x3, k3.is && k3), c3 && (l.__m && l.__m(t3, e3), c3 = false), e3 = null;
+      if (null == x4) return document.createTextNode(k4);
+      u4 = document.createElementNS(o3, x4, k4.is && k4), c3 && (l.__m && l.__m(t3, e3), c3 = false), e3 = null;
     }
-    if (null == x3) m3 === k3 || c3 && u4.data == k3 || (u4.data = k3);
+    if (null == x4) m3 === k4 || c3 && u4.data == k4 || (u4.data = k4);
     else {
-      if (e3 = "textarea" == x3 && null != k3.defaultValue ? null : e3 && n.call(u4.childNodes), !c3 && null != e3) for (m3 = {}, s3 = 0; s3 < u4.attributes.length; s3++) m3[(y3 = u4.attributes[s3]).name] = y3.value;
-      for (s3 in m3) y3 = m3[s3], "dangerouslySetInnerHTML" == s3 ? p3 = y3 : "children" == s3 || s3 in k3 || "value" == s3 && "defaultValue" in k3 || "checked" == s3 && "defaultChecked" in k3 || N(u4, s3, null, y3, o3);
-      for (s3 in k3) y3 = k3[s3], "children" == s3 ? v3 = y3 : "dangerouslySetInnerHTML" == s3 ? h3 = y3 : "value" == s3 ? w3 = y3 : "checked" == s3 ? _3 = y3 : c3 && "function" != typeof y3 || m3[s3] === y3 || N(u4, s3, y3, m3[s3], o3);
+      if (e3 = "textarea" == x4 && null != k4.defaultValue ? null : e3 && n.call(u4.childNodes), !c3 && null != e3) for (m3 = {}, s3 = 0; s3 < u4.attributes.length; s3++) m3[(y3 = u4.attributes[s3]).name] = y3.value;
+      for (s3 in m3) y3 = m3[s3], "dangerouslySetInnerHTML" == s3 ? p3 = y3 : "children" == s3 || s3 in k4 || "value" == s3 && "defaultValue" in k4 || "checked" == s3 && "defaultChecked" in k4 || N(u4, s3, null, y3, o3);
+      for (s3 in k4) y3 = k4[s3], "children" == s3 ? v3 = y3 : "dangerouslySetInnerHTML" == s3 ? h3 = y3 : "value" == s3 ? w4 = y3 : "checked" == s3 ? _3 = y3 : c3 && "function" != typeof y3 || m3[s3] === y3 || N(u4, s3, y3, m3[s3], o3);
       if (h3) c3 || p3 && (h3.__html == p3.__html || h3.__html == u4.innerHTML) || (u4.innerHTML = h3.__html), t3.__k = [];
-      else if (p3 && (u4.innerHTML = ""), L("template" == t3.type ? u4.content : u4, g(v3) ? v3 : [v3], t3, i3, r3, "foreignObject" == x3 ? "http://www.w3.org/1999/xhtml" : o3, e3, f4, e3 ? e3[0] : i3.__k && $(i3, 0), c3, a3), null != e3) for (s3 = e3.length; s3--; ) b(e3[s3]);
-      c3 && "textarea" != x3 || (s3 = "value", "progress" == x3 && null == w3 ? u4.removeAttribute("value") : null != w3 && (w3 !== u4[s3] || "progress" == x3 && !w3 || "option" == x3 && w3 != m3[s3]) && N(u4, s3, w3, m3[s3], o3), s3 = "checked", null != _3 && _3 != u4[s3] && N(u4, s3, _3, m3[s3], o3));
+      else if (p3 && (u4.innerHTML = ""), L("template" == t3.type ? u4.content : u4, g(v3) ? v3 : [v3], t3, i3, r3, "foreignObject" == x4 ? "http://www.w3.org/1999/xhtml" : o3, e3, f4, e3 ? e3[0] : i3.__k && $(i3, 0), c3, a3), null != e3) for (s3 = e3.length; s3--; ) b(e3[s3]);
+      c3 && "textarea" != x4 || (s3 = "value", "progress" == x4 && null == w4 ? u4.removeAttribute("value") : null != w4 && (w4 !== u4[s3] || "progress" == x4 && !w4 || "option" == x4 && w4 != m3[s3]) && N(u4, s3, w4, m3[s3], o3), s3 = "checked", null != _3 && _3 != u4[s3] && N(u4, s3, _3, m3[s3], o3));
     }
     return u4;
   }
@@ -266,6 +269,37 @@ var GameBoxPlatform = (() => {
   function R(u4, t3, i3) {
     var r3, o3, e3, f4;
     t3 == document && (t3 = document.documentElement), l.__ && l.__(u4, t3), o3 = (r3 = "function" == typeof i3) ? null : i3 && i3.__k || t3.__k, e3 = [], f4 = [], q(t3, u4 = (!r3 && i3 || t3).__k = k(S, null, [u4]), o3 || d, d, t3.namespaceURI, !r3 && i3 ? [i3] : o3 ? null : t3.firstChild ? n.call(t3.childNodes) : null, e3, !r3 && i3 ? i3 : o3 ? o3.__e : t3.firstChild, r3, f4), D(e3, u4, f4), u4.props.children = null;
+  }
+  function U(n2, l3) {
+    R(n2, l3, U);
+  }
+  function W(l3, u4, t3) {
+    var i3, r3, o3, e3, f4 = m({}, l3.props);
+    for (o3 in l3.type && l3.type.defaultProps && (e3 = l3.type.defaultProps), u4) "key" == o3 ? i3 = u4[o3] : "ref" == o3 ? r3 = u4[o3] : f4[o3] = void 0 === u4[o3] && null != e3 ? e3[o3] : u4[o3];
+    return arguments.length > 2 && (f4.children = arguments.length > 3 ? n.call(arguments, 2) : t3), x(l3.type, f4, i3 || l3.key, r3 || l3.ref, null);
+  }
+  function X(n2) {
+    function l3(n3) {
+      var u4, t3;
+      return this.getChildContext || (u4 = /* @__PURE__ */ new Set(), (t3 = {})[l3.__c] = this, this.getChildContext = function() {
+        return t3;
+      }, this.componentWillUnmount = function() {
+        u4 = null;
+      }, this.shouldComponentUpdate = function(n4) {
+        this.props.value != n4.value && u4.forEach(function(n5) {
+          n5.__e = true, A(n5);
+        });
+      }, this.sub = function(n4) {
+        u4.add(n4);
+        var l4 = n4.componentWillUnmount;
+        n4.componentWillUnmount = function() {
+          u4 && u4.delete(n4), l4 && l4.call(n4);
+        };
+      }), n3.children;
+    }
+    return l3.__c = "__cC" + y++, l3.__ = n2, l3.Provider = l3.__l = (l3.Consumer = function(n3, l4) {
+      return n3.children(l4);
+    }).contextType = l3, l3;
   }
   n = w.slice, l = { __e: function(n2, l3, u4, t3) {
     for (var i3, r3, o3; l3 = l3.__; ) if ((i3 = l3.__c) && !i3.__) try {
@@ -344,10 +378,27 @@ var GameBoxPlatform = (() => {
     var i3 = s2(t2++, 3);
     !c2.__s && C2(i3.__H, u4) && (i3.__ = n2, i3.u = u4, r2.__H.__h.push(i3));
   }
+  function _2(n2, u4) {
+    var i3 = s2(t2++, 4);
+    !c2.__s && C2(i3.__H, u4) && (i3.__ = n2, i3.u = u4, r2.__h.push(i3));
+  }
   function A2(n2) {
     return o2 = 5, T2(function() {
       return { current: n2 };
     }, []);
+  }
+  function F2(n2, t3, r3) {
+    o2 = 6, _2(function() {
+      if ("function" == typeof n2) {
+        var r4 = n2(t3());
+        return function() {
+          n2(null), r4 && "function" == typeof r4 && r4();
+        };
+      }
+      if (n2) return n2.current = t3(), function() {
+        return n2.current = null;
+      };
+    }, null == r3 ? r3 : r3.concat(n2));
   }
   function T2(n2, r3) {
     var u4 = s2(t2++, 7);
@@ -357,6 +408,22 @@ var GameBoxPlatform = (() => {
     return o2 = 8, T2(function() {
       return n2;
     }, t3);
+  }
+  function x2(n2) {
+    var u4 = r2.context[n2.__c], i3 = s2(t2++, 9);
+    return i3.c = n2, u4 ? (null == i3.__ && (i3.__ = true, u4.sub(r2)), u4.props.value) : n2.__;
+  }
+  function P2(n2, t3) {
+    c2.useDebugValue && c2.useDebugValue(t3 ? t3(n2) : n2);
+  }
+  function g2() {
+    var n2 = s2(t2++, 11);
+    if (!n2.__) {
+      for (var u4 = r2.__v; null !== u4 && !u4.__m && null !== u4.__; ) u4 = u4.__;
+      var i3 = u4.__m || (u4.__m = [0, 0]);
+      n2.__ = "P" + i3[0] + "-" + i3[1]++;
+    }
+    return n2.__;
   }
   function j2() {
     for (var n2; n2 = f2.shift(); ) {
@@ -441,8 +508,46 @@ var GameBoxPlatform = (() => {
     for (var r3 in t3) if ("__source" !== r3 && n2[r3] !== t3[r3]) return true;
     return false;
   }
+  function C3(n2, t3) {
+    var e3 = t3(), r3 = d2({ t: { __: e3, u: t3 } }), u4 = r3[0].t, o3 = r3[1];
+    return _2(function() {
+      u4.__ = e3, u4.u = t3, R2(u4) && o3({ t: u4 });
+    }, [n2, e3, t3]), h2(function() {
+      return R2(u4) && o3({ t: u4 }), n2(function() {
+        R2(u4) && o3({ t: u4 });
+      });
+    }, [n2]), e3;
+  }
+  function R2(n2) {
+    try {
+      return !((t3 = n2.__) === (e3 = n2.u()) && (0 !== t3 || 1 / t3 == 1 / e3) || t3 != t3 && e3 != e3);
+    } catch (n3) {
+      return true;
+    }
+    var t3, e3;
+  }
+  function x3(n2) {
+    n2();
+  }
+  function w3(n2) {
+    return n2;
+  }
+  function k3() {
+    return [false, x3];
+  }
+  var I2 = _2;
   function M2(n2, t3) {
     this.props = n2, this.context = t3;
+  }
+  function N2(n2, e3) {
+    function r3(n3) {
+      var t3 = this.props.ref;
+      return t3 != n3.ref && t3 && ("function" == typeof t3 ? t3(null) : t3.current = null), e3 ? !e3(this.props, n3) || t3 != n3.ref : E2(this.props, n3);
+    }
+    function u4(e4) {
+      return this.shouldComponentUpdate = r3, k(n2, e4);
+    }
+    return u4.displayName = "Memo(" + (n2.displayName || n2.name) + ")", u4.__f = u4.prototype.isReactComponent = true, u4.type = n2, u4;
   }
   (M2.prototype = new C()).isPureReactComponent = true, M2.prototype.shouldComponentUpdate = function(n2, t3) {
     return E2(this.props, n2) || E2(this.state, t3);
@@ -452,6 +557,23 @@ var GameBoxPlatform = (() => {
     n2.type && n2.type.__f && n2.ref && (n2.props.ref = n2.ref, n2.ref = null), T3 && T3(n2);
   };
   var A3 = "undefined" != typeof Symbol && Symbol.for && /* @__PURE__ */ Symbol.for("react.forward_ref") || 3911;
+  function D3(n2) {
+    function t3(t4) {
+      var e3 = g3({}, t4);
+      return delete e3.ref, n2(e3, t4.ref || null);
+    }
+    return t3.$$typeof = A3, t3.render = n2, t3.prototype.isReactComponent = t3.__f = true, t3.displayName = "ForwardRef(" + (n2.displayName || n2.name) + ")", t3;
+  }
+  var F3 = function(n2, t3) {
+    return null == n2 ? null : F(F(n2).map(t3));
+  };
+  var L2 = { map: F3, forEach: F3, count: function(n2) {
+    return n2 ? F(n2).length : 0;
+  }, only: function(n2) {
+    var t3 = F(n2);
+    if (1 !== t3.length) throw "Children.only";
+    return t3[0];
+  }, toArray: F };
   var O2 = l.__e;
   l.__e = function(n2, t3, e3, r3) {
     if (n2.then) {
@@ -478,6 +600,19 @@ var GameBoxPlatform = (() => {
   function j3(n2) {
     var t3 = n2.__ && n2.__.__c;
     return t3 && t3.__a && t3.__a(n2);
+  }
+  function z3(n2) {
+    var e3, r3, u4, o3 = null;
+    function i3(i4) {
+      if (e3 || (e3 = n2()).then(function(n3) {
+        n3 && (o3 = n3.default || n3), u4 = true;
+      }, function(n3) {
+        r3 = n3, u4 = true;
+      }), r3) throw r3;
+      if (!u4) throw e3;
+      return o3 ? k(o3, i4) : null;
+    }
+    return i3.displayName = "Lazy", i3.__f = true, i3;
   }
   function B3() {
     this.i = null, this.l = null;
@@ -525,6 +660,31 @@ var GameBoxPlatform = (() => {
       n2.i = e3 = e3[2];
     }
   };
+  function Z(n2) {
+    return this.getChildContext = function() {
+      return n2.context;
+    }, n2.children;
+  }
+  function Y(n2) {
+    var e3 = this, r3 = n2.h;
+    if (e3.componentWillUnmount = function() {
+      R(null, e3.v), e3.v = null, e3.h = null;
+    }, e3.h && e3.h !== r3 && e3.componentWillUnmount(), !e3.v) {
+      for (var u4 = e3.__v; null !== u4 && !u4.__m && null !== u4.__; ) u4 = u4.__;
+      e3.h = r3, e3.v = { nodeType: 1, parentNode: r3, childNodes: [], __k: { __m: u4.__m }, contains: function() {
+        return true;
+      }, namespaceURI: r3.namespaceURI, insertBefore: function(n3, t3) {
+        this.childNodes.push(n3), e3.h.insertBefore(n3, t3);
+      }, removeChild: function(n3) {
+        this.childNodes.splice(this.childNodes.indexOf(n3) >>> 1, 1), e3.h.removeChild(n3);
+      } };
+    }
+    R(k(Z, { context: e3.context }, n2.__v), e3.v);
+  }
+  function $2(n2, e3) {
+    var r3 = k(Y, { __v: n2, h: e3 });
+    return r3.containerInfo = e3, r3;
+  }
   (B3.prototype = new C()).__a = function(n2) {
     var t3 = this, e3 = j3(t3.__v), r3 = t3.l.get(n2);
     return r3[0]++, function(u4) {
@@ -555,6 +715,9 @@ var GameBoxPlatform = (() => {
   };
   function nn(n2, t3, e3) {
     return null == t3.__k && (t3.textContent = ""), R(n2, t3), "function" == typeof e3 && e3(), n2 ? n2.__c : null;
+  }
+  function tn(n2, t3, e3) {
+    return U(n2, t3), "function" == typeof e3 && e3(), n2 ? n2.__c : null;
   }
   C.prototype.isReactComponent = true, ["componentWillMount", "componentWillReceiveProps", "componentWillUpdate"].forEach(function(t3) {
     Object.defineProperty(C.prototype, t3, { configurable: true, get: function() {
@@ -604,9 +767,47 @@ var GameBoxPlatform = (() => {
     var t3 = n2.props, e3 = n2.__e;
     null != e3 && "textarea" === n2.type && "value" in t3 && t3.value !== e3.value && (e3.value = null == t3.value ? "" : t3.value), rn = null;
   };
+  var an = { ReactCurrentDispatcher: { current: { readContext: function(n2) {
+    return rn.__n[n2.__c].props.value;
+  }, useCallback: q2, useContext: x2, useDebugValue: P2, useDeferredValue: w3, useEffect: h2, useId: g2, useImperativeHandle: F2, useInsertionEffect: I2, useLayoutEffect: _2, useMemo: T2, useReducer: y2, useRef: A2, useState: d2, useSyncExternalStore: C3, useTransition: k3 } } };
+  function sn(n2) {
+    return k.bind(null, n2);
+  }
+  function hn(n2) {
+    return !!n2 && n2.$$typeof === q3;
+  }
+  function vn(n2) {
+    return hn(n2) && n2.type === S;
+  }
+  function dn(n2) {
+    return !!n2 && "string" == typeof n2.displayName && 0 == n2.displayName.indexOf("Memo(");
+  }
+  function mn(n2) {
+    return hn(n2) ? W.apply(null, arguments) : n2;
+  }
   function pn(n2) {
     return !!n2.__k && (R(null, n2), true);
   }
+  function yn(n2) {
+    return n2 && (n2.base || 1 === n2.nodeType && n2) || null;
+  }
+  var _n = function(n2, t3) {
+    return n2(t3);
+  };
+  var bn = function(n2, t3) {
+    var r3, u4 = l.debounceRendering;
+    l.debounceRendering = function(n3) {
+      r3 = n3;
+    };
+    try {
+      var o3 = n2(t3);
+      return r3 && r3(), o3;
+    } finally {
+      l.debounceRendering = u4;
+    }
+  };
+  var Sn = hn;
+  var gn = { useState: d2, useId: g2, useReducer: y2, useEffect: h2, useLayoutEffect: _2, useInsertionEffect: I2, useTransition: k3, useDeferredValue: w3, useSyncExternalStore: C3, startTransition: x3, useRef: A2, useImperativeHandle: F2, useMemo: T2, useCallback: q2, useContext: x2, useDebugValue: P2, version: "18.3.1", Children: L2, render: nn, hydrate: tn, unmountComponentAtNode: pn, createPortal: $2, createElement: k, createContext: X, createFactory: sn, cloneElement: mn, createRef: M, Fragment: S, isValidElement: hn, isElement: Sn, isFragment: vn, isMemo: dn, findDOMNode: yn, Component: C, PureComponent: M2, memo: N2, forwardRef: D3, flushSync: bn, unstable_batchedUpdates: _n, StrictMode: S, Suspense: P3, SuspenseList: B3, lazy: z3, __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: an };
 
   // node_modules/preact/compat/client.mjs
   function createRoot(container) {
@@ -1037,9 +1238,12 @@ var GameBoxPlatform = (() => {
     getDirectory({ departmentId = "", q: q4 = "" } = {}) {
       return this.listUsers({ departmentId, q: q4 });
     }
-    listRooms(gameId = "") {
-      const params = gameId ? `?gameId=${encodeURIComponent(gameId)}` : "";
-      return this.request(`/api/platform/rooms${params}`);
+    listRooms(gameId = "", matchType = "") {
+      const params = new URLSearchParams();
+      if (gameId) params.set("gameId", gameId);
+      if (matchType) params.set("matchType", matchType);
+      const query = params.toString();
+      return this.request(`/api/platform/rooms${query ? `?${query}` : ""}`);
     }
     createRoom(payload) {
       return this.request("/api/platform/rooms", {
@@ -1330,7 +1534,7 @@ var GameBoxPlatform = (() => {
         ] }),
         /* @__PURE__ */ u3("button", { type: "button", className: "gp-btn-xs", onClick: () => setLastWinnerBanner(null), children: "\uB2EB\uAE30" })
       ] }),
-      /* @__PURE__ */ u3("div", { className: "gp-roulette-body", children: [
+      /* @__PURE__ */ u3("div", { className: `gp-roulette-body ${sidebarOpen ? "" : "sidebar-collapsed"}`, children: [
         /* @__PURE__ */ u3("div", { className: "gp-roulette-stage", children: /* @__PURE__ */ u3(
           "iframe",
           {
@@ -1478,9 +1682,9 @@ var GameBoxPlatform = (() => {
     p2Dim: "#2f6b64",
     food: "#e85d4e"
   };
-  var drawSnakeCell = (context, x3, y3, width, height, inset) => {
+  var drawSnakeCell = (context, x4, y3, width, height, inset) => {
     const padding = Math.min(width, height) * inset * 0.5;
-    context.fillRect(x3 * width + padding, y3 * height + padding, width - padding * 2, height - padding * 2);
+    context.fillRect(x4 * width + padding, y3 * height + padding, width - padding * 2, height - padding * 2);
   };
   var snakeList = (snakes) => Object.values(snakes || {}).sort((a3, b2) => (a3.role || 0) - (b2.role || 0));
   function OriginalSnakeDuelArena({ gs, room, currentUser, onAction }) {
@@ -1508,10 +1712,10 @@ var GameBoxPlatform = (() => {
         context.fillRect(0, 0, canvas.width, canvas.height);
         context.strokeStyle = SNAKE_COLORS.grid;
         context.lineWidth = 1;
-        for (let x3 = 1; x3 < width; x3++) {
+        for (let x4 = 1; x4 < width; x4++) {
           context.beginPath();
-          context.moveTo(x3 * cellWidth, 0);
-          context.lineTo(x3 * cellWidth, canvas.height);
+          context.moveTo(x4 * cellWidth, 0);
+          context.lineTo(x4 * cellWidth, canvas.height);
           context.stroke();
         }
         for (let y3 = 1; y3 < height; y3++) {
@@ -1527,10 +1731,10 @@ var GameBoxPlatform = (() => {
           const [main, dim] = snake.role === 1 ? [SNAKE_COLORS.p1, SNAKE_COLORS.p1Dim] : [SNAKE_COLORS.p2, SNAKE_COLORS.p2Dim];
           snake.body.forEach((segment, index) => {
             const oldSegment = oldSnake.body[Math.min(index, oldSnake.body.length - 1)] || segment;
-            const x3 = oldSegment.x + (segment.x - oldSegment.x) * eased;
+            const x4 = oldSegment.x + (segment.x - oldSegment.x) * eased;
             const y3 = oldSegment.y + (segment.y - oldSegment.y) * eased;
             context.fillStyle = snake.alive ? index === 0 ? main : dim : "#4a4239";
-            drawSnakeCell(context, x3, y3, cellWidth, cellHeight, index === 0 ? 0.15 : 0.25);
+            drawSnakeCell(context, x4, y3, cellWidth, cellHeight, index === 0 ? 0.15 : 0.25);
           });
           if (!snake.alive && snakeIndex === 0) context.globalAlpha = 1;
         });
@@ -1595,38 +1799,121 @@ var GameBoxPlatform = (() => {
       /* @__PURE__ */ u3(ArcadeDpad, { onAction })
     ] });
   }
-  function OriginalBombermanArena({ mode = "online" }) {
-    return /* @__PURE__ */ u3("section", { className: "ba-original-shell", "aria-label": "Blast Arena \uC6D0\uBCF8 \uAC8C\uC784", children: /* @__PURE__ */ u3(
-      "iframe",
+  function OriginalBombermanArena({ mode = "online", bots = 1, currentUser = null }) {
+    const iframeRef = A2(null);
+    const sessionNonce = A2(Date.now()).current;
+    const params = T2(() => {
+      const p3 = new URLSearchParams({ bots: String(bots), _s: String(sessionNonce) });
+      if (currentUser?.name) p3.set("nickname", currentUser.name);
+      return p3;
+    }, [bots, currentUser?.name, sessionNonce]);
+    h2(() => {
+      const focusIframe = () => iframeRef.current?.contentWindow?.focus();
+      const timer = setTimeout(focusIframe, 300);
+      return () => {
+        clearTimeout(timer);
+        try {
+          fetch("/original-blast-arena/api/reset", { method: "GET", keepalive: true }).catch(() => {
+          });
+        } catch {
+        }
+      };
+    }, []);
+    return /* @__PURE__ */ u3(
+      "section",
       {
-        className: "ba-original-frame",
-        src: `/original-blast-arena/?mode=${encodeURIComponent(mode)}`,
-        title: "Blast Arena original game",
-        allow: "autoplay; fullscreen; gamepad"
-      },
-      mode
-    ) });
+        className: "ba-original-shell",
+        "aria-label": "Blast Arena \uC6D0\uBCF8 \uAC8C\uC784",
+        onClick: () => iframeRef.current?.contentWindow?.focus(),
+        children: /* @__PURE__ */ u3(
+          "iframe",
+          {
+            ref: iframeRef,
+            className: "ba-original-frame",
+            src: `/original-blast-arena/?mode=${encodeURIComponent(mode)}&${params.toString()}`,
+            title: "Blast Arena original game",
+            allow: "autoplay; fullscreen; gamepad",
+            tabIndex: "0",
+            onLoad: () => iframeRef.current?.contentWindow?.focus()
+          },
+          `${mode}-${params.toString()}`
+        )
+      }
+    );
   }
-  function OriginalBombergirlArena({ mode = "single", room = null, currentUser = null }) {
+  function OriginalBombergirlArena({ mode = "single", bots = 3, room = null, currentUser = null, onBackToLobby = null }) {
+    const iframeRef = A2(null);
     const src = T2(() => {
       const params = new URLSearchParams({ mode });
       if (mode === "online") {
         params.set("room", room?.code || "");
         params.set("player", currentUser?.id || "");
         params.set("name", currentUser?.name || "Player");
+      } else {
+        params.set("bots", String(bots));
       }
       return `/original-bombergirl/?${params.toString()}`;
-    }, [mode, room?.code, currentUser?.id, currentUser?.name]);
-    return /* @__PURE__ */ u3("section", { className: "bg-original-shell", "aria-label": "HTML5 Bombergirl \uC6D0\uBCF8 \uAC8C\uC784", children: /* @__PURE__ */ u3(
-      "iframe",
+    }, [mode, bots, room?.code, currentUser?.id, currentUser?.name]);
+    h2(() => {
+      const handleMessage = (e3) => {
+        if (e3.data && e3.data.type === "return-to-lobby") {
+          onBackToLobby?.();
+        }
+      };
+      window.addEventListener("message", handleMessage);
+      return () => window.removeEventListener("message", handleMessage);
+    }, [onBackToLobby]);
+    h2(() => {
+      const onKeyDown = (e3) => {
+        const capturedKeys = [38, 40, 37, 39, 87, 83, 65, 68, 32, 16, 18, 13, 27, 77];
+        if (capturedKeys.includes(e3.keyCode)) {
+          iframeRef.current?.contentWindow?.postMessage({
+            type: "bombergirl-key",
+            keyCode: e3.keyCode,
+            down: true
+          }, "*");
+        }
+      };
+      const onKeyUp = (e3) => {
+        const capturedKeys = [38, 40, 37, 39, 87, 83, 65, 68, 32, 16, 18, 13, 27, 77];
+        if (capturedKeys.includes(e3.keyCode)) {
+          iframeRef.current?.contentWindow?.postMessage({
+            type: "bombergirl-key",
+            keyCode: e3.keyCode,
+            down: false
+          }, "*");
+        }
+      };
+      window.addEventListener("keydown", onKeyDown);
+      window.addEventListener("keyup", onKeyUp);
+      const timer = setTimeout(() => iframeRef.current?.contentWindow?.focus(), 300);
+      return () => {
+        window.removeEventListener("keydown", onKeyDown);
+        window.removeEventListener("keyup", onKeyUp);
+        clearTimeout(timer);
+      };
+    }, []);
+    return /* @__PURE__ */ u3(
+      "section",
       {
-        className: "bg-original-frame",
-        src,
-        title: mode === "online" ? "HTML5 Bombergirl online game" : "HTML5 Bombergirl original single player",
-        allow: "autoplay; fullscreen; gamepad"
-      },
-      src
-    ) });
+        className: "bg-original-shell",
+        "aria-label": "HTML5 Bombergirl \uC6D0\uBCF8 \uAC8C\uC784",
+        onClick: () => iframeRef.current?.contentWindow?.focus(),
+        children: /* @__PURE__ */ u3(
+          "iframe",
+          {
+            ref: iframeRef,
+            className: "bg-original-frame",
+            src,
+            title: mode === "online" ? "HTML5 Bombergirl online game" : "HTML5 Bombergirl original single player",
+            allow: "autoplay; fullscreen; gamepad",
+            tabIndex: "0",
+            onLoad: () => iframeRef.current?.contentWindow?.focus()
+          },
+          src
+        )
+      }
+    );
   }
   function ArcadeDpad({ onAction }) {
     return /* @__PURE__ */ u3("div", { className: "oa-dpad", "aria-label": "\uD654\uBA74 \uBC29\uD5A5\uD0A4", children: [
@@ -1644,9 +1931,9 @@ var GameBoxPlatform = (() => {
     const scores = gameStateData?.scores || {};
     const currentPlayerId = gameStateData?.currentPlayerId || null;
     const isMyTurn = !currentPlayerId || currentPlayerId === currentUser.id;
-    if (gameId === "bomberman") return /* @__PURE__ */ u3(OriginalBombermanArena, {});
+    if (gameId === "bomberman") return /* @__PURE__ */ u3(OriginalBombermanArena, { mode: "online", currentUser });
     if (gameId === "bombergirl") {
-      return /* @__PURE__ */ u3(OriginalBombergirlArena, { mode: "online", room, currentUser });
+      return /* @__PURE__ */ u3(OriginalBombergirlArena, { mode: "online", room, currentUser, onBackToLobby: () => onAction?.({ type: "leave" }) });
     }
     if (gameId === "snakeduel") {
       return /* @__PURE__ */ u3("div", { className: "gp-play-stage oa-stage-wrapper", "data-game-stage": gameId, children: [
@@ -1789,7 +2076,7 @@ var GameBoxPlatform = (() => {
         ),
         /* @__PURE__ */ u3("button", { type: "submit", className: "gp-btn gp-btn-primary", disabled: !isMyTurn, children: "\uC81C\uCD9C" })
       ] }),
-      /* @__PURE__ */ u3("div", { className: "bb-chain-list", children: chain.length === 0 ? /* @__PURE__ */ u3("small", { className: "gp-muted", children: "\uC544\uC9C1 \uC5F0\uACB0\uB41C \uB2E8\uC5B4\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." }) : chain.map((w3, i3) => /* @__PURE__ */ u3("span", { className: "bb-chain-chip", children: i3 > 0 ? `\u2192 ${w3}` : w3 }, i3)) })
+      /* @__PURE__ */ u3("div", { className: "bb-chain-list", children: chain.length === 0 ? /* @__PURE__ */ u3("small", { className: "gp-muted", children: "\uC544\uC9C1 \uC5F0\uACB0\uB41C \uB2E8\uC5B4\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." }) : chain.map((w4, i3) => /* @__PURE__ */ u3("span", { className: "bb-chain-chip", children: i3 > 0 ? `\u2192 ${w4}` : w4 }, i3)) })
     ] });
   }
   function MathDuelArena({ gs, isMyTurn, onAction }) {
@@ -2857,7 +3144,7 @@ var GameBoxPlatform = (() => {
                 /* @__PURE__ */ u3("th", { children: "\uCD5C\uACE0 \uC810\uC218" })
               ] }) }),
               /* @__PURE__ */ u3("tbody", { children: myStats.byGame.map((item) => {
-                const g4 = PLATFORM_GAMES.find((x3) => x3.id === item.gameId);
+                const g4 = PLATFORM_GAMES.find((x4) => x4.id === item.gameId);
                 return /* @__PURE__ */ u3("tr", { children: [
                   /* @__PURE__ */ u3("td", { children: g4 ? `${g4.icon} ${g4.name}` : item.gameId }),
                   /* @__PURE__ */ u3("td", { children: item.matchesPlayed }),
@@ -2875,7 +3162,591 @@ var GameBoxPlatform = (() => {
     ] });
   }
 
+  // platform-src/game-guides.js
+  var arrows = ["\u2191", "\u2193", "\u2190", "\u2192"];
+  var GAME_GUIDES = {
+    bomberman: {
+      summary: "\uB098\uBB34 \uC0C1\uC790\uB97C \uBD80\uC218\uACE0 \uC544\uC774\uD15C\uC744 \uBAA8\uC544 \uB9C8\uC9C0\uB9C9\uAE4C\uC9C0 \uC0B4\uC544\uB0A8\uB294 \uC11C\uBC14\uC774\uBC8C \uD3ED\uD0C4 \uB300\uC804",
+      controls: [
+        { keys: ["W", "A", "S", "D", ...arrows], desc: "\uC0C1\xB7\uD558\xB7\uC88C\xB7\uC6B0 \uC774\uB3D9" },
+        { keys: ["Space"], desc: "\uD604\uC7AC \uC704\uCE58\uC5D0 \uD3ED\uD0C4 \uC124\uCE58" },
+        { keys: ["\uB9C8\uC6B0\uC2A4"], desc: "\uB300\uAE30\uC2E4\uC758 READY \uBC84\uD2BC, \uCC44\uD305 \uC785\uB825" }
+      ],
+      rules: [
+        "\uB300\uAE30\uC2E4\uC5D0\uC11C READY\uB97C \uB204\uB974\uBA74 \uBAA8\uB4E0 \uCC38\uAC00\uC790\uAC00 \uC900\uBE44\uB41C \uB4A4 \uCE74\uC6B4\uD2B8\uB2E4\uC6B4 \uD6C4 \uC2DC\uC791\uB429\uB2C8\uB2E4.",
+        "\uC0C1\uC790\uB97C \uBD80\uC218\uBA74 \uD3ED\uD0C4 \uC218\xB7\uD654\uB825\xB7\uC18D\uB3C4 \uAC15\uD654 \uC544\uC774\uD15C\uC774 \uB098\uC635\uB2C8\uB2E4.",
+        "\uD3ED\uBC1C \uD654\uC5FC\uC5D0 \uB2FF\uC73C\uBA74 \uD0C8\uB77D\uD558\uACE0, \uB9C8\uC9C0\uB9C9 \uC0DD\uC874\uC790\uAC00 \uC2B9\uB9AC\uD569\uB2C8\uB2E4."
+      ],
+      tips: ["\uC124\uCE58\uD55C \uD3ED\uD0C4 \uB4A4\uB85C \uC228\uC744 \uD1F4\uB85C\uB97C \uBA3C\uC800 \uD655\uBCF4\uD558\uC138\uC694.", "\uCC44\uD305 \uC785\uB825 \uC911\uC5D0\uB294 \uC774\uB3D9 \uD0A4\uAC00 \uBA39\uD788\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."]
+    },
+    bombergirl: {
+      summary: "17\xD713 \uD074\uB798\uC2DD \uADF8\uB9AC\uB4DC\uC5D0\uC11C \uD3BC\uCE58\uB294 \uBD04\uBC84\uAC78 \uC11C\uBC14\uC774\uBC8C",
+      controls: [
+        { keys: [...arrows, "W", "A", "S", "D"], desc: "\uC0C1\xB7\uD558\xB7\uC88C\xB7\uC6B0 \uC774\uB3D9" },
+        { keys: ["Space", "Alt", "Shift"], desc: "\uD3ED\uD0C4 \uC124\uCE58" },
+        { keys: ["M"], desc: "\uC0AC\uC6B4\uB4DC \uCF1C\uAE30/\uB044\uAE30" },
+        { keys: ["Enter"], desc: "\uAC8C\uC784 \uC885\uB8CC \uD6C4 \uC7AC\uC2DC\uC791" }
+      ],
+      rules: [
+        "\uC0C1\uC790\uB97C \uBD80\uC218\uBA74 \uD654\uB825\xB7\uC2A4\uD53C\uB4DC\xB7\uD3ED\uD0C4 \uD55C\uB3C4 \uAC15\uD654 \uC544\uC774\uD15C\uC744 \uC5BB\uC2B5\uB2C8\uB2E4.",
+        "\uD654\uC5FC\uC5D0 \uB2FF\uC73C\uBA74 \uD0C8\uB77D\uD558\uBA70, \uB9C8\uC9C0\uB9C9 1\uBA85\uC774 \uC2B9\uB9AC\uD569\uB2C8\uB2E4.",
+        "\uBA40\uD2F0 \uBAA8\uB4DC\uB294 2\uC778 \uB300\uACB0\uC774\uBA70 \uB450 \uC0AC\uB78C \uBAA8\uB450 \uAC19\uC740 \uB9F5\uC5D0\uC11C \uC2DC\uC791\uD569\uB2C8\uB2E4."
+      ],
+      tips: ["\uC5F0\uC18D \uC124\uCE58 \uC2DC \uC2A4\uC2A4\uB85C \uAC07\uD788\uC9C0 \uC54A\uB3C4\uB85D \uD0C8\uCD9C\uB85C\uB97C \uACC4\uC0B0\uD558\uC138\uC694."]
+    },
+    snakeduel: {
+      summary: "30\xD720 \uC544\uB808\uB098\uC5D0\uC11C \uC0C1\uB300\uB97C \uAC00\uB450\uACE0 \uB05D\uAE4C\uC9C0 \uC0B4\uC544\uB0A8\uB294 1:1 \uC2A4\uB124\uC774\uD06C",
+      controls: [
+        { keys: ["W", "A", "S", "D", ...arrows], desc: "\uBC40 \uC9C4\uD589 \uBC29\uD5A5 \uC804\uD658" },
+        { keys: ["\uD654\uBA74 \uBC29\uD5A5 \uBC84\uD2BC"], desc: "\uB9C8\uC6B0\uC2A4/\uD130\uCE58\uB85C \uBC29\uD5A5 \uC804\uD658" }
+      ],
+      rules: [
+        "\uBA39\uC774\uB97C \uBA39\uC73C\uBA74 \uBAB8\uC774 \uAE38\uC5B4\uC9C0\uACE0 \uC810\uC218\uB97C \uC5BB\uC2B5\uB2C8\uB2E4.",
+        "\uBCBD, \uC790\uC2E0\uC758 \uBAB8, \uC0C1\uB300 \uBAB8\uC5D0 \uBD80\uB52A\uD788\uBA74 \uC989\uC2DC \uD328\uBC30\uD569\uB2C8\uB2E4."
+      ],
+      tips: ["\uCD08\uBC18\uC5D4 \uBA39\uC774\uB85C \uBAB8\uC9D1\uC744 \uD0A4\uC6B0\uACE0, \uD6C4\uBC18\uC5D4 \uC911\uC559\uC744 \uCC28\uC9C0\uD574 \uC0C1\uB300\uB97C \uAD6C\uC11D\uC73C\uB85C \uBAA8\uC138\uC694."]
+    },
+    drawing: {
+      summary: "\uB3CC\uC544\uAC00\uBA70 \uC81C\uC2DC\uC5B4\uB97C \uADF8\uB9AC\uACE0 \uCC44\uD305\uC73C\uB85C \uC815\uB2F5\uC744 \uB9DE\uD788\uB294 \uD30C\uD2F0 \uAC8C\uC784",
+      controls: [
+        { keys: ["\uB9C8\uC6B0\uC2A4 \uB4DC\uB798\uADF8"], desc: "\uCD9C\uC81C\uC790: \uCE94\uBC84\uC2A4\uC5D0 \uADF8\uB9BC \uADF8\uB9AC\uAE30" },
+        { keys: ["\uC0C9\uC0C1 \xB7 \uAD75\uAE30 \uBC84\uD2BC"], desc: "\uCD9C\uC81C\uC790: \uD39C \uB3C4\uAD6C \uBCC0\uACBD" },
+        { keys: ["\uD0A4\uBCF4\uB4DC \uC785\uB825", "Enter"], desc: "\uCC38\uAC00\uC790: \uC815\uB2F5 \uC785\uB825 \uD6C4 \uC81C\uCD9C" }
+      ],
+      rules: [
+        "\uCD9C\uC81C\uC790\uC5D0\uAC8C\uB9CC \uC81C\uC2DC\uC5B4\uAC00 \uBCF4\uC785\uB2C8\uB2E4.",
+        "\uC815\uB2F5\uC744 \uAC00\uC7A5 \uBA3C\uC800 \uB9DE\uD78C \uCC38\uAC00\uC790\uC640 \uCD9C\uC81C\uC790 \uBAA8\uB450 \uC810\uC218\uB97C \uC5BB\uC2B5\uB2C8\uB2E4."
+      ],
+      tips: ["\uC0AC\uBB3C\uC758 \uAC00\uC7A5 \uD2B9\uC9D5\uC801\uC778 \uC2E4\uB8E8\uC5E3\uBD80\uD130 \uBE60\uB974\uAC8C \uADF8\uB9AC\uC138\uC694."]
+    },
+    reaction: {
+      summary: "\uC2E0\uD638\uAC00 \uBC14\uB00C\uB294 \uC21C\uAC04 \uAC00\uC7A5 \uBE68\uB9AC \uB204\uB974\uB294 \uC21C\uBC1C\uB825 \uB300\uACB0",
+      controls: [{ keys: ["\uB9C8\uC6B0\uC2A4 \uD074\uB9AD"], desc: "\uC6D0\uC774 \uCD08\uB85D\uC0C9(GO!)\uC73C\uB85C \uBC14\uB00C\uBA74 \uC989\uC2DC \uD074\uB9AD" }],
+      rules: ["5\uB77C\uC6B4\uB4DC \uB3D9\uC548 \uAC00\uC7A5 \uBE60\uB974\uAC8C \uBC18\uC751\uD55C \uC0AC\uB78C\uC774 \uC810\uC218\uB97C \uC5BB\uC2B5\uB2C8\uB2E4.", "\uCD08\uB85D\uC0C9(GO!)\uC774 \uB418\uAE30 \uC804\uC758 \uD074\uB9AD\uC740 \uBB34\uC2DC\uB429\uB2C8\uB2E4."],
+      tips: ["\uD654\uBA74 \uC911\uC559 \uC6D0\uC5D0\uB9CC \uC2DC\uC120\uC744 \uACE0\uC815\uD558\uC138\uC694."]
+    },
+    speedtyping: {
+      summary: "\uC81C\uC2DC\uB41C \uB2E8\uC5B4\uB97C \uAC00\uC7A5 \uBE60\uB974\uACE0 \uC815\uD655\uD558\uAC8C \uC785\uB825\uD558\uB294 \uD0C0\uC774\uD551 \uB808\uC774\uC2A4",
+      controls: [
+        { keys: ["\uD0A4\uBCF4\uB4DC (\uC601\uBB38)"], desc: "\uD654\uBA74\uC758 \uB2E8\uC5B4\uB97C \uADF8\uB300\uB85C \uC785\uB825" },
+        { keys: ["Enter"], desc: "\uC785\uB825 \uC81C\uCD9C" }
+      ],
+      rules: ["10\uAC1C \uB2E8\uC5B4\uB97C \uBA3C\uC800 \uC644\uB8CC\uD55C \uC0AC\uB78C\uC774 \uB192\uC740 \uC810\uC218\uB97C \uC5BB\uC2B5\uB2C8\uB2E4.", "\uCCA0\uC790\uAC00 \uD2C0\uB9AC\uBA74 \uC778\uC815\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."],
+      tips: ["\uC18D\uB3C4\uBCF4\uB2E4 \uC815\uD655\uB3C4\uAC00 \uC6B0\uC120\uC785\uB2C8\uB2E4. \uC624\uD0C0\uB294 \uC2DC\uAC04 \uC190\uD574\uC785\uB2C8\uB2E4."]
+    },
+    colormatch: {
+      summary: '\uAE00\uC790\uC758 \uB73B\uC774 \uC544\uB2CC "\uC2E4\uC81C \uC0C9\uC0C1"\uC744 \uACE0\uB974\uB294 \uC2A4\uD2B8\uB8F9 \uB450\uB1CC \uAC8C\uC784',
+      controls: [{ keys: ["\uB9C8\uC6B0\uC2A4 \uD074\uB9AD"], desc: "\uB2E8\uC5B4\uAC00 \uCE60\uD574\uC9C4 \uC2E4\uC81C \uC0C9\uC0C1 \uBC84\uD2BC \uC120\uD0DD" }],
+      rules: ["10\uB77C\uC6B4\uB4DC \uB3D9\uC548 \uAC00\uC7A5 \uB9CE\uC774 \uB9DE\uD78C \uC0AC\uB78C\uC774 \uC2B9\uB9AC\uD569\uB2C8\uB2E4."],
+      tips: ["\uAE00\uC790\uB97C \uC77D\uC9C0 \uB9D0\uACE0 \uC0C9\uB9CC \uBCF4\uC138\uC694."]
+    },
+    connectfour: {
+      summary: "7\xD76 \uBCF4\uB4DC\uC5D0 \uB514\uC2A4\uD06C\uB97C \uB5A8\uC5B4\uB728\uB824 4\uAC1C\uB97C \uBA3C\uC800 \uC787\uB294 \uC804\uB7B5 \uAC8C\uC784",
+      controls: [
+        { keys: ["\uC5F4 \uBC84\uD2BC \u25BC1~7\uC5F4"], desc: "\uB514\uC2A4\uD06C\uB97C \uB5A8\uC5B4\uB728\uB9B4 \uC5F4 \uC120\uD0DD" },
+        { keys: ["\uBCF4\uB4DC \uD074\uB9AD"], desc: "\uD074\uB9AD\uD55C \uC5F4\uC5D0 \uB514\uC2A4\uD06C \uD22C\uD558" }
+      ],
+      rules: ["\uAC00\uB85C\xB7\uC138\uB85C\xB7\uB300\uAC01\uC120\uC73C\uB85C \uAC19\uC740 \uC0C9 4\uAC1C\uB97C \uBA3C\uC800 \uC5F0\uACB0\uD558\uBA74 \uC2B9\uB9AC\uD569\uB2C8\uB2E4.", "\uB0B4 \uCC28\uB840\uC5D0\uB9CC \uB458 \uC218 \uC788\uC2B5\uB2C8\uB2E4."],
+      tips: ["\uAC00\uC6B4\uB370 \uC5F4\uC744 \uC120\uC810\uD558\uBA74 \uC5F0\uACB0 \uAE30\uD68C\uAC00 \uB298\uC5B4\uB0A9\uB2C8\uB2E4."]
+    },
+    tictactoe: {
+      summary: "3\xD73 \uBCF4\uB4DC\uC5D0\uC11C \uD55C \uC904\uC744 \uBA3C\uC800 \uC644\uC131\uD558\uB294 1:1 \uC218\uC2F8\uC6C0",
+      controls: [{ keys: ["\uCE78 \uD074\uB9AD"], desc: "\uBE48 \uCE78\uC5D0 \uB0B4 \uB9D0(O/X) \uB450\uAE30" }],
+      rules: ["\uAC00\uB85C\xB7\uC138\uB85C\xB7\uB300\uAC01\uC120 \uD55C \uC904\uC744 \uBA3C\uC800 \uB9CC\uB4E4\uBA74 \uC2B9\uB9AC\uD569\uB2C8\uB2E4.", "\uBCF4\uB4DC\uAC00 \uAC00\uB4DD \uCC28\uBA74 \uBB34\uC2B9\uBD80\uC785\uB2C8\uB2E4."],
+      tips: ["\uAC00\uC6B4\uB370 \uCE78\uC744 \uBA3C\uC800 \uCC28\uC9C0\uD558\uC138\uC694."]
+    },
+    memorymatch: {
+      summary: "\uB4A4\uC9D1\uD78C \uCE74\uB4DC\uC758 \uC704\uCE58\uB97C \uAE30\uC5B5\uD574 \uC9DD\uC744 \uB9DE\uCD94\uB294 \uAE30\uC5B5\uB825 \uB300\uACB0",
+      controls: [{ keys: ["\uCE74\uB4DC \uD074\uB9AD"], desc: "\uCE74\uB4DC 2\uC7A5 \uB4A4\uC9D1\uAE30" }],
+      rules: ["\uAC19\uC740 \uADF8\uB9BC 2\uC7A5\uC744 \uB9DE\uD788\uBA74 \uC810\uC218\uB97C \uC5BB\uACE0 \uD55C \uBC88 \uB354 \uB4A4\uC9D1\uC744 \uC218 \uC788\uC2B5\uB2C8\uB2E4.", "\uAC00\uC7A5 \uB9CE\uC740 \uC9DD\uC744 \uB9DE\uD78C \uC0AC\uB78C\uC774 \uC2B9\uB9AC\uD569\uB2C8\uB2E4."],
+      tips: ["\uC0C1\uB300\uAC00 \uB4A4\uC9D1\uC740 \uCE74\uB4DC\uB3C4 \uD568\uAED8 \uAE30\uC5B5\uD558\uC138\uC694."]
+    },
+    simonsays: {
+      summary: "\uC810\uC810 \uAE38\uC5B4\uC9C0\uB294 \uC0C9 \uC810\uBA78 \uC21C\uC11C\uB97C \uADF8\uB300\uB85C \uB530\uB77C \uB204\uB974\uB294 \uD328\uD134 \uAE30\uC5B5 \uAC8C\uC784",
+      controls: [{ keys: ["\uC0C9\uC0C1 \uBC84\uD2BC \uD074\uB9AD"], desc: "\uC810\uB4F1 \uC21C\uC11C\uB300\uB85C 4\uC0C9 \uBC84\uD2BC \uB204\uB974\uAE30" }],
+      rules: ["\uC810\uB4F1\uC774 \uB05D\uB09C \uB4A4\uC5D0\uB9CC \uC785\uB825\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.", "\uC21C\uC11C\uB97C \uD2C0\uB9AC\uBA74 \uD0C8\uB77D\uD558\uBA70, \uB05D\uAE4C\uC9C0 \uB9DE\uD78C \uC0AC\uB78C\uC774 \uC810\uC218\uB97C \uC5BB\uC2B5\uB2C8\uB2E4."],
+      tips: ["\uC0C9 \uC774\uB984\uC744 \uC18D\uC73C\uB85C \uB418\uB1CC\uBA70 \uC678\uC6B0\uBA74 \uC27D\uC2B5\uB2C8\uB2E4."]
+    },
+    wordchain: {
+      summary: "\uC55E \uB2E8\uC5B4\uC758 \uB9C8\uC9C0\uB9C9 \uC54C\uD30C\uBCB3\uC73C\uB85C \uC2DC\uC791\uD558\uB294 \uC601\uB2E8\uC5B4\uB97C \uC787\uB294 \uB05D\uB9D0\uC787\uAE30",
+      controls: [
+        { keys: ["\uD0A4\uBCF4\uB4DC (\uC601\uBB38)"], desc: "\uC601\uB2E8\uC5B4 \uC785\uB825" },
+        { keys: ["Enter"], desc: "\uB2E8\uC5B4 \uC81C\uCD9C" }
+      ],
+      rules: ["\uB0B4 \uCC28\uB840\uC5D0\uB9CC \uC785\uB825\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.", "\uC774\uBBF8 \uC0AC\uC6A9\uD55C \uB2E8\uC5B4\uB098 \uC2DC\uC791 \uC54C\uD30C\uBCB3\uC774 \uB2E4\uB978 \uB2E8\uC5B4\uB294 \uC778\uC815\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."],
+      tips: ["x, z \uB4F1 \uC774\uC5B4\uAC00\uAE30 \uC5B4\uB824\uC6B4 \uAE00\uC790\uB85C \uB05D\uB098\uB294 \uB2E8\uC5B4\uB85C \uC0C1\uB300\uB97C \uACE4\uB780\uD558\uAC8C \uD558\uC138\uC694."]
+    },
+    anagram: {
+      summary: "\uB4A4\uC11E\uC778 \uC54C\uD30C\uBCB3\uC744 \uC6D0\uB798 \uC601\uB2E8\uC5B4\uB85C \uB418\uB3CC\uB9AC\uB294 \uC2A4\uD53C\uB4DC \uD37C\uC990",
+      controls: [
+        { keys: ["\uD0A4\uBCF4\uB4DC (\uC601\uBB38)"], desc: "\uC815\uB2F5 \uB2E8\uC5B4 \uC785\uB825" },
+        { keys: ["Enter"], desc: "\uC81C\uCD9C" }
+      ],
+      rules: ["10\uAC1C \uD37C\uC990\uC744 \uBA3C\uC800, \uC815\uD655\uD558\uAC8C \uB9DE\uD78C \uC0AC\uB78C\uC774 \uB192\uC740 \uC810\uC218\uB97C \uC5BB\uC2B5\uB2C8\uB2E4."],
+      tips: ["\uC811\uB450\uC0AC(-un, -re)\uB098 \uC811\uBBF8\uC0AC(-ing, -ed)\uBD80\uD130 \uCC3E\uC544\uBCF4\uC138\uC694."]
+    },
+    mathduel: {
+      summary: "\uC0AC\uCE59\uC5F0\uC0B0 \uC554\uC0B0\uC744 \uBE60\uB974\uAC8C \uD478\uB294 \uB450\uB1CC \uB300\uACB0",
+      controls: [
+        { keys: ["\uC22B\uC790 \uD0A4"], desc: "\uC815\uB2F5 \uC22B\uC790 \uC785\uB825" },
+        { keys: ["Enter"], desc: "\uC815\uB2F5 \uC81C\uCD9C" }
+      ],
+      rules: ["12\uBB38\uC81C \uB3D9\uC548 \uBE60\uB974\uACE0 \uC815\uD655\uD558\uAC8C \uD47C \uC0AC\uB78C\uC774 \uC810\uC218\uB97C \uC5BB\uC2B5\uB2C8\uB2E4."],
+      tips: ["\uACF1\uC148\xB7\uB098\uB217\uC148\uBD80\uD130 \uACC4\uC0B0\uD558\uC138\uC694."]
+    },
+    numberhunt: {
+      summary: "\uC228\uACA8\uC9C4 \uBAA9\uD45C \uC22B\uC790\uC5D0 \uAC00\uC7A5 \uAC00\uAE5D\uAC8C \uCD94\uB9AC\uD558\uB294 \uC22B\uC790 \uAC8C\uC784",
+      controls: [
+        { keys: ["\uC22B\uC790 \uD0A4"], desc: "10~30 \uC0AC\uC774 \uC22B\uC790 \uC785\uB825" },
+        { keys: ["Enter"], desc: "\uC22B\uC790 \uC81C\uCD9C" }
+      ],
+      rules: ["6\uB77C\uC6B4\uB4DC \uB3D9\uC548 \uBAA9\uD45C \uC22B\uC790\uC5D0 \uAC00\uC7A5 \uAC00\uAE4C\uC6B4 \uC0AC\uB78C\uC774 \uC810\uC218\uB97C \uC5BB\uC2B5\uB2C8\uB2E4."],
+      tips: ["\uC774\uC804 \uB77C\uC6B4\uB4DC\uC758 \uACB0\uACFC\uB85C \uBC94\uC704\uB97C \uC881\uD600\uAC00\uC138\uC694."]
+    },
+    rpsarena: {
+      summary: "5\uB77C\uC6B4\uB4DC \uAC00\uC704\uBC14\uC704\uBCF4 \uC2EC\uB9AC\uC804",
+      controls: [{ keys: ["\uAC00\uC704 \xB7 \uBC14\uC704 \xB7 \uBCF4 \uBC84\uD2BC"], desc: "\uC774\uBC88 \uB77C\uC6B4\uB4DC\uC5D0 \uB0BC \uC190 \uC120\uD0DD" }],
+      rules: ["5\uB77C\uC6B4\uB4DC \uB3D9\uC548 \uB354 \uB9CE\uC774 \uC774\uAE34 \uC0AC\uB78C\uC774 \uC2B9\uB9AC\uD569\uB2C8\uB2E4.", "\uC120\uD0DD\uC740 \uD55C \uBC88 \uD655\uC815\uD558\uBA74 \uBC14\uAFC0 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."],
+      tips: ["\uC0C1\uB300\uC758 \uC774\uC804 \uC120\uD0DD \uD328\uD134\uC744 \uC77D\uC5B4\uBCF4\uC138\uC694."]
+    },
+    trivia: {
+      summary: "IT\xB7\uACFC\uD559\xB7\uC77C\uBC18 \uC0C1\uC2DD 4\uC9C0\uC120\uB2E4 \uD034\uC988\uC1FC",
+      controls: [{ keys: ["\uBCF4\uAE30 \uD074\uB9AD"], desc: "A~D \uC911 \uC815\uB2F5 \uC120\uD0DD" }],
+      rules: ["15\uBB38\uC81C, \uC81C\uD55C \uC2DC\uAC04 \uC548\uC5D0 \uBE60\uB974\uAC8C \uB9DE\uD790\uC218\uB85D \uB192\uC740 \uC810\uC218\uB97C \uC5BB\uC2B5\uB2C8\uB2E4."],
+      tips: ["\uD655\uC2E4\uD55C \uBCF4\uAE30\uBD80\uD130 \uC18C\uAC70\uD558\uC138\uC694."]
+    },
+    higherlower: {
+      summary: "\uB2E4\uC74C \uC22B\uC790\uAC00 \uC9C0\uAE08\uBCF4\uB2E4 \uB192\uC744\uC9C0 \uB0AE\uC744\uC9C0 \uB9DE\uD788\uB294 \uD655\uB960 \uAC8C\uC784",
+      controls: [{ keys: ["Higher / Lower \uBC84\uD2BC"], desc: "\uB2E4\uC74C \uC22B\uC790\uC758 \uB192\uB0AE\uC774 \uC608\uCE21" }],
+      rules: ["10\uB77C\uC6B4\uB4DC \uB3D9\uC548 \uB354 \uB9CE\uC774 \uB9DE\uD78C \uC0AC\uB78C\uC774 \uC2B9\uB9AC\uD569\uB2C8\uB2E4."],
+      tips: ["\uD604\uC7AC \uC22B\uC790\uAC00 \uADF9\uB2E8\uAC12(1~20, 80~100)\uC774\uBA74 \uD655\uB960\uC774 \uB9E4\uC6B0 \uC720\uB9AC\uD569\uB2C8\uB2E4."]
+    },
+    oddoneout: {
+      summary: "\uC5EC\uB7EC \uD0C0\uC77C \uC911 \uBAA8\uC591\xB7\uC0C9\uC774 \uB2E4\uB978 \uD558\uB098\uB97C \uCC3E\uB294 \uB208\uC370\uBBF8 \uB300\uACB0",
+      controls: [{ keys: ["\uD0C0\uC77C \uD074\uB9AD"], desc: "\uB2E4\uB978 \uD558\uB098\uB77C\uACE0 \uC0DD\uAC01\uB418\uB294 \uD0C0\uC77C \uC120\uD0DD" }],
+      rules: ["6\uB77C\uC6B4\uB4DC \uB3D9\uC548 \uB354 \uB9CE\uC774 \uCC3E\uC544\uB0B8 \uC0AC\uB78C\uC774 \uC2B9\uB9AC\uD569\uB2C8\uB2E4."],
+      tips: ["\uB208\uC744 \uD06C\uAC8C \uB728\uAE30\uBCF4\uB2E4 \uD55C \uBC88\uC5D0 \uC804\uCCB4\uB97C \uD6D1\uC73C\uC138\uC694."]
+    },
+    roulette: {
+      summary: "Box2D \uBB3C\uB9AC \uC5D4\uC9C4\uC73C\uB85C \uAD6C\uC2AC \uB808\uC774\uC2A4\uB97C \uD3BC\uCE58\uB294 \uACF5\uC815\uD55C \uCD94\uCCA8\uAE30",
+      controls: [
+        { keys: ["\uB9C8\uC6B0\uC2A4"], desc: "\uCC38\uAC00\uC790 \uBA85\uB2E8 \uC785\uB825, \uB9F5 \uC120\uD0DD, \uC2DC\uC791 \uBC84\uD2BC" },
+        { keys: ["\uC774\uB984*2", "\uC774\uB984*3"], desc: "\uCC38\uAC00\uC790 \uC774\uB984 \uB4A4\uC5D0 *\uC22B\uC790\uB97C \uBD99\uC774\uBA74 \uAD6C\uC2AC \uC218 \uC99D\uAC00" }
+      ],
+      rules: ["\uBAA8\uB4E0 \uAD6C\uC2AC\uC740 \uAC19\uC740 \uBB3C\uB9AC \uC870\uAC74\uC5D0\uC11C \uCD9C\uBC1C\uD569\uB2C8\uB2E4.", "\uC7A5\uC560\uBB3C\uC744 \uC9C0\uB098 \uACB0\uC2B9\uC120\uC5D0 \uB3C4\uB2EC\uD55C \uAD6C\uC2AC\uC774 \uB2F9\uCCA8\uB429\uB2C8\uB2E4."],
+      tips: ["\uB9F5\uC744 \uBC14\uAFB8\uBA74 \uC804\uD600 \uB2E4\uB978 \uD2B8\uB799\uC744 \uC990\uAE38 \uC218 \uC788\uC2B5\uB2C8\uB2E4."]
+    }
+  };
+  var FALLBACK_GUIDE = {
+    summary: "\uD654\uBA74\uC758 \uC548\uB0B4\uB97C \uB530\uB77C \uD50C\uB808\uC774\uD558\uC138\uC694.",
+    controls: [{ keys: ["\uB9C8\uC6B0\uC2A4", "\uD0A4\uBCF4\uB4DC"], desc: "\uAC8C\uC784 \uD654\uBA74\uC758 \uBC84\uD2BC\uACFC \uC548\uB0B4\uB97C \uB530\uB974\uC138\uC694" }],
+    rules: ["\uC0C1\uB300 \uB610\uB294 \uCEF4\uD4E8\uD130\uBCF4\uB2E4 \uB192\uC740 \uC810\uC218\uB97C \uC5BB\uC73C\uBA74 \uC2B9\uB9AC\uD569\uB2C8\uB2E4."],
+    tips: []
+  };
+  function getGameGuide(gameId) {
+    const id = gameId === "marble-roulette" ? "roulette" : gameId;
+    return GAME_GUIDES[id] || FALLBACK_GUIDE;
+  }
+
+  // platform-src/components/GameLobby.jsx
+  var DIFFICULTIES = [
+    { id: "easy", label: "\uC26C\uC6C0" },
+    { id: "normal", label: "\uBCF4\uD1B5" },
+    { id: "hard", label: "\uC5B4\uB824\uC6C0" }
+  ];
+  function getLobbyConfig(game) {
+    if (!game) return null;
+    if (game.id === "roulette") return { kind: "draw" };
+    const maxPlayers = game.maxPlayers || 2;
+    if (game.id === "bombergirl") {
+      return { kind: "game", bots: { min: 1, max: 3, def: 3 }, difficulty: false, multiMax: 2, botNote: "\uC6D0\uBCF8 AI \uC0C1\uB300 (\uCD5C\uB300 3\uBA85)" };
+    }
+    if (game.id === "bomberman") {
+      return { kind: "game", bots: { min: 1, max: 3, def: 1 }, difficulty: false, multiMax: 4, botNote: "\uC6D0\uBCF8 COM-BOT (\uCD5C\uB300 3\uBA85)" };
+    }
+    const max = Math.max(1, maxPlayers - 1);
+    return {
+      kind: "game",
+      bots: { min: 1, max, def: Math.min(max, game.id === "drawing" ? 2 : 1) },
+      difficulty: true,
+      multiMax: maxPlayers,
+      botNote: null
+    };
+  }
+  function GuideModal({ game, onClose }) {
+    const guide = getGameGuide(game?.id);
+    h2(() => {
+      const onKey = (e3) => {
+        if (e3.key === "Escape") onClose();
+      };
+      window.addEventListener("keydown", onKey);
+      return () => window.removeEventListener("keydown", onKey);
+    }, [onClose]);
+    return /* @__PURE__ */ u3("div", { className: "gl-modal-backdrop", role: "dialog", "aria-modal": "true", onClick: onClose, children: /* @__PURE__ */ u3("div", { className: "gl-modal", onClick: (e3) => e3.stopPropagation(), children: [
+      /* @__PURE__ */ u3("header", { className: "gl-modal-head", children: [
+        /* @__PURE__ */ u3("div", { children: [
+          /* @__PURE__ */ u3("span", { className: "gl-eyebrow", children: "HOW TO PLAY" }),
+          /* @__PURE__ */ u3("h3", { children: [
+            game?.icon,
+            " ",
+            game?.name,
+            " \uC870\uC791\uBC95"
+          ] }),
+          /* @__PURE__ */ u3("p", { children: guide.summary })
+        ] }),
+        /* @__PURE__ */ u3("button", { type: "button", className: "gl-icon-btn", onClick: onClose, "aria-label": "\uB2EB\uAE30", children: "\u2715" })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "gl-modal-body", children: [
+        /* @__PURE__ */ u3("section", { children: [
+          /* @__PURE__ */ u3("h4", { children: "\u2328\uFE0F \uD0A4 \xB7 \uC785\uB825" }),
+          /* @__PURE__ */ u3("ul", { className: "gl-key-list", children: guide.controls.map((c3, i3) => /* @__PURE__ */ u3("li", { children: [
+            /* @__PURE__ */ u3("span", { className: "gl-keys", children: c3.keys.map((k4, ki) => /* @__PURE__ */ u3(gn.Fragment, { children: [
+              ki > 0 && /* @__PURE__ */ u3("i", { children: "/" }),
+              /* @__PURE__ */ u3("kbd", { children: k4 })
+            ] }, ki)) }),
+            /* @__PURE__ */ u3("span", { className: "gl-key-desc", children: c3.desc })
+          ] }, i3)) })
+        ] }),
+        /* @__PURE__ */ u3("section", { children: [
+          /* @__PURE__ */ u3("h4", { children: "\u{1F3AF} \uADDC\uCE59" }),
+          /* @__PURE__ */ u3("ul", { className: "gl-rule-list", children: guide.rules.map((r3, i3) => /* @__PURE__ */ u3("li", { children: r3 }, i3)) })
+        ] }),
+        guide.tips?.length > 0 && /* @__PURE__ */ u3("section", { className: "gl-tip-box", children: [
+          /* @__PURE__ */ u3("h4", { children: "\u{1F4A1} \uD301" }),
+          /* @__PURE__ */ u3("ul", { className: "gl-rule-list", children: guide.tips.map((t3, i3) => /* @__PURE__ */ u3("li", { children: t3 }, i3)) })
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("footer", { className: "gl-modal-foot", children: /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-primary", onClick: onClose, children: "\uD655\uC778 (ESC)" }) })
+    ] }) });
+  }
+  function Stepper({ label, value, min, max, onChange, disabled }) {
+    return /* @__PURE__ */ u3("div", { className: "gl-field", children: [
+      /* @__PURE__ */ u3("span", { className: "gl-field-label", children: label }),
+      /* @__PURE__ */ u3("div", { className: "gl-stepper", children: [
+        /* @__PURE__ */ u3("button", { type: "button", disabled: disabled || value <= min, onClick: () => onChange(value - 1), "aria-label": "\uC904\uC774\uAE30", children: "\u2212" }),
+        /* @__PURE__ */ u3("strong", { children: value }),
+        /* @__PURE__ */ u3("button", { type: "button", disabled: disabled || value >= max, onClick: () => onChange(value + 1), "aria-label": "\uB298\uB9AC\uAE30", children: "+" })
+      ] }),
+      /* @__PURE__ */ u3("span", { className: "gl-field-hint", children: min === max ? "\uACE0\uC815" : `${min} ~ ${max}` })
+    ] });
+  }
+  function GameLobby({
+    game,
+    userName,
+    quickWaiting = 0,
+    initialCode = "",
+    busy = false,
+    onBack = null,
+    onStartSingle,
+    onQuickMatch,
+    onCreateRoom,
+    onJoinCode,
+    onStartDraw
+  }) {
+    const config = getLobbyConfig(game);
+    const guide = getGameGuide(game?.id);
+    const [mode, setMode] = d2("single");
+    const [showGuide, setShowGuide] = d2(false);
+    const [botCount, setBotCount] = d2(config?.bots?.def || 1);
+    const [difficulty, setDifficulty] = d2("normal");
+    const [code, setCode] = d2(initialCode || "");
+    h2(() => {
+      setBotCount(config?.bots?.def || 1);
+      setMode(initialCode ? "multi" : "single");
+    }, [game?.id]);
+    h2(() => {
+      if (initialCode) {
+        setCode(initialCode);
+        setMode("multi");
+      }
+    }, [initialCode]);
+    if (!game || !config) return null;
+    const isDraw = config.kind === "draw";
+    return /* @__PURE__ */ u3("div", { className: "gl-lobby", children: [
+      /* @__PURE__ */ u3("header", { className: "gl-hero", children: [
+        /* @__PURE__ */ u3("div", { className: "gl-hero-icon", children: game.icon }),
+        /* @__PURE__ */ u3("div", { className: "gl-hero-main", children: [
+          /* @__PURE__ */ u3("div", { className: "gl-chip-row", children: [
+            /* @__PURE__ */ u3("span", { className: "gl-chip", children: game.badge || game.category }),
+            !isDraw && /* @__PURE__ */ u3("span", { className: "gl-chip gl-chip-soft", children: [
+              "1 ~ ",
+              config.multiMax,
+              "\uC778"
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("h2", { children: game.name }),
+          /* @__PURE__ */ u3("p", { children: game.description })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "gl-hero-side", children: [
+          /* @__PURE__ */ u3("span", { className: "gl-player-badge", title: "\uB2C9\uB124\uC784\uC740 GAME-BOX \uD648\uC5D0\uC11C \uBCC0\uACBD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4", children: [
+            "\u{1F464} ",
+            /* @__PURE__ */ u3("strong", { children: userName || "\uAC8C\uC2A4\uD2B8" })
+          ] }),
+          /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost", onClick: () => setShowGuide(true), children: "\u{1F4D6} \uC870\uC791\uBC95 \uD31D\uC5C5" }),
+          onBack && /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost", onClick: onBack, children: "\u2190 \uAC8C\uC784 \uBAA9\uB85D" })
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "gl-dashboard-grid", children: [
+        /* @__PURE__ */ u3("div", { className: "gl-dashboard-main", children: isDraw ? /* @__PURE__ */ u3("section", { className: "gl-panel gl-panel-draw", children: [
+          /* @__PURE__ */ u3("div", { className: "gl-panel-head", children: [
+            /* @__PURE__ */ u3("span", { className: "gl-pill gl-pill-single", children: "DRAW" }),
+            /* @__PURE__ */ u3("h3", { children: "\uCD94\uCCA8 \uC2DC\uC791" })
+          ] }),
+          /* @__PURE__ */ u3("p", { className: "gl-panel-desc", children: "\uCC38\uAC00\uC790 \uBA85\uB2E8\uC744 \uC785\uB825\uD558\uACE0 \uAD6C\uC2AC \uB808\uC774\uC2A4\uB85C \uACF5\uC815\uD558\uAC8C \uB2F9\uCCA8\uC790\uB97C \uBF51\uC73C\uC138\uC694." }),
+          /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-primary gl-btn-lg", onClick: onStartDraw, children: "\u25B6 \uB8F0\uB81B \uC5F4\uAE30" })
+        ] }) : /* @__PURE__ */ u3(S, { children: [
+          /* @__PURE__ */ u3("div", { className: "gl-tabs", role: "tablist", "aria-label": "\uD50C\uB808\uC774 \uBC29\uC2DD", children: [
+            /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                role: "tab",
+                "aria-selected": mode === "single",
+                className: mode === "single" ? "active" : "",
+                onClick: () => setMode("single"),
+                children: [
+                  "\u{1F916} \uC2F1\uAE00 ",
+                  /* @__PURE__ */ u3("small", { children: "\uCEF4\uD4E8\uD130\uC640 \uB300\uACB0" })
+                ]
+              }
+            ),
+            /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                role: "tab",
+                "aria-selected": mode === "multi",
+                className: mode === "multi" ? "active" : "",
+                onClick: () => setMode("multi"),
+                children: [
+                  "\u{1F310} \uBA40\uD2F0 ",
+                  /* @__PURE__ */ u3("small", { children: [
+                    "2~",
+                    config.multiMax,
+                    "\uC778 \uC628\uB77C\uC778"
+                  ] })
+                ]
+              }
+            )
+          ] }),
+          mode === "single" ? /* @__PURE__ */ u3("section", { className: "gl-panel", "data-lobby-mode": "single", children: [
+            /* @__PURE__ */ u3("div", { className: "gl-options", children: [
+              /* @__PURE__ */ u3(
+                Stepper,
+                {
+                  label: "\uCEF4\uD4E8\uD130 \uC218",
+                  value: botCount,
+                  min: config.bots.min,
+                  max: config.bots.max,
+                  onChange: setBotCount
+                }
+              ),
+              config.difficulty ? /* @__PURE__ */ u3("div", { className: "gl-field", children: [
+                /* @__PURE__ */ u3("span", { className: "gl-field-label", children: "\uB09C\uC774\uB3C4" }),
+                /* @__PURE__ */ u3("div", { className: "gl-seg", children: DIFFICULTIES.map((d3) => /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: difficulty === d3.id ? "active" : "",
+                    onClick: () => setDifficulty(d3.id),
+                    children: d3.label
+                  },
+                  d3.id
+                )) }),
+                /* @__PURE__ */ u3("span", { className: "gl-field-hint", children: "\uCEF4\uD4E8\uD130\uC758 \uBC18\uC751 \uC18D\uB3C4\uC640 \uC804\uB7B5\uC774 \uB2EC\uB77C\uC9D1\uB2C8\uB2E4" })
+              ] }) : /* @__PURE__ */ u3("div", { className: "gl-field", children: [
+                /* @__PURE__ */ u3("span", { className: "gl-field-label", children: "\uB09C\uC774\uB3C4" }),
+                /* @__PURE__ */ u3("strong", { className: "gl-field-static", children: "\uC6D0\uBCF8 AI" }),
+                /* @__PURE__ */ u3("span", { className: "gl-field-hint", children: config.botNote })
+              ] })
+            ] }),
+            /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                className: "gl-btn gl-btn-primary gl-btn-lg",
+                disabled: busy,
+                onClick: () => onStartSingle({ botCount, difficulty }),
+                children: busy ? "\uC900\uBE44 \uC911..." : "\u25B6 \uAC8C\uC784 \uC2DC\uC791"
+              }
+            ),
+            /* @__PURE__ */ u3("p", { className: "gl-footnote", children: "\uCEF4\uD4E8\uD130\uC640\uC758 \uB300\uACB0\uC740 \uC5F0\uC2B5 \uACBD\uAE30\uB85C \uAE30\uB85D\uB418\uBA70 \uACF5\uC2DD \uB7AD\uD0B9\uC5D0\uB294 \uBC18\uC601\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4." })
+          ] }) : /* @__PURE__ */ u3("section", { className: "gl-panel gl-multi", "data-lobby-mode": "multi", children: [
+            /* @__PURE__ */ u3("article", { className: "gl-multi-card", children: [
+              /* @__PURE__ */ u3("div", { className: "gl-panel-head", children: [
+                /* @__PURE__ */ u3("span", { className: "gl-pill gl-pill-quick", children: "QUICK" }),
+                /* @__PURE__ */ u3("h3", { children: "\u26A1 \uC989\uC2DC \uB9E4\uCE6D" })
+              ] }),
+              /* @__PURE__ */ u3("p", { className: "gl-panel-desc", children: "\uB300\uAE30 \uC911\uC778 \uBC29\uC5D0 \uBC14\uB85C \uC785\uC7A5\uD569\uB2C8\uB2E4. \uC5C6\uC73C\uBA74 \uC0C8 \uBC29\uC744 \uB9CC\uB4E4\uC5B4 \uC0C1\uB300\uB97C \uAE30\uB2E4\uB9AC\uACE0, 2\uBA85\uC774 \uBAA8\uC774\uBA74 \uC790\uB3D9\uC73C\uB85C \uC2DC\uC791\uB429\uB2C8\uB2E4." }),
+              /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-primary gl-btn-lg", disabled: busy, onClick: onQuickMatch, children: "\uB9E4\uCE6D \uC2DC\uC791" }),
+              /* @__PURE__ */ u3("span", { className: "gl-footnote", children: quickWaiting > 0 ? `\uC9C0\uAE08 ${quickWaiting}\uAC1C \uBC29\uC774 \uC0C1\uB300\uB97C \uAE30\uB2E4\uB9AC\uB294 \uC911` : "\uD604\uC7AC \uB300\uAE30 \uC911\uC778 \uBC29 \uC5C6\uC74C \u2014 \uB0B4\uAC00 \uCCAB \uBC88\uC9F8!" })
+            ] }),
+            /* @__PURE__ */ u3("article", { className: "gl-multi-card", children: [
+              /* @__PURE__ */ u3("div", { className: "gl-panel-head", children: [
+                /* @__PURE__ */ u3("span", { className: "gl-pill gl-pill-code", children: "CODE" }),
+                /* @__PURE__ */ u3("h3", { children: "\u{1F511} \uCC38\uC5EC \uCF54\uB4DC" })
+              ] }),
+              /* @__PURE__ */ u3("p", { className: "gl-panel-desc", children: "\uCE5C\uAD6C\uC640 \uD568\uAED8\uB77C\uBA74 \uBC29\uC744 \uB9CC\uB4E4\uC5B4 \uCF54\uB4DC\uB97C \uACF5\uC720\uD558\uAC70\uB098, \uBC1B\uC740 \uCF54\uB4DC\uB97C \uC785\uB825\uD558\uC138\uC694." }),
+              /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-secondary", disabled: busy, onClick: onCreateRoom, children: "\u2795 \uC0C8 \uBC29 \uB9CC\uB4E4\uAE30" }),
+              /* @__PURE__ */ u3("div", { className: "gl-code-row", children: [
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    type: "text",
+                    className: "gl-input",
+                    placeholder: "\uCC38\uC5EC \uCF54\uB4DC \uC785\uB825",
+                    maxLength: 8,
+                    value: code,
+                    onChange: (e3) => setCode(e3.target.value.toUpperCase()),
+                    onKeyDown: (e3) => {
+                      if (e3.key === "Enter") onJoinCode(code);
+                    }
+                  }
+                ),
+                /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-primary", disabled: busy || !code.trim(), onClick: () => onJoinCode(code), children: "\uC785\uC7A5" })
+              ] })
+            ] })
+          ] })
+        ] }) }),
+        /* @__PURE__ */ u3("aside", { className: "gl-dashboard-side", children: [
+          /* @__PURE__ */ u3("div", { className: "gl-side-card", children: [
+            /* @__PURE__ */ u3("div", { className: "gl-side-head", children: [
+              /* @__PURE__ */ u3("span", { className: "gl-pill gl-pill-info", children: "GUIDE" }),
+              /* @__PURE__ */ u3("h3", { children: "\u2328\uFE0F \uC870\uC791\uBC95 \uBC0F \uD0A4\uB9F5\uD551" })
+            ] }),
+            /* @__PURE__ */ u3("ul", { className: "gl-side-key-list", children: guide.controls.map((c3, i3) => /* @__PURE__ */ u3("li", { children: [
+              /* @__PURE__ */ u3("span", { className: "gl-keys", children: c3.keys.map((k4, ki) => /* @__PURE__ */ u3(gn.Fragment, { children: [
+                ki > 0 && /* @__PURE__ */ u3("i", { children: "/" }),
+                /* @__PURE__ */ u3("kbd", { children: k4 })
+              ] }, ki)) }),
+              /* @__PURE__ */ u3("span", { className: "gl-side-key-desc", children: c3.desc })
+            ] }, i3)) })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "gl-side-card", children: [
+            /* @__PURE__ */ u3("div", { className: "gl-side-head", children: [
+              /* @__PURE__ */ u3("span", { className: "gl-pill gl-pill-rule", children: "RULES" }),
+              /* @__PURE__ */ u3("h3", { children: "\u{1F3AF} \uD575\uC2EC \uADDC\uCE59" })
+            ] }),
+            /* @__PURE__ */ u3("ul", { className: "gl-side-rule-list", children: guide.rules.map((r3, i3) => /* @__PURE__ */ u3("li", { children: r3 }, i3)) })
+          ] }),
+          guide.tips?.length > 0 && /* @__PURE__ */ u3("div", { className: "gl-side-card gl-side-card-tip", children: [
+            /* @__PURE__ */ u3("div", { className: "gl-side-head", children: [
+              /* @__PURE__ */ u3("span", { className: "gl-pill gl-pill-tip", children: "TIP" }),
+              /* @__PURE__ */ u3("h3", { children: "\u{1F4A1} \uD50C\uB808\uC774 \uACF5\uB7B5" })
+            ] }),
+            /* @__PURE__ */ u3("ul", { className: "gl-side-rule-list", children: guide.tips.map((t3, i3) => /* @__PURE__ */ u3("li", { children: t3 }, i3)) })
+          ] })
+        ] })
+      ] }),
+      showGuide && /* @__PURE__ */ u3(GuideModal, { game, onClose: () => setShowGuide(false) })
+    ] });
+  }
+  function RoomWaiting({
+    game,
+    room,
+    me,
+    isHost,
+    countdown = null,
+    botDifficulty,
+    onBotDifficulty,
+    onAddBot,
+    onRemoveBot,
+    onStart,
+    onCopyLink,
+    onLeave
+  }) {
+    const [showGuide, setShowGuide] = d2(false);
+    const maxPlayers = game?.maxPlayers || 8;
+    const isQuick = room.matchType === "quick";
+    const humans = room.players.filter((p3) => !p3.isBot).length;
+    const canStart = room.players.length >= 2;
+    const supportsBots = game?.supportsBot && room.game !== "bombergirl";
+    return /* @__PURE__ */ u3("div", { className: "gl-lobby gl-room", children: [
+      /* @__PURE__ */ u3("header", { className: "gl-hero", children: [
+        /* @__PURE__ */ u3("div", { className: "gl-hero-icon", children: game?.icon || "\u{1F3AE}" }),
+        /* @__PURE__ */ u3("div", { className: "gl-hero-main", children: [
+          /* @__PURE__ */ u3("div", { className: "gl-chip-row", children: [
+            /* @__PURE__ */ u3("span", { className: "gl-chip", children: isQuick ? "\u26A1 \uC989\uC2DC \uB9E4\uCE6D" : "\u{1F511} \uCC38\uC5EC \uCF54\uB4DC \uBC29" }),
+            /* @__PURE__ */ u3("span", { className: "gl-chip gl-chip-soft", children: [
+              room.players.length,
+              " / ",
+              maxPlayers,
+              "\uBA85"
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("h2", { children: game?.name || room.game }),
+          isQuick ? /* @__PURE__ */ u3("p", { children: canStart ? "\uC0C1\uB300\uB97C \uCC3E\uC558\uC2B5\uB2C8\uB2E4!" : "\uC0C1\uB300 \uD50C\uB808\uC774\uC5B4\uB97C \uCC3E\uB294 \uC911\uC785\uB2C8\uB2E4..." }) : /* @__PURE__ */ u3("p", { children: "\uC544\uB798 \uCF54\uB4DC\uB97C \uCE5C\uAD6C\uC5D0\uAC8C \uACF5\uC720\uD558\uC138\uC694. \uBC29\uC7A5\uC774 \uC2DC\uC791\uD558\uBA74 \uAC8C\uC784\uC774 \uC5F4\uB9BD\uB2C8\uB2E4." })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "gl-hero-side", children: [
+          /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost", onClick: () => setShowGuide(true), children: "\u{1F4D6} \uC870\uC791\uBC95" }),
+          /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost", onClick: onLeave, children: "\u2190 \uB098\uAC00\uAE30" })
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "gl-room-grid", children: [
+        /* @__PURE__ */ u3("section", { className: "gl-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "gl-code-banner", children: [
+            /* @__PURE__ */ u3("div", { children: [
+              /* @__PURE__ */ u3("span", { className: "gl-field-label", children: "\uCC38\uC5EC \uCF54\uB4DC" }),
+              /* @__PURE__ */ u3("strong", { className: "gl-code-value", children: room.code })
+            ] }),
+            /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-secondary gl-btn-sm", onClick: onCopyLink, children: "\u{1F517} \uB9C1\uD06C \uBCF5\uC0AC" })
+          ] }),
+          /* @__PURE__ */ u3("ul", { className: "gl-player-list", children: [
+            room.players.map((p3) => /* @__PURE__ */ u3("li", { className: p3.id === me?.id ? "is-me" : "", children: [
+              /* @__PURE__ */ u3("span", { className: "gl-avatar", children: p3.isBot ? "\u{1F916}" : "\u{1F464}" }),
+              /* @__PURE__ */ u3("div", { className: "gl-player-main", children: [
+                /* @__PURE__ */ u3("strong", { children: p3.name }),
+                /* @__PURE__ */ u3("small", { children: p3.isBot ? `\uCEF4\uD4E8\uD130 \xB7 ${(p3.botDifficulty || "normal").toUpperCase()}` : "\uD50C\uB808\uC774\uC5B4" })
+              ] }),
+              p3.id === (room.hostId || room.host) && /* @__PURE__ */ u3("span", { className: "gl-tag", children: "\uBC29\uC7A5" }),
+              isHost && p3.isBot && /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost gl-btn-sm", onClick: () => onRemoveBot(p3.id), children: "\uC81C\uAC70" })
+            ] }, p3.id)),
+            Array.from({ length: Math.max(0, maxPlayers - room.players.length) }).slice(0, 4).map((_3, i3) => /* @__PURE__ */ u3("li", { className: "is-empty", children: [
+              /* @__PURE__ */ u3("span", { className: "gl-avatar", children: "\uFF0B" }),
+              /* @__PURE__ */ u3("div", { className: "gl-player-main", children: /* @__PURE__ */ u3("small", { children: "\uBE48 \uC790\uB9AC" }) })
+            ] }, `empty-${i3}`))
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("section", { className: "gl-panel gl-room-actions", children: [
+          isHost && supportsBots && !isQuick && /* @__PURE__ */ u3("div", { className: "gl-field", children: [
+            /* @__PURE__ */ u3("span", { className: "gl-field-label", children: "\uCEF4\uD4E8\uD130 \uCD94\uAC00" }),
+            /* @__PURE__ */ u3("div", { className: "gl-bot-row", children: [
+              /* @__PURE__ */ u3("div", { className: "gl-seg", children: DIFFICULTIES.map((d3) => /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: botDifficulty === d3.id ? "active" : "",
+                  onClick: () => onBotDifficulty(d3.id),
+                  children: d3.label
+                },
+                d3.id
+              )) }),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "gl-btn gl-btn-secondary gl-btn-sm",
+                  disabled: room.players.length >= maxPlayers,
+                  onClick: onAddBot,
+                  children: "+ \uCD94\uAC00"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ u3("span", { className: "gl-field-hint", children: "\uCEF4\uD4E8\uD130\uAC00 \uD3EC\uD568\uB41C \uACBD\uAE30\uB294 \uC5F0\uC2B5 \uACBD\uAE30\uB85C \uCC98\uB9AC\uB429\uB2C8\uB2E4." })
+          ] }),
+          isQuick && countdown != null && /* @__PURE__ */ u3("div", { className: "gl-countdown", children: [
+            /* @__PURE__ */ u3("strong", { children: countdown }),
+            /* @__PURE__ */ u3("span", { children: "\uCD08 \uD6C4 \uC790\uB3D9 \uC2DC\uC791" })
+          ] }),
+          isHost ? /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-primary gl-btn-lg", disabled: !canStart, onClick: onStart, children: canStart ? "\u25B6 \uC9C0\uAE08 \uC2DC\uC791" : `\uCD5C\uC18C 2\uBA85 \uD544\uC694 (\uD604\uC7AC ${humans}\uBA85)` }) : /* @__PURE__ */ u3("div", { className: "gl-waiting-note", children: "\u23F3 \uBC29\uC7A5\uC774 \uC2DC\uC791\uD558\uAE30\uB97C \uAE30\uB2E4\uB9AC\uB294 \uC911..." })
+        ] })
+      ] }),
+      showGuide && /* @__PURE__ */ u3(GuideModal, { game, onClose: () => setShowGuide(false) })
+    ] });
+  }
+
   // platform-src/GamePlatformApp.jsx
+  var QUICK_MATCH_COUNTDOWN_SECONDS = 4;
   function GamePlatformApp({ userProvider, apiBaseUrl = "/api/platform" }) {
     const [currentUser, setCurrentUser] = d2(() => userProvider.getCurrentUser());
     const [activeTab, setActiveTab] = d2("arcade");
@@ -2884,7 +3755,8 @@ var GameBoxPlatform = (() => {
     const [activeEventId, setActiveEventId] = d2(null);
     const [activeEventsList, setActiveEventsList] = d2([]);
     const [activeGameId, setActiveGameId] = d2(null);
-    const [originalBombermanMode, setOriginalBombermanMode] = d2("online");
+    const [originalLaunch, setOriginalLaunch] = d2(null);
+    const [rouletteOpen, setRouletteOpen] = d2(false);
     const [currentRoom, setCurrentRoom] = d2(null);
     const [publicGameState, setPublicGameState] = d2(null);
     const [privateRoleState, setPrivateRoleState] = d2(null);
@@ -2893,12 +3765,12 @@ var GameBoxPlatform = (() => {
     const [publicRooms, setPublicRooms] = d2([]);
     const [directoryUsers, setDirectoryUsers] = d2([]);
     const [departments, setDepartments] = d2([]);
-    const [joinCodeInput, setJoinCodeInput] = d2("");
+    const [initialJoinCode, setInitialJoinCode] = d2("");
     const [toastMessage, setToastMessage] = d2("");
-    const [botModalGame, setBotModalGame] = d2(null);
-    const [botCountOption, setBotCountOption] = d2(1);
-    const [botDiffOption, setBotDiffOption] = d2("normal");
-    const [lobbyBotDiff, setLobbyBotDiff] = d2("normal");
+    const [busy, setBusy] = d2(false);
+    const [roomBotDiff, setRoomBotDiff] = d2("normal");
+    const [countdown, setCountdown] = d2(null);
+    const [showGuide, setShowGuide] = d2(false);
     const apiRef = A2(null);
     const launchRequestRef = A2(0);
     if (!apiRef.current) {
@@ -2948,17 +3820,18 @@ var GameBoxPlatform = (() => {
       }
       const urlRoom = params.get("room");
       if (urlRoom) {
-        setJoinCodeInput(urlRoom.toUpperCase());
+        setInitialJoinCode(urlRoom.toUpperCase());
       }
       const urlGame = params.get("game");
       if (urlGame) {
         const targetGame = getGameById(urlGame);
         if (targetGame) {
           setActiveGameId(targetGame.id);
-          const autoMode = params.get("mode");
-          if (autoMode === "single") {
+          if (params.get("mode") === "single") {
+            const cfg = getLobbyConfig(targetGame);
             setTimeout(() => {
-              handleLaunchSingleVsBot(targetGame, "normal");
+              if (cfg?.kind === "draw") setRouletteOpen(true);
+              else handleStartSingle(targetGame, { botCount: cfg?.bots?.def || 1, difficulty: "normal" });
             }, 60);
           }
         }
@@ -3011,163 +3884,173 @@ var GameBoxPlatform = (() => {
       });
       return () => unsubscribe();
     }, [api, currentRoom?.code, currentUser?.id, showToast]);
-    const isRouletteGame = (gid) => gid === "roulette" || gid === "marble-roulette";
-    const handleOpenMarbleRoulette = () => {
-      launchRequestRef.current += 1;
-      setActiveGameId("roulette");
-      setCurrentRoom(null);
-    };
-    const handleOpenOriginalBomberman = (mode = "online") => {
-      launchRequestRef.current += 1;
-      setOriginalBombermanMode(mode);
-      setActiveGameId("bomberman");
-      setCurrentRoom(null);
+    const activeGameMeta = getGameById(currentRoom?.game || originalLaunch?.gameId || activeGameId);
+    const roomHostId = currentRoom?.hostId || currentRoom?.host || null;
+    const isRoomHost = !!currentRoom && roomHostId === currentUser?.id;
+    const lobbyGameMeta = getGameById(activeGameId);
+    const quickWaitingCount = T2(
+      () => publicRooms.filter((r3) => r3.game === activeGameId && r3.matchType === "quick" && r3.state === "lobby").length,
+      [publicRooms, activeGameId]
+    );
+    const isDeckEmbed = T2(() => {
+      if (typeof window === "undefined") return false;
+      const params = new URLSearchParams(window.location.search);
+      return params.get("embed") === "deck" || window.self !== window.top;
+    }, []);
+    const resetPlayState = () => {
       setMatchResult(null);
       setPublicGameState(null);
+      setPrivateRoleState(null);
+      setDrawingStrokes([]);
     };
-    const handleOpenOriginalBombergirl = () => {
-      launchRequestRef.current += 1;
-      setActiveGameId("bombergirl");
-      setCurrentRoom(null);
-      setMatchResult(null);
-      setPublicGameState(null);
+    const enterRoom = (room, { started = false } = {}) => {
+      setCurrentRoom(room);
+      setActiveGameId(room.game);
+      if (!started) resetPlayState();
+      if (room.lastPublicGameState) setPublicGameState(room.lastPublicGameState);
     };
-    const handleLaunchSingleVsBot = async (game, difficulty = "normal") => {
-      if (isRouletteGame(game.id)) {
-        handleOpenMarbleRoulette();
-        return;
-      }
-      if (game.id === "bomberman") {
-        handleOpenOriginalBomberman("bot");
-        return;
-      }
-      if (game.id === "bombergirl") {
-        handleOpenOriginalBombergirl();
-        return;
-      }
-      const requestId = ++launchRequestRef.current;
+    const startRoomNow = q2(async (code) => {
       try {
-        const maxBots = Math.max(1, (game.maxPlayers || 2) - 1);
-        const count = Math.min(maxBots, 1);
-        const res = await api.createRoom({
-          gameId: game.id,
-          mode: "bot",
-          botCount: count,
-          botDifficulty: difficulty || "normal",
-          eventId: activeEventId
-        });
-        if (requestId !== launchRequestRef.current) return;
-        const room = res.room;
-        setCurrentRoom(room);
-        setActiveGameId(game.id);
-        setMatchResult(null);
-        setPublicGameState(null);
-        const started = await api.startRoom(room.code);
-        if (requestId !== launchRequestRef.current) return;
-        setCurrentRoom(started.room);
-        if (started.room?.lastPublicGameState) {
-          setPublicGameState(started.room.lastPublicGameState);
-        }
+        const res = await api.startRoom(code);
+        setCurrentRoom(res.room);
+        if (res.room?.lastPublicGameState) setPublicGameState(res.room.lastPublicGameState);
       } catch (err) {
         showToast(err.message);
       }
-    };
-    const handleStartSoloPractice = async (game) => {
-      return handleLaunchSingleVsBot(game, "normal");
-    };
-    const handleOpenBotModal = (game) => {
-      if (isRouletteGame(game.id)) {
-        handleOpenMarbleRoulette();
-        return;
+    }, [api, showToast]);
+    const humanCount = currentRoom ? currentRoom.players.filter((p3) => !p3.isBot).length : 0;
+    h2(() => {
+      if (!currentRoom || currentRoom.state !== "lobby" || currentRoom.matchType !== "quick" || humanCount < 2) {
+        setCountdown(null);
+        return void 0;
       }
+      let remaining = QUICK_MATCH_COUNTDOWN_SECONDS;
+      setCountdown(remaining);
+      const timer = setInterval(() => {
+        remaining -= 1;
+        if (remaining <= 0) {
+          clearInterval(timer);
+          setCountdown(0);
+          if (isRoomHost) startRoomNow(currentRoom.code);
+        } else {
+          setCountdown(remaining);
+        }
+      }, 1e3);
+      return () => clearInterval(timer);
+    }, [currentRoom?.code, currentRoom?.state, currentRoom?.matchType, humanCount, isRoomHost, startRoomNow]);
+    const openGame = (gameId) => {
+      launchRequestRef.current += 1;
+      setActiveGameId(gameId);
+      setOriginalLaunch(null);
+      setRouletteOpen(false);
+      setCurrentRoom(null);
+      resetPlayState();
+    };
+    const handleStartSingle = async (game, { botCount = 1, difficulty = "normal" } = {}) => {
       if (game.id === "bomberman") {
-        handleOpenOriginalBomberman("bot");
+        setOriginalLaunch({ gameId: "bomberman", mode: "bot", bots: botCount });
         return;
       }
       if (game.id === "bombergirl") {
-        handleOpenOriginalBombergirl();
+        setOriginalLaunch({ gameId: "bombergirl", mode: "single", bots: botCount });
         return;
       }
-      const maxBots = Math.max(1, (game.maxPlayers || 2) - 1);
-      setBotCountOption(Math.min(1, maxBots));
-      setBotDiffOption("normal");
-      setBotModalGame(game);
-    };
-    const handleLaunchBotMatch = async () => {
-      if (!botModalGame) return;
-      const game = botModalGame;
       const requestId = ++launchRequestRef.current;
-      setBotModalGame(null);
+      setBusy(true);
       try {
         const maxBots = Math.max(1, (game.maxPlayers || 2) - 1);
-        const count = Math.min(maxBots, Number(botCountOption) || 1);
         const res = await api.createRoom({
           gameId: game.id,
           mode: "bot",
-          botCount: count,
-          botDifficulty: botDiffOption,
+          botCount: Math.min(maxBots, botCount),
+          botDifficulty: difficulty,
           eventId: activeEventId
         });
         if (requestId !== launchRequestRef.current) return;
-        const room = res.room;
-        setCurrentRoom(room);
-        setActiveGameId(game.id);
-        setMatchResult(null);
-        setPublicGameState(null);
-        const started = await api.startRoom(room.code);
+        enterRoom(res.room);
+        const started = await api.startRoom(res.room.code);
         if (requestId !== launchRequestRef.current) return;
         setCurrentRoom(started.room);
-        if (started.room?.lastPublicGameState) {
-          setPublicGameState(started.room.lastPublicGameState);
-        }
+        if (started.room?.lastPublicGameState) setPublicGameState(started.room.lastPublicGameState);
       } catch (err) {
         showToast(err.message);
+      } finally {
+        setBusy(false);
       }
     };
-    const handleCreateOnlineRoom = async (game) => {
-      if (isRouletteGame(game.id)) {
-        handleOpenMarbleRoulette();
-        return;
-      }
-      if (game.id === "bomberman") {
-        handleOpenOriginalBomberman("online");
-        return;
-      }
+    const handleQuickMatch = async (game) => {
       const requestId = ++launchRequestRef.current;
+      setBusy(true);
+      try {
+        const { rooms = [] } = await api.listRooms(game.id, "quick");
+        const cfg = getLobbyConfig(game);
+        const open = rooms.find((r3) => r3.state === "lobby" && r3.players.length < (cfg?.multiMax || game.maxPlayers || 2) && !r3.players.some((p3) => p3.id === currentUser?.id));
+        let res;
+        if (open) {
+          res = await api.joinRoom(open.code);
+        } else {
+          res = await api.createRoom({
+            gameId: game.id,
+            mode: "online",
+            matchType: "quick",
+            botCount: 0,
+            botDifficulty: "normal",
+            eventId: activeEventId
+          });
+        }
+        if (requestId !== launchRequestRef.current) return;
+        enterRoom(res.room);
+      } catch (err) {
+        showToast(err.message);
+      } finally {
+        setBusy(false);
+      }
+    };
+    const handleCreateCodeRoom = async (game) => {
+      const requestId = ++launchRequestRef.current;
+      setBusy(true);
       try {
         const res = await api.createRoom({
           gameId: game.id,
           mode: "online",
+          matchType: "code",
           botCount: 0,
           botDifficulty: "normal",
           eventId: activeEventId
         });
         if (requestId !== launchRequestRef.current) return;
-        setCurrentRoom(res.room);
-        setActiveGameId(game.id);
-        setMatchResult(null);
-        setPublicGameState(null);
+        enterRoom(res.room);
       } catch (err) {
         showToast(err.message);
+      } finally {
+        setBusy(false);
       }
     };
-    const handleJoinRoomByCode = async (codeToJoin) => {
-      const clean = String(codeToJoin || joinCodeInput || "").trim().toUpperCase();
+    const handleJoinByCode = async (game, rawCode) => {
+      const clean = String(rawCode || "").trim().toUpperCase();
       if (!clean) {
-        showToast("\uCC38\uAC00\uD560 \uBC29 \uCF54\uB4DC\uB97C \uC785\uB825\uD558\uC138\uC694.");
+        showToast("\uCC38\uC5EC \uCF54\uB4DC\uB97C \uC785\uB825\uD558\uC138\uC694.");
         return;
       }
       const requestId = ++launchRequestRef.current;
+      setBusy(true);
       try {
         const res = await api.joinRoom(clean);
         if (requestId !== launchRequestRef.current) return;
-        setCurrentRoom(res.room);
-        setActiveGameId(res.room.game);
+        if (game && res.room.game !== game.id) {
+          await api.leaveRoom(clean).catch(() => {
+          });
+          const other = getGameById(res.room.game);
+          showToast(`\uC774 \uCF54\uB4DC\uB294 ${other?.name || res.room.game} \uBC29\uC785\uB2C8\uB2E4. \uD574\uB2F9 \uAC8C\uC784 \uB300\uAE30\uC2E4\uC5D0\uC11C \uC785\uC7A5\uD574 \uC8FC\uC138\uC694.`);
+          return;
+        }
+        enterRoom(res.room, { started: true });
         setMatchResult(res.room.lastResult || null);
-        setPublicGameState(res.room.lastPublicGameState || null);
-        setJoinCodeInput("");
+        setInitialJoinCode("");
       } catch (err) {
         showToast(err.message);
+      } finally {
+        setBusy(false);
       }
     };
     const handleLeaveCurrentRoom = async () => {
@@ -3179,17 +4062,25 @@ var GameBoxPlatform = (() => {
         }
       }
       setCurrentRoom(null);
-      setPublicGameState(null);
-      setPrivateRoleState(null);
-      setMatchResult(null);
-      setDrawingStrokes([]);
+      resetPlayState();
       refreshLobbyData();
+    };
+    const handleBackToLobby = () => {
+      setOriginalLaunch(null);
+      setRouletteOpen(false);
+    };
+    const goCatalog = async () => {
+      await handleLeaveCurrentRoom();
+      setOriginalLaunch(null);
+      setRouletteOpen(false);
+      setActiveGameId(null);
+      setActiveTab("arcade");
     };
     const handleCopyInviteLink = () => {
       if (!currentRoom?.code || typeof window === "undefined") return;
-      const url = `${window.location.origin}${window.location.pathname}?room=${currentRoom.code}`;
+      const url = `${window.location.origin}${window.location.pathname}?game=${currentRoom.game}&room=${currentRoom.code}`;
       navigator.clipboard?.writeText(url);
-      showToast(`\uCD08\uB300 \uB9C1\uD06C\uAC00 \uBCF5\uC0AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4! (\uBC29 \uCF54\uB4DC: ${currentRoom.code})`);
+      showToast(`\uCD08\uB300 \uB9C1\uD06C\uAC00 \uBCF5\uC0AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4. (\uCC38\uC5EC \uCF54\uB4DC: ${currentRoom.code})`);
     };
     const handleSendGameAction = async (actionPayload) => {
       if (!currentRoom?.code) return;
@@ -3212,23 +4103,285 @@ var GameBoxPlatform = (() => {
         return true;
       });
     }, [selectedCategory, searchQuery]);
-    const activeGameMeta = getGameById(currentRoom?.game || activeGameId);
-    const roomHostId = currentRoom?.hostId || currentRoom?.host || null;
-    const isRoomHost = !!currentRoom && roomHostId === currentUser?.id;
-    const myRoomPlayer = currentRoom?.players?.find((p3) => p3.id === currentUser?.id);
-    const supportsRoomBots = currentRoom?.game !== "bombergirl" && activeGameMeta?.supportsBot;
-    const isDeckEmbed = T2(() => {
-      if (typeof window === "undefined") return false;
-      const params = new URLSearchParams(window.location.search);
-      return params.get("embed") === "deck" || window.self !== window.top;
-    }, []);
+    const modeLabel = (room) => room.mode === "bot" ? "\u{1F916} \uCEF4\uD4E8\uD130 \uB300\uACB0" : "\u{1F310} \uC628\uB77C\uC778 \uB300\uC804";
+    const renderOriginalGame = () => {
+      const meta = getGameById(originalLaunch.gameId);
+      return /* @__PURE__ */ u3("div", { className: "gp-room-container gp-original-game-container", children: [
+        /* @__PURE__ */ u3("div", { className: "gp-room-topbar", children: [
+          /* @__PURE__ */ u3("div", { className: "gp-room-title-group", children: [
+            /* @__PURE__ */ u3("span", { className: "gp-game-icon-lg", children: meta?.icon }),
+            /* @__PURE__ */ u3("div", { children: /* @__PURE__ */ u3("h2", { children: [
+              meta?.name,
+              /* @__PURE__ */ u3("span", { className: "gp-mode-badge mode-bot", children: [
+                "\u{1F916} \uCEF4\uD4E8\uD130 \uB300\uACB0 \xB7 ",
+                originalLaunch.bots,
+                "\uBA85"
+              ] })
+            ] }) })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "gp-btn-row", children: [
+            /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost gl-btn-sm", onClick: () => setShowGuide(true), children: "\u{1F4D6} \uC870\uC791\uBC95" }),
+            /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost gl-btn-sm", onClick: handleBackToLobby, children: "\u2190 \uB300\uAE30\uC2E4" })
+          ] })
+        ] }),
+        originalLaunch.gameId === "bomberman" ? /* @__PURE__ */ u3(OriginalBombermanArena, { mode: originalLaunch.mode, bots: originalLaunch.bots, currentUser }) : /* @__PURE__ */ u3(OriginalBombergirlArena, { mode: "single", bots: originalLaunch.bots, currentUser, onBackToLobby: handleBackToLobby })
+      ] });
+    };
+    const renderRoom = () => {
+      if (currentRoom.state === "lobby") {
+        return /* @__PURE__ */ u3(
+          RoomWaiting,
+          {
+            game: activeGameMeta,
+            room: currentRoom,
+            me: currentUser,
+            isHost: isRoomHost,
+            countdown,
+            botDifficulty: roomBotDiff,
+            onBotDifficulty: setRoomBotDiff,
+            onAddBot: async () => {
+              try {
+                const res = await api.addBot(currentRoom.code, roomBotDiff);
+                setCurrentRoom(res.room);
+              } catch (err) {
+                showToast(err.message);
+              }
+            },
+            onRemoveBot: async (botId) => {
+              try {
+                const res = await api.removeBot(currentRoom.code, botId);
+                setCurrentRoom(res.room);
+              } catch (err) {
+                showToast(err.message);
+              }
+            },
+            onStart: () => startRoomNow(currentRoom.code),
+            onCopyLink: handleCopyInviteLink,
+            onLeave: handleLeaveCurrentRoom
+          }
+        );
+      }
+      return /* @__PURE__ */ u3("div", { className: "gp-room-container", children: [
+        /* @__PURE__ */ u3("div", { className: "gp-room-topbar", children: [
+          /* @__PURE__ */ u3("div", { className: "gp-room-title-group", children: [
+            /* @__PURE__ */ u3("span", { className: "gp-game-icon-lg", children: activeGameMeta?.icon || "\u{1F3AE}" }),
+            /* @__PURE__ */ u3("div", { children: /* @__PURE__ */ u3("h2", { children: [
+              activeGameMeta?.name || currentRoom.game,
+              currentRoom.mode === "online" && /* @__PURE__ */ u3("span", { className: "gp-room-code-badge", children: [
+                "\uCF54\uB4DC ",
+                currentRoom.code
+              ] }),
+              /* @__PURE__ */ u3("span", { className: `gp-mode-badge mode-${currentRoom.mode}`, children: modeLabel(currentRoom) })
+            ] }) })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "gp-btn-row", children: [
+            /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost gl-btn-sm", onClick: () => setShowGuide(true), children: "\u{1F4D6} \uC870\uC791\uBC95" }),
+            /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost gl-btn-sm", onClick: handleLeaveCurrentRoom, children: "\u2190 \uB300\uAE30\uC2E4" })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "gp-active-match-area", children: [
+          matchResult && /* @__PURE__ */ u3("div", { className: "gp-match-result-banner", children: [
+            /* @__PURE__ */ u3("div", { className: "gp-match-result-header", children: [
+              /* @__PURE__ */ u3("h3", { children: [
+                "\u{1F3C1} \uAC8C\uC784 \uC885\uB8CC",
+                " ",
+                matchResult.winner ? `\xB7 \u{1F3C6} ${matchResult.winner}` : "\xB7 \uBB34\uC2B9\uBD80"
+              ] }),
+              /* @__PURE__ */ u3("span", { className: `gp-official-pill ${matchResult.isOfficial ? "official" : "practice"}`, children: matchResult.isOfficial ? "\u2713 \uACF5\uC2DD \uB7AD\uD0B9 \uBC18\uC601" : "\uC5F0\uC2B5 \uACBD\uAE30 (\uB7AD\uD0B9 \uC81C\uC678)" })
+            ] }),
+            matchResult.standings && matchResult.standings.length > 0 && /* @__PURE__ */ u3("div", { className: "gp-podium-list", children: matchResult.standings.map((st) => /* @__PURE__ */ u3("div", { className: `gp-podium-item rank-${st.rank}`, children: [
+              /* @__PURE__ */ u3("span", { className: "gp-podium-rank", children: [
+                "#",
+                st.rank
+              ] }),
+              /* @__PURE__ */ u3("strong", { children: st.name }),
+              /* @__PURE__ */ u3("span", { className: "gp-muted-sm", children: st.isBot ? "\uCEF4\uD4E8\uD130" : "\uD50C\uB808\uC774\uC5B4" }),
+              /* @__PURE__ */ u3("span", { className: "gp-podium-score", children: [
+                st.score,
+                "\uC810"
+              ] })
+            ] }, st.id)) }),
+            /* @__PURE__ */ u3("div", { className: "gp-btn-row", children: [
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "gl-btn gl-btn-primary",
+                  onClick: async () => {
+                    try {
+                      const res = await api.rematch(currentRoom.code);
+                      setCurrentRoom(res.room);
+                      setMatchResult(null);
+                      if (currentRoom.mode !== "online") {
+                        const started = await api.startRoom(currentRoom.code);
+                        setCurrentRoom(started.room);
+                        if (started.room?.lastPublicGameState) setPublicGameState(started.room.lastPublicGameState);
+                      }
+                    } catch (err) {
+                      showToast(err.message);
+                    }
+                  },
+                  children: "\u{1F504} \uB2E4\uC2DC \uD558\uAE30"
+                }
+              ),
+              /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-secondary", onClick: handleLeaveCurrentRoom, children: "\uB300\uAE30\uC2E4\uB85C" })
+            ] })
+          ] }),
+          /* @__PURE__ */ u3(
+            GamePlayStage,
+            {
+              gameId: currentRoom.game,
+              room: currentRoom,
+              currentUser,
+              gameStateData: publicGameState || currentRoom.lastPublicGameState,
+              publicState: publicGameState || currentRoom.lastPublicGameState,
+              privateRole: privateRoleState,
+              drawingStrokes,
+              onAction: handleSendGameAction
+            }
+          )
+        ] })
+      ] });
+    };
+    const renderCatalog = () => /* @__PURE__ */ u3("div", { className: "gp-arcade-lobby", children: [
+      /* @__PURE__ */ u3("section", { className: "gp-catalog-toolbar", children: [
+        /* @__PURE__ */ u3("div", { className: "gp-category-tabs", children: GAME_CATEGORIES.map((cat) => /* @__PURE__ */ u3(
+          "button",
+          {
+            type: "button",
+            className: `gp-cat-pill ${selectedCategory === cat.id ? "active" : ""}`,
+            onClick: () => setSelectedCategory(cat.id),
+            children: cat.label
+          },
+          cat.id
+        )) }),
+        /* @__PURE__ */ u3(
+          "input",
+          {
+            type: "search",
+            className: "gp-input gp-search-input",
+            placeholder: "\uAC8C\uC784 \uC774\uB984, \uC7A5\uB974, \uD0A4\uC6CC\uB4DC \uAC80\uC0C9...",
+            value: searchQuery,
+            onChange: (e3) => setSearchQuery(e3.target.value)
+          }
+        )
+      ] }),
+      /* @__PURE__ */ u3("section", { className: "gp-games-grid", children: filteredGames.map((game) => /* @__PURE__ */ u3(
+        "article",
+        {
+          className: "gp-game-card",
+          "data-game-id": game.id,
+          role: "button",
+          tabIndex: 0,
+          onClick: () => openGame(game.id),
+          onKeyDown: (e3) => {
+            if (e3.key === "Enter" || e3.key === " ") {
+              e3.preventDefault();
+              openGame(game.id);
+            }
+          },
+          children: [
+            /* @__PURE__ */ u3("div", { className: "gp-game-card-header", children: [
+              /* @__PURE__ */ u3("span", { className: "gp-game-card-icon", children: game.icon }),
+              /* @__PURE__ */ u3("div", { className: "gp-game-card-titles", children: [
+                /* @__PURE__ */ u3("h3", { children: game.name }),
+                /* @__PURE__ */ u3("span", { className: "gp-game-card-sub", children: game.subtitle })
+              ] }),
+              /* @__PURE__ */ u3("span", { className: "gp-players-badge", children: game.playersLabel })
+            ] }),
+            /* @__PURE__ */ u3("p", { className: "gp-game-card-desc", children: game.description }),
+            /* @__PURE__ */ u3("div", { className: "gp-game-card-actions", children: /* @__PURE__ */ u3("span", { className: "gp-btn gp-btn-primary gp-btn-block", children: "\uC785\uC7A5\uD558\uAE30 \u2192" }) })
+          ]
+        },
+        game.id
+      )) })
+    ] });
+    const renderMain = () => {
+      if (originalLaunch) return renderOriginalGame();
+      if (currentRoom) return renderRoom();
+      if (activeTab === "win98") {
+        return /* @__PURE__ */ u3("div", { className: "gp-room-container gp-original-game-container", style: { height: "calc(100vh - 90px)", display: "flex", flexDirection: "column" }, children: [
+          /* @__PURE__ */ u3("div", { className: "gp-room-topbar", children: [
+            /* @__PURE__ */ u3("div", { className: "gp-room-title-group", children: [
+              /* @__PURE__ */ u3("span", { className: "gp-game-icon-lg", children: "\u{1FA9F}" }),
+              /* @__PURE__ */ u3("h2", { children: [
+                "\uD55C\uAE00 Windows 98 ",
+                /* @__PURE__ */ u3("span", { className: "gp-mode-badge mode-online", children: "RETRO" })
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("div", { style: { display: "flex", gap: "8px" }, children: [
+              /* @__PURE__ */ u3("a", { href: "/win98-web/", target: "_blank", rel: "noopener noreferrer", className: "gl-btn gl-btn-primary gl-btn-sm", style: { textDecoration: "none" }, children: "\u2197 \uC0C8 \uD0ED\uC73C\uB85C \uC5F4\uAE30" }),
+              /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost gl-btn-sm", onClick: () => setActiveTab("arcade"), children: "\u2190 \uAC8C\uC784 \uBAA9\uB85D" })
+            ] })
+          ] }),
+          /* @__PURE__ */ u3(
+            "iframe",
+            {
+              src: "/win98-web/",
+              title: "\uD55C\uAE00 Windows 98 \uB370\uC2A4\uD06C\uD1B1",
+              style: { width: "100%", flex: "1 1 auto", border: "2px solid #008080", borderRadius: "8px", background: "#008080" },
+              allow: "autoplay; fullscreen"
+            }
+          )
+        ] });
+      }
+      if (activeTab === "events") {
+        return /* @__PURE__ */ u3(
+          EventGroupsView,
+          {
+            api,
+            currentUser,
+            activeEventId,
+            onSelectActiveEvent: (id) => {
+              setActiveEventId(id);
+              showToast(id ? "\uD65C\uC131 \uC774\uBCA4\uD2B8 \uADF8\uB8F9\uC774 \uC124\uC815\uB418\uC5C8\uC2B5\uB2C8\uB2E4." : "\uD65C\uC131 \uC774\uBCA4\uD2B8 \uADF8\uB8F9\uC774 \uD574\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4.");
+            }
+          }
+        );
+      }
+      if (activeTab === "rankings") {
+        return /* @__PURE__ */ u3(RankingsAndStatsView, { api, currentUser });
+      }
+      if (lobbyGameMeta && lobbyGameMeta.id === "roulette" && rouletteOpen) {
+        return /* @__PURE__ */ u3(
+          MarbleRouletteView,
+          {
+            api,
+            currentUser,
+            users: directoryUsers,
+            departments,
+            activeEventId,
+            onBack: handleBackToLobby
+          }
+        );
+      }
+      if (lobbyGameMeta) {
+        return /* @__PURE__ */ u3(
+          GameLobby,
+          {
+            game: lobbyGameMeta,
+            userName: currentUser?.name,
+            quickWaiting: quickWaitingCount,
+            initialCode: initialJoinCode,
+            busy,
+            onBack: isDeckEmbed ? null : goCatalog,
+            onStartSingle: (opts) => handleStartSingle(lobbyGameMeta, opts),
+            onQuickMatch: () => handleQuickMatch(lobbyGameMeta),
+            onCreateRoom: () => handleCreateCodeRoom(lobbyGameMeta),
+            onJoinCode: (code) => handleJoinByCode(lobbyGameMeta, code),
+            onStartDraw: () => setRouletteOpen(true)
+          }
+        );
+      }
+      return renderCatalog();
+    };
     return /* @__PURE__ */ u3("div", { className: `gp-root ${isDeckEmbed ? "gp-deck-embed" : ""}`, children: [
       !isDeckEmbed && /* @__PURE__ */ u3("header", { className: "gp-topbar", children: [
-        /* @__PURE__ */ u3("div", { className: "gp-topbar-brand", onClick: handleLeaveCurrentRoom, style: { cursor: "pointer" }, children: [
+        /* @__PURE__ */ u3("div", { className: "gp-topbar-brand", onClick: goCatalog, style: { cursor: "pointer" }, children: [
           /* @__PURE__ */ u3("span", { className: "gp-brand-logo", children: "\u{1F3AF}" }),
           /* @__PURE__ */ u3("div", { children: [
-            /* @__PURE__ */ u3("h1", { className: "gp-brand-title", children: "GAME-BOX \uC0AC\uB0B4 \uBBF8\uB2C8\uAC8C\uC784 \uD50C\uB7AB\uD3FC" }),
-            /* @__PURE__ */ u3("span", { className: "gp-brand-sub", children: "Marble Roulette \xB7 BattleBox 15\uC885 \xB7 Snake Duel \xB7 Bomberman \xB7 Bombergirl \xB7 CatchMind" })
+            /* @__PURE__ */ u3("h1", { className: "gp-brand-title", children: "GAME-BOX \uBBF8\uB2C8\uAC8C\uC784 \uD50C\uB7AB\uD3FC" }),
+            /* @__PURE__ */ u3("span", { className: "gp-brand-sub", children: "\uAC8C\uC784\uC744 \uACE0\uB974\uBA74 \uB300\uAE30\uC2E4\uC5D0\uC11C \uC2F1\uAE00 \xB7 \uBA40\uD2F0\uB97C \uC120\uD0DD\uD569\uB2C8\uB2E4" })
           ] })
         ] }),
         /* @__PURE__ */ u3("nav", { className: "gp-topbar-nav", children: [
@@ -3237,11 +4390,8 @@ var GameBoxPlatform = (() => {
             {
               type: "button",
               className: `gp-nav-btn ${activeTab === "arcade" && !activeGameId ? "active" : ""}`,
-              onClick: () => {
-                handleLeaveCurrentRoom();
-                setActiveTab("arcade");
-              },
-              children: "\u{1F3AE} \uBBF8\uB2C8\uAC8C\uC784 \uB85C\uBE44 (20\uC885)"
+              onClick: goCatalog,
+              children: "\u{1F3AE} \uAC8C\uC784 \uBAA9\uB85D"
             }
           ),
           /* @__PURE__ */ u3(
@@ -3251,9 +4401,10 @@ var GameBoxPlatform = (() => {
               className: `gp-nav-btn ${activeTab === "events" ? "active" : ""}`,
               onClick: () => {
                 handleLeaveCurrentRoom();
+                setOriginalLaunch(null);
                 setActiveTab("events");
               },
-              children: "\u{1F3C6} \uC774\uBCA4\uD2B8 \uADF8\uB8F9 / \uB300\uD68C"
+              children: "\u{1F3C6} \uC774\uBCA4\uD2B8 / \uB300\uD68C"
             }
           ),
           /* @__PURE__ */ u3(
@@ -3263,9 +4414,10 @@ var GameBoxPlatform = (() => {
               className: `gp-nav-btn ${activeTab === "rankings" ? "active" : ""}`,
               onClick: () => {
                 handleLeaveCurrentRoom();
+                setOriginalLaunch(null);
                 setActiveTab("rankings");
               },
-              children: "\u{1F4CA} \uACF5\uC2DD \uB7AD\uD0B9 / \uC804\uC801"
+              children: "\u{1F4CA} \uB7AD\uD0B9 / \uC804\uC801"
             }
           ),
           /* @__PURE__ */ u3(
@@ -3275,16 +4427,16 @@ var GameBoxPlatform = (() => {
               className: `gp-nav-btn ${activeTab === "win98" ? "active" : ""}`,
               onClick: () => {
                 handleLeaveCurrentRoom();
+                setOriginalLaunch(null);
                 setActiveTab("win98");
               },
-              style: { border: "1px solid #38bdf8" },
-              children: "\u{1FA9F} \uD55C\uAE00 Windows 98 (\uD0C0\uC7902\uC885\xB7\uD53C\uCE74\uCE04\uBC30\uAD6C)"
+              children: "\u{1FA9F} \uB808\uD2B8\uB85C \uB370\uC2A4\uD06C\uD1B1"
             }
           )
         ] }),
         /* @__PURE__ */ u3("div", { className: "gp-topbar-user", children: [
           /* @__PURE__ */ u3("div", { className: "gp-active-event-picker", children: [
-            /* @__PURE__ */ u3("label", { title: "\uC120\uD0DD \uC2DC \uACF5\uC2DD \uC628\uB77C\uC778 \uACBD\uAE30 \uACB0\uACFC\uAC00 \uD574\uB2F9 \uC774\uBCA4\uD2B8 \uADF8\uB8F9 \uC810\uC218\uB85C\uB3C4 \uC9D1\uACC4\uB429\uB2C8\uB2E4.", children: "\u{1F3C6} \uD65C\uC131 \uC774\uBCA4\uD2B8:" }),
+            /* @__PURE__ */ u3("label", { title: "\uC120\uD0DD \uC2DC \uACF5\uC2DD \uC628\uB77C\uC778 \uACBD\uAE30 \uACB0\uACFC\uAC00 \uD574\uB2F9 \uC774\uBCA4\uD2B8 \uADF8\uB8F9 \uC810\uC218\uB85C\uB3C4 \uC9D1\uACC4\uB429\uB2C8\uB2E4.", children: "\u{1F3C6} \uC774\uBCA4\uD2B8:" }),
             /* @__PURE__ */ u3(
               "select",
               {
@@ -3292,13 +4444,13 @@ var GameBoxPlatform = (() => {
                 value: activeEventId || "",
                 onChange: (e3) => setActiveEventId(e3.target.value || null),
                 children: [
-                  /* @__PURE__ */ u3("option", { value: "", children: "\uC77C\uBC18 \uACF5\uC2DD\uC804 (\uC774\uBCA4\uD2B8 \uBBF8\uC9C0\uC815)" }),
+                  /* @__PURE__ */ u3("option", { value: "", children: "\uC77C\uBC18 \uACF5\uC2DD\uC804" }),
                   activeEventsList.map((ev) => /* @__PURE__ */ u3("option", { value: ev.id, children: ev.name }, ev.id))
                 ]
               }
             )
           ] }),
-          /* @__PURE__ */ u3("div", { className: "gp-user-card", title: `\uC0AC\uBC88/\uACE0\uC720ID: ${currentUser?.id}`, children: [
+          /* @__PURE__ */ u3("div", { className: "gp-user-card", title: `\uACE0\uC720ID: ${currentUser?.id}`, children: [
             /* @__PURE__ */ u3("span", { className: "gp-user-dept", children: currentUser?.departmentName }),
             /* @__PURE__ */ u3("strong", { className: "gp-user-name", children: currentUser?.name })
           ] }),
@@ -3323,702 +4475,8 @@ var GameBoxPlatform = (() => {
         ] })
       ] }),
       toastMessage && /* @__PURE__ */ u3("div", { className: "gp-toast-banner", role: "status", children: toastMessage }),
-      /* @__PURE__ */ u3("main", { className: "gp-main", children: isRouletteGame(activeGameId) ? /* @__PURE__ */ u3(
-        MarbleRouletteView,
-        {
-          api,
-          currentUser,
-          users: directoryUsers,
-          departments,
-          activeEventId,
-          onBack: handleLeaveCurrentRoom
-        }
-      ) : activeGameId === "bomberman" && !currentRoom ? /* @__PURE__ */ u3("div", { className: "gp-room-container gp-original-game-container", children: [
-        /* @__PURE__ */ u3("div", { className: "gp-room-topbar", children: [
-          /* @__PURE__ */ u3("div", { className: "gp-room-title-group", children: [
-            /* @__PURE__ */ u3("span", { className: "gp-game-icon-lg", children: "\u{1F4A3}" }),
-            /* @__PURE__ */ u3("div", { children: [
-              /* @__PURE__ */ u3("h2", { children: [
-                "Blast Arena",
-                " ",
-                /* @__PURE__ */ u3("span", { className: `gp-mode-badge mode-${originalBombermanMode === "bot" ? "bot" : "online"}`, children: originalBombermanMode === "bot" ? "\u{1F916} SINGLE VS COM" : "ORIGINAL ONLINE" })
-              ] }),
-              /* @__PURE__ */ u3("p", { className: "gp-muted", children: [
-                "\uC6D0\uBCF8 \uB300\uAE30\uC2E4\xB7\uCC44\uD305\xB7\uAC8C\uC784 \uD654\uBA74\xB7\uC544\uC774\uD15C\xB7\uADDC\uCE59\uC744 \uADF8\uB300\uB85C \uC2E4\uD589\uD569\uB2C8\uB2E4.",
-                originalBombermanMode === "bot" ? " COM-BOT\uC774 \uC790\uB3D9\uC73C\uB85C \uCC38\uAC00\uD569\uB2C8\uB2E4." : ""
-              ] })
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("button", { type: "button", className: "gp-btn gp-btn-secondary", onClick: handleLeaveCurrentRoom, children: "\u2190 \uAC8C\uC784 \uB85C\uBE44\uB85C" })
-        ] }),
-        /* @__PURE__ */ u3(OriginalBombermanArena, { mode: originalBombermanMode })
-      ] }) : activeGameId === "bombergirl" && !currentRoom ? /* @__PURE__ */ u3("div", { className: "gp-room-container gp-original-game-container", children: [
-        /* @__PURE__ */ u3("div", { className: "gp-room-topbar", children: [
-          /* @__PURE__ */ u3("div", { className: "gp-room-title-group", children: [
-            /* @__PURE__ */ u3("span", { className: "gp-game-icon-lg", children: "\u{1F467}" }),
-            /* @__PURE__ */ u3("div", { children: [
-              /* @__PURE__ */ u3("h2", { children: [
-                "HTML5 Bombergirl ",
-                /* @__PURE__ */ u3("span", { className: "gp-mode-badge mode-bot", children: "\uC6D0\uBCF8 \uC2F1\uAE00 \xB7 AI 3\uBA85" })
-              ] }),
-              /* @__PURE__ */ u3("p", { className: "gp-muted", children: "MattSkala \uC6D0\uBCF8\uC758 17\xD713 \uD654\uBA74\xB7\uC2A4\uD504\uB77C\uC774\uD2B8\xB7\uD3ED\uD0C4\xB7\uBCF4\uB108\uC2A4\xB7AI\uB97C \uADF8\uB300\uB85C \uC2E4\uD589\uD569\uB2C8\uB2E4." })
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("button", { type: "button", className: "gp-btn gp-btn-secondary", onClick: handleLeaveCurrentRoom, children: "\u2190 \uAC8C\uC784 \uB85C\uBE44\uB85C" })
-        ] }),
-        /* @__PURE__ */ u3(OriginalBombergirlArena, { mode: "single", currentUser })
-      ] }) : currentRoom ? (
-        /* 2. Active Room Lobby or Gameplay Stage */
-        /* @__PURE__ */ u3("div", { className: "gp-room-container", children: [
-          /* @__PURE__ */ u3("div", { className: "gp-room-topbar", children: [
-            /* @__PURE__ */ u3("div", { className: "gp-room-title-group", children: [
-              /* @__PURE__ */ u3("span", { className: "gp-game-icon-lg", children: activeGameMeta?.icon || "\u{1F3AE}" }),
-              /* @__PURE__ */ u3("div", { children: [
-                /* @__PURE__ */ u3("h2", { children: [
-                  activeGameMeta?.name || currentRoom.game,
-                  /* @__PURE__ */ u3("span", { className: "gp-room-code-badge", children: [
-                    "\uBC29 \uCF54\uB4DC: ",
-                    currentRoom.code
-                  ] }),
-                  /* @__PURE__ */ u3("span", { className: `gp-mode-badge mode-${currentRoom.mode}`, children: currentRoom.mode === "solo" ? "\uD63C\uC790 \uC5F0\uC2B5" : currentRoom.mode === "bot" ? "\u{1F916} AI BOT \uB300\uACB0" : "\u{1F310} \uC628\uB77C\uC778 \uB300\uC804" })
-                ] }),
-                /* @__PURE__ */ u3("p", { className: "gp-muted", children: activeGameMeta?.description })
-              ] })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gp-btn-row", children: [
-              currentRoom.mode === "online" && /* @__PURE__ */ u3("button", { type: "button", className: "gp-btn gp-btn-secondary gp-btn-sm", onClick: handleCopyInviteLink, children: [
-                "\u{1F517} \uCD08\uB300 \uB9C1\uD06C \uBCF5\uC0AC (",
-                currentRoom.code,
-                ")"
-              ] }),
-              /* @__PURE__ */ u3("button", { type: "button", className: "gp-btn gp-btn-danger gp-btn-sm", onClick: handleLeaveCurrentRoom, children: "\u2190 \uBC29 \uB098\uAC00\uAE30" })
-            ] })
-          ] }),
-          currentRoom.state === "lobby" ? /* @__PURE__ */ u3("div", { className: "gp-room-lobby-grid", children: [
-            /* @__PURE__ */ u3("div", { className: "gp-panel", children: [
-              /* @__PURE__ */ u3("h3", { children: [
-                "\uCC38\uAC00\uC790 \uBAA9\uB85D (",
-                currentRoom.players.length,
-                " / ",
-                activeGameMeta?.maxPlayers || 8,
-                "\uBA85)"
-              ] }),
-              /* @__PURE__ */ u3("ul", { className: "gp-room-player-list", children: currentRoom.players.map((p3) => /* @__PURE__ */ u3("li", { className: `gp-room-player-item ${p3.id === currentUser?.id ? "is-me" : ""}`, children: [
-                /* @__PURE__ */ u3("div", { className: "gp-room-player-info", children: [
-                  /* @__PURE__ */ u3("span", { className: "gp-player-avatar", children: p3.isBot ? "\u{1F916}" : "\u{1F464}" }),
-                  /* @__PURE__ */ u3("div", { children: [
-                    /* @__PURE__ */ u3("strong", { children: p3.name }),
-                    p3.id === roomHostId && /* @__PURE__ */ u3("span", { className: "gp-host-tag", children: "\uBC29\uC7A5" }),
-                    /* @__PURE__ */ u3("div", { className: "gp-muted-sm", children: p3.isBot ? `AI BOT \xB7 \uB09C\uC774\uB3C4: ${(p3.botDifficulty || "normal").toUpperCase()}` : p3.departmentName })
-                  ] })
-                ] }),
-                /* @__PURE__ */ u3("div", { className: "gp-room-player-actions", children: [
-                  /* @__PURE__ */ u3("span", { className: `gp-ready-pill ${p3.ready ? "ready" : "waiting"}`, children: p3.ready ? "\uC900\uBE44 \uC644\uB8CC" : "\uB300\uAE30 \uC911" }),
-                  isRoomHost && p3.isBot && /* @__PURE__ */ u3(
-                    "button",
-                    {
-                      type: "button",
-                      className: "gp-btn gp-btn-xs gp-btn-danger",
-                      onClick: async () => {
-                        try {
-                          const res = await api.removeBot(currentRoom.code, p3.id);
-                          setCurrentRoom(res.room);
-                        } catch (err) {
-                          showToast(err.message);
-                        }
-                      },
-                      children: "\uC81C\uAC70"
-                    }
-                  )
-                ] })
-              ] }, p3.id)) })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gp-panel gp-room-controls-panel", children: [
-              /* @__PURE__ */ u3("h3", { children: "\uBC29 \uC124\uC815 \uBC0F \uC2DC\uC791" }),
-              supportsRoomBots && /* @__PURE__ */ u3("p", { className: "gp-muted", children: "\uC628\uB77C\uC778 \uBC29\uC5D0\uC11C\uB3C4 \uC778\uC6D0\uC774 \uBD80\uC871\uD560 \uB54C AI BOT\uC744 \uC790\uC720\uB86D\uAC8C \uCD94\uAC00\uD558\uC5EC \uD568\uAED8 \uD50C\uB808\uC774\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. (\uB2E8, BOT\uC774 \uD3EC\uD568\uB41C \uACBD\uAE30\uB294 \uC5F0\uC2B5 \uACBD\uAE30\uB85C \uBD84\uB958\uB418\uC5B4 \uACF5\uC2DD \uC0AC\uB0B4 \uB7AD\uD0B9\uC5D0\uB294 \uC601\uD5A5\uC744 \uC8FC\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.)" }),
-              isRoomHost && supportsRoomBots && /* @__PURE__ */ u3("div", { className: "gp-bot-adder-box", children: [
-                /* @__PURE__ */ u3("label", { children: "\u{1F916} \uB300\uAE30\uC2E4\uC5D0 AI BOT \uCD94\uAC00" }),
-                /* @__PURE__ */ u3("div", { className: "gp-btn-row", children: [
-                  /* @__PURE__ */ u3(
-                    "select",
-                    {
-                      className: "gp-select gp-select-sm",
-                      value: lobbyBotDiff,
-                      onChange: (e3) => setLobbyBotDiff(e3.target.value),
-                      children: [
-                        /* @__PURE__ */ u3("option", { value: "easy", children: "\uC26C\uC6C0 (Easy)" }),
-                        /* @__PURE__ */ u3("option", { value: "normal", children: "\uBCF4\uD1B5 (Normal)" }),
-                        /* @__PURE__ */ u3("option", { value: "hard", children: "\uC5B4\uB824\uC6C0 (Hard)" })
-                      ]
-                    }
-                  ),
-                  /* @__PURE__ */ u3(
-                    "button",
-                    {
-                      type: "button",
-                      className: "gp-btn gp-btn-sm gp-btn-secondary",
-                      disabled: currentRoom.players.length >= (activeGameMeta?.maxPlayers || 8),
-                      onClick: async () => {
-                        try {
-                          const res = await api.addBot(currentRoom.code, lobbyBotDiff);
-                          setCurrentRoom(res.room);
-                        } catch (err) {
-                          showToast(err.message);
-                        }
-                      },
-                      children: "+ BOT 1\uBA85 \uCD94\uAC00"
-                    }
-                  )
-                ] })
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "gp-lobby-main-actions", children: [
-                myRoomPlayer && /* @__PURE__ */ u3(
-                  "button",
-                  {
-                    type: "button",
-                    className: "gp-btn gp-btn-secondary gp-btn-lg",
-                    onClick: async () => {
-                      try {
-                        const res = await api.setReady(currentRoom.code, !myRoomPlayer.ready);
-                        setCurrentRoom(res.room);
-                      } catch (err) {
-                        showToast(err.message);
-                      }
-                    },
-                    children: myRoomPlayer.ready ? "\uC900\uBE44 \uD574\uC81C" : "\u2713 \uC900\uBE44 \uC644\uB8CC"
-                  }
-                ),
-                isRoomHost ? /* @__PURE__ */ u3(
-                  "button",
-                  {
-                    type: "button",
-                    className: "gp-btn gp-btn-primary gp-btn-lg gp-btn-start-game",
-                    onClick: async () => {
-                      try {
-                        const res = await api.startRoom(currentRoom.code);
-                        setCurrentRoom(res.room);
-                        if (res.room?.lastPublicGameState) {
-                          setPublicGameState(res.room.lastPublicGameState);
-                        }
-                      } catch (err) {
-                        showToast(err.message);
-                      }
-                    },
-                    children: "\u{1F680} \uAC8C\uC784 \uC2DC\uC791\uD558\uAE30 (START)"
-                  }
-                ) : /* @__PURE__ */ u3("div", { className: "gp-waiting-host-notice", children: /* @__PURE__ */ u3("span", { children: "\u23F3 \uBC29\uC7A5\uC774 \uAC8C\uC784\uC744 \uC2DC\uC791\uD558\uAE30\uB97C \uAE30\uB2E4\uB9AC\uACE0 \uC788\uC2B5\uB2C8\uB2E4... \uC900\uBE44 \uC644\uB8CC\uB97C \uB20C\uB7EC\uC8FC\uC138\uC694." }) })
-              ] })
-            ] })
-          ] }) : (
-            /* Playing or Finished State */
-            /* @__PURE__ */ u3("div", { className: "gp-active-match-area", children: [
-              matchResult && /* @__PURE__ */ u3("div", { className: "gp-match-result-banner", children: [
-                /* @__PURE__ */ u3("div", { className: "gp-match-result-header", children: [
-                  /* @__PURE__ */ u3("h3", { children: [
-                    "\u{1F3C1} \uAC8C\uC784 \uC885\uB8CC!",
-                    " ",
-                    matchResult.winner ? `\u{1F3C6} \uC6B0\uC2B9: ${matchResult.winner}` : "\uBB34\uC2B9\uBD80 / \uACBD\uAE30 \uC644\uB8CC"
-                  ] }),
-                  /* @__PURE__ */ u3("span", { className: `gp-official-pill ${matchResult.isOfficial ? "official" : "practice"}`, children: matchResult.isOfficial ? "\u2713 \uACF5\uC2DD \uB7AD\uD0B9 \uBC18\uC601\uB428" : "\uC5F0\uC2B5 / BOT \uB300\uACB0 (\uACF5\uC2DD \uB7AD\uD0B9 \uC81C\uC678)" })
-                ] }),
-                matchResult.standings && matchResult.standings.length > 0 && /* @__PURE__ */ u3("div", { className: "gp-podium-list", children: matchResult.standings.map((st) => /* @__PURE__ */ u3("div", { className: `gp-podium-item rank-${st.rank}`, children: [
-                  /* @__PURE__ */ u3("span", { className: "gp-podium-rank", children: [
-                    "#",
-                    st.rank
-                  ] }),
-                  /* @__PURE__ */ u3("strong", { children: st.name }),
-                  /* @__PURE__ */ u3("span", { className: "gp-muted-sm", children: st.isBot ? "AI BOT" : st.departmentName }),
-                  /* @__PURE__ */ u3("span", { className: "gp-podium-score", children: [
-                    st.score,
-                    "\uC810"
-                  ] })
-                ] }, st.id)) }),
-                /* @__PURE__ */ u3("div", { className: "gp-btn-row", children: [
-                  /* @__PURE__ */ u3(
-                    "button",
-                    {
-                      type: "button",
-                      className: "gp-btn gp-btn-primary",
-                      onClick: async () => {
-                        try {
-                          const res = await api.rematch(currentRoom.code);
-                          setCurrentRoom(res.room);
-                          setMatchResult(null);
-                          if (currentRoom.mode !== "online") {
-                            const started = await api.startRoom(currentRoom.code);
-                            setCurrentRoom(started.room);
-                            if (started.room?.lastPublicGameState) {
-                              setPublicGameState(started.room.lastPublicGameState);
-                            }
-                          }
-                        } catch (err) {
-                          showToast(err.message);
-                        }
-                      },
-                      children: "\u{1F504} \uC989\uC2DC \uC7AC\uB300\uACB0 (Rematch)"
-                    }
-                  ),
-                  /* @__PURE__ */ u3(
-                    "button",
-                    {
-                      type: "button",
-                      className: "gp-btn gp-btn-secondary",
-                      onClick: handleLeaveCurrentRoom,
-                      children: "\u2190 \uB300\uAE30\uC2E4\uB85C \uB098\uAC00\uAE30"
-                    }
-                  )
-                ] })
-              ] }),
-              /* @__PURE__ */ u3(
-                GamePlayStage,
-                {
-                  gameId: currentRoom.game,
-                  room: currentRoom,
-                  currentUser,
-                  gameStateData: publicGameState || currentRoom.lastPublicGameState,
-                  publicState: publicGameState || currentRoom.lastPublicGameState,
-                  privateRole: privateRoleState,
-                  drawingStrokes,
-                  onAction: handleSendGameAction
-                }
-              )
-            ] })
-          )
-        ] })
-      ) : activeTab === "win98" ? /* @__PURE__ */ u3("div", { className: "gp-room-container gp-original-game-container", style: { height: "calc(100vh - 90px)", display: "flex", flexDirection: "column" }, children: [
-        /* @__PURE__ */ u3("div", { className: "gp-room-topbar", children: [
-          /* @__PURE__ */ u3("div", { className: "gp-room-title-group", children: [
-            /* @__PURE__ */ u3("span", { className: "gp-game-icon-lg", children: "\u{1FA9F}" }),
-            /* @__PURE__ */ u3("div", { children: [
-              /* @__PURE__ */ u3("h2", { children: [
-                "\uD55C\uAE00 Windows 98 \uCD94\uC5B5\uC758 \uCEF4\uD4E8\uD130 ",
-                /* @__PURE__ */ u3("span", { className: "gp-mode-badge mode-online", children: "WIN98 DESKTOP" })
-              ] }),
-              /* @__PURE__ */ u3("p", { className: "gp-muted", children: "\uBC14\uD0D5 \uD654\uBA74\uC5D0\uC11C [\uD55C\uCEF4\uD0C0\uC790\uC5F0\uC2B5 97], [\uD55C\uBA54\uD0C0\uC790\uAD50\uC0AC 3.0], [\uD53C\uCE74\uCE04 \uBC30\uAD6C], [\uC9C0\uB8B0 \uCC3E\uAE30], [3D \uD540\uBCFC] \uC544\uC774\uCF58\uC744 \uB354\uBE14\uD074\uB9AD\uD574 \uC2E4\uD589\uD558\uC138\uC694." })
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("div", { style: { display: "flex", gap: "8px" }, children: [
-            /* @__PURE__ */ u3(
-              "a",
-              {
-                href: "/win98-web/",
-                target: "_blank",
-                rel: "noopener noreferrer",
-                className: "gp-btn gp-btn-primary",
-                style: { textDecoration: "none" },
-                children: "\u2197 \uC804\uCCB4 \uD654\uBA74 \uD0ED\uC73C\uB85C \uC5F4\uAE30 (/win98-web/)"
-              }
-            ),
-            /* @__PURE__ */ u3("button", { type: "button", className: "gp-btn gp-btn-secondary", onClick: () => setActiveTab("arcade"), children: "\u2190 \uBBF8\uB2C8\uAC8C\uC784 \uB85C\uBE44\uB85C (20\uC885)" })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3(
-          "iframe",
-          {
-            src: "/win98-web/",
-            title: "\uD55C\uAE00 Windows 98 \uB370\uC2A4\uD06C\uD1B1",
-            style: { width: "100%", flex: "1 1 auto", border: "2px solid #008080", borderRadius: "8px", background: "#008080" },
-            allow: "autoplay; fullscreen"
-          }
-        )
-      ] }) : activeTab === "events" ? (
-        /* 3. Event Groups Tab */
-        /* @__PURE__ */ u3(
-          EventGroupsView,
-          {
-            api,
-            currentUser,
-            activeEventId,
-            onSelectActiveEvent: (id) => {
-              setActiveEventId(id);
-              showToast(id ? "\uD65C\uC131 \uC774\uBCA4\uD2B8 \uADF8\uB8F9\uC774 \uC124\uC815\uB418\uC5C8\uC2B5\uB2C8\uB2E4." : "\uD65C\uC131 \uC774\uBCA4\uD2B8 \uADF8\uB8F9\uC774 \uD574\uC81C\uB418\uC5C8\uC2B5\uB2C8\uB2E4.");
-            }
-          }
-        )
-      ) : activeTab === "rankings" ? (
-        /* 4. Rankings & Stats Tab */
-        /* @__PURE__ */ u3(RankingsAndStatsView, { api, currentUser })
-      ) : activeGameMeta ? (
-        /* 5. Dedicated Game Waiting Room (Single Mode vs Multi Mode & Join Code) */
-        /* @__PURE__ */ u3("div", { className: "gp-game-waiting-room", children: [
-          /* @__PURE__ */ u3("div", { className: "gp-waiting-hero", children: [
-            /* @__PURE__ */ u3("div", { className: "gp-waiting-hero-left", children: [
-              /* @__PURE__ */ u3("span", { className: "gp-waiting-game-icon", children: activeGameMeta.icon }),
-              /* @__PURE__ */ u3("div", { children: [
-                /* @__PURE__ */ u3("div", { className: "gp-waiting-tag-row", children: [
-                  /* @__PURE__ */ u3("span", { className: "gp-waiting-kicker", children: activeGameMeta.category?.toUpperCase() || "ARCADE" }),
-                  /* @__PURE__ */ u3("span", { className: "gp-waiting-players", children: [
-                    "1~",
-                    activeGameMeta.maxPlayers || 8,
-                    "\uC778 \uD50C\uB808\uC774 \uC9C0\uC6D0"
-                  ] })
-                ] }),
-                /* @__PURE__ */ u3("h2", { className: "gp-waiting-game-title", children: activeGameMeta.name }),
-                /* @__PURE__ */ u3("p", { className: "gp-waiting-game-desc", children: activeGameMeta.description })
-              ] })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gp-waiting-user-card", children: [
-              /* @__PURE__ */ u3("span", { className: "gp-waiting-user-label", children: "\uC811\uC18D \uD50C\uB808\uC774\uC5B4" }),
-              /* @__PURE__ */ u3("strong", { className: "gp-waiting-user-name", children: [
-                "\u{1F464} ",
-                currentUser?.name || "\uAC8C\uC2A4\uD2B8"
-              ] }),
-              /* @__PURE__ */ u3("span", { className: "gp-waiting-user-sub", children: "\uC2E4\uC2DC\uAC04 \uC804\uC801\xB7\uB7AD\uD0B9 \uC790\uB3D9 \uC5F0\uB3D9" })
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "gp-waiting-modes-grid", children: [
-            /* @__PURE__ */ u3("div", { className: "gp-mode-panel gp-mode-single", children: [
-              /* @__PURE__ */ u3("div", { className: "gp-mode-header", children: [
-                /* @__PURE__ */ u3("span", { className: "gp-mode-pill pill-single", children: "SINGLE MODE" }),
-                /* @__PURE__ */ u3("h3", { children: "\u{1F916} \uC2F1\uAE00 \uBAA8\uB4DC (\uCEF4\uD4E8\uD130\uC640 \uB300\uACB0)" })
-              ] }),
-              /* @__PURE__ */ u3("p", { className: "gp-mode-desc", children: "\uAE30\uB2E4\uB9BC \uC5C6\uC774 \uC989\uC2DC \uCEF4\uD4E8\uD130 AI BOT\uACFC 1:1 \uB300\uACB0\uC744 \uC2DC\uC791\uD569\uB2C8\uB2E4. AI \uB09C\uC774\uB3C4\uB97C \uC120\uD0DD\uD558\uACE0 \uD50C\uB808\uC774\uB97C \uC2DC\uC791\uD558\uC138\uC694." }),
-              /* @__PURE__ */ u3("div", { className: "gp-mode-bot-select", children: [
-                /* @__PURE__ */ u3("label", { children: "AI BOT \uB09C\uC774\uB3C4 \uC120\uD0DD:" }),
-                /* @__PURE__ */ u3("div", { className: "gp-diff-btn-group", children: [
-                  /* @__PURE__ */ u3(
-                    "button",
-                    {
-                      type: "button",
-                      className: `gp-diff-btn ${lobbyBotDiff === "easy" ? "active" : ""}`,
-                      onClick: () => setLobbyBotDiff("easy"),
-                      children: "\uC26C\uC6C0 (Easy)"
-                    }
-                  ),
-                  /* @__PURE__ */ u3(
-                    "button",
-                    {
-                      type: "button",
-                      className: `gp-diff-btn ${lobbyBotDiff === "normal" ? "active" : ""}`,
-                      onClick: () => setLobbyBotDiff("normal"),
-                      children: "\uBCF4\uD1B5 (Normal)"
-                    }
-                  ),
-                  /* @__PURE__ */ u3(
-                    "button",
-                    {
-                      type: "button",
-                      className: `gp-diff-btn ${lobbyBotDiff === "hard" ? "active" : ""}`,
-                      onClick: () => setLobbyBotDiff("hard"),
-                      children: "\uC5B4\uB824\uC6C0 (Hard)"
-                    }
-                  )
-                ] })
-              ] }),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gp-btn gp-btn-primary gp-btn-start-single",
-                  onClick: () => handleLaunchSingleVsBot(activeGameMeta, lobbyBotDiff),
-                  children: "\u25B6 \uCEF4\uD4E8\uD130 AI\uC640 \uB300\uACB0 \uC2DC\uC791 (\uC989\uC2DC \uD50C\uB808\uC774)"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gp-mode-panel gp-mode-multi", children: [
-              /* @__PURE__ */ u3("div", { className: "gp-mode-header", children: [
-                /* @__PURE__ */ u3("span", { className: "gp-mode-pill pill-multi", children: "MULTI MODE" }),
-                /* @__PURE__ */ u3("h3", { children: "\u{1F310} \uBA40\uD2F0 \uBAA8\uB4DC (\uC628\uB77C\uC778 \uB300\uC804)" })
-              ] }),
-              /* @__PURE__ */ u3("p", { className: "gp-mode-desc", children: "\uC628\uB77C\uC778 \uB300\uAE30\uC2E4\uC744 \uB9CC\uB4E4\uC5B4 \uCE5C\uAD6C\uB97C \uCD08\uB300\uD558\uAC70\uB098, 6\uC790\uB9AC \uBC29 \uCF54\uB4DC\uB97C \uC785\uB825\uD574 \uCC38\uAC00\uD569\uB2C8\uB2E4. \uB300\uAE30\uC2E4\uC5D0\uC11C \uBAA8\uB4E0 \uCC38\uAC00\uC790\uAC00 \uC900\uBE44\uB418\uBA74 \uBC29\uC7A5\uC774 \uAC8C\uC784\uC744 \uC2DC\uC791\uD569\uB2C8\uB2E4." }),
-              /* @__PURE__ */ u3("div", { className: "gp-multi-actions-box", children: [
-                /* @__PURE__ */ u3("div", { className: "gp-multi-option", children: [
-                  /* @__PURE__ */ u3("div", { className: "gp-multi-opt-info", children: [
-                    /* @__PURE__ */ u3("strong", { children: "1. \uB0B4\uAC00 \uBC29\uC7A5\uC774 \uB418\uC5B4 \uC2DC\uC791\uD558\uAE30" }),
-                    /* @__PURE__ */ u3("span", { children: "\uACE0\uC720 \uBC29 \uCF54\uB4DC\uAC00 \uC0DD\uC131\uB418\uBA70, \uB300\uAE30\uC2E4\uC5D0\uC11C \uB300\uAE30 \uD6C4 \uBC29\uC7A5\uC774 \uAC8C\uC784\uC744 \uC2DC\uC791\uD569\uB2C8\uB2E4." })
-                  ] }),
-                  /* @__PURE__ */ u3(
-                    "button",
-                    {
-                      type: "button",
-                      className: "gp-btn gp-btn-success",
-                      onClick: () => handleCreateOnlineRoom(activeGameMeta),
-                      children: "\u2795 \uC0C8 \uC628\uB77C\uC778 \uBC29 \uB9CC\uB4E4\uAE30"
-                    }
-                  )
-                ] }),
-                /* @__PURE__ */ u3("div", { className: "gp-multi-divider", children: /* @__PURE__ */ u3("span", { children: "\uB610\uB294" }) }),
-                /* @__PURE__ */ u3("div", { className: "gp-multi-option", children: [
-                  /* @__PURE__ */ u3("div", { className: "gp-multi-opt-info", children: [
-                    /* @__PURE__ */ u3("strong", { children: "2. \uBC29 \uCF54\uB4DC\uB85C \uB300\uAE30\uC2E4 \uC785\uC7A5\uD558\uAE30" }),
-                    /* @__PURE__ */ u3("span", { children: "\uACF5\uC720\uBC1B\uC740 \uBC29 \uCF54\uB4DC\uB97C \uC785\uB825\uD558\uACE0 \uB300\uAE30\uC2E4\uC5D0 \uCC38\uAC00\uD558\uC138\uC694." })
-                  ] }),
-                  /* @__PURE__ */ u3("div", { className: "gp-join-bar", children: [
-                    /* @__PURE__ */ u3(
-                      "input",
-                      {
-                        type: "text",
-                        className: "gp-input gp-input-code",
-                        placeholder: "\uBC29 \uCF54\uB4DC \uC785\uB825 (\uC608: JVWQ)",
-                        maxLength: 8,
-                        value: joinCodeInput,
-                        onChange: (e3) => setJoinCodeInput(e3.target.value.toUpperCase()),
-                        onKeyDown: (e3) => {
-                          if (e3.key === "Enter") handleJoinRoomByCode(joinCodeInput);
-                        }
-                      }
-                    ),
-                    /* @__PURE__ */ u3(
-                      "button",
-                      {
-                        type: "button",
-                        className: "gp-btn gp-btn-secondary",
-                        onClick: () => handleJoinRoomByCode(joinCodeInput),
-                        children: "\uC785\uC7A5\uD558\uAE30"
-                      }
-                    )
-                  ] })
-                ] })
-              ] })
-            ] })
-          ] })
-        ] })
-      ) : (
-        /* 6. Main Arcade Game Catalog (20 Games) */
-        /* @__PURE__ */ u3("div", { className: "gp-arcade-lobby", children: [
-          /* @__PURE__ */ u3("section", { className: "gp-quick-online-bar", children: [
-            /* @__PURE__ */ u3("div", { className: "gp-join-code-box", children: [
-              /* @__PURE__ */ u3("strong", { children: "\u{1F511} \uBC29 \uCF54\uB4DC\uB85C \uC785\uC7A5:" }),
-              /* @__PURE__ */ u3(
-                "input",
-                {
-                  type: "text",
-                  className: "gp-input gp-input-code",
-                  placeholder: "6\uC790\uB9AC \uCF54\uB4DC (\uC608: AB12CD)",
-                  maxLength: 8,
-                  value: joinCodeInput,
-                  onChange: (e3) => setJoinCodeInput(e3.target.value.toUpperCase())
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gp-btn gp-btn-primary gp-btn-sm",
-                  onClick: () => handleJoinRoomByCode(joinCodeInput),
-                  children: "\uC785\uC7A5\uD558\uAE30"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gp-open-rooms-strip", children: [
-              /* @__PURE__ */ u3("span", { className: "gp-muted-sm", children: [
-                "\uD604\uC7AC \uC5F4\uB9B0 \uC628\uB77C\uC778 \uB300\uAE30\uC2E4 (",
-                publicRooms.length,
-                "):"
-              ] }),
-              publicRooms.length === 0 ? /* @__PURE__ */ u3("span", { className: "gp-muted-sm", children: "\uB300\uAE30 \uC911\uC778 \uBC29\uC774 \uC5C6\uC2B5\uB2C8\uB2E4. \uC6D0\uD558\uB294 \uAC8C\uC784 \uCE74\uB4DC\uC5D0\uC11C [\uC628\uB77C\uC778 \uB300\uC804]\uC744 \uB20C\uB7EC \uBC29\uC744 \uB9CC\uB4E4\uC5B4 \uBCF4\uC138\uC694!" }) : /* @__PURE__ */ u3("div", { className: "gp-open-room-pills", children: publicRooms.map((r3) => {
-                const g4 = getGameById(r3.game);
-                return /* @__PURE__ */ u3(
-                  "button",
-                  {
-                    type: "button",
-                    className: "gp-open-room-pill",
-                    onClick: () => handleJoinRoomByCode(r3.code),
-                    children: [
-                      /* @__PURE__ */ u3("span", { children: [
-                        g4?.icon || "\u{1F3AE}",
-                        " ",
-                        g4?.name || r3.game
-                      ] }),
-                      /* @__PURE__ */ u3("code", { children: r3.code }),
-                      /* @__PURE__ */ u3("span", { children: [
-                        "(",
-                        r3.players.length,
-                        "/",
-                        g4?.maxPlayers || 8,
-                        "\uBA85 \xB7 ",
-                        r3.state === "playing" ? "\uC9C4\uD589\uC911" : "\uB300\uAE30\uC911",
-                        ")"
-                      ] })
-                    ]
-                  },
-                  r3.code
-                );
-              }) })
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("section", { className: "gp-catalog-toolbar", children: [
-            /* @__PURE__ */ u3("div", { className: "gp-category-tabs", children: GAME_CATEGORIES.map((cat) => /* @__PURE__ */ u3(
-              "button",
-              {
-                type: "button",
-                className: `gp-cat-pill ${selectedCategory === cat.id ? "active" : ""}`,
-                onClick: () => setSelectedCategory(cat.id),
-                children: cat.label
-              },
-              cat.id
-            )) }),
-            /* @__PURE__ */ u3(
-              "input",
-              {
-                type: "search",
-                className: "gp-input gp-search-input",
-                placeholder: "\uAC8C\uC784 \uC774\uB984, \uC7A5\uB974, \uD0A4\uC6CC\uB4DC \uAC80\uC0C9...",
-                value: searchQuery,
-                onChange: (e3) => setSearchQuery(e3.target.value)
-              }
-            )
-          ] }),
-          /* @__PURE__ */ u3("section", { className: "gp-games-grid", children: filteredGames.map((game) => /* @__PURE__ */ u3("article", { className: "gp-game-card", "data-game-id": game.id, children: [
-            /* @__PURE__ */ u3("div", { className: "gp-game-card-header", children: [
-              /* @__PURE__ */ u3("span", { className: "gp-game-card-icon", children: game.icon }),
-              /* @__PURE__ */ u3("div", { className: "gp-game-card-titles", children: [
-                /* @__PURE__ */ u3("h3", { children: game.name }),
-                /* @__PURE__ */ u3("span", { className: "gp-game-card-sub", children: game.subtitle })
-              ] }),
-              /* @__PURE__ */ u3("span", { className: "gp-players-badge", children: game.playersLabel })
-            ] }),
-            /* @__PURE__ */ u3("p", { className: "gp-game-card-desc", children: game.description }),
-            /* @__PURE__ */ u3("div", { className: "gp-game-card-tags", children: [
-              game.supportsSolo && /* @__PURE__ */ u3("span", { className: "gp-tag gp-tag-solo", children: "\uD63C\uC790 \uD50C\uB808\uC774" }),
-              game.supportsBot && /* @__PURE__ */ u3("span", { className: "gp-tag gp-tag-bot", children: "\u{1F916} AI BOT \uC9C0\uC6D0" }),
-              game.supportsOnline && /* @__PURE__ */ u3("span", { className: "gp-tag gp-tag-online", children: "\u{1F310} \uC2E4\uC2DC\uAC04 \uC628\uB77C\uC778" })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gp-game-card-actions", children: isRouletteGame(game.id) ? /* @__PURE__ */ u3(
-              "button",
-              {
-                type: "button",
-                className: "gp-btn gp-btn-primary gp-btn-block",
-                onClick: handleOpenMarbleRoulette,
-                children: "\u{1F3A1} \uB9C8\uBE14 \uB8F0\uB81B \uCD94\uCCA8\uAE30 \uC5F4\uAE30 (\uC0AC\uB0B4 \uBA85\uB2E8 \uC5F0\uB3D9)"
-              }
-            ) : game.id === "bomberman" ? /* @__PURE__ */ u3(S, { children: [
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gp-btn gp-btn-accent gp-btn-sm",
-                  onClick: () => handleOpenOriginalBomberman("bot"),
-                  children: "\u{1F916} \uC2F1\uAE00 vs \uCEF4\uD4E8\uD130"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gp-btn gp-btn-primary gp-btn-sm",
-                  onClick: () => handleOpenOriginalBomberman("online"),
-                  children: "\u{1F310} \uC6D0\uBCF8 \uBA40\uD2F0 (2~4\uC778)"
-                }
-              )
-            ] }) : game.id === "bombergirl" ? /* @__PURE__ */ u3(S, { children: [
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gp-btn gp-btn-accent gp-btn-sm",
-                  onClick: handleOpenOriginalBombergirl,
-                  children: "\u{1F3AE} \uC6D0\uBCF8 \uC2F1\uAE00 + AI 3\uBA85"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gp-btn gp-btn-primary gp-btn-sm",
-                  onClick: () => handleCreateOnlineRoom(game),
-                  children: "\u{1F310} \uC628\uB77C\uC778 2\uC778 \uBC29"
-                }
-              )
-            ] }) : /* @__PURE__ */ u3(S, { children: [
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gp-btn gp-btn-secondary gp-btn-sm",
-                  onClick: () => handleStartSoloPractice(game),
-                  children: "\uD63C\uC790 \uC5F0\uC2B5"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gp-btn gp-btn-accent gp-btn-sm",
-                  onClick: () => handleOpenBotModal(game),
-                  children: "\u{1F916} BOT \uB300\uACB0"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gp-btn gp-btn-primary gp-btn-sm",
-                  onClick: () => handleCreateOnlineRoom(game),
-                  children: "\u{1F310} \uC628\uB77C\uC778 \uBC29"
-                }
-              )
-            ] }) })
-          ] }, game.id)) })
-        ] })
-      ) }),
-      botModalGame && /* @__PURE__ */ u3("div", { className: "gp-modal-backdrop", onClick: () => setBotModalGame(null), children: /* @__PURE__ */ u3("div", { className: "gp-modal", onClick: (e3) => e3.stopPropagation(), children: [
-        /* @__PURE__ */ u3("div", { className: "gp-modal-header", children: [
-          /* @__PURE__ */ u3("h3", { children: [
-            botModalGame.icon,
-            " ",
-            botModalGame.name,
-            " \u2014 \uCEF4\uD4E8\uD130(BOT)\uC640 \uB300\uACB0"
-          ] }),
-          /* @__PURE__ */ u3("button", { type: "button", className: "gp-close-btn", onClick: () => setBotModalGame(null), children: "\u2715" })
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "gp-modal-body", children: [
-          /* @__PURE__ */ u3("p", { className: "gp-muted", children: [
-            "\uB2E4\uB978 \uC784\uC9C1\uC6D0\uC774 \uC811\uC18D\uD558\uC9C0 \uC54A\uC544\uB3C4 \uC989\uC2DC AI BOT\uACFC \uB300\uACB0\uC744 \uC2DC\uC791\uD569\uB2C8\uB2E4. (\uCD5C\uB300 \uC815\uC6D0: ",
-            botModalGame.maxPlayers,
-            "\uBA85)"
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "gp-form-row", children: [
-            /* @__PURE__ */ u3("label", { children: "\uD568\uAED8 \uD50C\uB808\uC774\uD560 BOT \uC218" }),
-            /* @__PURE__ */ u3("div", { className: "gp-option-buttons", children: [1, 3, 7].map((cnt) => {
-              const maxAllowed = Math.max(1, (botModalGame.maxPlayers || 2) - 1);
-              const effective = Math.min(cnt, maxAllowed);
-              const disabled = cnt > maxAllowed && cnt !== 1;
-              return /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  disabled,
-                  className: `gp-btn ${botCountOption === effective && !disabled ? "gp-btn-primary" : "gp-btn-secondary"}`,
-                  onClick: () => setBotCountOption(effective),
-                  children: [
-                    "\u{1F916} BOT ",
-                    cnt,
-                    "\uBA85 ",
-                    disabled ? `(\uCD5C\uB300 ${maxAllowed}\uBA85)` : ""
-                  ]
-                },
-                cnt
-              );
-            }) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "gp-form-row", children: [
-            /* @__PURE__ */ u3("label", { children: "BOT \uC778\uACF5\uC9C0\uB2A5 \uB09C\uC774\uB3C4" }),
-            /* @__PURE__ */ u3("div", { className: "gp-option-buttons", children: [
-              { id: "easy", label: "\u{1F331} \uC26C\uC6C0 (Easy)", desc: "\uB290\uB9B0 \uBC18\uC751\uACFC \uC785\uBB38\uC790\uC6A9 \uC2E4\uC218 \uD3EC\uD568" },
-              { id: "normal", label: "\u26A1 \uBCF4\uD1B5 (Normal)", desc: "\uC790\uC5F0\uC2A4\uB7EC\uC6B4 \uC77C\uBC18 \uD50C\uB808\uC774\uC5B4 \uC218\uC900" },
-              { id: "hard", label: "\u{1F525} \uC5B4\uB824\uC6C0 (Hard)", desc: "\uBE60\uB978 \uD310\uB2E8\uACFC \uCD5C\uC801 \uC804\uB7B5 (Minimax/\uD0D0\uC0C9)" }
-            ].map((lv) => /* @__PURE__ */ u3(
-              "button",
-              {
-                type: "button",
-                className: `gp-btn gp-btn-block ${botDiffOption === lv.id ? "gp-btn-accent" : "gp-btn-secondary"}`,
-                onClick: () => setBotDiffOption(lv.id),
-                children: [
-                  /* @__PURE__ */ u3("strong", { children: lv.label }),
-                  " \u2014 ",
-                  /* @__PURE__ */ u3("small", { children: lv.desc })
-                ]
-              },
-              lv.id
-            )) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "gp-modal-footer", children: [
-            /* @__PURE__ */ u3("button", { type: "button", className: "gp-btn gp-btn-secondary", onClick: () => setBotModalGame(null), children: "\uCDE8\uC18C" }),
-            /* @__PURE__ */ u3("button", { type: "button", className: "gp-btn gp-btn-primary", onClick: handleLaunchBotMatch, children: "\u{1F680} \uC989\uC2DC BOT \uB300\uACB0 \uC2DC\uC791" })
-          ] })
-        ] })
-      ] }) })
+      /* @__PURE__ */ u3("main", { className: "gp-main", children: renderMain() }),
+      showGuide && activeGameMeta && /* @__PURE__ */ u3(GuideModal, { game: activeGameMeta, onClose: () => setShowGuide(false) })
     ] });
   }
 

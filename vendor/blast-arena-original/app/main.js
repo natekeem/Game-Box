@@ -34,7 +34,8 @@ function getValidRoute(state) {
 
   const hasWinner = Boolean(game?.winnerId) || (Array.isArray(game?.winnerIds) && game.winnerIds.length > 0);
 
-  if (game?.status === 'finished' || hasWinner) {
+  // Do not trap players in results screen if they intend to join lobby or game was reset
+  if ((game?.status === 'finished' || (hasWinner && game?.status !== 'waiting')) && state.route !== '#/' && state.route !== '#/lobby') {
     return '#/results';
   }
 
@@ -149,7 +150,9 @@ function handleModalAction(action, payload) {
     store.setState({
       session: { connected: false },
       route: '#/',
-      lobby: { players: [], countdown: { phase: 'waiting', remainingMs: 0 } },
+      lobby: { players: [], countdown: { phase: 'waiting', remainingMs: 0 }, spectators: [] },
+      game: { status: 'waiting', players: {}, winnerId: undefined, winnerIds: [], winners: [], finalStandings: [], eliminationLog: [] },
+      chat: [],
       ui: { ...(current.ui || {}), modal: null }
     });
     window.location.hash = '#/';

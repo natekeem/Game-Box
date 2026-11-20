@@ -341,26 +341,35 @@ const buildTileElements = (tiles, players, bombs, powerUps, explosions, sessionI
   return result;
 };
 
-const buildPlayerElements = (playersArray, sessionId, tileWidth, tileHeight) => {
+const buildPlayerElements = (playersArray, sessionId, tileWidth, tileHeight, cols = MAP_WIDTH, rows = MAP_HEIGHT) => {
+  const safeCols = cols || MAP_WIDTH || 27;
+  const safeRows = rows || MAP_HEIGHT || 15;
   return playersArray
     .filter(p => p.status === 'alive')
     .map((player, idx) => {
       const isSelf = player.id === sessionId;
       const isHit = hitPlayers.has(player.id);
-      const translateX = player.x * tileWidth;
-      const translateY = player.y * tileHeight;
+      const nickname = player.nickname || player.name || `P${idx + 1}`;
+      const initials = (nickname.length >= 2 ? nickname.substring(0, 2) : nickname).toUpperCase();
+
+      // Percentage-based coordinates guarantee pixel-perfect placement on the CSS Grid cells
+      const leftPercent = ((player.x || 0) / safeCols) * 100;
+      const topPercent = ((player.y || 0) / safeRows) * 100;
+      const widthPercent = (1 / safeCols) * 100;
+      const heightPercent = (1 / safeRows) * 100;
 
       return createElement('div', {
         key: `player-${player.id}`,
-        className: `player-entity p${idx} ${isSelf ? 'me' : ''} ${isHit ? 'hit' : ''}`,
+        className: `player-entity p${idx % 4} ${isSelf ? 'me' : ''} ${isHit ? 'hit' : ''}`,
         style: {
-          transform: `translate(${translateX}px, ${translateY}px)`,
-          willChange: 'transform',
-          width: `${tileWidth}px`,
-          height: `${tileHeight}px`
+          left: `${leftPercent}%`,
+          top: `${topPercent}%`,
+          width: `${widthPercent}%`,
+          height: `${heightPercent}%`,
+          zIndex: isSelf ? 20 : 15
         }
       },
-        createElement('span', { className: 'initial' }, player.nickname.substring(0, 2).toUpperCase())
+        createElement('span', { className: 'initial' }, initials)
       );
     });
 };
@@ -451,13 +460,13 @@ export function GameScreen(state, store) {
 
   const arenaEl = document.querySelector('.arena');
   let tileWidth = 32, tileHeight = 32;
-  if (arenaEl) {
+  if (arenaEl && arenaEl.clientWidth > 0 && arenaEl.clientHeight > 0) {
     const arenaWidth = arenaEl.clientWidth;
     const arenaHeight = arenaEl.clientHeight;
     tileWidth = arenaWidth / width;
     tileHeight = arenaHeight / height;
   }
-  const playerElements = buildPlayerElements(playersArray, session?.playerId, tileWidth, tileHeight);
+  const playerElements = buildPlayerElements(playersArray, session?.playerId, tileWidth, tileHeight, width, height);
 
   const [showLeaveConfirm, setShowLeaveConfirm] = [
     state.ui?.showLeaveConfirm || false,
@@ -500,8 +509,10 @@ export function GameScreen(state, store) {
         createElement('div', {
           className: 'arena',
           style: { '--cols': width, '--rows': height }
-        }, tileElements),
-        createElement('div', { className: 'players-layer' }, ...playerElements)
+        },
+          ...tileElements,
+          createElement('div', { className: 'players-layer' }, ...playerElements)
+        )
       )
     ),
 

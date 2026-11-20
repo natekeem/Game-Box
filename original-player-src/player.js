@@ -1,5 +1,5 @@
 import { createRecordBridge, snapshotToInitFs } from './record-bridge.js';
-import { createHancom97Telemetry } from './hancom97-telemetry.js';
+import { createHancom97Telemetry, normalizeFrame, countColor } from './hancom97-telemetry.js';
 
 (() => {
   'use strict';
@@ -119,7 +119,7 @@ import { createHancom97Telemetry } from './hancom97-telemetry.js';
         kiosk: true,
         imageRendering: 'pixelated',
         renderBackend: 'canvas',
-        renderAspect: '4/3',
+        renderAspect: 'Fit',
         mouseCapture: false,
         noCursor: false,
         autoSave: false,
@@ -209,9 +209,110 @@ import { createHancom97Telemetry } from './hancom97-telemetry.js';
             } else {
               window.hanmeCommandInterface = arg;
               setStatus('한메타자교사 3.0 원본 실행 중', '화면을 클릭한 뒤 원본 프로그램을 조작하세요. (베네치아, 자리연습 등)');
+
+              // 한메타자교사 3.0 시작 시 인트로 화면 및 이름 입력 창 2단계 자동 통과
+              let step = 0; // 0: 인트로 화면 대기, 1: 인트로 통과 후 이름 입력창 대기, 2: 완료
+              let lastActionTime = 0;
+              const startTime = Date.now();
+
+              const pressEnter = () => {
+                try {
+                  if (typeof arg.sendKeyEvent === 'function') {
+                    arg.sendKeyEvent(257, true);
+                    setTimeout(() => {
+                      if (ownGeneration === generation && typeof arg.sendKeyEvent === 'function') {
+                        arg.sendKeyEvent(257, false);
+                      }
+                    }, 60);
+                  }
+                  if (typeof arg.simulateKeyPress === 'function') {
+                    arg.simulateKeyPress(257);
+                  }
+                } catch (e) {
+                  console.warn('Hanme auto-enter failed', e);
+                }
+                try {
+                  window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter', keyCode: 13, which: 13, bubbles: true }));
+                  setTimeout(() => {
+                    window.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter', code: 'Enter', keyCode: 13, which: 13, bubbles: true }));
+                  }, 60);
+                } catch (e) {}
+              };
+
+              const onHanmeFrame = (rgb, rgba) => {
+                if (step >= 2 || ownGeneration !== generation) return;
+                try {
+                  const frame = normalizeFrame(rgb, rgba, arg.width(), arg.height());
+                  if (!frame) return;
+                  const now = Date.now();
+                  const w = frame.width;
+                  const h = frame.height;
+
+                  if (step === 0) {
+                    // 1단계: 인트로 파란색 한메 로고 화면 감지
+                    const blueCount = countColor(frame,
+                      { x: Math.floor(w * 0.3), y: Math.floor(h * 0.3), width: Math.floor(w * 0.4), height: Math.floor(h * 0.35) },
+                      (r, g, b) => r === 0 && g === 0 && b > 140
+                    );
+                    const elapsed = now - startTime;
+                    if ((blueCount > 500 && elapsed > 800) || elapsed > 3000) {
+                      step = 1;
+                      lastActionTime = now;
+                      pressEnter();
+                    }
+                  } else if (step === 1) {
+                    if (now - lastActionTime < 250) return; // 첫 번째 엔터 입력 후 최소 250ms 대기
+                    // 2단계: "이름 입력" 창 감지 (청록색 헤더 + 흰색 영역)
+                    const cyanCount = countColor(frame,
+                      { x: Math.floor(w * 0.2), y: Math.floor(h * 0.35), width: Math.floor(w * 0.6), height: 40 },
+                      (r, g, b) => r > 60 && r < 120 && g > 220 && b > 220
+                    );
+                    const whiteCount = countColor(frame,
+                      { x: Math.floor(w * 0.35), y: Math.floor(h * 0.45), width: Math.floor(w * 0.3), height: 40 },
+                      (r, g, b) => r > 230 && g > 230 && b > 230
+                    );
+                    if (cyanCount > 500 && whiteCount > 500) {
+                      step = 2;
+                      lastActionTime = now;
+                      pressEnter();
+                    }
+                  }
+                } catch (err) {
+                  // Never block emulators rendering loop
+                }
+              };
+
+              if (arg.events && typeof arg.events().onFrame === 'function') {
+                arg.events().onFrame(onHanmeFrame);
+              }
+
+              // 폴백 타이머 (프레임 이벤트가 늦어지거나 누락될 경우를 대비한 주기적 체크)
+              let elapsed = 0;
+              const pollTimer = setInterval(() => {
+                elapsed += 150;
+                if (step >= 2 || ownGeneration !== generation || elapsed > 8000) {
+                  clearInterval(pollTimer);
+                  return;
+                }
+                const now = Date.now();
+                if (step === 0 && elapsed >= 1600) {
+                  step = 1;
+                  lastActionTime = now;
+                  pressEnter();
+                } else if (step === 1 && now - lastActionTime >= 400) {
+                  pressEnter();
+                  step = 2;
+                  clearInterval(pollTimer);
+                }
+              }, 150);
             }
             bootCover.classList.add('hidden');
             dosElement.focus({ preventScroll: true });
+            const activeCanvas = dosElement.querySelector('canvas');
+            if (activeCanvas) {
+              activeCanvas.setAttribute('tabindex', '0');
+              activeCanvas.focus({ preventScroll: true });
+            }
           }
         },
       });
@@ -288,6 +389,17 @@ import { createHancom97Telemetry } from './hancom97-telemetry.js';
       activeSession.lastKeyAt = Date.now();
       return;
     }
+    if (event.key === 'Escape') {
+      // In DOS games, Escape exits to the menu. Auto-save current session if played.
+      if (activeSession && !activeSession.completed && activeSession.keystrokes >= 8) {
+        setTimeout(() => {
+          if (activeSession && !activeSession.completed) {
+            window.completeDosTypingSession();
+          }
+        }, 150);
+      }
+      return;
+    }
     if (event.key.length === 1 || event.code.startsWith('Key') || event.code.startsWith('Digit') || event.code === 'Space' || event.code === 'Enter') {
       if (!activeSession.firstKeyAt) activeSession.firstKeyAt = Date.now();
       activeSession.lastKeyAt = Date.now();
@@ -315,12 +427,17 @@ import { createHancom97Telemetry } from './hancom97-telemetry.js';
     const message = event.reason instanceof Error ? event.reason.message : String(event.reason);
     if (!bootCover.classList.contains('hidden')) setStatus('실행 실패', message);
   });
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') recordBridge?.capture({ force: true });
-  });
-  window.addEventListener('pagehide', () => {
+  const autoSaveOnExit = () => {
     recordBridge?.capture({ force: true });
+    if (activeSession && !activeSession.completed && activeSession.keystrokes >= 8) {
+      window.completeDosTypingSession();
+    }
+  };
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') autoSaveOnExit();
   });
+  window.addEventListener('pagehide', autoSaveOnExit);
+  window.addEventListener('beforeunload', autoSaveOnExit);
 
   const initParams = new URLSearchParams(window.location.search);
   if (initParams.get('embed') === 'win98') {

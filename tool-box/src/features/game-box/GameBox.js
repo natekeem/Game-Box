@@ -4,6 +4,7 @@ import { GameEventBridge } from './runtime/GameEventBridge.js';
 import GameBoxHome from './GameBoxHome.js';
 import RetroDesktop from './retro/RetroDesktop.js';
 import GameDeck from './deck/GameDeck.js';
+import DrawPack from './draw/DrawPack.js';
 import DeckLab from './deck/lab/DeckLab.jsx';
 import './deck/lab/deckLab.css';
 import './styles/gameBox.css';
@@ -13,6 +14,7 @@ function normalizeRoutePath(pathname) {
   const clean = String(pathname || '/game-box').replace(/\/+$/, '') || '/game-box';
   if (clean === '/game-box/retro') return '/game-box/retro';
   if (clean === '/game-box/deck') return '/game-box/deck';
+  if (clean === '/game-box/draw') return '/game-box/draw';
   if (clean === '/game-box/deck-lab') return '/game-box/deck-lab';
   return '/game-box';
 }
@@ -174,6 +176,13 @@ function GameBoxInner({ initialRoute }) {
           >
             GAME DECK (Arcade)
           </button>
+          <button
+            type="button"
+            className={`gb-header-tab ${route === '/game-box/draw' ? 'active' : ''}`}
+            onClick={() => navigate('/game-box/draw')}
+          >
+            DRAW PACK (뽑기)
+          </button>
         </nav>
 
         <div className="gb-header-identity">
@@ -198,6 +207,8 @@ function GameBoxInner({ initialRoute }) {
         <RetroDesktop onNavigate={navigate} />
       ) : route === '/game-box/deck' ? (
         <GameDeck onNavigate={navigate} />
+      ) : route === '/game-box/draw' ? (
+        <DrawPack onNavigate={navigate} />
       ) : route === '/game-box/deck-lab' ? (
         <DeckLab onNavigate={navigate} />
       ) : (

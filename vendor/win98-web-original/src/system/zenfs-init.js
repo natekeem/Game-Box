@@ -119,15 +119,31 @@ export async function initFileSystem(onProgress) {
       await fs.promises.mkdir("/C:/WINDOWS/Desktop");
     }
 
+    // Clean up legacy duplicate shortcuts
+    const legacyShortcuts = [
+      "/C:/WINDOWS/Desktop/한컴타자연습.lnk.json",
+      "/C:/WINDOWS/Desktop/한메타자연습.lnk.json",
+      "/C:/WINDOWS/Desktop/레트로 게임/한컴타자연습.lnk.json",
+      "/C:/WINDOWS/Desktop/레트로 게임/한메타자연습.lnk.json",
+      "/C:/WINDOWS/Start Menu/Programs/보조프로그램/게임/한컴타자연습.lnk.json",
+      "/C:/WINDOWS/Start Menu/Programs/보조프로그램/게임/한메타자연습.lnk.json",
+    ];
+    for (const legacy of legacyShortcuts) {
+      if (await existsAsync(legacy)) {
+        try { await fs.promises.unlink(legacy); } catch (e) {}
+      }
+    }
+
     // Add default shortcuts to Desktop
     const defaultShortcuts = [
-      { name: "한컴타자연습.lnk.json", appId: "hancom-typing-97" },
-      { name: "한메타자연습.lnk.json", appId: "hanme-typing-30" },
+      { name: "한컴타자연습 97.lnk.json", appId: "hancom-typing-97" },
+      { name: "한메타자교사 3.0.lnk.json", appId: "hanme-typing-30" },
       { name: "피카츄 배구.lnk.json", appId: "pikachu-volleyball" },
       { name: "게임 가이드.lnk.json", appId: "retro-game-guide" },
       { name: "GAME RANKING.lnk.json", appId: "retro-ranking" },
       { name: "지뢰 찾기.lnk.json", appId: "minesweeper" },
       { name: "3D 핀볼.lnk.json", appId: "pinball" },
+      { name: "Winamp.lnk.json", appId: "webamp" },
       { name: "메모장.lnk.json", appId: "notepad" },
     ];
 
@@ -155,8 +171,8 @@ export async function initFileSystem(onProgress) {
     }
 
     const games = [
-      { name: "한컴타자연습.lnk.json", appId: "hancom-typing-97" },
-      { name: "한메타자연습.lnk.json", appId: "hanme-typing-30" },
+      { name: "한컴타자연습 97.lnk.json", appId: "hancom-typing-97" },
+      { name: "한메타자교사 3.0.lnk.json", appId: "hanme-typing-30" },
       { name: "피카츄 배구.lnk.json", appId: "pikachu-volleyball" },
       { name: "게임 가이드.lnk.json", appId: "retro-game-guide" },
       { name: "GAME RANKING.lnk.json", appId: "retro-ranking" },

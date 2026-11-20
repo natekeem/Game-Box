@@ -17,6 +17,8 @@ const originalArcadeSource = fs.readFileSync(
   'utf8',
 );
 const appSource = fs.readFileSync(path.join(root, 'platform-src', 'GamePlatformApp.jsx'), 'utf8');
+const lobbySource = fs.readFileSync(path.join(root, 'platform-src', 'components', 'GameLobby.jsx'), 'utf8');
+const guidesSource = fs.readFileSync(path.join(root, 'platform-src', 'game-guides.js'), 'utf8');
 const platformCss = fs.readFileSync(path.join(root, 'platform-src', 'platform.css'), 'utf8');
 const blastClientSource = fs.readFileSync(
   path.join(root, 'vendor', 'blast-arena-original', 'app', 'main.js'),
@@ -110,19 +112,21 @@ test('룰렛을 제외한 19개 게임은 1인·BOT·온라인 진입 기능을 
   assert.equal(originalBomberman.supportsSolo, true);
   assert.equal(originalBomberman.supportsBot, true);
   assert.equal(originalBomberman.supportsOnline, true);
-  assert.match(appSource, /싱글 vs 컴퓨터/);
-  assert.match(appSource, /원본 멀티 \(2~4인\)/);
+  assert.match(lobbySource, /컴퓨터와 대결/);
+  assert.match(lobbySource, /즉시 매칭/);
+  assert.match(lobbySource, /참여 코드/);
+  assert.match(lobbySource, /조작법/);
+  assert.match(guidesSource, /bomberman:/);
+  assert.match(guidesSource, /bombergirl:/);
 
   const originalBombergirl = CLIENT_GAME_REGISTRY.find(game => game.id === 'bombergirl');
   assert.ok(originalBombergirl);
-  assert.match(appSource, /원본 싱글 \+ AI 3명/);
-  assert.match(appSource, /온라인 2인 방/);
 });
 
 test('온라인 방장 권한은 서버의 hostId 필드와 연결된다', () => {
   assert.match(appSource, /const roomHostId = currentRoom\?\.hostId \|\| currentRoom\?\.host/);
   assert.match(appSource, /const isRoomHost = !!currentRoom && roomHostId === currentUser\?\.id/);
-  assert.match(appSource, /p\.id === roomHostId/);
+  assert.match(lobbySource, /room\.hostId \|\| room\.host/);
 });
 
 test('현재 방과 다른 SSE 패킷은 게임 화면 상태를 덮어쓰지 않는다', () => {

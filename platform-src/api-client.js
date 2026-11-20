@@ -63,9 +63,12 @@ export class PlatformApiClient {
     return this.listUsers({ departmentId, q });
   }
 
-  listRooms(gameId = '') {
-    const params = gameId ? `?gameId=${encodeURIComponent(gameId)}` : '';
-    return this.request(`/api/platform/rooms${params}`);
+  listRooms(gameId = '', matchType = '') {
+    const params = new URLSearchParams();
+    if (gameId) params.set('gameId', gameId);
+    if (matchType) params.set('matchType', matchType);
+    const query = params.toString();
+    return this.request(`/api/platform/rooms${query ? `?${query}` : ''}`);
   }
 
   createRoom(payload) {

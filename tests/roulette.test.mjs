@@ -22,10 +22,12 @@ test('마블 룰렛 배포 디렉터리 및 필수 번들 파일 존재 검증',
   assert.equal(wasmExists, true, 'Box2D wasm 파일이 존재해야 함');
 });
 
-test('GAME DECK 레지스트리에 마블 룰렛이 정상 등록되어 있다', () => {
-  const regJs = fs.readFileSync(path.join(wsRoot, 'tool-box', 'src', 'features', 'game-box', 'registry', 'arcadeGames.js'), 'utf8');
-  assert.ok(regJs.includes('마블 룰렛'), '마블 룰렛 타이틀이 있어야 함');
-  assert.ok(regJs.includes('/roulette/index.html'), '마블 룰렛 링크가 있어야 함');
+test('DRAW PACK 레지스트리에 마블 룰렛이 정상 등록되어 있고 GAME DECK에서는 분리되어 있다', () => {
+  const drawRegJs = fs.readFileSync(path.join(wsRoot, 'tool-box', 'src', 'features', 'game-box', 'registry', 'drawGames.js'), 'utf8');
+  const arcadeRegJs = fs.readFileSync(path.join(wsRoot, 'tool-box', 'src', 'features', 'game-box', 'registry', 'arcadeGames.js'), 'utf8');
+  assert.ok(drawRegJs.includes('마블 룰렛'), 'DRAW PACK에 마블 룰렛 타이틀이 있어야 함');
+  assert.ok(drawRegJs.includes('/roulette/index.html'), '마블 룰렛 링크가 있어야 함');
+  assert.equal(arcadeRegJs.includes("id: 'roulette'"), false, 'GAME DECK 아케이드 레지스트리에서는 룰렛이 분리되어야 함');
 });
 
 test('HTTP 서버가 마블 룰렛 정적 에셋을 200 OK로 정상 서빙한다', async (t) => {

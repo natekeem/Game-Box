@@ -443,6 +443,7 @@ export class PlatformRealtimeHub {
       code: room.code,
       game: room.game,
       mode: room.mode,
+      matchType: room.matchType || 'code',
       eventId: room.eventId || null,
       hostId: room.host,
       hostName: hostPlayer?.name || null,
@@ -455,13 +456,15 @@ export class PlatformRealtimeHub {
     };
   }
 
-  listPublicRooms(gameId = null) {
+  listPublicRooms(gameId = null, matchType = null) {
     return Object.values(this.rooms)
-      .filter(r => r.mode === 'online' && (!gameId || r.game === gameId))
+      .filter(r => r.mode === 'online'
+        && (!gameId || r.game === gameId)
+        && (!matchType || (r.matchType || 'code') === matchType))
       .map(r => this.serializeRoom(r));
   }
 
-  createRoom({ user, gameId, mode = 'online', botCount = 0, botDifficulty = 'normal', eventId = null }) {
+  createRoom({ user, gameId, mode = 'online', matchType = 'code', botCount = 0, botDifficulty = 'normal', eventId = null }) {
     const code = this.generateRoomCode();
     const hostParticipant = {
       id: user.id,
@@ -479,6 +482,7 @@ export class PlatformRealtimeHub {
       code,
       game: gameId,
       mode,
+      matchType: matchType === 'quick' ? 'quick' : 'code',
       eventId: eventId || null,
       host: hostParticipant.id,
       players: [hostParticipant],
@@ -1502,6 +1506,7 @@ export class PlatformRealtimeHub {
     gs.strokes = [];
     gs.guessedIds = {};
     gs.timer = 35;
+    gs.isRoundActive = true;
 
     this.broadcastDrawingState(room, `🎨 라운드 ${gs.round}/${gs.maxRounds} — 출제자: ${drawer.name} (카테고리: ${preset.category})`);
 
@@ -1509,7 +1514,7 @@ export class PlatformRealtimeHub {
     if (drawer.isBot) {
       let sIdx = 0;
       room.botTimers.botDraw = setInterval(() => {
-        if (room.state !== 'playing') return;
+        if (room.state !== 'playing' || !gs.isRoundActive) return;
         if (sIdx < preset.strokes.length) {
           gs.strokes.push(preset.strokes[sIdx]);
           sIdx++;
@@ -1529,7 +1534,7 @@ export class PlatformRealtimeHub {
           : 14000 + Math.random() * 10000;
 
       room.botTimers[`guess_${bot.id}`] = setTimeout(() => {
-        if (room.state !== 'playing') return;
+        if (room.state !== 'playing' || !gs.isRoundActive || gs.guessedIds[bot.id]) return;
         const willBeCorrect = Math.random() < (bot.botDifficulty === 'hard' ? 0.85 : bot.botDifficulty === 'normal' ? 0.65 : 0.4);
         const wrongPool = DRAWING_PRESETS.filter(p => p.word !== preset.word).map(p => p.word);
         const text = willBeCorrect ? preset.word : wrongPool[Math.floor(Math.random() * wrongPool.length)];
@@ -1538,7 +1543,7 @@ export class PlatformRealtimeHub {
     });
 
     room.timers.drawTick = setInterval(() => {
-      if (room.state !== 'playing') return;
+      if (room.state !== 'playing' || !gs.isRoundActive) return;
       gs.timer -= 1;
       if (gs.timer <= 0) {
         this.advanceDrawingRound(room, `⏰ 시간 종료! 정답은 "${preset.word}"였습니다.`);
@@ -1586,6 +1591,7 @@ export class PlatformRealtimeHub {
     const preset = gs.currentPreset;
 
     if (action.type === 'stroke') {
+      if (!gs.isRoundActive) return { ok: false, error: '현재 라운드가 진행 중이 아닙니다.' };
       if (player.id !== drawer.id) return { ok: false, error: '출제자만 그릴 수 있습니다.' };
       if (action.stroke) gs.strokes.push(action.stroke);
       this.broadcastDrawingState(room);
@@ -1593,6 +1599,7 @@ export class PlatformRealtimeHub {
     }
 
     if (action.type === 'clear') {
+      if (!gs.isRoundActive) return { ok: false, error: '현재 라운드가 진행 중이 아닙니다.' };
       if (player.id !== drawer.id) return { ok: false, error: '출제자만 지울 수 있습니다.' };
       gs.strokes = [];
       this.broadcastDrawingState(room);
@@ -1600,6 +1607,7 @@ export class PlatformRealtimeHub {
     }
 
     if (action.type === 'guess') {
+      if (!gs.isRoundActive || gs.timer <= 0) return { ok: false, error: '현재 라운드가 종료되었습니다.' };
       const text = String(action.text || '').trim();
       if (!text) return { ok: false };
       if (player.id === drawer.id) return { ok: false, error: '출제자는 정답을 입력할 수 없습니다.' };
@@ -1610,7 +1618,10 @@ export class PlatformRealtimeHub {
         const bonus = Math.max(10, gs.timer);
         player.score += bonus;
         drawer.score += 10;
-        gs.chat.push({ id: `${Date.now()}-${Math.random()}`, sender: 'SYSTEM', text: `🎉 ${player.name}님이 정답을 맞혔습니다! (+${bonus}점)`, isCorrect: true });
+
+        // Broadcast player guess along with system success message
+        gs.chat.push({ id: `${Date.now()}-guess-${Math.random()}`, sender: player.name, text, isCorrect: true });
+        gs.chat.push({ id: `${Date.now()}-sys-${Math.random()}`, sender: 'SYSTEM', text: `🎉 ${player.name}님이 정답을 맞혔습니다! (+${bonus}점)`, isCorrect: true });
 
         const guessers = room.players.filter(p => p.id !== drawer.id);
         const allGuessed = guessers.every(g => gs.guessedIds[g.id]);
@@ -1630,8 +1641,9 @@ export class PlatformRealtimeHub {
   }
 
   advanceDrawingRound(room, message) {
-    this.cleanupRoomTimers(room);
     const gs = room.gameState;
+    gs.isRoundActive = false;
+    this.cleanupRoomTimers(room);
     gs.chat.push({ id: `${Date.now()}`, sender: 'SYSTEM', text: message, isCorrect: true });
 
     if (gs.round >= gs.maxRounds) {

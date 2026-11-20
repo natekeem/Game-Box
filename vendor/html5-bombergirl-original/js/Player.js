@@ -355,7 +355,12 @@ Player = Entity.extend({
         if (gGameEngine.countPlayersAlive() == 1 && gGameEngine.playersCount == 2) {
             gGameEngine.gameOver('win');
         } else if (gGameEngine.countPlayersAlive() == 0) {
-            gGameEngine.gameOver('lose');
+            if (gGameEngine.countBotsAlive && gGameEngine.countBotsAlive() >= 2) {
+                gGameEngine.spectating = true;
+                gGameEngine.showSpectatingBanner();
+            } else {
+                gGameEngine.gameOver('lose');
+            }
         }
 
         this.bmp.gotoAndPlay('dead');

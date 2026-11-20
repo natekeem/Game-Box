@@ -247,13 +247,63 @@ export class WebampApp extends Application {
         true,
       );
 
+      const songBase = "/win98-web/songs/anosci%20-%20Blank%20VHS%20Tape%20Jingle%20Collection/";
       const initialTracks = [
         {
           metaData: {
             artist: "DJ Mike Llama",
-            title: "Llama Whippin' Intro",
+            title: "Llama Whippin' Intro (Winamp Classic)",
           },
           url: "https://dn721609.ca.archive.org/0/items/llamawhippinintrobydjmikellama/demo.mp3",
+        },
+        {
+          metaData: {
+            artist: "anosci (90s Retro Tape)",
+            title: "Waiting Room Disco (90s Beat)",
+          },
+          url: songBase + "anosci%20-%20Blank%20VHS%20Tape%20Jingle%20Collection%20-%2004%20waiting%20room%20disco%20tape%20(loop).ogg",
+        },
+        {
+          metaData: {
+            artist: "anosci (90s Retro Tape)",
+            title: "Synth Tape Loop (90s City Pop Vibe)",
+          },
+          url: songBase + "anosci%20-%20Blank%20VHS%20Tape%20Jingle%20Collection%20-%2010%20synth%20tape%20(loop).ogg",
+        },
+        {
+          metaData: {
+            artist: "anosci (90s Retro Tape)",
+            title: "Golden Springs (Chilled Synth 90s)",
+          },
+          url: songBase + "anosci%20-%20Blank%20VHS%20Tape%20Jingle%20Collection%20-%2002%20golden%20springs%20tape.ogg",
+        },
+        {
+          metaData: {
+            artist: "anosci (90s Retro Tape)",
+            title: "Beach Tape (Summer Groove 1997)",
+          },
+          url: songBase + "anosci%20-%20Blank%20VHS%20Tape%20Jingle%20Collection%20-%2009%20beach%20tape%20(cut).ogg",
+        },
+        {
+          metaData: {
+            artist: "anosci (90s Retro Tape)",
+            title: "Spun Telecom Tape (Retro Commercial)",
+          },
+          url: songBase + "anosci%20-%20Blank%20VHS%20Tape%20Jingle%20Collection%20-%2001%20spun%20telecom%20tape.ogg",
+        },
+        {
+          metaData: {
+            artist: "anosci (90s Retro Tape)",
+            title: "Gentle Envelopment (90s Ballad Mood)",
+          },
+          url: songBase + "anosci%20-%20Blank%20VHS%20Tape%20Jingle%20Collection%20-%2003%20gentle%20envelopment.ogg",
+        },
+        {
+          metaData: {
+            artist: "anosci (90s Retro Tape)",
+            title: "Three Hit Tape (Retro Arcade Beat)",
+          },
+          url: songBase + "anosci%20-%20Blank%20VHS%20Tape%20Jingle%20Collection%20-%2013%20three%20hit%20tape%20(loop).ogg",
         },
       ];
 

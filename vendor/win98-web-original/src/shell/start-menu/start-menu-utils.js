@@ -183,9 +183,17 @@ export async function refreshPrograms() {
         try {
           const content = await fs.promises.readFile(fullPath, "utf8");
           const data = JSON.parse(content);
-          if (data.type === "shortcut" && data.appId && !appIds.has(data.appId)) {
-            console.log(`Removing invalid shortcut: ${fullPath} (appId: ${data.appId})`);
-            await fs.promises.unlink(fullPath);
+          if (data.type === "shortcut" && data.appId) {
+            if (!appIds.has(data.appId)) {
+              console.log(`Removing invalid shortcut: ${fullPath} (appId: ${data.appId})`);
+              await fs.promises.unlink(fullPath);
+            } else {
+              const matchedApp = apps.find((a) => a.id === data.appId);
+              if (matchedApp && entry !== `${matchedApp.title}.lnk.json`) {
+                console.log(`Removing outdated shortcut: ${fullPath} (now ${matchedApp.title})`);
+                await fs.promises.unlink(fullPath);
+              }
+            }
           }
         } catch (e) {
           console.warn(`Failed to validate shortcut ${fullPath}:`, e);

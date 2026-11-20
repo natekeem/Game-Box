@@ -26,6 +26,8 @@ GameEngine = Class.extend({
 
     playing: false,
     mute: false,
+    spectating: false,
+    spectatingBanner: null,
     soundtrackLoaded: false,
     soundtrackPlaying: false,
     soundtrack: null,
@@ -41,6 +43,28 @@ GameEngine = Class.extend({
         // Init canvas
         this.stage = new createjs.Stage("canvas");
         this.stage.enableMouseOver();
+
+        // Fix EaselJS stage pointer coordinates when canvas is CSS-scaled
+        var canvas = document.getElementById("canvas");
+        if (canvas) {
+            this.stage._updatePointerPosition = function(id, e, pageX, pageY) {
+                var rect = this.canvas.getBoundingClientRect();
+                var scaleX = this.canvas.width / (rect.width || this.canvas.width);
+                var scaleY = this.canvas.height / (rect.height || this.canvas.height);
+                var x = (e.clientX - rect.left) * scaleX;
+                var y = (e.clientY - rect.top) * scaleY;
+                var o = this._getPointerData(id);
+                o.rawX = x;
+                o.rawY = y;
+                o.x = x;
+                o.y = y;
+                if (id === -1) {
+                    this.mouseX = x;
+                    this.mouseY = y;
+                    this.mouseInBounds = (x >= 0 && y >= 0 && x < this.canvas.width && y < this.canvas.height);
+                }
+            };
+        }
 
         // Load assets
         var queue = new createjs.LoadQueue();
@@ -172,6 +196,10 @@ GameEngine = Class.extend({
 
         // Menu
         gGameEngine.menu.update();
+
+        if (this.spectating && this.spectatingBanner) {
+            this.moveToFront(this.spectatingBanner);
+        }
 
         // Stage
         gGameEngine.stage.update();
@@ -321,8 +349,34 @@ GameEngine = Class.extend({
         return (tile) ? tile.material : 'grass' ;
     },
 
+    showSpectatingBanner: function() {
+        if (this.spectatingBanner) return;
+        var container = new createjs.Container();
+        var bgGraphics = new createjs.Graphics().beginFill("rgba(15, 23, 42, 0.88)").drawRoundRect(0, 0, 320, 30, 6);
+        var bg = new createjs.Shape(bgGraphics);
+        var text = new createjs.Text("[관전 모드] 봇들의 대전 진행 중...", "bold 13px Helvetica, sans-serif", "#ffd93d");
+        text.x = 160 - text.getMeasuredWidth() / 2;
+        text.y = 8;
+        container.addChild(bg);
+        container.addChild(text);
+        container.x = (this.size.w - 320) / 2;
+        container.y = 8;
+        this.stage.addChild(container);
+        this.spectatingBanner = container;
+        this.moveToFront(container);
+    },
+
+    hideSpectatingBanner: function() {
+        if (this.spectatingBanner) {
+            this.stage.removeChild(this.spectatingBanner);
+            this.spectatingBanner = null;
+        }
+    },
+
     gameOver: function(status) {
         if (gGameEngine.menu.visible) { return; }
+        this.spectating = false;
+        this.hideSpectatingBanner();
 
         if (status == 'win') {
             var winText = "You won!";
@@ -330,9 +384,9 @@ GameEngine = Class.extend({
                 var winner = gGameEngine.getWinner();
                 winText = winner == 0 ? "Player 1 won!" : "Player 2 won!";
             }
-            this.menu.show([{text: winText, color: '#669900'}, {text: ' ;D', color: '#99CC00'}]);
+            this.menu.show([{text: winText, color: '#4ee59f'}, {text: ' ;D', color: '#ffd93d'}]);
         } else {
-            this.menu.show([{text: 'Game Over', color: '#CC0000'}, {text: ' :(', color: '#FF4444'}]);
+            this.menu.show([{text: 'Game Over', color: '#ff4d6d'}, {text: ' :(', color: '#ff6b6b'}]);
         }
     },
 
@@ -346,6 +400,8 @@ GameEngine = Class.extend({
     },
 
     restart: function() {
+        this.spectating = false;
+        this.hideSpectatingBanner();
         gInputEngine.removeAllListeners();
         gGameEngine.stage.removeAllChildren();
         gGameEngine.setup();
@@ -367,6 +423,14 @@ GameEngine = Class.extend({
             gGameEngine.mute = true;
             gGameEngine.soundtrack.pause();
         }
+    },
+
+    countBotsAlive: function() {
+        var alive = 0;
+        for (var i = 0; i < this.bots.length; i++) {
+            if (this.bots[i].alive) alive++;
+        }
+        return alive;
     },
 
     countPlayersAlive: function() {

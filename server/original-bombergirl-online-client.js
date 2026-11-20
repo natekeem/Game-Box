@@ -185,13 +185,46 @@
     });
   }
 
+  // Forwarded keys from host window (iframe bridge)
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.type === 'bombergirl-key' && window.gInputEngine) {
+      var evt = { keyCode: e.data.keyCode, preventDefault: function () {} };
+      if (e.data.down) {
+        gInputEngine.onKeyDown(evt);
+      } else {
+        gInputEngine.onKeyUp(evt);
+      }
+    }
+  });
+
+  document.addEventListener('click', function () {
+    window.focus();
+  });
+
   window.addEventListener('load', function () {
+    window.focus();
     if (mode === 'online') {
       connectOnline();
       return;
     }
     waitForOriginalReady(function () {
-      gGameEngine.menu.setMode('single');
+      if (params.get('menu') === '1') {
+        gGameEngine.menu.setMode('single');
+        return;
+      }
+      var rawBots = parseInt(params.get('bots'), 10);
+      var bots = (isNaN(rawBots) || rawBots < 1) ? 3 : Math.min(3, rawBots);
+      gGameEngine.menu.hide();
+      gGameEngine.botsCount = bots;
+      gGameEngine.playersCount = 1;
+      gGameEngine.playing = true;
+      gGameEngine.restart();
+      window.setTimeout(function () {
+        window.focus();
+        if (gGameEngine.stage && gGameEngine.stage.canvas) {
+          gGameEngine.stage.canvas.focus();
+        }
+      }, 100);
     });
   });
 }());

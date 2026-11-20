@@ -149,67 +149,22 @@ export default function GameDeck({ onNavigate }) {
 
   return (
     <div className="gb-deck-shell">
-      {/* Subbar Navigation */}
-      <div className="gb-subbar gb-subbar-dark">
-        <div className="gb-subbar-left">
-          <button
-            type="button"
-            className="gb-subbar-back"
-            onClick={() => onNavigate && onNavigate('/game-box')}
-          >
-            &larr; GAME-BOX 홈으로
-          </button>
-          <span className="gb-subbar-divider">|</span>
-          <strong className="gb-subbar-title">GAME DECK — ARCADE 20 COLLECTION</strong>
-          <span className="gb-subbar-hint">
-            왼쪽 진열대에서 CD 케이스를 선택하고 PLAY를 누르면 3D 케이스가 개방되어 PS2 콘솔 트레이로 디스크가 장착됩니다.
-          </span>
-        </div>
-        <div className="gb-subbar-actions">
-          <button
-            type="button"
-            className="gb-subbar-btn"
-            onClick={() => setSoundEnabled(!soundEnabled)}
-            title="효과음 켜기 / 끄기"
-          >
-            {soundEnabled ? '🔊 SFX ON' : '🔇 MUTE'}
-          </button>
-          <button
-            type="button"
-            className="gb-subbar-btn"
-            onClick={() => {
-              if (typeof window !== 'undefined') {
-                window.location.href = '/game-box/deck-lab-single/';
-              }
-            }}
-            title="Channel 3 단일 오픈소스 원본 독립 실행실"
-          >
-            📺 SINGLE LAB (Channel 3)
-          </button>
-          <button
-            type="button"
-            className="gb-subbar-btn"
-            onClick={() => onNavigate && onNavigate('/game-box/deck-lab')}
-            title="독립된 개발용 3D 케이스 엔진 테스트 환경"
-          >
-            🧪 DECK LAB 이동
-          </button>
-          <button
-            type="button"
-            className="gb-subbar-btn"
-            onClick={() => onNavigate && onNavigate('/game-box/retro')}
-          >
-            🪟 RETRO DESKTOP
-          </button>
-        </div>
-      </div>
-
       <div className="gb-deck-grid">
         {/* LEFT — GAME COLLECTION (3D Game Cases on Shelf) */}
         <aside className="gb-deck-collection" data-testid="deck-collection-zone">
           <div className="gb-deck-panel-header">
-            <h2>GAME COLLECTION</h2>
-            <span className="gb-deck-badge">{visibleGames.length} 3D PACKS</span>
+            <div>
+              <h2>GAME COLLECTION</h2>
+              <span className="gb-deck-badge">{visibleGames.length} 3D PACKS</span>
+            </div>
+            <button
+              type="button"
+              className="gb-sfx-toggle-btn"
+              onClick={() => setSoundEnabled(!soundEnabled)}
+              title="효과음 켜기 / 끄기"
+            >
+              {soundEnabled ? '🔊 SFX' : '🔇 MUTE'}
+            </button>
           </div>
 
           <div className="gb-deck-filters">
@@ -304,7 +259,7 @@ export default function GameDeck({ onNavigate }) {
                     <span className="gb-preview-kicker">
                       {selectedGame
                         ? `${selectedGame.genre} · ${selectedGame.playersLabel} · ${selectedGame.discLabel}`
-                        : 'ARCADE 20 COLLECTION · SELECTION MODE'}
+                        : 'ARCADE 19 COLLECTION · SELECTION MODE'}
                     </span>
                     <h3>{selectedGame?.name || '게임 CD 케이스를 선택하세요'}</h3>
                     <p>
@@ -317,18 +272,8 @@ export default function GameDeck({ onNavigate }) {
                         onClick={handleInsertAndPlay}
                         disabled={!selectedGame || isMovingDisc}
                       >
-                        {selectedGame ? '▶ PLAY' : 'CD 케이스를 먼저 선택해주세요'}
+                        {selectedGame ? '▶ PLAY (대기실 입장)' : 'CD 케이스를 먼저 선택해주세요'}
                       </button>
-                      {selectedGame && (
-                        <a
-                          href={selectedGame.multiplayerUrl || selectedGame.launchUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="gb-btn-standalone"
-                        >
-                          ↗ 독립 창으로 열기
-                        </a>
-                      )}
                     </div>
                   </div>
                 </div>

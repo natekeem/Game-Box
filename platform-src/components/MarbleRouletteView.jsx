@@ -142,7 +142,7 @@ export function MarbleRouletteView({ api, currentUser, users, departments, onBac
         </div>
       )}
 
-      <div className="gp-roulette-body">
+      <div className={`gp-roulette-body ${sidebarOpen ? '' : 'sidebar-collapsed'}`}>
         <div className="gp-roulette-stage">
           <iframe
             ref={iframeRef}

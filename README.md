@@ -1,10 +1,26 @@
 # TOOL BOX — GAME-BOX 통합 게임 플랫폼
 
-**GAME-BOX**는 1990년대 컴퓨터실 감성의 **한글 Windows 98 레트로 데스크톱(`RETRO DESKTOP`)**과 20종 멀티/아케이드 게임팩을 콘솔에 삽입해 즐기는 **아케이드 콘솔 덱(`GAME DECK`)**을 단일 진입점(`/game-box`)으로 통합한 웹 게임 시스템입니다.
+**GAME-BOX**는 1990년대 컴퓨터실 감성의 **한글 Windows 98 레트로 데스크톱(`RETRO DESKTOP`)**, 19종 멀티/아케이드 게임팩을 콘솔에 삽입해 즐기는 **아케이드 콘솔 덱(`GAME DECK`)**, 그리고 사내 부서/임직원 물리 추첨기 **뽑기 팩(`DRAW PACK`)**을 단일 진입점(`/game-box`)으로 통합한 웹 엔터테인먼트 시스템입니다.
 
 ---
 
-## 1. 빠른 시작 (Quick Start)
+## 1. 핵심 아키텍처 및 사용자 경험 (Core UX)
+
+1. **단일 닉네임 자동 상속 체제**:
+   - 홈 화면에서 한 번 정한 닉네임이 레트로 데스크톱, 아케이드 콘솔, DRAW PACK 및 모든 멀티플레이 게임에 자동으로 동기화되어 하위 게임에서 중복으로 닉네임을 입력할 필요가 없습니다.
+2. **통일된 게임 대기실 (Game Lobby)**:
+   - **싱글 모드**: 컴퓨터(BOT) 대결 옵션(봇 수 선택, 난이도 조절)을 대기실에서 자유롭게 설정하여 즉시 시작.
+   - **멀티 모드**: 빠른 랜덤 매칭(즉시 매칭)과 6자리 참여 코드로 입장하는 친구/동료 초대 비공개 방 생성 기능 제공.
+   - **직관적인 조작법 팝업**: 대기실마다 조작법 버튼을 제공하여 키보드, 키맵핑, 규칙을 직관적인 팝업 창으로 상세 안내.
+3. **스크롤 없는 한 화면 최적화 (Compact Screen Fit)**:
+   - 게임 화면 및 대기실이 브라우저 해상도에 맞게 알맞게 들어가도록 컴팩트 레이아웃을 적용하여 스크롤 없이 쾌적하게 플레이할 수 있습니다.
+4. **봄버맨 & 봄버걸 고도화**:
+   - **Blast Arena (봄버맨)**: 캐릭터 렌더링 무결성, 무한 리셋 버그 방지, 로비 액션/채팅 컴팩트 뷰.
+   - **HTML5 Bombergirl (봄버걸)**: 캔버스 반응형 화면 확대, 플레이어 사망 시 최후의 1인이 결정될 때까지 **관전 모드** 유지 후 승패 결과 창에서 [다시 시작] 및 [대기실 나가기] 브리지 연동.
+
+---
+
+## 2. 빠른 시작 (Quick Start)
 
 ```powershell
 # 의존성 설치
@@ -19,9 +35,10 @@ Windows 환경에서는 루트 폴더의 **`START_GAME_BOX.cmd`** 파일을 더�
 ### 공식 라우트 구조
 | 경로 | 화면 설명 |
 | --- | --- |
-| **`/game-box`** | **GAME-BOX 메인 홈** — 상단 Tool Box 헤더(닉네임 등록/변경) 및 좌우 2대 진입 카드 (`RETRO DESKTOP` / `GAME DECK`) |
+| **`/game-box`** | **GAME-BOX 메인 홈** — 상단 헤더(닉네임 등록/변경) 및 3대 진입 카드 (`RETRO DESKTOP` / `GAME DECK` / `DRAW PACK`) |
 | **`/game-box/retro`** | **RETRO DESKTOP (한글 Windows 98)** — `한컴타자연습 97`, `한메타자교사 3.0`, `피카츄 배구`, `게임 가이드`, 우측 고정 `GAME RANKING` 창 |
-| **`/game-box/deck`** | **GAME DECK (아케이드 컬렉션)** — 20종 게임 케이스 컬렉션 + 중앙 콘솔 디스플레이(온디맨드 실행) + 우측 랭킹/스펙 패널 |
+| **`/game-box/deck`** | **GAME DECK (아케이드 컬렉션 19종)** — 19종 게임 케이스 컬렉션 + 콘솔 대기실/스테이지 + 우측 랭킹/스펙 패널 |
+| **`/game-box/draw`** | **DRAW PACK (뽑기 · 이벤트 추첨)** — Box2D 물리 엔진 기반 `마블 룰렛` + 사내 부서/임직원 명단 불러오기/저장 + 실시간 당첨 기록 |
 
 > 루트(`/`) 및 구 버전 경로(`/hub.html`, `/platform.html`, `/rankings.html`)로 접속 시 공식 진입점인 **`/game-box`** 로 자동 리다이렉트됩니다.
 
@@ -70,14 +87,15 @@ Game-box/
 
 ---
 
-## 3. 문서 안내 (`docs/`)
+## 4. 문서 안내 (`docs/`)
 
-전체 설계 및 기술 명세 문서는 [`docs/README.md`](docs/README.md)에서 확인할 수 있습니다.
+전체 설계, 기술 명세 및 오픈소스 정보는 [`docs/README.md`](docs/README.md)에서 확인할 수 있습니다.
 
+- **오픈소스 참고 저장소 및 구조**: [`REFERENCE_REPOSITORIES.md`](docs/REFERENCE_REPOSITORIES.md) — 벤더 라이선스, 원작자 정보, 디렉터리 역할 가이드
 - **아키텍처 (`docs/architecture/`)**
   - [`GAME_BOX_AUDIT.md`](docs/architecture/GAME_BOX_AUDIT.md) — 프로젝트 구조 분석 및 정리 내역
   - [`GAME_BOX_ROUTE_MAP.md`](docs/architecture/GAME_BOX_ROUTE_MAP.md) — 공식 라우팅 및 게임 실행 경로 명세
-  - [`GAME_BOX_GAME_INVENTORY.md`](docs/architecture/GAME_BOX_GAME_INVENTORY.md) — 레트로 3종 + 아케이드 20종 전체 게임 인벤토리
+  - [`GAME_BOX_GAME_INVENTORY.md`](docs/architecture/GAME_BOX_GAME_INVENTORY.md) — 레트로 3종 + 아케이드 19종 + 뽑기 1종 전체 인벤토리
   - [`CORPORATE_PORTAL_INTEGRATION.md`](docs/architecture/CORPORATE_PORTAL_INTEGRATION.md) — 호스트 포털 이식 및 로그인 Identity 연동 가이드
 - **시스템 명세 (`docs/specs/`)**
   - [`GAME_BOX_EVENT_CONTRACT.md`](docs/specs/GAME_BOX_EVENT_CONTRACT.md) — 공통 게임 이벤트(`game:start`, `game:progress`, `game:complete`, `game:abort`) 규격
@@ -90,7 +108,7 @@ Game-box/
 
 ---
 
-## 4. 빌드 및 테스트 명령어
+## 5. 빌드 및 테스트 명령어
 
 ```powershell
 # 전체 게임 및 통합 엔트리 빌드

@@ -38,53 +38,6 @@ export default function RetroDesktop({ onNavigate }) {
 
   return (
     <div className="gb-retro-shell">
-      <div className="gb-subbar">
-        <div className="gb-subbar-left">
-          <button
-            type="button"
-            className="gb-subbar-back"
-            onClick={() => onNavigate('/game-box')}
-          >
-            &larr; GAME-BOX 홈으로
-          </button>
-          <span className="gb-subbar-divider">|</span>
-          <strong className="gb-subbar-title">RETRO DESKTOP (Windows 98)</strong>
-          <span className="gb-subbar-hint">
-            바탕화면의 [한컴타자연습], [한메타자연습], [피카츄 배구], [게임 가이드], 오른쪽 [GAME RANKING] 창을 이용하세요.
-          </span>
-        </div>
-        <div className="gb-subbar-actions">
-          <button
-            type="button"
-            className="gb-subbar-btn"
-            onClick={() => sendCommandToWin98('retro-game-guide')}
-          >
-            📖 게임 가이드 열기
-          </button>
-          <button
-            type="button"
-            className="gb-subbar-btn"
-            onClick={() => sendCommandToWin98('retro-ranking')}
-          >
-            🏆 GAME RANKING 창 열기
-          </button>
-          <button
-            type="button"
-            className="gb-subbar-btn"
-            onClick={openNicknameModal}
-          >
-            👤 {identity.nickname || '닉네임 설정'}
-          </button>
-          <button
-            type="button"
-            className="gb-subbar-btn"
-            onClick={() => onNavigate('/game-box/deck')}
-          >
-            🕹️ GAME DECK 이동 &rarr;
-          </button>
-        </div>
-      </div>
-
       <div className="gb-retro-viewport">
         <iframe
           ref={iframeRef}

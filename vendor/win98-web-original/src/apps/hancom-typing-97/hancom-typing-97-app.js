@@ -5,12 +5,12 @@ import { ShowDialogWindow } from '../../shared/components/dialog-window.js';
 export class HancomTyping97App extends IFrameApplication {
   static config = {
     id: "hancom-typing-97",
-    title: "한컴타자연습",
-    description: "1997년 오리지널 도스용 한컴타자연습 (산성비, 자리·낱말·짧은글·긴글 연습)",
+    title: "한컴타자연습 97",
+    description: "1997년 한글과컴퓨터 오리지널 한컴타자연습 (산성비, 침략자, 자리·낱말·짧은글·긴글 연습)",
     icon: ICONS.hancom97,
     category: "보조프로그램/게임",
-    width: 700,
-    height: 550,
+    width: 766,
+    height: 642,
     resizable: true,
     isSingleton: true,
   };
@@ -57,8 +57,8 @@ export class HancomTyping97App extends IFrameApplication {
 
     const win = new window.$Window({
       title: winTitle,
-      outerWidth: this.width,
-      outerHeight: this.height,
+      innerWidth: 760,
+      innerHeight: 592,
       resizable: this.resizable,
       icons: this.icon,
     });
@@ -155,9 +155,35 @@ export class HancomTyping97App extends IFrameApplication {
         border: "none",
         width: "100%",
         flex: "1 1 auto",
-        height: "100%",
+        height: "570px",
         background: "#000",
+        display: "block",
       });
+
+    if (typeof win.onClosed === "function") {
+      win.onClosed(() => {
+        try {
+          const cw = this.$iframe?.[0]?.contentWindow;
+          if (cw && typeof cw.getDosSessionStats === "function") {
+            const stats = cw.getDosSessionStats();
+            if (stats && !stats.completed && stats.keystrokes >= 5) {
+              cw.completeDosTypingSession({ gameMode: "position" });
+            }
+          }
+        } catch (e) {}
+      });
+    }
+
+    win.onFocus = () => {
+      try {
+        this.$iframe?.[0]?.contentWindow?.focus();
+      } catch (e) {}
+    };
+    this.$iframe.on("load", () => {
+      try {
+        this.$iframe?.[0]?.contentWindow?.focus();
+      } catch (e) {}
+    });
 
     const playerTag = currentNickname ? `👤 플레이어: <b>${currentNickname}</b> | ` : '';
     const $statusBar = window.$("<div>")
@@ -166,17 +192,21 @@ export class HancomTyping97App extends IFrameApplication {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "2px 6px",
+        padding: "0 8px",
         background: "#c0c0c0",
         borderTop: "1px solid #808080",
         fontSize: "11px",
         color: "#000",
+        height: "22px",
+        lineHeight: "20px",
         flexShrink: 0,
         userSelect: "none",
+        whiteSpace: "nowrap",
+        overflow: "hidden",
       })
       .html(
-        `<span>${playerTag}💡 <b>한/영:</b> 영문(A) 상태에서 <b>Shift + Space</b></span>` +
-        '<span>방향키 · Enter · ESC</span>'
+        `<span>${playerTag}💡 한/영: <b>Shift+Space</b> · ⚡ <b>자리연습 자동기록 · ESC 종료 시 자동 저장</b></span>` +
+        '<span>한컴타자연습 97</span>'
       );
 
     win.$content.append(this.$iframe, $statusBar);

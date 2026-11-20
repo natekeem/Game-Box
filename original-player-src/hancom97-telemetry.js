@@ -14,7 +14,7 @@ function pixel(frame, x, y) {
   return [frame.pixels[offset], frame.pixels[offset + 1], frame.pixels[offset + 2]];
 }
 
-function countColor(frame, rect, predicate) {
+export function countColor(frame, rect, predicate) {
   let count = 0;
   const maxX = Math.min(frame.width, rect.x + rect.width);
   const maxY = Math.min(frame.height, rect.y + rect.height);

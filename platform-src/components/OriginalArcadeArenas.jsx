@@ -132,44 +132,124 @@ export function OriginalSnakeDuelArena({ gs, room, currentUser, onAction }) {
   );
 }
 
-export function OriginalBombermanArena({ mode = 'online' }) {
+export function OriginalBombermanArena({ mode = 'online', bots = 1, currentUser = null }) {
+  const iframeRef = useRef(null);
+  const sessionNonce = useRef(Date.now()).current;
+  const params = useMemo(() => {
+    const p = new URLSearchParams({ bots: String(bots), _s: String(sessionNonce) });
+    if (currentUser?.name) p.set('nickname', currentUser.name);
+    return p;
+  }, [bots, currentUser?.name, sessionNonce]);
+
+  useEffect(() => {
+    const focusIframe = () => iframeRef.current?.contentWindow?.focus();
+    const timer = setTimeout(focusIframe, 300);
+    return () => {
+      clearTimeout(timer);
+      try {
+        fetch('/original-blast-arena/api/reset', { method: 'GET', keepalive: true }).catch(() => {});
+      } catch {
+        // ignore reset failure on unmount
+      }
+    };
+  }, []);
+
   return (
-    <section className="ba-original-shell" aria-label="Blast Arena 원본 게임">
+    <section
+      className="ba-original-shell"
+      aria-label="Blast Arena 원본 게임"
+      onClick={() => iframeRef.current?.contentWindow?.focus()}
+    >
       <iframe
-        key={mode}
+        ref={iframeRef}
+        key={`${mode}-${params.toString()}`}
         className="ba-original-frame"
-        src={`/original-blast-arena/?mode=${encodeURIComponent(mode)}`}
+        src={`/original-blast-arena/?mode=${encodeURIComponent(mode)}&${params.toString()}`}
         title="Blast Arena original game"
         allow="autoplay; fullscreen; gamepad"
+        tabIndex="0"
+        onLoad={() => iframeRef.current?.contentWindow?.focus()}
       />
     </section>
   );
 }
 
-export function OriginalBombergirlArena({ mode = 'single', room = null, currentUser = null }) {
+export function OriginalBombergirlArena({ mode = 'single', bots = 3, room = null, currentUser = null, onBackToLobby = null }) {
+  const iframeRef = useRef(null);
   const src = useMemo(() => {
     const params = new URLSearchParams({ mode });
     if (mode === 'online') {
       params.set('room', room?.code || '');
       params.set('player', currentUser?.id || '');
       params.set('name', currentUser?.name || 'Player');
+    } else {
+      params.set('bots', String(bots));
     }
     return `/original-bombergirl/?${params.toString()}`;
-  }, [mode, room?.code, currentUser?.id, currentUser?.name]);
+  }, [mode, bots, room?.code, currentUser?.id, currentUser?.name]);
+
+  useEffect(() => {
+    const handleMessage = (e) => {
+      if (e.data && e.data.type === 'return-to-lobby') {
+        onBackToLobby?.();
+      }
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [onBackToLobby]);
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      // Forward arrow keys, WASD, Space, Enter, Esc to Bombergirl iframe
+      const capturedKeys = [38, 40, 37, 39, 87, 83, 65, 68, 32, 16, 18, 13, 27, 77];
+      if (capturedKeys.includes(e.keyCode)) {
+        iframeRef.current?.contentWindow?.postMessage({
+          type: 'bombergirl-key',
+          keyCode: e.keyCode,
+          down: true,
+        }, '*');
+      }
+    };
+    const onKeyUp = (e) => {
+      const capturedKeys = [38, 40, 37, 39, 87, 83, 65, 68, 32, 16, 18, 13, 27, 77];
+      if (capturedKeys.includes(e.keyCode)) {
+        iframeRef.current?.contentWindow?.postMessage({
+          type: 'bombergirl-key',
+          keyCode: e.keyCode,
+          down: false,
+        }, '*');
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('keyup', onKeyUp);
+    const timer = setTimeout(() => iframeRef.current?.contentWindow?.focus(), 300);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keyup', onKeyUp);
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
-    <section className="bg-original-shell" aria-label="HTML5 Bombergirl 원본 게임">
+    <section
+      className="bg-original-shell"
+      aria-label="HTML5 Bombergirl 원본 게임"
+      onClick={() => iframeRef.current?.contentWindow?.focus()}
+    >
       <iframe
+        ref={iframeRef}
         key={src}
         className="bg-original-frame"
         src={src}
         title={mode === 'online' ? 'HTML5 Bombergirl online game' : 'HTML5 Bombergirl original single player'}
         allow="autoplay; fullscreen; gamepad"
+        tabIndex="0"
+        onLoad={() => iframeRef.current?.contentWindow?.focus()}
       />
     </section>
   );
 }
-
 function ArcadeDpad({ onAction }) {
   return (
     <div className="oa-dpad" aria-label="화면 방향키">

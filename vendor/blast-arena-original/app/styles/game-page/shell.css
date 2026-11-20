@@ -2,9 +2,9 @@
   position: fixed;
   inset: 0;
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 230px 1fr;
   grid-template-rows: 1fr;
-  padding: 16px 16px 16px 0;
+  padding: 8px 10px 8px 0;
 
   background-color: var(--bg);
   background-image: linear-gradient(
@@ -26,7 +26,7 @@
     linear-gradient(135deg, #0d1325 0%, #0a0f1c 100%);
   background-size: 24px 24px, 18px 18px, 100% 100%, 100% 100%, 100% 100%;
   overflow: hidden;
-  gap: 16px;
+  gap: 10px;
 }
 
 .game-page::after {

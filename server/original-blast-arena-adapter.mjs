@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { WebSocketServer } from 'ws';
 import { gameState } from '../vendor/blast-arena-original/server/state.js';
+import { createGameState } from '../vendor/blast-arena-original/game/models.js';
 import { initBroadcaster } from '../vendor/blast-arena-original/server/broadcast.js';
 import { handleDisconnect, handleMessage } from '../vendor/blast-arena-original/server/messages.js';
 import { queueInput } from '../vendor/blast-arena-original/server/gameLogic.js';
@@ -39,8 +40,10 @@ function adaptedSource(target, mountPath) {
     const original = 'const wsUrl = `ws://${wsHost}:8765`;';
     const transportAdapter = [
       "const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';",
-      "  const wsMode = new URLSearchParams(window.location.search).get('mode') || 'online';",
-      `  const wsUrl = \`${'${wsProtocol}'}//${'${window.location.host}'}${mountPath}/ws?mode=${'${encodeURIComponent(wsMode)}'}\`;`,
+      "  const wsParams = new URLSearchParams(window.location.search);",
+      "  const wsMode = wsParams.get('mode') || 'online';",
+      "  const wsBots = wsParams.get('bots') || '1';",
+      `  const wsUrl = \`${'${wsProtocol}'}//${'${window.location.host}'}${mountPath}/ws?mode=${'${encodeURIComponent(wsMode)}'}&bots=${'${encodeURIComponent(wsBots)}'}\`;`,
     ].join('\n  ');
     const text = source.toString('utf8');
     if (!text.includes(original)) {
@@ -143,35 +146,64 @@ export function createOriginalBlastArenaAdapter({ mountPath = DEFAULT_MOUNT_PATH
     return candidates[0];
   }
 
-  function ensureComputerOpponent(ownerWs, humanId) {
+  function ensureComputerOpponents(ownerWs, humanId, count) {
     if (botSessions.has(ownerWs)) return;
-    const botId = `computer-${humanId}`;
-    const fakeWs = { send() {} };
-    handleMessage(fakeWs, JSON.stringify({ type: 'join', player_id: botId, nickname: 'COM-BOT' }));
-    handleMessage(fakeWs, JSON.stringify({ type: 'ready', player_id: botId }));
+    const sessions = [];
+    for (let index = 1; index <= count; index += 1) {
+      const botId = `computer-${humanId}-${index}`;
+      const fakeWs = { send() {} };
+      handleMessage(fakeWs, JSON.stringify({ type: 'join', player_id: botId, nickname: count > 1 ? `COM-${index}` : 'COM-BOT' }));
+      handleMessage(fakeWs, JSON.stringify({ type: 'ready', player_id: botId }));
 
-    const session = { botId, fakeWs, lastBombAt: 0, timer: null };
-    session.timer = setInterval(() => {
-      if (gameState.room.status !== 'playing') return;
-      const player = gameState.game.players?.[botId];
-      if (!player || player.status !== 'alive') return;
-      const move = chooseBotMove(player, session);
-      if (move) queueInput(botId, { kind: 'move', dir: move.dir });
-    }, 120);
-    botSessions.set(ownerWs, session);
+      const session = { botId, fakeWs, lastBombAt: 0, timer: null };
+      session.timer = setInterval(() => {
+        if (gameState.room.status !== 'playing') return;
+        const player = gameState.game.players?.[botId];
+        if (!player || player.status !== 'alive') return;
+        const move = chooseBotMove(player, session);
+        if (move) queueInput(botId, { kind: 'move', dir: move.dir });
+      }, 120);
+      sessions.push(session);
+    }
+    botSessions.set(ownerWs, sessions);
   }
 
-  function removeComputerOpponent(ownerWs) {
-    const session = botSessions.get(ownerWs);
-    if (!session) return;
-    clearInterval(session.timer);
-    handleDisconnect(session.fakeWs);
+  function resetArenaState() {
+    gameState.game = createGameState();
+    gameState.game.status = 'waiting';
+    gameState.game.winnerId = undefined;
+    gameState.game.winnerIds = [];
+    gameState.game.winners = [];
+    gameState.game.finalStandings = [];
+    gameState.game.eliminationLog = [];
+    gameState.room.status = 'waiting';
+    gameState.room.countdown = null;
+    gameState.userIntentions = {};
+    gameState.userRoles = {};
+    gameState.players = {};
+    gameState.spectators = {};
+  }
+
+  function removeComputerOpponents(ownerWs) {
+    const sessions = botSessions.get(ownerWs);
+    if (!sessions) return;
+    for (const session of sessions) {
+      clearInterval(session.timer);
+      handleDisconnect(session.fakeWs);
+    }
     botSessions.delete(ownerWs);
   }
 
   wss.on('connection', (ws, request) => {
     const connectionUrl = new URL(request?.url || websocketPath, 'http://localhost');
     const mode = connectionUrl.searchParams.get('mode') || 'online';
+    const botCount = Math.min(3, Math.max(1, Number.parseInt(connectionUrl.searchParams.get('bots') || '1', 10) || 1));
+
+    // When starting a new bot game or when prior match ended, completely clear stale game-over states
+    if (mode === 'bot' || gameState.game.status === 'finished' || gameState.room.status === 'results' || wss.clients.size <= 1) {
+      resetArenaState();
+    }
+
     ws.send(JSON.stringify({
       type: 'state_sync',
       state: {
@@ -183,20 +215,43 @@ export function createOriginalBlastArenaAdapter({ mountPath = DEFAULT_MOUNT_PATH
     ws.on('message', (message) => {
       let parsed = null;
       try { parsed = JSON.parse(message); } catch { /* original handler ignores malformed packets */ }
+
+      // If rejoining or starting fresh, ensure no lingering finished state
+      if (parsed?.type === 'join' && (gameState.game.status === 'finished' || gameState.room.status === 'results')) {
+        resetArenaState();
+      }
+
       handleMessage(ws, message);
+
+      if (parsed?.type === 'leave_lobby') {
+        removeComputerOpponents(ws);
+        if (wss.clients.size <= 1) {
+          resetArenaState();
+        }
+      }
+
       if (mode === 'bot' && parsed?.type === 'join' && parsed.player_id) {
-        ensureComputerOpponent(ws, parsed.player_id);
+        ensureComputerOpponents(ws, parsed.player_id, botCount);
       }
     });
     ws.on('close', () => {
-      removeComputerOpponent(ws);
+      removeComputerOpponents(ws);
       handleDisconnect(ws);
+      if (wss.clients.size === 0) {
+        resetArenaState();
+      }
     });
   });
-
   function handleHttp(request, response, url) {
     const pathname = url.pathname;
     if (pathname !== mountPath && !pathname.startsWith(`${mountPath}/`)) return false;
+
+    if (pathname === `${mountPath}/api/reset`) {
+      resetArenaState();
+      response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      response.end(JSON.stringify({ ok: true, status: 'reset' }));
+      return true;
+    }
 
     if (pathname === websocketPath) {
       response.writeHead(426, { 'Content-Type': 'text/plain; charset=utf-8' });
@@ -251,7 +306,7 @@ export function createOriginalBlastArenaAdapter({ mountPath = DEFAULT_MOUNT_PATH
     });
 
     server.on('close', () => {
-      for (const ownerWs of botSessions.keys()) removeComputerOpponent(ownerWs);
+      for (const ownerWs of botSessions.keys()) removeComputerOpponents(ownerWs);
       for (const client of wss.clients) client.terminate();
       wss.close();
     });

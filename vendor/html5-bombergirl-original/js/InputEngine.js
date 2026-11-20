@@ -36,13 +36,34 @@ InputEngine = Class.extend({
 
         document.addEventListener('keydown', this.onKeyDown);
         document.addEventListener('keyup', this.onKeyUp);
+        window.addEventListener('keydown', this.onKeyDown);
+        window.addEventListener('keyup', this.onKeyUp);
+
+        // Forwarded keyboard inputs from parent platform iframe shell
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'bombergirl-key') {
+                var fakeEvent = {
+                    keyCode: Number(event.data.keyCode),
+                    preventDefault: function() {}
+                };
+                if (event.data.down) {
+                    gInputEngine.onKeyDown(fakeEvent);
+                } else {
+                    gInputEngine.onKeyUp(fakeEvent);
+                }
+            }
+        });
     },
 
     onKeyDown: function(event) {
         var action = gInputEngine.bindings[event.keyCode];
         if (action) {
             gInputEngine.actions[action] = true;
-            event.preventDefault();
+            if (action.endsWith('2') && (!window.gGameEngine || gGameEngine.playersCount <= 1)) {
+                var base = action.slice(0, -1);
+                gInputEngine.actions[base] = true;
+            }
+            if (event.preventDefault) event.preventDefault();
         }
         return false;
     },
@@ -51,6 +72,10 @@ InputEngine = Class.extend({
         var action = gInputEngine.bindings[event.keyCode];
         if (action) {
             gInputEngine.actions[action] = false;
+            if (action.endsWith('2') && (!window.gGameEngine || gGameEngine.playersCount <= 1)) {
+                var base = action.slice(0, -1);
+                gInputEngine.actions[base] = false;
+            }
 
             var listeners = gInputEngine.listeners[action];
             if (listeners) {
@@ -59,7 +84,7 @@ InputEngine = Class.extend({
                     listener();
                 }
             }
-            event.preventDefault();
+            if (event.preventDefault) event.preventDefault();
         }
         return false;
     },

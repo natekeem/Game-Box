@@ -6,6 +6,8 @@
 
 ## 1. 아키텍처 및 라우팅 (`docs/architecture/`)
 
+- **[`REFERENCE_REPOSITORIES.md`](REFERENCE_REPOSITORIES.md)**
+  - 오픈소스 참고 저장소(Vendor Repositories) 일람표, 라이선스, 원작자 정보 및 프로젝트 전체 디렉터리 구조 가이드
 - **[`GAME_BOX_AUDIT.md`](architecture/GAME_BOX_AUDIT.md)**
   - 기존 코드 조사, 중복 진입점 제거(`hub.html`, `platform.html`, 레거시 단일 HTML 삭제), 디렉터리 정리 결과
 - **[`GAME_BOX_ROUTE_MAP.md`](architecture/GAME_BOX_ROUTE_MAP.md)**

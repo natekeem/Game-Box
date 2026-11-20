@@ -13,9 +13,9 @@ export function GamePlayStage({ gameId, room, currentUser, gameStateData, onActi
   const currentPlayerId = gameStateData?.currentPlayerId || null;
   const isMyTurn = !currentPlayerId || currentPlayerId === currentUser.id;
 
-  if (gameId === 'bomberman') return <OriginalBombermanArena />;
+  if (gameId === 'bomberman') return <OriginalBombermanArena mode="online" currentUser={currentUser} />;
   if (gameId === 'bombergirl') {
-    return <OriginalBombergirlArena mode="online" room={room} currentUser={currentUser} />;
+    return <OriginalBombergirlArena mode="online" room={room} currentUser={currentUser} onBackToLobby={() => onAction?.({ type: 'leave' })} />;
   }
 
   if (gameId === 'snakeduel') {
