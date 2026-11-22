@@ -1714,74 +1714,325 @@ var ToolBoxGameBox = (() => {
 
   // tool-box/src/features/game-box/draw/DrawPack.js
   function MarbleDisplay() {
-    return /* @__PURE__ */ u3("svg", { className: "gb-marble-display", viewBox: "0 0 860 500", role: "img", "aria-label": "\uB9C8\uBE14 \uB8F0\uB81B \uC2E4\uC81C \uD50C\uB808\uC774 \uD654\uBA74\uC744 \uBC14\uD0D5\uC73C\uB85C \uD55C \uAD6C\uC2AC \uB808\uC774\uC2A4 \uBBF8\uB9AC\uBCF4\uAE30", children: [
+    return /* @__PURE__ */ u3("svg", { className: "gb-marble-display", viewBox: "0 0 860 520", role: "img", "aria-label": "\uB9C8\uBE14 \uB8F0\uB81B \uC2E4\uC81C \uD50C\uB808\uC774 \uD654\uBA74\uC744 \uBC14\uD0D5\uC73C\uB85C \uD55C \uAD6C\uC2AC \uB808\uC774\uC2A4 \uBBF8\uB9AC\uBCF4\uAE30", children: [
       /* @__PURE__ */ u3("defs", { children: [
-        /* @__PURE__ */ u3("linearGradient", { id: "marble-screen", x2: "0", y2: "1", children: [
-          /* @__PURE__ */ u3("stop", { stopColor: "#172431" }),
-          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#0a1119" })
+        /* @__PURE__ */ u3("linearGradient", { id: "roulette-bg", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#0c131c" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#14202d" })
         ] }),
-        /* @__PURE__ */ u3("linearGradient", { id: "track-metal", x2: "0", y2: "1", children: [
-          /* @__PURE__ */ u3("stop", { stopColor: "#5f7784" }),
-          /* @__PURE__ */ u3("stop", { offset: ".45", stopColor: "#283c48" }),
-          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#14232d" })
+        /* @__PURE__ */ u3("pattern", { id: "r-grid", width: "28", height: "28", patternUnits: "userSpaceOnUse", children: /* @__PURE__ */ u3("path", { d: "M28 0H0v28", fill: "none", stroke: "#7fa2b6", strokeWidth: "1", strokeOpacity: "0.06" }) }),
+        /* @__PURE__ */ u3("linearGradient", { id: "rail-track", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#627885" }),
+          /* @__PURE__ */ u3("stop", { offset: "35%", stopColor: "#334652" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#18242c" })
         ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "marble-cyan", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { stopColor: "#f0ffff" }),
-          /* @__PURE__ */ u3("stop", { offset: ".22", stopColor: "#82efff" }),
-          /* @__PURE__ */ u3("stop", { offset: ".65", stopColor: "#14a9cf" }),
-          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#07516f" })
+        /* @__PURE__ */ u3("linearGradient", { id: "rail-inner", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#253540" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#111c23" })
         ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "marble-amber", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { stopColor: "#fff4cd" }),
-          /* @__PURE__ */ u3("stop", { offset: ".24", stopColor: "#ffd66e" }),
-          /* @__PURE__ */ u3("stop", { offset: ".68", stopColor: "#e48324" }),
-          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#7a351c" })
+        /* @__PURE__ */ u3("linearGradient", { id: "spin-blade", x1: "0", y1: "0", x2: "1", y2: "1", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#ffca28" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#e65100" })
         ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "marble-rose", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { stopColor: "#fff0ee" }),
-          /* @__PURE__ */ u3("stop", { offset: ".25", stopColor: "#ff9d91" }),
-          /* @__PURE__ */ u3("stop", { offset: ".7", stopColor: "#d34257" }),
-          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#672333" })
+        /* @__PURE__ */ u3("radialGradient", { id: "pin-metal", cx: "35%", cy: "30%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#ffffff" }),
+          /* @__PURE__ */ u3("stop", { offset: "45%", stopColor: "#b0bec5" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#37474f" })
         ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "marble-lime", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { stopColor: "#f4ffe5" }),
-          /* @__PURE__ */ u3("stop", { offset: ".25", stopColor: "#b8eb74" }),
-          /* @__PURE__ */ u3("stop", { offset: ".7", stopColor: "#58a44e" }),
-          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#24543a" })
+        /* @__PURE__ */ u3("radialGradient", { id: "m-red", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#ffcdd2" }),
+          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#ff5252" }),
+          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#d50000" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#5b0007" })
         ] }),
-        /* @__PURE__ */ u3("pattern", { id: "roulette-grid", width: "32", height: "32", patternUnits: "userSpaceOnUse", children: /* @__PURE__ */ u3("path", { d: "M32 0H0v32", fill: "none", stroke: "#90b0bd", strokeOpacity: ".08" }) }),
-        /* @__PURE__ */ u3("filter", { id: "marble-shadow", x: "-60%", y: "-60%", width: "220%", height: "240%", children: /* @__PURE__ */ u3("feDropShadow", { dx: "0", dy: "9", stdDeviation: "8", floodColor: "#000", floodOpacity: ".55" }) })
+        /* @__PURE__ */ u3("radialGradient", { id: "m-cyan", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#e0f7fa" }),
+          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#18ffff" }),
+          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#00b0ff" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#003566" })
+        ] }),
+        /* @__PURE__ */ u3("radialGradient", { id: "m-gold", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#fff8e1" }),
+          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#ffd740" }),
+          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#ff9100" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#7a3600" })
+        ] }),
+        /* @__PURE__ */ u3("radialGradient", { id: "m-green", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#f1f8e9" }),
+          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#76ff03" }),
+          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#00c853" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#00431a" })
+        ] }),
+        /* @__PURE__ */ u3("radialGradient", { id: "m-purple", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#f3e5f5" }),
+          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#e040fb" }),
+          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#aa00ff" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#4a0072" })
+        ] }),
+        /* @__PURE__ */ u3("radialGradient", { id: "m-orange", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#fbe9e7" }),
+          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#ff9e80" }),
+          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#ff3d00" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#801300" })
+        ] }),
+        /* @__PURE__ */ u3("radialGradient", { id: "m-pink", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#fce4ec" }),
+          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#ff80ab" }),
+          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#f50057" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#660024" })
+        ] }),
+        /* @__PURE__ */ u3("radialGradient", { id: "m-blue", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#e8eaf6" }),
+          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#82b1ff" }),
+          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#2979ff" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#0d2b7a" })
+        ] }),
+        /* @__PURE__ */ u3("pattern", { id: "checker", width: "16", height: "16", patternUnits: "userSpaceOnUse", children: [
+          /* @__PURE__ */ u3("rect", { width: "8", height: "8", fill: "#e2b755" }),
+          /* @__PURE__ */ u3("rect", { x: "8", width: "8", height: "8", fill: "#1b242a" }),
+          /* @__PURE__ */ u3("rect", { y: "8", width: "8", height: "8", fill: "#1b242a" }),
+          /* @__PURE__ */ u3("rect", { x: "8", y: "8", width: "8", height: "8", fill: "#e2b755" })
+        ] }),
+        /* @__PURE__ */ u3("filter", { id: "m-shadow", x: "-40%", y: "-40%", width: "180%", height: "190%", children: /* @__PURE__ */ u3("feDropShadow", { dx: "0", dy: "7", stdDeviation: "5", floodColor: "#000", floodOpacity: "0.6" }) }),
+        /* @__PURE__ */ u3("filter", { id: "glow", x: "-20%", y: "-20%", width: "140%", height: "140%", children: [
+          /* @__PURE__ */ u3("feGaussianBlur", { stdDeviation: "4", result: "blur" }),
+          /* @__PURE__ */ u3("feComposite", { in: "SourceGraphic", in2: "blur", operator: "over" })
+        ] })
       ] }),
-      /* @__PURE__ */ u3("rect", { x: "4", y: "4", width: "852", height: "492", rx: "24", fill: "#080d12", stroke: "#748590", strokeWidth: "5" }),
-      /* @__PURE__ */ u3("rect", { x: "14", y: "14", width: "832", height: "472", rx: "17", fill: "url(#marble-screen)" }),
-      /* @__PURE__ */ u3("path", { d: "M14 31q0-17 17-17h798q17 0 17 17v50H14z", fill: "#202b32" }),
-      /* @__PURE__ */ u3("circle", { cx: "44", cy: "46", r: "7", fill: "#f0715f" }),
-      /* @__PURE__ */ u3("circle", { cx: "68", cy: "46", r: "7", fill: "#e7bb65" }),
-      /* @__PURE__ */ u3("circle", { cx: "92", cy: "46", r: "7", fill: "#73b38e" }),
-      /* @__PURE__ */ u3("text", { x: "430", y: "53", textAnchor: "middle", fill: "#e7e2d7", fontFamily: "Arial,sans-serif", fontSize: "18", fontWeight: "700", letterSpacing: "4", children: "MARBLE ROULETTE" }),
-      /* @__PURE__ */ u3("rect", { x: "34", y: "96", width: "792", height: "344", rx: "12", fill: "#101b24", stroke: "#415662", strokeWidth: "2" }),
-      /* @__PURE__ */ u3("rect", { x: "34", y: "96", width: "792", height: "344", rx: "12", fill: "url(#roulette-grid)" }),
-      /* @__PURE__ */ u3("path", { d: "M70 140h106v58h86v-36h75v76h96v-34h75v88h95v-43h93", fill: "none", stroke: "#080e14", strokeWidth: "37", strokeLinecap: "round", strokeLinejoin: "round", opacity: ".78" }),
-      /* @__PURE__ */ u3("path", { d: "M70 132h106v58h86v-36h75v76h96v-34h75v88h95v-43h93", fill: "none", stroke: "url(#track-metal)", strokeWidth: "29", strokeLinecap: "round", strokeLinejoin: "round" }),
-      /* @__PURE__ */ u3("path", { d: "M70 132h106v58h86v-36h75v76h96v-34h75v88h95v-43h93", fill: "none", stroke: "#9ab0b6", strokeOpacity: ".35", strokeWidth: "3", strokeLinecap: "round", strokeLinejoin: "round" }),
-      /* @__PURE__ */ u3("path", { d: "M166 190v72h-54v57h108v-44h95v79h73v-35h97v48h91v-55h145", fill: "none", stroke: "#080e14", strokeWidth: "25", strokeLinecap: "round", strokeLinejoin: "round", opacity: ".72" }),
-      /* @__PURE__ */ u3("path", { d: "M166 184v72h-54v57h108v-44h95v79h73v-35h97v48h91v-55h145", fill: "none", stroke: "#344b57", strokeWidth: "17", strokeLinecap: "round", strokeLinejoin: "round" }),
-      /* @__PURE__ */ u3("path", { d: "M71 111v44m-11-34 11 11 11-11", fill: "none", stroke: "#edc574", strokeWidth: "5", strokeLinecap: "round", strokeLinejoin: "round" }),
-      /* @__PURE__ */ u3("rect", { x: "739", y: "296", width: "54", height: "72", rx: "8", fill: "#263c46", stroke: "#b79453", strokeWidth: "3" }),
-      /* @__PURE__ */ u3("path", { d: "M751 309h30v12h-30zm0 21h30v25h-30z", fill: "#d7b66a", opacity: ".9" }),
-      /* @__PURE__ */ u3("g", { filter: "url(#marble-shadow)", children: [
-        /* @__PURE__ */ u3("circle", { cx: "139", cy: "132", r: "20", fill: "url(#marble-cyan)" }),
-        /* @__PURE__ */ u3("circle", { cx: "246", cy: "183", r: "19", fill: "url(#marble-amber)" }),
-        /* @__PURE__ */ u3("circle", { cx: "344", cy: "151", r: "21", fill: "url(#marble-rose)" }),
-        /* @__PURE__ */ u3("circle", { cx: "435", cy: "230", r: "18", fill: "url(#marble-lime)" }),
-        /* @__PURE__ */ u3("circle", { cx: "538", cy: "194", r: "21", fill: "url(#marble-cyan)" }),
-        /* @__PURE__ */ u3("circle", { cx: "627", cy: "280", r: "19", fill: "url(#marble-amber)" })
+      /* @__PURE__ */ u3("rect", { x: "2", y: "2", width: "856", height: "516", rx: "14", fill: "url(#roulette-bg)", stroke: "#394f5e", strokeWidth: "2.5" }),
+      /* @__PURE__ */ u3("rect", { x: "2", y: "2", width: "856", height: "516", rx: "14", fill: "url(#r-grid)" }),
+      /* @__PURE__ */ u3("path", { d: "M120 32h110l-28 64h-54z", fill: "#172733", stroke: "#486374", strokeWidth: "2.5" }),
+      /* @__PURE__ */ u3("path", { d: "M148 96h54v30h-54z", fill: "#203444", stroke: "#486374", strokeWidth: "2" }),
+      /* @__PURE__ */ u3("text", { x: "175", y: "58", textAnchor: "middle", fill: "#89a7ba", fontFamily: "monospace", fontSize: "10", fontWeight: "700", letterSpacing: "1", children: "START GATE" }),
+      /* @__PURE__ */ u3(
+        "path",
+        {
+          d: "M175 126 v44 h96 v58 h98 v-34 h110 v86 h-90 v62 h210 v58 h115",
+          fill: "none",
+          stroke: "#060c11",
+          strokeWidth: "36",
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          opacity: "0.8"
+        }
+      ),
+      /* @__PURE__ */ u3(
+        "path",
+        {
+          d: "M175 126 v44 h96 v58 h98 v-34 h110 v86 h-90 v62 h210 v58 h115",
+          fill: "none",
+          stroke: "url(#rail-track)",
+          strokeWidth: "28",
+          strokeLinecap: "round",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ u3(
+        "path",
+        {
+          d: "M175 126 v44 h96 v58 h98 v-34 h110 v86 h-90 v62 h210 v58 h115",
+          fill: "none",
+          stroke: "url(#rail-inner)",
+          strokeWidth: "16",
+          strokeLinecap: "round",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ u3(
+        "path",
+        {
+          d: "M175 126 v44 h96 v58 h98 v-34 h110 v86 h-90 v62 h210 v58 h115",
+          fill: "none",
+          stroke: "#90afbf",
+          strokeWidth: "2",
+          strokeOpacity: "0.4",
+          strokeLinecap: "round",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ u3(
+        "path",
+        {
+          d: "M271 228 v64 h-84 v60 h165 v-42 h140 v62 h90",
+          fill: "none",
+          stroke: "#060c11",
+          strokeWidth: "26",
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          opacity: "0.75"
+        }
+      ),
+      /* @__PURE__ */ u3(
+        "path",
+        {
+          d: "M271 228 v64 h-84 v60 h165 v-42 h140 v62 h90",
+          fill: "none",
+          stroke: "url(#rail-track)",
+          strokeWidth: "20",
+          strokeLinecap: "round",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ u3(
+        "path",
+        {
+          d: "M271 228 v64 h-84 v60 h165 v-42 h140 v62 h90",
+          fill: "none",
+          stroke: "url(#rail-inner)",
+          strokeWidth: "10",
+          strokeLinecap: "round",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ u3("g", { children: [
+        [480, 85],
+        [530, 85],
+        [580, 85],
+        [630, 85],
+        [455, 120],
+        [505, 120],
+        [555, 120],
+        [605, 120],
+        [655, 120],
+        [480, 155],
+        [530, 155],
+        [580, 155],
+        [630, 155],
+        [505, 190],
+        [555, 190],
+        [605, 190]
+      ].map(([px, py], i3) => /* @__PURE__ */ u3("g", { children: [
+        /* @__PURE__ */ u3("circle", { cx: px, cy: py + 3, r: "6.5", fill: "#070d13", opacity: "0.6" }),
+        /* @__PURE__ */ u3("circle", { cx: px, cy: py, r: "6", fill: "url(#pin-metal)" }),
+        /* @__PURE__ */ u3("circle", { cx: px - 1.5, cy: py - 1.5, r: "1.8", fill: "#fff", opacity: "0.8" })
+      ] }, i3)) }),
+      /* @__PURE__ */ u3("g", { transform: "translate(345, 240)", children: [
+        /* @__PURE__ */ u3("circle", { r: "36", fill: "none", stroke: "#e67e22", strokeWidth: "1.5", strokeDasharray: "5 5", opacity: "0.45" }),
+        /* @__PURE__ */ u3("g", { transform: "rotate(35)", children: [
+          /* @__PURE__ */ u3("rect", { x: "-30", y: "-5", width: "60", height: "10", rx: "4", fill: "url(#spin-blade)" }),
+          /* @__PURE__ */ u3("rect", { x: "-5", y: "-30", width: "10", height: "60", rx: "4", fill: "url(#spin-blade)" }),
+          /* @__PURE__ */ u3("circle", { r: "7", fill: "#263238", stroke: "#ffd54f", strokeWidth: "2.5" }),
+          /* @__PURE__ */ u3("circle", { r: "2.5", fill: "#fff" })
+        ] })
       ] }),
-      /* @__PURE__ */ u3("rect", { x: "36", y: "454", width: "788", height: "13", rx: "6", fill: "#28363d" }),
-      /* @__PURE__ */ u3("rect", { x: "36", y: "454", width: "506", height: "13", rx: "6", fill: "#d3a85d" }),
-      /* @__PURE__ */ u3("circle", { cx: "544", cy: "460", r: "8", fill: "#f4dfaa" }),
-      /* @__PURE__ */ u3("text", { x: "38", y: "479", fill: "#aebbc0", fontFamily: "Arial,sans-serif", fontSize: "11", letterSpacing: "1.6", children: "PHYSICS COURSE \xB7 LIVE DRAW" }),
-      /* @__PURE__ */ u3("text", { x: "822", y: "479", textAnchor: "end", fill: "#d7b66a", fontFamily: "Arial,sans-serif", fontSize: "11", letterSpacing: "1.6", children: "FINISH" })
+      /* @__PURE__ */ u3("g", { transform: "translate(565, 285)", children: [
+        /* @__PURE__ */ u3("circle", { r: "38", fill: "none", stroke: "#ffb300", strokeWidth: "1.5", strokeDasharray: "6 4", opacity: "0.45" }),
+        /* @__PURE__ */ u3("g", { transform: "rotate(70)", children: [
+          /* @__PURE__ */ u3("rect", { x: "-32", y: "-5.5", width: "64", height: "11", rx: "4", fill: "url(#spin-blade)" }),
+          /* @__PURE__ */ u3("rect", { x: "-5.5", y: "-32", width: "11", height: "64", rx: "4", fill: "url(#spin-blade)" }),
+          /* @__PURE__ */ u3("circle", { r: "7.5", fill: "#263238", stroke: "#ffd54f", strokeWidth: "2.5" }),
+          /* @__PURE__ */ u3("circle", { r: "2.5", fill: "#fff" })
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("g", { transform: "translate(680, 395)", children: [
+        /* @__PURE__ */ u3("rect", { x: "0", y: "0", width: "86", height: "58", rx: "8", fill: "#1b2832", stroke: "#d4af37", strokeWidth: "2.5" }),
+        /* @__PURE__ */ u3("rect", { x: "6", y: "6", width: "74", height: "20", fill: "url(#checker)" }),
+        /* @__PURE__ */ u3("text", { x: "43", y: "21", textAnchor: "middle", fill: "#000", fontFamily: "sans-serif", fontSize: "11", fontWeight: "900", letterSpacing: "2", children: "FINISH" }),
+        /* @__PURE__ */ u3("rect", { x: "8", y: "30", width: "20", height: "22", rx: "3", fill: "#d4af37" }),
+        /* @__PURE__ */ u3("text", { x: "18", y: "45", textAnchor: "middle", fill: "#111", fontFamily: "sans-serif", fontSize: "11", fontWeight: "900", children: "1" }),
+        /* @__PURE__ */ u3("rect", { x: "33", y: "34", width: "20", height: "18", rx: "3", fill: "#cfd8dc" }),
+        /* @__PURE__ */ u3("text", { x: "43", y: "47", textAnchor: "middle", fill: "#111", fontFamily: "sans-serif", fontSize: "10", fontWeight: "900", children: "2" }),
+        /* @__PURE__ */ u3("rect", { x: "58", y: "37", width: "20", height: "15", rx: "3", fill: "#b08d57" }),
+        /* @__PURE__ */ u3("text", { x: "68", y: "49", textAnchor: "middle", fill: "#111", fontFamily: "sans-serif", fontSize: "9", fontWeight: "900", children: "3" })
+      ] }),
+      /* @__PURE__ */ u3("path", { d: "M515 155 l2 4 4 2 -4 2 -2 4 -2 -4 -4 -2 4 -2z", fill: "#ffe082", filter: "url(#glow)" }),
+      /* @__PURE__ */ u3("path", { d: "M375 225 l2 3 3 2 -3 2 -2 3 -2 -3 -3 -2 3 -2z", fill: "#80d8ff", filter: "url(#glow)" }),
+      /* @__PURE__ */ u3("path", { d: "M605 400 l3 5 5 3 -5 3 -3 5 -3 -5 -5 -3 5 -3z", fill: "#ff80ab", filter: "url(#glow)" }),
+      /* @__PURE__ */ u3("g", { filter: "url(#m-shadow)", children: [
+        /* @__PURE__ */ u3("g", { transform: "translate(615, 420)", children: [
+          /* @__PURE__ */ u3("circle", { r: "19", fill: "url(#m-red)" }),
+          /* @__PURE__ */ u3("ellipse", { cx: "-5", cy: "-6", rx: "6", ry: "4", fill: "#fff", opacity: "0.65" }),
+          /* @__PURE__ */ u3("rect", { x: "-38", y: "-39", width: "76", height: "18", rx: "9", fill: "rgba(15,23,30,0.92)", stroke: "#ff5252", strokeWidth: "1.5" }),
+          /* @__PURE__ */ u3("circle", { cx: "-28", cy: "-30", r: "3.5", fill: "#ffd700" }),
+          /* @__PURE__ */ u3("text", { x: "-20", y: "-27", fill: "#fff", fontFamily: "sans-serif", fontSize: "10", fontWeight: "800", children: "\uAE40\uBBFC\uC218" }),
+          /* @__PURE__ */ u3("text", { x: "26", y: "-27", textAnchor: "end", fill: "#ffd700", fontFamily: "sans-serif", fontSize: "9", fontWeight: "900", children: "1\uC704" })
+        ] }),
+        /* @__PURE__ */ u3("g", { transform: "translate(510, 368)", children: [
+          /* @__PURE__ */ u3("circle", { r: "18", fill: "url(#m-cyan)" }),
+          /* @__PURE__ */ u3("ellipse", { cx: "-5", cy: "-5", rx: "5.5", ry: "3.5", fill: "#fff", opacity: "0.7" }),
+          /* @__PURE__ */ u3("rect", { x: "-35", y: "-37", width: "70", height: "18", rx: "9", fill: "rgba(15,23,30,0.92)", stroke: "#00b0ff", strokeWidth: "1.5" }),
+          /* @__PURE__ */ u3("text", { x: "-24", y: "-25", fill: "#fff", fontFamily: "sans-serif", fontSize: "10", fontWeight: "800", children: "\uC774\uC11C\uC5F0" }),
+          /* @__PURE__ */ u3("text", { x: "24", y: "-25", textAnchor: "end", fill: "#80d8ff", fontFamily: "sans-serif", fontSize: "9", fontWeight: "800", children: "2\uC704" })
+        ] }),
+        /* @__PURE__ */ u3("g", { transform: "translate(360, 215)", children: [
+          /* @__PURE__ */ u3("circle", { r: "17.5", fill: "url(#m-gold)" }),
+          /* @__PURE__ */ u3("ellipse", { cx: "-4.5", cy: "-5", rx: "5", ry: "3.5", fill: "#fff", opacity: "0.7" }),
+          /* @__PURE__ */ u3("rect", { x: "-33", y: "-35", width: "66", height: "17", rx: "8.5", fill: "rgba(15,23,30,0.92)", stroke: "#ffb300", strokeWidth: "1.4" }),
+          /* @__PURE__ */ u3("text", { x: "-22", y: "-23", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "800", children: "\uBC15\uC9C0\uD6C8" }),
+          /* @__PURE__ */ u3("text", { x: "22", y: "-23", textAnchor: "end", fill: "#ffe082", fontFamily: "sans-serif", fontSize: "8.5", fontWeight: "800", children: "3\uC704" })
+        ] }),
+        /* @__PURE__ */ u3("g", { transform: "translate(535, 142)", children: [
+          /* @__PURE__ */ u3("circle", { r: "17", fill: "url(#m-green)" }),
+          /* @__PURE__ */ u3("ellipse", { cx: "-4.5", cy: "-4.5", rx: "5", ry: "3", fill: "#fff", opacity: "0.65" }),
+          /* @__PURE__ */ u3("rect", { x: "-30", y: "-33", width: "60", height: "16", rx: "8", fill: "rgba(15,23,30,0.9)", stroke: "#00e676", strokeWidth: "1.2" }),
+          /* @__PURE__ */ u3("text", { x: "0", y: "-21", textAnchor: "middle", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "700", children: "\uCD5C\uB3D9\uD604" })
+        ] }),
+        /* @__PURE__ */ u3("g", { transform: "translate(635, 172)", children: [
+          /* @__PURE__ */ u3("circle", { r: "17", fill: "url(#m-purple)" }),
+          /* @__PURE__ */ u3("ellipse", { cx: "-4.5", cy: "-4.5", rx: "5", ry: "3", fill: "#fff", opacity: "0.65" }),
+          /* @__PURE__ */ u3("rect", { x: "-30", y: "-33", width: "60", height: "16", rx: "8", fill: "rgba(15,23,30,0.9)", stroke: "#e040fb", strokeWidth: "1.2" }),
+          /* @__PURE__ */ u3("text", { x: "0", y: "-21", textAnchor: "middle", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "700", children: "\uC815\uC720\uC9C4" })
+        ] }),
+        /* @__PURE__ */ u3("g", { transform: "translate(210, 248)", children: [
+          /* @__PURE__ */ u3("circle", { r: "16.5", fill: "url(#m-orange)" }),
+          /* @__PURE__ */ u3("ellipse", { cx: "-4", cy: "-4", rx: "5", ry: "3", fill: "#fff", opacity: "0.65" }),
+          /* @__PURE__ */ u3("rect", { x: "-30", y: "-33", width: "60", height: "16", rx: "8", fill: "rgba(15,23,30,0.9)", stroke: "#ff7043", strokeWidth: "1.2" }),
+          /* @__PURE__ */ u3("text", { x: "0", y: "-21", textAnchor: "middle", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "700", children: "\uAC15\uD604\uC6B0" })
+        ] }),
+        /* @__PURE__ */ u3("g", { transform: "translate(175, 118)", children: [
+          /* @__PURE__ */ u3("circle", { r: "16", fill: "url(#m-pink)" }),
+          /* @__PURE__ */ u3("ellipse", { cx: "-4", cy: "-4", rx: "4.5", ry: "3", fill: "#fff", opacity: "0.65" }),
+          /* @__PURE__ */ u3("rect", { x: "-30", y: "-32", width: "60", height: "16", rx: "8", fill: "rgba(15,23,30,0.9)", stroke: "#ff4081", strokeWidth: "1.2" }),
+          /* @__PURE__ */ u3("text", { x: "0", y: "-20", textAnchor: "middle", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "700", children: "\uC724\uC544\uB984" })
+        ] }),
+        /* @__PURE__ */ u3("g", { transform: "translate(425, 290)", children: [
+          /* @__PURE__ */ u3("circle", { r: "16.5", fill: "url(#m-blue)" }),
+          /* @__PURE__ */ u3("ellipse", { cx: "-4", cy: "-4", rx: "5", ry: "3", fill: "#fff", opacity: "0.7" }),
+          /* @__PURE__ */ u3("rect", { x: "-30", y: "-33", width: "60", height: "16", rx: "8", fill: "rgba(15,23,30,0.9)", stroke: "#448aff", strokeWidth: "1.2" }),
+          /* @__PURE__ */ u3("text", { x: "0", y: "-21", textAnchor: "middle", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "700", children: "\uD55C\uB3C4\uC724" })
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("g", { transform: "translate(20, 20)", children: [
+        /* @__PURE__ */ u3("rect", { width: "180", height: "34", rx: "8", fill: "rgba(12, 19, 28, 0.82)", stroke: "rgba(255, 255, 255, 0.14)", strokeWidth: "1" }),
+        /* @__PURE__ */ u3("circle", { cx: "18", cy: "17", r: "5", fill: "#f44336" }),
+        /* @__PURE__ */ u3("circle", { cx: "18", cy: "17", r: "2.5", fill: "#fff" }),
+        /* @__PURE__ */ u3("text", { x: "31", y: "21", fill: "#ff5252", fontFamily: "sans-serif", fontSize: "11", fontWeight: "800", letterSpacing: "0.5", children: "LIVE RACE" }),
+        /* @__PURE__ */ u3("line", { x1: "98", y1: "9", x2: "98", y2: "25", stroke: "rgba(255,255,255,0.18)" }),
+        /* @__PURE__ */ u3("text", { x: "108", y: "21", fill: "#b0bec5", fontFamily: "sans-serif", fontSize: "10.5", fontWeight: "700", children: "32 GU-SEUL" })
+      ] }),
+      /* @__PURE__ */ u3("g", { transform: "translate(798, 20)", children: [
+        /* @__PURE__ */ u3("rect", { width: "42", height: "476", rx: "9", fill: "rgba(10, 16, 24, 0.88)", stroke: "rgba(255, 255, 255, 0.15)", strokeWidth: "1" }),
+        /* @__PURE__ */ u3("text", { x: "21", y: "20", textAnchor: "middle", fill: "#78909c", fontFamily: "monospace", fontSize: "8.5", fontWeight: "700", children: "START" }),
+        /* @__PURE__ */ u3("line", { x1: "21", y1: "30", x2: "21", y2: "445", stroke: "#37474f", strokeWidth: "3", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("circle", { cx: "21", cy: "425", r: "4.5", fill: "#ff5252" }),
+        /* @__PURE__ */ u3("circle", { cx: "21", cy: "380", r: "4.5", fill: "#00e5ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "21", cy: "270", r: "4", fill: "#ffd740" }),
+        /* @__PURE__ */ u3("circle", { cx: "21", cy: "210", r: "4", fill: "#69f0ae" }),
+        /* @__PURE__ */ u3("circle", { cx: "21", cy: "180", r: "4", fill: "#e040fb" }),
+        /* @__PURE__ */ u3("circle", { cx: "21", cy: "145", r: "4", fill: "#ff9e80" }),
+        /* @__PURE__ */ u3("circle", { cx: "21", cy: "95", r: "3.5", fill: "#ff80ab" }),
+        /* @__PURE__ */ u3("circle", { cx: "21", cy: "65", r: "3.5", fill: "#448aff" }),
+        /* @__PURE__ */ u3("rect", { x: "7", y: "450", width: "28", height: "15", rx: "3", fill: "#d4af37" }),
+        /* @__PURE__ */ u3("text", { x: "21", y: "461", textAnchor: "middle", fill: "#000", fontFamily: "sans-serif", fontSize: "8", fontWeight: "900", children: "GOAL" })
+      ] }),
+      /* @__PURE__ */ u3("g", { transform: "translate(20, 466)", children: [
+        /* @__PURE__ */ u3("rect", { width: "766", height: "34", rx: "8", fill: "rgba(12, 19, 28, 0.88)", stroke: "rgba(255, 255, 255, 0.12)", strokeWidth: "1" }),
+        /* @__PURE__ */ u3("text", { x: "16", y: "21", fill: "#ffd54f", fontFamily: "sans-serif", fontSize: "10.5", fontWeight: "800", children: "\u{1F3C6} LIVE LEADERS" }),
+        /* @__PURE__ */ u3("line", { x1: "112", y1: "8", x2: "112", y2: "26", stroke: "rgba(255,255,255,0.18)" }),
+        /* @__PURE__ */ u3("text", { x: "126", y: "21", fill: "#fff", fontFamily: "sans-serif", fontSize: "11", fontWeight: "600", children: [
+          /* @__PURE__ */ u3("tspan", { fill: "#ffd700", fontWeight: "800", children: "1\uC704" }),
+          " \uAE40\uBBFC\uC218",
+          /* @__PURE__ */ u3("tspan", { fill: "#90a4ae", dx: "18", children: "\xB7" }),
+          /* @__PURE__ */ u3("tspan", { fill: "#cfd8dc", fontWeight: "800", dx: "18", children: "2\uC704" }),
+          " \uC774\uC11C\uC5F0",
+          /* @__PURE__ */ u3("tspan", { fill: "#90a4ae", dx: "18", children: "\xB7" }),
+          /* @__PURE__ */ u3("tspan", { fill: "#b08d57", fontWeight: "800", dx: "18", children: "3\uC704" }),
+          " \uBC15\uC9C0\uD6C8",
+          /* @__PURE__ */ u3("tspan", { fill: "#90a4ae", dx: "18", children: "\xB7" }),
+          /* @__PURE__ */ u3("tspan", { fill: "#81d4fa", fontWeight: "800", dx: "18", children: "4\uC704" }),
+          " \uCD5C\uB3D9\uD604"
+        ] })
+      ] })
     ] });
   }
   function DrawPack() {

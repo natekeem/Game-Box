@@ -145,10 +145,26 @@
 .gb-room:hover .gb-lobby-monitor { transform: perspective(600px) rotateY(0) rotateZ(0) translateY(-4px); }
 
 .gb-room-draw .gb-room-art, .gb-ticket-art {
-  background: radial-gradient(ellipse at 50% 0%, #31424b 0, transparent 62%), #0a1118;
+  background: radial-gradient(ellipse at 50% 30%, #1a2a36 0%, #080e14 78%);
+  padding: clamp(10px, 2vw, 18px);
+  box-sizing: border-box;
 }
-.gb-marble-display { display: block; width: min(100%, 660px); height: auto; overflow: visible; transition: transform .5s cubic-bezier(.2,.8,.3,1); }
-.gb-room:hover .gb-marble-display, .gb-draw-ticket:hover .gb-marble-display { transform: scale(1.035); }
+.gb-marble-display {
+  display: block;
+  width: 100%;
+  max-width: 680px;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.48), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: transform .5s cubic-bezier(.2,.8,.3,1), box-shadow .5s ease;
+}
+.gb-room:hover .gb-marble-display, .gb-draw-ticket:hover .gb-marble-display {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
 
 .gb-room-heading { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 24px; }
 .gb-room-heading h1 { margin: 0 0 9px; font-size: clamp(35px, 5vw, 76px); letter-spacing: -.075em; line-height: 1.06; }
