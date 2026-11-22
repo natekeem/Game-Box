@@ -29,16 +29,8 @@ canvas {
   user-select: none;
 }
 
-div.copyright {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--copyright-color);
-  font-size: 12px;
-  z-index: 999;
-  width: 90%;
-  text-align: center;
+div.copyright, #btnShop {
+  display: none !important;
 }
 
 div.copyright a {

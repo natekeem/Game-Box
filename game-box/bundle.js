@@ -1714,324 +1714,156 @@ var ToolBoxGameBox = (() => {
 
   // tool-box/src/features/game-box/draw/DrawPack.js
   function MarbleDisplay() {
-    return /* @__PURE__ */ u3("svg", { className: "gb-marble-display", viewBox: "0 0 860 520", role: "img", "aria-label": "\uB9C8\uBE14 \uB8F0\uB81B \uC2E4\uC81C \uD50C\uB808\uC774 \uD654\uBA74\uC744 \uBC14\uD0D5\uC73C\uB85C \uD55C \uAD6C\uC2AC \uB808\uC774\uC2A4 \uBBF8\uB9AC\uBCF4\uAE30", children: [
+    return /* @__PURE__ */ u3("svg", { className: "gb-marble-display", viewBox: "0 0 860 480", role: "img", "aria-label": "\uB9C8\uBE14 \uB8F0\uB81B \uC2E4\uC81C \uAC8C\uC784 \uD654\uBA74 \uAE30\uBC18 \uB808\uC774\uC2A4 \uBBF8\uB9AC\uBCF4\uAE30", children: [
       /* @__PURE__ */ u3("defs", { children: [
-        /* @__PURE__ */ u3("linearGradient", { id: "roulette-bg", x1: "0", y1: "0", x2: "0", y2: "1", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#0c131c" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#14202d" })
+        /* @__PURE__ */ u3("filter", { id: "neon-glow", x: "-40%", y: "-40%", width: "180%", height: "180%", children: [
+          /* @__PURE__ */ u3("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "5", result: "blur1" }),
+          /* @__PURE__ */ u3("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "2", result: "blur2" }),
+          /* @__PURE__ */ u3("feMerge", { children: [
+            /* @__PURE__ */ u3("feMergeNode", { in: "blur1" }),
+            /* @__PURE__ */ u3("feMergeNode", { in: "blur2" }),
+            /* @__PURE__ */ u3("feMergeNode", { in: "SourceGraphic" })
+          ] })
         ] }),
-        /* @__PURE__ */ u3("pattern", { id: "r-grid", width: "28", height: "28", patternUnits: "userSpaceOnUse", children: /* @__PURE__ */ u3("path", { d: "M28 0H0v28", fill: "none", stroke: "#7fa2b6", strokeWidth: "1", strokeOpacity: "0.06" }) }),
-        /* @__PURE__ */ u3("linearGradient", { id: "rail-track", x1: "0", y1: "0", x2: "0", y2: "1", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#627885" }),
-          /* @__PURE__ */ u3("stop", { offset: "35%", stopColor: "#334652" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#18242c" })
-        ] }),
-        /* @__PURE__ */ u3("linearGradient", { id: "rail-inner", x1: "0", y1: "0", x2: "0", y2: "1", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#253540" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#111c23" })
-        ] }),
-        /* @__PURE__ */ u3("linearGradient", { id: "spin-blade", x1: "0", y1: "0", x2: "1", y2: "1", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#ffca28" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#e65100" })
-        ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "pin-metal", cx: "35%", cy: "30%", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#ffffff" }),
-          /* @__PURE__ */ u3("stop", { offset: "45%", stopColor: "#b0bec5" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#37474f" })
-        ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "m-red", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#ffcdd2" }),
-          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#ff5252" }),
-          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#d50000" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#5b0007" })
-        ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "m-cyan", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#e0f7fa" }),
-          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#18ffff" }),
-          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#00b0ff" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#003566" })
-        ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "m-gold", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#fff8e1" }),
-          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#ffd740" }),
-          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#ff9100" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#7a3600" })
-        ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "m-green", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#f1f8e9" }),
-          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#76ff03" }),
-          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#00c853" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#00431a" })
-        ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "m-purple", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#f3e5f5" }),
-          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#e040fb" }),
-          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#aa00ff" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#4a0072" })
-        ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "m-orange", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#fbe9e7" }),
-          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#ff9e80" }),
-          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#ff3d00" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#801300" })
-        ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "m-pink", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#fce4ec" }),
-          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#ff80ab" }),
-          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#f50057" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#660024" })
-        ] }),
-        /* @__PURE__ */ u3("radialGradient", { id: "m-blue", cx: "30%", cy: "25%", children: [
-          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#e8eaf6" }),
-          /* @__PURE__ */ u3("stop", { offset: "25%", stopColor: "#82b1ff" }),
-          /* @__PURE__ */ u3("stop", { offset: "70%", stopColor: "#2979ff" }),
-          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#0d2b7a" })
-        ] }),
-        /* @__PURE__ */ u3("pattern", { id: "checker", width: "16", height: "16", patternUnits: "userSpaceOnUse", children: [
-          /* @__PURE__ */ u3("rect", { width: "8", height: "8", fill: "#e2b755" }),
-          /* @__PURE__ */ u3("rect", { x: "8", width: "8", height: "8", fill: "#1b242a" }),
-          /* @__PURE__ */ u3("rect", { y: "8", width: "8", height: "8", fill: "#1b242a" }),
-          /* @__PURE__ */ u3("rect", { x: "8", y: "8", width: "8", height: "8", fill: "#e2b755" })
-        ] }),
-        /* @__PURE__ */ u3("filter", { id: "m-shadow", x: "-40%", y: "-40%", width: "180%", height: "190%", children: /* @__PURE__ */ u3("feDropShadow", { dx: "0", dy: "7", stdDeviation: "5", floodColor: "#000", floodOpacity: "0.6" }) }),
-        /* @__PURE__ */ u3("filter", { id: "glow", x: "-20%", y: "-20%", width: "140%", height: "140%", children: [
-          /* @__PURE__ */ u3("feGaussianBlur", { stdDeviation: "4", result: "blur" }),
-          /* @__PURE__ */ u3("feComposite", { in: "SourceGraphic", in2: "blur", operator: "over" })
+        /* @__PURE__ */ u3("filter", { id: "wall-glow", x: "-20%", y: "-20%", width: "140%", height: "140%", children: [
+          /* @__PURE__ */ u3("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "2.5", result: "blur" }),
+          /* @__PURE__ */ u3("feMerge", { children: [
+            /* @__PURE__ */ u3("feMergeNode", { in: "blur" }),
+            /* @__PURE__ */ u3("feMergeNode", { in: "SourceGraphic" })
+          ] })
         ] })
       ] }),
-      /* @__PURE__ */ u3("rect", { x: "2", y: "2", width: "856", height: "516", rx: "14", fill: "url(#roulette-bg)", stroke: "#394f5e", strokeWidth: "2.5" }),
-      /* @__PURE__ */ u3("rect", { x: "2", y: "2", width: "856", height: "516", rx: "14", fill: "url(#r-grid)" }),
-      /* @__PURE__ */ u3("path", { d: "M120 32h110l-28 64h-54z", fill: "#172733", stroke: "#486374", strokeWidth: "2.5" }),
-      /* @__PURE__ */ u3("path", { d: "M148 96h54v30h-54z", fill: "#203444", stroke: "#486374", strokeWidth: "2" }),
-      /* @__PURE__ */ u3("text", { x: "175", y: "58", textAnchor: "middle", fill: "#89a7ba", fontFamily: "monospace", fontSize: "10", fontWeight: "700", letterSpacing: "1", children: "START GATE" }),
-      /* @__PURE__ */ u3(
-        "path",
-        {
-          d: "M175 126 v44 h96 v58 h98 v-34 h110 v86 h-90 v62 h210 v58 h115",
-          fill: "none",
-          stroke: "#060c11",
-          strokeWidth: "36",
-          strokeLinecap: "round",
-          strokeLinejoin: "round",
-          opacity: "0.8"
-        }
-      ),
-      /* @__PURE__ */ u3(
-        "path",
-        {
-          d: "M175 126 v44 h96 v58 h98 v-34 h110 v86 h-90 v62 h210 v58 h115",
-          fill: "none",
-          stroke: "url(#rail-track)",
-          strokeWidth: "28",
-          strokeLinecap: "round",
-          strokeLinejoin: "round"
-        }
-      ),
-      /* @__PURE__ */ u3(
-        "path",
-        {
-          d: "M175 126 v44 h96 v58 h98 v-34 h110 v86 h-90 v62 h210 v58 h115",
-          fill: "none",
-          stroke: "url(#rail-inner)",
-          strokeWidth: "16",
-          strokeLinecap: "round",
-          strokeLinejoin: "round"
-        }
-      ),
-      /* @__PURE__ */ u3(
-        "path",
-        {
-          d: "M175 126 v44 h96 v58 h98 v-34 h110 v86 h-90 v62 h210 v58 h115",
-          fill: "none",
-          stroke: "#90afbf",
-          strokeWidth: "2",
-          strokeOpacity: "0.4",
-          strokeLinecap: "round",
-          strokeLinejoin: "round"
-        }
-      ),
-      /* @__PURE__ */ u3(
-        "path",
-        {
-          d: "M271 228 v64 h-84 v60 h165 v-42 h140 v62 h90",
-          fill: "none",
-          stroke: "#060c11",
-          strokeWidth: "26",
-          strokeLinecap: "round",
-          strokeLinejoin: "round",
-          opacity: "0.75"
-        }
-      ),
-      /* @__PURE__ */ u3(
-        "path",
-        {
-          d: "M271 228 v64 h-84 v60 h165 v-42 h140 v62 h90",
-          fill: "none",
-          stroke: "url(#rail-track)",
-          strokeWidth: "20",
-          strokeLinecap: "round",
-          strokeLinejoin: "round"
-        }
-      ),
-      /* @__PURE__ */ u3(
-        "path",
-        {
-          d: "M271 228 v64 h-84 v60 h165 v-42 h140 v62 h90",
-          fill: "none",
-          stroke: "url(#rail-inner)",
-          strokeWidth: "10",
-          strokeLinecap: "round",
-          strokeLinejoin: "round"
-        }
-      ),
+      /* @__PURE__ */ u3("rect", { width: "860", height: "480", fill: "#000000" }),
       /* @__PURE__ */ u3("g", { children: [
-        [480, 85],
-        [530, 85],
-        [580, 85],
-        [630, 85],
-        [455, 120],
-        [505, 120],
-        [555, 120],
-        [605, 120],
-        [655, 120],
-        [480, 155],
-        [530, 155],
-        [580, 155],
-        [630, 155],
-        [505, 190],
-        [555, 190],
-        [605, 190]
-      ].map(([px, py], i3) => /* @__PURE__ */ u3("g", { children: [
-        /* @__PURE__ */ u3("circle", { cx: px, cy: py + 3, r: "6.5", fill: "#070d13", opacity: "0.6" }),
-        /* @__PURE__ */ u3("circle", { cx: px, cy: py, r: "6", fill: "url(#pin-metal)" }),
-        /* @__PURE__ */ u3("circle", { cx: px - 1.5, cy: py - 1.5, r: "1.8", fill: "#fff", opacity: "0.8" })
-      ] }, i3)) }),
-      /* @__PURE__ */ u3("g", { transform: "translate(345, 240)", children: [
-        /* @__PURE__ */ u3("circle", { r: "36", fill: "none", stroke: "#e67e22", strokeWidth: "1.5", strokeDasharray: "5 5", opacity: "0.45" }),
-        /* @__PURE__ */ u3("g", { transform: "rotate(35)", children: [
-          /* @__PURE__ */ u3("rect", { x: "-30", y: "-5", width: "60", height: "10", rx: "4", fill: "url(#spin-blade)" }),
-          /* @__PURE__ */ u3("rect", { x: "-5", y: "-30", width: "10", height: "60", rx: "4", fill: "url(#spin-blade)" }),
-          /* @__PURE__ */ u3("circle", { r: "7", fill: "#263238", stroke: "#ffd54f", strokeWidth: "2.5" }),
-          /* @__PURE__ */ u3("circle", { r: "2.5", fill: "#fff" })
-        ] })
+        /* @__PURE__ */ u3("rect", { x: "0", y: "0", width: "124", height: "480", fill: "#282828" }),
+        /* @__PURE__ */ u3(
+          "path",
+          {
+            d: "M60 0 L60 22 L36 55 L36 90 L68 125 L68 160 L28 200 L28 245 L60 285 L60 355 L42 405 L42 480",
+            fill: "none",
+            stroke: "#666666",
+            strokeWidth: "2.5"
+          }
+        ),
+        /* @__PURE__ */ u3(
+          "path",
+          {
+            d: "M12 0 L12 30 L68 70 L68 105 L35 140 L35 178 L78 225 L78 268 L45 308 L45 375 L66 422 L66 480",
+            fill: "none",
+            stroke: "#ffffff",
+            strokeWidth: "1.6"
+          }
+        ),
+        /* @__PURE__ */ u3(
+          "path",
+          {
+            d: "M106 0 L106 35 L52 75 L92 120 L92 168 L46 215 L106 272 L106 480",
+            fill: "none",
+            stroke: "#ffffff",
+            strokeWidth: "1.6"
+          }
+        ),
+        /* @__PURE__ */ u3("circle", { cx: "56", cy: "115", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "68", cy: "115", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "80", cy: "115", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "56", cy: "125", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "68", cy: "125", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "80", cy: "125", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "48", cy: "415", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "60", cy: "415", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "72", cy: "415", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "48", cy: "110", r: "3.2", fill: "#ffd54f" }),
+        /* @__PURE__ */ u3("circle", { cx: "54", cy: "250", r: "3.2", fill: "#00e5ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "70", cy: "275", r: "3.2", fill: "#ba68c8" }),
+        /* @__PURE__ */ u3("rect", { x: "6", y: "262", width: "112", height: "70", fill: "rgba(255, 255, 255, 0.04)", stroke: "rgba(255, 255, 255, 0.45)", strokeWidth: "1.2" }),
+        /* @__PURE__ */ u3("path", { d: "M42 278 l6 4 m6 -4 l6 4 m6 -4 l6 4", stroke: "#00f3ff", strokeWidth: "1.5", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("path", { d: "M42 292 l-6 4 m-6 -4 l-6 4 m-6 -4 l-6 4", stroke: "#00f3ff", strokeWidth: "1.5", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("circle", { cx: "70", cy: "278", r: "2.8", fill: "#ff4081" }),
+        /* @__PURE__ */ u3("circle", { cx: "82", cy: "285", r: "2.8", fill: "#69f0ae" }),
+        /* @__PURE__ */ u3("circle", { cx: "52", cy: "320", r: "2.8", fill: "#ff5252" })
       ] }),
-      /* @__PURE__ */ u3("g", { transform: "translate(565, 285)", children: [
-        /* @__PURE__ */ u3("circle", { r: "38", fill: "none", stroke: "#ffb300", strokeWidth: "1.5", strokeDasharray: "6 4", opacity: "0.45" }),
-        /* @__PURE__ */ u3("g", { transform: "rotate(70)", children: [
-          /* @__PURE__ */ u3("rect", { x: "-32", y: "-5.5", width: "64", height: "11", rx: "4", fill: "url(#spin-blade)" }),
-          /* @__PURE__ */ u3("rect", { x: "-5.5", y: "-32", width: "11", height: "64", rx: "4", fill: "url(#spin-blade)" }),
-          /* @__PURE__ */ u3("circle", { r: "7.5", fill: "#263238", stroke: "#ffd54f", strokeWidth: "2.5" }),
-          /* @__PURE__ */ u3("circle", { r: "2.5", fill: "#fff" })
-        ] })
+      /* @__PURE__ */ u3("path", { d: "M218 -5 L244 26 L218 62 L218 485", fill: "none", stroke: "#ffffff", strokeWidth: "5.5", strokeLinecap: "round", filter: "url(#wall-glow)" }),
+      /* @__PURE__ */ u3("path", { d: "M682 -5 L656 26 L682 62 L682 485", fill: "none", stroke: "#ffffff", strokeWidth: "5.5", strokeLinecap: "round", filter: "url(#wall-glow)" }),
+      /* @__PURE__ */ u3("g", { filter: "url(#neon-glow)", children: [
+        /* @__PURE__ */ u3("rect", { x: "256", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 262 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "306", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 312 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "356", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 362 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "406", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 412 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "456", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 462 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "506", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 512 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "556", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 562 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "256", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 262 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "306", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 312 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "356", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 362 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "406", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 412 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "456", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 462 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "506", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 512 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "556", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 562 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "195", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(-20 202 415)" }),
+        /* @__PURE__ */ u3("rect", { x: "330", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(20 337 415)" }),
+        /* @__PURE__ */ u3("rect", { x: "430", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(-20 437 415)" }),
+        /* @__PURE__ */ u3("rect", { x: "565", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(20 572 415)" })
       ] }),
-      /* @__PURE__ */ u3("g", { transform: "translate(680, 395)", children: [
-        /* @__PURE__ */ u3("rect", { x: "0", y: "0", width: "86", height: "58", rx: "8", fill: "#1b2832", stroke: "#d4af37", strokeWidth: "2.5" }),
-        /* @__PURE__ */ u3("rect", { x: "6", y: "6", width: "74", height: "20", fill: "url(#checker)" }),
-        /* @__PURE__ */ u3("text", { x: "43", y: "21", textAnchor: "middle", fill: "#000", fontFamily: "sans-serif", fontSize: "11", fontWeight: "900", letterSpacing: "2", children: "FINISH" }),
-        /* @__PURE__ */ u3("rect", { x: "8", y: "30", width: "20", height: "22", rx: "3", fill: "#d4af37" }),
-        /* @__PURE__ */ u3("text", { x: "18", y: "45", textAnchor: "middle", fill: "#111", fontFamily: "sans-serif", fontSize: "11", fontWeight: "900", children: "1" }),
-        /* @__PURE__ */ u3("rect", { x: "33", y: "34", width: "20", height: "18", rx: "3", fill: "#cfd8dc" }),
-        /* @__PURE__ */ u3("text", { x: "43", y: "47", textAnchor: "middle", fill: "#111", fontFamily: "sans-serif", fontSize: "10", fontWeight: "900", children: "2" }),
-        /* @__PURE__ */ u3("rect", { x: "58", y: "37", width: "20", height: "15", rx: "3", fill: "#b08d57" }),
-        /* @__PURE__ */ u3("text", { x: "68", y: "49", textAnchor: "middle", fill: "#111", fontFamily: "sans-serif", fontSize: "9", fontWeight: "900", children: "3" })
+      /* @__PURE__ */ u3("g", { children: [
+        /* @__PURE__ */ u3("circle", { cx: "478", cy: "85", r: "11", fill: "#ff4081" }),
+        /* @__PURE__ */ u3("circle", { cx: "475", cy: "82", r: "3.5", fill: "#ffffff", opacity: "0.6" }),
+        /* @__PURE__ */ u3(
+          "text",
+          {
+            x: "478",
+            y: "112",
+            textAnchor: "middle",
+            fill: "#ff4081",
+            fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif",
+            fontSize: "13.5",
+            fontWeight: "900",
+            children: "\uD0A4\uC704"
+          }
+        )
       ] }),
-      /* @__PURE__ */ u3("path", { d: "M515 155 l2 4 4 2 -4 2 -2 4 -2 -4 -4 -2 4 -2z", fill: "#ffe082", filter: "url(#glow)" }),
-      /* @__PURE__ */ u3("path", { d: "M375 225 l2 3 3 2 -3 2 -2 3 -2 -3 -3 -2 3 -2z", fill: "#80d8ff", filter: "url(#glow)" }),
-      /* @__PURE__ */ u3("path", { d: "M605 400 l3 5 5 3 -5 3 -3 5 -3 -5 -5 -3 5 -3z", fill: "#ff80ab", filter: "url(#glow)" }),
-      /* @__PURE__ */ u3("g", { filter: "url(#m-shadow)", children: [
-        /* @__PURE__ */ u3("g", { transform: "translate(615, 420)", children: [
-          /* @__PURE__ */ u3("circle", { r: "19", fill: "url(#m-red)" }),
-          /* @__PURE__ */ u3("ellipse", { cx: "-5", cy: "-6", rx: "6", ry: "4", fill: "#fff", opacity: "0.65" }),
-          /* @__PURE__ */ u3("rect", { x: "-38", y: "-39", width: "76", height: "18", rx: "9", fill: "rgba(15,23,30,0.92)", stroke: "#ff5252", strokeWidth: "1.5" }),
-          /* @__PURE__ */ u3("circle", { cx: "-28", cy: "-30", r: "3.5", fill: "#ffd700" }),
-          /* @__PURE__ */ u3("text", { x: "-20", y: "-27", fill: "#fff", fontFamily: "sans-serif", fontSize: "10", fontWeight: "800", children: "\uAE40\uBBFC\uC218" }),
-          /* @__PURE__ */ u3("text", { x: "26", y: "-27", textAnchor: "end", fill: "#ffd700", fontFamily: "sans-serif", fontSize: "9", fontWeight: "900", children: "1\uC704" })
-        ] }),
-        /* @__PURE__ */ u3("g", { transform: "translate(510, 368)", children: [
-          /* @__PURE__ */ u3("circle", { r: "18", fill: "url(#m-cyan)" }),
-          /* @__PURE__ */ u3("ellipse", { cx: "-5", cy: "-5", rx: "5.5", ry: "3.5", fill: "#fff", opacity: "0.7" }),
-          /* @__PURE__ */ u3("rect", { x: "-35", y: "-37", width: "70", height: "18", rx: "9", fill: "rgba(15,23,30,0.92)", stroke: "#00b0ff", strokeWidth: "1.5" }),
-          /* @__PURE__ */ u3("text", { x: "-24", y: "-25", fill: "#fff", fontFamily: "sans-serif", fontSize: "10", fontWeight: "800", children: "\uC774\uC11C\uC5F0" }),
-          /* @__PURE__ */ u3("text", { x: "24", y: "-25", textAnchor: "end", fill: "#80d8ff", fontFamily: "sans-serif", fontSize: "9", fontWeight: "800", children: "2\uC704" })
-        ] }),
-        /* @__PURE__ */ u3("g", { transform: "translate(360, 215)", children: [
-          /* @__PURE__ */ u3("circle", { r: "17.5", fill: "url(#m-gold)" }),
-          /* @__PURE__ */ u3("ellipse", { cx: "-4.5", cy: "-5", rx: "5", ry: "3.5", fill: "#fff", opacity: "0.7" }),
-          /* @__PURE__ */ u3("rect", { x: "-33", y: "-35", width: "66", height: "17", rx: "8.5", fill: "rgba(15,23,30,0.92)", stroke: "#ffb300", strokeWidth: "1.4" }),
-          /* @__PURE__ */ u3("text", { x: "-22", y: "-23", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "800", children: "\uBC15\uC9C0\uD6C8" }),
-          /* @__PURE__ */ u3("text", { x: "22", y: "-23", textAnchor: "end", fill: "#ffe082", fontFamily: "sans-serif", fontSize: "8.5", fontWeight: "800", children: "3\uC704" })
-        ] }),
-        /* @__PURE__ */ u3("g", { transform: "translate(535, 142)", children: [
-          /* @__PURE__ */ u3("circle", { r: "17", fill: "url(#m-green)" }),
-          /* @__PURE__ */ u3("ellipse", { cx: "-4.5", cy: "-4.5", rx: "5", ry: "3", fill: "#fff", opacity: "0.65" }),
-          /* @__PURE__ */ u3("rect", { x: "-30", y: "-33", width: "60", height: "16", rx: "8", fill: "rgba(15,23,30,0.9)", stroke: "#00e676", strokeWidth: "1.2" }),
-          /* @__PURE__ */ u3("text", { x: "0", y: "-21", textAnchor: "middle", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "700", children: "\uCD5C\uB3D9\uD604" })
-        ] }),
-        /* @__PURE__ */ u3("g", { transform: "translate(635, 172)", children: [
-          /* @__PURE__ */ u3("circle", { r: "17", fill: "url(#m-purple)" }),
-          /* @__PURE__ */ u3("ellipse", { cx: "-4.5", cy: "-4.5", rx: "5", ry: "3", fill: "#fff", opacity: "0.65" }),
-          /* @__PURE__ */ u3("rect", { x: "-30", y: "-33", width: "60", height: "16", rx: "8", fill: "rgba(15,23,30,0.9)", stroke: "#e040fb", strokeWidth: "1.2" }),
-          /* @__PURE__ */ u3("text", { x: "0", y: "-21", textAnchor: "middle", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "700", children: "\uC815\uC720\uC9C4" })
-        ] }),
-        /* @__PURE__ */ u3("g", { transform: "translate(210, 248)", children: [
-          /* @__PURE__ */ u3("circle", { r: "16.5", fill: "url(#m-orange)" }),
-          /* @__PURE__ */ u3("ellipse", { cx: "-4", cy: "-4", rx: "5", ry: "3", fill: "#fff", opacity: "0.65" }),
-          /* @__PURE__ */ u3("rect", { x: "-30", y: "-33", width: "60", height: "16", rx: "8", fill: "rgba(15,23,30,0.9)", stroke: "#ff7043", strokeWidth: "1.2" }),
-          /* @__PURE__ */ u3("text", { x: "0", y: "-21", textAnchor: "middle", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "700", children: "\uAC15\uD604\uC6B0" })
-        ] }),
-        /* @__PURE__ */ u3("g", { transform: "translate(175, 118)", children: [
-          /* @__PURE__ */ u3("circle", { r: "16", fill: "url(#m-pink)" }),
-          /* @__PURE__ */ u3("ellipse", { cx: "-4", cy: "-4", rx: "4.5", ry: "3", fill: "#fff", opacity: "0.65" }),
-          /* @__PURE__ */ u3("rect", { x: "-30", y: "-32", width: "60", height: "16", rx: "8", fill: "rgba(15,23,30,0.9)", stroke: "#ff4081", strokeWidth: "1.2" }),
-          /* @__PURE__ */ u3("text", { x: "0", y: "-20", textAnchor: "middle", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "700", children: "\uC724\uC544\uB984" })
-        ] }),
-        /* @__PURE__ */ u3("g", { transform: "translate(425, 290)", children: [
-          /* @__PURE__ */ u3("circle", { r: "16.5", fill: "url(#m-blue)" }),
-          /* @__PURE__ */ u3("ellipse", { cx: "-4", cy: "-4", rx: "5", ry: "3", fill: "#fff", opacity: "0.7" }),
-          /* @__PURE__ */ u3("rect", { x: "-30", y: "-33", width: "60", height: "16", rx: "8", fill: "rgba(15,23,30,0.9)", stroke: "#448aff", strokeWidth: "1.2" }),
-          /* @__PURE__ */ u3("text", { x: "0", y: "-21", textAnchor: "middle", fill: "#fff", fontFamily: "sans-serif", fontSize: "9.5", fontWeight: "700", children: "\uD55C\uB3C4\uC724" })
-        ] })
+      /* @__PURE__ */ u3("g", { children: [
+        /* @__PURE__ */ u3("circle", { cx: "538", cy: "140", r: "15", fill: "none", stroke: "#ff1744", strokeWidth: "2.2" }),
+        /* @__PURE__ */ u3("circle", { cx: "538", cy: "140", r: "11", fill: "#69f0ae" }),
+        /* @__PURE__ */ u3("circle", { cx: "535", cy: "137", r: "3.5", fill: "#ffffff", opacity: "0.6" }),
+        /* @__PURE__ */ u3(
+          "text",
+          {
+            x: "538",
+            y: "170",
+            textAnchor: "middle",
+            fill: "#69f0ae",
+            fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif",
+            fontSize: "13.5",
+            fontWeight: "900",
+            children: "\uADE4"
+          }
+        )
       ] }),
-      /* @__PURE__ */ u3("g", { transform: "translate(20, 20)", children: [
-        /* @__PURE__ */ u3("rect", { width: "180", height: "34", rx: "8", fill: "rgba(12, 19, 28, 0.82)", stroke: "rgba(255, 255, 255, 0.14)", strokeWidth: "1" }),
-        /* @__PURE__ */ u3("circle", { cx: "18", cy: "17", r: "5", fill: "#f44336" }),
-        /* @__PURE__ */ u3("circle", { cx: "18", cy: "17", r: "2.5", fill: "#fff" }),
-        /* @__PURE__ */ u3("text", { x: "31", y: "21", fill: "#ff5252", fontFamily: "sans-serif", fontSize: "11", fontWeight: "800", letterSpacing: "0.5", children: "LIVE RACE" }),
-        /* @__PURE__ */ u3("line", { x1: "98", y1: "9", x2: "98", y2: "25", stroke: "rgba(255,255,255,0.18)" }),
-        /* @__PURE__ */ u3("text", { x: "108", y: "21", fill: "#b0bec5", fontFamily: "sans-serif", fontSize: "10.5", fontWeight: "700", children: "32 GU-SEUL" })
+      /* @__PURE__ */ u3("g", { children: [
+        /* @__PURE__ */ u3("circle", { cx: "282", cy: "410", r: "15", fill: "none", stroke: "#ff1744", strokeWidth: "2.2" }),
+        /* @__PURE__ */ u3("circle", { cx: "282", cy: "410", r: "11", fill: "#ff5252" }),
+        /* @__PURE__ */ u3("circle", { cx: "279", cy: "407", r: "3.5", fill: "#ffffff", opacity: "0.6" }),
+        /* @__PURE__ */ u3(
+          "text",
+          {
+            x: "282",
+            y: "440",
+            textAnchor: "middle",
+            fill: "#ff5252",
+            fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif",
+            fontSize: "13.5",
+            fontWeight: "900",
+            children: "\uD0A4\uC704"
+          }
+        )
       ] }),
-      /* @__PURE__ */ u3("g", { transform: "translate(798, 20)", children: [
-        /* @__PURE__ */ u3("rect", { width: "42", height: "476", rx: "9", fill: "rgba(10, 16, 24, 0.88)", stroke: "rgba(255, 255, 255, 0.15)", strokeWidth: "1" }),
-        /* @__PURE__ */ u3("text", { x: "21", y: "20", textAnchor: "middle", fill: "#78909c", fontFamily: "monospace", fontSize: "8.5", fontWeight: "700", children: "START" }),
-        /* @__PURE__ */ u3("line", { x1: "21", y1: "30", x2: "21", y2: "445", stroke: "#37474f", strokeWidth: "3", strokeLinecap: "round" }),
-        /* @__PURE__ */ u3("circle", { cx: "21", cy: "425", r: "4.5", fill: "#ff5252" }),
-        /* @__PURE__ */ u3("circle", { cx: "21", cy: "380", r: "4.5", fill: "#00e5ff" }),
-        /* @__PURE__ */ u3("circle", { cx: "21", cy: "270", r: "4", fill: "#ffd740" }),
-        /* @__PURE__ */ u3("circle", { cx: "21", cy: "210", r: "4", fill: "#69f0ae" }),
-        /* @__PURE__ */ u3("circle", { cx: "21", cy: "180", r: "4", fill: "#e040fb" }),
-        /* @__PURE__ */ u3("circle", { cx: "21", cy: "145", r: "4", fill: "#ff9e80" }),
-        /* @__PURE__ */ u3("circle", { cx: "21", cy: "95", r: "3.5", fill: "#ff80ab" }),
-        /* @__PURE__ */ u3("circle", { cx: "21", cy: "65", r: "3.5", fill: "#448aff" }),
-        /* @__PURE__ */ u3("rect", { x: "7", y: "450", width: "28", height: "15", rx: "3", fill: "#d4af37" }),
-        /* @__PURE__ */ u3("text", { x: "21", y: "461", textAnchor: "middle", fill: "#000", fontFamily: "sans-serif", fontSize: "8", fontWeight: "900", children: "GOAL" })
-      ] }),
-      /* @__PURE__ */ u3("g", { transform: "translate(20, 466)", children: [
-        /* @__PURE__ */ u3("rect", { width: "766", height: "34", rx: "8", fill: "rgba(12, 19, 28, 0.88)", stroke: "rgba(255, 255, 255, 0.12)", strokeWidth: "1" }),
-        /* @__PURE__ */ u3("text", { x: "16", y: "21", fill: "#ffd54f", fontFamily: "sans-serif", fontSize: "10.5", fontWeight: "800", children: "\u{1F3C6} LIVE LEADERS" }),
-        /* @__PURE__ */ u3("line", { x1: "112", y1: "8", x2: "112", y2: "26", stroke: "rgba(255,255,255,0.18)" }),
-        /* @__PURE__ */ u3("text", { x: "126", y: "21", fill: "#fff", fontFamily: "sans-serif", fontSize: "11", fontWeight: "600", children: [
-          /* @__PURE__ */ u3("tspan", { fill: "#ffd700", fontWeight: "800", children: "1\uC704" }),
-          " \uAE40\uBBFC\uC218",
-          /* @__PURE__ */ u3("tspan", { fill: "#90a4ae", dx: "18", children: "\xB7" }),
-          /* @__PURE__ */ u3("tspan", { fill: "#cfd8dc", fontWeight: "800", dx: "18", children: "2\uC704" }),
-          " \uC774\uC11C\uC5F0",
-          /* @__PURE__ */ u3("tspan", { fill: "#90a4ae", dx: "18", children: "\xB7" }),
-          /* @__PURE__ */ u3("tspan", { fill: "#b08d57", fontWeight: "800", dx: "18", children: "3\uC704" }),
-          " \uBC15\uC9C0\uD6C8",
-          /* @__PURE__ */ u3("tspan", { fill: "#90a4ae", dx: "18", children: "\xB7" }),
-          /* @__PURE__ */ u3("tspan", { fill: "#81d4fa", fontWeight: "800", dx: "18", children: "4\uC704" }),
-          " \uCD5C\uB3D9\uD604"
-        ] })
+      /* @__PURE__ */ u3("g", { textAnchor: "end", fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif", fontSize: "14", fontWeight: "800", children: [
+        /* @__PURE__ */ u3("text", { x: "842", y: "22", fill: "#ff4081", children: "\uD0A4\uC704 #1" }),
+        /* @__PURE__ */ u3("text", { x: "842", y: "44", fill: "#69f0ae", children: "\uADE4 #2" }),
+        /* @__PURE__ */ u3("text", { x: "842", y: "66", fill: "#ff4081", children: "\uD0A4\uC704 #3" }),
+        /* @__PURE__ */ u3("text", { x: "842", y: "88", fill: "#00e5ff", children: "\uC218\uBC15 #4" }),
+        /* @__PURE__ */ u3("text", { x: "842", y: "110", fill: "#ffd740", children: "\uADE4 #5" }),
+        /* @__PURE__ */ u3("text", { x: "842", y: "132", fill: "#ba68c8", children: "\uC218\uBC15 #6" })
       ] })
     ] });
   }
