@@ -342,11 +342,31 @@ const messageHandlers = {
     };
     routeTo('#/game', newState);
   },
-  game_end: (state, data) => routeTo('#/results', {
-    ...state,
-    game: { ...state.game, ...data.gameState, status: 'finished' },
-    route: '#/results'
-  }),
+  game_end: (state, data) => {
+    const game = { ...state.game, ...data.gameState, status: 'finished' };
+    const players = Object.values(game.players || {});
+    const places = new Map();
+    (Array.isArray(game.finalStandings) ? game.finalStandings : []).forEach((group, groupIndex) => {
+      group.forEach(id => places.set(id, groupIndex + 1));
+    });
+    const standings = [...players]
+      .sort((a, b) => (places.get(a.id) ?? 99) - (places.get(b.id) ?? 99) || (b.lives || 0) - (a.lives || 0))
+      .map((player, index) => ({
+        id: player.id,
+        name: player.nickname || player.name || `P${index + 1}`,
+        rank: places.get(player.id) ?? index + 1,
+        score: Number(player.lives || 0),
+        isBot: Boolean(player.isBot),
+      }));
+    const winnerIds = Array.isArray(game.winnerIds) && game.winnerIds.length
+      ? game.winnerIds
+      : (game.winnerId ? [game.winnerId] : []);
+    const winner = winnerIds.map(id => game.players?.[id]?.nickname || game.players?.[id]?.name).filter(Boolean).join(', ');
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'gamebox-original-game-over', winner, standings }, window.location.origin);
+    }
+    return routeTo('#/results', { ...state, game, route: '#/results' });
+  },
   game_reset: (state, data) => routeTo('#/lobby', {
     ...state,
     game: data.gameState,
@@ -540,27 +560,24 @@ function sendMessage(message) {
 
 window.sendMessage = sendMessage;
 
-function handleKeydown(event) {
+function dispatchGameInput(keyValue, codeValue) {
   const activeEl = document.activeElement;
   if (activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) {
-    return;
+    return false;
   }
 
   const state = store.getState();
   const { websocket, session, game } = state;
-  if (!websocket?.connected) return;
-  if (!session?.playerId) return;
-  if (session?.isSpectator) return;
-  if (game?.status !== 'running') return;
+  if (!websocket?.connected || !session?.playerId || session?.isSpectator || game?.status !== 'running') return false;
 
-  const key = event.key.toLowerCase();
+  const key = String(keyValue || '').toLowerCase();
   let input = null;
 
   if (key === 'w' || key === 'arrowup') input = { kind: 'move', dir: 'up' };
   else if (key === 's' || key === 'arrowdown') input = { kind: 'move', dir: 'down' };
   else if (key === 'a' || key === 'arrowleft') input = { kind: 'move', dir: 'left' };
   else if (key === 'd' || key === 'arrowright') input = { kind: 'move', dir: 'right' };
-  else if (key === ' ' || key === 'spacebar' || event.code === 'Space') input = { kind: 'bomb' };
+  else if (key === ' ' || key === 'spacebar' || codeValue === 'Space') input = { kind: 'bomb' };
 
   if (input) {
     sendMessage({
@@ -568,8 +585,20 @@ function handleKeydown(event) {
       player_id: session.playerId,
       input
     });
+    return true;
   }
+  return false;
+}
+
+function handleKeydown(event) {
+  if (dispatchGameInput(event.key, event.code)) event.preventDefault();
+}
+
+function handleParentKeyMessage(event) {
+  if (event.origin !== window.location.origin || event.data?.type !== 'blast-arena-key') return;
+  dispatchGameInput(event.data.key, event.data.code);
 }
 
 connectWebSocket();
 window.addEventListener('keydown', handleKeydown);
+window.addEventListener('message', handleParentKeyMessage);

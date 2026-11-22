@@ -1,10 +1,10 @@
 import { ARCADE_GAMES } from '../registry/arcadeGames.js';
 
 export const GAME_DECK_CATEGORIES = Object.freeze([
-  { id: 'all', label: 'ALL PACKS (19)' },
-  { id: 'ARCADE', label: 'ARCADE ORIGINAL (3)' },
-  { id: 'PARTY', label: 'PARTY QUIZ (1)' },
-  { id: 'BATTLEBOX', label: 'BATTLEBOX COLLECTION (15)' },
+  { id: 'all', label: 'ALL GAMES (19)' },
+  { id: 'ARCADE', label: 'ACTION ARCADE (3)' },
+  { id: 'PARTY', label: 'PARTY GAMES (1)' },
+  { id: 'SKILL', label: 'PUZZLE & SKILL (15)' },
 ]);
 
 export const SINGLE_BASE_ENGINE = Object.freeze({

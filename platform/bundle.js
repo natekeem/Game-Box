@@ -842,7 +842,7 @@ var GameBoxPlatform = (() => {
       description: "Box2D \uBB3C\uB9AC \uC5D4\uC9C4 \uAE30\uBC18 \uAD6C\uC2AC \uB099\uD558 \uCD94\uCCA8 \uAC8C\uC784! \uC0AC\uB0B4 \uBD80\uC11C\uBCC4/\uC804\uCCB4 \uC9C1\uC6D0 \uBA85\uB2E8\uC744 \uBD88\uB7EC\uC640 \uACF5\uC815\uD558\uACE0 \uBC15\uC9C4\uAC10 \uB118\uCE58\uB294 \uCD94\uCCA8\uC744 \uC9C4\uD589\uD558\uACE0 \uACB0\uACFC\uB97C \uAE30\uB85D\uD569\uB2C8\uB2E4.",
       gradient: "linear-gradient(135deg, #ff0055, #ff7700)"
     },
-    // ─── 15 Independent BattleBox Games ───
+    // ─── 15 skill and puzzle games ───
     {
       id: "reaction",
       name: "\uC21C\uBC1C\uB825 \uB300\uACB0",
@@ -1136,7 +1136,7 @@ var GameBoxPlatform = (() => {
     {
       id: "bombergirl",
       name: "\uBD04\uBC84\uAC78 \uD074\uB798\uC2DD",
-      nameEn: "HTML5 Bombergirl",
+      nameEn: "Bombergirl",
       icon: "\u{1F467}",
       badge: "MattSkala \uC6D0\uBCF8 \xB7 AI 3\uBA85 \xB7 \uC628\uB77C\uC778 2\uC778",
       category: "arcade",
@@ -1809,9 +1809,23 @@ var GameBoxPlatform = (() => {
     }, [bots, currentUser?.name, sessionNonce]);
     h2(() => {
       const focusIframe = () => iframeRef.current?.contentWindow?.focus();
+      const handleKeydown = (event) => {
+        const target = event.target;
+        if (target?.tagName === "INPUT" || target?.tagName === "TEXTAREA" || target?.isContentEditable) return;
+        const key = event.key.toLowerCase();
+        if (!["w", "a", "s", "d", "arrowup", "arrowleft", "arrowdown", "arrowright", " ", "spacebar"].includes(key)) return;
+        event.preventDefault();
+        iframeRef.current?.contentWindow?.postMessage({
+          type: "blast-arena-key",
+          key: event.key,
+          code: event.code
+        }, window.location.origin);
+      };
       const timer = setTimeout(focusIframe, 300);
+      window.addEventListener("keydown", handleKeydown, true);
       return () => {
         clearTimeout(timer);
+        window.removeEventListener("keydown", handleKeydown, true);
         try {
           fetch("/original-blast-arena/api/reset", { method: "GET", keepalive: true }).catch(() => {
           });
@@ -1897,7 +1911,7 @@ var GameBoxPlatform = (() => {
       "section",
       {
         className: "bg-original-shell",
-        "aria-label": "HTML5 Bombergirl \uC6D0\uBCF8 \uAC8C\uC784",
+        "aria-label": "Bombergirl \uC6D0\uBCF8 \uAC8C\uC784",
         onClick: () => iframeRef.current?.contentWindow?.focus(),
         children: /* @__PURE__ */ u3(
           "iframe",
@@ -1905,7 +1919,7 @@ var GameBoxPlatform = (() => {
             ref: iframeRef,
             className: "bg-original-frame",
             src,
-            title: mode === "online" ? "HTML5 Bombergirl online game" : "HTML5 Bombergirl original single player",
+            title: mode === "online" ? "Bombergirl online game" : "Bombergirl original single player",
             allow: "autoplay; fullscreen; gamepad",
             tabIndex: "0",
             onLoad: () => iframeRef.current?.contentWindow?.focus()
@@ -3486,14 +3500,47 @@ var GameBoxPlatform = (() => {
           onBack && /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost", onClick: onBack, children: "\u2190 \uAC8C\uC784 \uBAA9\uB85D" })
         ] })
       ] }),
-      /* @__PURE__ */ u3("div", { className: "gl-dashboard-grid", children: [
+      /* @__PURE__ */ u3("div", { className: `gl-dashboard-grid ${isDraw ? "gl-dashboard-grid-draw" : ""}`, children: [
         /* @__PURE__ */ u3("div", { className: "gl-dashboard-main", children: isDraw ? /* @__PURE__ */ u3("section", { className: "gl-panel gl-panel-draw", children: [
           /* @__PURE__ */ u3("div", { className: "gl-panel-head", children: [
-            /* @__PURE__ */ u3("span", { className: "gl-pill gl-pill-single", children: "DRAW" }),
-            /* @__PURE__ */ u3("h3", { children: "\uCD94\uCCA8 \uC2DC\uC791" })
+            /* @__PURE__ */ u3("span", { className: "gl-pill gl-pill-draw", children: "DRAW" }),
+            /* @__PURE__ */ u3("h3", { children: "\u{1F3AF} \uB9C8\uBE14 \uB8F0\uB81B \uCD94\uCCA8" })
           ] }),
-          /* @__PURE__ */ u3("p", { className: "gl-panel-desc", children: "\uCC38\uAC00\uC790 \uBA85\uB2E8\uC744 \uC785\uB825\uD558\uACE0 \uAD6C\uC2AC \uB808\uC774\uC2A4\uB85C \uACF5\uC815\uD558\uAC8C \uB2F9\uCCA8\uC790\uB97C \uBF51\uC73C\uC138\uC694." }),
-          /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-primary gl-btn-lg", onClick: onStartDraw, children: "\u25B6 \uB8F0\uB81B \uC5F4\uAE30" })
+          /* @__PURE__ */ u3("p", { className: "gl-panel-desc", children: "\uCC38\uAC00\uC790 \uBA85\uB2E8\uC744 \uC785\uB825\uD558\uACE0 Box2D \uBB3C\uB9AC \uC5D4\uC9C4\uC758 \uBC15\uC9C4\uAC10 \uB118\uCE58\uB294 \uAD6C\uC2AC \uB808\uC774\uC2A4\uB85C \uACF5\uC815\uD558\uAC8C \uB2F9\uCCA8\uC790\uB97C \uC120\uBC1C\uD558\uC138\uC694." }),
+          /* @__PURE__ */ u3("div", { className: "gl-draw-feature-grid", children: [
+            /* @__PURE__ */ u3("div", { className: "gl-draw-feature-card", children: [
+              /* @__PURE__ */ u3("span", { className: "gl-draw-feature-icon", children: "\u{1F3E2}" }),
+              /* @__PURE__ */ u3("div", { children: [
+                /* @__PURE__ */ u3("strong", { children: "\uC0AC\uB0B4 \uBD80\uC11C \uBA85\uB2E8 \uC5F0\uB3D9" }),
+                /* @__PURE__ */ u3("p", { children: "\uBD80\uC11C\uBCC4/\uC804\uCCB4 \uC9C1\uC6D0 \uBA85\uB2E8\uC744 \uC6D0\uD074\uB9AD\uC73C\uB85C \uBD88\uB7EC\uC640 \uCC38\uAC00\uC790\uB85C \uC124\uC815" })
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gl-draw-feature-card", children: [
+              /* @__PURE__ */ u3("span", { className: "gl-draw-feature-icon", children: "\u2696\uFE0F" }),
+              /* @__PURE__ */ u3("div", { children: [
+                /* @__PURE__ */ u3("strong", { children: "Box2D \uBB3C\uB9AC \uC2DC\uBBAC\uB808\uC774\uC158" }),
+                /* @__PURE__ */ u3("p", { children: "\uBAA8\uB4E0 \uAD6C\uC2AC\uC774 \uB3D9\uC77C\uD55C \uBB3C\uB9AC \uC870\uAC74\uC5D0\uC11C \uCDA9\uB3CC\uD558\uBA70 \uACF5\uC815\uD558\uAC8C \uB099\uD558" })
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gl-draw-feature-card", children: [
+              /* @__PURE__ */ u3("span", { className: "gl-draw-feature-icon", children: "\u{1F3A2}" }),
+              /* @__PURE__ */ u3("div", { children: [
+                /* @__PURE__ */ u3("strong", { children: "\uB2E4\uC591\uD55C \uB9F5 & \uBA40\uD2F0 \uAD6C\uC2AC" }),
+                /* @__PURE__ */ u3("p", { children: "10\uC885 \uC774\uC0C1\uC758 \uD2B8\uB799\uACFC \uC774\uB984*N \uBC30\uC218 \uCC38\uAC00 \uAE30\uB2A5 \uC9C0\uC6D0" })
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gl-draw-feature-card", children: [
+              /* @__PURE__ */ u3("span", { className: "gl-draw-feature-icon", children: "\u{1F4CA}" }),
+              /* @__PURE__ */ u3("div", { children: [
+                /* @__PURE__ */ u3("strong", { children: "\uB2F9\uCCA8 \uD788\uC2A4\uD1A0\uB9AC \uBCF4\uAD00" }),
+                /* @__PURE__ */ u3("p", { children: "\uCD94\uCCA8 \uACB0\uACFC\uB97C \uC790\uB3D9 \uC800\uC7A5\uD558\uACE0 \uC774\uC804 \uB2F9\uCCA8 \uB0B4\uC5ED \uC5F4\uB78C" })
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "gl-draw-cta-box", children: [
+            /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-primary gl-btn-lg gl-draw-start-btn", onClick: onStartDraw, children: "\u25B6 \uB8F0\uB81B \uC5F4\uAE30 (\uCD94\uCCA8 \uC2DC\uC791)" }),
+            /* @__PURE__ */ u3("p", { className: "gl-footnote", children: "\uB8F0\uB81B \uD654\uBA74\uC73C\uB85C \uC774\uB3D9\uD558\uC5EC \uCC38\uAC00\uC790 \uBA85\uB2E8 \uD3B8\uC9D1 \uBC0F \uB9F5 \uC120\uD0DD\uC744 \uC9C4\uD589\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4." })
+          ] })
         ] }) : /* @__PURE__ */ u3(S, { children: [
           /* @__PURE__ */ u3("div", { className: "gl-tabs", role: "tablist", "aria-label": "\uD50C\uB808\uC774 \uBC29\uC2DD", children: [
             /* @__PURE__ */ u3(
@@ -3747,6 +3794,23 @@ var GameBoxPlatform = (() => {
 
   // platform-src/GamePlatformApp.jsx
   var QUICK_MATCH_COUNTDOWN_SECONDS = 4;
+  var SKILL_GAME_IDS = /* @__PURE__ */ new Set([
+    "reaction",
+    "tictactoe",
+    "connectfour",
+    "wordchain",
+    "mathduel",
+    "rpsarena",
+    "anagram",
+    "numberhunt",
+    "memorymatch",
+    "speedtyping",
+    "colormatch",
+    "simonsays",
+    "trivia",
+    "higherlower",
+    "oddoneout"
+  ]);
   function GamePlatformApp({ userProvider, apiBaseUrl = "/api/platform" }) {
     const [currentUser, setCurrentUser] = d2(() => userProvider.getCurrentUser());
     const [activeTab, setActiveTab] = d2("arcade");
@@ -3884,6 +3948,18 @@ var GameBoxPlatform = (() => {
       });
       return () => unsubscribe();
     }, [api, currentRoom?.code, currentUser?.id, showToast]);
+    h2(() => {
+      const handleOriginalGameResult = (event) => {
+        if (event.origin !== window.location.origin || event.data?.type !== "gamebox-original-game-over") return;
+        setMatchResult({
+          winner: event.data.winner || "",
+          standings: Array.isArray(event.data.standings) ? event.data.standings : [],
+          isOfficial: false
+        });
+      };
+      window.addEventListener("message", handleOriginalGameResult);
+      return () => window.removeEventListener("message", handleOriginalGameResult);
+    }, []);
     const activeGameMeta = getGameById(currentRoom?.game || originalLaunch?.gameId || activeGameId);
     const roomHostId = currentRoom?.hostId || currentRoom?.host || null;
     const isRoomHost = !!currentRoom && roomHostId === currentUser?.id;
@@ -4124,7 +4200,7 @@ var GameBoxPlatform = (() => {
             /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost gl-btn-sm", onClick: handleBackToLobby, children: "\u2190 \uB300\uAE30\uC2E4" })
           ] })
         ] }),
-        originalLaunch.gameId === "bomberman" ? /* @__PURE__ */ u3(OriginalBombermanArena, { mode: originalLaunch.mode, bots: originalLaunch.bots, currentUser }) : /* @__PURE__ */ u3(OriginalBombergirlArena, { mode: "single", bots: originalLaunch.bots, currentUser, onBackToLobby: handleBackToLobby })
+        originalLaunch.gameId === "bomberman" ? /* @__PURE__ */ u3(OriginalBombermanArena, { mode: originalLaunch.mode, bots: originalLaunch.bots, currentUser }, originalLaunch.runId || "initial") : /* @__PURE__ */ u3(OriginalBombergirlArena, { mode: "single", bots: originalLaunch.bots, currentUser, onBackToLobby: handleBackToLobby })
       ] });
     };
     const renderRoom = () => {
@@ -4179,68 +4255,19 @@ var GameBoxPlatform = (() => {
             /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-ghost gl-btn-sm", onClick: handleLeaveCurrentRoom, children: "\u2190 \uB300\uAE30\uC2E4" })
           ] })
         ] }),
-        /* @__PURE__ */ u3("div", { className: "gp-active-match-area", children: [
-          matchResult && /* @__PURE__ */ u3("div", { className: "gp-match-result-banner", children: [
-            /* @__PURE__ */ u3("div", { className: "gp-match-result-header", children: [
-              /* @__PURE__ */ u3("h3", { children: [
-                "\u{1F3C1} \uAC8C\uC784 \uC885\uB8CC",
-                " ",
-                matchResult.winner ? `\xB7 \u{1F3C6} ${matchResult.winner}` : "\xB7 \uBB34\uC2B9\uBD80"
-              ] }),
-              /* @__PURE__ */ u3("span", { className: `gp-official-pill ${matchResult.isOfficial ? "official" : "practice"}`, children: matchResult.isOfficial ? "\u2713 \uACF5\uC2DD \uB7AD\uD0B9 \uBC18\uC601" : "\uC5F0\uC2B5 \uACBD\uAE30 (\uB7AD\uD0B9 \uC81C\uC678)" })
-            ] }),
-            matchResult.standings && matchResult.standings.length > 0 && /* @__PURE__ */ u3("div", { className: "gp-podium-list", children: matchResult.standings.map((st) => /* @__PURE__ */ u3("div", { className: `gp-podium-item rank-${st.rank}`, children: [
-              /* @__PURE__ */ u3("span", { className: "gp-podium-rank", children: [
-                "#",
-                st.rank
-              ] }),
-              /* @__PURE__ */ u3("strong", { children: st.name }),
-              /* @__PURE__ */ u3("span", { className: "gp-muted-sm", children: st.isBot ? "\uCEF4\uD4E8\uD130" : "\uD50C\uB808\uC774\uC5B4" }),
-              /* @__PURE__ */ u3("span", { className: "gp-podium-score", children: [
-                st.score,
-                "\uC810"
-              ] })
-            ] }, st.id)) }),
-            /* @__PURE__ */ u3("div", { className: "gp-btn-row", children: [
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gl-btn gl-btn-primary",
-                  onClick: async () => {
-                    try {
-                      const res = await api.rematch(currentRoom.code);
-                      setCurrentRoom(res.room);
-                      setMatchResult(null);
-                      if (currentRoom.mode !== "online") {
-                        const started = await api.startRoom(currentRoom.code);
-                        setCurrentRoom(started.room);
-                        if (started.room?.lastPublicGameState) setPublicGameState(started.room.lastPublicGameState);
-                      }
-                    } catch (err) {
-                      showToast(err.message);
-                    }
-                  },
-                  children: "\u{1F504} \uB2E4\uC2DC \uD558\uAE30"
-                }
-              ),
-              /* @__PURE__ */ u3("button", { type: "button", className: "gl-btn gl-btn-secondary", onClick: handleLeaveCurrentRoom, children: "\uB300\uAE30\uC2E4\uB85C" })
-            ] })
-          ] }),
-          /* @__PURE__ */ u3(
-            GamePlayStage,
-            {
-              gameId: currentRoom.game,
-              room: currentRoom,
-              currentUser,
-              gameStateData: publicGameState || currentRoom.lastPublicGameState,
-              publicState: publicGameState || currentRoom.lastPublicGameState,
-              privateRole: privateRoleState,
-              drawingStrokes,
-              onAction: handleSendGameAction
-            }
-          )
-        ] })
+        /* @__PURE__ */ u3("div", { className: "gp-active-match-area", children: /* @__PURE__ */ u3(
+          GamePlayStage,
+          {
+            gameId: currentRoom.game,
+            room: currentRoom,
+            currentUser,
+            gameStateData: publicGameState || currentRoom.lastPublicGameState,
+            publicState: publicGameState || currentRoom.lastPublicGameState,
+            privateRole: privateRoleState,
+            drawingStrokes,
+            onAction: handleSendGameAction
+          }
+        ) })
       ] });
     };
     const renderCatalog = () => /* @__PURE__ */ u3("div", { className: "gp-arcade-lobby", children: [
@@ -4375,109 +4402,184 @@ var GameBoxPlatform = (() => {
       }
       return renderCatalog();
     };
-    return /* @__PURE__ */ u3("div", { className: `gp-root ${isDeckEmbed ? "gp-deck-embed" : ""}`, children: [
-      !isDeckEmbed && /* @__PURE__ */ u3("header", { className: "gp-topbar", children: [
-        /* @__PURE__ */ u3("div", { className: "gp-topbar-brand", onClick: goCatalog, style: { cursor: "pointer" }, children: [
-          /* @__PURE__ */ u3("span", { className: "gp-brand-logo", children: "\u{1F3AF}" }),
-          /* @__PURE__ */ u3("div", { children: [
-            /* @__PURE__ */ u3("h1", { className: "gp-brand-title", children: "GAME-BOX \uBBF8\uB2C8\uAC8C\uC784 \uD50C\uB7AB\uD3FC" }),
-            /* @__PURE__ */ u3("span", { className: "gp-brand-sub", children: "\uAC8C\uC784\uC744 \uACE0\uB974\uBA74 \uB300\uAE30\uC2E4\uC5D0\uC11C \uC2F1\uAE00 \xB7 \uBA40\uD2F0\uB97C \uC120\uD0DD\uD569\uB2C8\uB2E4" })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3("nav", { className: "gp-topbar-nav", children: [
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: `gp-nav-btn ${activeTab === "arcade" && !activeGameId ? "active" : ""}`,
-              onClick: goCatalog,
-              children: "\u{1F3AE} \uAC8C\uC784 \uBAA9\uB85D"
-            }
-          ),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: `gp-nav-btn ${activeTab === "events" ? "active" : ""}`,
-              onClick: () => {
-                handleLeaveCurrentRoom();
-                setOriginalLaunch(null);
-                setActiveTab("events");
-              },
-              children: "\u{1F3C6} \uC774\uBCA4\uD2B8 / \uB300\uD68C"
-            }
-          ),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: `gp-nav-btn ${activeTab === "rankings" ? "active" : ""}`,
-              onClick: () => {
-                handleLeaveCurrentRoom();
-                setOriginalLaunch(null);
-                setActiveTab("rankings");
-              },
-              children: "\u{1F4CA} \uB7AD\uD0B9 / \uC804\uC801"
-            }
-          ),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: `gp-nav-btn ${activeTab === "win98" ? "active" : ""}`,
-              onClick: () => {
-                handleLeaveCurrentRoom();
-                setOriginalLaunch(null);
-                setActiveTab("win98");
-              },
-              children: "\u{1FA9F} \uB808\uD2B8\uB85C \uB370\uC2A4\uD06C\uD1B1"
-            }
-          )
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "gp-topbar-user", children: [
-          /* @__PURE__ */ u3("div", { className: "gp-active-event-picker", children: [
-            /* @__PURE__ */ u3("label", { title: "\uC120\uD0DD \uC2DC \uACF5\uC2DD \uC628\uB77C\uC778 \uACBD\uAE30 \uACB0\uACFC\uAC00 \uD574\uB2F9 \uC774\uBCA4\uD2B8 \uADF8\uB8F9 \uC810\uC218\uB85C\uB3C4 \uC9D1\uACC4\uB429\uB2C8\uB2E4.", children: "\u{1F3C6} \uC774\uBCA4\uD2B8:" }),
-            /* @__PURE__ */ u3(
-              "select",
-              {
-                className: "gp-select gp-select-sm",
-                value: activeEventId || "",
-                onChange: (e3) => setActiveEventId(e3.target.value || null),
-                children: [
-                  /* @__PURE__ */ u3("option", { value: "", children: "\uC77C\uBC18 \uACF5\uC2DD\uC804" }),
-                  activeEventsList.map((ev) => /* @__PURE__ */ u3("option", { value: ev.id, children: ev.name }, ev.id))
-                ]
-              }
-            )
+    const embeddedGameId = currentRoom?.game || originalLaunch?.gameId || activeGameId || "";
+    const isSkillGameEmbed = isDeckEmbed && SKILL_GAME_IDS.has(embeddedGameId);
+    return /* @__PURE__ */ u3(
+      "div",
+      {
+        className: `gp-root ${isDeckEmbed ? "gp-deck-embed" : ""} ${isSkillGameEmbed ? "gp-skill-game-embed" : ""}`,
+        "data-embedded-game": isDeckEmbed ? embeddedGameId : void 0,
+        children: [
+          !isDeckEmbed && /* @__PURE__ */ u3("header", { className: "gp-topbar", children: [
+            /* @__PURE__ */ u3("div", { className: "gp-topbar-brand", onClick: goCatalog, style: { cursor: "pointer" }, children: [
+              /* @__PURE__ */ u3("span", { className: "gp-brand-logo", children: "\u{1F3AF}" }),
+              /* @__PURE__ */ u3("div", { children: [
+                /* @__PURE__ */ u3("h1", { className: "gp-brand-title", children: "GAME-BOX \uBBF8\uB2C8\uAC8C\uC784 \uD50C\uB7AB\uD3FC" }),
+                /* @__PURE__ */ u3("span", { className: "gp-brand-sub", children: "\uAC8C\uC784\uC744 \uACE0\uB974\uBA74 \uB300\uAE30\uC2E4\uC5D0\uC11C \uC2F1\uAE00 \xB7 \uBA40\uD2F0\uB97C \uC120\uD0DD\uD569\uB2C8\uB2E4" })
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("nav", { className: "gp-topbar-nav", children: [
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `gp-nav-btn ${activeTab === "arcade" && !activeGameId ? "active" : ""}`,
+                  onClick: goCatalog,
+                  children: "\u{1F3AE} \uAC8C\uC784 \uBAA9\uB85D"
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `gp-nav-btn ${activeTab === "events" ? "active" : ""}`,
+                  onClick: () => {
+                    handleLeaveCurrentRoom();
+                    setOriginalLaunch(null);
+                    setActiveTab("events");
+                  },
+                  children: "\u{1F3C6} \uC774\uBCA4\uD2B8 / \uB300\uD68C"
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `gp-nav-btn ${activeTab === "rankings" ? "active" : ""}`,
+                  onClick: () => {
+                    handleLeaveCurrentRoom();
+                    setOriginalLaunch(null);
+                    setActiveTab("rankings");
+                  },
+                  children: "\u{1F4CA} \uB7AD\uD0B9 / \uC804\uC801"
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `gp-nav-btn ${activeTab === "win98" ? "active" : ""}`,
+                  onClick: () => {
+                    handleLeaveCurrentRoom();
+                    setOriginalLaunch(null);
+                    setActiveTab("win98");
+                  },
+                  children: "\u{1FA9F} \uB808\uD2B8\uB85C \uB370\uC2A4\uD06C\uD1B1"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gp-topbar-user", children: [
+              /* @__PURE__ */ u3("div", { className: "gp-active-event-picker", children: [
+                /* @__PURE__ */ u3("label", { title: "\uC120\uD0DD \uC2DC \uACF5\uC2DD \uC628\uB77C\uC778 \uACBD\uAE30 \uACB0\uACFC\uAC00 \uD574\uB2F9 \uC774\uBCA4\uD2B8 \uADF8\uB8F9 \uC810\uC218\uB85C\uB3C4 \uC9D1\uACC4\uB429\uB2C8\uB2E4.", children: "\u{1F3C6} \uC774\uBCA4\uD2B8:" }),
+                /* @__PURE__ */ u3(
+                  "select",
+                  {
+                    className: "gp-select gp-select-sm",
+                    value: activeEventId || "",
+                    onChange: (e3) => setActiveEventId(e3.target.value || null),
+                    children: [
+                      /* @__PURE__ */ u3("option", { value: "", children: "\uC77C\uBC18 \uACF5\uC2DD\uC804" }),
+                      activeEventsList.map((ev) => /* @__PURE__ */ u3("option", { value: ev.id, children: ev.name }, ev.id))
+                    ]
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "gp-user-card", title: `\uACE0\uC720ID: ${currentUser?.id}`, children: [
+                /* @__PURE__ */ u3("span", { className: "gp-user-dept", children: currentUser?.departmentName }),
+                /* @__PURE__ */ u3("strong", { className: "gp-user-name", children: currentUser?.name })
+              ] }),
+              userProvider.allowMockUserSwitch && /* @__PURE__ */ u3("div", { className: "gp-mock-switcher", children: [
+                /* @__PURE__ */ u3("label", { htmlFor: "gp-mock-user-select", children: "\u{1F9EA} \uD14C\uC2A4\uD2B8 \uACC4\uC815:" }),
+                /* @__PURE__ */ u3(
+                  "select",
+                  {
+                    id: "gp-mock-user-select",
+                    className: "gp-select gp-select-sm",
+                    value: currentUser?.id || "",
+                    onChange: (e3) => userProvider.switchMockUser(e3.target.value),
+                    children: userProvider.listAvailableMockUsers().map((u4) => /* @__PURE__ */ u3("option", { value: u4.id, children: [
+                      u4.name,
+                      " (",
+                      u4.departmentName,
+                      ")"
+                    ] }, u4.id))
+                  }
+                )
+              ] })
+            ] })
           ] }),
-          /* @__PURE__ */ u3("div", { className: "gp-user-card", title: `\uACE0\uC720ID: ${currentUser?.id}`, children: [
-            /* @__PURE__ */ u3("span", { className: "gp-user-dept", children: currentUser?.departmentName }),
-            /* @__PURE__ */ u3("strong", { className: "gp-user-name", children: currentUser?.name })
+          toastMessage && /* @__PURE__ */ u3("div", { className: "gp-toast-banner", role: "status", children: toastMessage }),
+          /* @__PURE__ */ u3("main", { className: "gp-main", children: [
+            renderMain(),
+            matchResult && /* @__PURE__ */ u3("div", { className: "gp-match-result-overlay", role: "dialog", "aria-modal": "true", "aria-label": "Match result", children: /* @__PURE__ */ u3("div", { className: "gp-match-result-dialog", children: [
+              /* @__PURE__ */ u3("div", { className: "gp-match-result-header", children: [
+                /* @__PURE__ */ u3("h3", { children: [
+                  "\u{1F3C1} \uAC8C\uC784 \uC885\uB8CC",
+                  " ",
+                  matchResult.winner ? `\xB7 \u{1F3C6} ${matchResult.winner}` : "\xB7 \uBB34\uC2B9\uBD80"
+                ] }),
+                /* @__PURE__ */ u3("span", { className: `gp-official-pill ${matchResult.isOfficial ? "official" : "practice"}`, children: matchResult.isOfficial ? "\u2713 \uACF5\uC2DD \uB7AD\uD0B9 \uBC18\uC601" : "\uC5F0\uC2B5 \uACBD\uAE30 (\uB7AD\uD0B9 \uC81C\uC678)" })
+              ] }),
+              matchResult.standings && matchResult.standings.length > 0 && /* @__PURE__ */ u3("div", { className: "gp-podium-list", children: matchResult.standings.map((st) => /* @__PURE__ */ u3("div", { className: `gp-podium-item rank-${st.rank}`, children: [
+                /* @__PURE__ */ u3("span", { className: "gp-podium-rank", children: [
+                  "#",
+                  st.rank
+                ] }),
+                /* @__PURE__ */ u3("strong", { children: st.name }),
+                /* @__PURE__ */ u3("span", { className: "gp-muted-sm", children: st.isBot ? "\uCEF4\uD4E8\uD130" : "\uD50C\uB808\uC774\uC5B4" }),
+                /* @__PURE__ */ u3("span", { className: "gp-podium-score", children: [
+                  st.score,
+                  "\uC810"
+                ] })
+              ] }, st.id)) }),
+              /* @__PURE__ */ u3("div", { className: "gp-btn-row", children: [
+                /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: "gl-btn gl-btn-primary",
+                    onClick: async () => {
+                      if (originalLaunch) {
+                        setMatchResult(null);
+                        setOriginalLaunch((prev) => ({ ...prev, runId: Date.now() }));
+                        return;
+                      }
+                      try {
+                        const res = await api.rematch(currentRoom.code);
+                        setCurrentRoom(res.room);
+                        setMatchResult(null);
+                        if (currentRoom.mode !== "online") {
+                          const started = await api.startRoom(currentRoom.code);
+                          setCurrentRoom(started.room);
+                          if (started.room?.lastPublicGameState) setPublicGameState(started.room.lastPublicGameState);
+                        }
+                      } catch (err) {
+                        showToast(err.message);
+                      }
+                    },
+                    children: "\u{1F504} \uB2E4\uC2DC \uD558\uAE30"
+                  }
+                ),
+                /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: "gl-btn gl-btn-secondary",
+                    onClick: () => {
+                      setMatchResult(null);
+                      if (originalLaunch) handleBackToLobby();
+                      else handleLeaveCurrentRoom();
+                    },
+                    children: "\uB300\uAE30\uC2E4\uB85C"
+                  }
+                )
+              ] })
+            ] }) })
           ] }),
-          userProvider.allowMockUserSwitch && /* @__PURE__ */ u3("div", { className: "gp-mock-switcher", children: [
-            /* @__PURE__ */ u3("label", { htmlFor: "gp-mock-user-select", children: "\u{1F9EA} \uD14C\uC2A4\uD2B8 \uACC4\uC815:" }),
-            /* @__PURE__ */ u3(
-              "select",
-              {
-                id: "gp-mock-user-select",
-                className: "gp-select gp-select-sm",
-                value: currentUser?.id || "",
-                onChange: (e3) => userProvider.switchMockUser(e3.target.value),
-                children: userProvider.listAvailableMockUsers().map((u4) => /* @__PURE__ */ u3("option", { value: u4.id, children: [
-                  u4.name,
-                  " (",
-                  u4.departmentName,
-                  ")"
-                ] }, u4.id))
-              }
-            )
-          ] })
-        ] })
-      ] }),
-      toastMessage && /* @__PURE__ */ u3("div", { className: "gp-toast-banner", role: "status", children: toastMessage }),
-      /* @__PURE__ */ u3("main", { className: "gp-main", children: renderMain() }),
-      showGuide && activeGameMeta && /* @__PURE__ */ u3(GuideModal, { game: activeGameMeta, onClose: () => setShowGuide(false) })
-    ] });
+          showGuide && activeGameMeta && /* @__PURE__ */ u3(GuideModal, { game: activeGameMeta, onClose: () => setShowGuide(false) })
+        ]
+      }
+    );
   }
 
   // platform-src/user-provider.js

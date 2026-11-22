@@ -79,13 +79,15 @@ export default function GameLauncher({
       </div>
 
       <div className="gb-launcher-stage-container">
-        <iframe
-          ref={iframeRef}
-          src={effectiveSrc}
-          title={title}
-          className="gb-launcher-iframe"
-          allow="autoplay; fullscreen"
-        />
+        <div className="gb-launcher-game-viewport" data-aspect={aspectRatio}>
+          <iframe
+            ref={iframeRef}
+            src={effectiveSrc}
+            title={title}
+            className="gb-launcher-iframe"
+            allow="autoplay; fullscreen"
+          />
+        </div>
       </div>
     </div>
   );

@@ -1253,7 +1253,7 @@ var ToolBoxGameBox = (() => {
     },
     {
       id: "bombergirl",
-      name: "HTML5 Bombergirl",
+      name: "Bombergirl",
       subtitle: "17\xD713 \uC624\uB9AC\uC9C0\uB110 \uCE94\uBC84\uC2A4 \uC544\uCF00\uC774\uB4DC",
       genre: "CLASSIC ARCADE",
       caseColor: "#ea580c",
@@ -1305,12 +1305,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "reaction",
       name: "Reaction Battle (\uC21C\uBC1C\uB825 \uB300\uACB0)",
-      subtitle: "BattleBox #01 \xB7 \uC2E0\uD638 \uBC18\uC751 \uB300\uACB0",
-      genre: "BATTLEBOX SPEED",
+      subtitle: "\uC2E0\uD638 \uBC18\uC751 \uB300\uACB0",
+      genre: "SKILL SPEED",
       caseColor: "#0284c7",
-      discLabel: "BBOX-101",
+      discLabel: "ARCD-005",
       playersLabel: "1~8\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=reaction",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1322,12 +1321,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "speedtyping",
       name: "Speed Typing (\uC2A4\uD53C\uB4DC \uD0C0\uC774\uD551)",
-      subtitle: "BattleBox #02 \xB7 \uBB38\uC7A5 \uC785\uB825 \uB808\uC774\uC2A4",
-      genre: "BATTLEBOX SPEED",
+      subtitle: "\uBB38\uC7A5 \uC785\uB825 \uB808\uC774\uC2A4",
+      genre: "SKILL WORD",
       caseColor: "#2563eb",
-      discLabel: "BBOX-102",
+      discLabel: "ARCD-006",
       playersLabel: "1~8\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=speedtyping",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1339,12 +1337,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "colormatch",
       name: "Color Match (\uCEEC\uB7EC \uB9E4\uCE58)",
-      subtitle: "BattleBox #03 \xB7 \uC2A4\uD2B8\uB8F9 \uD6A8\uACFC \uC21C\uBC1C\uB825",
-      genre: "BATTLEBOX SPEED",
+      subtitle: "\uC0C9\uACFC \uAE00\uC790\uC758 \uBD88\uC77C\uCE58\uB97C \uC77D\uB294 \uC21C\uBC1C\uB825 \uAC8C\uC784",
+      genre: "SKILL SPEED",
       caseColor: "#0d9488",
-      discLabel: "BBOX-103",
+      discLabel: "ARCD-007",
       playersLabel: "1~8\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=colormatch",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1356,12 +1353,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "connectfour",
       name: "Connect Four (\uC0AC\uBAA9)",
-      subtitle: "BattleBox #04 \xB7 7\xD76 \uC911\uB825 \uBCF4\uB4DC \uC804\uB7B5",
-      genre: "BATTLEBOX STRATEGY",
+      subtitle: "7\xD76 \uC911\uB825 \uBCF4\uB4DC \uC804\uB7B5",
+      genre: "SKILL STRATEGY",
       caseColor: "#4f46e5",
-      discLabel: "BBOX-104",
+      discLabel: "ARCD-008",
       playersLabel: "1~2\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=connectfour",
       iframeCompatible: true,
       aspectRatio: "4:3",
@@ -1373,12 +1369,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "tictactoe",
       name: "Tic Tac Toe (\uD2F1\uD0DD\uD1A0)",
-      subtitle: "BattleBox #05 \xB7 3\xD73 \uC218\uC2F8\uC6C0",
-      genre: "BATTLEBOX STRATEGY",
+      subtitle: "3\xD73 \uBCF4\uB4DC \uC218\uC2F8\uC6C0",
+      genre: "SKILL STRATEGY",
       caseColor: "#6366f1",
-      discLabel: "BBOX-105",
+      discLabel: "ARCD-009",
       playersLabel: "1~2\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=tictactoe",
       iframeCompatible: true,
       aspectRatio: "4:3",
@@ -1390,12 +1385,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "memorymatch",
       name: "Memory Match (\uAE30\uC5B5\uB825 \uCE74\uB4DC)",
-      subtitle: "BattleBox #06 \xB7 \uCE74\uB4DC \uC9DD \uB9DE\uCD94\uAE30",
-      genre: "BATTLEBOX MEMORY",
+      subtitle: "\uCE74\uB4DC \uC9DD \uB9DE\uCD94\uAE30",
+      genre: "SKILL MEMORY",
       caseColor: "#7c3aed",
-      discLabel: "BBOX-106",
+      discLabel: "ARCD-010",
       playersLabel: "1~8\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=memorymatch",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1407,12 +1401,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "simonsays",
       name: "Simon Says (\uC0AC\uC774\uBA3C \uC138\uC774\uC988)",
-      subtitle: "BattleBox #07 \xB7 \uBD88\uBE5B \uD328\uD134 \uC554\uAE30",
-      genre: "BATTLEBOX MEMORY",
+      subtitle: "\uBD88\uBE5B \uD328\uD134 \uAE30\uC5B5\uD558\uAE30",
+      genre: "SKILL MEMORY",
       caseColor: "#c026d3",
-      discLabel: "BBOX-107",
+      discLabel: "ARCD-011",
       playersLabel: "1~8\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=simonsays",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1424,12 +1417,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "wordchain",
       name: "Word Chain (\uC601\uB2E8\uC5B4 \uB05D\uB9D0\uC787\uAE30)",
-      subtitle: "BattleBox #08 \xB7 \uC81C\uD55C\uC2DC\uAC04 \uB2E8\uC5B4 \uBC30\uD2C0",
-      genre: "BATTLEBOX WORD",
+      subtitle: "\uC81C\uD55C\uC2DC\uAC04 \uB2E8\uC5B4 \uC774\uC5B4\uAC00\uAE30",
+      genre: "SKILL WORD",
       caseColor: "#059669",
-      discLabel: "BBOX-108",
+      discLabel: "ARCD-012",
       playersLabel: "1~8\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=wordchain",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1441,12 +1433,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "anagram",
       name: "Anagram Sprint (\uCCA0\uC790 \uC870\uD569)",
-      subtitle: "BattleBox #09 \xB7 \uB4A4\uC11E\uC778 \uCCA0\uC790 \uD574\uB3C5",
-      genre: "BATTLEBOX WORD",
+      subtitle: "\uB4A4\uC11E\uC778 \uCCA0\uC790 \uD574\uB3C5",
+      genre: "SKILL WORD",
       caseColor: "#10b981",
-      discLabel: "BBOX-109",
+      discLabel: "ARCD-013",
       playersLabel: "1~8\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=anagram",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1458,12 +1449,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "mathduel",
       name: "Math Duel (\uC554\uC0B0 \uB300\uACB0)",
-      subtitle: "BattleBox #10 \xB7 \uC0AC\uCE59\uC5F0\uC0B0 \uC2A4\uD53C\uB4DC\uC804",
-      genre: "BATTLEBOX MATH",
+      subtitle: "\uC0AC\uCE59\uC5F0\uC0B0 \uC2A4\uD53C\uB4DC \uB300\uACB0",
+      genre: "SKILL MATH",
       caseColor: "#d97706",
-      discLabel: "BBOX-110",
+      discLabel: "ARCD-014",
       playersLabel: "1~8\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=mathduel",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1475,12 +1465,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "numberhunt",
       name: "Number Hunt (\uB118\uBC84 \uD5CC\uD2B8)",
-      subtitle: "BattleBox #11 \xB7 1~25 \uC21C\uC11C \uCC3E\uAE30",
-      genre: "BATTLEBOX MATH",
+      subtitle: "1\uBD80\uD130 25\uAE4C\uC9C0 \uC21C\uC11C\uB300\uB85C \uCC3E\uAE30",
+      genre: "SKILL FOCUS",
       caseColor: "#ca8a04",
-      discLabel: "BBOX-111",
+      discLabel: "ARCD-015",
       playersLabel: "1~8\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=numberhunt",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1492,12 +1481,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "rpsarena",
       name: "RPS Arena (\uAC00\uC704\uBC14\uC704\uBCF4)",
-      subtitle: "BattleBox #12 \xB7 5\uD310 3\uC120\uC2B9 \uC2EC\uB9AC\uC804",
-      genre: "BATTLEBOX CLASSIC",
+      subtitle: "\uAC00\uC704\uBC14\uC704\uBCF4 5\uD310 3\uC120\uC2B9",
+      genre: "SKILL CLASSIC",
       caseColor: "#e11d48",
-      discLabel: "BBOX-112",
+      discLabel: "ARCD-016",
       playersLabel: "1~2\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=rpsarena",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1509,12 +1497,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "trivia",
       name: "Trivia Challenge (\uC0C1\uC2DD \uD034\uC988)",
-      subtitle: "BattleBox #13 \xB7 IT\xB7\uC0C1\uC2DD 4\uC9C0\uC120\uB2E4",
-      genre: "BATTLEBOX TRIVIA",
+      subtitle: "IT\uC640 \uC0C1\uC2DD \uD034\uC988",
+      genre: "SKILL QUIZ",
       caseColor: "#0891b2",
-      discLabel: "BBOX-113",
+      discLabel: "ARCD-017",
       playersLabel: "1~8\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=trivia",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1526,12 +1513,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "higherlower",
       name: "Higher or Lower (\uD558\uC774 \uB85C\uC6B0)",
-      subtitle: "BattleBox #14 \xB7 \uC22B\uC790 \uB192\uB0AE\uC774 \uC608\uCE21",
-      genre: "BATTLEBOX SPEED",
+      subtitle: "\uC22B\uC790\uC758 \uB192\uACE0 \uB0AE\uC74C \uC608\uCE21",
+      genre: "SKILL SPEED",
       caseColor: "#475569",
-      discLabel: "BBOX-114",
+      discLabel: "ARCD-018",
       playersLabel: "1~2\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=higherlower",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1543,12 +1529,11 @@ var ToolBoxGameBox = (() => {
     {
       id: "oddoneout",
       name: "Odd One Out (\uB2E4\uB978 \uADF8\uB9BC \uCC3E\uAE30)",
-      subtitle: "BattleBox #15 \xB7 \uC774\uC9C8\uC801\uC778 \uD0C0\uC77C \uD0D0\uC0C9",
-      genre: "BATTLEBOX STRATEGY",
+      subtitle: "\uB2E4\uB978 \uD0C0\uC77C \uD558\uB098 \uCC3E\uC544\uB0B4\uAE30",
+      genre: "SKILL FOCUS",
       caseColor: "#334155",
-      discLabel: "BBOX-115",
+      discLabel: "ARCD-019",
       playersLabel: "1~2\uC778",
-      sourcePath: "battlebox/games/ & server/platform-realtime.mjs",
       launchUrl: "/platform/?game=oddoneout",
       iframeCompatible: true,
       aspectRatio: "16:10",
@@ -1579,207 +1564,83 @@ var ToolBoxGameBox = (() => {
     }
   ]);
 
-  // tool-box/src/features/game-box/GameBoxHome.js
-  function GameBoxHome({ onNavigate }) {
-    const { identity, openNicknameModal } = useGameIdentity();
-    const packs = [
-      {
-        id: "retro",
-        route: "/game-box/retro",
-        kicker: "CLASSIC GAMES",
-        title: "RETRO DESKTOP",
-        icon: "\u{1FA9F}",
-        tagline: "\uD55C\uAE00 Windows 98 \uBC14\uD0D5\uD654\uBA74\uC5D0\uC11C \uC990\uAE30\uB294 \uCD94\uC5B5\uC758 \uAC8C\uC784",
-        items: ["\uD55C\uCEF4\uD0C0\uC790\uC5F0\uC2B5 97", "\uD55C\uBA54\uD0C0\uC790\uAD50\uC0AC 3.0", "\uD53C\uCE74\uCE04 \uBC30\uAD6C", "\uC2E4\uC2DC\uAC04 GAME RANKING"],
-        count: `${RETRO_GAMES.length}\uC885`,
-        cta: "\uB370\uC2A4\uD06C\uD1B1 \uC5F4\uAE30"
-      },
-      {
-        id: "deck",
-        route: "/game-box/deck",
-        kicker: "ARCADE COLLECTION",
-        title: "GAME DECK",
-        icon: "\u{1F3AE}",
-        tagline: "CD \uCF00\uC774\uC2A4\uB97C \uACE0\uB974\uACE0 \uCF58\uC194\uC5D0 \uB123\uC5B4 \uC2DC\uC791\uD558\uB294 \uC544\uCF00\uC774\uB4DC \xB7 \uD30C\uD2F0 \uAC8C\uC784",
-        items: ARCADE_GAMES.slice(0, 4).map((g4) => g4.name.replace(/\s*\(.*\)/, "")).concat("\uC678 \uB2E4\uC218"),
-        count: `${ARCADE_GAMES.length}\uC885`,
-        cta: "\uCF58\uC194 \uC5F4\uAE30"
-      },
-      {
-        id: "draw",
-        route: "/game-box/draw",
-        kicker: "LUCKY DRAW",
-        title: "DRAW PACK",
-        icon: "\u{1F3B2}",
-        tagline: "\uAD6C\uC2AC \uB808\uC774\uC2A4\uB85C \uACF5\uC815\uD558\uAC8C \uBF51\uB294 \uCD94\uCCA8 \xB7 \uBF51\uAE30 \uAC8C\uC784",
-        items: DRAW_GAMES.map((g4) => g4.shortName),
-        count: `${DRAW_GAMES.length}\uC885`,
-        cta: "\uBF51\uAE30 \uC2DC\uC791"
-      }
-    ];
-    return /* @__PURE__ */ u3("div", { className: "gb-home-container", children: [
-      /* @__PURE__ */ u3("section", { className: "gb-home-hero", children: [
-        /* @__PURE__ */ u3("div", { children: [
-          /* @__PURE__ */ u3("span", { className: "gb-home-kicker", children: "WELCOME TO GAME-BOX" }),
-          /* @__PURE__ */ u3("h2", { className: "gb-home-heading", children: "\uB2C9\uB124\uC784\uC744 \uC815\uD558\uACE0 \uAC8C\uC784\uD329\uC744 \uC120\uD0DD\uD558\uC138\uC694" }),
-          /* @__PURE__ */ u3("p", { className: "gb-home-subtext", children: "\uC5EC\uAE30\uC11C \uC815\uD55C \uB2C9\uB124\uC784\uC774 \uBAA8\uB4E0 \uAC8C\uC784\uD329\uC758 \uB300\uAE30\uC2E4\uACFC \uB7AD\uD0B9\uC5D0 \uC790\uB3D9\uC73C\uB85C \uC0AC\uC6A9\uB429\uB2C8\uB2E4. \uAC8C\uC784\uC5D0 \uB4E4\uC5B4\uAC00\uBA74 \uC2F1\uAE00(\uCEF4\uD4E8\uD130 \uB300\uACB0) \uB610\uB294 \uBA40\uD2F0(\uC989\uC2DC \uB9E4\uCE6D \xB7 \uCC38\uC5EC \uCF54\uB4DC)\uB97C \uACE0\uB97C \uC218 \uC788\uC5B4\uC694." })
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "gb-home-player", children: [
-          /* @__PURE__ */ u3("span", { className: "gb-home-player-label", children: "PLAYER" }),
-          /* @__PURE__ */ u3("strong", { className: "gb-home-player-name", children: [
-            "\u{1F464} ",
-            identity.nickname || "\uB2C9\uB124\uC784 \uBBF8\uB4F1\uB85D"
-          ] }),
-          /* @__PURE__ */ u3("button", { type: "button", className: "gb-home-player-btn", onClick: openNicknameModal, children: identity.isRegistered ? "\uB2C9\uB124\uC784 \uBCC0\uACBD" : "\uB2C9\uB124\uC784 \uB4F1\uB85D" })
-        ] })
-      ] }),
-      /* @__PURE__ */ u3("div", { className: "gb-home-cards-grid", children: packs.map((pack) => /* @__PURE__ */ u3(
-        "article",
-        {
-          className: `gb-entry-card gb-entry-card-${pack.id}`,
-          role: "button",
-          tabIndex: 0,
-          onClick: () => onNavigate(pack.route),
-          onKeyDown: (e3) => {
-            if (e3.key === "Enter" || e3.key === " ") {
-              e3.preventDefault();
-              onNavigate(pack.route);
-            }
-          },
-          children: [
-            /* @__PURE__ */ u3("div", { className: "gb-card-top-meta", children: [
-              /* @__PURE__ */ u3("span", { className: "gb-card-subtitle", children: pack.kicker }),
-              /* @__PURE__ */ u3("span", { className: "gb-card-count", children: pack.count })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-card-visual", "aria-hidden": "true", children: /* @__PURE__ */ u3("span", { children: pack.icon }) }),
-            /* @__PURE__ */ u3("h3", { className: "gb-card-title", children: pack.title }),
-            /* @__PURE__ */ u3("p", { className: "gb-card-desc", children: pack.tagline }),
-            /* @__PURE__ */ u3("ul", { className: "gb-card-items", children: pack.items.map((item) => /* @__PURE__ */ u3("li", { children: item }, item)) }),
-            /* @__PURE__ */ u3("span", { className: "gb-card-cta", children: [
-              pack.cta,
-              " \u2192"
-            ] })
-          ]
-        },
-        pack.id
-      )) })
-    ] });
+  // tool-box/src/features/game-box/deck/cases/gameCoverGenerator.js
+  function getGameCaseCoverSrc(game) {
+    return game.coverUrl && !game.coverUrl.includes("terminal-1997") ? game.coverUrl : generateArcadeCoverSvg(game);
   }
-
-  // tool-box/src/features/game-box/retro/RetroDesktop.js
-  function RetroDesktop({ onNavigate }) {
-    const { identity, openNicknameModal } = useGameIdentity();
-    const iframeRef = A2(null);
-    h2(() => {
-      const iframe = iframeRef.current;
-      if (!iframe || !iframe.contentWindow) return;
-      try {
-        iframe.contentWindow.postMessage(
-          {
-            source: "game-box-host",
-            type: "identity:sync",
-            payload: identity
-          },
-          window.location.origin
-        );
-      } catch {
-      }
-    }, [identity]);
-    const sendCommandToWin98 = (appId) => {
-      const cw = iframeRef.current?.contentWindow;
-      if (cw?.System?.launchApp) {
-        cw.System.launchApp(appId);
-        cw.focus();
-      }
-    };
-    return /* @__PURE__ */ u3("div", { className: "gb-retro-shell", children: /* @__PURE__ */ u3("div", { className: "gb-retro-viewport", children: /* @__PURE__ */ u3(
-      "iframe",
-      {
-        ref: iframeRef,
-        src: "/win98-web/",
-        title: "Windows 98 RETRO DESKTOP",
-        className: "gb-retro-iframe",
-        allow: "autoplay; fullscreen",
-        onLoad: () => {
-          try {
-            iframeRef.current?.contentWindow?.postMessage(
-              {
-                source: "game-box-host",
-                type: "identity:sync",
-                payload: identity
-              },
-              window.location.origin
-            );
-          } catch {
-          }
-        }
-      }
-    ) }) });
+  var palettes = [
+    { ink: "#a94032", shade: "#632b2c", light: "#f1bd82", accent: "#f5daaa" },
+    { ink: "#286253", shade: "#183d3c", light: "#9ac7a3", accent: "#e0d58b" },
+    { ink: "#31547a", shade: "#1c304b", light: "#9db8cb", accent: "#e3bd7e" },
+    { ink: "#80582f", shade: "#4c3829", light: "#d6a86c", accent: "#ecd8a9" },
+    { ink: "#684a71", shade: "#3e324d", light: "#c4a0bd", accent: "#ead5ac" },
+    { ink: "#536247", shade: "#303b35", light: "#b3bb83", accent: "#ebd79b" }
+  ];
+  var artwork = {
+    bomberman: [0, '<ellipse cx="150" cy="211" rx="77" ry="13" fill="#1e293b" opacity=".28"/><path d="M107 144q5-30 31-40l8-26q3-10 13-8l11 3q8 3 6 12l-3 17q27 14 32 44l-6 50q-3 23-25 25h-42q-24-2-26-25z" fill="url(#hero)"/><path d="M142 110q18-6 38 2l10 26h-56z" fill="#f2c56e"/><ellipse cx="150" cy="158" rx="19" ry="21" fill="#f7e4bf"/><circle cx="145" cy="155" r="3" fill="#23313b"/><circle cx="157" cy="155" r="3" fill="#23313b"/><path d="M143 169q7 7 15 0" fill="none" stroke="#9b4d3a" stroke-width="3" stroke-linecap="round"/><rect x="203" y="80" width="38" height="48" rx="8" fill="#263545"/><path d="M211 91h22m-22 10h22m-22 10h16" stroke="#efcf8b" stroke-width="4" stroke-linecap="round"/>'],
+    bombergirl: [3, '<ellipse cx="150" cy="214" rx="81" ry="13" fill="#1e293b" opacity=".24"/><path d="M98 182q7-55 48-73l15-34 16 35q42 20 44 72l-16 31h-98z" fill="url(#hero)"/><path d="M112 120 77 92q-10-9-2-19 8-10 18-3l46 33m43 1 35-30q10-8 18 2 7 9-2 18l-43 38" fill="none" stroke="#f0c77f" stroke-width="15" stroke-linecap="round"/><circle cx="151" cy="145" r="20" fill="#f5e7cc"/><circle cx="145" cy="144" r="3" fill="#303747"/><circle cx="158" cy="144" r="3" fill="#303747"/><path d="M144 157q7 5 14 0" fill="none" stroke="#a94437" stroke-width="3" stroke-linecap="round"/><path d="m89 198 14-22 14 22m67 0 14-22 14 22" fill="#f4e4bd"/>'],
+    snakeduel: [1, '<path d="M85 177c-24-25-11-58 17-61 24-3 39 17 60 15 20-2 31-23 51-21 30 3 36 36 13 54-21 17-48 4-65 11-18 8-22 32-50 33-14 0-25-7-29-18" fill="none" stroke="#e4b96f" stroke-width="26" stroke-linecap="round"/><path d="M85 177c-24-25-11-58 17-61 24-3 39 17 60 15 20-2 31-23 51-21 30 3 36 36 13 54-21 17-48 4-65 11-18 8-22 32-50 33-14 0-25-7-29-18" fill="none" stroke="url(#hero)" stroke-width="18" stroke-linecap="round"/><circle cx="220" cy="135" r="4" fill="#f7e7c1"/><path d="m74 117 18-8-5 19m135 24 18 7-18 8" fill="none" stroke="#f3d99d" stroke-width="4" stroke-linecap="round"/>'],
+    drawing: [2, '<rect x="80" y="83" width="143" height="108" rx="10" transform="rotate(-7 80 83)" fill="#f2e6cb"/><path d="m106 162 25-46 69-45q10-6 17 4l7 10q6 9-3 16l-67 47-49 14z" fill="url(#hero)"/><path d="m131 116 23 28m42-65 19 27" stroke="#f7dfac" stroke-width="5"/><path d="M101 177q48-23 111-11" fill="none" stroke="#a44d3e" stroke-width="5" stroke-linecap="round"/><circle cx="201" cy="190" r="8" fill="#db9e57"/>'],
+    reaction: [4, '<path d="M153 66c-8 38-35 59-31 86 3 21 23 28 39 15 15-12 14-31 13-42 34 25 40 69 13 94-24 22-68 20-90-7-26-32-6-73 20-101 13-15 27-31 36-45z" fill="url(#hero)"/><path d="M154 144c-2 19-18 29-18 46 0 15 11 24 24 21 16-4 20-24 10-39-4-7-11-17-16-28z" fill="#fff0c9" opacity=".78"/><path d="m93 88 7 15m112-8 10-12M80 151l17 3m120 5 15-3" stroke="#f5d697" stroke-width="5" stroke-linecap="round"/>'],
+    speedtyping: [5, '<rect x="68" y="110" width="166" height="88" rx="14" fill="url(#hero)"/><rect x="77" y="119" width="148" height="68" rx="8" fill="#293a3d"/><g fill="#f4e6c7"><rect x="88" y="132" width="23" height="17" rx="3"/><rect x="117" y="132" width="23" height="17" rx="3"/><rect x="146" y="132" width="23" height="17" rx="3"/><rect x="175" y="132" width="23" height="17" rx="3"/><rect x="88" y="157" width="23" height="17" rx="3"/><rect x="117" y="157" width="52" height="17" rx="3"/><rect x="175" y="157" width="23" height="17" rx="3"/></g><path d="M95 89h112" stroke="#f3d69b" stroke-width="5" stroke-linecap="round"/><path d="m193 77 14 12-14 12" fill="none" stroke="#f3d69b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>'],
+    colormatch: [0, '<circle cx="126" cy="145" r="53" fill="#e05a48"/><circle cx="176" cy="136" r="53" fill="#eab454"/><circle cx="153" cy="181" r="53" fill="#416f98"/><path d="M94 117q24-27 49-15m22-7q28 2 43 28m-81 87q30 20 57 4" fill="none" stroke="#fff0cd" stroke-opacity=".75" stroke-width="5" stroke-linecap="round"/><circle cx="151" cy="152" r="13" fill="#f2e2c4"/>'],
+    connectfour: [2, '<rect x="78" y="82" width="145" height="143" rx="22" fill="url(#hero)"/><g fill="#213549"><circle cx="110" cy="117" r="14"/><circle cx="151" cy="117" r="14"/><circle cx="192" cy="117" r="14"/><circle cx="110" cy="157" r="14"/><circle cx="151" cy="157" r="14"/><circle cx="192" cy="157" r="14"/><circle cx="110" cy="197" r="14"/><circle cx="151" cy="197" r="14"/><circle cx="192" cy="197" r="14"/></g><g fill="#f3d487"><circle cx="110" cy="117" r="10"/><circle cx="151" cy="157" r="10"/><circle cx="192" cy="197" r="10"/></g><g fill="#eb8a5d"><circle cx="151" cy="117" r="10"/><circle cx="192" cy="157" r="10"/></g>'],
+    tictactoe: [1, '<rect x="77" y="78" width="146" height="146" rx="20" fill="#f0e1bf"/><path d="M126 90v122m49-122v122M89 126h122m-122 48h122" stroke="#577b68" stroke-width="7" stroke-linecap="round"/><path d="m96 99 23 22m0-22-23 22m71 48 23 22m0-22-23 22" stroke="#bd5544" stroke-width="7" stroke-linecap="round"/><circle cx="151" cy="109" r="12" fill="none" stroke="#31547a" stroke-width="6"/><circle cx="103" cy="198" r="12" fill="none" stroke="#31547a" stroke-width="6"/>'],
+    memorymatch: [4, '<rect x="91" y="94" width="76" height="107" rx="10" transform="rotate(-13 91 94)" fill="#f2e5c7"/><rect x="143" y="83" width="76" height="107" rx="10" transform="rotate(11 143 83)" fill="url(#hero)"/><path d="m127 133 16-19 16 19-16 19z" fill="#bd7b7d"/><path d="m172 141 13-16 13 16-13 16z" fill="#f5e4bf"/><path d="M104 180q24 12 44-2" fill="none" stroke="#4b4160" stroke-width="4" stroke-linecap="round"/>'],
+    simonsays: [3, '<circle cx="150" cy="152" r="83" fill="#35443d"/><path d="M150 73a79 79 0 0 0-79 79h79z" fill="#e35d4e"/><path d="M150 73a79 79 0 0 1 79 79h-79z" fill="#e6b64f"/><path d="M71 152a79 79 0 0 0 79 79v-79z" fill="#5a9e87"/><path d="M150 152h79a79 79 0 0 1-79 79z" fill="#547aa3"/><circle cx="150" cy="152" r="17" fill="#f1e6c9"/><path d="M150 71v18m81 63h-18m-63 81v-18m-81-63h18" stroke="#f5e7c6" stroke-width="4"/>'],
+    wordchain: [5, '<path d="M102 145c-15-18-13-44 5-57 17-12 42-8 54 8 12 17 10 42-6 55l-12 10m42-1 13-11c16-13 41-10 54 7 13 18 9 42-8 55-18 13-43 9-55-8" fill="none" stroke="url(#hero)" stroke-width="17" stroke-linecap="round"/><path d="m125 175 52-42" stroke="#f4dfad" stroke-width="8" stroke-linecap="round"/><circle cx="101" cy="145" r="5" fill="#f7e9c9"/><circle cx="246" cy="163" r="5" fill="#f7e9c9"/>'],
+    anagram: [3, '<rect x="80" y="94" width="140" height="114" rx="17" fill="#f1e3c3"/><g fill="url(#hero)"><path d="M108 176v-54h13l17 29 17-29h13v54h-14v-30l-13 20h-7l-13-20v30z"/><path d="M174 122h35v12h-21v9h19v11h-19v10h22v12h-36z"/></g><path d="M101 91q49-26 99-3" fill="none" stroke="#fff1cf" stroke-width="5" stroke-linecap="round"/>'],
+    mathduel: [2, '<rect x="81" y="88" width="138" height="126" rx="18" fill="#f2e5c9"/><path d="M112 126h34m-17-17v34m27-17h34m-34 42h34m-92 0h42" stroke="url(#hero)" stroke-width="9" stroke-linecap="round"/><circle cx="108" cy="192" r="5" fill="#b85c45"/><circle cx="193" cy="111" r="5" fill="#b85c45"/>'],
+    numberhunt: [1, '<circle cx="143" cy="139" r="55" fill="#f0e3c6"/><circle cx="143" cy="139" r="45" fill="none" stroke="url(#hero)" stroke-width="8"/><text x="143" y="156" text-anchor="middle" fill="#304d43" font-size="49" font-weight="800">7</text><path d="m183 180 38 39" stroke="#d1a05e" stroke-width="17" stroke-linecap="round"/><path d="M96 208q52 20 105-1" fill="none" stroke="#fff0cf" stroke-width="5" stroke-linecap="round"/>'],
+    rpsarena: [0, '<path d="M121 213 94 177l6-34q3-12 14-10l10 4 4-48q2-14 14-12 11 2 10 14l-1 35 9-47q3-14 15-10 10 3 7 16l-7 45 14-34q5-12 16-6 10 6 4 18l-14 40 21-25q9-10 18-1 8 9 0 19l-39 53q-11 14-28 14h-30z" fill="url(#hero)"/><path d="m116 148 12 7m17-22 12 5m9-4 11 5" stroke="#f9e8c9" stroke-width="4" stroke-linecap="round"/><path d="m77 108 9-12m136 17 13-6m-143 95-14 4" stroke="#f3d493" stroke-width="5" stroke-linecap="round"/>'],
+    trivia: [4, '<path d="M105 119q3-40 48-43 49 0 51 41 1 24-27 42-21 13-21 33h-22q-1-31 24-50 22-17 22-29-1-18-27-18-24 0-27 25z" fill="url(#hero)"/><circle cx="145" cy="213" r="13" fill="#efca7f"/><path d="M83 100q-10 18-8 35m143-41 10 14m-138 101-12 13" fill="none" stroke="#f3ddab" stroke-width="5" stroke-linecap="round"/>'],
+    higherlower: [5, '<path d="M105 191V112m-29 32 29-35 29 35m-29-35v-16" fill="none" stroke="#e8bd6e" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/><path d="M195 108v79m-29-32 29 35 29-35m-29 35v16" fill="none" stroke="url(#hero)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/><path d="M149 103v94" stroke="#f4e6c7" stroke-width="5" stroke-dasharray="6 9"/>'],
+    oddoneout: [3, '<g fill="#d9a567"><circle cx="112" cy="116" r="26"/><circle cx="184" cy="116" r="26"/><circle cx="112" cy="188" r="26"/></g><circle cx="184" cy="188" r="26" fill="#557d75"/><path d="M184 151v17" stroke="#f4e6c7" stroke-width="4" stroke-linecap="round"/><circle cx="184" cy="176" r="2.5" fill="#f4e6c7"/><path d="M86 223q65 18 131-1" fill="none" stroke="#f3ddb1" stroke-width="4" stroke-linecap="round"/>']
+  };
+  function escapeXml(value) {
+    return String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
   }
-
-  // tool-box/src/features/game-box/deck/gameDeckConfig.js
-  var GAME_DECK_CATEGORIES = Object.freeze([
-    { id: "all", label: "ALL PACKS (19)" },
-    { id: "ARCADE", label: "ARCADE ORIGINAL (3)" },
-    { id: "PARTY", label: "PARTY QUIZ (1)" },
-    { id: "BATTLEBOX", label: "BATTLEBOX COLLECTION (15)" }
-  ]);
-  var SINGLE_BASE_ENGINE = Object.freeze({
-    name: "Channel 3 CRT TV & Retro Cartridge Architecture",
-    repo: "dau-in/channel-3",
-    license: "AGPL-3.0",
-    commit: "ab85fff7bcb97b69f9fb90c531cb357ba517e4c9",
-    copyright: "Copyright (c) 2024-2026, dau-in",
-    subLicenses: {
-      silkscreenFont: "OFL-1.1",
-      nesCss: "MIT",
-      peerjs: "MIT",
-      jsnes: "MIT / GPL-2.0"
-    },
-    unmodifiedLabEndpoint: "/game-box/deck-lab-single/",
-    vendorLocation: "vendor/channel-3/dist/",
-    adoptionScope: "\uB2E8\uC77C TV \uCF58\uC194 \uD504\uB808\uC784 \uBC0F \uBE0C\uB77C\uC6B4\uAD00(CRT) \uB798\uC2A4\uD130/\uAE00\uB85C\uC6B0 \uD30C\uC774\uD504\uB77C\uC778, \uCE74\uD2B8\uB9AC\uC9C0 \uAC70\uCE58 \uBC0F \uB799 \uC2DC\uC2A4\uD15C, \uC804\uC6D0 \uB9B4\uB808\uC774/\uBD80\uD2B8 \uC2DC\uD000\uC2A4, \uD1B5\uD569 iframe \uB7F0\uD0C0\uC784 \uD638\uC2A4\uD305"
-  });
-  var PORTED_3D_ENGINES = Object.freeze([
-    {
-      name: "PS2 Web 3D Console Engine",
-      repo: "brayanspagnol/ps2-web",
-      license: "BSD-2-Clause",
-      commit: "654114aed6b85aacb1b3e68793808b3eb3feca13",
-      copyright: "Copyright (c) 2026, Brayan Spagnol",
-      portedFiles: [
-        "public/js/console-scene.js",
-        "public/demo-console.html",
-        "LICENSE",
-        "CREDITS.md"
-      ],
-      adoptionScope: "Three.js \uAE30\uBC18 3D \uCF58\uC194 \uD558\uB4DC\uC6E8\uC5B4 \uBAA8\uB378, \uBAA8\uD130 \uD2B8\uB808\uC774 \uAD6C\uB3D9, \uB514\uC2A4\uD06C \uC0BD\uC785/\uBC30\uCD9C \uC560\uB2C8\uBA54\uC774\uC158, LED \uC804\uC6D0 \uC0C1\uD0DC, \uCE74\uBA54\uB77C \uC870\uC791"
-    },
-    {
-      name: "Finally 3D Game Cases Plugin",
-      repo: "otisabiburada/finally-3d-game-cases-plugin",
-      license: "BSD-3-Clause",
-      commit: "7e748d4bfad4e22ebccb318827724796bfeaf149",
-      copyright: "Copyright (c) 2026, SANSO",
-      portedFiles: [
-        "src/engine.ts",
-        "README.md",
-        "LICENSE"
-      ],
-      adoptionScope: "3D \uAC8C\uC784 \uCF00\uC774\uC2A4 \uC785\uCCB4 \uAE30\uD558\uD559, \uC2A4\uD30C\uC778/\uB450\uAED8/\uAD11\uD0DD/\uC2AC\uB9AC\uBE0C/\uADF8\uB9BC\uC790 \uB80C\uB354\uB9C1, Web Audio \uD569\uC131 \uD6A8\uACFC\uC74C, Web Animations API \uCF00\uC774\uC2A4 \uAC1C\uD3D0 \uBC0F \uB514\uC2A4\uD06C \uCD94\uCD9C \uC5F0\uCD9C"
-    }
-  ]);
-  function filterDeckGames(categoryFilter = "all", query = "") {
-    return ARCADE_GAMES.filter((game) => {
-      if (categoryFilter !== "all" && !game.genre.includes(categoryFilter)) {
-        return false;
-      }
-      if (query.trim()) {
-        const q4 = query.trim().toLowerCase();
-        return game.name.toLowerCase().includes(q4) || game.subtitle.toLowerCase().includes(q4) || game.genre.toLowerCase().includes(q4) || game.discLabel.toLowerCase().includes(q4);
-      }
-      return true;
-    });
+  function generateArcadeCoverSvg(game) {
+    const [paletteIndex, motif] = artwork[game.id] || [0, '<circle cx="150" cy="150" r="60" fill="url(#hero)"/><circle cx="150" cy="150" r="22" fill="#f2e2c4"/>'];
+    const color = palettes[paletteIndex];
+    const rawTitle = game.name || "Arcade Game";
+    const [title, korean] = rawTitle.split(" (");
+    const titleSize = Math.max(22, Math.min(38, Math.floor(260 / Math.max(title.length, 1)) * 3));
+    const subtitle = korean?.replace(/\)$/, "") || game.genre || "";
+    const code = String(game.discLabel || "ARCADE").toUpperCase();
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="300" height="450">
+    <defs>
+      <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#f6ecd7"/><stop offset="1" stop-color="#e8d9b9"/></linearGradient>
+      <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${color.light}"/><stop offset=".52" stop-color="${color.ink}"/><stop offset="1" stop-color="${color.shade}"/></linearGradient>
+      <linearGradient id="sky" x2="0" y2="1"><stop stop-color="${color.shade}"/><stop offset="1" stop-color="${color.ink}"/></linearGradient>
+      <pattern id="grain" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M0 1h7" stroke="#fff4dc" stroke-opacity=".11"/><circle cx="1" cy="5" r=".55" fill="#362b23" fill-opacity=".12"/></pattern>
+      <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#18202a" flood-opacity=".24"/></filter>
+      <clipPath id="artClip"><rect x="16" y="52" width="268" height="224" rx="8"/></clipPath>
+    </defs>
+    <rect width="300" height="450" fill="url(#paper)"/>
+    <rect x="0" y="0" width="300" height="42" fill="${color.shade}"/>
+    <text x="20" y="27" fill="#fff1d7" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2">GAME BOX</text>
+    <text x="280" y="27" text-anchor="end" fill="#e8d8b9" font-family="Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="1">${escapeXml(code)}</text>
+    <g clip-path="url(#artClip)">
+      <rect x="16" y="52" width="268" height="224" fill="url(#sky)"/>
+      <circle cx="245" cy="79" r="35" fill="${color.accent}" opacity=".16"/>
+      <circle cx="50" cy="248" r="66" fill="${color.light}" opacity=".12"/>
+      <path d="M16 236q58-30 112-7t156-1v48H16z" fill="#17242e" opacity=".18"/>
+      <g filter="url(#shadow)">${motif}</g>
+      <rect x="16" y="52" width="268" height="224" fill="url(#grain)"/>
+    </g>
+    <rect x="16" y="52" width="268" height="224" rx="8" fill="none" stroke="#fff5df" stroke-opacity=".35"/>
+    <path d="M20 294h260" stroke="${color.ink}" stroke-opacity=".28"/>
+    <text x="20" y="331" fill="${color.shade}" font-family="Arial, 'Malgun Gothic', sans-serif" font-size="${titleSize}" font-weight="800" letter-spacing="-.7" textLength="260" lengthAdjust="spacingAndGlyphs">${escapeXml(title)}</text>
+    <text x="21" y="356" fill="#554b3d" font-family="Arial, 'Malgun Gothic', sans-serif" font-size="15" font-weight="600">${escapeXml(subtitle)}</text>
+    <path d="M20 377h260" stroke="${color.ink}" stroke-opacity=".35"/>
+    <text x="20" y="408" fill="${color.shade}" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.4">ARCADE SERIES</text>
+    <text x="280" y="408" text-anchor="end" fill="#5b5041" font-family="Arial, sans-serif" font-size="9" letter-spacing=".7">${escapeXml(game.playersLabel || "1 PLAYER")}</text>
+    <rect x="0" y="426" width="300" height="24" fill="${color.ink}"/>
+    <text x="20" y="442" fill="#fff1d7" font-family="Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="1.5">GAME BOX  /  CLASSIC PLAY</text>
+    <text x="280" y="442" text-anchor="end" fill="#fff1d7" font-family="Arial, sans-serif" font-size="8" letter-spacing="1">COMPACT DISC</text>
+  </svg>`;
+    return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
   }
 
   // tool-box/src/features/game-box/runtime/GameLauncher.js
@@ -1838,7 +1699,7 @@ var ToolBoxGameBox = (() => {
           onClose && /* @__PURE__ */ u3("button", { type: "button", className: "gb-launcher-btn gb-launcher-btn-close", onClick: onClose, title: "\uC885\uB8CC", children: "\u2715 \uC885\uB8CC" })
         ] })
       ] }),
-      /* @__PURE__ */ u3("div", { className: "gb-launcher-stage-container", children: /* @__PURE__ */ u3(
+      /* @__PURE__ */ u3("div", { className: "gb-launcher-stage-container", children: /* @__PURE__ */ u3("div", { className: "gb-launcher-game-viewport", "data-aspect": aspectRatio, children: /* @__PURE__ */ u3(
         "iframe",
         {
           ref: iframeRef,
@@ -1847,8 +1708,275 @@ var ToolBoxGameBox = (() => {
           className: "gb-launcher-iframe",
           allow: "autoplay; fullscreen"
         }
-      ) })
+      ) }) })
     ] });
+  }
+
+  // tool-box/src/features/game-box/draw/DrawPack.js
+  function MarbleDisplay() {
+    return /* @__PURE__ */ u3("svg", { className: "gb-marble-display", viewBox: "0 0 860 500", role: "img", "aria-label": "\uB9C8\uBE14 \uB8F0\uB81B \uC2E4\uC81C \uD50C\uB808\uC774 \uD654\uBA74\uC744 \uBC14\uD0D5\uC73C\uB85C \uD55C \uAD6C\uC2AC \uB808\uC774\uC2A4 \uBBF8\uB9AC\uBCF4\uAE30", children: [
+      /* @__PURE__ */ u3("defs", { children: [
+        /* @__PURE__ */ u3("linearGradient", { id: "marble-screen", x2: "0", y2: "1", children: [
+          /* @__PURE__ */ u3("stop", { stopColor: "#172431" }),
+          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#0a1119" })
+        ] }),
+        /* @__PURE__ */ u3("linearGradient", { id: "track-metal", x2: "0", y2: "1", children: [
+          /* @__PURE__ */ u3("stop", { stopColor: "#5f7784" }),
+          /* @__PURE__ */ u3("stop", { offset: ".45", stopColor: "#283c48" }),
+          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#14232d" })
+        ] }),
+        /* @__PURE__ */ u3("radialGradient", { id: "marble-cyan", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { stopColor: "#f0ffff" }),
+          /* @__PURE__ */ u3("stop", { offset: ".22", stopColor: "#82efff" }),
+          /* @__PURE__ */ u3("stop", { offset: ".65", stopColor: "#14a9cf" }),
+          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#07516f" })
+        ] }),
+        /* @__PURE__ */ u3("radialGradient", { id: "marble-amber", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { stopColor: "#fff4cd" }),
+          /* @__PURE__ */ u3("stop", { offset: ".24", stopColor: "#ffd66e" }),
+          /* @__PURE__ */ u3("stop", { offset: ".68", stopColor: "#e48324" }),
+          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#7a351c" })
+        ] }),
+        /* @__PURE__ */ u3("radialGradient", { id: "marble-rose", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { stopColor: "#fff0ee" }),
+          /* @__PURE__ */ u3("stop", { offset: ".25", stopColor: "#ff9d91" }),
+          /* @__PURE__ */ u3("stop", { offset: ".7", stopColor: "#d34257" }),
+          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#672333" })
+        ] }),
+        /* @__PURE__ */ u3("radialGradient", { id: "marble-lime", cx: "30%", cy: "25%", children: [
+          /* @__PURE__ */ u3("stop", { stopColor: "#f4ffe5" }),
+          /* @__PURE__ */ u3("stop", { offset: ".25", stopColor: "#b8eb74" }),
+          /* @__PURE__ */ u3("stop", { offset: ".7", stopColor: "#58a44e" }),
+          /* @__PURE__ */ u3("stop", { offset: "1", stopColor: "#24543a" })
+        ] }),
+        /* @__PURE__ */ u3("pattern", { id: "roulette-grid", width: "32", height: "32", patternUnits: "userSpaceOnUse", children: /* @__PURE__ */ u3("path", { d: "M32 0H0v32", fill: "none", stroke: "#90b0bd", strokeOpacity: ".08" }) }),
+        /* @__PURE__ */ u3("filter", { id: "marble-shadow", x: "-60%", y: "-60%", width: "220%", height: "240%", children: /* @__PURE__ */ u3("feDropShadow", { dx: "0", dy: "9", stdDeviation: "8", floodColor: "#000", floodOpacity: ".55" }) })
+      ] }),
+      /* @__PURE__ */ u3("rect", { x: "4", y: "4", width: "852", height: "492", rx: "24", fill: "#080d12", stroke: "#748590", strokeWidth: "5" }),
+      /* @__PURE__ */ u3("rect", { x: "14", y: "14", width: "832", height: "472", rx: "17", fill: "url(#marble-screen)" }),
+      /* @__PURE__ */ u3("path", { d: "M14 31q0-17 17-17h798q17 0 17 17v50H14z", fill: "#202b32" }),
+      /* @__PURE__ */ u3("circle", { cx: "44", cy: "46", r: "7", fill: "#f0715f" }),
+      /* @__PURE__ */ u3("circle", { cx: "68", cy: "46", r: "7", fill: "#e7bb65" }),
+      /* @__PURE__ */ u3("circle", { cx: "92", cy: "46", r: "7", fill: "#73b38e" }),
+      /* @__PURE__ */ u3("text", { x: "430", y: "53", textAnchor: "middle", fill: "#e7e2d7", fontFamily: "Arial,sans-serif", fontSize: "18", fontWeight: "700", letterSpacing: "4", children: "MARBLE ROULETTE" }),
+      /* @__PURE__ */ u3("rect", { x: "34", y: "96", width: "792", height: "344", rx: "12", fill: "#101b24", stroke: "#415662", strokeWidth: "2" }),
+      /* @__PURE__ */ u3("rect", { x: "34", y: "96", width: "792", height: "344", rx: "12", fill: "url(#roulette-grid)" }),
+      /* @__PURE__ */ u3("path", { d: "M70 140h106v58h86v-36h75v76h96v-34h75v88h95v-43h93", fill: "none", stroke: "#080e14", strokeWidth: "37", strokeLinecap: "round", strokeLinejoin: "round", opacity: ".78" }),
+      /* @__PURE__ */ u3("path", { d: "M70 132h106v58h86v-36h75v76h96v-34h75v88h95v-43h93", fill: "none", stroke: "url(#track-metal)", strokeWidth: "29", strokeLinecap: "round", strokeLinejoin: "round" }),
+      /* @__PURE__ */ u3("path", { d: "M70 132h106v58h86v-36h75v76h96v-34h75v88h95v-43h93", fill: "none", stroke: "#9ab0b6", strokeOpacity: ".35", strokeWidth: "3", strokeLinecap: "round", strokeLinejoin: "round" }),
+      /* @__PURE__ */ u3("path", { d: "M166 190v72h-54v57h108v-44h95v79h73v-35h97v48h91v-55h145", fill: "none", stroke: "#080e14", strokeWidth: "25", strokeLinecap: "round", strokeLinejoin: "round", opacity: ".72" }),
+      /* @__PURE__ */ u3("path", { d: "M166 184v72h-54v57h108v-44h95v79h73v-35h97v48h91v-55h145", fill: "none", stroke: "#344b57", strokeWidth: "17", strokeLinecap: "round", strokeLinejoin: "round" }),
+      /* @__PURE__ */ u3("path", { d: "M71 111v44m-11-34 11 11 11-11", fill: "none", stroke: "#edc574", strokeWidth: "5", strokeLinecap: "round", strokeLinejoin: "round" }),
+      /* @__PURE__ */ u3("rect", { x: "739", y: "296", width: "54", height: "72", rx: "8", fill: "#263c46", stroke: "#b79453", strokeWidth: "3" }),
+      /* @__PURE__ */ u3("path", { d: "M751 309h30v12h-30zm0 21h30v25h-30z", fill: "#d7b66a", opacity: ".9" }),
+      /* @__PURE__ */ u3("g", { filter: "url(#marble-shadow)", children: [
+        /* @__PURE__ */ u3("circle", { cx: "139", cy: "132", r: "20", fill: "url(#marble-cyan)" }),
+        /* @__PURE__ */ u3("circle", { cx: "246", cy: "183", r: "19", fill: "url(#marble-amber)" }),
+        /* @__PURE__ */ u3("circle", { cx: "344", cy: "151", r: "21", fill: "url(#marble-rose)" }),
+        /* @__PURE__ */ u3("circle", { cx: "435", cy: "230", r: "18", fill: "url(#marble-lime)" }),
+        /* @__PURE__ */ u3("circle", { cx: "538", cy: "194", r: "21", fill: "url(#marble-cyan)" }),
+        /* @__PURE__ */ u3("circle", { cx: "627", cy: "280", r: "19", fill: "url(#marble-amber)" })
+      ] }),
+      /* @__PURE__ */ u3("rect", { x: "36", y: "454", width: "788", height: "13", rx: "6", fill: "#28363d" }),
+      /* @__PURE__ */ u3("rect", { x: "36", y: "454", width: "506", height: "13", rx: "6", fill: "#d3a85d" }),
+      /* @__PURE__ */ u3("circle", { cx: "544", cy: "460", r: "8", fill: "#f4dfaa" }),
+      /* @__PURE__ */ u3("text", { x: "38", y: "479", fill: "#aebbc0", fontFamily: "Arial,sans-serif", fontSize: "11", letterSpacing: "1.6", children: "PHYSICS COURSE \xB7 LIVE DRAW" }),
+      /* @__PURE__ */ u3("text", { x: "822", y: "479", textAnchor: "end", fill: "#d7b66a", fontFamily: "Arial,sans-serif", fontSize: "11", letterSpacing: "1.6", children: "FINISH" })
+    ] });
+  }
+  function DrawPack() {
+    const [activeId, setActiveId] = d2(null);
+    const activeGame = DRAW_GAMES.find((game) => game.id === activeId);
+    if (activeGame) {
+      return /* @__PURE__ */ u3("main", { className: "gb-draw-stage", children: /* @__PURE__ */ u3(
+        GameLauncher,
+        {
+          title: activeGame.name,
+          src: activeGame.launchUrl,
+          aspectRatio: activeGame.aspectRatio,
+          onClose: () => setActiveId(null)
+        }
+      ) });
+    }
+    return /* @__PURE__ */ u3("main", { className: "gb-draw-board", children: [
+      /* @__PURE__ */ u3("header", { className: "gb-room-heading", children: [
+        /* @__PURE__ */ u3("h1", { children: "\uCD94\uCCA8 \uAC8C\uC784" }),
+        /* @__PURE__ */ u3("p", { children: "\uBAA8\uB450\uAC00 \uC9C0\uCF1C\uBCF4\uB294 \uAC00\uC6B4\uB370 \uC624\uB298\uC758 \uC8FC\uC778\uACF5\uC744 \uBF51\uC544\uBCF4\uC138\uC694." })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "gb-draw-tickets", children: DRAW_GAMES.map((game) => /* @__PURE__ */ u3("button", { type: "button", className: "gb-draw-ticket", onClick: () => setActiveId(game.id), children: [
+        /* @__PURE__ */ u3("span", { className: "gb-ticket-copy", children: [
+          /* @__PURE__ */ u3("span", { className: "gb-ticket-meta", children: game.playersLabel }),
+          /* @__PURE__ */ u3("strong", { children: game.shortName }),
+          /* @__PURE__ */ u3("span", { children: game.description }),
+          /* @__PURE__ */ u3("span", { className: "gb-ticket-action", children: [
+            "\uAC8C\uC784 \uC5F4\uAE30 ",
+            /* @__PURE__ */ u3("span", { "aria-hidden": "true", children: "\u2197" })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("span", { className: "gb-ticket-art", "aria-hidden": "true", children: game.id === "roulette" ? /* @__PURE__ */ u3(MarbleDisplay, {}) : /* @__PURE__ */ u3("span", { children: game.icon }) }),
+        /* @__PURE__ */ u3("span", { className: "gb-ticket-stub", "aria-hidden": "true", children: game.discLabel })
+      ] }, game.id)) })
+    ] });
+  }
+
+  // tool-box/src/features/game-box/GameBoxHome.js
+  var rooms = [
+    { id: "deck", title: "\uAC8C\uC784\uD329 \uB300\uC5EC\uC810", description: "\uC120\uBC18\uC5D0\uC11C \uAC8C\uC784\uD329\uC744 \uACE8\uB77C \uCF58\uC194\uC5D0 \uB514\uC2A4\uD06C\uB97C \uB123\uC5B4\uBCF4\uC138\uC694.", count: ARCADE_GAMES.length },
+    { id: "retro", title: "\uB808\uD2B8\uB85C PC\uBC29", description: "Windows 98\uC5D0\uC11C \uB2E4\uC2DC \uB9CC\uB098\uB294 \uCD94\uC5B5\uC758 \uAC8C\uC784.", count: RETRO_GAMES.length },
+    { id: "draw", title: "\uCD94\uCCA8 \uAC8C\uC784", description: "\uC624\uB298\uC758 \uC8FC\uC778\uACF5\uC744 \uBF51\uC544\uBCF4\uC138\uC694.", count: DRAW_GAMES.length }
+  ];
+  function GameBoxHome({ onNavigate }) {
+    return /* @__PURE__ */ u3("main", { className: "gb-lobby", children: [
+      /* @__PURE__ */ u3("div", { className: "gb-lobby-intro", children: [
+        /* @__PURE__ */ u3("h1", { children: [
+          "GAME",
+          /* @__PURE__ */ u3("span", { children: "BOX" })
+        ] }),
+        /* @__PURE__ */ u3("p", { children: "\uC624\uB298\uC740 \uC5B4\uB514\uC5D0\uC11C \uB180\uAE4C\uC694?" })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "gb-room-grid", children: rooms.map((room) => /* @__PURE__ */ u3(
+        "button",
+        {
+          type: "button",
+          className: `gb-room gb-room-${room.id}`,
+          onClick: () => onNavigate(`/game-box/${room.id}`),
+          children: [
+            /* @__PURE__ */ u3("span", { className: "gb-room-art", "aria-hidden": "true", children: [
+              room.id === "deck" && /* @__PURE__ */ u3("span", { className: "gb-lobby-cases", children: [ARCADE_GAMES[0], ARCADE_GAMES[2], ARCADE_GAMES[3]].map((game) => /* @__PURE__ */ u3("img", { src: getGameCaseCoverSrc(game), alt: "" }, game.id)) }),
+              room.id === "retro" && /* @__PURE__ */ u3("span", { className: "gb-lobby-monitor", style: { "--retro-preview": "url(/assets/win98-retro-desktop-preview.png)" }, children: /* @__PURE__ */ u3("span", {}) }),
+              room.id === "draw" && /* @__PURE__ */ u3(MarbleDisplay, {})
+            ] }),
+            /* @__PURE__ */ u3("span", { className: "gb-room-copy", children: [
+              /* @__PURE__ */ u3("span", { className: "gb-room-count", children: [
+                "\uAC8C\uC784 ",
+                room.count,
+                "\uAC1C"
+              ] }),
+              /* @__PURE__ */ u3("strong", { children: room.title }),
+              /* @__PURE__ */ u3("span", { children: room.description }),
+              /* @__PURE__ */ u3("span", { className: "gb-room-arrow", "aria-hidden": "true", children: "\u2197" })
+            ] })
+          ]
+        },
+        room.id
+      )) })
+    ] });
+  }
+
+  // tool-box/src/features/game-box/retro/RetroDesktop.js
+  function RetroDesktop({ onNavigate }) {
+    const { identity, openNicknameModal } = useGameIdentity();
+    const iframeRef = A2(null);
+    h2(() => {
+      const iframe = iframeRef.current;
+      if (!iframe || !iframe.contentWindow) return;
+      try {
+        iframe.contentWindow.postMessage(
+          {
+            source: "game-box-host",
+            type: "identity:sync",
+            payload: identity
+          },
+          window.location.origin
+        );
+      } catch {
+      }
+    }, [identity]);
+    const sendCommandToWin98 = (appId) => {
+      const cw = iframeRef.current?.contentWindow;
+      if (cw?.System?.launchApp) {
+        cw.System.launchApp(appId);
+        cw.focus();
+      }
+    };
+    return /* @__PURE__ */ u3("div", { className: "gb-retro-shell", children: /* @__PURE__ */ u3("div", { className: "gb-retro-viewport", children: /* @__PURE__ */ u3(
+      "iframe",
+      {
+        ref: iframeRef,
+        src: "/win98-web/",
+        title: "Windows 98 RETRO DESKTOP",
+        className: "gb-retro-iframe",
+        allow: "autoplay; fullscreen",
+        onLoad: () => {
+          try {
+            iframeRef.current?.contentWindow?.postMessage(
+              {
+                source: "game-box-host",
+                type: "identity:sync",
+                payload: identity
+              },
+              window.location.origin
+            );
+          } catch {
+          }
+        }
+      }
+    ) }) });
+  }
+
+  // tool-box/src/features/game-box/deck/gameDeckConfig.js
+  var GAME_DECK_CATEGORIES = Object.freeze([
+    { id: "all", label: "ALL GAMES (19)" },
+    { id: "ARCADE", label: "ACTION ARCADE (3)" },
+    { id: "PARTY", label: "PARTY GAMES (1)" },
+    { id: "SKILL", label: "PUZZLE & SKILL (15)" }
+  ]);
+  var SINGLE_BASE_ENGINE = Object.freeze({
+    name: "Channel 3 CRT TV & Retro Cartridge Architecture",
+    repo: "dau-in/channel-3",
+    license: "AGPL-3.0",
+    commit: "ab85fff7bcb97b69f9fb90c531cb357ba517e4c9",
+    copyright: "Copyright (c) 2024-2026, dau-in",
+    subLicenses: {
+      silkscreenFont: "OFL-1.1",
+      nesCss: "MIT",
+      peerjs: "MIT",
+      jsnes: "MIT / GPL-2.0"
+    },
+    unmodifiedLabEndpoint: "/game-box/deck-lab-single/",
+    vendorLocation: "vendor/channel-3/dist/",
+    adoptionScope: "\uB2E8\uC77C TV \uCF58\uC194 \uD504\uB808\uC784 \uBC0F \uBE0C\uB77C\uC6B4\uAD00(CRT) \uB798\uC2A4\uD130/\uAE00\uB85C\uC6B0 \uD30C\uC774\uD504\uB77C\uC778, \uCE74\uD2B8\uB9AC\uC9C0 \uAC70\uCE58 \uBC0F \uB799 \uC2DC\uC2A4\uD15C, \uC804\uC6D0 \uB9B4\uB808\uC774/\uBD80\uD2B8 \uC2DC\uD000\uC2A4, \uD1B5\uD569 iframe \uB7F0\uD0C0\uC784 \uD638\uC2A4\uD305"
+  });
+  var PORTED_3D_ENGINES = Object.freeze([
+    {
+      name: "PS2 Web 3D Console Engine",
+      repo: "brayanspagnol/ps2-web",
+      license: "BSD-2-Clause",
+      commit: "654114aed6b85aacb1b3e68793808b3eb3feca13",
+      copyright: "Copyright (c) 2026, Brayan Spagnol",
+      portedFiles: [
+        "public/js/console-scene.js",
+        "public/demo-console.html",
+        "LICENSE",
+        "CREDITS.md"
+      ],
+      adoptionScope: "Three.js \uAE30\uBC18 3D \uCF58\uC194 \uD558\uB4DC\uC6E8\uC5B4 \uBAA8\uB378, \uBAA8\uD130 \uD2B8\uB808\uC774 \uAD6C\uB3D9, \uB514\uC2A4\uD06C \uC0BD\uC785/\uBC30\uCD9C \uC560\uB2C8\uBA54\uC774\uC158, LED \uC804\uC6D0 \uC0C1\uD0DC, \uCE74\uBA54\uB77C \uC870\uC791"
+    },
+    {
+      name: "Finally 3D Game Cases Plugin",
+      repo: "otisabiburada/finally-3d-game-cases-plugin",
+      license: "BSD-3-Clause",
+      commit: "7e748d4bfad4e22ebccb318827724796bfeaf149",
+      copyright: "Copyright (c) 2026, SANSO",
+      portedFiles: [
+        "src/engine.ts",
+        "README.md",
+        "LICENSE"
+      ],
+      adoptionScope: "3D \uAC8C\uC784 \uCF00\uC774\uC2A4 \uC785\uCCB4 \uAE30\uD558\uD559, \uC2A4\uD30C\uC778/\uB450\uAED8/\uAD11\uD0DD/\uC2AC\uB9AC\uBE0C/\uADF8\uB9BC\uC790 \uB80C\uB354\uB9C1, Web Audio \uD569\uC131 \uD6A8\uACFC\uC74C, Web Animations API \uCF00\uC774\uC2A4 \uAC1C\uD3D0 \uBC0F \uB514\uC2A4\uD06C \uCD94\uCD9C \uC5F0\uCD9C"
+    }
+  ]);
+  function filterDeckGames(categoryFilter = "all", query = "") {
+    return ARCADE_GAMES.filter((game) => {
+      if (categoryFilter !== "all" && !game.genre.includes(categoryFilter)) {
+        return false;
+      }
+      if (query.trim()) {
+        const q4 = query.trim().toLowerCase();
+        return game.name.toLowerCase().includes(q4) || game.subtitle.toLowerCase().includes(q4) || game.genre.toLowerCase().includes(q4) || game.discLabel.toLowerCase().includes(q4);
+      }
+      return true;
+    });
   }
 
   // tool-box/src/features/game-box/deck/cases/FinallyCaseEngine.js
@@ -2579,120 +2707,6 @@ ${pick}
       };
       setTimeout(done, T_END + 80);
     });
-  }
-
-  // tool-box/src/features/game-box/deck/cases/gameCoverGenerator.js
-  function getGameCaseCoverSrc(game) {
-    return game.coverUrl && !game.coverUrl.includes("terminal-1997") ? game.coverUrl : generateArcadeCoverSvg(game);
-  }
-  function generateArcadeCoverSvg(game) {
-    const accent = game.caseColor || "#3b82f6";
-    const label = game.discLabel || "ARC-001";
-    const genre = game.genre || "ARCADE ACTION";
-    const title = (game.name || "ARCADE GAME").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    const subtitle = (game.subtitle || "CLASSIC COLLECTION").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    const players = game.playersLabel || "1~2 PLAYERS";
-    let motifSvg = "";
-    const gid = game.id || "";
-    if (gid.includes("bomb")) {
-      motifSvg = `
-      <circle cx="150" cy="210" r="48" fill="#1e293b" stroke="#f59e0b" stroke-width="4"/>
-      <path d="M150 162 L150 142 Q165 130 175 145" fill="none" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
-      <circle cx="178" cy="145" r="8" fill="#ef4444" />
-      <polygon points="178,135 183,142 191,140 185,147 188,155 180,150 172,155 174,147 168,141 176,142" fill="#fbbf24"/>
-      <circle cx="140" cy="200" r="10" fill="#ffffff" opacity="0.4"/>
-    `;
-    } else if (gid.includes("snake")) {
-      motifSvg = `
-      <rect x="70" y="150" width="160" height="120" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="3"/>
-      <path d="M85 240 L150 240 L150 190 L120 190 L120 170 L210 170 L210 200" fill="none" stroke="#34d399" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="210" cy="200" r="6" fill="#facc15"/>
-      <circle cx="170" cy="240" r="6" fill="#ef4444"/>
-    `;
-    } else if (gid.includes("roulette")) {
-      motifSvg = `
-      <circle cx="150" cy="210" r="54" fill="#831843" stroke="#f472b6" stroke-width="4"/>
-      <circle cx="150" cy="210" r="38" fill="#be185d" stroke="#fbcfe8" stroke-width="2" stroke-dasharray="6,4"/>
-      <circle cx="150" cy="210" r="14" fill="#fdf2f8"/>
-      <circle cx="130" cy="180" r="8" fill="#38bdf8"/>
-      <circle cx="170" cy="190" r="8" fill="#eab308"/>
-      <circle cx="140" cy="240" r="8" fill="#a855f7"/>
-    `;
-    } else if (gid.includes("reaction") || gid.includes("speed")) {
-      motifSvg = `
-      <polygon points="150,140 120,210 148,210 135,270 185,195 155,195" fill="#facc15" stroke="#ca8a04" stroke-width="3"/>
-      <circle cx="150" cy="210" r="64" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="8,6"/>
-    `;
-    } else if (gid.includes("four") || gid.includes("tic") || gid.includes("math") || gid.includes("match")) {
-      motifSvg = `
-      <rect x="85" y="150" width="130" height="120" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="3"/>
-      <circle cx="110" cy="180" r="14" fill="#ef4444"/>
-      <circle cx="150" cy="180" r="14" fill="#eab308"/>
-      <circle cx="190" cy="180" r="14" fill="#ef4444"/>
-      <circle cx="110" cy="220" r="14" fill="#eab308"/>
-      <circle cx="150" cy="220" r="14" fill="#ef4444"/>
-      <circle cx="190" cy="220" r="14" fill="#eab308"/>
-    `;
-    } else {
-      motifSvg = `
-      <circle cx="150" cy="210" r="50" fill="#0f172a" stroke="${accent}" stroke-width="4"/>
-      <polygon points="140,190 170,210 140,230" fill="${accent}"/>
-      <circle cx="150" cy="210" r="62" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4"/>
-    `;
-    }
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="300" height="450">
-    <defs>
-      <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#0f172a"/>
-        <stop offset="60%" stop-color="#1e293b"/>
-        <stop offset="100%" stop-color="#020617"/>
-      </linearGradient>
-      <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="${accent}"/>
-        <stop offset="100%" stop-color="#0f172a"/>
-      </linearGradient>
-      <linearGradient id="foil" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
-        <stop offset="40%" stop-color="rgba(255,255,255,0)"/>
-        <stop offset="70%" stop-color="rgba(255,255,255,0.08)"/>
-        <stop offset="100%" stop-color="rgba(255,255,255,0.25)"/>
-      </linearGradient>
-    </defs>
-
-    <!-- Main Card Body -->
-    <rect x="0" y="0" width="300" height="450" fill="url(#bg)"/>
-
-    <!-- Top Console Spine/Header -->
-    <rect x="0" y="0" width="300" height="46" fill="url(#headerGrad)"/>
-    <text x="16" y="24" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="900" font-size="12" letter-spacing="1.5">TOOL-BOX ARCADE DECK</text>
-    <text x="284" y="24" fill="#ffffff" font-family="monospace" font-weight="700" font-size="10" text-anchor="end" opacity="0.9">${label}</text>
-    <line x1="0" y1="46" x2="300" y2="46" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-
-    <!-- Genre Tag -->
-    <rect x="16" y="58" width="130" height="18" rx="4" fill="rgba(255,255,255,0.1)"/>
-    <text x="24" y="71" fill="#94a3b8" font-family="monospace" font-weight="700" font-size="9" letter-spacing="0.5">${genre}</text>
-
-    <!-- Center Stage Visual Motif -->
-    <g transform="translate(0, 5)">
-      ${motifSvg}
-    </g>
-
-    <!-- Title & Subtitle Banner -->
-    <rect x="14" y="300" width="272" height="96" rx="6" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-    <text x="26" y="332" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="900" font-size="18">${title}</text>
-    <text x="26" y="356" fill="${accent}" font-family="system-ui, sans-serif" font-weight="700" font-size="12">${subtitle}</text>
-    <text x="26" y="380" fill="#94a3b8" font-family="monospace" font-weight="600" font-size="10.5">PLAYERS: ${players}</text>
-
-    <!-- Bottom Footer Bar -->
-    <rect x="0" y="420" width="300" height="30" fill="#090d16"/>
-    <text x="16" y="439" fill="#64748b" font-family="monospace" font-size="9.5">GAME-BOX ARCADE // COMPACT DISC</text>
-    <rect x="254" y="425" width="30" height="18" rx="2" fill="#334155"/>
-    <text x="269" y="438" fill="#f8fafc" font-family="monospace" font-weight="800" font-size="9" text-anchor="middle">20</text>
-
-    <!-- Gloss Highlight Overlay -->
-    <rect x="0" y="0" width="300" height="450" fill="url(#foil)" pointer-events="none"/>
-  </svg>`;
-    return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
   }
 
   // tool-box/src/features/game-box/deck/cases/GameCaseCard.jsx
@@ -33463,7 +33477,7 @@ void main() {
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       const halfFrustum = Math.tan(MathUtils.degToRad(camera.fov / 2));
-      const distance = Math.max(0.465, 0.46 / camera.aspect) / (2 * halfFrustum);
+      const distance = Math.max(0.62 / camera.aspect, 0.46) / (2 * halfFrustum);
       camera.position.copy(cameraTarget).addScaledVector(cameraDirection, distance);
       camera.lookAt(cameraTarget);
       invalidate();
@@ -33509,8 +33523,12 @@ void main() {
       });
       return g4;
     }
-    const caseRest = new Vector3(0, 0.214, -0.034);
+    const caseRest = new Vector3(0, 0.16, -0.034);
     caseRest.x = cameraTarget.x + (caseRest.z - cameraTarget.z) * cameraDirection.x / cameraDirection.z;
+    const screenRight = new Vector3(cameraDirection.z, 0, -cameraDirection.x).normalize();
+    consoleGroup.position.addScaledVector(screenRight, 0.14);
+    consoleGroup.position.y += 0.055;
+    caseRest.addScaledVector(screenRight, -0.235);
     const caseTilt = new Euler(-0.1, 0.28, 0);
     const caseRight = new Vector3(1, 0, 0).applyEuler(caseTilt);
     function mountDisc(disc, seat) {
@@ -33590,8 +33608,8 @@ void main() {
       const aboveTray = end.clone().addScaledVector(trayNormal, 0.039);
       const arc = new CubicBezierCurve3(
         clearCase,
-        clearCase.clone().addScaledVector(caseNormal, 0.08).add(new Vector3(0.068, 0.05, 0)),
-        aboveTray.clone().addScaledVector(trayNormal, 0.12),
+        clearCase.clone().addScaledVector(caseNormal, 0.08).addScaledVector(screenRight, 0.12).add(new Vector3(0, 0.05, 0)),
+        aboveTray.clone().addScaledVector(trayNormal, 0.12).addScaledVector(screenRight, 0.035),
         aboveTray
       );
       const spin = new Quaternion();
@@ -33655,13 +33673,13 @@ void main() {
       pendingCase = request;
       request.ready = (async () => {
         const src = getGameCaseCoverSrc(game);
-        let artwork = await loadCoverImage(src);
-        if (!artwork && game.coverUrl && src === game.coverUrl) {
-          artwork = await loadCoverImage(generateArcadeCoverSvg(game));
+        let artwork2 = await loadCoverImage(src);
+        if (!artwork2 && game.coverUrl && src === game.coverUrl) {
+          artwork2 = await loadCoverImage(generateArcadeCoverSvg(game));
         }
         if (disposed || pendingCase !== request) return null;
         pendingCase = null;
-        const pack = make3DCase(game, artwork);
+        const pack = make3DCase(game, artwork2);
         if (activeCase) {
           activeCase.disc.removeFromParent();
           disposeObject(activeCase.disc);
@@ -33892,6 +33910,7 @@ void main() {
     const [loadingRankings, setLoadingRankings] = d2(false);
     const [soundEnabled, setSoundEnabled] = d2(true);
     const consoleRef = A2(null);
+    const rankingRef = A2(null);
     const isPlaying = animState === "playing";
     const isMovingDisc = animState === "inserting" || animState === "ejecting";
     const visibleGames = T2(
@@ -33952,236 +33971,156 @@ void main() {
       await consoleRef.current?.ejectDisc({ animate: shouldAnimateDisc() });
       setAnimState("selected");
     };
-    return /* @__PURE__ */ u3("div", { className: "gb-deck-shell", children: /* @__PURE__ */ u3("div", { className: "gb-deck-grid", children: [
-      /* @__PURE__ */ u3("aside", { className: "gb-deck-collection", "data-testid": "deck-collection-zone", children: [
-        /* @__PURE__ */ u3("div", { className: "gb-deck-panel-header", children: [
-          /* @__PURE__ */ u3("div", { children: [
-            /* @__PURE__ */ u3("h2", { children: "GAME COLLECTION" }),
-            /* @__PURE__ */ u3("span", { className: "gb-deck-badge", children: [
-              visibleGames.length,
-              " 3D PACKS"
-            ] })
-          ] }),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "gb-sfx-toggle-btn",
-              onClick: () => setSoundEnabled(!soundEnabled),
-              title: "\uD6A8\uACFC\uC74C \uCF1C\uAE30 / \uB044\uAE30",
-              children: soundEnabled ? "\u{1F50A} SFX" : "\u{1F507} MUTE"
-            }
-          )
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "gb-deck-filters", children: [
-          /* @__PURE__ */ u3("div", { className: "gb-deck-cat-row", children: GAME_DECK_CATEGORIES.map((cat) => /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: `gb-deck-cat-btn ${selectedCategory === cat.id ? "active" : ""}`,
-              onClick: () => setSelectedCategory(cat.id),
-              children: cat.label
-            },
-            cat.id
-          )) }),
-          /* @__PURE__ */ u3(
-            "input",
-            {
-              type: "search",
-              className: "gb-deck-search",
-              placeholder: "\uAC8C\uC784\uD329 \uC774\uB984, \uCF54\uB4DC, \uC7A5\uB974 \uAC80\uC0C9...",
-              value: searchQuery,
-              onChange: (e3) => setSearchQuery(e3.target.value)
-            }
-          )
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "gb-3d-shelf-container", "data-sanso-stage": "big", children: visibleGames.map((game) => {
-          const isSelected = selectedGame && game.id === selectedGame.id;
-          return /* @__PURE__ */ u3("div", { className: "gb-shelf-item-wrap", children: [
-            /* @__PURE__ */ u3(
-              GameCaseCard,
-              {
-                game,
-                isSelected,
-                onClick: () => handleSelectCase(game.id),
-                width: 130,
-                height: 195,
-                className: `deck-case-${game.id}`
-              }
-            ),
-            /* @__PURE__ */ u3("div", { className: "gb-shelf-item-label", children: [
-              /* @__PURE__ */ u3("span", { className: "gb-shelf-item-code", children: game.discLabel }),
-              /* @__PURE__ */ u3("strong", { className: "gb-shelf-item-title", children: game.name })
-            ] })
-          ] }, game.id);
-        }) })
-      ] }),
-      /* @__PURE__ */ u3("section", { className: "gb-deck-console-zone", "data-testid": "deck-console-zone", children: /* @__PURE__ */ u3("div", { className: "gb-console-unit", children: [
-        /* @__PURE__ */ u3("div", { className: "gb-console-hardware-bar", children: [
-          /* @__PURE__ */ u3("div", { className: "gb-console-led-group", children: [
-            /* @__PURE__ */ u3("span", { className: `gb-console-led ${isPlaying ? "on" : "standby"}` }),
-            /* @__PURE__ */ u3("span", { className: "gb-console-model", children: [
-              "TOOL-BOX ARCADE DECK // ",
-              selectedGame ? selectedGame.discLabel : "PS2 SYSTEM STANDBY"
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "gb-console-state-badge", children: [
-            "\uC0C1\uD0DC: ",
-            /* @__PURE__ */ u3("strong", { children: animState === "selected" && !selectedGame ? "STANDBY" : animState.toUpperCase() })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "gb-console-slot-status", children: animState === "playing" ? "DISC INSERTED \xB7 RUNNING" : animState === "inserting" ? "3D CASE OPENING & INSERTING DISC..." : animState === "ejecting" ? "EJECTING DISC TO 3D CASE..." : !selectedGame ? "WAITING FOR GAME SELECTION" : "READY TO INSERT PACK" })
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "gb-console-screen", children: [
-          isPlaying && selectedGame && /* @__PURE__ */ u3(
-            GameLauncher,
-            {
-              title: selectedGame.name,
-              src: selectedGame.launchUrl,
-              aspectRatio: selectedGame.aspectRatio,
-              game: selectedGame,
-              onClose: handleEjectAndStop
-            }
-          ),
-          /* @__PURE__ */ u3("div", { className: "gb-console-3d-stage-wrapper", hidden: isPlaying, children: [
-            /* @__PURE__ */ u3("div", { className: "gb-console-threejs-container", children: /* @__PURE__ */ u3(ConsoleView3D_default, { ref: consoleRef, game: selectedGame }) }),
-            /* @__PURE__ */ u3("div", { className: "gb-console-overlay-panel", children: /* @__PURE__ */ u3("div", { className: "gb-console-preview-card", children: [
-              /* @__PURE__ */ u3("span", { className: "gb-preview-kicker", children: selectedGame ? `${selectedGame.genre} \xB7 ${selectedGame.playersLabel} \xB7 ${selectedGame.discLabel}` : "ARCADE 19 COLLECTION \xB7 SELECTION MODE" }),
-              /* @__PURE__ */ u3("h3", { children: selectedGame?.name || "\uAC8C\uC784 CD \uCF00\uC774\uC2A4\uB97C \uC120\uD0DD\uD558\uC138\uC694" }),
-              /* @__PURE__ */ u3("p", { children: selectedGame?.description || "\uC9C4\uC5F4\uB300\uC5D0\uC11C \uAC8C\uC784\uC744 \uACE0\uB974\uACE0 PLAY\uB97C \uB204\uB974\uBA74 CD\uAC00 \uCF00\uC774\uC2A4\uC5D0\uC11C \uB098\uC640 \uCF58\uC194\uC5D0 \uB4E4\uC5B4\uAC11\uB2C8\uB2E4." }),
-              /* @__PURE__ */ u3("div", { className: "gb-console-action-row", children: /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "gb-btn-insert-play",
-                  onClick: handleInsertAndPlay,
-                  disabled: !selectedGame || isMovingDisc,
-                  children: selectedGame ? "\u25B6 PLAY (\uB300\uAE30\uC2E4 \uC785\uC7A5)" : "CD \uCF00\uC774\uC2A4\uB97C \uBA3C\uC800 \uC120\uD0DD\uD574\uC8FC\uC138\uC694"
-                }
-              ) })
-            ] }) })
-          ] })
-        ] })
-      ] }) }),
-      /* @__PURE__ */ u3("aside", { className: "gb-deck-ranking-zone", children: [
-        /* @__PURE__ */ u3("div", { className: "gb-deck-panel-header", children: [
-          /* @__PURE__ */ u3("h2", { children: "GAME RANKING & SPEC" }),
-          /* @__PURE__ */ u3("span", { className: "gb-deck-badge", children: "TOP 10" })
-        ] }),
-        selectedGame ? /* @__PURE__ */ u3(S, { children: [
-          /* @__PURE__ */ u3("div", { className: "gb-deck-spec-card", children: [
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uAC8C\uC784\uBA85" }),
-              /* @__PURE__ */ u3("strong", { children: selectedGame.name })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uB514\uC2A4\uD06C \uC2DD\uBCC4\uC790" }),
-              /* @__PURE__ */ u3("code", { children: selectedGame.discLabel })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uD50C\uB808\uC774 \uC778\uC6D0" }),
-              /* @__PURE__ */ u3("strong", { children: selectedGame.playersLabel })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uD654\uBA74 \uBE44\uC728 / \uC785\uB825" }),
-              /* @__PURE__ */ u3("strong", { children: [
-                selectedGame.aspectRatio,
-                " \xB7 ",
-                selectedGame.inputDevices.join(", ")
+    return /* @__PURE__ */ u3("div", { className: "gb-deck-shell", children: [
+      /* @__PURE__ */ u3("div", { className: "gb-deck-grid", children: [
+        /* @__PURE__ */ u3("aside", { className: "gb-deck-collection", "data-testid": "deck-collection-zone", children: [
+          /* @__PURE__ */ u3("div", { className: "gb-deck-panel-header", children: [
+            /* @__PURE__ */ u3("div", { children: [
+              /* @__PURE__ */ u3("h2", { children: "\uAC8C\uC784 \uCF00\uC774\uC2A4" }),
+              /* @__PURE__ */ u3("span", { className: "gb-deck-badge", children: [
+                visibleGames.length,
+                " GAMES"
               ] })
             ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uC2E4\uD589 URL" }),
-              /* @__PURE__ */ u3("code", { children: selectedGame.launchUrl })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "gb-spec-row", children: [
-              /* @__PURE__ */ u3("span", { children: "\uAE30\uB85D \uC5F0\uB3D9" }),
-              /* @__PURE__ */ u3("span", { children: selectedGame.eventSupport })
-            ] })
+            /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                className: "gb-sfx-toggle-btn",
+                onClick: () => setSoundEnabled(!soundEnabled),
+                title: "\uD6A8\uACFC\uC74C \uCF1C\uAE30 / \uB044\uAE30",
+                children: soundEnabled ? "\uD6A8\uACFC\uC74C \uCF1C\uC9D0" : "\uD6A8\uACFC\uC74C \uAEBC\uC9D0"
+              }
+            )
           ] }),
-          /* @__PURE__ */ u3("div", { className: "gb-deck-ranking-box", children: [
-            /* @__PURE__ */ u3("h3", { children: [
-              "\u{1F3C6} ",
-              selectedGame.name,
-              " TOP 10"
+          /* @__PURE__ */ u3("div", { className: "gb-deck-filters", children: [
+            /* @__PURE__ */ u3("div", { className: "gb-deck-cat-row", children: GAME_DECK_CATEGORIES.map((cat) => /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                className: `gb-deck-cat-btn ${selectedCategory === cat.id ? "active" : ""}`,
+                onClick: () => setSelectedCategory(cat.id),
+                children: cat.label
+              },
+              cat.id
+            )) }),
+            /* @__PURE__ */ u3(
+              "input",
+              {
+                type: "search",
+                className: "gb-deck-search",
+                placeholder: "\uAC8C\uC784 \uAC80\uC0C9",
+                value: searchQuery,
+                onChange: (e3) => setSearchQuery(e3.target.value)
+              }
+            )
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "gb-3d-shelf-container", "data-sanso-stage": "big", children: visibleGames.map((game) => {
+            const isSelected = selectedGame && game.id === selectedGame.id;
+            return /* @__PURE__ */ u3("div", { className: `gb-shelf-item-wrap ${isSelected ? "is-selected" : ""}`, children: [
+              /* @__PURE__ */ u3(
+                GameCaseCard,
+                {
+                  game,
+                  isSelected,
+                  onClick: () => handleSelectCase(game.id),
+                  width: 92,
+                  height: 138,
+                  className: `deck-case-${game.id}`
+                }
+              ),
+              /* @__PURE__ */ u3("div", { className: "gb-shelf-item-label", children: [
+                /* @__PURE__ */ u3("span", { className: "gb-shelf-item-code", children: game.discLabel }),
+                /* @__PURE__ */ u3("strong", { className: "gb-shelf-item-title", children: game.name })
+              ] })
+            ] }, game.id);
+          }) })
+        ] }),
+        /* @__PURE__ */ u3("section", { className: "gb-deck-console-zone", "data-testid": "deck-console-zone", children: /* @__PURE__ */ u3("div", { className: "gb-console-unit", children: [
+          /* @__PURE__ */ u3("div", { className: "gb-console-hardware-bar", children: [
+            /* @__PURE__ */ u3("div", { className: "gb-console-led-group", children: [
+              /* @__PURE__ */ u3("span", { className: `gb-console-led ${isPlaying ? "on" : "standby"}` }),
+              /* @__PURE__ */ u3("span", { className: "gb-console-model", children: [
+                "GAME-BOX ARCADE // ",
+                selectedGame ? selectedGame.discLabel : "PS2 READY"
+              ] })
             ] }),
-            loadingRankings ? /* @__PURE__ */ u3("div", { className: "gb-deck-empty", children: "\uB7AD\uD0B9 \uB370\uC774\uD130\uB97C \uBD88\uB7EC\uC624\uB294 \uC911..." }) : deckRankings.length === 0 ? /* @__PURE__ */ u3("div", { className: "gb-deck-empty", children: [
-              "\uC544\uC9C1 \uC774 \uAC8C\uC784\uC758 \uB300\uC804 \uC644\uB8CC \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.",
-              /* @__PURE__ */ u3("br", {}),
-              "\uAC8C\uC784\uC744 \uD50C\uB808\uC774\uD558\uBA74 \uC21C\uC704\uAC00 \uC9D1\uACC4\uB429\uB2C8\uB2E4."
-            ] }) : /* @__PURE__ */ u3("table", { className: "gb-deck-table", children: [
-              /* @__PURE__ */ u3("thead", { children: /* @__PURE__ */ u3("tr", { children: [
-                /* @__PURE__ */ u3("th", { children: "\uC21C\uC704" }),
-                /* @__PURE__ */ u3("th", { children: "\uD50C\uB808\uC774\uC5B4" }),
-                /* @__PURE__ */ u3("th", { children: "\uC2B9/\uD328" }),
-                /* @__PURE__ */ u3("th", { children: "\uCD5C\uACE0\uC810" })
-              ] }) }),
-              /* @__PURE__ */ u3("tbody", { children: deckRankings.map((row, idx) => /* @__PURE__ */ u3("tr", { children: [
-                /* @__PURE__ */ u3("td", { children: [
-                  "#",
-                  idx + 1
-                ] }),
-                /* @__PURE__ */ u3("td", { children: row.name }),
-                /* @__PURE__ */ u3("td", { children: [
-                  row.wins,
-                  "\uC2B9 ",
-                  row.losses,
-                  "\uD328"
-                ] }),
-                /* @__PURE__ */ u3("td", { children: Math.round(row.bestScore || 0).toLocaleString() })
-              ] }, row.userId || idx)) })
+            /* @__PURE__ */ u3("div", { className: "gb-console-state-badge", children: [
+              "\uC0C1\uD0DC: ",
+              /* @__PURE__ */ u3("strong", { children: animState === "selected" && !selectedGame ? "STANDBY" : animState.toUpperCase() })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "gb-console-slot-status", children: animState === "playing" ? "DISC INSERTED \xB7 RUNNING" : animState === "inserting" ? "3D CASE OPENING & INSERTING DISC..." : animState === "ejecting" ? "EJECTING DISC TO 3D CASE..." : !selectedGame ? "WAITING FOR GAME SELECTION" : "READY TO INSERT PACK" })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "gb-console-screen", children: [
+            isPlaying && selectedGame && /* @__PURE__ */ u3(
+              GameLauncher,
+              {
+                title: selectedGame.name,
+                src: selectedGame.launchUrl,
+                aspectRatio: selectedGame.aspectRatio,
+                game: selectedGame,
+                onClose: handleEjectAndStop
+              }
+            ),
+            /* @__PURE__ */ u3("div", { className: "gb-console-3d-stage-wrapper", hidden: isPlaying, children: [
+              /* @__PURE__ */ u3("div", { className: "gb-console-threejs-container", children: /* @__PURE__ */ u3(ConsoleView3D_default, { ref: consoleRef, game: selectedGame }) }),
+              /* @__PURE__ */ u3("div", { className: "gb-console-overlay-panel", children: /* @__PURE__ */ u3("div", { className: "gb-console-preview-card", children: [
+                /* @__PURE__ */ u3("span", { className: "gb-preview-kicker", children: selectedGame ? `${selectedGame.genre} \xB7 ${selectedGame.playersLabel} \xB7 ${selectedGame.discLabel}` : "ARCADE 19 COLLECTION \xB7 SELECTION MODE" }),
+                /* @__PURE__ */ u3("h3", { children: selectedGame?.name || "\uAC8C\uC784 CD \uCF00\uC774\uC2A4\uB97C \uC120\uD0DD\uD558\uC138\uC694" }),
+                /* @__PURE__ */ u3("p", { children: selectedGame?.description || "\uC9C4\uC5F4\uB300\uC5D0\uC11C \uAC8C\uC784\uC744 \uACE0\uB974\uACE0 PLAY\uB97C \uB204\uB974\uBA74 CD\uAC00 \uCF00\uC774\uC2A4\uC5D0\uC11C \uB098\uC640 \uCF58\uC194\uC5D0 \uB4E4\uC5B4\uAC11\uB2C8\uB2E4." }),
+                /* @__PURE__ */ u3("div", { className: "gb-console-action-row", children: [
+                  selectedGame && /* @__PURE__ */ u3(
+                    "button",
+                    {
+                      type: "button",
+                      className: "gb-btn-standalone",
+                      onClick: () => rankingRef.current?.showModal(),
+                      children: "\uC21C\uC704 \uBCF4\uAE30"
+                    }
+                  ),
+                  /* @__PURE__ */ u3(
+                    "button",
+                    {
+                      type: "button",
+                      className: "gb-btn-insert-play",
+                      onClick: handleInsertAndPlay,
+                      disabled: !selectedGame || isMovingDisc,
+                      children: selectedGame ? "\u25B6 PLAY (\uB300\uAE30\uC2E4 \uC785\uC7A5)" : "CD \uCF00\uC774\uC2A4\uB97C \uBA3C\uC800 \uC120\uD0DD\uD574\uC8FC\uC138\uC694"
+                    }
+                  )
+                ] })
+              ] }) })
             ] })
           ] })
-        ] }) : /* @__PURE__ */ u3("div", { className: "gb-deck-ranking-box", children: [
-          /* @__PURE__ */ u3("h3", { children: "\u{1F3C6} \uC2E4\uC2DC\uAC04 \uB7AD\uD0B9 & \uC0AC\uC591" }),
-          /* @__PURE__ */ u3("div", { className: "gb-deck-empty", style: { padding: "36px 16px", lineHeight: 1.7 }, children: [
-            "\uC67C\uCABD \uC9C4\uC5F4\uB300\uC5D0\uC11C \uC6D0\uD558\uB294 ",
-            /* @__PURE__ */ u3("strong", { children: "\uAC8C\uC784 CD \uCF00\uC774\uC2A4" }),
-            "\uB97C \uC120\uD0DD\uD558\uBA74",
-            /* @__PURE__ */ u3("br", {}),
-            "\uD574\uB2F9 \uAC8C\uC784\uC758 \uACF5\uC2DD \uC0AC\uC591 \uC815\uBCF4\uC640 \uC2E4\uC2DC\uAC04 TOP 10 \uB7AD\uD0B9\uC774 \uD45C\uC2DC\uB429\uB2C8\uB2E4."
-          ] })
-        ] })
-      ] })
-    ] }) });
-  }
-
-  // tool-box/src/features/game-box/draw/DrawPack.js
-  function DrawPack({ onNavigate }) {
-    const [activeId, setActiveId] = d2(null);
-    const activeGame = DRAW_GAMES.find((g4) => g4.id === activeId) || null;
-    return /* @__PURE__ */ u3("div", { className: "gb-draw-shell", children: activeGame ? /* @__PURE__ */ u3("div", { className: "gb-draw-stage", children: /* @__PURE__ */ u3(
-      GameLauncher,
-      {
-        title: activeGame.name,
-        src: activeGame.launchUrl,
-        aspectRatio: activeGame.aspectRatio,
-        onClose: () => setActiveId(null)
-      }
-    ) }) : /* @__PURE__ */ u3("div", { className: "gb-draw-body", children: [
-      /* @__PURE__ */ u3("div", { className: "gb-draw-intro", children: [
-        /* @__PURE__ */ u3("span", { className: "gb-home-kicker", children: "LUCKY DRAW COLLECTION" }),
-        /* @__PURE__ */ u3("h2", { children: "\uBF51\uAE30 \uAC8C\uC784\uC744 \uC120\uD0DD\uD558\uC138\uC694" }),
-        /* @__PURE__ */ u3("p", { children: "\uCD94\uCCA8 \xB7 \uD300 \uB098\uB204\uAE30 \xB7 \uC21C\uC11C \uC815\uD558\uAE30 \u2014 \uD55C \uBC88\uC758 \uD074\uB9AD\uC73C\uB85C \uACF5\uC815\uD558\uAC8C \uACB0\uC815\uD569\uB2C8\uB2E4." })
+        ] }) })
       ] }),
-      /* @__PURE__ */ u3("div", { className: "gb-draw-grid", children: DRAW_GAMES.map((game) => /* @__PURE__ */ u3(
-        "button",
-        {
-          type: "button",
-          className: "gb-draw-card",
-          style: { "--case-color": game.caseColor },
-          onClick: () => setActiveId(game.id),
-          children: [
-            /* @__PURE__ */ u3("span", { className: "gb-draw-card-icon", children: game.icon }),
-            /* @__PURE__ */ u3("span", { className: "gb-draw-card-genre", children: game.genre }),
-            /* @__PURE__ */ u3("strong", { className: "gb-draw-card-title", children: game.shortName }),
-            /* @__PURE__ */ u3("span", { className: "gb-draw-card-sub", children: game.subtitle }),
-            /* @__PURE__ */ u3("p", { children: game.description }),
-            /* @__PURE__ */ u3("span", { className: "gb-draw-card-cta", children: "\uC785\uC7A5 \u2192" })
-          ]
-        },
-        game.id
-      )) })
-    ] }) });
+      /* @__PURE__ */ u3("dialog", { className: "gb-arcade-ranking-dialog", ref: rankingRef, children: [
+        /* @__PURE__ */ u3("form", { method: "dialog", children: /* @__PURE__ */ u3("button", { type: "submit", className: "gb-launcher-btn", children: "\uB2EB\uAE30" }) }),
+        /* @__PURE__ */ u3("h2", { children: [
+          selectedGame?.name,
+          " TOP 10"
+        ] }),
+        loadingRankings ? /* @__PURE__ */ u3("p", { children: "\uC21C\uC704\uB97C \uBD88\uB7EC\uC624\uB294 \uC911\uC774\uC5D0\uC694." }) : deckRankings.length ? /* @__PURE__ */ u3("table", { className: "gb-deck-table", children: [
+          /* @__PURE__ */ u3("thead", { children: /* @__PURE__ */ u3("tr", { children: [
+            /* @__PURE__ */ u3("th", { children: "\uC21C\uC704" }),
+            /* @__PURE__ */ u3("th", { children: "\uD50C\uB808\uC774\uC5B4" }),
+            /* @__PURE__ */ u3("th", { children: "\uC2B9/\uD328" }),
+            /* @__PURE__ */ u3("th", { children: "\uCD5C\uACE0 \uC810\uC218" })
+          ] }) }),
+          /* @__PURE__ */ u3("tbody", { children: deckRankings.map((row, index) => /* @__PURE__ */ u3("tr", { children: [
+            /* @__PURE__ */ u3("td", { children: index + 1 }),
+            /* @__PURE__ */ u3("td", { children: row.name }),
+            /* @__PURE__ */ u3("td", { children: [
+              row.wins,
+              "\uC2B9 ",
+              row.losses,
+              "\uD328"
+            ] }),
+            /* @__PURE__ */ u3("td", { children: Math.round(row.bestScore || 0).toLocaleString() })
+          ] }, row.userId || index)) })
+        ] }) : /* @__PURE__ */ u3("p", { children: "\uC544\uC9C1 \uB4F1\uB85D\uB41C \uAE30\uB85D\uC774 \uC5C6\uC5B4\uC694." })
+      ] })
+    ] });
   }
 
   // tool-box/src/features/game-box/deck/lab/DeckLab.jsx
@@ -34503,7 +34442,7 @@ void main() {
       bridge.start();
       return () => bridge.stop();
     }, [identity]);
-    return /* @__PURE__ */ u3("div", { className: "gb-shell", children: [
+    return /* @__PURE__ */ u3("div", { className: route === "/game-box/deck" ? "gb-shell gb-arcade-shell" : route === "/game-box" || route === "/game-box/draw" ? "gb-shell gb-club" : "gb-shell", children: [
       /* @__PURE__ */ u3("header", { className: "gb-main-header", children: [
         /* @__PURE__ */ u3(
           "div",

@@ -719,6 +719,20 @@
   display: block;
 }
 
+/* A game launcher is a viewport, not an inline preview. The old default
+   left this wrapper at its intrinsic 300×150 size outside the arcade deck. */
+.gb-launcher-game-viewport {
+  flex: 1 1 0%;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
 /* Right Spec & Ranking Panel */
 .gb-deck-spec-card {
   background: #0d1117;
@@ -880,7 +894,9 @@
 
 .gb-draw-stage {
   flex: 1 1 auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
+  max-height: none;
   min-height: 0;
   display: flex;
   flex-direction: column;

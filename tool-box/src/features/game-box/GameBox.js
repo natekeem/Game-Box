@@ -141,7 +141,11 @@ function GameBoxInner({ initialRoute }) {
   }, [identity]);
 
   return (
-    <div className="gb-shell">
+    <div className={route === '/game-box/deck'
+      ? 'gb-shell gb-arcade-shell'
+      : route === '/game-box' || route === '/game-box/draw'
+        ? 'gb-shell gb-club'
+        : 'gb-shell'}>
       <header className="gb-main-header">
         <div
           className="gb-header-brand"

@@ -143,9 +143,23 @@ export function OriginalBombermanArena({ mode = 'online', bots = 1, currentUser 
 
   useEffect(() => {
     const focusIframe = () => iframeRef.current?.contentWindow?.focus();
+    const handleKeydown = (event) => {
+      const target = event.target;
+      if (target?.tagName === 'INPUT' || target?.tagName === 'TEXTAREA' || target?.isContentEditable) return;
+      const key = event.key.toLowerCase();
+      if (!['w', 'a', 's', 'd', 'arrowup', 'arrowleft', 'arrowdown', 'arrowright', ' ', 'spacebar'].includes(key)) return;
+      event.preventDefault();
+      iframeRef.current?.contentWindow?.postMessage({
+        type: 'blast-arena-key',
+        key: event.key,
+        code: event.code,
+      }, window.location.origin);
+    };
     const timer = setTimeout(focusIframe, 300);
+    window.addEventListener('keydown', handleKeydown, true);
     return () => {
       clearTimeout(timer);
+      window.removeEventListener('keydown', handleKeydown, true);
       try {
         fetch('/original-blast-arena/api/reset', { method: 'GET', keepalive: true }).catch(() => {});
       } catch {
@@ -234,7 +248,7 @@ export function OriginalBombergirlArena({ mode = 'single', bots = 3, room = null
   return (
     <section
       className="bg-original-shell"
-      aria-label="HTML5 Bombergirl 원본 게임"
+      aria-label="Bombergirl 원본 게임"
       onClick={() => iframeRef.current?.contentWindow?.focus()}
     >
       <iframe
@@ -242,7 +256,7 @@ export function OriginalBombergirlArena({ mode = 'single', bots = 3, room = null
         key={src}
         className="bg-original-frame"
         src={src}
-        title={mode === 'online' ? 'HTML5 Bombergirl online game' : 'HTML5 Bombergirl original single player'}
+        title={mode === 'online' ? 'Bombergirl online game' : 'Bombergirl original single player'}
         allow="autoplay; fullscreen; gamepad"
         tabIndex="0"
         onLoad={() => iframeRef.current?.contentWindow?.focus()}

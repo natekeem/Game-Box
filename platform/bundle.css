@@ -9,18 +9,18 @@ body,
   overflow: hidden;
 }
 .gp-root {
-  --gp-bg: #0f172a;
-  --gp-surface: #1e293b;
-  --gp-surface-hover: #26354d;
-  --gp-border: #334155;
-  --gp-text: #f8fafc;
-  --gp-muted: #94a3b8;
-  --gp-primary: #3b82f6;
-  --gp-primary-hover: #2563eb;
-  --gp-accent: #8b5cf6;
-  --gp-success: #10b981;
-  --gp-danger: #ef4444;
-  --gp-warning: #f59e0b;
+  --gp-bg: #171a19;
+  --gp-surface: #222725;
+  --gp-surface-hover: #2b302d;
+  --gp-border: #414943;
+  --gp-text: #eeeae1;
+  --gp-muted: #a9ada5;
+  --gp-primary: #b66b49;
+  --gp-primary-hover: #9e593b;
+  --gp-accent: #d0a66a;
+  --gp-success: #80a587;
+  --gp-danger: #c56c5d;
+  --gp-warning: #d0a66a;
   min-height: 100vh;
   background: var(--gp-bg);
   color: var(--gp-text);
@@ -40,12 +40,49 @@ body,
 .gp-root *::after {
   box-sizing: border-box;
 }
+.gp-root :is(.gp-game-card, .gl-panel, .gl-side-card, .gp-room-topbar, .gp-event-card, .gp-stat-pill, .gp-chip, .gp-history-list li, .gp-checkbox-grid, .gp-modal) {
+  background-color: var(--gp-surface);
+  border-color: var(--gp-border);
+  color: var(--gp-text);
+}
+.gp-root :is(.gp-btn-secondary, .gl-btn-secondary) {
+  background: var(--gp-surface-hover);
+  border-color: var(--gp-border);
+  color: var(--gp-text);
+}
+.gp-root :is(.gp-btn-secondary, .gl-btn-secondary):hover:not(:disabled) {
+  background: #343b36;
+}
+.gp-root .gl-btn-ghost {
+  color: var(--gp-text);
+}
+.gp-root .gp-row-me {
+  background: rgba(182, 107, 73, .14);
+}
+.gp-root .gp-modal {
+  border-radius: 8px;
+  border-color: var(--gp-border);
+}
+.gp-root .gp-ranking-table th,
+.gp-root .gp-table th {
+  color: var(--gp-muted);
+}
+.gp-root .gp-section-header h2,
+.gp-root .gp-section-header h3,
+.gp-root .gp-game-card h3 {
+  color: var(--gp-text);
+}
+.gp-root .gp-rankings-view,
+.gp-root .gp-arcade-lobby,
+.gp-root .gp-events-view {
+  color: var(--gp-text);
+}
 .gp-root.gp-deck-embed {
   min-height: 100% !important;
   height: 100% !important;
   max-height: 100% !important;
   width: 100% !important;
-  background: #0b0f17 !important;
+  background: var(--gp-bg) !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
@@ -54,7 +91,7 @@ body,
   display: none !important;
 }
 .gp-root.gp-deck-embed .gp-main {
-  padding: 6px 10px !important;
+  padding: 0 !important;
   margin: 0 !important;
   width: 100% !important;
   max-width: 100% !important;
@@ -66,7 +103,13 @@ body,
   align-items: stretch !important;
   justify-content: flex-start !important;
   overflow: hidden !important;
+  position: relative !important;
+  isolation: isolate;
   box-sizing: border-box !important;
+}
+.gp-root.gp-deck-embed .gp-main,
+.gp-root.gp-deck-embed .gp-main > * {
+  min-width: 0 !important;
 }
 .gp-root.gp-deck-embed .gp-room-container {
   border: none !important;
@@ -86,14 +129,7 @@ body,
   overflow: hidden !important;
 }
 .gp-root.gp-deck-embed .gp-room-topbar {
-  padding: 4px 12px !important;
-  background: rgba(15, 23, 42, 0.75) !important;
-  border-radius: 6px !important;
-  margin-bottom: 6px !important;
-  width: auto !important;
-  min-height: auto !important;
-  flex: 0 0 auto !important;
-  gap: 12px !important;
+  display: none !important;
 }
 .gp-root.gp-deck-embed .gp-room-topbar h2 {
   font-size: 13px !important;
@@ -115,9 +151,46 @@ body,
   overflow: hidden !important;
 }
 .gp-root.gp-deck-embed .gl-lobby {
-  padding: 10px 14px 14px !important;
-  gap: 10px !important;
-  max-height: 100% !important;
+  width: 100% !important;
+  max-width: 1240px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  flex: 1 1 0% !important;
+  align-self: stretch !important;
+  margin: 0 auto !important;
+  padding: 16px 20px 24px !important;
+  gap: 14px !important;
+  max-height: none !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+}
+.gp-root.gp-deck-embed .gl-dashboard-grid {
+  min-width: 0 !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  gap: 14px !important;
+}
+.gp-root.gp-deck-embed .gl-dashboard-grid-draw {
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr) !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  align-items: start !important;
+  gap: 14px !important;
+}
+.gp-root.gp-deck-embed .gl-dashboard-grid-draw .gl-dashboard-main {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+}
+.gp-root.gp-deck-embed .gl-panel-draw {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 16px 20px !important;
 }
 .gp-root.gp-deck-embed .gl-hero {
   padding: 10px 16px !important;
@@ -530,7 +603,10 @@ body,
   }
 }
 .gp-main {
+  position: relative;
+  isolation: isolate;
   flex: 1;
+  min-height: 0;
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
@@ -921,16 +997,26 @@ body,
   gap: 10px;
   margin-top: 16px;
 }
-.gp-match-result-banner {
-  background:
-    linear-gradient(
-      135deg,
-      #1e1b4b,
-      #0f172a);
-  border: 2px solid #6366f1;
-  border-radius: 14px;
-  padding: 18px 22px;
-  margin-bottom: 16px;
+.gp-match-result-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 40px);
+  overflow: auto;
+  background: rgba(8, 10, 9, .76);
+  backdrop-filter: blur(5px);
+}
+.gp-match-result-dialog {
+  width: min(760px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  padding: clamp(18px, 3vw, 28px);
+  background: #222725;
+  border: 1px solid #d0a66a;
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .5);
 }
 .gp-match-result-header {
   display: flex;
@@ -942,6 +1028,7 @@ body,
 .gp-match-result-header h3 {
   margin: 0;
   font-size: 20px;
+  color: var(--gp-text);
 }
 .gp-official-pill {
   font-size: 12px;
@@ -964,7 +1051,7 @@ body,
   margin-bottom: 14px;
 }
 .gp-podium-item {
-  background: rgba(15, 23, 42, 0.8);
+  background: #191d1b;
   border: 1px solid var(--gp-border);
   border-radius: 10px;
   padding: 8px 14px;
@@ -973,11 +1060,11 @@ body,
   gap: 8px;
 }
 .gp-podium-item.rank-1 {
-  border-color: #facc15;
-  background: rgba(250, 204, 21, 0.12);
+  border-color: #d0a66a;
+  background: rgba(208, 166, 106, 0.12);
 }
 .gp-podium-score {
-  color: #38bdf8;
+  color: #d0a66a;
   font-weight: 800;
 }
 .bb-stage-wrapper {
@@ -1945,13 +2032,110 @@ body,
   max-width: 100% !important;
   flex: 1 1 0% !important;
   min-height: 0 !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
 }
 .gp-root.gp-deck-embed .gp-roulette-body {
   width: 100% !important;
   max-width: 100% !important;
-  height: calc(100% - 48px) !important;
+  height: auto !important;
   flex: 1 1 0% !important;
   min-height: 0 !important;
+  min-width: 0 !important;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 340px) !important;
+  grid-template-rows: minmax(0, 1fr) !important;
+  overflow: hidden !important;
+}
+.gp-root.gp-deck-embed .gp-roulette-body.sidebar-collapsed {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+.gp-root.gp-deck-embed .gp-roulette-stage,
+.gp-root.gp-deck-embed .gp-roulette-sidebar {
+  min-width: 0 !important;
+  min-height: 0 !important;
+}
+.gp-root.gp-deck-embed .gp-roulette-topbar {
+  display: none !important;
+}
+.gp-root.gp-deck-embed .gp-roulette-stage {
+  display: flex !important;
+}
+.gp-root.gp-deck-embed .gp-roulette-iframe {
+  flex: 1 1 0% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+}
+.gp-root.gp-skill-game-embed {
+  background: var(--gp-bg) !important;
+  color: var(--gp-text) !important;
+}
+.gp-skill-game-embed :is(.gp-room-topbar, .gl-panel, .bb-score-pill) {
+  border: 1px solid var(--gp-border) !important;
+  border-radius: 6px !important;
+  background: var(--gp-surface) !important;
+  box-shadow: none !important;
+}
+.gp-skill-game-embed :is(.gp-room-topbar, .bb-stage-wrapper, .bb-arena-body, .bb-status-banner) {
+  color: var(--gp-text) !important;
+}
+.gp-skill-game-embed .bb-stage-wrapper {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  min-height: 0 !important;
+  max-height: 100%;
+  overflow: auto;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.gp-skill-game-embed .bb-arena-body {
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  overflow: auto;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.gp-skill-game-embed .bb-status-banner {
+  margin-bottom: 10px !important;
+  border-left: 3px solid var(--gp-primary) !important;
+  border-radius: 2px !important;
+  background: #2d302d !important;
+}
+.gp-skill-game-embed .bb-scoreboard-bar {
+  margin-bottom: 10px;
+}
+.gp-skill-game-embed .bb-score-pill {
+  background: #252825 !important;
+}
+.gp-skill-game-embed .bb-score-val {
+  color: var(--gp-accent);
+}
+.gp-skill-game-embed :is(.bb-prompt-card, .bb-ttt-cell, .bb-memory-card) {
+  border-radius: 6px !important;
+}
+.gp-skill-game-embed .bb-memory-card {
+  box-shadow: none !important;
+}
+.gp-skill-game-embed .bb-stage-wrapper button:focus-visible {
+  outline: 2px solid var(--gp-accent);
+  outline-offset: 2px;
+}
+@media (max-height: 540px) {
+  .gp-skill-game-embed .bb-stage-wrapper,
+  .gp-skill-game-embed .bb-arena-body {
+    padding: 7px !important;
+  }
+  .gp-skill-game-embed .bb-scoreboard-bar {
+    gap: 6px;
+    margin-bottom: 6px;
+  }
 }
 .gp-roulette-topbar {
   display: flex;
@@ -3047,6 +3231,73 @@ body,
   flex: 1 1 auto;
   align-items: start;
 }
+.gl-dashboard-grid-draw {
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  align-items: start;
+}
+.gl-dashboard-grid-draw .gl-dashboard-main {
+  width: 100%;
+  align-items: stretch;
+}
+.gl-panel-draw {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.gl-pill-draw {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+.gl-draw-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 14px 0 16px;
+}
+.gl-draw-feature-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+}
+.gl-draw-feature-icon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.gl-draw-feature-card strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gp-text);
+  margin-bottom: 2px;
+}
+.gl-draw-feature-card p {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--gp-muted);
+}
+.gl-draw-cta-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+.gl-draw-start-btn {
+  width: 100%;
+  padding: 13px 20px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  justify-content: center;
+}
 .gl-dashboard-main {
   display: flex;
   flex-direction: column;
@@ -3701,6 +3952,9 @@ body,
   .gl-dashboard-grid {
     grid-template-columns: 1fr;
   }
+  .gl-draw-feature-grid {
+    grid-template-columns: 1fr;
+  }
 }
 @media (max-width: 720px) {
   .gl-hero {
@@ -3720,4 +3974,48 @@ body,
     grid-template-columns: 1fr;
     gap: 4px;
   }
+}
+.gp-root .gp-topbar {
+  background: rgba(23, 26, 25, .96);
+}
+.gp-root .gp-user-card {
+  background: var(--gp-surface);
+  border-color: var(--gp-border);
+}
+.gp-root .gp-user-dept {
+  background: rgba(208, 166, 106, .14);
+  color: var(--gp-accent);
+}
+.gp-root .gl-hero {
+  background:
+    linear-gradient(
+      135deg,
+      #252a27,
+      #202421);
+  border-radius: 8px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .22);
+}
+.gp-root .gl-hero-icon {
+  background: #191d1b;
+  border-color: var(--gp-border);
+  border-radius: 8px;
+}
+.gp-root :is(.gl-panel, .gl-side-card, .gp-event-card, .gp-stat-pill) {
+  border-radius: 8px;
+  box-shadow: none;
+}
+.gp-root.gp-deck-embed .gp-room-topbar {
+  background: rgba(34, 39, 37, .9) !important;
+}
+.gp-root .gl-chip {
+  background: #191d1b;
+  border-color: var(--gp-border);
+  color: var(--gp-text);
+}
+.gp-root .gl-chip-soft {
+  color: var(--gp-muted);
+}
+.gp-root .gl-side-card-tip {
+  background: rgba(208, 166, 106, .06);
+  border-color: rgba(208, 166, 106, .24);
 }

@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { OriginalSnakeDuelArena, OriginalBombermanArena, OriginalBombergirlArena } from './OriginalArcadeArenas.jsx';
 
 /**
- * Interactive Play Stage for All 18 BattleBox + Additional Realtime Games
- * Preserves BattleBox's original neon visual feel and controls while providing
+ * Interactive Play Stage for all supported realtime and skill games.
+ * Preserves each game's visual feel and controls while providing
  * full React lifecycle cleanup and BOT / Online support.
  */
 export function GamePlayStage({ gameId, room, currentUser, gameStateData, onAction }) {

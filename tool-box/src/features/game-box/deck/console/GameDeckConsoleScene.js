@@ -723,7 +723,7 @@ export function createGameDeckConsoleScene(container, opts = {}) {
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     const halfFrustum = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
-    const distance = Math.max(0.465, 0.46 / camera.aspect) / (2 * halfFrustum);
+    const distance = Math.max(0.62 / camera.aspect, 0.46) / (2 * halfFrustum);
     camera.position.copy(cameraTarget).addScaledVector(cameraDirection, distance);
     camera.lookAt(cameraTarget);
     invalidate();
@@ -767,8 +767,12 @@ export function createGameDeckConsoleScene(container, opts = {}) {
   }
 
   // The back shell and its CD share a local XY plane; the lid hinges on their left edge.
-  const caseRest = new THREE.Vector3(0, 0.214, -0.034);
+  const caseRest = new THREE.Vector3(0, 0.16, -0.034);
   caseRest.x = cameraTarget.x + (caseRest.z - cameraTarget.z) * cameraDirection.x / cameraDirection.z;
+  const screenRight = new THREE.Vector3(cameraDirection.z, 0, -cameraDirection.x).normalize();
+  consoleGroup.position.addScaledVector(screenRight, 0.14);
+  consoleGroup.position.y += 0.055;
+  caseRest.addScaledVector(screenRight, -0.235);
   const caseTilt = new THREE.Euler(-0.10, 0.28, 0);
   const caseRight = new THREE.Vector3(1, 0, 0).applyEuler(caseTilt);
 
@@ -854,8 +858,8 @@ export function createGameDeckConsoleScene(container, opts = {}) {
     const aboveTray = end.clone().addScaledVector(trayNormal, 0.039);
     const arc = new THREE.CubicBezierCurve3(
       clearCase,
-      clearCase.clone().addScaledVector(caseNormal, 0.08).add(new THREE.Vector3(0.068, 0.05, 0)),
-      aboveTray.clone().addScaledVector(trayNormal, 0.12),
+      clearCase.clone().addScaledVector(caseNormal, 0.08).addScaledVector(screenRight, 0.12).add(new THREE.Vector3(0, 0.05, 0)),
+      aboveTray.clone().addScaledVector(trayNormal, 0.12).addScaledVector(screenRight, 0.035),
       aboveTray,
     );
     const spin = new THREE.Quaternion();

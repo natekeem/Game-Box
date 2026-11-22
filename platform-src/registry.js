@@ -3,7 +3,7 @@
  *
  * Includes:
  * - Marble Roulette (Event & Draw)
- * - 15 Independent BattleBox Games (Speed, Strategy, Word, Math, Trivia, Classic)
+ * - 15 skill and puzzle games (Speed, Strategy, Word, Math, Trivia, Classic)
  * - 4 Additional Online/BOT Games (Snake Duel, Bomberman, Bombergirl, CatchMind Drawing)
  */
 
@@ -33,7 +33,7 @@ export const GAME_REGISTRY = [
     description: 'Box2D 물리 엔진 기반 구슬 낙하 추첨 게임! 사내 부서별/전체 직원 명단을 불러와 공정하고 박진감 넘치는 추첨을 진행하고 결과를 기록합니다.',
     gradient: 'linear-gradient(135deg, #ff0055, #ff7700)',
   },
-  // ─── 15 Independent BattleBox Games ───
+  // ─── 15 skill and puzzle games ───
   {
     id: 'reaction',
     name: '순발력 대결',
@@ -327,7 +327,7 @@ export const GAME_REGISTRY = [
   {
     id: 'bombergirl',
     name: '봄버걸 클래식',
-    nameEn: 'HTML5 Bombergirl',
+    nameEn: 'Bombergirl',
     icon: '👧',
     badge: 'MattSkala 원본 · AI 3명 · 온라인 2인',
     category: 'arcade',

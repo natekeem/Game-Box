@@ -177,18 +177,55 @@ export function GameLobby({
         </div>
       </header>
 
-      <div className="gl-dashboard-grid">
+      <div className={`gl-dashboard-grid ${isDraw ? 'gl-dashboard-grid-draw' : ''}`}>
         <div className="gl-dashboard-main">
           {isDraw ? (
             <section className="gl-panel gl-panel-draw">
               <div className="gl-panel-head">
-                <span className="gl-pill gl-pill-single">DRAW</span>
-                <h3>추첨 시작</h3>
+                <span className="gl-pill gl-pill-draw">DRAW</span>
+                <h3>🎯 마블 룰렛 추첨</h3>
               </div>
-              <p className="gl-panel-desc">참가자 명단을 입력하고 구슬 레이스로 공정하게 당첨자를 뽑으세요.</p>
-              <button type="button" className="gl-btn gl-btn-primary gl-btn-lg" onClick={onStartDraw}>
-                ▶ 룰렛 열기
-              </button>
+              <p className="gl-panel-desc">
+                참가자 명단을 입력하고 Box2D 물리 엔진의 박진감 넘치는 구슬 레이스로 공정하게 당첨자를 선발하세요.
+              </p>
+
+              <div className="gl-draw-feature-grid">
+                <div className="gl-draw-feature-card">
+                  <span className="gl-draw-feature-icon">🏢</span>
+                  <div>
+                    <strong>사내 부서 명단 연동</strong>
+                    <p>부서별/전체 직원 명단을 원클릭으로 불러와 참가자로 설정</p>
+                  </div>
+                </div>
+                <div className="gl-draw-feature-card">
+                  <span className="gl-draw-feature-icon">⚖️</span>
+                  <div>
+                    <strong>Box2D 물리 시뮬레이션</strong>
+                    <p>모든 구슬이 동일한 물리 조건에서 충돌하며 공정하게 낙하</p>
+                  </div>
+                </div>
+                <div className="gl-draw-feature-card">
+                  <span className="gl-draw-feature-icon">🎢</span>
+                  <div>
+                    <strong>다양한 맵 & 멀티 구슬</strong>
+                    <p>10종 이상의 트랙과 이름*N 배수 참가 기능 지원</p>
+                  </div>
+                </div>
+                <div className="gl-draw-feature-card">
+                  <span className="gl-draw-feature-icon">📊</span>
+                  <div>
+                    <strong>당첨 히스토리 보관</strong>
+                    <p>추첨 결과를 자동 저장하고 이전 당첨 내역 열람</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="gl-draw-cta-box">
+                <button type="button" className="gl-btn gl-btn-primary gl-btn-lg gl-draw-start-btn" onClick={onStartDraw}>
+                  ▶ 룰렛 열기 (추첨 시작)
+                </button>
+                <p className="gl-footnote">룰렛 화면으로 이동하여 참가자 명단 편집 및 맵 선택을 진행할 수 있습니다.</p>
+              </div>
             </section>
           ) : (
             <>

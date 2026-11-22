@@ -9,6 +9,11 @@ import { RankingsAndStatsView } from './components/RankingsAndStatsView.jsx';
 import { GameLobby, RoomWaiting, GuideModal, getLobbyConfig } from './components/GameLobby.jsx';
 
 const QUICK_MATCH_COUNTDOWN_SECONDS = 4;
+const SKILL_GAME_IDS = new Set([
+  'reaction', 'tictactoe', 'connectfour', 'wordchain', 'mathduel', 'rpsarena',
+  'anagram', 'numberhunt', 'memorymatch', 'speedtyping', 'colormatch', 'simonsays',
+  'trivia', 'higherlower', 'oddoneout',
+]);
 
 export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) {
   const [currentUser, setCurrentUser] = useState(() => userProvider.getCurrentUser());
@@ -164,6 +169,19 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
 
     return () => unsubscribe();
   }, [api, currentRoom?.code, currentUser?.id, showToast]);
+
+  useEffect(() => {
+    const handleOriginalGameResult = (event) => {
+      if (event.origin !== window.location.origin || event.data?.type !== 'gamebox-original-game-over') return;
+      setMatchResult({
+        winner: event.data.winner || '',
+        standings: Array.isArray(event.data.standings) ? event.data.standings : [],
+        isOfficial: false,
+      });
+    };
+    window.addEventListener('message', handleOriginalGameResult);
+    return () => window.removeEventListener('message', handleOriginalGameResult);
+  }, []);
 
   // ─── Derived ────────────────────────────────────────────────────────────────
   const activeGameMeta = getGameById(currentRoom?.game || originalLaunch?.gameId || activeGameId);
@@ -436,7 +454,7 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
           </div>
         </div>
         {originalLaunch.gameId === 'bomberman' ? (
-          <OriginalBombermanArena mode={originalLaunch.mode} bots={originalLaunch.bots} currentUser={currentUser} />
+          <OriginalBombermanArena key={originalLaunch.runId || 'initial'} mode={originalLaunch.mode} bots={originalLaunch.bots} currentUser={currentUser} />
         ) : (
           <OriginalBombergirlArena mode="single" bots={originalLaunch.bots} currentUser={currentUser} onBackToLobby={handleBackToLobby} />
         )}
@@ -498,59 +516,6 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
         </div>
 
         <div className="gp-active-match-area">
-          {matchResult && (
-            <div className="gp-match-result-banner">
-              <div className="gp-match-result-header">
-                <h3>
-                  🏁 게임 종료{' '}
-                  {matchResult.winner ? `· 🏆 ${matchResult.winner}` : '· 무승부'}
-                </h3>
-                <span className={`gp-official-pill ${matchResult.isOfficial ? 'official' : 'practice'}`}>
-                  {matchResult.isOfficial ? '✓ 공식 랭킹 반영' : '연습 경기 (랭킹 제외)'}
-                </span>
-              </div>
-
-              {matchResult.standings && matchResult.standings.length > 0 && (
-                <div className="gp-podium-list">
-                  {matchResult.standings.map(st => (
-                    <div key={st.id} className={`gp-podium-item rank-${st.rank}`}>
-                      <span className="gp-podium-rank">#{st.rank}</span>
-                      <strong>{st.name}</strong>
-                      <span className="gp-muted-sm">{st.isBot ? '컴퓨터' : '플레이어'}</span>
-                      <span className="gp-podium-score">{st.score}점</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <div className="gp-btn-row">
-                <button
-                  type="button"
-                  className="gl-btn gl-btn-primary"
-                  onClick={async () => {
-                    try {
-                      const res = await api.rematch(currentRoom.code);
-                      setCurrentRoom(res.room);
-                      setMatchResult(null);
-                      if (currentRoom.mode !== 'online') {
-                        const started = await api.startRoom(currentRoom.code);
-                        setCurrentRoom(started.room);
-                        if (started.room?.lastPublicGameState) setPublicGameState(started.room.lastPublicGameState);
-                      }
-                    } catch (err) {
-                      showToast(err.message);
-                    }
-                  }}
-                >
-                  🔄 다시 하기
-                </button>
-                <button type="button" className="gl-btn gl-btn-secondary" onClick={handleLeaveCurrentRoom}>
-                  대기실로
-                </button>
-              </div>
-            </div>
-          )}
-
           <GamePlayStage
             gameId={currentRoom.game}
             room={currentRoom}
@@ -700,8 +665,14 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
     return renderCatalog();
   };
 
+  const embeddedGameId = currentRoom?.game || originalLaunch?.gameId || activeGameId || '';
+  const isSkillGameEmbed = isDeckEmbed && SKILL_GAME_IDS.has(embeddedGameId);
+
   return (
-    <div className={`gp-root ${isDeckEmbed ? 'gp-deck-embed' : ''}`}>
+    <div
+      className={`gp-root ${isDeckEmbed ? 'gp-deck-embed' : ''} ${isSkillGameEmbed ? 'gp-skill-game-embed' : ''}`}
+      data-embedded-game={isDeckEmbed ? embeddedGameId : undefined}
+    >
       {/* 상단 포털 바 (GAME DECK 임베드 시 숨김: 헤더 이중화 방지) */}
       {!isDeckEmbed && (
         <header className="gp-topbar">
@@ -791,7 +762,73 @@ export function GamePlatformApp({ userProvider, apiBaseUrl = '/api/platform' }) 
         </div>
       )}
 
-      <main className="gp-main">{renderMain()}</main>
+      <main className="gp-main">{renderMain()}{matchResult && (
+        <div className="gp-match-result-overlay" role="dialog" aria-modal="true" aria-label="Match result">
+            <div className="gp-match-result-dialog">
+              <div className="gp-match-result-header">
+                <h3>
+                  🏁 게임 종료{' '}
+                  {matchResult.winner ? `· 🏆 ${matchResult.winner}` : '· 무승부'}
+                </h3>
+                <span className={`gp-official-pill ${matchResult.isOfficial ? 'official' : 'practice'}`}>
+                  {matchResult.isOfficial ? '✓ 공식 랭킹 반영' : '연습 경기 (랭킹 제외)'}
+                </span>
+              </div>
+
+              {matchResult.standings && matchResult.standings.length > 0 && (
+                <div className="gp-podium-list">
+                  {matchResult.standings.map(st => (
+                    <div key={st.id} className={`gp-podium-item rank-${st.rank}`}>
+                      <span className="gp-podium-rank">#{st.rank}</span>
+                      <strong>{st.name}</strong>
+                      <span className="gp-muted-sm">{st.isBot ? '컴퓨터' : '플레이어'}</span>
+                      <span className="gp-podium-score">{st.score}점</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="gp-btn-row">
+                <button
+                  type="button"
+                  className="gl-btn gl-btn-primary"
+                  onClick={async () => {
+                    if (originalLaunch) {
+                      setMatchResult(null);
+                      setOriginalLaunch(prev => ({ ...prev, runId: Date.now() }));
+                      return;
+                    }
+                    try {
+                      const res = await api.rematch(currentRoom.code);
+                      setCurrentRoom(res.room);
+                      setMatchResult(null);
+                      if (currentRoom.mode !== 'online') {
+                        const started = await api.startRoom(currentRoom.code);
+                        setCurrentRoom(started.room);
+                        if (started.room?.lastPublicGameState) setPublicGameState(started.room.lastPublicGameState);
+                      }
+                    } catch (err) {
+                      showToast(err.message);
+                    }
+                  }}
+                >
+                  🔄 다시 하기
+                </button>
+                <button
+                  type="button"
+                  className="gl-btn gl-btn-secondary"
+                  onClick={() => {
+                    setMatchResult(null);
+                    if (originalLaunch) handleBackToLobby();
+                    else handleLeaveCurrentRoom();
+                  }}
+                >
+                  대기실로
+                </button>
+              </div>
+            </div>
+        </div>
+      )}</main>
 
       {showGuide && activeGameMeta && (
         <GuideModal game={activeGameMeta} onClose={() => setShowGuide(false)} />

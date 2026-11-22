@@ -5,6 +5,7 @@ import GameLauncher from '../runtime/GameLauncher.js';
 import GameCaseCard from './cases/GameCaseCard.jsx';
 import { ensureCaseStyle } from './cases/FinallyCaseEngine.js';
 import ConsoleView3D from './console/ConsoleView3D.jsx';
+import './arcadeDeck.css';
 
 function playCrtSound(type = 'power-on') {
   if (typeof window === 'undefined') return;
@@ -66,6 +67,7 @@ export default function GameDeck({ onNavigate }) {
   const [soundEnabled, setSoundEnabled] = useState(true);
 
   const consoleRef = useRef(null);
+  const rankingRef = useRef(null);
   const isPlaying = animState === 'playing';
   const isMovingDisc = animState === 'inserting' || animState === 'ejecting';
 
@@ -154,8 +156,8 @@ export default function GameDeck({ onNavigate }) {
         <aside className="gb-deck-collection" data-testid="deck-collection-zone">
           <div className="gb-deck-panel-header">
             <div>
-              <h2>GAME COLLECTION</h2>
-              <span className="gb-deck-badge">{visibleGames.length} 3D PACKS</span>
+              <h2>게임 케이스</h2>
+              <span className="gb-deck-badge">{visibleGames.length} GAMES</span>
             </div>
             <button
               type="button"
@@ -163,7 +165,7 @@ export default function GameDeck({ onNavigate }) {
               onClick={() => setSoundEnabled(!soundEnabled)}
               title="효과음 켜기 / 끄기"
             >
-              {soundEnabled ? '🔊 SFX' : '🔇 MUTE'}
+              {soundEnabled ? '효과음 켜짐' : '효과음 꺼짐'}
             </button>
           </div>
 
@@ -183,7 +185,7 @@ export default function GameDeck({ onNavigate }) {
             <input
               type="search"
               className="gb-deck-search"
-              placeholder="게임팩 이름, 코드, 장르 검색..."
+              placeholder="게임 검색"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
             />
@@ -194,13 +196,13 @@ export default function GameDeck({ onNavigate }) {
             {visibleGames.map(game => {
               const isSelected = selectedGame && game.id === selectedGame.id;
               return (
-                <div key={game.id} className="gb-shelf-item-wrap">
+                <div key={game.id} className={`gb-shelf-item-wrap ${isSelected ? 'is-selected' : ''}`}>
                   <GameCaseCard
                     game={game}
                     isSelected={isSelected}
                     onClick={() => handleSelectCase(game.id)}
-                    width={130}
-                    height={195}
+                    width={92}
+                    height={138}
                     className={`deck-case-${game.id}`}
                   />
                   <div className="gb-shelf-item-label">
@@ -221,7 +223,7 @@ export default function GameDeck({ onNavigate }) {
               <div className="gb-console-led-group">
                 <span className={`gb-console-led ${isPlaying ? 'on' : 'standby'}`} />
                 <span className="gb-console-model">
-                  TOOL-BOX ARCADE DECK // {selectedGame ? selectedGame.discLabel : 'PS2 SYSTEM STANDBY'}
+                  GAME-BOX ARCADE // {selectedGame ? selectedGame.discLabel : 'PS2 READY'}
                 </span>
               </div>
               <div className="gb-console-state-badge">
@@ -266,6 +268,15 @@ export default function GameDeck({ onNavigate }) {
                       {selectedGame?.description || '진열대에서 게임을 고르고 PLAY를 누르면 CD가 케이스에서 나와 콘솔에 들어갑니다.'}
                     </p>
                     <div className="gb-console-action-row">
+                      {selectedGame && (
+                        <button
+                          type="button"
+                          className="gb-btn-standalone"
+                          onClick={() => rankingRef.current?.showModal()}
+                        >
+                          순위 보기
+                        </button>
+                      )}
                       <button
                         type="button"
                         className="gb-btn-insert-play"
@@ -282,86 +293,34 @@ export default function GameDeck({ onNavigate }) {
           </div>
         </section>
 
-        {/* RIGHT — GAME RANKING & TECHNICAL SPEC */}
-        <aside className="gb-deck-ranking-zone">
-          <div className="gb-deck-panel-header">
-            <h2>GAME RANKING &amp; SPEC</h2>
-            <span className="gb-deck-badge">TOP 10</span>
-          </div>
 
-          {selectedGame ? (
-            <>
-              <div className="gb-deck-spec-card">
-                <div className="gb-spec-row">
-                  <span>게임명</span>
-                  <strong>{selectedGame.name}</strong>
-                </div>
-                <div className="gb-spec-row">
-                  <span>디스크 식별자</span>
-                  <code>{selectedGame.discLabel}</code>
-                </div>
-                <div className="gb-spec-row">
-                  <span>플레이 인원</span>
-                  <strong>{selectedGame.playersLabel}</strong>
-                </div>
-                <div className="gb-spec-row">
-                  <span>화면 비율 / 입력</span>
-                  <strong>{selectedGame.aspectRatio} · {selectedGame.inputDevices.join(', ')}</strong>
-                </div>
-                <div className="gb-spec-row">
-                  <span>실행 URL</span>
-                  <code>{selectedGame.launchUrl}</code>
-                </div>
-                <div className="gb-spec-row">
-                  <span>기록 연동</span>
-                  <span>{selectedGame.eventSupport}</span>
-                </div>
-              </div>
-
-              <div className="gb-deck-ranking-box">
-                <h3>🏆 {selectedGame.name} TOP 10</h3>
-                {loadingRankings ? (
-                  <div className="gb-deck-empty">랭킹 데이터를 불러오는 중...</div>
-                ) : deckRankings.length === 0 ? (
-                  <div className="gb-deck-empty">
-                    아직 이 게임의 대전 완료 기록이 없습니다.<br />
-                    게임을 플레이하면 순위가 집계됩니다.
-                  </div>
-                ) : (
-                  <table className="gb-deck-table">
-                    <thead>
-                      <tr>
-                        <th>순위</th>
-                        <th>플레이어</th>
-                        <th>승/패</th>
-                        <th>최고점</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {deckRankings.map((row, idx) => (
-                        <tr key={row.userId || idx}>
-                          <td>#{idx + 1}</td>
-                          <td>{row.name}</td>
-                          <td>{row.wins}승 {row.losses}패</td>
-                          <td>{Math.round(row.bestScore || 0).toLocaleString()}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                )}
-              </div>
-            </>
-          ) : (
-            <div className="gb-deck-ranking-box">
-              <h3>🏆 실시간 랭킹 &amp; 사양</h3>
-              <div className="gb-deck-empty" style={{ padding: '36px 16px', lineHeight: 1.7 }}>
-                왼쪽 진열대에서 원하는 <strong>게임 CD 케이스</strong>를 선택하면<br />
-                해당 게임의 공식 사양 정보와 실시간 TOP 10 랭킹이 표시됩니다.
-              </div>
-            </div>
-          )}
-        </aside>
       </div>
+
+      <dialog className="gb-arcade-ranking-dialog" ref={rankingRef}>
+        <form method="dialog">
+          <button type="submit" className="gb-launcher-btn">닫기</button>
+        </form>
+        <h2>{selectedGame?.name} TOP 10</h2>
+        {loadingRankings ? (
+          <p>순위를 불러오는 중이에요.</p>
+        ) : deckRankings.length ? (
+          <table className="gb-deck-table">
+            <thead><tr><th>순위</th><th>플레이어</th><th>승/패</th><th>최고 점수</th></tr></thead>
+            <tbody>
+              {deckRankings.map((row, index) => (
+                <tr key={row.userId || index}>
+                  <td>{index + 1}</td>
+                  <td>{row.name}</td>
+                  <td>{row.wins}승 {row.losses}패</td>
+                  <td>{Math.round(row.bestScore || 0).toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>아직 등록된 기록이 없어요.</p>
+        )}
+      </dialog>
     </div>
   );
 }

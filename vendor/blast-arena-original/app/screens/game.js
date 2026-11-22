@@ -38,8 +38,6 @@ let arenaResizeObserver = null;
 let arenaResizeListenerAttached = false;
 let lastArenaShape = { cols: MAP_WIDTH, rows: MAP_HEIGHT };
 
-let tileVNodeCache = new Map();
-let lastTileStates = new Map();
 
 function initFPS() {
   if (fpsInterval) return;
@@ -70,8 +68,7 @@ export function resetGameTimer() {
 }
 
 export function clearTileCache() {
-  tileVNodeCache.clear();
-  lastTileStates.clear();
+  hitPlayers.clear();
 }
 
 export function markPlayerHit(playerId) {
@@ -163,7 +160,7 @@ const playerRow = (player, idx, sessionId) => {
     key: player.id
   },
     createElement('div', { className: `player-avatar p${idx}` },
-      player.nickname.substring(0, 2).toUpperCase()
+      createElement('span', { className: 'player-sprite', 'aria-hidden': 'true' })
     ),
     createElement('div', { className: 'player-details' },
       createElement('span', { className: 'player-name' },
@@ -246,24 +243,15 @@ const sidebar = (currentPlayer, isSpectator, playersArray, session, chat, websoc
   chatSection(chat, session, websocket)
 );
 
-function getTileStateKey(tile, playerOnTile, bombOnTile, powerUpOnTile, explosionOnTile, playerIdx, isSelf, isHit, bombState) {
-  let stateKey = `${tile.type}`;
-  if (playerOnTile) {
-    stateKey += `-p${playerIdx}-${isSelf ? 's' : 'o'}-${isHit ? 'h' : 'n'}`;
-  }
-  if (bombOnTile) {
-    stateKey += `-b${bombState}`;
-  }
-  if (powerUpOnTile) {
-    stateKey += `-pu${powerUpOnTile.kind}`;
-  }
-  if (explosionOnTile) {
-    stateKey += '-ex';
-  }
-  return stateKey;
-}
-
-const buildTileElements = (tiles, players, bombs, powerUps, explosions, sessionId, playersArray) => {
+const buildTileElements = (tiles, players, bombs, powerUps, explosions, sessionId) => {
+  const alivePlayers = Object.values(players || {}).filter(player => player.status === 'alive');
+  const playersByTile = new Map();
+  alivePlayers.forEach((player, playerIdx) => {
+    const key = `${player.x},${player.y}`;
+    const entries = playersByTile.get(key) || [];
+    entries.push({ player, playerIdx });
+    playersByTile.set(key, entries);
+  });
   const bombMap = new Map();
   const powerUpMap = new Map();
   const explosionMap = new Map();
@@ -292,6 +280,7 @@ const buildTileElements = (tiles, players, bombs, powerUps, explosions, sessionI
     const bombOnTile = bombMap.get(key);
     const powerUpOnTile = powerUpMap.get(key);
     const explosionOnTile = explosionMap.get(key);
+    const playerEntries = playersByTile.get(key) || [];
 
     let bombState = '';
     if (bombOnTile) {
@@ -300,14 +289,6 @@ const buildTileElements = (tiles, players, bombs, powerUps, explosions, sessionI
       if (age > fuse * 0.7) bombState = 'c';
       else if (age > fuse * 0.4) bombState = 'w';
       else bombState = 'n';
-    }
-
-    const stateKey = getTileStateKey(tile, null, bombOnTile, powerUpOnTile, explosionOnTile, -1, false, false, bombState);
-    const lastState = lastTileStates.get(key);
-
-    if (lastState === stateKey && tileVNodeCache.has(key)) {
-      result[i] = tileVNodeCache.get(key);
-      continue;
     }
 
     let cls = 'tile';
@@ -322,56 +303,33 @@ const buildTileElements = (tiles, players, bombs, powerUps, explosions, sessionI
     }
     if (powerUpOnTile) cls += ` has-powerup ${powerUpOnTile.kind}`;
     if (explosionOnTile) cls += ' has-explosion';
+    if (playerEntries.length) cls += ' has-player';
+
+    const playerElements = playerEntries.map(({ player, playerIdx }) => {
+      const isSelf = player.id === sessionId;
+      const isHit = hitPlayers.has(player.id);
+      return createElement('div', {
+        key: `player-${player.id}`,
+        className: `player p${playerIdx % 4} ${isSelf ? 'me' : ''} ${isHit ? 'hit' : ''}`,
+        'aria-label': player.nickname || player.name || `P${playerIdx + 1}`,
+      }, createElement('span', { className: 'player-sprite', 'aria-hidden': 'true' }));
+    });
 
     const vNode = createElement('div', {
       key: `t-${x}-${y}`,
       className: cls,
       style: { gridColumn: x + 1, gridRow: y + 1 }
     },
-      bombOnTile ? createElement('div', { className: 'bomb' }) : null,
-      powerUpOnTile ? createElement('div', { className: `powerup ${powerUpOnTile.kind}` }) : null,
-      explosionOnTile ? createElement('div', { className: 'explosion' }) : null
+      ...playerElements,
+      bombOnTile ? createElement('div', { key: `bomb-${bombOnTile.id || key}`, className: 'bomb' }) : null,
+      powerUpOnTile ? createElement('div', { key: `powerup-${powerUpOnTile.id || key}`, className: `powerup ${powerUpOnTile.kind}` }) : null,
+      explosionOnTile ? createElement('div', { key: `explosion-${explosionOnTile.id || key}`, className: 'explosion' }) : null
     );
 
-    tileVNodeCache.set(key, vNode);
-    lastTileStates.set(key, stateKey);
     result[i] = vNode;
   }
 
   return result;
-};
-
-const buildPlayerElements = (playersArray, sessionId, tileWidth, tileHeight, cols = MAP_WIDTH, rows = MAP_HEIGHT) => {
-  const safeCols = cols || MAP_WIDTH || 27;
-  const safeRows = rows || MAP_HEIGHT || 15;
-  return playersArray
-    .filter(p => p.status === 'alive')
-    .map((player, idx) => {
-      const isSelf = player.id === sessionId;
-      const isHit = hitPlayers.has(player.id);
-      const nickname = player.nickname || player.name || `P${idx + 1}`;
-      const initials = (nickname.length >= 2 ? nickname.substring(0, 2) : nickname).toUpperCase();
-
-      // Percentage-based coordinates guarantee pixel-perfect placement on the CSS Grid cells
-      const leftPercent = ((player.x || 0) / safeCols) * 100;
-      const topPercent = ((player.y || 0) / safeRows) * 100;
-      const widthPercent = (1 / safeCols) * 100;
-      const heightPercent = (1 / safeRows) * 100;
-
-      return createElement('div', {
-        key: `player-${player.id}`,
-        className: `player-entity p${idx % 4} ${isSelf ? 'me' : ''} ${isHit ? 'hit' : ''}`,
-        style: {
-          left: `${leftPercent}%`,
-          top: `${topPercent}%`,
-          width: `${widthPercent}%`,
-          height: `${heightPercent}%`,
-          zIndex: isSelf ? 20 : 15
-        }
-      },
-        createElement('span', { className: 'initial' }, initials)
-      );
-    });
 };
 
 const overlays = ({ showLeaveConfirm, handleLeaveCancel, handleLeaveConfirm, isEliminated, showEliminationOverlay, status, isWinner, isSpectator, winnerNames, isDraw }) => [
@@ -456,17 +414,7 @@ export function GameScreen(state, store) {
     );
   }
 
-  const tileElements = buildTileElements(tiles, players, bombs, powerUps, explosions, session?.playerId, playersArray);
-
-  const arenaEl = document.querySelector('.arena');
-  let tileWidth = 32, tileHeight = 32;
-  if (arenaEl && arenaEl.clientWidth > 0 && arenaEl.clientHeight > 0) {
-    const arenaWidth = arenaEl.clientWidth;
-    const arenaHeight = arenaEl.clientHeight;
-    tileWidth = arenaWidth / width;
-    tileHeight = arenaHeight / height;
-  }
-  const playerElements = buildPlayerElements(playersArray, session?.playerId, tileWidth, tileHeight, width, height);
+  const tileElements = buildTileElements(tiles, players, bombs, powerUps, explosions, session?.playerId);
 
   const [showLeaveConfirm, setShowLeaveConfirm] = [
     state.ui?.showLeaveConfirm || false,
@@ -510,8 +458,7 @@ export function GameScreen(state, store) {
           className: 'arena',
           style: { '--cols': width, '--rows': height }
         },
-          ...tileElements,
-          createElement('div', { className: 'players-layer' }, ...playerElements)
+          ...tileElements
         )
       )
     ),
