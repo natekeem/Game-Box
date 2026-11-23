@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Draw - Three Mystery Boxes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .title {
+            color: white;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1400px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .box-container {
+            perspective: 1000px;
+        }
+
+        .box {
+            width: 280px;
+            height: 350px;
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+        }
+
+        .box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        .box-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .box-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .box-subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .draw-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .draw-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+        }
+
+        .draw-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Modal styles for displaying the question */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.5);
+            animation: zoomIn 0.5s ease;
+            position: relative;
+            transition: height 0.3s ease;
+        }
+
+        .modal-icon {
+            font-size: 5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: rotate360 1s ease;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .modal-question {
+            font-size: 1.3rem;
+            color: #333;
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .modal-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+        }
+
+        .modal-btn.next {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotate360 {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Smooth content update animation */
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        @keyframes fadeInContent {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-updating {
+            animation: fadeOut 0.2s ease;
+        }
+
+        .question-updated {
+            animation: fadeInContent 0.3s ease;
+        }
+
+        /* Drawing animation */
+        .drawing {
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-10px) rotate(-5deg); }
+            75% { transform: translateX(10px) rotate(5deg); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .box {
+                width: 250px;
+                height: 320px;
+            }
+
+            .modal-content {
+                padding: 30px;
+            }
+
+            .modal-question {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">🎲 Lucky Draw Game 🎲</h1>
+    
+    <div class="container">
+        <!-- Box 1: Daily Choices -->
+        <div class="box-container">
+            <div class="box" onclick="drawQuestion(0)">
+                <div class="box-icon">🎯</div>
+                <div class="box-title">Box 1</div>
+                <div class="box-subtitle">Daily Choices<br>Which do you prefer?</div>
+                <button class="draw-btn">Draw!</button>
+            </div>
+        </div>
+
+        <!-- Box 2: Amazing Hypotheticals -->
+        <div class="box-container">
+            <div class="box" onclick="drawQuestion(1)">
+                <div class="box-icon">✨</div>
+                <div class="box-title">Box 2</div>
+                <div class="box-subtitle">Amazing Hypotheticals<br>Imagination time!</div>
+                <button class="draw-btn">Draw!</button>
+            </div>
+        </div>
+
+        <!-- Box 3: Team & Personality -->
+        <div class="box-container">
+            <div class="box" onclick="drawQuestion(2)">
+                <div class="box-icon">🌟</div>
+                <div class="box-title">Box 3</div>
+                <div class="box-subtitle">Team & Personality<br>Show your uniqueness!</div>
+                <button class="draw-btn">Draw!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for displaying questions -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-icon" id="modalIcon">🎊</div>
+            <div class="modal-title" id="modalTitle">Your Question</div>
+            <div class="modal-question" id="modalQuestion"></div>
+            <div class="modal-buttons">
+                <button class="modal-btn" onclick="closeModal()">Close</button>
+                <button class="modal-btn next" onclick="drawNextQuestion()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration: Three boxes with their questions
+        const boxes = [
+            {
+                // Box 1: Daily Choices (Two-choice questions)
+                icon: '🎯',
+                title: 'Daily Choices',
+                questions: [
+                    '你更喜欢 看日出 还是 看日落？',
+                    '你更喜欢 吃辣 还是 吃甜？也可以都喜欢~',
+                    '你更喜欢 在家窝着 还是 出门玩耍？',
+                    '你更喜欢 发语音 还是 打字 聊天？',
+                    '你更喜欢 夏天 还是 冬天？',
+                    '你更喜欢 猫咪 还是 狗狗？',
+                    '你更喜欢 咖啡 还是 茶？',
+                    '你更喜欢 一个人看电影 还是 和朋友去KTV？',
+                    '你更喜欢 硬核游戏 还是 休闲小游戏？',
+                    '你更喜欢 徒步旅行 还是 海边度假？',
+                    '你更喜欢 看书 还是 听播客？',
+                    '你更喜欢 早起 还是 熬夜？'
+                ]
+            },
+            {
+                // Box 2: Amazing Hypotheticals
+                icon: '✨',
+                title: 'Amazing Hypotheticals',
+                questions: [
+                    '如果你可以 一整天 不花钱吃 任何一家餐厅 的食物，你会选择哪家？',
+                    '你 最常用 的一个 表情包 是什么？（描述一下或简单模仿）',
+                    '说一件你 小时候 做过的 最"蠢萌" 的事情。',
+                    '如果你被困在 荒岛 上，只能带 一样 东西，你会带什么？',
+                    '如果你可以给你的宠物（或你最喜欢的动物） 一天说话的能力，你会问它什么？',
+                    '你 最不擅长 但又 不得不去做 的一件家务是什么？',
+                    '如果你可以 瞬间移动 到世界任何一个地方，但只能待 5分钟，你会去哪？',
+                    '用 一种食物 来形容你 今天的精神状态。',
+                    '你有没有一个 看很多遍但你依然爱看 的电视剧或电影？',
+                    '你有什么 "旅行必备" 的物品？',
+                    '描述一个你 童年时期 坚信不疑的 "都市传说" 或 "迷信"。',
+                    '如果你有机会让 一个动漫人物出现在世界上，你会选谁？'
+                ]
+            },
+            {
+                // Box 3: Team & Unique Personality
+                icon: '🌟',
+                title: 'Team & Personality',
+                questions: [
+                    '有没有一个标签描述自己？比如猫咪控，厨神，辩论大神',
+                    '你 是哪一个领域的 "隐藏专家"？（比如：某款游戏的资深玩家，做饭高手）',
+                    '你在团队中，希望自己未来扮演 一个什么样的"角色"？（比如：气氛担当、咖啡机守护者、PPT美化师）',
+                    '你觉得在新的工作环境中， 哪种 小事情 会让你感到 "充满能量"？',
+                    '如果让你用 三个标签 来代表你的 工作风格，你会选择哪三个？善于沟通，雷厉风行，倾听者，细节控，严谨，工作狂，创新者',
+                    '你最喜欢 在什么样 的背景音（或音乐）下工作？',
+                    '如果你必须 在未来一年内 掌握一项 新技能，你会选择哪一项？比如：英语沟通能力，深谙AI领域技术能力等等'
+                ]
+            }
+        ];
+
+        // Keep track of used questions for each box
+        const usedQuestions = [[], [], []];
+        
+        // Track the current box being used
+        let currentBoxIndex = null;
+
+        /**
+         * Draw a random question from the specified box
+         * @param {number} boxIndex - Index of the box (0, 1, or 2)
+         */
+        function drawQuestion(boxIndex) {
+            currentBoxIndex = boxIndex;
+            const box = boxes[boxIndex];
+            const availableQuestions = box.questions.filter((_, index) => 
+                !usedQuestions[boxIndex].includes(index)
+            );
+
+            // If all questions have been used, reset the used questions list
+            if (availableQuestions.length === 0) {
+                usedQuestions[boxIndex] = [];
+                availableQuestions.push(...box.questions);
+            }
+
+            // Select a random question from available ones
+            const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+            const selectedQuestion = availableQuestions[randomIndex];
+            
+            // Mark this question as used
+            const originalIndex = box.questions.indexOf(selectedQuestion);
+            usedQuestions[boxIndex].push(originalIndex);
+
+            // Add drawing animation to the box
+            const boxElement = event.currentTarget;
+            boxElement.classList.add('drawing');
+            setTimeout(() => {
+                boxElement.classList.remove('drawing');
+            }, 500);
+
+            // Display the question in modal after a short delay
+            setTimeout(() => {
+                showModal(box.icon, box.title, selectedQuestion);
+            }, 300);
+        }
+
+        /**
+         * Show modal with the drawn question
+         * @param {string} icon - Icon for the modal
+         * @param {string} title - Title of the box
+         * @param {string} question - The question text
+         */
+        function showModal(icon, title, question) {
+            document.getElementById('modalIcon').textContent = icon;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalQuestion').textContent = question;
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        /**
+         * Draw the next question from the current box
+         */
+        function drawNextQuestion() {
+            if (currentBoxIndex === null) return;
+            
+            const box = boxes[currentBoxIndex];
+            const availableQuestions = box.questions.filter((_, index) => 
+                !usedQuestions[currentBoxIndex].includes(index)
+            );
+
+            // If all questions have been used, reset the used questions list
+            if (availableQuestions.length === 0) {
+                usedQuestions[currentBoxIndex] = [];
+                availableQuestions.push(...box.questions);
+            }
+
+            // Select a random question from available ones
+            const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+            const selectedQuestion = availableQuestions[randomIndex];
+            
+            // Mark this question as used
+            const originalIndex = box.questions.indexOf(selectedQuestion);
+            usedQuestions[currentBoxIndex].push(originalIndex);
+
+            // Smooth content update with fade animation
+            const questionElement = document.getElementById('modalQuestion');
+            const iconElement = document.getElementById('modalIcon');
+            const titleElement = document.getElementById('modalTitle');
+            const modalContent = document.querySelector('.modal-content');
+            
+            // Lock the current height to prevent jumping
+            const currentHeight = modalContent.offsetHeight;
+            modalContent.style.height = currentHeight + 'px';
+            
+            // Add fade out effect
+            questionElement.classList.add('question-updating');
+            iconElement.classList.add('question-updating');
+            
+            // Wait for fade out animation to complete, then update content
+            setTimeout(() => {
+                // Update content
+                document.getElementById('modalIcon').textContent = box.icon;
+                document.getElementById('modalTitle').textContent = box.title;
+                document.getElementById('modalQuestion').textContent = selectedQuestion;
+                
+                // Calculate new height after content update
+                modalContent.style.height = 'auto';
+                const newHeight = modalContent.offsetHeight;
+                modalContent.style.height = currentHeight + 'px';
+                
+                // Trigger reflow
+                modalContent.offsetHeight;
+                
+                // Animate to new height
+                modalContent.style.height = newHeight + 'px';
+                
+                // Remove fade out class and add fade in class
+                questionElement.classList.remove('question-updating');
+                iconElement.classList.remove('question-updating');
+                questionElement.classList.add('question-updated');
+                iconElement.classList.add('question-updated');
+                
+                // Remove fade in class and height lock after animation completes
+                setTimeout(() => {
+                    questionElement.classList.remove('question-updated');
+                    iconElement.classList.remove('question-updated');
+                    modalContent.style.height = 'auto';
+                }, 300);
+            }, 200);
+        }
+
+        /**
+         * Close the modal
+         */
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            currentBoxIndex = null;
+        }
+
+        // Close modal when clicking outside of modal content
+        document.getElementById('modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

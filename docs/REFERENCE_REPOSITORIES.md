@@ -20,6 +20,11 @@ GAME-BOX는 검증된 오픈소스 프로젝트들을 원본 그대로 보존(`v
 | **배틀박스** | `battlebox/` | HTML5 Canvas, Vanilla JS | **MIT** | **Battle Box (미니게임 15종)**<br>반응속도 대결, 틱택토, 사목, 오목, 기억력 카드, 숫자 야구 등 15종 실시간/BOT 미니게임 코어 엔진입니다. |
 | **레트로 배구**| `pikachu-volleyball-src/`<br>`pikachu-volleyball/` | WebAssembly / C++, JS | **오픈소스** | **피카츄 배구 1997 복원판 (Kyuchumoney)**<br>1997 SACHI SOFT 원작을 웹 및 WebAssembly로 복원한 프로젝트입니다. 1인 AI 대전, 2인 로컬, 퀵 매칭을 지원합니다. |
 | **물리 추첨** | `roulette-src/`<br>`roulette/` | Box2D-WASM, HTML5 Canvas | **MIT** | **Marble Roulette (마블 룰렛 - lazygyu)**<br>Box2D 물리 엔진 기반의 구슬 룰렛 추첨기입니다. 사내 부서/임직원 명단 프리셋 불러오기 및 실시간 추첨 결과 기록을 지원합니다. |
+| **추첨 1: 사다리/로또** | `vendor/pickle-eight/` | TypeScript, Web Crypto RNG | **MIT** | **운빨연구소 (Tae-sung-Kim/pickle-eight)**<br>`src/lib/random.ts`의 Web Crypto 거부 샘플링 무편향 난수 알고리즘 및 `src/features/lotto/utils/lotto.util.ts` 로또 번호대/등수 판정 유틸리티를 재사용합니다. (원본에 사다리타기는 미구현 상태이므로 아미다쿠지 전단사 폭탄 사다리 엔진은 자체 구현) |
+| **추첨 2: 3D 로또** | `vendor/3d-lottery/` | Three.js, WebGL, GLB | **MIT / ISC** | **3D Lottery Simulation (steller102/3d-lottery)**<br>투명 아크릴 구형 추첨실, 양방향 회전 교반 패들(`L_pale1`, `L_pale2`), 번호 공 텍스처 아틀라스 구조를 활용하고 45개 번호 공 3D 강체 충돌·송풍 및 6+1 배출 통로 물리 엔진으로 확장했습니다. |
+| **추첨 3: 팀 나누기** | `vendor/random-team-generator/` | React, TypeScript | **MIT** | **Random Team Generator (iamsujanstha/random-team-generator)**<br>`generateBalancedTeams.ts` 그리디 실력 균등 배정 알고리즘을 재사용하고 무편향 사전 셔플, 한 명씩 드래프트 공개, 재추첨 및 클립보드 복사를 통합했습니다. |
+| **추첨 4: 룰렛** | `vendor/spin-the-wheel/` | Vanilla ES Modules, Canvas 2D, Web Audio | **MIT** | **Spin the Wheel (alsatianco/spin-the-wheel)**<br>원본 `WheelEngine`(`wheel-engine.js`), `AudioEngine`(`audio-engine.js`), `THEME_PRESETS`(`themes.js`)를 직접 재사용하여 관성 감속 회전 물리, 효과음, 미스터리 모드, 서바이벌 탈락 모드를 구동합니다. |
+| **추첨 5: 제비뽑기** | `vendor/lottery-draw/` | HTML5, CSS3, JS | **MIT** | **Lucky Draw Game (hongjiapeng/lottery-draw)**<br>비중복 제비 풀(`usedQuestions`) 관리 구조를 참고하여 6면 입체 CSS 3D 제비상자, 흔들기 물리, 접힌 종이 제비 추출 및 3단 종이 펼침 연출을 제작했습니다. |
 | **DOS 원본** | `references/`<br>`original-dos/` | DOS 실행 바이너리 (`.EXE`) | **보존 자료** | **한컴타자연습 (1996~2014) & 한메타자교사 3.0**<br>정품 DOS 원본 파일(`_HTTD_.EXE`, `HTT.EXE`)과 버전별 공식 압축본이 안전하게 보존되어 있으며, js-dos 8.5.3 플레이어를 통해 브라우저에서 구동됩니다. |
 
 ---

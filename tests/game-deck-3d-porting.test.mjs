@@ -66,11 +66,11 @@ test('포팅된 FinallyCaseEngine 모듈이 원본 engine.ts 핵심 API를 제�
   assert.ok(generatedCss.includes('transform-style: preserve-3d'), 'CSS must preserve 3d');
 });
 
-test('기존 아케이드 게임 레지스트리(19종)와 뽑기 게임 레지스트리(1종)가 보존되고 GameDeck 3D 환경에 정상 바인딩된다', async () => {
+test('기존 아케이드 게임 레지스트리(19종)와 RANDOM PLAY ZONE 뽑기 게임 레지스트리(5종)가 보존되고 GameDeck 3D 환경에 정상 바인딩된다', async () => {
   const { ARCADE_GAMES } = await import('../tool-box/src/features/game-box/registry/arcadeGames.js');
   const { DRAW_GAMES } = await import('../tool-box/src/features/game-box/registry/drawGames.js');
   assert.equal(ARCADE_GAMES.length, 19, 'Must have 19 registered arcade games in GAME DECK');
-  assert.equal(DRAW_GAMES.length, 1, 'Must have 1 registered draw game (Roulette) in DRAW PACK');
+  assert.equal(DRAW_GAMES.length, 6, 'Must have 6 registered draw games (Original Marble Roulette + 5 RANDOM PLAY ZONE games) in DRAW PACK');
 
   for (const game of [...ARCADE_GAMES, ...DRAW_GAMES]) {
     assert.ok(game.id, `Game must have an id`);

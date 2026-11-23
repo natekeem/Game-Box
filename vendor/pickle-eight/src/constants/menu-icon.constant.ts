@@ -1,0 +1,37 @@
+import {
+  BarChart2,
+  Bookmark,
+  BookOpenText,
+  CalendarSearch,
+  CheckCircle2,
+  Layers,
+  type LucideIcon,
+  Moon,
+  PawPrint,
+  PlayCircle,
+  ScrollText,
+  Star,
+  Telescope,
+  Ticket,
+  Utensils,
+  Wand2,
+} from 'lucide-react';
+
+/** MENU_LIST 항목의 `icon` 이름 → lucide 아이콘 */
+export const MENU_ICONS: Readonly<Record<string, LucideIcon>> = {
+  Ticket,
+  CalendarSearch,
+  CheckCircle2,
+  Bookmark,
+  BarChart2,
+  Wand2,
+  PlayCircle,
+  Moon,
+  Layers,
+  Star,
+  Utensils,
+  PawPrint,
+  Telescope,
+  ScrollText,
+  BookOpenText,
+};
