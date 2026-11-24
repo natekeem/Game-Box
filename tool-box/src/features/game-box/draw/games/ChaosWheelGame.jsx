@@ -43,11 +43,13 @@ export default function ChaosWheelGame({ onBack }) {
   const [eliminatedLabels, setEliminatedLabels] = useState([]);
   const [mysteryMode, setMysteryMode] = useState(false);
   const [eliminationMode, setEliminationMode] = useState(false);
-  const [themePreset, setThemePreset] = useState('cyberpunk');
+  const [themePreset, setThemePreset] = useState('retro');
   const [tickVariant, setTickVariant] = useState('wooden');
   const [winVariant, setWinVariant] = useState('fanfare');
   const [spinDurationSec, setSpinDurationSec] = useState(3.2);
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const [view3D, setView3D] = useState(true);
+  const [pointerKick, setPointerKick] = useState(false);
 
   // Separated states:
   // 1) Locked draw outcome (`lastWinner`)
@@ -58,8 +60,60 @@ export default function ChaosWheelGame({ onBack }) {
 
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
+  const pegRingRef = useRef(null);
   const engineRef = useRef(null);
   const audioRef = useRef(null);
+  const previewTimersRef = useRef([]);
+  const pointerTimerRef = useRef(null);
+
+  const clearPreviewTimers = () => {
+    previewTimersRef.current.forEach(t => clearTimeout(t));
+    previewTimersRef.current = [];
+  };
+
+  useEffect(() => {
+    return () => {
+      clearPreviewTimers();
+      if (pointerTimerRef.current) clearTimeout(pointerTimerRef.current);
+    };
+  }, []);
+
+  const triggerPointerKick = () => {
+    setPointerKick(true);
+    if (pointerTimerRef.current) clearTimeout(pointerTimerRef.current);
+    pointerTimerRef.current = setTimeout(() => setPointerKick(false), 75);
+  };
+
+  // Audition tick sound immediately (plays 5 realistic decelerating ticks!)
+  const playTickPreview = (variant) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    clearPreviewTimers();
+    audio.ensureReady();
+    const pattern = [
+      { delay: 0, vel: 0.92 },
+      { delay: 95, vel: 0.74 },
+      { delay: 210, vel: 0.56 },
+      { delay: 350, vel: 0.38 },
+      { delay: 520, vel: 0.22 },
+    ];
+    pattern.forEach(({ delay, vel }) => {
+      const t = setTimeout(() => {
+        audio.playTickVariant(variant, vel);
+        triggerPointerKick();
+      }, delay);
+      previewTimersRef.current.push(t);
+    });
+  };
+
+  // Audition win fanfare sound immediately
+  const playWinPreview = (variant) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    clearPreviewTimers();
+    audio.ensureReady();
+    audio.playWinVariant(variant);
+  };
 
   const parsedLabels = useMemo(() => {
     const raw = itemsText
@@ -97,7 +151,18 @@ export default function ChaosWheelGame({ onBack }) {
       : null;
     if (ro) ro.observe(containerRef.current);
 
+    // Keep the physical rim pegs (막대기) locked 1:1 with the wheel's live rotation angle
+    let pegRaf = null;
+    const syncPegs = () => {
+      if (pegRingRef.current && engineRef.current) {
+        pegRingRef.current.style.transform = `rotate(${engineRef.current.getRotation()}rad)`;
+      }
+      pegRaf = requestAnimationFrame(syncPegs);
+    };
+    pegRaf = requestAnimationFrame(syncPegs);
+
     return () => {
+      if (pegRaf) cancelAnimationFrame(pegRaf);
       if (ro) ro.disconnect();
       engine.destroy();
       engineRef.current = null;
@@ -194,6 +259,7 @@ export default function ChaosWheelGame({ onBack }) {
       pauseAtEndMs: 120,
       reducedMotion: false,
       onTick: (_segIdx, velocity) => {
+        triggerPointerKick();
         if (soundEnabled && audioRef.current) {
           audioRef.current.playTickVariant(tickVariant, velocity);
         }
@@ -328,6 +394,13 @@ export default function ChaosWheelGame({ onBack }) {
               </button>
               <button
                 type="button"
+                className={`rpz-chip ${view3D ? 'active' : ''}`}
+                onClick={() => setView3D(v => !v)}
+              >
+                🧊 3D 입체 뷰 {view3D ? 'ON' : 'OFF'}
+              </button>
+              <button
+                type="button"
                 className={`rpz-chip ${soundEnabled ? 'active' : ''}`}
                 onClick={() => setSoundEnabled(v => !v)}
               >
@@ -336,23 +409,70 @@ export default function ChaosWheelGame({ onBack }) {
             </div>
           </div>
 
-          <div className="rpz-wheel-stage-wrap">
-            <div ref={containerRef} className="rpz-wheel-container">
-              {/* Top Pointer Pin */}
-              <div className="rpz-wheel-pointer" aria-hidden="true">▼</div>
-              <canvas
-                ref={canvasRef}
-                className="rpz-wheel-canvas"
-                data-testid="wheel-canvas"
-              />
-              <button
-                type="button"
-                className="rpz-wheel-center-btn"
-                onClick={handleSpin}
-                disabled={phase === 'spinning' || activeEntries.length < 2}
-              >
-                {phase === 'spinning' ? '•••' : 'SPIN'}
-              </button>
+          <div className={`rpz-wheel-stage-wrap ${view3D ? 'mode-3d' : ''} phase-${phase}`}>
+            <div className="rpz-wheel-3d-rig">
+              {/* 3D Dimensional Brass & Charcoal Wheel Housing */}
+              <div className={`rpz-wheel-bezel-3d ${view3D ? 'tilted' : ''} ${phase === 'spinning' ? 'spinning' : ''}`}>
+                {/* 16 Studio Chaser Bulbs Around Outer Rim */}
+                <div className="rpz-wheel-bulbs" aria-hidden="true">
+                  {Array.from({ length: 16 }, (_, i) => (
+                    <span
+                      key={i}
+                      className="rpz-wheel-bulb"
+                      style={{ '--bulb-angle': `${i * 22.5}deg`, '--bulb-idx': i }}
+                    />
+                  ))}
+                </div>
+
+                {/* Mechanical Brass & Crimson Top Flapper Pointer (Physically Deflects on Every Tick!) */}
+                <div className={`rpz-wheel-flapper ${pointerKick ? 'kicked' : ''}`} aria-hidden="true">
+                  <svg viewBox="0 0 46 58" width="42" height="52">
+                    <defs>
+                      <linearGradient id="rpzPtrGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#f5d59c" />
+                        <stop offset="55%" stopColor="#cf8050" />
+                        <stop offset="100%" stopColor="#8a3420" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M23,55 L6,18 C4,10 11,3 23,3 C35,3 42,10 40,18 Z" fill="url(#rpzPtrGrad)" stroke="#1a1816" strokeWidth="2.5" />
+                    <circle cx="23" cy="16" r="6" fill="#2a2824" stroke="#f5d59c" strokeWidth="2" />
+                  </svg>
+                </div>
+
+                <div ref={containerRef} className="rpz-wheel-container">
+                  <canvas
+                    ref={canvasRef}
+                    className="rpz-wheel-canvas"
+                    data-testid="wheel-canvas"
+                  />
+                  {/* Synchronized Rotating Metallic Pegs (막대기) at Every Slice Boundary */}
+                  <div ref={pegRingRef} className="rpz-wheel-peg-ring" aria-hidden="true">
+                    {activeEntries.map((entry, idx) => (
+                      <span
+                        key={entry.id}
+                        className="rpz-wheel-peg"
+                        style={{ '--peg-angle': `${(idx * 360) / Math.max(1, activeEntries.length)}deg` }}
+                      />
+                    ))}
+                  </div>
+                  {/* Glossy 3D Acrylic Specular Sheen Overlay */}
+                  <div className="rpz-wheel-gloss-overlay" aria-hidden="true" />
+                  <button
+                    type="button"
+                    className="rpz-wheel-center-btn"
+                    onClick={handleSpin}
+                    disabled={phase === 'spinning' || activeEntries.length < 2}
+                  >
+                    <span>{phase === 'spinning' ? '•••' : 'SPIN'}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* 3D Brushed Metal Pedestal Stand */}
+              <div className="rpz-wheel-stand" aria-hidden="true">
+                <div className="rpz-wheel-stand-neck" />
+                <div className="rpz-wheel-stand-base" />
+              </div>
             </div>
 
             {phase === 'result' && lastWinner && (
@@ -499,33 +619,64 @@ export default function ChaosWheelGame({ onBack }) {
               />
             </label>
 
-            <div className="rpz-row-2col">
-              <label className="rpz-field">
-                <span>틱 효과음</span>
-                <select
-                  className="rpz-select"
-                  value={tickVariant}
-                  onChange={e => setTickVariant(e.target.value)}
-                >
-                  <option value="wooden">우드 핀 (Wooden)</option>
-                  <option value="click">메탈 클릭 (Click)</option>
-                  <option value="pop">버블 팝 (Pop)</option>
-                  <option value="digital">아케이드 (Digital)</option>
-                </select>
-              </label>
-              <label className="rpz-field">
-                <span>당첨 효과음</span>
-                <select
-                  className="rpz-select"
-                  value={winVariant}
-                  onChange={e => setWinVariant(e.target.value)}
-                >
-                  <option value="fanfare">팡파르 (Fanfare)</option>
-                  <option value="applause">박수 갈채 (Applause)</option>
-                  <option value="chime">벨 차임 (Chime)</option>
-                  <option value="sparkle">스파클 (Sparkle)</option>
-                </select>
-              </label>
+            <div className="rpz-sound-preview-group">
+              <div className="rpz-field">
+                <span>틱 효과음 (선택 시 5회 청음)</span>
+                <div className="rpz-sound-row">
+                  <select
+                    className="rpz-select"
+                    value={tickVariant}
+                    data-testid="wheel-tick-select"
+                    onChange={e => {
+                      const next = e.target.value;
+                      setTickVariant(next);
+                      playTickPreview(next);
+                    }}
+                  >
+                    <option value="wooden">우드 핀 (Wooden)</option>
+                    <option value="click">메탈 클릭 (Click)</option>
+                    <option value="pop">버블 팝 (Pop)</option>
+                    <option value="digital">아케이드 (Digital)</option>
+                  </select>
+                  <button
+                    type="button"
+                    className="rpz-btn-xs"
+                    data-testid="wheel-tick-preview-btn"
+                    onClick={() => playTickPreview(tickVariant)}
+                  >
+                    🔊 청음
+                  </button>
+                </div>
+              </div>
+
+              <div className="rpz-field">
+                <span>당첨 효과음 (선택 시 즉시 청음)</span>
+                <div className="rpz-sound-row">
+                  <select
+                    className="rpz-select"
+                    value={winVariant}
+                    data-testid="wheel-win-select"
+                    onChange={e => {
+                      const next = e.target.value;
+                      setWinVariant(next);
+                      playWinPreview(next);
+                    }}
+                  >
+                    <option value="fanfare">팡파르 (Fanfare)</option>
+                    <option value="applause">박수 갈채 (Applause)</option>
+                    <option value="chime">벨 차임 (Chime)</option>
+                    <option value="sparkle">스파클 (Sparkle)</option>
+                  </select>
+                  <button
+                    type="button"
+                    className="rpz-btn-xs"
+                    data-testid="wheel-win-preview-btn"
+                    onClick={() => playWinPreview(winVariant)}
+                  >
+                    🔊 청음
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -550,12 +701,6 @@ export default function ChaosWheelGame({ onBack }) {
                 ))}
               </ul>
             )}
-          </div>
-
-          <div className="rpz-license-box">
-            <small>
-              <strong>오픈소스 라이선스 고지:</strong> 회전 물리 및 오디오 엔진 <code>alsatianco/spin-the-wheel</code> (MIT License, Copyright © 2026 alsatianco) 원본 모듈 재사용.
-            </small>
           </div>
         </aside>
       </div>

@@ -135,82 +135,226 @@ export function MarbleDisplay() {
 
 function TicketArtwork({ gameId }) {
   if (gameId === 'roulette') {
-    return <MarbleDisplay />;
+    return (
+      <span className="rpz-art-wrap rpz-art-marble">
+        <MarbleDisplay />
+      </span>
+    );
   }
   if (gameId === 'bomb-ladder') {
     return (
-      <svg className="rpz-preview-svg" viewBox="0 0 260 170" aria-hidden="true">
-        <rect width="260" height="170" rx="8" fill="#0f172a" />
-        <line x1="45" y1="24" x2="45" y2="146" stroke="#475569" strokeWidth="4" />
-        <line x1="105" y1="24" x2="105" y2="146" stroke="#475569" strokeWidth="4" />
-        <line x1="165" y1="24" x2="165" y2="146" stroke="#475569" strokeWidth="4" />
-        <line x1="215" y1="24" x2="215" y2="146" stroke="#475569" strokeWidth="4" />
-        <line x1="45" y1="55" x2="105" y2="55" stroke="#94a3b8" strokeWidth="3.5" />
-        <line x1="165" y1="68" x2="215" y2="68" stroke="#94a3b8" strokeWidth="3.5" />
-        <line x1="105" y1="96" x2="165" y2="96" stroke="#94a3b8" strokeWidth="3.5" />
-        <line x1="45" y1="118" x2="105" y2="118" stroke="#94a3b8" strokeWidth="3.5" />
-        <path d="M45 24 L45 55 L105 55 L105 96 L165 96 L165 146" fill="none" stroke="#f43f5e" strokeWidth="4.5" />
-        <path d="M215 24 L215 68 L165 68 L165 96 L105 96 L105 118 L45 118 L45 146" fill="none" stroke="#38bdf8" strokeWidth="4" />
-        <circle cx="165" cy="146" r="14" fill="#ef4444" />
-        <text x="165" y="151" textAnchor="middle" fill="#fff" fontSize="14">💣</text>
+      <svg className="rpz-preview-svg rpz-art-ladder" viewBox="0 0 320 200" aria-hidden="true">
+        <rect width="320" height="200" rx="6" fill="#141615" />
+        {/* Top Player Cards */}
+        {[
+          { x: 42, name: '김성민', c: '#f43f5e' },
+          { x: 101, name: '이지훈', c: '#38bdf8' },
+          { x: 160, name: '박수진', c: '#a855f7' },
+          { x: 219, name: '최민호', c: '#22c55e' },
+          { x: 278, name: '정하늘', c: '#f59e0b' },
+        ].map(p => (
+          <g key={p.name}>
+            <rect x={p.x - 22} y="10" width="44" height="18" rx="4" fill="#242725" stroke={p.c} strokeWidth="1.5" />
+            <text x={p.x} y="22" textAnchor="middle" fill="#eee9df" fontSize="8.5" fontWeight="800">{p.name}</text>
+            <line x1={p.x} y1="28" x2={p.x} y2="162" stroke="#4b4f4a" strokeWidth="2.5" />
+          </g>
+        ))}
+        {/* Horizontal Rungs */}
+        <line x1="42" y1="54" x2="101" y2="54" stroke="#d3a56a" strokeWidth="2.5" />
+        <line x1="160" y1="68" x2="219" y2="68" stroke="#d3a56a" strokeWidth="2.5" />
+        <line x1="101" y1="94" x2="160" y2="94" stroke="#d3a56a" strokeWidth="2.5" />
+        <line x1="219" y1="114" x2="278" y2="114" stroke="#d3a56a" strokeWidth="2.5" />
+        <line x1="42" y1="134" x2="101" y2="134" stroke="#d3a56a" strokeWidth="2.5" />
+        {/* Semicircular Detour Arches (matching live edit feature!) */}
+        <path d="M101 112 Q84 124 101 136" fill="none" stroke="#cf8050" strokeWidth="2.6" strokeLinecap="round" />
+        <path d="M278 62 Q296 74 278 86" fill="none" stroke="#cf8050" strokeWidth="2.6" strokeLinecap="round" />
+        {/* Active Neon Traces */}
+        <path className="rpz-hv-trace" d="M42 28 L42 54 L101 54 L101 94 L160 94 L160 162" fill="none" stroke="#f43f5e" strokeWidth="3.5" strokeLinecap="round" />
+        <path className="rpz-hv-trace" d="M219 28 L219 68 L160 68 L160 94 L101 94 L101 134 L42 134 L42 162" fill="none" stroke="#22c55e" strokeWidth="3" strokeLinecap="round" />
+        {/* Animated Runner Dots on Hover */}
+        <circle className="rpz-hv-runner-1" cx="101" cy="74" r="6" fill="#f43f5e" stroke="#fff" strokeWidth="1.5" />
+        <circle className="rpz-hv-runner-2" cx="160" cy="82" r="6" fill="#22c55e" stroke="#fff" strokeWidth="1.5" />
+        <circle className="rpz-hv-spark" cx="160" cy="94" r="5" fill="#facc15" />
+        {/* Bottom Outcome Slots */}
+        {[42, 101, 160, 219, 278].map((x, idx) => {
+          const isBomb = idx === 2 || idx === 3;
+          return (
+            <g key={x} className={isBomb ? 'rpz-hv-bomb-slot' : ''}>
+              <rect x={x - 22} y="166" width="44" height="22" rx="4" fill={isBomb ? 'rgba(155,56,38,0.42)' : '#242725'} stroke={isBomb ? '#d9534f' : '#6ca97a'} strokeWidth="1.5" />
+              <text x={x} y="180" textAnchor="middle" fill={isBomb ? '#ffd5cf' : '#cce8d1'} fontSize="8.5" fontWeight="800">
+                {isBomb ? '💣 폭탄' : '🛡️ 생존'}
+              </text>
+            </g>
+          );
+        })}
       </svg>
     );
   }
   if (gameId === 'lotto-645') {
     return (
-      <svg className="rpz-preview-svg" viewBox="0 0 260 170" aria-hidden="true">
-        <rect width="260" height="170" rx="8" fill="#080c14" />
-        <circle cx="115" cy="76" r="54" fill="rgba(56, 189, 248, 0.12)" stroke="#38bdf8" strokeWidth="2.5" />
-        <path d="M115 22 Q195 22 205 142" fill="none" stroke="#38bdf8" strokeWidth="8" strokeOpacity="0.35" />
-        <circle cx="94" cy="68" r="13" fill="#eab308" />
-        <text x="94" y="72" textAnchor="middle" fill="#0f172a" fontSize="11" fontWeight="900">3</text>
-        <circle cx="115" cy="36" r="13" fill="#3b82f6" />
-        <text x="115" y="40" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="900">17</text>
-        <circle cx="112" cy="96" r="13" fill="#ef4444" />
-        <text x="112" y="100" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="900">29</text>
-        <circle cx="142" cy="86" r="12" fill="#22c55e" />
-        <text x="142" y="90" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="900">45</text>
+      <svg className="rpz-preview-svg rpz-art-lotto" viewBox="0 0 320 200" aria-hidden="true">
+        <rect width="320" height="200" rx="6" fill="#151716" />
+        {/* Studio Pedestal & Floor */}
+        <ellipse cx="144" cy="176" rx="116" ry="18" fill="#1f2220" />
+        <path d="M108 154 L180 154 L190 174 L98 174 Z" fill="#2b2e2c" stroke="#cf8050" strokeWidth="1.5" />
+        {/* Curved Side-Exit Glass Pipe with Horizontal Elbow */}
+        <path d="M144 24 C215 24 252 60 254 128 C255 162 252 178 228 178" fill="none" stroke="#e6dccb" strokeWidth="13" strokeOpacity="0.24" strokeLinecap="round" />
+        <ellipse cx="226" cy="178" rx="4" ry="8" fill="none" stroke="#cf8050" strokeWidth="2.2" />
+        {/* Top Sliding Mechanical Gate & Aperture Ring */}
+        <ellipse cx="144" cy="26" rx="16" ry="5" fill="none" stroke="#d99b43" strokeWidth="2.5" />
+        <rect className="rpz-hv-gate" x="110" y="21" width="20" height="5" rx="2" fill="#9b3826" />
+        {/* 2 Physical Rotating Mixing Bars */}
+        <g className="rpz-hv-paddles">
+          <line x1="104" y1="62" x2="184" y2="122" stroke="#d8d3c8" strokeWidth="3.5" opacity="0.72" />
+          <line x1="108" y1="126" x2="180" y2="58" stroke="#cf8050" strokeWidth="3.5" opacity="0.82" />
+          <circle cx="144" cy="92" r="5" fill="#cf8050" />
+        </g>
+        {/* Floating 3D Numbered Balls */}
+        {[
+          { x: 144, y: 44, n: 12, c: '#3b82f6', cls: 'rpz-hv-lball-1' },
+          { x: 118, y: 84, n: 7, c: '#eab308', cls: 'rpz-hv-lball-2' },
+          { x: 166, y: 78, n: 23, c: '#ef4444', cls: 'rpz-hv-lball-3' },
+          { x: 134, y: 112, n: 34, c: '#64748b', cls: 'rpz-hv-lball-1' },
+          { x: 160, y: 116, n: 45, c: '#22c55e', cls: 'rpz-hv-lball-2' },
+        ].map(b => (
+          <g key={b.n} className={`rpz-hv-lball ${b.cls}`}>
+            <circle cx={b.x} cy={b.y} r="10.5" fill={b.c} />
+            <circle cx={b.x} cy={b.y} r="6.5" fill="#faf6ef" />
+            <text x={b.x} y={b.y + 3} textAnchor="middle" fill="#191b1b" fontSize="7.5" fontWeight="900">{b.n}</text>
+          </g>
+        ))}
+        {/* Transparent Acrylic Chamber */}
+        <circle cx="144" cy="92" r="64" fill="rgba(244,238,228,0.07)" stroke="#b9b4a8" strokeWidth="2" />
+        <ellipse cx="144" cy="92" rx="64" ry="12" fill="none" stroke="#d8d3c8" strokeWidth="1.2" opacity="0.55" />
+        {/* Front 6+1 Ball Display Tray (Cleanly Separated from Side Exit) */}
+        <rect x="46" y="170" width="184" height="22" rx="4" fill="#222523" stroke="#424642" />
+        {[64, 86, 108, 130, 152, 174, 204].map((x, i) => (
+          <circle key={x} className={i === 6 ? 'rpz-hv-exit-ball' : ''} cx={x} cy="181" r="7.5" fill={['#eab308', '#3b82f6', '#ef4444', '#64748b', '#22c55e', '#3b82f6', '#eab308'][i]} stroke={i === 6 ? '#facc15' : '#eee9df'} strokeWidth="1.2" />
+        ))}
       </svg>
     );
   }
   if (gameId === 'team-draft') {
     return (
-      <svg className="rpz-preview-svg" viewBox="0 0 260 170" aria-hidden="true">
-        <rect width="260" height="170" rx="8" fill="#0f172a" />
-        <rect x="16" y="20" width="108" height="130" rx="8" fill="rgba(56, 189, 248, 0.14)" stroke="#38bdf8" strokeWidth="2" />
-        <text x="70" y="44" textAnchor="middle" fill="#38bdf8" fontSize="13" fontWeight="900">TEAM ALPHA</text>
-        <rect x="28" y="58" width="84" height="22" rx="4" fill="#1e293b" />
-        <rect x="28" y="88" width="84" height="22" rx="4" fill="#1e293b" />
-        <rect x="136" y="20" width="108" height="130" rx="8" fill="rgba(34, 197, 94, 0.14)" stroke="#22c55e" strokeWidth="2" />
-        <text x="190" y="44" textAnchor="middle" fill="#22c55e" fontSize="13" fontWeight="900">TEAM BRAVO</text>
-        <rect x="148" y="58" width="84" height="22" rx="4" fill="#1e293b" />
-        <rect x="148" y="88" width="84" height="22" rx="4" fill="#1e293b" />
+      <svg className="rpz-preview-svg rpz-art-draft" viewBox="0 0 320 200" aria-hidden="true">
+        <rect width="320" height="200" rx="6" fill="#141615" />
+        {/* LIVE PICK Spotlight Bar */}
+        <g className="rpz-hv-draft-bar">
+          <rect x="14" y="10" width="292" height="32" rx="5" fill="#252826" stroke="#cf8050" strokeWidth="1.5" />
+          <rect x="22" y="18" width="60" height="16" rx="3" fill="#cf8050" />
+          <text x="52" y="29" textAnchor="middle" fill="#191b1b" fontSize="8" fontWeight="900">LIVE PICK #5</text>
+          <text x="184" y="30" textAnchor="middle" fill="#eee9df" fontSize="11" fontWeight="800">🔥 김성민 ➔ ALPHA 팀</text>
+        </g>
+        {/* 3 Team Columns with Power Bars & Captain Crowns */}
+        {[
+          { x: 14, title: '🔥 ALPHA', c: '#cf8050', m: ['👑 박수진', '김성민', '이지훈'] },
+          { x: 114, title: '⚡ BRAVO', c: '#d3a56a', m: ['👑 류현진', '최민호', '정하늘'] },
+          { x: 214, title: '🛡️ CHARLIE', c: '#6ca97a', m: ['👑 오승환', '강동원', '한지민'] },
+        ].map((t, tIdx) => (
+          <g key={t.title} className={`rpz-hv-team-col rpz-hv-team-${tIdx}`}>
+            <rect x={t.x} y="50" width="92" height="140" rx="5" fill="rgba(37,40,38,0.85)" stroke={t.c} strokeWidth="1.5" />
+            <text x={t.x + 8} y="67" fill={t.c} fontSize="9.5" fontWeight="900">{t.title}</text>
+            {/* Power Bar */}
+            <rect x={t.x + 8} y="73" width="76" height="4" rx="2" fill="#191b1b" />
+            <rect className="rpz-hv-power-bar" x={t.x + 8} y="73" width="64" height="4" rx="2" fill={t.c} />
+            {t.m.map((name, idx) => (
+              <g key={name}>
+                <rect x={t.x + 8} y={84 + idx * 32} width="76" height="24" rx="3" fill="#191b1b" stroke={idx === 0 ? t.c : '#3c403c'} />
+                <text x={t.x + 14} y={99 + idx * 32} fill="#eee9df" fontSize="9" fontWeight="700">{name}</text>
+              </g>
+            ))}
+          </g>
+        ))}
       </svg>
     );
   }
   if (gameId === 'chaos-wheel') {
     return (
-      <svg className="rpz-preview-svg" viewBox="0 0 260 170" aria-hidden="true">
-        <rect width="260" height="170" rx="8" fill="#090d16" />
-        <circle cx="130" cy="88" r="60" fill="#1e1b4b" stroke="#a855f7" strokeWidth="3" />
-        <path d="M130 88 L130 28 A60 60 0 0 1 182 58 Z" fill="#f43f5e" />
-        <path d="M130 88 L182 58 A60 60 0 0 1 182 118 Z" fill="#f59e0b" />
-        <path d="M130 88 L182 118 A60 60 0 0 1 130 148 Z" fill="#22c55e" />
-        <path d="M130 88 L130 148 A60 60 0 0 1 78 118 Z" fill="#38bdf8" />
-        <path d="M130 88 L78 118 A60 60 0 0 1 78 58 Z" fill="#a855f7" />
-        <path d="M130 88 L78 58 A60 60 0 0 1 130 28 Z" fill="#ec4899" />
-        <circle cx="130" cy="88" r="15" fill="#0f172a" stroke="#fff" strokeWidth="2.5" />
-        <polygon points="130,26 122,12 138,12" fill="#facc15" />
+      <svg className="rpz-preview-svg rpz-art-wheel" viewBox="0 0 320 200" aria-hidden="true">
+        <rect width="320" height="200" rx="6" fill="#161817" />
+        {/* 3D Brushed Stand Base */}
+        <rect x="94" y="168" width="32" height="14" fill="#3b332c" />
+        <rect x="66" y="180" width="88" height="10" rx="4" fill="#252220" stroke="#c9945a" strokeWidth="1.5" />
+        {/* 3D Metallic Bezel */}
+        <circle cx="110" cy="100" r="76" fill="#3a2d22" stroke="#d3a56a" strokeWidth="4" />
+        {/* Spinning Wheel Disc + 8 Slice Boundary Pegs */}
+        <g className="rpz-hv-wheel-spin">
+          <g transform="translate(110, 100)">
+            <path d="M0 0 L0 -68 A68 68 0 0 1 60 -34 Z" fill="#f4a261" />
+            <path d="M0 0 L60 -34 A68 68 0 0 1 60 34 Z" fill="#e76f51" />
+            <path d="M0 0 L60 34 A68 68 0 0 1 0 68 Z" fill="#2a9d8f" />
+            <path d="M0 0 L0 68 A68 68 0 0 1 -60 34 Z" fill="#e9c46a" />
+            <path d="M0 0 L-60 34 A68 68 0 0 1 -60 -34 Z" fill="#264653" />
+            <path d="M0 0 L-60 -34 A68 68 0 0 1 0 -68 Z" fill="#ffb703" />
+            {/* Rotating Rim Pegs */}
+            {[0, 60, 120, 180, 240, 300].map(deg => (
+              <rect
+                key={deg}
+                x="-2.5"
+                y="-70"
+                width="5"
+                height="9"
+                rx="2.5"
+                fill="#fff6df"
+                stroke="#1c1915"
+                strokeWidth="1.2"
+                transform={`rotate(${deg})`}
+              />
+            ))}
+          </g>
+        </g>
+        {/* Center SPIN Hub */}
+        <circle cx="110" cy="100" r="18" fill="#9b3826" stroke="#f7ecd6" strokeWidth="2.5" />
+        <text x="110" y="104" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="900">SPIN</text>
+        {/* Mechanical Top Flapper Pointer */}
+        <g className="rpz-hv-flapper">
+          <polygon points="110,34 101,15 119,15" fill="#cf8050" stroke="#181614" strokeWidth="1.8" />
+          <circle cx="110" cy="21" r="2.8" fill="#222" stroke="#f5d59c" strokeWidth="1" />
+        </g>
+        {/* Winner Result Card Preview */}
+        <g className="rpz-hv-winner-card">
+          <rect x="200" y="54" width="106" height="92" rx="6" fill="#222523" stroke="#cf8050" strokeWidth="1.5" />
+          <text x="212" y="74" fill="#d3a56a" fontSize="8" fontWeight="900">WINNER</text>
+          <text x="212" y="100" fill="#eee9df" fontSize="15" fontWeight="900">박수진</text>
+          <text x="212" y="116" fill="#b9b4a8" fontSize="8">공정 확률 12.5%</text>
+          <rect x="212" y="126" width="82" height="12" rx="2" fill="#9b3826" />
+        </g>
       </svg>
     );
   }
   return (
-    <svg className="rpz-preview-svg" viewBox="0 0 260 170" aria-hidden="true">
-      <rect width="260" height="170" rx="8" fill="#111029" />
-      <rect x="85" y="66" width="90" height="78" rx="8" fill="#312e81" stroke="#f59e0b" strokeWidth="2.5" />
-      <rect x="98" y="24" width="64" height="46" rx="5" fill="#fef3c7" stroke="#d97706" strokeWidth="2" />
-      <text x="130" y="51" textAnchor="middle" fill="#78350f" fontSize="12" fontWeight="900">제비 #01</text>
-      <text x="130" y="114" textAnchor="middle" fill="#fff" fontSize="26">🎁</text>
+    <svg className="rpz-preview-svg rpz-art-box" viewBox="0 0 320 200" aria-hidden="true">
+      <rect width="320" height="200" rx="6" fill="#161817" />
+      {/* Left: 3D Walnut & Acrylic Lottery Box */}
+      <g className="rpz-hv-mbox" transform="translate(20, 48)">
+        <polygon points="10,22 96,22 114,6 28,6" fill="#5e412c" stroke="#d3a56a" strokeWidth="1.5" />
+        <ellipse cx="62" cy="14" rx="22" ry="6" fill="#191b1b" stroke="#d3a56a" strokeWidth="2" />
+        {/* Folded slip peeking out */}
+        <g className="rpz-hv-mslip">
+          <rect x="52" y="-10" width="20" height="24" rx="1.5" fill="#fbf4e3" stroke="#bfa57b" strokeWidth="1" transform="rotate(-8 62 2)" />
+          <rect x="54" y="-3" width="16" height="4" fill="#9b3826" transform="rotate(-8 62 2)" />
+        </g>
+        <rect x="10" y="22" width="86" height="94" fill="#3a281c" stroke="#d3a56a" strokeWidth="2" />
+        <polygon points="96,22 114,6 114,100 96,116" fill="#2d1f16" stroke="#d3a56a" strokeWidth="1.5" />
+        {/* Acrylic Viewing Window + Folded 3D Slips */}
+        <rect x="20" y="34" width="66" height="70" fill="rgba(250,245,235,0.12)" stroke="#8c7a62" />
+        <rect x="28" y="84" width="22" height="10" rx="1" fill="#f7eed8" transform="rotate(-12 39 89)" />
+        <rect x="48" y="88" width="22" height="10" rx="1" fill="#ead5a8" transform="rotate(14 59 93)" />
+        <rect x="36" y="76" width="22" height="10" rx="1" fill="#f2e3be" transform="rotate(5 47 81)" />
+      </g>
+      {/* Flight Arc */}
+      <path d="M98 34 Q138 10 166 50" fill="none" stroke="#cf8050" strokeWidth="2" strokeDasharray="4 3" />
+      {/* Right: 3-Fold Realistic Parchment Slip with Crease Lines */}
+      <g className="rpz-hv-parchment" transform="translate(166, 36)">
+        <rect width="136" height="128" rx="4" fill="#f5ebd6" stroke="#c7b28a" strokeWidth="1.8" />
+        <line x1="0" y1="28" x2="136" y2="28" stroke="#bfa57b" strokeWidth="1.5" strokeDasharray="3 2" />
+        <line x1="0" y1="102" x2="136" y2="102" stroke="#bfa57b" strokeWidth="1.5" strokeDasharray="3 2" />
+        <line x1="68" y1="28" x2="68" y2="102" stroke="rgba(92,65,32,0.22)" strokeWidth="2" />
+        <text x="68" y="18" textAnchor="middle" fill="#6b4e2b" fontSize="8" fontWeight="800">DRAW SLIP · NO.02</text>
+        <text x="68" y="64" textAnchor="middle" fill="#1f1b16" fontSize="13" fontWeight="900">🏆 1등 당첨!</text>
+        <rect x="44" y="76" width="48" height="16" rx="2" fill="none" stroke="#9b3826" strokeWidth="1.5" transform="rotate(-4 68 84)" />
+        <text x="68" y="87" textAnchor="middle" fill="#9b3826" fontSize="8" fontWeight="900" transform="rotate(-4 68 84)">당첨 확정</text>
+      </g>
     </svg>
   );
 }
@@ -331,7 +475,6 @@ export default function DrawPack() {
               <span className="rpz-ticket-desc">{game.description}</span>
 
               <span className="rpz-ticket-footer">
-                <span className="rpz-ticket-repo">OSS: {game.sourceRepo} ({game.license})</span>
                 <span className="rpz-ticket-play-cta">
                   게임 열기 <span aria-hidden="true">↗</span>
                 </span>

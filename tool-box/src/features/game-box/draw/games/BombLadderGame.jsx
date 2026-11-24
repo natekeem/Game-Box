@@ -34,50 +34,88 @@ export function buildAmidakujiLadder({
   participants,
   outcomes,
   rowsCount = 12,
+  customRungs = null,
+  verticalJumps = [],
 }) {
   const numCols = participants.length;
   // rungs[row][col] = true means horizontal bridge between col and col + 1 at row
-  const rungs = Array.from({ length: rowsCount }, () => Array(Math.max(0, numCols - 1)).fill(false));
-
-  if (numCols >= 2) {
-    for (let r = 0; r < rowsCount; r += 1) {
-      let c = 0;
-      while (c < numCols - 1) {
-        const leftHasRung = c > 0 && rungs[r][c - 1];
-        if (!leftHasRung && secureRandomFloat() < 0.48) {
-          rungs[r][c] = true;
-          c += 2; // Skip adjacent column on same row to preserve valid Amidakuji
-        } else {
-          c += 1;
+  let rungs;
+  if (customRungs && customRungs.length === rowsCount && (numCols <= 1 || customRungs[0].length === numCols - 1)) {
+    rungs = customRungs.map(row => [...row]);
+  } else {
+    rungs = Array.from({ length: rowsCount }, () => Array(Math.max(0, numCols - 1)).fill(false));
+    if (numCols >= 2) {
+      for (let r = 0; r < rowsCount; r += 1) {
+        let c = 0;
+        while (c < numCols - 1) {
+          const leftHasRung = c > 0 && rungs[r][c - 1];
+          if (!leftHasRung && secureRandomFloat() < 0.48) {
+            rungs[r][c] = true;
+            c += 2; // Skip adjacent column on same row to preserve valid Amidakuji
+          } else {
+            c += 1;
+          }
         }
       }
-    }
-    // Ensure every column pair has at least 1 bridge so no column goes straight down trivially
-    for (let c = 0; c < numCols - 1; c += 1) {
-      const hasAny = rungs.some(row => row[c]);
-      if (!hasAny) {
-        const candidateRows = [];
-        for (let r = 0; r < rowsCount; r += 1) {
-          const leftOccupied = c > 0 && rungs[r][c - 1];
-          const rightOccupied = c < numCols - 2 && rungs[r][c + 1];
-          if (!leftOccupied && !rightOccupied) candidateRows.push(r);
-        }
-        if (candidateRows.length > 0) {
-          const pickRow = candidateRows[secureRandomInt(candidateRows.length)];
-          rungs[pickRow][c] = true;
+      // Ensure every column pair has at least 1 bridge so no column goes straight down trivially
+      for (let c = 0; c < numCols - 1; c += 1) {
+        const hasAny = rungs.some(row => row[c]);
+        if (!hasAny) {
+          const candidateRows = [];
+          for (let r = 0; r < rowsCount; r += 1) {
+            const leftOccupied = c > 0 && rungs[r][c - 1];
+            const rightOccupied = c < numCols - 2 && rungs[r][c + 1];
+            if (!leftOccupied && !rightOccupied) candidateRows.push(r);
+          }
+          if (candidateRows.length > 0) {
+            const pickRow = candidateRows[secureRandomInt(candidateRows.length)];
+            rungs[pickRow][c] = true;
+          }
         }
       }
     }
   }
 
-  // Trace exact deterministic path for each starting column
-  // Normalised coordinates: x in [0..numCols-1], y in [0..rowsCount+1]
+  const validJumps = (verticalJumps || []).filter(
+    j => j.col >= 0 && j.col < numCols && j.row >= 1 && j.row <= rowsCount
+  ).map(j => {
+    // Auto-select the non-overlapping side; leftmost & rightmost rails always arch OUTWARD!
+    const rIdx = j.row - 1;
+    const hasRightRung = j.col < numCols - 1 && rungs[rIdx]?.[j.col];
+    const hasLeftRung = j.col > 0 && rungs[rIdx]?.[j.col - 1];
+    let side = j.side || 1;
+    if (j.col === 0) side = -1;
+    else if (j.col === numCols - 1) side = 1;
+    else if (hasRightRung && !hasLeftRung) side = -1;
+    else if (hasLeftRung && !hasRightRung) side = 1;
+    return { ...j, side };
+  });
+
+  // Trace exact deterministic path for each starting column (supports horizontal rungs + semicircular same-rail arches!)
   const traces = participants.map((name, startCol) => {
     let curCol = startCol;
     const points = [{ col: curCol, row: 0 }];
 
     for (let r = 0; r < rowsCount; r += 1) {
       const yLevel = r + 1;
+      const arch = validJumps.find(j => j.col === curCol && j.row === yLevel);
+
+      if (arch) {
+        // Ride the smooth semicircular detour arch between (yLevel - 0.42) and (yLevel + 0.42) on the same rail!
+        const arcSpan = 0.42;
+        const bulge = 0.24 * arch.side;
+        points.push({ col: curCol, row: yLevel - arcSpan });
+        const steps = 6;
+        for (let s = 1; s < steps; s += 1) {
+          const theta = (s / steps) * Math.PI; // 0 -> PI
+          const offsetX = Math.sin(theta) * bulge;
+          const offsetY = -Math.cos(theta) * arcSpan;
+          points.push({ col: curCol + offsetX, row: yLevel + offsetY, isJump: true });
+        }
+        points.push({ col: curCol, row: yLevel + arcSpan, isJump: true });
+        continue;
+      }
+
       points.push({ col: curCol, row: yLevel });
       if (curCol < numCols - 1 && rungs[r][curCol]) {
         curCol += 1;
@@ -128,6 +166,7 @@ export function buildAmidakujiLadder({
     participants: [...participants],
     outcomes: outcomes.map(o => ({ ...o })),
     rungs,
+    verticalJumps: validJumps.map(j => ({ ...j })),
     traces,
   };
 }
@@ -164,6 +203,10 @@ export default function BombLadderGame({ onBack }) {
   const [safeLabel, setSafeLabel] = useState('🛡️ 생존 통과');
   const [hideRungsUntilStart, setHideRungsUntilStart] = useState(false);
   const [focusedPlayerIdx, setFocusedPlayerIdx] = useState(null);
+  const [editMode, setEditMode] = useState(false);
+  const [editTool, setEditTool] = useState('rung'); // 'rung' | 'arch'
+  const [hoverTarget, setHoverTarget] = useState(null);
+  const [showResultModal, setShowResultModal] = useState(false);
 
   // Separated states:
   // 1) Locked draw snapshot & mathematical result (`ladderData`)
@@ -247,6 +290,8 @@ export default function BombLadderGame({ onBack }) {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
     setProgress(1);
     setPhase('revealed');
+    setShowResultModal(true);
+    setEditMode(false);
 
     const hasBombs = lockedLadder.traces.some(t => t.isBomb);
     if (hasBombs) {
@@ -281,22 +326,159 @@ export default function BombLadderGame({ onBack }) {
     ]);
   };
 
-  const handleStartAll = () => {
+  const handleRegenerateLadder = () => {
+    if (phase === 'running') return;
     const validPlayers = parsedPlayers.length >= 2 ? parsedPlayers : ['참가자1', '참가자2'];
     const actualBombs = Math.max(1, Math.min(validPlayers.length - 1, Number(bombCount) || 1));
     const rawOutcomes = validPlayers.map((_, idx) => ({
       label: idx < actualBombs ? bombLabel : safeLabel,
       isBomb: idx < actualBombs,
     }));
-    const shuffledOutcomes = shuffleUnbiased(rawOutcomes);
-
-    // Lock participant list, ladder rungs, and deterministic outcomes at start
-    const locked = buildAmidakujiLadder({
+    const nextLadder = buildAmidakujiLadder({
       participants: validPlayers,
-      outcomes: shuffledOutcomes,
+      outcomes: shuffleUnbiased(rawOutcomes),
       rowsCount: 12,
+      verticalJumps: ladderData?.verticalJumps || [],
     });
+    setLadderData(nextLadder);
+    setPhase('idle');
+    setProgress(0);
+    setFocusedPlayerIdx(null);
+    setShowResultModal(false);
+    drawSound.playTick(0.4, 'wooden');
+  };
 
+  const computeCanvasTarget = (e) => {
+    if (!ladderData || !canvasRef.current) return null;
+    const rect = canvasRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const w = Math.max(480, rect.width || 860);
+    const h = Math.max(360, rect.height || 480);
+
+    const numCols = ladderData.numCols;
+    const rowsCount = ladderData.rowsCount;
+    const padX = Math.max(66, w * 0.095);
+    const topY = 58;
+    const botY = h - 56;
+    const usableW = Math.max(120, w - padX * 2);
+    const usableH = Math.max(160, botY - topY);
+
+    if (y < topY + 6 || y > botY - 6 || numCols < 2) return null;
+
+    const colSpan = usableW / (numCols - 1);
+    const rowStep = usableH / (rowsCount + 1);
+    const nearestRow = Math.max(1, Math.min(rowsCount, Math.round((y - topY) / rowStep)));
+
+    if (editTool === 'rung') {
+      const rawCol = (x - padX) / colSpan;
+      if (rawCol < -0.15 || rawCol > numCols - 0.85) return null;
+      const gapCol = Math.max(0, Math.min(numCols - 2, Math.floor(rawCol)));
+      return { type: 'rung', col: gapCol, row: nearestRow };
+    }
+
+    // Semicircular same-rail arch ('arch') — outer rails always arch OUTWARD!
+    const nearestCol = Math.max(0, Math.min(numCols - 1, Math.round((x - padX) / colSpan)));
+    const railX = padX + nearestCol * colSpan;
+    const preferredSide = x >= railX ? 1 : -1;
+    const rIdx = nearestRow - 1;
+    const hasRightRung = nearestCol < numCols - 1 && ladderData.rungs[rIdx]?.[nearestCol];
+    const hasLeftRung = nearestCol > 0 && ladderData.rungs[rIdx]?.[nearestCol - 1];
+    let side = preferredSide;
+    if (nearestCol === 0) side = -1;
+    else if (nearestCol === numCols - 1) side = 1;
+    else if (hasRightRung && !hasLeftRung) side = -1;
+    else if (hasLeftRung && !hasRightRung) side = 1;
+
+    return { type: 'arch', col: nearestCol, row: nearestRow, side };
+  };
+
+  const handleCanvasEditMove = (e) => {
+    if (!editMode || phase === 'running') {
+      if (hoverTarget) setHoverTarget(null);
+      return;
+    }
+    setHoverTarget(computeCanvasTarget(e));
+  };
+
+  const handleCanvasEditClick = (e) => {
+    if (!editMode || phase === 'running' || !ladderData) return;
+    const target = computeCanvasTarget(e);
+    if (!target) return;
+    const rowsCount = ladderData.rowsCount;
+
+    if (target.type === 'rung') {
+      const rIdx = target.row - 1;
+      const gapCol = target.col;
+      const nextRungs = ladderData.rungs.map(row => [...row]);
+      if (nextRungs[rIdx][gapCol]) {
+        nextRungs[rIdx][gapCol] = false;
+      } else {
+        if (gapCol > 0) nextRungs[rIdx][gapCol - 1] = false;
+        if (gapCol < ladderData.numCols - 2) nextRungs[rIdx][gapCol + 1] = false;
+        nextRungs[rIdx][gapCol] = true;
+      }
+      setLadderData(buildAmidakujiLadder({
+        participants: ladderData.participants,
+        outcomes: ladderData.outcomes,
+        rowsCount,
+        customRungs: nextRungs,
+        verticalJumps: ladderData.verticalJumps || [],
+      }));
+      setPhase('idle');
+      setProgress(0);
+      drawSound.playTick(0.45, 'wooden');
+      return;
+    }
+
+    // Toggle semicircular arch on that rail & row (cleanly placed on the non-overlapping side!)
+    const existing = ladderData.verticalJumps || [];
+    const hitExisting = existing.find(j => j.col === target.col && j.row === target.row);
+    const nextJumps = hitExisting
+      ? existing.filter(j => j.id !== hitExisting.id)
+      : [...existing, { id: `arch-${Date.now()}-${target.col}-${target.row}`, col: target.col, row: target.row, side: target.side }];
+
+    setLadderData(buildAmidakujiLadder({
+      participants: ladderData.participants,
+      outcomes: ladderData.outcomes,
+      rowsCount,
+      customRungs: ladderData.rungs,
+      verticalJumps: nextJumps,
+    }));
+    setPhase('idle');
+    setProgress(0);
+    drawSound.playTick(0.55, 'pop');
+  };
+
+  const handleStartAll = (forceFresh = false) => {
+    const validPlayers = parsedPlayers.length >= 2 ? parsedPlayers : ['참가자1', '참가자2'];
+    const actualBombs = Math.max(1, Math.min(validPlayers.length - 1, Number(bombCount) || 1));
+
+    let locked;
+    if (!forceFresh && phase === 'idle' && ladderData && ladderData.participants.length === validPlayers.length) {
+      // Preserve the exact ladder (including user-edited rungs & vertical jumps!)
+      locked = buildAmidakujiLadder({
+        participants: validPlayers,
+        outcomes: ladderData.outcomes,
+        rowsCount: ladderData.rowsCount,
+        customRungs: ladderData.rungs,
+        verticalJumps: ladderData.verticalJumps || [],
+      });
+    } else {
+      const rawOutcomes = validPlayers.map((_, idx) => ({
+        label: idx < actualBombs ? bombLabel : safeLabel,
+        isBomb: idx < actualBombs,
+      }));
+      locked = buildAmidakujiLadder({
+        participants: validPlayers,
+        outcomes: shuffleUnbiased(rawOutcomes),
+        rowsCount: 12,
+        verticalJumps: ladderData?.verticalJumps || [],
+      });
+    }
+
+    setEditMode(false);
+    setShowResultModal(false);
     setLadderData(locked);
     setPhase('running');
     setProgress(0);
@@ -377,13 +559,13 @@ export default function BombLadderGame({ onBack }) {
       ctx.save();
       ctx.scale(dpr, dpr);
 
-      // Background
-      ctx.fillStyle = '#0f141c';
+      // Warm Charcoal Background matching GAMEBOX
+      ctx.fillStyle = '#141615';
       ctx.fillRect(0, 0, w, h);
 
       const numCols = ladderData.numCols;
       const rowsCount = ladderData.rowsCount;
-      const padX = Math.max(58, w * 0.08);
+      const padX = Math.max(66, w * 0.095);
       const topY = 58;
       const botY = h - 56;
       const usableW = Math.max(120, w - padX * 2);
@@ -392,8 +574,8 @@ export default function BombLadderGame({ onBack }) {
       const colX = (c) => (numCols <= 1 ? w / 2 : padX + (c / (numCols - 1)) * usableW);
       const rowY = (r) => topY + (r / (rowsCount + 1)) * usableH;
 
-      // Subtle grid lines
-      ctx.strokeStyle = 'rgba(148, 163, 184, 0.06)';
+      // Subtle warm grid lines
+      ctx.strokeStyle = 'rgba(238, 233, 223, 0.05)';
       ctx.lineWidth = 1;
       for (let r = 1; r <= rowsCount; r += 1) {
         const y = rowY(r);
@@ -406,7 +588,7 @@ export default function BombLadderGame({ onBack }) {
       // Vertical rails
       for (let c = 0; c < numCols; c += 1) {
         const x = colX(c);
-        ctx.strokeStyle = 'rgba(148, 163, 184, 0.35)';
+        ctx.strokeStyle = 'rgba(185, 180, 168, 0.34)';
         ctx.lineWidth = 3.5;
         ctx.lineCap = 'round';
         ctx.beginPath();
@@ -424,7 +606,7 @@ export default function BombLadderGame({ onBack }) {
             if (ladderData.rungs[r][c]) {
               const x1 = colX(c);
               const x2 = colX(c + 1);
-              ctx.strokeStyle = 'rgba(226, 232, 240, 0.42)';
+              ctx.strokeStyle = 'rgba(211, 165, 106, 0.45)';
               ctx.lineWidth = 3.5;
               ctx.beginPath();
               ctx.moveTo(x1, y);
@@ -432,7 +614,7 @@ export default function BombLadderGame({ onBack }) {
               ctx.stroke();
 
               // Node joints
-              ctx.fillStyle = '#94a3b8';
+              ctx.fillStyle = '#d3a56a';
               ctx.beginPath();
               ctx.arc(x1, y, 3.2, 0, Math.PI * 2);
               ctx.arc(x2, y, 3.2, 0, Math.PI * 2);
@@ -440,17 +622,71 @@ export default function BombLadderGame({ onBack }) {
             }
           }
         }
+
+        // Same-column Semicircular Detour Arches (clean C/D curve on the non-overlapping side, never touching horizontal rungs!)
+        const colGapPx = usableW / Math.max(1, numCols - 1);
+        const rowGapPx = usableH / (rowsCount + 1);
+        (ladderData.verticalJumps || []).forEach((arch) => {
+          const baseX = colX(arch.col);
+          const cy = rowY(arch.row);
+          const halfH = rowGapPx * 0.42;
+          const bulgePx = colGapPx * 0.24 * arch.side;
+
+          ctx.save();
+          ctx.strokeStyle = '#cf8050';
+          ctx.lineWidth = 3.5;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(baseX, cy - halfH);
+          ctx.quadraticCurveTo(baseX + bulgePx * 1.85, cy, baseX, cy + halfH);
+          ctx.stroke();
+
+          ctx.fillStyle = '#f5c78e';
+          ctx.beginPath();
+          ctx.arc(baseX, cy - halfH, 3.4, 0, Math.PI * 2);
+          ctx.arc(baseX, cy + halfH, 3.4, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+
+        // Live Edit Hover Ghost Preview (shows exact line-to-line rung or non-overlapping arch before clicking)
+        if (editMode && hoverTarget) {
+          ctx.save();
+          ctx.strokeStyle = 'rgba(245, 199, 142, 0.72)';
+          ctx.lineWidth = 3.5;
+          ctx.setLineDash([5, 4]);
+          if (hoverTarget.type === 'rung') {
+            const x1 = colX(hoverTarget.col);
+            const x2 = colX(hoverTarget.col + 1);
+            const y = rowY(hoverTarget.row);
+            ctx.beginPath();
+            ctx.moveTo(x1, y);
+            ctx.lineTo(x2, y);
+            ctx.stroke();
+          } else if (hoverTarget.type === 'arch') {
+            const baseX = colX(hoverTarget.col);
+            const cy = rowY(hoverTarget.row);
+            const halfH = rowGapPx * 0.42;
+            const bulgePx = colGapPx * 0.24 * hoverTarget.side;
+            ctx.beginPath();
+            ctx.moveTo(baseX, cy - halfH);
+            ctx.quadraticCurveTo(baseX + bulgePx * 1.85, cy, baseX, cy + halfH);
+            ctx.stroke();
+          }
+          ctx.setLineDash([]);
+          ctx.restore();
+        }
       } else {
         // Mystery blind curtain over middle ladder
-        ctx.fillStyle = 'rgba(30, 41, 59, 0.88)';
-        ctx.strokeStyle = 'rgba(244, 63, 94, 0.45)';
+        ctx.fillStyle = 'rgba(34, 37, 35, 0.92)';
+        ctx.strokeStyle = 'rgba(207, 128, 80, 0.55)';
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.roundRect(padX - 26, topY + 22, usableW + 52, usableH - 44, 12);
+        ctx.roundRect(padX - 26, topY + 22, usableW + 52, usableH - 44, 8);
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = '#f8fafc';
+        ctx.fillStyle = '#eee9df';
         ctx.font = '800 16px Pretendard, sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -563,15 +799,15 @@ export default function BombLadderGame({ onBack }) {
         const isFocused = focusedPlayerIdx === c;
 
         ctx.save();
-        ctx.fillStyle = isFocused ? color : '#1e293b';
+        ctx.fillStyle = isFocused ? color : '#242725';
         ctx.strokeStyle = color;
         ctx.lineWidth = isFocused ? 3 : 2;
         ctx.beginPath();
-        ctx.roundRect(x - 38, 12, 76, 32, 8);
+        ctx.roundRect(x - 38, 12, 76, 32, 6);
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = isFocused ? '#0f172a' : '#f8fafc';
+        ctx.fillStyle = isFocused ? '#141615' : '#eee9df';
         ctx.font = '800 12.5px Pretendard, sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -589,19 +825,19 @@ export default function BombLadderGame({ onBack }) {
         ctx.save();
         const isBomb = out.isBomb;
         if (phase === 'revealed') {
-          ctx.fillStyle = isBomb ? 'rgba(239, 68, 68, 0.25)' : 'rgba(34, 197, 94, 0.2)';
-          ctx.strokeStyle = isBomb ? '#ef4444' : '#22c55e';
+          ctx.fillStyle = isBomb ? 'rgba(155, 56, 38, 0.32)' : 'rgba(108, 169, 122, 0.2)';
+          ctx.strokeStyle = isBomb ? '#d9534f' : '#6ca97a';
         } else {
-          ctx.fillStyle = '#1e293b';
-          ctx.strokeStyle = isBomb ? 'rgba(244, 63, 94, 0.65)' : 'rgba(56, 189, 248, 0.5)';
+          ctx.fillStyle = '#242725';
+          ctx.strokeStyle = isBomb ? 'rgba(217, 83, 79, 0.65)' : 'rgba(211, 165, 106, 0.5)';
         }
         ctx.lineWidth = phase === 'revealed' && isBomb ? 3 : 2;
         ctx.beginPath();
-        ctx.roundRect(x - 42, botY + 10, 84, 36, 8);
+        ctx.roundRect(x - 42, botY + 10, 84, 36, 6);
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = isBomb ? '#fda4af' : '#bae6fd';
+        ctx.fillStyle = isBomb ? '#f8b4b4' : '#e6dcc8';
         ctx.font = '800 11.5px Pretendard, sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -609,7 +845,7 @@ export default function BombLadderGame({ onBack }) {
         ctx.fillText(displayLabel, x, botY + 22);
 
         if (arrivedTrace) {
-          ctx.fillStyle = '#ffffff';
+          ctx.fillStyle = '#fff8eb';
           ctx.font = '800 11px Pretendard, sans-serif';
           ctx.fillText(arrivedTrace.playerName.slice(0, 5), x, botY + 37);
         }
@@ -651,7 +887,7 @@ export default function BombLadderGame({ onBack }) {
       window.removeEventListener('resize', renderFrame);
       if (animId) cancelAnimationFrame(animId);
     };
-  }, [ladderData, phase, progress, hideRungsUntilStart, focusedPlayerIdx]);
+  }, [ladderData, phase, progress, hideRungsUntilStart, focusedPlayerIdx, editMode, hoverTarget]);
 
   const bombTraces = ladderData ? ladderData.traces.filter(t => t.isBomb) : [];
 
@@ -669,12 +905,30 @@ export default function BombLadderGame({ onBack }) {
         </div>
 
         <div className="rpz-top-actions">
+          <button
+            type="button"
+            className="rpz-btn rpz-btn-secondary"
+            data-testid="ladder-regen-btn"
+            onClick={handleRegenerateLadder}
+            disabled={phase === 'running'}
+          >
+            🔀 사다리 새로 짜기
+          </button>
+          <button
+            type="button"
+            className={`rpz-btn ${editMode ? 'rpz-btn-accent' : 'rpz-btn-secondary'}`}
+            data-testid="ladder-edit-toggle"
+            onClick={() => setEditMode(v => !v)}
+            disabled={phase === 'running'}
+          >
+            {editMode ? '✅ 수정 완료' : '✏️ 사다리 직접 수정'}
+          </button>
           {phase === 'idle' && (
             <button
               type="button"
               className="rpz-btn rpz-btn-primary"
               data-testid="ladder-start-btn"
-              onClick={handleStartAll}
+              onClick={() => handleStartAll(false)}
               disabled={parsedPlayers.length < 2}
             >
               🚀 전원 동시 출발!
@@ -691,19 +945,30 @@ export default function BombLadderGame({ onBack }) {
             </button>
           )}
           {phase === 'revealed' && (
-            <button
-              type="button"
-              className="rpz-btn rpz-btn-primary"
-              data-testid="ladder-reroll-btn"
-              onClick={handleStartAll}
-            >
-              🔄 사다리 재추첨
-            </button>
+            <>
+              {!showResultModal && (
+                <button
+                  type="button"
+                  className="rpz-btn rpz-btn-secondary"
+                  onClick={() => setShowResultModal(true)}
+                >
+                  🏆 결과 팝업 보기
+                </button>
+              )}
+              <button
+                type="button"
+                className="rpz-btn rpz-btn-primary"
+                data-testid="ladder-reroll-btn"
+                onClick={() => handleStartAll(true)}
+              >
+                🔄 사다리 재추첨
+              </button>
+            </>
           )}
           <button
             type="button"
             className="rpz-btn rpz-btn-ghost"
-            onClick={handleReset}
+            onClick={() => { setShowResultModal(false); setEditMode(false); handleReset(); }}
           >
             초기화
           </button>
@@ -743,41 +1008,109 @@ export default function BombLadderGame({ onBack }) {
             )}
           </div>
 
-          <div className="rpz-canvas-box">
+          {editMode && (
+            <div className="rpz-ladder-edit-bar" data-testid="ladder-edit-bar">
+              <span>✏️ 편집 도구:</span>
+              <button
+                type="button"
+                className={`rpz-chip ${editTool === 'rung' ? 'active' : ''}`}
+                onClick={() => setEditTool('rung')}
+              >
+                ➕ 가로줄 추가/삭제 (라인↔라인)
+              </button>
+              <button
+                type="button"
+                className={`rpz-chip ${editTool === 'arch' ? 'active' : ''}`}
+                onClick={() => setEditTool('arch')}
+              >
+                ➰ 같은 줄 우회 아치 (반원 연결)
+              </button>
+              {(ladderData?.verticalJumps?.length || 0) > 0 && (
+                <button
+                  type="button"
+                  className="rpz-btn-xs"
+                  onClick={() => setLadderData(buildAmidakujiLadder({
+                    participants: ladderData.participants,
+                    outcomes: ladderData.outcomes,
+                    rowsCount: ladderData.rowsCount,
+                    customRungs: ladderData.rungs,
+                    verticalJumps: [],
+                  }))}
+                >
+                  🧹 아치 비우기
+                </button>
+              )}
+              <small>미리보기 점선을 보며 클릭하면 가로줄과 겹치지 않게 추가·삭제됩니다.</small>
+            </div>
+          )}
+
+          <div className={`rpz-canvas-box ${editMode ? 'is-editing' : ''}`}>
             <canvas
               ref={canvasRef}
               className="rpz-main-canvas"
               data-testid="ladder-canvas"
+              onMouseMove={handleCanvasEditMove}
+              onMouseLeave={() => setHoverTarget(null)}
+              onClick={handleCanvasEditClick}
             />
-          </div>
 
-          {phase === 'revealed' && ladderData && (
-            <div className="rpz-result-banner" data-testid="ladder-result-panel">
-              <div className="rpz-result-summary">
-                <strong>💥 폭탄 당첨자 ({bombTraces.length}명):</strong>
-                <span className="rpz-highlight-danger">
-                  {bombTraces.map(t => t.playerName).join(', ')}
-                </span>
-              </div>
-              <div className="rpz-result-grid">
-                {ladderData.traces.map((t) => (
-                  <div
-                    key={t.playerIndex}
-                    className={`rpz-result-card ${t.isBomb ? 'is-bomb' : 'is-safe'}`}
-                    onClick={() => setFocusedPlayerIdx(t.playerIndex)}
-                  >
-                    <span className="rpz-result-player" style={{ color: t.color }}>
-                      {t.playerName}
-                    </span>
-                    <span className="rpz-result-arrow">→</span>
-                    <strong className="rpz-result-outcome">
-                      {t.isBomb ? `💣 ${t.outcomeLabel}` : `🛡️ ${t.outcomeLabel}`}
-                    </strong>
+            {/* High-Readability Center Result Modal Overlay */}
+            {phase === 'revealed' && showResultModal && ladderData && (
+              <div className="rpz-center-result-overlay" data-testid="ladder-result-panel">
+                <div className="rpz-center-result-card">
+                  <span className="rpz-center-kicker">💣 BOMB LADDER RESULT</span>
+                  <h3 className="rpz-center-title">폭탄 당첨자 확정!</h3>
+                  <div className="rpz-center-winners">
+                    {bombTraces.map((t) => (
+                      <span key={t.playerIndex} className="rpz-center-winner-badge">
+                        💣 {t.playerName}
+                      </span>
+                    ))}
                   </div>
-                ))}
+                  <p className="rpz-center-sub">{bombLabel}</p>
+
+                  <div className="rpz-center-match-grid">
+                    {ladderData.traces.map((t) => (
+                      <button
+                        key={t.playerIndex}
+                        type="button"
+                        className={`rpz-result-card ${t.isBomb ? 'is-bomb' : 'is-safe'}`}
+                        onClick={() => {
+                          setFocusedPlayerIdx(t.playerIndex);
+                          setShowResultModal(false);
+                        }}
+                      >
+                        <span className="rpz-result-player" style={{ color: t.color }}>
+                          {t.playerName}
+                        </span>
+                        <span className="rpz-result-arrow">→</span>
+                        <strong className="rpz-result-outcome">
+                          {t.isBomb ? '💣 폭탄' : '🛡️ 생존'}
+                        </strong>
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="rpz-center-actions">
+                    <button
+                      type="button"
+                      className="rpz-btn rpz-btn-secondary"
+                      onClick={() => setShowResultModal(false)}
+                    >
+                      🔍 사다리 경로 보기
+                    </button>
+                    <button
+                      type="button"
+                      className="rpz-btn rpz-btn-primary"
+                      onClick={() => handleStartAll(true)}
+                    >
+                      🔄 새 사다리 재추첨
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </section>
 
         <aside className="rpz-sidebar-panel">
@@ -873,12 +1206,6 @@ export default function BombLadderGame({ onBack }) {
                 ))}
               </ul>
             )}
-          </div>
-
-          <div className="rpz-license-box">
-            <small>
-              <strong>오픈소스 라이선스 고지:</strong> 난수 엔진 <code>Tae-sung-Kim/pickle-eight</code> (MIT License, Copyright © 2025 Tae-sung Kim) 활용 · 아미다쿠지 전단사 경로 추적 및 폭탄 충돌 연출 자체 구현.
-            </small>
           </div>
         </aside>
       </div>

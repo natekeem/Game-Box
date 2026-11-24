@@ -15,14 +15,20 @@ import { drawSound } from '../shared/soundEngine.js';
  */
 
 const TEAM_PALETTE = [
-  { badge: 'ALPHA', color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.12)' },
-  { badge: 'BRAVO', color: '#f43f5e', bg: 'rgba(244, 63, 94, 0.12)' },
-  { badge: 'CHARLIE', color: '#22c55e', bg: 'rgba(34, 197, 94, 0.12)' },
-  { badge: 'DELTA', color: '#a855f7', bg: 'rgba(168, 85, 247, 0.12)' },
-  { badge: 'ECHO', color: '#f59e0b', bg: 'rgba(245, 158, 11, 0.12)' },
-  { badge: 'FOXTROT', color: '#ec4899', bg: 'rgba(236, 72, 153, 0.12)' },
-  { badge: 'GOLF', color: '#14b8a6', bg: 'rgba(20, 184, 166, 0.12)' },
-  { badge: 'HOTEL', color: '#eab308', bg: 'rgba(234, 179, 8, 0.12)' },
+  { badge: 'ALPHA', emblem: '🔥', color: '#cf8050', bg: 'rgba(207, 128, 80, 0.12)' },
+  { badge: 'BRAVO', emblem: '⚡', color: '#d3a56a', bg: 'rgba(211, 165, 106, 0.12)' },
+  { badge: 'CHARLIE', emblem: '🛡️', color: '#6ca97a', bg: 'rgba(108, 169, 122, 0.12)' },
+  { badge: 'DELTA', emblem: '🎯', color: '#c46b7c', bg: 'rgba(196, 107, 124, 0.12)' },
+  { badge: 'ECHO', emblem: '🌊', color: '#7b9ec4', bg: 'rgba(123, 158, 196, 0.12)' },
+  { badge: 'FOXTROT', emblem: '👑', color: '#b58cc7', bg: 'rgba(181, 140, 199, 0.12)' },
+  { badge: 'GOLF', emblem: '🍀', color: '#6fb3a8', bg: 'rgba(111, 179, 168, 0.12)' },
+  { badge: 'HOTEL', emblem: '⭐', color: '#c9b465', bg: 'rgba(201, 180, 101, 0.12)' },
+];
+
+const TEAM_NAME_THEMES = [
+  ['ALPHA 팀', 'BRAVO 팀', 'CHARLIE 팀', 'DELTA 팀', 'ECHO 팀', 'FOXTROT 팀', 'GOLF 팀', 'HOTEL 팀'],
+  ['레드 드래곤', '골든 이글', '에메랄드 울프', '크림슨 타이거', '블루 샤크', '퍼플 피닉스', '제이드 바이퍼', '실버 라이온'],
+  ['불꽃 번개', '황금 방패', '질풍 노도', '강철 심장', '무적 함대', '전설의 검', '초신성', '히든 카드'],
 ];
 
 const DEFAULT_ROSTER_TEXT = [
@@ -124,6 +130,8 @@ export default function TeamDraftGame({ onBack }) {
   const [revealedCount, setRevealedCount] = useState(0);
   const [copyFeedback, setCopyFeedback] = useState('');
   const [history, setHistory] = useState([]);
+  const [tradeSelection, setTradeSelection] = useState(null); // { teamIndex, memberId, name }
+  const [teamThemeIdx, setTeamThemeIdx] = useState(0);
 
   const timerRef = useRef(null);
 
@@ -187,6 +195,7 @@ export default function TeamDraftGame({ onBack }) {
     setPhase('drafting');
     setRevealedCount(1);
     setCopyFeedback('');
+    setTradeSelection(null);
     drawSound.playDraftPick();
 
     let currentCount = 1;
@@ -229,10 +238,58 @@ export default function TeamDraftGame({ onBack }) {
     }
   };
 
+  // 1:1 Post-Draft Member Trade between Teams (Click 1st player -> Click 2nd player to swap!)
+  const handleMemberTradeClick = (teamIndex, member) => {
+    if (phase !== 'completed' || !draftPlan) return;
+    if (!tradeSelection) {
+      setTradeSelection({ teamIndex, memberId: member.id, name: member.name });
+      drawSound.playTick(0.35, 'click');
+      return;
+    }
+    if (tradeSelection.memberId === member.id) {
+      setTradeSelection(null);
+      return;
+    }
+    if (tradeSelection.teamIndex === teamIndex) {
+      setTradeSelection({ teamIndex, memberId: member.id, name: member.name });
+      drawSound.playTick(0.35, 'click');
+      return;
+    }
+
+    const nextTeams = draftPlan.teams.map((t) => ({ ...t, members: [...t.members] }));
+    const teamA = nextTeams[tradeSelection.teamIndex];
+    const teamB = nextTeams[teamIndex];
+    const idxA = teamA.members.findIndex(m => m.id === tradeSelection.memberId);
+    const idxB = teamB.members.findIndex(m => m.id === member.id);
+    if (idxA >= 0 && idxB >= 0) {
+      const mA = { ...teamA.members[idxA], teamIndex: teamB.teamIndex, teamName: teamB.teamName };
+      const mB = { ...teamB.members[idxB], teamIndex: teamA.teamIndex, teamName: teamA.teamName };
+      teamA.members[idxA] = mB;
+      teamB.members[idxB] = mA;
+      teamA.totalRating = teamA.members.reduce((acc, m) => acc + (m.rating || 1), 0);
+      teamB.totalRating = teamB.members.reduce((acc, m) => acc + (m.rating || 1), 0);
+      setDraftPlan({ ...draftPlan, teams: nextTeams });
+      setCopyFeedback(`🔄 트레이드 완료: ${mA.name} ⇄ ${mB.name}`);
+      setTimeout(() => setCopyFeedback(''), 2600);
+      drawSound.playDraftPick();
+    }
+    setTradeSelection(null);
+  };
+
+  const handleCycleTeamTheme = () => {
+    const nextIdx = (teamThemeIdx + 1) % TEAM_NAME_THEMES.length;
+    setTeamThemeIdx(nextIdx);
+    setCustomTeamNames([...TEAM_NAME_THEMES[nextIdx]]);
+    drawSound.playTick(0.4, 'pop');
+  };
+
   const handleCopyResult = async () => {
     if (!draftPlan) return;
     const lines = draftPlan.teams.map((t) => {
-      const names = t.members.map(m => (useSkillBalance ? `${m.name}(★${m.rating})` : m.name)).join(', ');
+      const names = t.members.map((m, idx) => {
+        const cap = idx === 0 ? '👑' : '';
+        return useSkillBalance ? `${cap}${m.name}(★${m.rating})` : `${cap}${m.name}`;
+      }).join(', ');
       return `[${t.teamName}] (${t.members.length}명): ${names}`;
     });
     const text = `🏆 [GAMEBOX TEAM DRAFT 결과]\n${lines.join('\n')}`;
@@ -345,13 +402,41 @@ export default function TeamDraftGame({ onBack }) {
             )}
           </div>
 
-          {/* Live Spotlight Banner during / after draft */}
-          {currentPick && (
-            <div className="rpz-draft-spotlight" data-testid="draft-spotlight">
+          {/* Waiting Pool Preview when idle OR Live Broadcast Spotlight during/after draft */}
+          {phase === 'idle' ? (
+            <div className="rpz-draft-waiting-pool">
+              <div className="rpz-waiting-head">
+                <strong>🏟️ 드래프트 대기석 ({parsedParticipants.length}명 등록됨 · {teamCount}개 팀 배정 예정)</strong>
+                <span>팀당 약 {Math.ceil(parsedParticipants.length / Math.max(1, teamCount))}명 · 주장 자동 선출</span>
+              </div>
+              <div className="rpz-waiting-chips">
+                {parsedParticipants.map((p, idx) => (
+                  <span key={p.id} className="rpz-waiting-chip">
+                    <small>#{idx + 1}</small> {p.name}
+                    {useSkillBalance && <em>★{p.rating}</em>}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ) : currentPick && (
+            <div
+              className="rpz-draft-spotlight"
+              data-testid="draft-spotlight"
+              style={{
+                '--pick-accent': TEAM_PALETTE[currentPick.teamIndex % TEAM_PALETTE.length].color,
+              }}
+            >
               <div className="rpz-spotlight-badge">
-                {phase === 'drafting' ? `LIVE PICK #${currentPick.orderIndex}` : 'FINAL PICK'}
+                {phase === 'drafting'
+                  ? `LIVE PICK #${currentPick.orderIndex}`
+                  : tradeSelection
+                    ? `🔄 트레이드 대기: ${tradeSelection.name} ↔ 다른 팀원 클릭`
+                    : '🏆 DRAFT COMPLETE (팀원 클릭 시 1:1 트레이드 가능)'}
               </div>
               <div className="rpz-spotlight-main">
+                <span className="rpz-spotlight-emblem">
+                  {TEAM_PALETTE[currentPick.teamIndex % TEAM_PALETTE.length].emblem}
+                </span>
                 <span className="rpz-spotlight-player">{currentPick.name}</span>
                 <span className="rpz-spotlight-arrow">➔</span>
                 <strong
@@ -372,68 +457,110 @@ export default function TeamDraftGame({ onBack }) {
             </div>
           )}
 
-          {/* Teams Grid */}
+          {/* Teams Grid with Power Balance Meter, Captain Crown & 1:1 Trade */}
           <div className="rpz-teams-board" data-testid="draft-teams-board">
-            {(draftPlan ? draftPlan.teams : activeTeamNames.map((name, i) => ({
-              teamIndex: i,
-              teamName: name,
-              palette: TEAM_PALETTE[i % TEAM_PALETTE.length],
-              members: [],
-              totalRating: 0,
-            }))).map((team) => {
-              const visibleMembers = draftPlan
-                ? team.members.filter(m => revealedSet.has(m.id))
-                : [];
-              const visibleRating = visibleMembers.reduce((acc, m) => acc + (m.rating || 1), 0);
-
-              return (
-                <div
-                  key={team.teamIndex}
-                  className="rpz-team-column"
-                  data-testid={`draft-team-card-${team.teamIndex}`}
-                  style={{
-                    borderColor: team.palette.color,
-                    background: team.palette.bg,
-                  }}
-                >
-                  <div className="rpz-team-header">
-                    <div>
-                      <span className="rpz-team-code" style={{ color: team.palette.color }}>
-                        TEAM 0{team.teamIndex + 1}
-                      </span>
-                      <h3>{team.teamName}</h3>
-                    </div>
-                    <div className="rpz-team-meta">
-                      <span className="rpz-team-count">{visibleMembers.length}명</span>
-                      {useSkillBalance && (
-                        <span className="rpz-team-rating">★ {visibleRating}</span>
-                      )}
-                    </div>
-                  </div>
-
-                  <ul className="rpz-team-member-list">
-                    {visibleMembers.length === 0 ? (
-                      <li className="rpz-team-placeholder">
-                        {phase === 'idle' ? '드래프트 대기 중' : '호명 대기 중...'}
-                      </li>
-                    ) : (
-                      visibleMembers.map((member, mIdx) => (
-                        <li
-                          key={member.id}
-                          className={`rpz-team-member-item ${currentPick?.id === member.id && phase === 'drafting' ? 'just-picked' : ''}`}
-                        >
-                          <span className="rpz-member-order">#{mIdx + 1}</span>
-                          <strong className="rpz-member-name">{member.name}</strong>
-                          {useSkillBalance && (
-                            <span className="rpz-member-tier">★{member.rating}</span>
-                          )}
-                        </li>
-                      ))
-                    )}
-                  </ul>
-                </div>
+            {(() => {
+              const displayTeams = draftPlan
+                ? draftPlan.teams
+                : activeTeamNames.map((name, i) => ({
+                    teamIndex: i,
+                    teamName: name,
+                    palette: TEAM_PALETTE[i % TEAM_PALETTE.length],
+                    members: [],
+                    totalRating: 0,
+                  }));
+              const maxTeamPower = Math.max(
+                1,
+                ...displayTeams.map(t => {
+                  const vis = draftPlan ? t.members.filter(m => revealedSet.has(m.id)) : [];
+                  return useSkillBalance
+                    ? vis.reduce((acc, m) => acc + (m.rating || 1), 0)
+                    : vis.length;
+                })
               );
-            })}
+
+              return displayTeams.map((team) => {
+                const visibleMembers = draftPlan
+                  ? team.members.filter(m => revealedSet.has(m.id))
+                  : [];
+                const visibleRating = visibleMembers.reduce((acc, m) => acc + (m.rating || 1), 0);
+                const powerRatio = Math.round(
+                  ((useSkillBalance ? visibleRating : visibleMembers.length) / maxTeamPower) * 100
+                );
+
+                return (
+                  <div
+                    key={team.teamIndex}
+                    className="rpz-team-column"
+                    data-testid={`draft-team-card-${team.teamIndex}`}
+                    style={{
+                      borderColor: team.palette.color,
+                      background: team.palette.bg,
+                    }}
+                  >
+                    <div className="rpz-team-header">
+                      <div className="rpz-team-title-wrap">
+                        <span className="rpz-team-emblem-badge" style={{ borderColor: team.palette.color }}>
+                          {team.palette.emblem}
+                        </span>
+                        <div>
+                          <span className="rpz-team-code" style={{ color: team.palette.color }}>
+                            TEAM 0{team.teamIndex + 1}
+                          </span>
+                          <h3>{team.teamName}</h3>
+                        </div>
+                      </div>
+                      <div className="rpz-team-meta">
+                        <span className="rpz-team-count">{visibleMembers.length}명</span>
+                        {useSkillBalance && (
+                          <span className="rpz-team-rating">★ {visibleRating}</span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Visual Team Balance Power Meter */}
+                    <div className="rpz-team-power-track" title="팀 전력 밸런스 비율">
+                      <div
+                        className="rpz-team-power-fill"
+                        style={{
+                          width: `${visibleMembers.length > 0 ? Math.max(14, powerRatio) : 0}%`,
+                          background: team.palette.color,
+                        }}
+                      />
+                    </div>
+
+                    <ul className="rpz-team-member-list">
+                      {visibleMembers.length === 0 ? (
+                        <li className="rpz-team-placeholder">
+                          {phase === 'idle' ? '드래프트 대기 중' : '호명 대기 중...'}
+                        </li>
+                      ) : (
+                        visibleMembers.map((member, mIdx) => {
+                          const isSelectedForTrade = tradeSelection?.memberId === member.id;
+                          return (
+                            <li
+                              key={member.id}
+                              onClick={() => handleMemberTradeClick(team.teamIndex, member)}
+                              title={phase === 'completed' ? '클릭하여 다른 팀원과 1:1 트레이드' : undefined}
+                              className={`rpz-team-member-item ${currentPick?.id === member.id && phase === 'drafting' ? 'just-picked' : ''} ${phase === 'completed' ? 'tradeable' : ''} ${isSelectedForTrade ? 'trade-selected' : ''}`}
+                            >
+                              <span className="rpz-member-order">
+                                {mIdx === 0 ? '👑' : `#${mIdx + 1}`}
+                              </span>
+                              <strong className="rpz-member-name">{member.name}</strong>
+                              {mIdx === 0 && <span className="rpz-captain-tag">주장</span>}
+                              {useSkillBalance && (
+                                <span className="rpz-member-tier">★{member.rating}</span>
+                              )}
+                            </li>
+                          );
+                        })
+                      )}
+                    </ul>
+                  </div>
+                );
+              });
+            })()}
           </div>
         </section>
 
@@ -478,7 +605,17 @@ export default function TeamDraftGame({ onBack }) {
           </div>
 
           <div className="rpz-card">
-            <h3>2. 팀 수 및 밸런스 설정</h3>
+            <div className="rpz-card-head-between">
+              <h3>2. 팀 수 및 밸런스 설정</h3>
+              <button
+                type="button"
+                className="rpz-btn-xs"
+                disabled={phase === 'drafting'}
+                onClick={handleCycleTeamTheme}
+              >
+                🎲 랜덤 팀명
+              </button>
+            </div>
             <label className="rpz-field">
               <span>팀 개수 설정 (2 ~ 8팀)</span>
               <div className="rpz-team-count-selector">
@@ -565,12 +702,6 @@ export default function TeamDraftGame({ onBack }) {
                 ))}
               </ul>
             )}
-          </div>
-
-          <div className="rpz-license-box">
-            <small>
-              <strong>오픈소스 라이선스 고지:</strong> 팀 균등 배정 엔진 <code>iamsujanstha/random-team-generator</code> (MIT License, Copyright © 2025 Sujan Shrestha) 재사용 · 한 명씩 드래프트 공개 연출 및 클립보드 복사 통합.
-            </small>
           </div>
         </aside>
       </div>

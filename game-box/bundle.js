@@ -1731,6 +1731,263 @@ var ToolBoxGameBox = (() => {
     return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
   }
 
+  // tool-box/src/features/game-box/GameBoxHome.js
+  function DrawLobbyDisplay() {
+    return /* @__PURE__ */ u3("span", { className: "gb-lobby-draw-set", "aria-hidden": "true", children: /* @__PURE__ */ u3("svg", { viewBox: "0 0 360 280", xmlns: "http://www.w3.org/2000/svg", className: "gb-lobby-draw-svg", children: [
+      /* @__PURE__ */ u3("defs", { children: [
+        /* @__PURE__ */ u3("radialGradient", { id: "gbDrawGlass", cx: "36%", cy: "30%", r: "68%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#fff8ea", stopOpacity: "0.45" }),
+          /* @__PURE__ */ u3("stop", { offset: "48%", stopColor: "#d8cdb8", stopOpacity: "0.16" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#1b1815", stopOpacity: "0.46" })
+        ] }),
+        /* @__PURE__ */ u3("linearGradient", { id: "gbDrawBrass", x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#e8c38d" }),
+          /* @__PURE__ */ u3("stop", { offset: "55%", stopColor: "#c7884e" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#7a4c28" })
+        ] }),
+        /* @__PURE__ */ u3("linearGradient", { id: "gbDrawWood", x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#69452e" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#352216" })
+        ] }),
+        /* @__PURE__ */ u3("linearGradient", { id: "gbDrawPaper", x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+          /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#fbf4e3" }),
+          /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#e5d3b0" })
+        ] }),
+        /* @__PURE__ */ u3("filter", { id: "gbDrawShadow", x: "-15%", y: "-15%", width: "140%", height: "140%", children: /* @__PURE__ */ u3("feDropShadow", { dx: "6", dy: "12", stdDeviation: "8", floodColor: "#18120d", floodOpacity: "0.58" }) })
+      ] }),
+      /* @__PURE__ */ u3("ellipse", { cx: "145", cy: "238", rx: "84", ry: "16", fill: "#1b1410", opacity: "0.55" }),
+      /* @__PURE__ */ u3("ellipse", { cx: "262", cy: "240", rx: "64", ry: "14", fill: "#1b1410", opacity: "0.55" }),
+      /* @__PURE__ */ u3("g", { filter: "url(#gbDrawShadow)", children: [
+        /* @__PURE__ */ u3("path", { d: "M98,200 L192,200 L204,232 L86,232 Z", fill: "#2a2824", stroke: "#4f483e", strokeWidth: "1.5" }),
+        /* @__PURE__ */ u3("ellipse", { cx: "145", cy: "200", rx: "50", ry: "9", fill: "url(#gbDrawBrass)" }),
+        /* @__PURE__ */ u3("rect", { x: "131", y: "182", width: "28", height: "18", rx: "3", fill: "#cfc7b8" }),
+        /* @__PURE__ */ u3("path", { d: "M145,42 C145,22 208,22 216,74 C223,120 220,174 205,212", fill: "none", stroke: "#e9dec9", strokeOpacity: "0.35", strokeWidth: "14", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("path", { d: "M145,42 C145,22 208,22 216,74 C223,120 220,174 205,212", fill: "none", stroke: "#f7eedd", strokeOpacity: "0.22", strokeWidth: "4", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("ellipse", { cx: "145", cy: "48", rx: "18", ry: "6", fill: "url(#gbDrawBrass)" }),
+        /* @__PURE__ */ u3("g", { className: "gb-draw-paddles", children: [
+          /* @__PURE__ */ u3("line", { x1: "94", y1: "90", x2: "196", y2: "162", stroke: "#c8c0b2", strokeWidth: "5", strokeLinecap: "round", opacity: "0.72" }),
+          /* @__PURE__ */ u3("line", { x1: "194", y1: "88", x2: "96", y2: "164", stroke: "url(#gbDrawBrass)", strokeWidth: "5", strokeLinecap: "round", opacity: "0.78" }),
+          /* @__PURE__ */ u3("circle", { cx: "145", cy: "126", r: "8", fill: "url(#gbDrawBrass)" })
+        ] }),
+        /* @__PURE__ */ u3("g", { className: "gb-draw-balls", children: [
+          /* @__PURE__ */ u3("g", { className: "gb-draw-ball gb-draw-ball-1", children: [
+            /* @__PURE__ */ u3("circle", { cx: "118", cy: "148", r: "15", fill: "#d9a438" }),
+            /* @__PURE__ */ u3("circle", { cx: "118", cy: "148", r: "8.5", fill: "#fbf4e4" }),
+            /* @__PURE__ */ u3("text", { x: "118", y: "151.5", textAnchor: "middle", fill: "#1e1b18", fontSize: "10", fontWeight: "900", children: "7" })
+          ] }),
+          /* @__PURE__ */ u3("g", { className: "gb-draw-ball gb-draw-ball-2", children: [
+            /* @__PURE__ */ u3("circle", { cx: "150", cy: "156", r: "15", fill: "#4f7496" }),
+            /* @__PURE__ */ u3("circle", { cx: "150", cy: "156", r: "8.5", fill: "#fbf4e4" }),
+            /* @__PURE__ */ u3("text", { x: "150", y: "159.5", textAnchor: "middle", fill: "#1e1b18", fontSize: "9.5", fontWeight: "900", children: "19" })
+          ] }),
+          /* @__PURE__ */ u3("g", { className: "gb-draw-ball gb-draw-ball-3", children: [
+            /* @__PURE__ */ u3("circle", { cx: "176", cy: "142", r: "14.5", fill: "#b84a39" }),
+            /* @__PURE__ */ u3("circle", { cx: "176", cy: "142", r: "8", fill: "#fbf4e4" }),
+            /* @__PURE__ */ u3("text", { x: "176", y: "145.5", textAnchor: "middle", fill: "#1e1b18", fontSize: "9.5", fontWeight: "900", children: "28" })
+          ] }),
+          /* @__PURE__ */ u3("g", { className: "gb-draw-ball gb-draw-ball-4", children: [
+            /* @__PURE__ */ u3("circle", { cx: "134", cy: "112", r: "14.5", fill: "#528264" }),
+            /* @__PURE__ */ u3("circle", { cx: "134", cy: "112", r: "8", fill: "#fbf4e4" }),
+            /* @__PURE__ */ u3("text", { x: "134", y: "115.5", textAnchor: "middle", fill: "#1e1b18", fontSize: "9.5", fontWeight: "900", children: "42" })
+          ] }),
+          /* @__PURE__ */ u3("g", { className: "gb-draw-ball gb-draw-ball-5", children: [
+            /* @__PURE__ */ u3("circle", { cx: "163", cy: "96", r: "13.5", fill: "#cf8050" }),
+            /* @__PURE__ */ u3("circle", { cx: "163", cy: "96", r: "7.5", fill: "#fbf4e4" }),
+            /* @__PURE__ */ u3("text", { x: "163", y: "99.5", textAnchor: "middle", fill: "#1e1b18", fontSize: "9", fontWeight: "900", children: "11" })
+          ] }),
+          /* @__PURE__ */ u3("g", { className: "gb-draw-ball gb-draw-ball-6", children: [
+            /* @__PURE__ */ u3("circle", { cx: "106", cy: "120", r: "13", fill: "#6b706d" }),
+            /* @__PURE__ */ u3("circle", { cx: "106", cy: "120", r: "7.2", fill: "#fbf4e4" }),
+            /* @__PURE__ */ u3("text", { x: "106", y: "123.5", textAnchor: "middle", fill: "#1e1b18", fontSize: "8.5", fontWeight: "900", children: "35" })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("circle", { cx: "145", cy: "126", r: "74", fill: "url(#gbDrawGlass)", stroke: "#efe4ce", strokeOpacity: "0.52", strokeWidth: "2.5" }),
+        /* @__PURE__ */ u3("path", { d: "M96,92 A62,62 0 0,1 140,63", fill: "none", stroke: "#fff9ee", strokeOpacity: "0.62", strokeWidth: "4.5", strokeLinecap: "round" })
+      ] }),
+      /* @__PURE__ */ u3("g", { transform: "translate(262 186)", filter: "url(#gbDrawShadow)", children: /* @__PURE__ */ u3("g", { className: "gb-draw-box", children: [
+        /* @__PURE__ */ u3("polygon", { points: "-48,-36 48,-36 36,-58 -36,-58", fill: "#774e34", stroke: "#d3a56a", strokeWidth: "2" }),
+        /* @__PURE__ */ u3("ellipse", { cx: "0", cy: "-47", rx: "18", ry: "6.5", fill: "#1d1510", stroke: "#e4bc82", strokeWidth: "2.2" }),
+        /* @__PURE__ */ u3("g", { className: "gb-draw-slip", children: /* @__PURE__ */ u3("g", { transform: "translate(2 -64) rotate(-11)", children: [
+          /* @__PURE__ */ u3("polygon", { points: "-16,18 16,18 22,-22 -12,-22", fill: "url(#gbDrawPaper)", stroke: "#bfa67e", strokeWidth: "1.2" }),
+          /* @__PURE__ */ u3("line", { x1: "-13", y1: "-2", x2: "19", y2: "-2", stroke: "#b99c70", strokeWidth: "1.2", strokeDasharray: "3 2" }),
+          /* @__PURE__ */ u3("rect", { x: "-11", y: "-15", width: "22", height: "6", rx: "1", fill: "#9b3826", opacity: "0.88" })
+        ] }) }),
+        /* @__PURE__ */ u3("rect", { x: "-48", y: "-36", width: "96", height: "84", rx: "4", fill: "url(#gbDrawWood)", stroke: "#d3a56a", strokeWidth: "2.5" }),
+        /* @__PURE__ */ u3("rect", { x: "-36", y: "-24", width: "72", height: "60", rx: "2", fill: "#231a14", stroke: "#c89b62", strokeWidth: "1.5" }),
+        /* @__PURE__ */ u3("g", { opacity: "0.92", children: [
+          /* @__PURE__ */ u3("rect", { x: "-26", y: "16", width: "26", height: "9", rx: "1.5", fill: "#f3e5c8", transform: "rotate(-8 -13 20)" }),
+          /* @__PURE__ */ u3("rect", { x: "-2", y: "18", width: "28", height: "9", rx: "1.5", fill: "#e8d2a6", transform: "rotate(6 12 22)" }),
+          /* @__PURE__ */ u3("rect", { x: "-18", y: "6", width: "25", height: "8.5", rx: "1.5", fill: "#faf1df", transform: "rotate(9 -5 10)" }),
+          /* @__PURE__ */ u3("rect", { x: "4", y: "4", width: "24", height: "8.5", rx: "1.5", fill: "#eddab6", transform: "rotate(-11 16 8)" })
+        ] }),
+        /* @__PURE__ */ u3("polygon", { points: "-36,-24 6,-24 -22,36 -36,36", fill: "#fff8ea", opacity: "0.1" })
+      ] }) }),
+      /* @__PURE__ */ u3("g", { filter: "url(#gbDrawShadow)", children: /* @__PURE__ */ u3("g", { className: "gb-draw-front-ball", children: [
+        /* @__PURE__ */ u3("circle", { cx: "195", cy: "228", r: "14", fill: "#d9a438", stroke: "#1e1b18", strokeWidth: "1.2" }),
+        /* @__PURE__ */ u3("circle", { cx: "195", cy: "228", r: "8", fill: "#fbf4e4" }),
+        /* @__PURE__ */ u3("text", { x: "195", y: "231.5", textAnchor: "middle", fill: "#1e1b18", fontSize: "9.5", fontWeight: "900", children: "1" })
+      ] }) })
+    ] }) });
+  }
+  var rooms = [
+    { id: "deck", title: "\uAC8C\uC784\uD329 \uB300\uC5EC\uC810", description: "\uC120\uBC18\uC5D0\uC11C \uAC8C\uC784\uD329\uC744 \uACE8\uB77C \uCF58\uC194\uC5D0 \uB514\uC2A4\uD06C\uB97C \uB123\uC5B4\uBCF4\uC138\uC694.", count: ARCADE_GAMES.length },
+    { id: "retro", title: "\uB808\uD2B8\uB85C PC\uBC29", description: "Windows 98\uC5D0\uC11C \uB2E4\uC2DC \uB9CC\uB098\uB294 \uCD94\uC5B5\uC758 \uAC8C\uC784.", count: RETRO_GAMES.length },
+    { id: "draw", title: "\uCD94\uCCA8 \uAC8C\uC784", description: "\uC624\uB298\uC758 \uC8FC\uC778\uACF5\uC744 \uBF51\uC544\uBCF4\uC138\uC694.", count: DRAW_GAMES.length }
+  ];
+  function GameBoxHome({ onNavigate }) {
+    return /* @__PURE__ */ u3("main", { className: "gb-lobby", children: [
+      /* @__PURE__ */ u3("div", { className: "gb-lobby-intro", children: [
+        /* @__PURE__ */ u3("h1", { children: [
+          "GAME",
+          /* @__PURE__ */ u3("span", { children: "BOX" })
+        ] }),
+        /* @__PURE__ */ u3("p", { children: "\uC624\uB298\uC740 \uC5B4\uB514\uC5D0\uC11C \uB180\uAE4C\uC694?" })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "gb-room-grid", children: rooms.map((room) => /* @__PURE__ */ u3(
+        "button",
+        {
+          type: "button",
+          className: `gb-room gb-room-${room.id}`,
+          onClick: () => onNavigate(`/game-box/${room.id}`),
+          children: [
+            /* @__PURE__ */ u3("span", { className: "gb-room-art", "aria-hidden": "true", children: [
+              room.id === "deck" && /* @__PURE__ */ u3("span", { className: "gb-lobby-cases", children: [ARCADE_GAMES[0], ARCADE_GAMES[2], ARCADE_GAMES[3]].map((game) => /* @__PURE__ */ u3("img", { src: getGameCaseCoverSrc(game), alt: "" }, game.id)) }),
+              room.id === "retro" && /* @__PURE__ */ u3("span", { className: "gb-lobby-monitor", style: { "--retro-preview": "url(/assets/win98-retro-desktop-preview.png)" }, children: /* @__PURE__ */ u3("span", {}) }),
+              room.id === "draw" && /* @__PURE__ */ u3(DrawLobbyDisplay, {})
+            ] }),
+            /* @__PURE__ */ u3("span", { className: "gb-room-copy", children: [
+              /* @__PURE__ */ u3("span", { className: "gb-room-count", children: [
+                "\uAC8C\uC784 ",
+                room.count,
+                "\uAC1C"
+              ] }),
+              /* @__PURE__ */ u3("strong", { children: room.title }),
+              /* @__PURE__ */ u3("span", { children: room.description }),
+              /* @__PURE__ */ u3("span", { className: "gb-room-arrow", "aria-hidden": "true", children: "\u2197" })
+            ] })
+          ]
+        },
+        room.id
+      )) })
+    ] });
+  }
+
+  // tool-box/src/features/game-box/retro/RetroDesktop.js
+  function RetroDesktop({ onNavigate }) {
+    const { identity, openNicknameModal } = useGameIdentity();
+    const iframeRef = A2(null);
+    h2(() => {
+      const iframe = iframeRef.current;
+      if (!iframe || !iframe.contentWindow) return;
+      try {
+        iframe.contentWindow.postMessage(
+          {
+            source: "game-box-host",
+            type: "identity:sync",
+            payload: identity
+          },
+          window.location.origin
+        );
+      } catch {
+      }
+    }, [identity]);
+    const sendCommandToWin98 = (appId) => {
+      const cw = iframeRef.current?.contentWindow;
+      if (cw?.System?.launchApp) {
+        cw.System.launchApp(appId);
+        cw.focus();
+      }
+    };
+    return /* @__PURE__ */ u3("div", { className: "gb-retro-shell", children: /* @__PURE__ */ u3("div", { className: "gb-retro-viewport", children: /* @__PURE__ */ u3(
+      "iframe",
+      {
+        ref: iframeRef,
+        src: "/win98-web/",
+        title: "Windows 98 RETRO DESKTOP",
+        className: "gb-retro-iframe",
+        allow: "autoplay; fullscreen",
+        onLoad: () => {
+          try {
+            iframeRef.current?.contentWindow?.postMessage(
+              {
+                source: "game-box-host",
+                type: "identity:sync",
+                payload: identity
+              },
+              window.location.origin
+            );
+          } catch {
+          }
+        }
+      }
+    ) }) });
+  }
+
+  // tool-box/src/features/game-box/deck/gameDeckConfig.js
+  var GAME_DECK_CATEGORIES = Object.freeze([
+    { id: "all", label: "ALL GAMES (19)" },
+    { id: "ARCADE", label: "ACTION ARCADE (3)" },
+    { id: "PARTY", label: "PARTY GAMES (1)" },
+    { id: "SKILL", label: "PUZZLE & SKILL (15)" }
+  ]);
+  var SINGLE_BASE_ENGINE = Object.freeze({
+    name: "Channel 3 CRT TV & Retro Cartridge Architecture",
+    repo: "dau-in/channel-3",
+    license: "AGPL-3.0",
+    commit: "ab85fff7bcb97b69f9fb90c531cb357ba517e4c9",
+    copyright: "Copyright (c) 2024-2026, dau-in",
+    subLicenses: {
+      silkscreenFont: "OFL-1.1",
+      nesCss: "MIT",
+      peerjs: "MIT",
+      jsnes: "MIT / GPL-2.0"
+    },
+    unmodifiedLabEndpoint: "/game-box/deck-lab-single/",
+    vendorLocation: "vendor/channel-3/dist/",
+    adoptionScope: "\uB2E8\uC77C TV \uCF58\uC194 \uD504\uB808\uC784 \uBC0F \uBE0C\uB77C\uC6B4\uAD00(CRT) \uB798\uC2A4\uD130/\uAE00\uB85C\uC6B0 \uD30C\uC774\uD504\uB77C\uC778, \uCE74\uD2B8\uB9AC\uC9C0 \uAC70\uCE58 \uBC0F \uB799 \uC2DC\uC2A4\uD15C, \uC804\uC6D0 \uB9B4\uB808\uC774/\uBD80\uD2B8 \uC2DC\uD000\uC2A4, \uD1B5\uD569 iframe \uB7F0\uD0C0\uC784 \uD638\uC2A4\uD305"
+  });
+  var PORTED_3D_ENGINES = Object.freeze([
+    {
+      name: "PS2 Web 3D Console Engine",
+      repo: "brayanspagnol/ps2-web",
+      license: "BSD-2-Clause",
+      commit: "654114aed6b85aacb1b3e68793808b3eb3feca13",
+      copyright: "Copyright (c) 2026, Brayan Spagnol",
+      portedFiles: [
+        "public/js/console-scene.js",
+        "public/demo-console.html",
+        "LICENSE",
+        "CREDITS.md"
+      ],
+      adoptionScope: "Three.js \uAE30\uBC18 3D \uCF58\uC194 \uD558\uB4DC\uC6E8\uC5B4 \uBAA8\uB378, \uBAA8\uD130 \uD2B8\uB808\uC774 \uAD6C\uB3D9, \uB514\uC2A4\uD06C \uC0BD\uC785/\uBC30\uCD9C \uC560\uB2C8\uBA54\uC774\uC158, LED \uC804\uC6D0 \uC0C1\uD0DC, \uCE74\uBA54\uB77C \uC870\uC791"
+    },
+    {
+      name: "Finally 3D Game Cases Plugin",
+      repo: "otisabiburada/finally-3d-game-cases-plugin",
+      license: "BSD-3-Clause",
+      commit: "7e748d4bfad4e22ebccb318827724796bfeaf149",
+      copyright: "Copyright (c) 2026, SANSO",
+      portedFiles: [
+        "src/engine.ts",
+        "README.md",
+        "LICENSE"
+      ],
+      adoptionScope: "3D \uAC8C\uC784 \uCF00\uC774\uC2A4 \uC785\uCCB4 \uAE30\uD558\uD559, \uC2A4\uD30C\uC778/\uB450\uAED8/\uAD11\uD0DD/\uC2AC\uB9AC\uBE0C/\uADF8\uB9BC\uC790 \uB80C\uB354\uB9C1, Web Audio \uD569\uC131 \uD6A8\uACFC\uC74C, Web Animations API \uCF00\uC774\uC2A4 \uAC1C\uD3D0 \uBC0F \uB514\uC2A4\uD06C \uCD94\uCD9C \uC5F0\uCD9C"
+    }
+  ]);
+  function filterDeckGames(categoryFilter = "all", query = "") {
+    return ARCADE_GAMES.filter((game) => {
+      if (categoryFilter !== "all" && !game.genre.includes(categoryFilter)) {
+        return false;
+      }
+      if (query.trim()) {
+        const q4 = query.trim().toLowerCase();
+        return game.name.toLowerCase().includes(q4) || game.subtitle.toLowerCase().includes(q4) || game.genre.toLowerCase().includes(q4) || game.discLabel.toLowerCase().includes(q4);
+      }
+      return true;
+    });
+  }
+
   // tool-box/src/features/game-box/runtime/GameLauncher.js
   function GameLauncher({
     title,
@@ -1800,1019 +2057,820 @@ var ToolBoxGameBox = (() => {
     ] });
   }
 
-  // tool-box/src/features/game-box/draw/shared/randomEngine.js
-  var UINT32_RANGE = 4294967296;
-  var POOL_SIZE = 256;
-  var pool = new Uint32Array(POOL_SIZE);
-  var poolIndex = POOL_SIZE;
-  function nextUint32() {
-    if (typeof globalThis.crypto?.getRandomValues === "function") {
-      if (poolIndex >= POOL_SIZE) {
-        globalThis.crypto.getRandomValues(pool);
-        poolIndex = 0;
-      }
-      return pool[poolIndex++];
-    }
-    return Math.floor(Math.random() * UINT32_RANGE);
-  }
-  function secureRandomInt(maxExclusive) {
-    const n2 = Math.floor(Number(maxExclusive));
-    if (!Number.isFinite(n2) || n2 <= 1) return 0;
-    const threshold = Math.floor(UINT32_RANGE / n2) * n2;
-    while (true) {
-      const r3 = nextUint32();
-      if (r3 < threshold) return r3 % n2;
-    }
-  }
-  function secureRandomFloat() {
-    return nextUint32() / UINT32_RANGE;
-  }
-  function shuffleUnbiased(items) {
-    const arr = Array.isArray(items) ? [...items] : [];
-    for (let i3 = arr.length - 1; i3 > 0; i3 -= 1) {
-      const j4 = secureRandomInt(i3 + 1);
-      const tmp3 = arr[i3];
-      arr[i3] = arr[j4];
-      arr[j4] = tmp3;
-    }
-    return arr;
-  }
-  function formatDrawTime(ts = Date.now()) {
-    try {
-      return new Date(ts).toLocaleTimeString("ko-KR", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit"
-      });
-    } catch {
-      return "";
-    }
-  }
-
-  // tool-box/src/features/game-box/draw/shared/soundEngine.js
-  var DrawSoundEngine = class {
-    constructor() {
-      this.ctx = null;
-      this.master = null;
-      this.muted = false;
-      this.volume = 0.65;
-      this.noiseBuffer = null;
-    }
-    ensureContext() {
-      if (this.muted || typeof window === "undefined") return null;
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return null;
-      if (!this.ctx) {
-        try {
-          this.ctx = new AudioCtx();
-          this.master = this.ctx.createGain();
-          this.master.gain.value = this.volume;
-          this.master.connect(this.ctx.destination);
-        } catch {
-          return null;
-        }
-      }
-      if (this.ctx.state === "suspended") {
-        this.ctx.resume().catch(() => {
-        });
-      }
-      return this.ctx;
-    }
-    setMuted(muted) {
-      this.muted = Boolean(muted);
-      if (this.master && this.ctx) {
-        this.master.gain.setValueAtTime(this.muted ? 0 : this.volume, this.ctx.currentTime);
-      }
-    }
-    setVolume(vol) {
-      this.volume = Math.max(0, Math.min(1, Number(vol) || 0));
-      if (this.master && this.ctx && !this.muted) {
-        this.master.gain.setValueAtTime(this.volume, this.ctx.currentTime);
-      }
-    }
-    getNoiseBuffer() {
-      const ctx = this.ensureContext();
-      if (!ctx) return null;
-      if (this.noiseBuffer) return this.noiseBuffer;
-      const len = Math.floor(ctx.sampleRate * 1);
-      const buf = ctx.createBuffer(1, len, ctx.sampleRate);
-      const data = buf.getChannelData(0);
-      for (let i3 = 0; i3 < len; i3 += 1) {
-        data[i3] = (Math.random() * 2 - 1) * 0.6;
-      }
-      this.noiseBuffer = buf;
-      return buf;
-    }
-    playTone({
-      type = "sine",
-      freq = 440,
-      endFreq = null,
-      duration = 0.12,
-      delay = 0,
-      peak = 0.14
-    } = {}) {
-      const ctx = this.ensureContext();
-      if (!ctx || !this.master) return;
-      const start = ctx.currentTime + delay;
-      const end = start + Math.max(0.02, duration);
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = type;
-      osc.frequency.setValueAtTime(freq, start);
-      if (endFreq && endFreq > 0) {
-        osc.frequency.exponentialRampToValueAtTime(endFreq, end);
-      }
-      gain.gain.setValueAtTime(1e-4, start);
-      gain.gain.linearRampToValueAtTime(peak, start + 8e-3);
-      gain.gain.exponentialRampToValueAtTime(1e-4, end);
-      osc.connect(gain);
-      gain.connect(this.master);
-      osc.start(start);
-      osc.stop(end + 0.01);
-    }
-    playNoise({
-      duration = 0.15,
-      delay = 0,
-      peak = 0.1,
-      filterType = "bandpass",
-      filterFreq = 1200,
-      q: q4 = 1
-    } = {}) {
-      const ctx = this.ensureContext();
-      if (!ctx || !this.master) return;
-      const buf = this.getNoiseBuffer();
-      if (!buf) return;
-      const start = ctx.currentTime + delay;
-      const end = start + Math.max(0.03, duration);
-      const src = ctx.createBufferSource();
-      src.buffer = buf;
-      const filter = ctx.createBiquadFilter();
-      filter.type = filterType;
-      filter.frequency.setValueAtTime(filterFreq, start);
-      filter.Q.value = q4;
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(1e-4, start);
-      gain.gain.linearRampToValueAtTime(peak, start + 0.01);
-      gain.gain.exponentialRampToValueAtTime(1e-4, end);
-      src.connect(filter);
-      filter.connect(gain);
-      gain.connect(this.master);
-      src.start(start);
-      src.stop(end + 0.01);
-    }
-    // Wheel / Ladder tick
-    playTick(speed = 0.25, variant = "click") {
-      if (variant === "wooden") {
-        this.playTone({ type: "triangle", freq: 310 + Math.min(speed * 600, 650), duration: 0.055, peak: 0.14 });
-      } else if (variant === "pop") {
-        this.playTone({ type: "sine", freq: 480 + Math.min(speed * 900, 1e3), endFreq: 240, duration: 0.05, peak: 0.13 });
-      } else {
-        this.playTone({ type: "square", freq: 680 + Math.min(speed * 1500, 1400), duration: 0.045, peak: 0.1 });
-      }
-    }
-    // Bomb Explosion for BOMB LADDER
-    playExplosion() {
-      this.playNoise({ duration: 0.42, peak: 0.28, filterType: "lowpass", filterFreq: 380, q: 0.8 });
-      this.playTone({ type: "sawtooth", freq: 130, endFreq: 36, duration: 0.38, peak: 0.22 });
-    }
-    // Safe / Winner Fanfare
-    playFanfare() {
-      const notes = [523.25, 659.25, 783.99, 1046.5];
-      notes.forEach((freq, i3) => {
-        this.playTone({ type: "triangle", freq, duration: 0.26, delay: i3 * 0.075, peak: 0.15 });
-      });
-    }
-    // Ball Pop for LOTTO 6/45
-    playBallExtract(isBonus = false) {
-      if (isBonus) {
-        this.playTone({ type: "sine", freq: 587.33, endFreq: 1174.66, duration: 0.22, peak: 0.18 });
-        this.playTone({ type: "triangle", freq: 880, endFreq: 1318.5, duration: 0.28, delay: 0.09, peak: 0.16 });
-      } else {
-        this.playTone({ type: "sine", freq: 420, endFreq: 860, duration: 0.14, peak: 0.16 });
-      }
-    }
-    // Card draft reveal for TEAM DRAFT
-    playDraftPick() {
-      this.playTone({ type: "triangle", freq: 440, endFreq: 660, duration: 0.1, peak: 0.13 });
-    }
-    // Box shake rattle for MYSTERY BOX
-    playBoxShake() {
-      for (let i3 = 0; i3 < 4; i3 += 1) {
-        this.playNoise({
-          duration: 0.07,
-          delay: i3 * 0.085,
-          peak: 0.12,
-          filterType: "bandpass",
-          filterFreq: 950 + i3 * 160,
-          q: 1.4
-        });
-      }
-    }
-    // Paper slip unfold for MYSTERY BOX
-    playPaperUnfold() {
-      this.playNoise({
-        duration: 0.2,
-        peak: 0.11,
-        filterType: "highpass",
-        filterFreq: 1800,
-        q: 0.9
-      });
-      this.playTone({ type: "sine", freq: 660, endFreq: 880, duration: 0.18, delay: 0.06, peak: 0.11 });
-    }
+  // tool-box/src/features/game-box/deck/cases/FinallyCaseEngine.js
+  var PALETTE = {
+    black: { a: "#2c2f36", b: "#07080a", band: "#3b3f48", text: "#ffffff", line: "rgba(255,255,255,.22)" },
+    white: { a: "#ffffff", b: "#c9ccd3", band: "#e4e6ea", text: "#1d1f24", line: "rgba(0,0,0,.18)" },
+    red: { a: "#ff2a38", b: "#7d000a", band: "#e60012", text: "#ffffff", line: "rgba(255,255,255,.28)" },
+    blue: { a: "#2b86ff", b: "#05306e", band: "#0070d1", text: "#ffffff", line: "rgba(255,255,255,.28)" },
+    green: { a: "#34c24a", b: "#0b4a16", band: "#107c10", text: "#ffffff", line: "rgba(255,255,255,.28)" },
+    gold: { a: "#f6d365", b: "#8a6a10", band: "#d4a017", text: "#2a1d00", line: "rgba(255,255,255,.35)" },
+    purple: { a: "#a566ee", b: "#3a1566", band: "#7b2fbe", text: "#ffffff", line: "rgba(255,255,255,.28)" },
+    grey: { a: "#c3c7ce", b: "#555961", band: "#8d9199", text: "#101214", line: "rgba(255,255,255,.3)" },
+    ps1: { a: "#9a9da5", b: "#2b2d31", band: "#5b5e66", text: "#ffffff", line: "rgba(255,255,255,.25)" },
+    ps2: { a: "#2547c4", b: "#081552", band: "#0e2a8f", text: "#ffffff", line: "rgba(255,255,255,.25)" },
+    ps3: { a: "rgba(222,227,236,.55)", b: "rgba(118,124,138,.70)", band: "rgba(150,156,170,.75)", text: "#10151c", line: "rgba(255,255,255,.55)" },
+    ps4: { a: "#63bcff", b: "#1f7ae8", band: "#2f94ff", text: "#06203f", line: "rgba(255,255,255,.35)" },
+    ps5: { a: "#3a8fe8", b: "#0b4396", band: "#1560c4", text: "#ffffff", line: "rgba(255,255,255,.28)" },
+    psp: { a: "#34363c", b: "#08080a", band: "#16171a", text: "#ffffff", line: "rgba(255,255,255,.2)" },
+    xbox: { a: "#2e8b2e", b: "#0a380a", band: "#176b17", text: "#ffffff", line: "rgba(255,255,255,.25)" },
+    x360: { a: "#8ae857", b: "#35a81c", band: "#62d42e", text: "#0b2a05", line: "rgba(255,255,255,.4)" },
+    wee: { a: "#fbfcfe", b: "#b7c2cf", band: "#00b4e6", text: "#16202b", line: "rgba(0,0,0,.18)" },
+    wee2: { a: "#52d6ff", b: "#0a7ba8", band: "#00a9e0", text: "#042a3a", line: "rgba(255,255,255,.4)" },
+    dreamcast: { a: "#ffffff", b: "#c9ccd3", band: "#f26a21", text: "#1d1f24", line: "rgba(0,0,0,.18)" },
+    pc: { a: "#2a475e", b: "#0f1a24", band: "#66c0f4", text: "#ffffff", line: "rgba(255,255,255,.25)" },
+    sega: { a: "#30343c", b: "#050507", band: "#0060a8", text: "#ffffff", line: "rgba(255,255,255,.2)" }
   };
-  var drawSound = new DrawSoundEngine();
-
-  // tool-box/src/features/game-box/draw/games/BombLadderGame.jsx
-  var PLAYER_COLORS = [
-    "#f43f5e",
-    "#38bdf8",
-    "#a855f7",
-    "#22c55e",
-    "#f59e0b",
-    "#ec4899",
-    "#14b8a6",
-    "#eab308",
-    "#6366f1",
-    "#fb7185",
-    "#34d399",
-    "#60a5fa"
-  ];
-  var DEFAULT_PLAYERS = ["\uAE40\uC131\uBBFC", "\uC774\uC9C0\uD6C8", "\uBC15\uC218\uC9C4", "\uCD5C\uBBFC\uD638", "\uC815\uD558\uB298", "\uAC15\uB3D9\uC6D0"];
-  function buildAmidakujiLadder({
-    participants,
-    outcomes,
-    rowsCount = 12
-  }) {
-    const numCols = participants.length;
-    const rungs = Array.from({ length: rowsCount }, () => Array(Math.max(0, numCols - 1)).fill(false));
-    if (numCols >= 2) {
-      for (let r3 = 0; r3 < rowsCount; r3 += 1) {
-        let c3 = 0;
-        while (c3 < numCols - 1) {
-          const leftHasRung = c3 > 0 && rungs[r3][c3 - 1];
-          if (!leftHasRung && secureRandomFloat() < 0.48) {
-            rungs[r3][c3] = true;
-            c3 += 2;
-          } else {
-            c3 += 1;
-          }
-        }
-      }
-      for (let c3 = 0; c3 < numCols - 1; c3 += 1) {
-        const hasAny = rungs.some((row) => row[c3]);
-        if (!hasAny) {
-          const candidateRows = [];
-          for (let r3 = 0; r3 < rowsCount; r3 += 1) {
-            const leftOccupied = c3 > 0 && rungs[r3][c3 - 1];
-            const rightOccupied = c3 < numCols - 2 && rungs[r3][c3 + 1];
-            if (!leftOccupied && !rightOccupied) candidateRows.push(r3);
-          }
-          if (candidateRows.length > 0) {
-            const pickRow = candidateRows[secureRandomInt(candidateRows.length)];
-            rungs[pickRow][c3] = true;
-          }
-        }
-      }
-    }
-    const traces = participants.map((name, startCol) => {
-      let curCol = startCol;
-      const points = [{ col: curCol, row: 0 }];
-      for (let r3 = 0; r3 < rowsCount; r3 += 1) {
-        const yLevel = r3 + 1;
-        points.push({ col: curCol, row: yLevel });
-        if (curCol < numCols - 1 && rungs[r3][curCol]) {
-          curCol += 1;
-          points.push({ col: curCol, row: yLevel, isBridge: true, bridgeRow: r3, bridgeCol: curCol - 1 });
-        } else if (curCol > 0 && rungs[r3][curCol - 1]) {
-          curCol -= 1;
-          points.push({ col: curCol, row: yLevel, isBridge: true, bridgeRow: r3, bridgeCol: curCol });
-        }
-      }
-      points.push({ col: curCol, row: rowsCount + 1 });
-      let totalLength = 0;
-      const segments = [];
-      for (let i3 = 0; i3 < points.length - 1; i3 += 1) {
-        const a3 = points[i3];
-        const b2 = points[i3 + 1];
-        const len = Math.hypot(b2.col - a3.col, b2.row - a3.row) || 1e-3;
-        segments.push({
-          a: a3,
-          b: b2,
-          startDist: totalLength,
-          endDist: totalLength + len,
-          len
-        });
-        totalLength += len;
-      }
-      const destOutcome = outcomes[curCol] || { label: "\uD1B5\uACFC", isBomb: false };
-      return {
-        playerIndex: startCol,
-        playerName: name,
-        color: PLAYER_COLORS[startCol % PLAYER_COLORS.length],
-        startCol,
-        destCol: curCol,
-        outcomeLabel: destOutcome.label,
-        isBomb: Boolean(destOutcome.isBomb),
-        points,
-        segments,
-        totalLength
-      };
-    });
+  var SHAPES = {
+    keepcase: { depth: 1, radius: 2, rim: 0 },
+    cartridge: { depth: 0.5, radius: 5, rim: 0 },
+    jewel: { depth: 0.45, radius: 1, rim: 3 },
+    bigbox: { depth: 2.4, radius: 0, rim: 0 }
+  };
+  var SLEEVE_R = { keepcase: 7, cartridge: 10, jewel: 2, bigbox: 2 };
+  var STYLE_SHAPE = { red: "cartridge", psp: "cartridge", ps1: "jewel", dreamcast: "jewel", pc: "bigbox" };
+  var SCUFF = "repeating-linear-gradient(118deg, rgba(255,255,255,.08) 0 1px, transparent 1px 19px)";
+  var WEAR_CSS = {
+    none: "linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0))",
+    sealed: "linear-gradient(115deg, rgba(255,255,255,.26) 0 7%, transparent 7% 30%, rgba(255,255,255,.16) 30% 33%, transparent 33%), radial-gradient(circle at 86% 91%, #ffd44d 0 4.5%, #b98a12 4.5% 6%, transparent 6.2%), repeating-linear-gradient(0deg, rgba(255,255,255,.06) 0 1px, transparent 1px 5px)",
+    light: `${SCUFF}, repeating-linear-gradient(62deg, rgba(0,0,0,.07) 0 1px, transparent 1px 27px)`,
+    worn: "radial-gradient(circle at 0% 0%, rgba(255,255,255,.38), transparent 14%), radial-gradient(circle at 100% 0%, rgba(255,255,255,.30), transparent 12%), radial-gradient(circle at 100% 100%, rgba(255,255,255,.34), transparent 15%), radial-gradient(circle at 0% 100%, rgba(255,255,255,.30), transparent 12%), repeating-linear-gradient(118deg, rgba(255,255,255,.14) 0 1px, transparent 1px 13px), repeating-linear-gradient(72deg, rgba(0,0,0,.14) 0 1px, transparent 1px 17px), linear-gradient(90deg, rgba(0,0,0,.18), transparent 12%, transparent 88%, rgba(0,0,0,.18))",
+    battered: "radial-gradient(circle at 0% 0%, rgba(255,255,255,.55), transparent 24%), radial-gradient(circle at 100% 0%, rgba(255,255,255,.5), transparent 22%), radial-gradient(circle at 100% 100%, rgba(255,255,255,.55), transparent 26%), radial-gradient(circle at 0% 100%, rgba(255,255,255,.5), transparent 22%), linear-gradient(100deg, transparent 49.6%, rgba(255,255,255,.4) 50%, transparent 50.5%), linear-gradient(0deg, rgba(70,45,20,.30), transparent 34%), repeating-linear-gradient(118deg, rgba(255,255,255,.2) 0 1px, transparent 1px 9px), repeating-linear-gradient(72deg, rgba(0,0,0,.2) 0 1px, transparent 1px 12px), repeating-linear-gradient(160deg, rgba(255,255,255,.12) 0 1px, transparent 1px 21px), linear-gradient(90deg, rgba(0,0,0,.34), transparent 18%, transparent 82%, rgba(0,0,0,.34))",
+    faded: "linear-gradient(180deg, rgba(255,238,200,.34), rgba(255,238,200,.12) 70%, rgba(255,238,200,.05)), linear-gradient(rgba(190,170,120,.12), rgba(190,170,120,.12))",
+    rental: `linear-gradient(90deg, #d33 0 12%, #f3f0e4 12% 100%) 7% 92% / 38% 5.5% no-repeat, ${SCUFF}`
+  };
+  var DEFAULT_CASE_SETTINGS = {
+    enabled: true,
+    angle: 32,
+    depth: 24,
+    color: "black",
+    gloss: true,
+    shadow: true,
+    band: true,
+    spineTitle: true,
+    float: true,
+    idleTilt: 0,
+    shape: "auto",
+    wear: "none",
+    shine: true,
+    sleeve: true,
+    pickup: true,
+    neighbors: true,
+    speed: "normal",
+    insertSound: true,
+    insertTarget: "auto"
+  };
+  function shapeFor(settings, styleId) {
+    if (settings && settings.shape && settings.shape !== "auto") return settings.shape;
+    return STYLE_SHAPE[styleId] || "keepcase";
+  }
+  function paletteFor(styleId) {
+    return PALETTE[styleId] || PALETTE.black;
+  }
+  function lookFor(game, customSettings = {}) {
+    const s3 = { ...DEFAULT_CASE_SETTINGS, ...customSettings };
+    const style = game.caseStyle || game.style || "black";
+    const pal = game.casePalette || paletteFor(style);
+    const shapeId = shapeFor(s3, style);
+    const base = SHAPES[shapeId] || SHAPES.keepcase;
+    const shape = s3.sleeve ? { ...base, radius: SLEEVE_R[shapeId] || base.radius } : base;
+    const depthPx = Math.max(4, Math.round(s3.depth * shape.depth));
+    const wear = game.wear || s3.wear || "none";
     return {
-      numCols,
-      rowsCount,
-      participants: [...participants],
-      outcomes: outcomes.map((o3) => ({ ...o3 })),
-      rungs,
-      traces
+      style,
+      pal,
+      shapeId,
+      shape,
+      depthPx,
+      wear
     };
   }
-  function interpolateTrace(trace, progress01) {
-    const clamped = Math.max(0, Math.min(1, progress01));
-    const targetDist = clamped * trace.totalLength;
-    const walkedPoints = [trace.points[0]];
-    for (let i3 = 0; i3 < trace.segments.length; i3 += 1) {
-      const seg = trace.segments[i3];
-      if (targetDist >= seg.endDist) {
-        walkedPoints.push(seg.b);
-      } else {
-        const localT = (targetDist - seg.startDist) / seg.len;
-        const curPos = {
-          col: seg.a.col + (seg.b.col - seg.a.col) * localT,
-          row: seg.a.row + (seg.b.row - seg.a.row) * localT,
-          onBridge: seg.a.row === seg.b.row
-        };
-        walkedPoints.push(curPos);
-        return { current: curPos, walkedPoints };
-      }
+  function buildCss(s3 = DEFAULT_CASE_SETTINGS) {
+    const d3 = Math.round(s3.depth || 24);
+    const T4 = s3.speed === "calm" ? 0.8 : s3.speed === "snappy" ? 0.28 : 0.5;
+    const EASE = "cubic-bezier(.22,.8,.26,1)";
+    const A4 = s3.angle || 32;
+    const STATE = ":is(:hover, .gpfocus, .selected, :focus-within)";
+    const P4 = "[data-sanso-pop]";
+    const ACT = (inner, extra, st) => `${P4}${extra}${st}${inner}, .selected ${P4}${extra}${inner}`;
+    const ACTC = (inner, st) => `[data-sanso-pop]${st} [data-sanso-case]${inner}, [data-sanso-case][data-sanso-pop]${st}${inner}, .selected [data-sanso-case]${inner}`;
+    const ANG = `var(--c3d-ang, ${A4}deg)`;
+    const TR = `transform ${T4}s ${EASE}, rotate ${T4}s ${EASE}, translate ${T4}s ${EASE}, scale ${T4}s ${EASE}, box-shadow ${T4}s ${EASE}, transform-origin ${T4}s ${EASE}`;
+    const XF = (dx, dy, ang) => `perspective(1600px) translate3d(${dx}, ${dy}, 16px) rotateY(${ang})`;
+    const gloss = s3.gloss ? `linear-gradient(112deg, rgba(255,255,255,.36) 0%, rgba(255,255,255,.10) 15%, rgba(255,255,255,0) 32%, rgba(255,255,255,0) 60%, rgba(255,255,255,.12) 72%, rgba(255,255,255,0) 73.5%),
+       linear-gradient(180deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 22%),` : "";
+    const band = s3.band ? `linear-gradient(180deg, var(--c3d-band) 0, var(--c3d-band) 5.2%, rgba(0,0,0,.35) 5.2%, rgba(0,0,0,.35) calc(5.2% + 1px), transparent calc(5.2% + 1px)),` : "";
+    const idleShadow = s3.shadow ? `box-shadow: 4px 6px 12px rgba(0,0,0,.45) !important;` : "";
+    const popShadow = s3.shadow ? `box-shadow: ${Math.round(d3 * 1.1)}px ${Math.round(d3 * 1.5)}px 28px rgba(0,0,0,.65), ${Math.round(d3 * 0.3)}px ${Math.round(d3 * 0.4)}px 8px rgba(0,0,0,.4) !important;` : "";
+    const f4 = Math.min(1, Math.max(0.3, A4 / 32));
+    const x3 = (v3) => `${(v3 * f4).toFixed(1)}px`;
+    const floatKf = s3.float ? `@keyframes sanso-drift {
+  0%, 100% { translate: 0 0 -.4px; rotate: 0 1 0 0deg; }
+  25% { translate: ${x3(-1.5)} -1.5px -.4px; rotate: 0 1 0 ${(1.5 * f4).toFixed(2)}deg; }
+  50% { translate: 0 .5px -.4px; rotate: 0 1 0 0deg; }
+  75% { translate: ${x3(-1)} 1.5px -.4px; rotate: 0 1 0 ${(-1.2 * f4).toFixed(2)}deg; }
+}` : "";
+    const shine = s3.shine ? `
+[data-sanso-faces] > [data-f="shine"] {
+  top: 0; right: 0; bottom: 0; left: 0; transform: translateZ(2px); border-radius: var(--c3d-r, 2px);
+  background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.6) 50%, transparent 62%) 160% 0 / 260% 100% no-repeat;
+}
+@keyframes sanso-shine { from { background-position: 160% 0; } to { background-position: -60% 0; } }` : `[data-sanso-faces] > [data-f="shine"] { display: none; }`;
+    const activeRules = `
+${ACT("", ":not(img)", STATE)}, ${ACTC('[data-sanso-case="box"]', STATE)} { transform-style: preserve-3d !important; }
+${ACT("", "", STATE)} { transition: ${TR}, transform-style 0s linear 0s !important; }
+${ACTC('[data-sanso-case="box"] > img', STATE)} { translate: 0 0 .6px; transition: filter ${T4}s ${EASE}, translate 0s linear 0s; }
+${ACTC('[data-sanso-case="box"]::after', STATE)} { transform: translateZ(1px); transition: transform 0s linear 0s; }
+${ACT("", ":not([data-sanso-own])", STATE)} { rotate: 0 1 0 ${ANG}; translate: 0 8px 16px; transform-origin: 100% 50% !important; z-index: 12; opacity: 1 !important; }
+${ACT("", "[data-sanso-own]", STATE)} { transform: ${XF("0px", "8px", ANG)}; transform-origin: 100% 50% !important; z-index: 12; opacity: 1 !important; }
+${ACT("", ":not(img)", STATE)} { ${popShadow} }
+${s3.float ? `${ACTC(":not([data-sanso-pop])", STATE)} { animation: sanso-drift 6s ease-in-out ${(T4 + 0.05).toFixed(2)}s infinite; }` : ""}
+${ACTC('[data-sanso-case="box"] > img', STATE)} { filter: brightness(1.05); }
+${ACTC('[data-sanso-case="box"]', STATE)} { opacity: 1 !important; }
+${ACTC(" > [data-sanso-faces]", STATE)} { display: block !important; transition-delay: 0s; }
+${s3.shine ? `${ACTC(' > [data-sanso-faces] > [data-f="shine"]', STATE)} { animation: sanso-shine 1.1s ease-out .15s 1 both; }` : ""}
+`;
+    const PICK = (ang, z3, dy) => `perspective(1600px) translate3d(0, ${dy}px, ${z3}px) rotateY(${ang === A4 ? ANG : ang + "deg"})`;
+    const pick = s3.pickup ? `
+@keyframes sanso-pick { 0% { transform: ${PICK(A4, 16, 8)}; } 45% { transform: ${PICK(Math.round(A4 * 0.35), 70, -4)}; } 100% { transform: ${PICK(A4, 16, 8)}; } }
+@keyframes sanso-pick-i { 0% { rotate: 0 1 0 ${ANG}; translate: 0 8px 16px; } 45% { rotate: 0 1 0 ${Math.round(A4 * 0.35)}deg; translate: 0 -4px 70px; } 100% { rotate: 0 1 0 ${ANG}; translate: 0 8px 16px; } }
+${P4}[data-sanso-pick][data-sanso-own] { animation: sanso-pick .42s cubic-bezier(.3,.7,.3,1) both; z-index: 20 !important; }
+${P4}[data-sanso-pick]:not([data-sanso-own]) { animation: sanso-pick-i .42s cubic-bezier(.3,.7,.3,1) both; z-index: 20 !important; }` : "";
+    const LEAN = 9;
+    const NB = (sel, left) => `${sel} ${P4}[data-sanso-own] { transform: perspective(1600px) translateZ(-6px) rotateY(${left ? LEAN : -LEAN}deg); transform-origin: ${left ? "0% 50%" : "100% 50%"} !important; }
+${sel} ${P4}:not([data-sanso-own]) { rotate: 0 1 0 ${left ? LEAN : -LEAN}deg; translate: 0 0 -6px; transform-origin: ${left ? "0% 50%" : "100% 50%"} !important; }`;
+    const neighbors = s3.neighbors ? `
+${NB("[data-sanso-cell]:hover + [data-sanso-cell]", false)}
+${NB("[data-sanso-cell]:has(+ [data-sanso-cell]:hover)", true)}
+${NB("[data-sanso-cell].selected + [data-sanso-cell]", false)}
+${NB("[data-sanso-cell]:has(+ [data-sanso-cell].selected)", true)}` : "";
+    return `
+/* Finally 3D Game Cases Engine CSS - Original Geometry and Lighting */
+${floatKf}
+[data-sanso-stage="big"] { perspective: 1600px !important; perspective-origin: 50% 50% !important; }
+[data-sanso-stage="small"] { perspective: 1100px !important; perspective-origin: 50% -30% !important; }
+[data-sanso-stage="own"] { perspective: none !important; }
+
+[data-sanso-pop] {
+  transform-origin: 100% 50% !important;
+  transition: ${TR}, transform-style 0s linear ${T4}s !important;
+  transition-behavior: allow-discrete !important;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+[data-sanso-pop]:not(img), [data-sanso-case="box"] {
+  overflow: visible !important;
+  filter: none !important;
+  contain: none !important;
+}
+
+[data-sanso-case="box"] {
+  border-radius: var(--c3d-r, 2px);
+  ${idleShadow}
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  background-color: var(--c3d-b, #111);
+}
+
+[data-sanso-case="box"] img {
+  border-radius: var(--c3d-r, 2px);
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+[data-sanso-case="box"] > img {
+  filter: brightness(.92);
+  transition: filter ${T4}s ${EASE}, translate 0s linear ${T4}s;
+}
+
+/* resting cover: physical overlay with gloss, sleeve seam, and wear textures */
+[data-sanso-case="box"]::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: var(--c3d-r, 2px);
+  transition: transform 0s linear ${T4}s;
+  background:
+    var(--c3d-wear, linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0))),
+    ${gloss}
+    ${band}
+    ${s3.sleeve ? `linear-gradient(90deg, transparent 3.2%, rgba(255,255,255,.34) 3.2%, rgba(255,255,255,.34) 3.9%, rgba(0,0,0,.30) 3.9%, rgba(0,0,0,.30) 5%, rgba(255,255,255,.06) 5%, transparent 9%),
+    linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 1.6%, rgba(255,255,255,0) 98.4%, rgba(0,0,0,.25)),` : ""}
+    linear-gradient(90deg, rgba(0,0,0,.42) 0, rgba(255,255,255,.22) 1.5%, rgba(0,0,0,.16) 3.2%, rgba(0,0,0,0) 7.5%);
+  box-shadow: inset 0 0 0 1px var(--c3d-line), inset 0 0 0 var(--c3d-rim, 0px) rgba(255,255,255,.5), inset 0 0 0 3px rgba(0,0,0,.18)${s3.sleeve ? ", inset 0 0 0 4px rgba(255,255,255,.10), inset 0 0 0 5px rgba(0,0,0,.16)" : ""};
+}
+
+/* 3D Faces */
+[data-sanso-faces] {
+  display: none;
+  transition-property: display;
+  transition-duration: 0s;
+  transition-delay: ${T4}s;
+  transition-behavior: allow-discrete;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  z-index: 3;
+}
+
+[data-sanso-faces] > div {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+[data-sanso-faces] > [data-f="front"] {
+  top: 0; right: 0; bottom: 0; left: 0;
+  transform: translateZ(1px);
+  border-radius: var(--c3d-r, 2px);
+}
+
+[data-sanso-faces] > [data-f="spine"] {
+  top: 0; bottom: 0; left: 0;
+  width: var(--c3d-d, ${d3}px);
+  min-width: 12px;
+  transform-origin: left center;
+  transform: rotateY(90deg);
+  background:
+    linear-gradient(180deg, var(--c3d-band) 0, var(--c3d-band) 5.2%, rgba(0,0,0,.35) 5.2%, rgba(0,0,0,.35) calc(5.2% + 1px), transparent calc(5.2% + 1px)),
+    linear-gradient(90deg, var(--c3d-a), var(--c3d-b));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);
+}
+
+[data-sanso-faces] > [data-f="spine"] > span {
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 86%;
+  margin-top: 8%;
+  font-weight: 800;
+  font-family: sans-serif;
+  line-height: 1;
+  font-size: max(10px, calc(var(--c3d-d, ${d3}px) * .72));
+  color: var(--c3d-text);
+  transform: scaleX(-1);
+  letter-spacing: .05em;
+  text-shadow: 0 0 2px rgba(0,0,0,.75), 0 1px 1px rgba(0,0,0,.6);
+}
+
+[data-sanso-faces] > [data-f="top"] {
+  top: 0; left: 0; right: 0;
+  height: var(--c3d-d, ${d3}px);
+  transform-origin: center top;
+  transform: rotateX(-90deg);
+  background: linear-gradient(0deg, var(--c3d-b), var(--c3d-a));
+}
+
+[data-sanso-faces] > [data-f="bottom"] {
+  bottom: 0; left: 0; right: 0;
+  height: var(--c3d-d, ${d3}px);
+  transform-origin: center bottom;
+  transform: rotateX(90deg);
+  background: linear-gradient(180deg, var(--c3d-b), #000);
+}
+
+[data-sanso-faces] > [data-f="right"] {
+  top: 0; bottom: 0; right: 0;
+  width: var(--c3d-d, ${d3}px);
+  transform-origin: right center;
+  transform: rotateY(-90deg);
+  background: linear-gradient(270deg, var(--c3d-b), var(--c3d-a));
+}
+
+[data-sanso-faces] > [data-f="back"] {
+  top: 0; right: 0; bottom: 0; left: 0;
+  transform: translateZ(calc(var(--c3d-d, ${d3}px) * -1)) rotateY(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: var(--c3d-b);
+}
+
+${shine}
+${activeRules}
+${neighbors}
+${pick}
+`;
+  }
+  function ensureCaseStyle(doc = document, settings = DEFAULT_CASE_SETTINGS) {
+    const STYLE_ID = "sanso-3d-cases-style";
+    let st = doc.getElementById(STYLE_ID);
+    const css = buildCss(settings);
+    if (!st) {
+      st = doc.createElement("style");
+      st.id = STYLE_ID;
+      (doc.head || doc.documentElement).appendChild(st);
     }
-    const last = trace.points[trace.points.length - 1];
-    return { current: last, walkedPoints };
+    if (st.textContent !== css) {
+      st.textContent = css;
+    }
+    return st;
   }
-  function BombLadderGame({ onBack }) {
-    const [playersInput, setPlayersInput] = d2(DEFAULT_PLAYERS.join(", "));
-    const [bombCount, setBombCount] = d2(2);
-    const [bombLabel, setBombLabel] = d2("\u{1F4A3} \uD3ED\uD0C4 \uB2F9\uCCA8!");
-    const [safeLabel, setSafeLabel] = d2("\u{1F6E1}\uFE0F \uC0DD\uC874 \uD1B5\uACFC");
-    const [hideRungsUntilStart, setHideRungsUntilStart] = d2(false);
-    const [focusedPlayerIdx, setFocusedPlayerIdx] = d2(null);
-    const [ladderData, setLadderData] = d2(null);
-    const [phase, setPhase] = d2("idle");
-    const [progress, setProgress] = d2(0);
-    const [history, setHistory] = d2([]);
-    const canvasRef = A2(null);
-    const rafRef = A2(null);
-    const particlesRef = A2([]);
-    const lastSoundStepRef = A2(-1);
-    const parsedPlayers = T2(() => {
-      const list = playersInput.split(/[,\r\n]+/).map((s3) => s3.trim()).filter(Boolean);
-      return list.slice(0, 12);
-    }, [playersInput]);
-    h2(() => {
-      if (phase === "idle") {
-        const validPlayers = parsedPlayers.length >= 2 ? parsedPlayers : ["\uCC38\uAC00\uC7901", "\uCC38\uAC00\uC7902"];
-        const actualBombs = Math.max(1, Math.min(validPlayers.length - 1, Number(bombCount) || 1));
-        const rawOutcomes = validPlayers.map((_3, idx) => ({
-          label: idx < actualBombs ? bombLabel : safeLabel,
-          isBomb: idx < actualBombs
-        }));
-        const shuffledOutcomes = shuffleUnbiased(rawOutcomes);
-        setLadderData(
-          buildAmidakujiLadder({
-            participants: validPlayers,
-            outcomes: shuffledOutcomes,
-            rowsCount: 12
-          })
-        );
-        setProgress(0);
-        setFocusedPlayerIdx(null);
-      }
-    }, [parsedPlayers.join("|"), bombCount, bombLabel, safeLabel]);
-    h2(() => {
-      return () => {
-        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+  function insertSounds(view = window, card = false, volume = 0.85, mode = "insert", warp = (ms) => ms) {
+    try {
+      const AC = view.AudioContext || view.webkitAudioContext;
+      if (!AC) return;
+      const ctx = new AC();
+      if (ctx.state === "suspended" && ctx.resume) ctx.resume();
+      const master = ctx.createGain();
+      master.gain.value = Math.max(0, Math.min(1, volume));
+      master.connect(ctx.destination);
+      const t0 = ctx.currentTime + 0.03;
+      const noise = (len) => {
+        const b2 = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * len), ctx.sampleRate);
+        const ch = b2.getChannelData(0);
+        for (let i3 = 0; i3 < ch.length; i3++) ch[i3] = Math.random() * 2 - 1;
+        return b2;
       };
-    }, []);
-    const spawnBombExplosions = (data, canvasWidth, canvasHeight) => {
-      const numCols = data.numCols;
-      const padX = Math.max(58, canvasWidth * 0.08);
-      const usableW = Math.max(120, canvasWidth - padX * 2);
-      const colX = (c3) => numCols <= 1 ? canvasWidth / 2 : padX + c3 / (numCols - 1) * usableW;
-      const botY = canvasHeight - 46;
-      const nextParticles = [];
-      data.outcomes.forEach((out, colIdx) => {
-        if (!out.isBomb) return;
-        const cx = colX(colIdx);
-        const cy = botY;
-        for (let i3 = 0; i3 < 36; i3 += 1) {
-          const angle = Math.PI * 2 * i3 / 36 + (Math.random() - 0.5) * 0.25;
-          const speed = 1.8 + Math.random() * 5.2;
-          nextParticles.push({
-            x: cx,
-            y: cy,
-            vx: Math.cos(angle) * speed,
-            vy: Math.sin(angle) * speed - 1.2,
-            radius: 3 + Math.random() * 5,
-            color: i3 % 3 === 0 ? "#ef4444" : i3 % 3 === 1 ? "#f97316" : "#facc15",
-            alpha: 1
-          });
+      const click = (ms, freq, len, gain, q4 = 2) => {
+        const s3 = ctx.createBufferSource();
+        s3.buffer = noise(len);
+        const f4 = ctx.createBiquadFilter();
+        f4.type = "bandpass";
+        f4.frequency.value = freq;
+        f4.Q.value = q4;
+        const g4 = ctx.createGain();
+        const at = t0 + warp(ms) / 1e3;
+        g4.gain.setValueAtTime(0, at);
+        g4.gain.linearRampToValueAtTime(gain, at + 2e-3);
+        g4.gain.exponentialRampToValueAtTime(8e-4, at + len);
+        s3.connect(f4);
+        f4.connect(g4);
+        g4.connect(master);
+        s3.start(at);
+        s3.stop(at + len + 0.02);
+      };
+      const thump = (ms, freq, len, gain) => {
+        const o3 = ctx.createOscillator();
+        o3.type = "sine";
+        const g4 = ctx.createGain();
+        const at = t0 + warp(ms) / 1e3;
+        o3.frequency.setValueAtTime(freq * 1.6, at);
+        o3.frequency.exponentialRampToValueAtTime(freq, at + len * 0.6);
+        g4.gain.setValueAtTime(0, at);
+        g4.gain.linearRampToValueAtTime(gain, at + 4e-3);
+        g4.gain.exponentialRampToValueAtTime(8e-4, at + len);
+        o3.connect(g4);
+        g4.connect(master);
+        o3.start(at);
+        o3.stop(at + len + 0.02);
+      };
+      const slide = (ms, len, f1, f22, gain) => {
+        const s3 = ctx.createBufferSource();
+        s3.buffer = noise(len);
+        const f4 = ctx.createBiquadFilter();
+        f4.type = "bandpass";
+        f4.Q.value = 1.2;
+        const at = t0 + warp(ms) / 1e3;
+        f4.frequency.setValueAtTime(f1, at);
+        f4.frequency.exponentialRampToValueAtTime(f22, at + len);
+        const g4 = ctx.createGain();
+        g4.gain.setValueAtTime(0, at);
+        g4.gain.linearRampToValueAtTime(gain, at + len * 0.3);
+        g4.gain.exponentialRampToValueAtTime(8e-4, at + len);
+        s3.connect(f4);
+        f4.connect(g4);
+        g4.connect(master);
+        s3.start(at);
+        s3.stop(at + len + 0.02);
+      };
+      const motor = (ms, len, gain) => {
+        const o3 = ctx.createOscillator();
+        o3.type = "sawtooth";
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.value = 900;
+        const g4 = ctx.createGain();
+        const at = t0 + warp(ms) / 1e3;
+        o3.frequency.setValueAtTime(70, at);
+        o3.frequency.exponentialRampToValueAtTime(240, at + len);
+        g4.gain.setValueAtTime(0, at);
+        g4.gain.linearRampToValueAtTime(gain, at + len * 0.35);
+        g4.gain.exponentialRampToValueAtTime(8e-4, at + len);
+        o3.connect(lp);
+        lp.connect(g4);
+        g4.connect(master);
+        o3.start(at);
+        o3.stop(at + len + 0.02);
+      };
+      if (mode === "eject") {
+        const spinDown = (ms, len, gain) => {
+          const o3 = ctx.createOscillator();
+          o3.type = "sawtooth";
+          const lp = ctx.createBiquadFilter();
+          lp.type = "lowpass";
+          lp.frequency.value = 900;
+          const g4 = ctx.createGain();
+          const at = t0 + warp(ms) / 1e3;
+          o3.frequency.setValueAtTime(240, at);
+          o3.frequency.exponentialRampToValueAtTime(60, at + len);
+          g4.gain.setValueAtTime(0, at);
+          g4.gain.linearRampToValueAtTime(gain, at + 0.05);
+          g4.gain.exponentialRampToValueAtTime(8e-4, at + len);
+          o3.connect(lp);
+          lp.connect(g4);
+          g4.connect(master);
+          o3.start(at);
+          o3.stop(at + len + 0.02);
+        };
+        click(330, 3200, 0.03, 0.5);
+        thump(350, 140, 0.08, 0.22);
+        if (!card) spinDown(420, 0.45, 0.05);
+        click(600, 2200, 0.04, 0.45, 3);
+        thump(610, 110, 0.1, 0.4);
+        slide(620, 0.3, 2600, 900, card ? 0.35 : 0.28);
+        if (card) {
+          click(1300, 4200, 0.025, 0.4);
+        } else {
+          click(1290, 3600, 0.03, 0.3);
+          click(1310, 5200, 0.02, 0.35);
         }
-      });
-      particlesRef.current = nextParticles;
-    };
-    const finalizeReveal = (lockedLadder) => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      setProgress(1);
-      setPhase("revealed");
-      const hasBombs = lockedLadder.traces.some((t3) => t3.isBomb);
-      if (hasBombs) {
-        drawSound.playExplosion();
+        click(1820, 2800, 0.035, 0.55);
+        thump(1840, 160, 0.08, 0.3);
+        view.setTimeout(() => {
+          try {
+            ctx.close();
+          } catch {
+          }
+        }, 3200);
+        return;
+      }
+      click(380, 3200, 0.03, 0.55);
+      thump(400, 140, 0.08, 0.25);
+      click(880, 2400, 0.04, 0.35);
+      if (card) {
+        click(900, 4200, 0.025, 0.4);
       } else {
-        drawSound.playFanfare();
+        click(890, 5200, 0.02, 0.35);
+        click(915, 3600, 0.03, 0.3);
       }
-      const canvas = canvasRef.current;
-      if (canvas) {
-        const rect = canvas.getBoundingClientRect();
-        spawnBombExplosions(lockedLadder, rect.width || 860, rect.height || 480);
+      slide(1320, 0.3, 900, 2600, card ? 0.35 : 0.28);
+      if (card) {
+        click(1575, 1800, 0.05, 0.6, 3);
+        thump(1580, 110, 0.12, 0.5);
+      } else {
+        thump(1585, 95, 0.14, 0.5);
+        click(1580, 2200, 0.04, 0.45, 3);
+        motor(1600, 0.55, 0.06);
       }
-      const bombWinners = lockedLadder.traces.filter((t3) => t3.isBomb).map((t3) => t3.playerName);
-      const safeWinners = lockedLadder.traces.filter((t3) => !t3.isBomb).map((t3) => t3.playerName);
-      setHistory((prev) => [
-        {
-          id: `ladder-${Date.now()}`,
-          time: formatDrawTime(),
-          participantsCount: lockedLadder.participants.length,
-          bombWinners,
-          safeWinners,
-          pairs: lockedLadder.traces.map((t3) => ({
-            name: t3.playerName,
-            outcome: t3.outcomeLabel,
-            isBomb: t3.isBomb
-          }))
+      click(1850, 2800, 0.035, 0.5);
+      thump(1855, 160, 0.07, 0.25);
+      view.setTimeout(() => {
+        try {
+          ctx.close();
+        } catch {
+        }
+      }, 3200);
+    } catch {
+    }
+  }
+  function boxEl(doc, css) {
+    const e3 = doc.createElement("div");
+    e3.style.cssText = "position:absolute;box-sizing:border-box;" + css;
+    return e3;
+  }
+  function runInsert(doc = document, src, target = "auto", sound = true, opts = {}) {
+    return new Promise((resolve) => {
+      const view = doc.defaultView || window;
+      if (!view || !doc.body || typeof doc.body.animate !== "function") {
+        resolve(false);
+        return;
+      }
+      const prefersReducedMotion = typeof view.matchMedia === "function" && view.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (prefersReducedMotion) {
+        if (opts.onStateChange) opts.onStateChange("done");
+        resolve(true);
+        return;
+      }
+      const old = doc.getElementById("sanso-insert");
+      if (old) old.remove();
+      const W4 = view.innerWidth, H3 = view.innerHeight;
+      if (W4 < 200 || H3 < 200) {
+        resolve(false);
+        return;
+      }
+      const variant = target === "auto" ? W4 >= 1800 ? "console" : "handheld" : target;
+      const L2 = src.look;
+      const pal = L2.pal;
+      const art = src.art ? `url(${JSON.stringify(src.art)})` : `linear-gradient(160deg, ${pal.a}, ${pal.b})`;
+      const card = L2.shapeId === "cartridge";
+      const rad = Math.max(3, L2.shape.radius + 2);
+      const ch = Math.round(Math.min(H3 * 0.56, W4 * 0.42 * 1.5));
+      const cw = Math.round(ch / 1.5);
+      const cx = Math.round(W4 * 0.54 - cw / 2);
+      const cy = Math.round(H3 * 0.42 - ch / 2);
+      const d3 = Math.max(10, Math.round(cw * (card ? 0.06 : 0.1)));
+      const r0 = src.rect && src.rect.width > 30 && src.rect.top < H3 && src.rect.top + src.rect.height > 0 ? src.rect : null;
+      const s0 = r0 ? r0.width / cw : 0.82;
+      const x0 = r0 ? r0.left + r0.width / 2 - (cx + cw / 2) : 0;
+      const y0 = r0 ? r0.top + r0.height / 2 - (cy + ch / 2) : 30;
+      const root = boxEl(
+        doc,
+        `position:fixed;left:0;top:0;width:${W4}px;height:${H3}px;z-index:2147483000;pointer-events:none;overflow:hidden;perspective:1500px;perspective-origin:50% 38%;`
+      );
+      root.id = "sanso-insert";
+      const shade = boxEl(doc, `inset:0;background:radial-gradient(120% 95% at 55% 40%, rgba(16,21,32,0.85), rgba(3,4,8,0.92));opacity:0;`);
+      root.appendChild(shade);
+      const glow = boxEl(
+        doc,
+        `left:${Math.round(cx - cw * 0.9)}px;top:${Math.round(cy - ch * 0.35)}px;width:${Math.round(cw * 2.8)}px;height:${Math.round(ch * 1.7)}px;border-radius:50%;background:radial-gradient(closest-side, ${pal.a}, transparent);opacity:0;filter:blur(30px);`
+      );
+      root.appendChild(glow);
+      const wrap = boxEl(doc, `left:${cx}px;top:${cy}px;width:${cw}px;height:${ch}px;perspective:1400px;perspective-origin:50% 35%;`);
+      const floor = boxEl(doc, `left:-8%;right:-8%;bottom:-9%;height:12%;border-radius:50%;background:radial-gradient(closest-side, rgba(0,0,0,.7), rgba(0,0,0,0));`);
+      wrap.appendChild(floor);
+      const stage = boxEl(doc, `inset:0;transform-style:preserve-3d;`);
+      wrap.appendChild(stage);
+      const shell = `linear-gradient(135deg, rgba(255,255,255,.10), rgba(0,0,0,.25)), ${pal.b}`;
+      stage.appendChild(boxEl(doc, `inset:0;border-radius:${rad}px;background:${shell};transform:translateZ(-${d3}px);box-shadow:0 30px 60px rgba(0,0,0,.55);`));
+      const tray = card ? `linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.2)), repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 2px, transparent 2px 6px), #15171c` : `radial-gradient(circle at 50% 50%, #3d424b 0 4.5%, #0b0c0f 5% 6.5%, #2c3038 7% 10.5%, #121418 11% 42%, rgba(255,255,255,.07) 42.6% 43.4%, #14161b 44% 100%)`;
+      stage.appendChild(boxEl(doc, `left:4%;top:3%;right:4%;bottom:3%;border-radius:${Math.max(2, rad - 2)}px;background:${tray};transform:translateZ(-${d3 - 2}px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), inset 0 8px 18px rgba(0,0,0,.5);`));
+      stage.appendChild(boxEl(doc, `top:0;bottom:0;left:0;width:${d3}px;transform-origin:left center;transform:rotateY(90deg);background:linear-gradient(90deg, ${pal.a}, ${pal.b});`));
+      stage.appendChild(boxEl(doc, `top:0;bottom:0;right:0;width:${d3}px;transform-origin:right center;transform:rotateY(-90deg);background:linear-gradient(270deg, ${pal.b}, ${pal.a});`));
+      stage.appendChild(boxEl(doc, `left:0;right:0;top:0;height:${d3}px;transform-origin:center top;transform:rotateX(-90deg);background:linear-gradient(0deg, ${pal.b}, ${pal.a});`));
+      stage.appendChild(boxEl(doc, `left:0;right:0;bottom:0;height:${d3}px;transform-origin:center bottom;transform:rotateX(90deg);background:linear-gradient(180deg, ${pal.b}, #000);`));
+      const cover = boxEl(doc, `inset:0;transform-origin:left center;transform-style:preserve-3d;`);
+      cover.appendChild(boxEl(doc, `inset:0;border-radius:${rad}px;backface-visibility:hidden;background:${art} center/cover no-repeat, ${pal.b};box-shadow:inset 0 0 0 1px ${pal.line};`));
+      cover.appendChild(boxEl(doc, `inset:0;border-radius:${rad}px;backface-visibility:hidden;transform:translateZ(.6px);background:linear-gradient(90deg, rgba(0,0,0,.35) 0, rgba(255,255,255,.28) 1.6%, rgba(0,0,0,.15) 3.4%, transparent 7%), linear-gradient(115deg, rgba(255,255,255,.34), rgba(255,255,255,0) 32%, rgba(255,255,255,0) 62%, rgba(255,255,255,.12) 74%, transparent 76%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3), inset 0 0 0 4px rgba(255,255,255,.08);`));
+      const glint = boxEl(doc, `inset:0;border-radius:${rad}px;backface-visibility:hidden;transform:translateZ(.8px);overflow:hidden;`);
+      const glintBar = boxEl(doc, `top:-20%;bottom:-20%;left:-60%;width:45%;background:linear-gradient(100deg, transparent, rgba(255,255,255,.38), transparent);transform:skewX(-14deg);`);
+      glint.appendChild(glintBar);
+      cover.appendChild(glint);
+      cover.appendChild(boxEl(doc, `inset:0;border-radius:${rad}px;backface-visibility:hidden;transform:rotateY(180deg);background:linear-gradient(rgba(12,14,19,.84), rgba(12,14,19,.92)), ${art} center/cover no-repeat;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);`));
+      stage.appendChild(cover);
+      root.appendChild(wrap);
+      const handheld = variant !== "console";
+      let slotY = H3 - 12;
+      let slotX = W4 - 12;
+      if (opts.slotRect) {
+        slotX = Math.round(opts.slotRect.left + opts.slotRect.width / 2);
+        slotY = Math.round(opts.slotRect.top + opts.slotRect.height / 2);
+      }
+      const D5 = Math.round(card ? cw * 0.5 : cw * 0.76);
+      const DH = card ? Math.round(D5 * 1.16) : D5;
+      const dcx = cx + cw / 2;
+      const dcy = cy + ch * (card ? 0.36 : 0.5);
+      const layer = boxEl(doc, `inset:0;${handheld ? `clip-path:inset(0 0 ${Math.max(0, H3 - slotY)}px 0);` : `clip-path:inset(0 ${Math.max(0, W4 - slotX)}px 0 0);`}`);
+      const holder = boxEl(doc, `left:${Math.round(dcx - D5 / 2)}px;top:${Math.round(dcy - DH / 2)}px;width:${D5}px;height:${DH}px;opacity:0;will-change:transform,opacity;`);
+      const shadow = boxEl(doc, `left:6%;top:9%;width:88%;height:88%;border-radius:${card ? "10px" : "50%"};background:rgba(0,0,0,.55);filter:blur(10px);`);
+      holder.appendChild(shadow);
+      const makeItem = () => {
+        const el = boxEl(doc, "inset:0;");
+        if (card) {
+          const c3 = boxEl(doc, `inset:0;border-radius:7px;clip-path:polygon(0 0, 80% 0, 100% 12%, 100% 100%, 0 100%);background:linear-gradient(180deg,#2c2f36,#101216);box-shadow:inset 0 0 0 2px rgba(255,255,255,.18);`);
+          c3.appendChild(boxEl(doc, `left:7%;top:6%;right:7%;height:62%;border-radius:4px;background:${art} center/cover no-repeat;box-shadow:0 0 0 2px rgba(255,255,255,.85);`));
+          c3.appendChild(boxEl(doc, `left:14%;right:14%;bottom:6%;height:10%;background:repeating-linear-gradient(90deg,#e0bf55 0 3px,#8a6d1c 3px 4px,transparent 4px 7px);border-radius:2px;`));
+          c3.appendChild(boxEl(doc, `inset:0;background:linear-gradient(120deg, rgba(255,255,255,.28), rgba(255,255,255,0) 40%);`));
+          el.appendChild(c3);
+          return { el, spin: null };
+        }
+        const hole = "radial-gradient(circle, transparent 0 6.2%, #000 6.6%)";
+        const spin = boxEl(doc, `inset:0;border-radius:50%;background:${art} center/cover no-repeat, ${pal.b};-webkit-mask:${hole};mask:${hole};`);
+        spin.appendChild(boxEl(doc, `inset:0;border-radius:50%;background:radial-gradient(circle, transparent 0 6.4%, rgba(230,236,245,.62) 6.8% 15.2%, rgba(255,255,255,.95) 15.5% 16.1%, rgba(0,0,0,.25) 16.4% 17%, transparent 17.4% 95.6%, rgba(255,255,255,.7) 96.2% 97.4%, rgba(0,0,0,.45) 98%);`));
+        el.appendChild(spin);
+        el.appendChild(boxEl(doc, `inset:0;border-radius:50%;-webkit-mask:${hole};mask:${hole};background:conic-gradient(from 40deg, rgba(255,255,255,0) 0, rgba(255,255,255,.30) 6%, rgba(160,220,255,.14) 11%, rgba(255,255,255,0) 17%, rgba(255,255,255,0) 50%, rgba(255,255,255,.26) 56%, rgba(255,190,240,.12) 61%, rgba(255,255,255,0) 67%);`));
+        return { el, spin };
+      };
+      const flying = makeItem();
+      holder.appendChild(flying.el);
+      const spinner = flying.spin;
+      const seated = makeItem();
+      const seat = boxEl(doc, `left:${Math.round(cw / 2 - D5 / 2)}px;top:${Math.round(ch * (card ? 0.36 : 0.5) - DH / 2)}px;width:${D5}px;height:${DH}px;transform:translateZ(-${d3 - 3}px);`);
+      seat.appendChild(seated.el);
+      stage.appendChild(seat);
+      layer.appendChild(holder);
+      root.appendChild(layer);
+      const slot = handheld ? boxEl(doc, `left:${Math.round(W4 / 2 - D5 * 0.62)}px;top:${slotY - 3}px;width:${Math.round(D5 * 1.24)}px;height:7px;border-radius:4px;background:linear-gradient(180deg,#000,#1b1e24);box-shadow:0 0 0 1px rgba(255,255,255,.16), 0 -1px 0 rgba(255,255,255,.25);opacity:0;`) : boxEl(doc, `left:${slotX - 3}px;top:${Math.round(H3 / 2 - D5 * 0.62)}px;width:7px;height:${Math.round(D5 * 1.24)}px;border-radius:4px;background:linear-gradient(90deg,#000,#1b1e24);box-shadow:0 0 0 1px rgba(255,255,255,.16), -1px 0 0 rgba(255,255,255,.25);opacity:0;`);
+      const bezel = handheld ? boxEl(doc, `left:${Math.round(W4 / 2 - D5 * 0.8)}px;top:${slotY - 12}px;width:${Math.round(D5 * 1.6)}px;height:24px;border-radius:12px;background:linear-gradient(180deg, #2a2e36, #121418);box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 6px 18px rgba(0,0,0,.6);opacity:0;`) : boxEl(doc, `left:${slotX - 12}px;top:${Math.round(H3 / 2 - D5 * 0.8)}px;width:24px;height:${Math.round(D5 * 1.6)}px;border-radius:12px;background:linear-gradient(90deg, #2a2e36, #121418);box-shadow:inset 1px 0 0 rgba(255,255,255,.12), 0 6px 18px rgba(0,0,0,.6);opacity:0;`);
+      const streak = boxEl(
+        doc,
+        handheld ? `left:0;top:2px;width:30%;height:2px;border-radius:2px;background:linear-gradient(90deg, transparent, rgba(150,215,255,.95), transparent);opacity:0;` : `top:0;left:2px;height:30%;width:2px;border-radius:2px;background:linear-gradient(180deg, transparent, rgba(150,215,255,.95), transparent);opacity:0;`
+      );
+      slot.appendChild(streak);
+      root.insertBefore(bezel, layer);
+      root.appendChild(slot);
+      doc.body.appendChild(root);
+      const fx = [];
+      const A4 = (el, kf, opt) => {
+        fx.push(el.animate(kf, { fill: "both", ...opt }));
+      };
+      const eject = !!opts.eject;
+      const T_END = 2200;
+      const at = (ms) => Math.min(1, Math.max(0, ms / T_END));
+      A4(shade, [{ opacity: 0 }, { opacity: 1, offset: at(200) }, { opacity: 1, offset: at(1880) }, { opacity: 0 }], { duration: T_END, easing: "ease-in-out" });
+      A4(seat, [{ opacity: 1 }, { opacity: 1, offset: at(880) }, { opacity: 0, offset: at(881) }, { opacity: 0 }], { duration: T_END, easing: "linear" });
+      const back = r0 ? `translate(${x0}px,${y0}px) scale(${s0})` : `translate(0,${Math.round(ch * 0.08)}px) scale(.88)`;
+      A4(glow, [{ opacity: 0 }, { opacity: 0.55, offset: at(500) }, { opacity: 0.4, offset: at(1500) }, { opacity: 0, offset: at(1900) }, { opacity: 0 }], { duration: T_END, easing: "ease-in-out" });
+      A4(wrap, [
+        { transform: `translate(${x0}px,${y0}px) scale(${s0})`, opacity: 1, easing: "cubic-bezier(.2,.8,.3,1)" },
+        { transform: "translate(0,-6px) scale(1.035)", opacity: 1, offset: at(360), easing: "cubic-bezier(.4,0,.3,1)" },
+        { transform: "translate(0,0) scale(1)", opacity: 1, offset: at(520) },
+        { transform: "translate(0,0) scale(1)", opacity: 1, offset: at(1640), easing: "cubic-bezier(.6,0,.4,1)" },
+        { transform: back, opacity: 1, offset: at(1900), easing: "ease-in" },
+        { transform: back, opacity: 0, offset: at(1990) },
+        { transform: back, opacity: 0 }
+      ], { duration: T_END });
+      A4(floor, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)", offset: at(420) }, { opacity: 1, transform: "scale(1)", offset: at(1640) }, { opacity: 0, transform: "scale(.7)", offset: at(1880) }, { opacity: 0 }], { duration: T_END, easing: "ease-out" });
+      A4(glintBar, [{ transform: "translateX(0) skewX(-14deg)" }, { transform: "translateX(0) skewX(-14deg)", offset: at(80) }, { transform: `translateX(${Math.round(cw * 2.6)}px) skewX(-14deg)`, offset: at(560) }, { transform: `translateX(${Math.round(cw * 2.6)}px) skewX(-14deg)` }], { duration: T_END, easing: "cubic-bezier(.4,0,.2,1)" });
+      A4(stage, [
+        { transform: "rotateX(0deg) rotateY(0deg)", easing: "cubic-bezier(.2,.8,.3,1)" },
+        { transform: "rotateX(8deg) rotateY(-22deg)", offset: at(480), easing: "ease-in-out" },
+        { transform: "rotateX(6deg) rotateY(-14deg)", offset: at(1500), easing: "ease-in-out" },
+        { transform: "rotateX(5deg) rotateY(-10deg)", offset: at(1830), easing: "ease-out" },
+        { transform: "rotateX(3deg) rotateY(-12deg)", offset: at(1870), easing: "ease-in-out" },
+        { transform: "rotateX(0deg) rotateY(0deg)" }
+      ], { duration: T_END });
+      A4(cover, [
+        { transform: "rotateY(0deg)" },
+        { transform: "rotateY(0deg)", offset: at(380), easing: "cubic-bezier(.5,0,.3,1)" },
+        { transform: "rotateY(-168deg)", offset: at(860), easing: "ease-in-out" },
+        { transform: "rotateY(-157deg)", offset: at(960), easing: "ease-in-out" },
+        { transform: "rotateY(-160deg)", offset: at(1040) },
+        { transform: "rotateY(-160deg)", offset: at(1520), easing: "cubic-bezier(.55,0,.85,.35)" },
+        { transform: "rotateY(0deg)", offset: at(1830) },
+        { transform: "rotateY(0deg)" }
+      ], { duration: T_END });
+      const tx = handheld ? W4 / 2 - dcx : slotX + D5 * 0.7 - dcx;
+      const ty = handheld ? slotY + DH * 0.62 - dcy : H3 / 2 - dcy;
+      const preX = handheld ? W4 / 2 - dcx : slotX - D5 * 0.8 - dcx;
+      const preY = handheld ? slotY - DH * 0.75 - dcy : H3 / 2 - dcy;
+      const midX = handheld ? preX * 0.5 - D5 * 0.18 : preX * 0.5;
+      const midY = handheld ? preY * 0.42 : preY * 0.5 - DH * 0.25;
+      const edge = handheld ? card ? "rotateX(0deg)" : "rotateX(72deg)" : card ? "rotateY(0deg)" : "rotateY(72deg)";
+      const half = handheld ? card ? "rotateX(0deg) rotateZ(-6deg)" : "rotateX(30deg) rotateZ(-4deg)" : card ? "rotateY(0deg)" : "rotateY(30deg)";
+      const inTray = "rotateX(6deg) rotateY(-14deg)";
+      const Ppos = (px2, py2, pr, ps) => `perspective(1000px) translate(${Math.round(px2)}px,${Math.round(py2)}px) ${pr} scale(${ps})`;
+      A4(holder, [
+        { opacity: 0, transform: Ppos(0, 0, inTray, 0.97) },
+        { opacity: 0, transform: Ppos(0, 0, inTray, 0.97), offset: at(879) },
+        { opacity: 1, transform: Ppos(0, 0, inTray, 0.97), offset: at(880), easing: "cubic-bezier(.2,.8,.3,1)" },
+        { opacity: 1, transform: Ppos(0, -ch * 0.06, "rotateX(-4deg) rotateY(3deg)", 1.07), offset: at(1010), easing: "ease-in-out" },
+        { opacity: 1, transform: Ppos(0, -ch * 0.055, "rotateX(2deg) rotateY(-2deg)", 1.06), offset: at(1080), easing: "cubic-bezier(.45,0,.55,1)" },
+        { opacity: 1, transform: Ppos(midX, midY, half, 0.95), offset: at(1250), easing: "cubic-bezier(.45,0,.55,1)" },
+        { opacity: 1, transform: Ppos(preX, preY, edge, 0.84), offset: at(1430), easing: "cubic-bezier(.6,0,1,.5)" },
+        { opacity: 1, transform: Ppos(tx, ty, edge, 0.82), offset: at(1580) },
+        { opacity: 0, transform: Ppos(tx, ty, edge, 0.82) }
+      ], { duration: T_END });
+      A4(root, [{ transform: "translate(0,0)" }, { transform: "translate(0,0)", offset: at(1575) }, { transform: "translate(0,2.5px)", offset: at(1605) }, { transform: "translate(0,-1px)", offset: at(1650) }, { transform: "translate(0,0)", offset: at(1700) }, { transform: "translate(0,0)" }], { duration: T_END, easing: "ease-out" });
+      A4(bezel, [{ opacity: 0, transform: "translateY(10px)" }, { opacity: 0, transform: "translateY(10px)", offset: at(900) }, { opacity: 1, transform: "translateY(0)", offset: at(1120) }, { opacity: 1, transform: "translateY(0)", offset: at(1760) }, { opacity: 0, transform: "translateY(8px)", offset: at(2e3) }, { opacity: 0 }], { duration: T_END, easing: "cubic-bezier(.2,.8,.3,1)" });
+      A4(
+        streak,
+        handheld ? [{ opacity: 0, transform: "translateX(0)" }, { opacity: 0, transform: "translateX(0)", offset: at(1560) }, { opacity: 1, transform: `translateX(${Math.round(D5 * 0.6)}px)`, offset: at(1650) }, { opacity: 0, transform: `translateX(${Math.round(D5 * 1.24)}px)`, offset: at(1780) }, { opacity: 0 }] : [{ opacity: 0, transform: "translateY(0)" }, { opacity: 0, transform: "translateY(0)", offset: at(1560) }, { opacity: 1, transform: `translateY(${Math.round(D5 * 0.6)}px)`, offset: at(1650) }, { opacity: 0, transform: `translateY(${Math.round(D5 * 1.24)}px)`, offset: at(1780) }, { opacity: 0 }],
+        { duration: T_END, easing: "linear" }
+      );
+      A4(shadow, [{ opacity: 0.9, transform: "translate(0,0)" }, { opacity: 0.9, transform: "translate(0,0)", offset: at(880) }, { opacity: 0.45, transform: `translate(${Math.round(D5 * 0.06)}px,${Math.round(D5 * 0.1)}px)`, offset: at(1060) }, { opacity: 0, offset: at(1400) }, { opacity: 0 }], { duration: T_END, easing: "linear" });
+      if (spinner) {
+        A4(spinner, [{ transform: "rotate(0deg)" }, { transform: "rotate(0deg)", offset: at(900), easing: "cubic-bezier(.5,0,.8,.5)" }, { transform: "rotate(1080deg)", offset: at(1580) }, { transform: "rotate(1080deg)" }], { duration: T_END });
+      }
+      A4(slot, [
+        { opacity: 0, transform: "scale(.9)" },
+        { opacity: 0, transform: "scale(.9)", offset: at(950) },
+        { opacity: 1, transform: "scale(1)", offset: at(1150) },
+        { opacity: 1, transform: "scale(1)", offset: at(1480) },
+        { opacity: 1, transform: "scale(1.05)", boxShadow: "0 0 0 1px rgba(170,225,255,.95), 0 0 24px 7px rgba(80,170,255,.8)", offset: at(1600) },
+        { opacity: 1, transform: "scale(1)", boxShadow: "0 0 0 1px rgba(170,225,255,.6), 0 0 14px 3px rgba(80,170,255,.4)", offset: at(1800) },
+        { opacity: 0, transform: "scale(1)" }
+      ], { duration: T_END, easing: "ease-out" });
+      if (eject) {
+        fx.forEach((a3) => {
+          try {
+            a3.reverse();
+          } catch {
+          }
+        });
+      }
+      if (sound) {
+        insertSounds(view, card, 0.85, eject ? "eject" : "insert");
+      }
+      if (opts.onStateChange) {
+        if (eject) {
+          setTimeout(() => opts.onStateChange("eject-started"), 50);
+          setTimeout(() => opts.onStateChange("disc-ejected"), 600);
+          setTimeout(() => opts.onStateChange("disc-returned"), 1290);
+          setTimeout(() => opts.onStateChange("case-closed"), 1830);
+        } else {
+          setTimeout(() => opts.onStateChange("case-flying"), 50);
+          setTimeout(() => opts.onStateChange("case-opened"), 860);
+          setTimeout(() => opts.onStateChange("disc-extracted"), 1010);
+          setTimeout(() => opts.onStateChange("disc-inserting"), 1430);
+          setTimeout(() => opts.onStateChange("disc-inserted"), 1580);
+          setTimeout(() => opts.onStateChange("case-closed"), 1830);
+        }
+      }
+      const done = () => {
+        fx.forEach((a3) => {
+          try {
+            a3.cancel();
+          } catch {
+          }
+        });
+        try {
+          if (root.isConnected) root.remove();
+        } catch {
+        }
+        if (opts.onStateChange) opts.onStateChange("done");
+        resolve(true);
+      };
+      setTimeout(done, T_END + 80);
+    });
+  }
+
+  // tool-box/src/features/game-box/deck/cases/GameCaseCard.jsx
+  function GameCaseCard({
+    game,
+    isSelected = false,
+    onClick,
+    onPickup,
+    customSettings = {},
+    width = 160,
+    height = 240,
+    className = ""
+  }) {
+    const look = T2(() => lookFor(game, customSettings), [game, customSettings]);
+    const coverSrc = T2(() => getGameCaseCoverSrc(game), [game]);
+    const handleClick = (e3) => {
+      if (onClick) {
+        onClick(game, e3);
+      }
+    };
+    return /* @__PURE__ */ u3(
+      "div",
+      {
+        className: `gb-3d-case-container ${isSelected ? "selected" : ""} ${className}`,
+        "data-sanso-cell": "1",
+        "data-sanso-pop": "1",
+        "data-sanso-own": "1",
+        style: {
+          width: `${width}px`,
+          height: `${height}px`,
+          display: "inline-block",
+          margin: "12px 10px",
+          verticalAlign: "middle"
         },
-        ...prev.slice(0, 14)
-      ]);
-    };
-    const handleStartAll = () => {
-      const validPlayers = parsedPlayers.length >= 2 ? parsedPlayers : ["\uCC38\uAC00\uC7901", "\uCC38\uAC00\uC7902"];
-      const actualBombs = Math.max(1, Math.min(validPlayers.length - 1, Number(bombCount) || 1));
-      const rawOutcomes = validPlayers.map((_3, idx) => ({
-        label: idx < actualBombs ? bombLabel : safeLabel,
-        isBomb: idx < actualBombs
-      }));
-      const shuffledOutcomes = shuffleUnbiased(rawOutcomes);
-      const locked = buildAmidakujiLadder({
-        participants: validPlayers,
-        outcomes: shuffledOutcomes,
-        rowsCount: 12
-      });
-      setLadderData(locked);
-      setPhase("running");
-      setProgress(0);
-      setFocusedPlayerIdx(null);
-      particlesRef.current = [];
-      lastSoundStepRef.current = -1;
-      const durationMs = 3200;
-      const startTime = performance.now();
-      const animate = (now) => {
-        const elapsed = now - startTime;
-        const p3 = Math.min(1, elapsed / durationMs);
-        setProgress(p3);
-        const stepBucket = Math.floor(p3 * 18);
-        if (stepBucket !== lastSoundStepRef.current) {
-          lastSoundStepRef.current = stepBucket;
-          drawSound.playTick(0.25 + p3 * 0.5, "wooden");
-        }
-        if (p3 < 1) {
-          rafRef.current = requestAnimationFrame(animate);
-        } else {
-          finalizeReveal(locked);
-        }
-      };
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(animate);
-    };
-    const handleInstantReveal = () => {
-      if (!ladderData) return;
-      if (phase === "idle") {
-        const validPlayers = parsedPlayers.length >= 2 ? parsedPlayers : ["\uCC38\uAC00\uC7901", "\uCC38\uAC00\uC7902"];
-        const actualBombs = Math.max(1, Math.min(validPlayers.length - 1, Number(bombCount) || 1));
-        const rawOutcomes = validPlayers.map((_3, idx) => ({
-          label: idx < actualBombs ? bombLabel : safeLabel,
-          isBomb: idx < actualBombs
-        }));
-        const locked = buildAmidakujiLadder({
-          participants: validPlayers,
-          outcomes: shuffleUnbiased(rawOutcomes),
-          rowsCount: 12
-        });
-        setLadderData(locked);
-        finalizeReveal(locked);
-      } else if (phase === "running") {
-        finalizeReveal(ladderData);
-      }
-    };
-    const handleReset = () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      particlesRef.current = [];
-      setPhase("idle");
-      setProgress(0);
-      setFocusedPlayerIdx(null);
-    };
-    h2(() => {
-      const canvas = canvasRef.current;
-      if (!canvas || !ladderData) return void 0;
-      let animId = null;
-      const renderFrame = () => {
-        const rect = canvas.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        const w3 = Math.max(480, rect.width || 860);
-        const h3 = Math.max(360, rect.height || 480);
-        if (canvas.width !== Math.round(w3 * dpr) || canvas.height !== Math.round(h3 * dpr)) {
-          canvas.width = Math.round(w3 * dpr);
-          canvas.height = Math.round(h3 * dpr);
-        }
-        const ctx = canvas.getContext("2d");
-        ctx.save();
-        ctx.scale(dpr, dpr);
-        ctx.fillStyle = "#0f141c";
-        ctx.fillRect(0, 0, w3, h3);
-        const numCols = ladderData.numCols;
-        const rowsCount = ladderData.rowsCount;
-        const padX = Math.max(58, w3 * 0.08);
-        const topY = 58;
-        const botY = h3 - 56;
-        const usableW = Math.max(120, w3 - padX * 2);
-        const usableH = Math.max(160, botY - topY);
-        const colX = (c3) => numCols <= 1 ? w3 / 2 : padX + c3 / (numCols - 1) * usableW;
-        const rowY = (r3) => topY + r3 / (rowsCount + 1) * usableH;
-        ctx.strokeStyle = "rgba(148, 163, 184, 0.06)";
-        ctx.lineWidth = 1;
-        for (let r3 = 1; r3 <= rowsCount; r3 += 1) {
-          const y3 = rowY(r3);
-          ctx.beginPath();
-          ctx.moveTo(padX - 24, y3);
-          ctx.lineTo(w3 - padX + 24, y3);
-          ctx.stroke();
-        }
-        for (let c3 = 0; c3 < numCols; c3 += 1) {
-          const x3 = colX(c3);
-          ctx.strokeStyle = "rgba(148, 163, 184, 0.35)";
-          ctx.lineWidth = 3.5;
-          ctx.lineCap = "round";
-          ctx.beginPath();
-          ctx.moveTo(x3, topY);
-          ctx.lineTo(x3, botY);
-          ctx.stroke();
-        }
-        const showRungs = !hideRungsUntilStart || phase !== "idle";
-        if (showRungs) {
-          for (let r3 = 0; r3 < rowsCount; r3 += 1) {
-            const y3 = rowY(r3 + 1);
-            for (let c3 = 0; c3 < numCols - 1; c3 += 1) {
-              if (ladderData.rungs[r3][c3]) {
-                const x1 = colX(c3);
-                const x22 = colX(c3 + 1);
-                ctx.strokeStyle = "rgba(226, 232, 240, 0.42)";
-                ctx.lineWidth = 3.5;
-                ctx.beginPath();
-                ctx.moveTo(x1, y3);
-                ctx.lineTo(x22, y3);
-                ctx.stroke();
-                ctx.fillStyle = "#94a3b8";
-                ctx.beginPath();
-                ctx.arc(x1, y3, 3.2, 0, Math.PI * 2);
-                ctx.arc(x22, y3, 3.2, 0, Math.PI * 2);
-                ctx.fill();
-              }
-            }
+        onClick: handleClick,
+        role: "button",
+        tabIndex: 0,
+        "aria-label": `${game.name} \uAC8C\uC784\uD329 \uC120\uD0DD`,
+        onKeyDown: (e3) => {
+          if (e3.key === "Enter" || e3.key === " ") {
+            e3.preventDefault();
+            handleClick(e3);
           }
-        } else {
-          ctx.fillStyle = "rgba(30, 41, 59, 0.88)";
-          ctx.strokeStyle = "rgba(244, 63, 94, 0.45)";
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.roundRect(padX - 26, topY + 22, usableW + 52, usableH - 44, 12);
-          ctx.fill();
-          ctx.stroke();
-          ctx.fillStyle = "#f8fafc";
-          ctx.font = "800 16px Pretendard, sans-serif";
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillText("\u{1F4A3} BLIND LADDER MODE \u2014 \uCD9C\uBC1C \uC2DC \uC0AC\uB2E4\uB9AC \uACBD\uB85C\uAC00 \uACF5\uAC1C\uB429\uB2C8\uB2E4", w3 / 2, topY + usableH / 2);
-        }
-        const activeProgress = phase === "idle" ? 0 : phase === "revealed" ? 1 : progress;
-        const runnerPositions = [];
-        if (activeProgress > 0 || focusedPlayerIdx !== null) {
-          ladderData.traces.forEach((trace, idx) => {
-            const isFocused = focusedPlayerIdx === null || focusedPlayerIdx === idx;
-            const traceProg = phase === "idle" && focusedPlayerIdx === idx ? 1 : activeProgress;
-            if (traceProg <= 0) return;
-            const { current, walkedPoints } = interpolateTrace(trace, traceProg);
-            ctx.save();
-            ctx.strokeStyle = trace.color;
-            ctx.lineWidth = isFocused ? 4.5 : 2;
-            ctx.globalAlpha = isFocused ? 0.96 : 0.22;
-            ctx.shadowColor = trace.color;
-            ctx.shadowBlur = isFocused ? 10 : 0;
-            ctx.lineCap = "round";
-            ctx.lineJoin = "round";
-            ctx.beginPath();
-            walkedPoints.forEach((pt, pIdx) => {
-              const px2 = colX(pt.col);
-              const py2 = rowY(pt.row);
-              if (pIdx === 0) ctx.moveTo(px2, py2);
-              else ctx.lineTo(px2, py2);
-            });
-            ctx.stroke();
-            ctx.restore();
-            const curX = colX(current.col);
-            const curY = rowY(current.row);
-            runnerPositions.push({
-              idx,
-              name: trace.playerName,
-              color: trace.color,
-              x: curX,
-              y: curY,
-              onBridge: current.onBridge,
-              isFocused,
-              isBomb: trace.isBomb
-            });
-          });
-        }
-        if (phase === "running") {
-          for (let i3 = 0; i3 < runnerPositions.length; i3 += 1) {
-            for (let j4 = i3 + 1; j4 < runnerPositions.length; j4 += 1) {
-              const a3 = runnerPositions[i3];
-              const b2 = runnerPositions[j4];
-              const dist = Math.hypot(a3.x - b2.x, a3.y - b2.y);
-              if (dist < 38) {
-                const mx = (a3.x + b2.x) / 2;
-                const my = (a3.y + b2.y) / 2;
-                ctx.save();
-                ctx.strokeStyle = "#facc15";
-                ctx.fillStyle = "#fef08a";
-                ctx.lineWidth = 2;
-                for (let k3 = 0; k3 < 6; k3 += 1) {
-                  const ang = Math.PI * 2 * k3 / 6 + activeProgress * 18;
-                  ctx.beginPath();
-                  ctx.moveTo(mx + Math.cos(ang) * 4, my + Math.sin(ang) * 4);
-                  ctx.lineTo(mx + Math.cos(ang) * 14, my + Math.sin(ang) * 14);
-                  ctx.stroke();
-                }
-                ctx.font = "800 11px Pretendard, sans-serif";
-                ctx.textAlign = "center";
-                ctx.fillText("\u26A1\uCDA9\uB3CC!", mx, my - 15);
-                ctx.restore();
-              }
-            }
-          }
-        }
-        runnerPositions.forEach((runner) => {
-          if (!runner.isFocused && focusedPlayerIdx !== null) return;
-          ctx.save();
-          ctx.fillStyle = runner.color;
-          ctx.shadowColor = runner.color;
-          ctx.shadowBlur = 12;
-          ctx.beginPath();
-          ctx.arc(runner.x, runner.y, 11, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.lineWidth = 2;
-          ctx.strokeStyle = "#ffffff";
-          ctx.stroke();
-          ctx.shadowBlur = 0;
-          ctx.fillStyle = "#0f172a";
-          ctx.font = "800 10.5px Pretendard, sans-serif";
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillText(runner.name.slice(0, 2), runner.x, runner.y);
-          ctx.restore();
-        });
-        ladderData.participants.forEach((name, c3) => {
-          const x3 = colX(c3);
-          const color = PLAYER_COLORS[c3 % PLAYER_COLORS.length];
-          const isFocused = focusedPlayerIdx === c3;
-          ctx.save();
-          ctx.fillStyle = isFocused ? color : "#1e293b";
-          ctx.strokeStyle = color;
-          ctx.lineWidth = isFocused ? 3 : 2;
-          ctx.beginPath();
-          ctx.roundRect(x3 - 38, 12, 76, 32, 8);
-          ctx.fill();
-          ctx.stroke();
-          ctx.fillStyle = isFocused ? "#0f172a" : "#f8fafc";
-          ctx.font = "800 12.5px Pretendard, sans-serif";
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillText(name.length > 5 ? `${name.slice(0, 5)}\u2026` : name, x3, 28);
-          ctx.restore();
-        });
-        ladderData.outcomes.forEach((out, c3) => {
-          const x3 = colX(c3);
-          const arrivedTrace = phase === "revealed" ? ladderData.traces.find((t3) => t3.destCol === c3) : null;
-          ctx.save();
-          const isBomb = out.isBomb;
-          if (phase === "revealed") {
-            ctx.fillStyle = isBomb ? "rgba(239, 68, 68, 0.25)" : "rgba(34, 197, 94, 0.2)";
-            ctx.strokeStyle = isBomb ? "#ef4444" : "#22c55e";
-          } else {
-            ctx.fillStyle = "#1e293b";
-            ctx.strokeStyle = isBomb ? "rgba(244, 63, 94, 0.65)" : "rgba(56, 189, 248, 0.5)";
-          }
-          ctx.lineWidth = phase === "revealed" && isBomb ? 3 : 2;
-          ctx.beginPath();
-          ctx.roundRect(x3 - 42, botY + 10, 84, 36, 8);
-          ctx.fill();
-          ctx.stroke();
-          ctx.fillStyle = isBomb ? "#fda4af" : "#bae6fd";
-          ctx.font = "800 11.5px Pretendard, sans-serif";
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          const displayLabel = isBomb ? "\u{1F4A3} \uD3ED\uD0C4" : "\u{1F6E1}\uFE0F \uC0DD\uC874";
-          ctx.fillText(displayLabel, x3, botY + 22);
-          if (arrivedTrace) {
-            ctx.fillStyle = "#ffffff";
-            ctx.font = "800 11px Pretendard, sans-serif";
-            ctx.fillText(arrivedTrace.playerName.slice(0, 5), x3, botY + 37);
-          }
-          ctx.restore();
-        });
-        if (particlesRef.current.length > 0) {
-          let alive = false;
-          particlesRef.current.forEach((p3) => {
-            if (p3.alpha <= 0.02) return;
-            alive = true;
-            p3.x += p3.vx;
-            p3.y += p3.vy;
-            p3.vy += 0.14;
-            p3.alpha *= 0.94;
-            ctx.save();
-            ctx.globalAlpha = Math.max(0, p3.alpha);
-            ctx.fillStyle = p3.color;
-            ctx.beginPath();
-            ctx.arc(p3.x, p3.y, p3.radius, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-          });
-          if (alive) {
-            animId = requestAnimationFrame(renderFrame);
-          }
-        }
-        ctx.restore();
-      };
-      renderFrame();
-      const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => renderFrame()) : null;
-      if (ro) ro.observe(canvas);
-      window.addEventListener("resize", renderFrame);
-      return () => {
-        if (ro) ro.disconnect();
-        window.removeEventListener("resize", renderFrame);
-        if (animId) cancelAnimationFrame(animId);
-      };
-    }, [ladderData, phase, progress, hideRungsUntilStart, focusedPlayerIdx]);
-    const bombTraces = ladderData ? ladderData.traces.filter((t3) => t3.isBomb) : [];
-    return /* @__PURE__ */ u3("div", { className: "rpz-game-shell", "data-testid": "game-bomb-ladder", children: [
-      /* @__PURE__ */ u3("header", { className: "rpz-game-topbar", children: [
-        /* @__PURE__ */ u3("div", { className: "rpz-game-title-group", children: [
-          /* @__PURE__ */ u3("button", { type: "button", className: "rpz-back-btn", onClick: onBack, children: "\u2190 RANDOM PLAY ZONE" }),
-          /* @__PURE__ */ u3("div", { children: [
-            /* @__PURE__ */ u3("span", { className: "rpz-game-Tag", children: "GAME 01 \xB7 AMIDAKUJI BIJECTION ENGINE" }),
-            /* @__PURE__ */ u3("h2", { children: "\u{1F4A3} BOMB LADDER \u2014 \uD3ED\uD0C4 \uC0AC\uB2E4\uB9AC" })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "rpz-top-actions", children: [
-          phase === "idle" && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-primary",
-              "data-testid": "ladder-start-btn",
-              onClick: handleStartAll,
-              disabled: parsedPlayers.length < 2,
-              children: "\u{1F680} \uC804\uC6D0 \uB3D9\uC2DC \uCD9C\uBC1C!"
-            }
-          ),
-          phase === "running" && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-accent",
-              "data-testid": "ladder-instant-btn",
-              onClick: handleInstantReveal,
-              children: "\u26A1 \uACB0\uACFC \uC77C\uAD04 \uACF5\uAC1C"
-            }
-          ),
-          phase === "revealed" && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-primary",
-              "data-testid": "ladder-reroll-btn",
-              onClick: handleStartAll,
-              children: "\u{1F504} \uC0AC\uB2E4\uB9AC \uC7AC\uCD94\uCCA8"
-            }
-          ),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-ghost",
-              onClick: handleReset,
-              children: "\uCD08\uAE30\uD654"
-            }
-          )
-        ] })
-      ] }),
-      /* @__PURE__ */ u3("div", { className: "rpz-game-workspace", children: [
-        /* @__PURE__ */ u3("section", { className: "rpz-stage-panel", children: [
-          /* @__PURE__ */ u3("div", { className: "rpz-stage-status-bar", children: [
-            /* @__PURE__ */ u3("span", { className: `rpz-phase-pill phase-${phase}`, "data-testid": "ladder-phase-badge", children: [
-              phase === "idle" && "\uB300\uAE30 \uC911 \u2014 \uCC38\uAC00\uC790\uC640 \uD3ED\uD0C4 \uC218\uB97C \uC124\uC815\uD558\uACE0 \uCD9C\uBC1C\uD558\uC138\uC694",
-              phase === "running" && `\uCD94\uCCA8 \uC9C4\uD589 \uC911 (${Math.round(progress * 100)}%) \u2014 \uB2E4\uC778 \uB3D9\uC2DC \uACBD\uB85C \uCD94\uC801`,
-              phase === "revealed" && `\uCD94\uCCA8 \uC644\uB8CC! \uD3ED\uD0C4 \uB2F9\uCCA8: ${bombTraces.map((t3) => t3.playerName).join(", ")}`
-            ] }),
-            ladderData && /* @__PURE__ */ u3("div", { className: "rpz-player-filter-chips", children: [
+        },
+        children: /* @__PURE__ */ u3(
+          "div",
+          {
+            className: "gb-3d-case-box",
+            "data-sanso-case": "box",
+            "data-game-id": game.id,
+            style: {
+              "--c3d-a": look.pal.a,
+              "--c3d-b": look.pal.b,
+              "--c3d-band": look.pal.band,
+              "--c3d-text": look.pal.text,
+              "--c3d-line": look.pal.line,
+              "--c3d-d": `${look.depthPx}px`,
+              "--c3d-r": `${look.shape.radius}px`,
+              "--c3d-rim": `${look.shape.rim}px`,
+              "--c3d-wear": WEAR_CSS[look.wear] || "none",
+              "--c3d-ang": "32deg"
+            },
+            children: [
               /* @__PURE__ */ u3(
-                "button",
+                "img",
                 {
-                  type: "button",
-                  className: `rpz-chip ${focusedPlayerIdx === null ? "active" : ""}`,
-                  onClick: () => setFocusedPlayerIdx(null),
-                  children: "\uC804\uCCB4 \uACBD\uB85C \uBCF4\uAE30"
+                  src: coverSrc,
+                  alt: game.name,
+                  loading: "eager",
+                  className: "gb-3d-case-cover-img"
                 }
               ),
-              ladderData.participants.map((name, idx) => /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: `rpz-chip ${focusedPlayerIdx === idx ? "active" : ""}`,
-                  style: { borderColor: PLAYER_COLORS[idx % PLAYER_COLORS.length] },
-                  onClick: () => setFocusedPlayerIdx((prev) => prev === idx ? null : idx),
-                  children: name
-                },
-                `${name}-${idx}`
-              ))
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-canvas-box", children: /* @__PURE__ */ u3(
-            "canvas",
-            {
-              ref: canvasRef,
-              className: "rpz-main-canvas",
-              "data-testid": "ladder-canvas"
-            }
-          ) }),
-          phase === "revealed" && ladderData && /* @__PURE__ */ u3("div", { className: "rpz-result-banner", "data-testid": "ladder-result-panel", children: [
-            /* @__PURE__ */ u3("div", { className: "rpz-result-summary", children: [
-              /* @__PURE__ */ u3("strong", { children: [
-                "\u{1F4A5} \uD3ED\uD0C4 \uB2F9\uCCA8\uC790 (",
-                bombTraces.length,
-                "\uBA85):"
-              ] }),
-              /* @__PURE__ */ u3("span", { className: "rpz-highlight-danger", children: bombTraces.map((t3) => t3.playerName).join(", ") })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "rpz-result-grid", children: ladderData.traces.map((t3) => /* @__PURE__ */ u3(
-              "div",
-              {
-                className: `rpz-result-card ${t3.isBomb ? "is-bomb" : "is-safe"}`,
-                onClick: () => setFocusedPlayerIdx(t3.playerIndex),
-                children: [
-                  /* @__PURE__ */ u3("span", { className: "rpz-result-player", style: { color: t3.color }, children: t3.playerName }),
-                  /* @__PURE__ */ u3("span", { className: "rpz-result-arrow", children: "\u2192" }),
-                  /* @__PURE__ */ u3("strong", { className: "rpz-result-outcome", children: t3.isBomb ? `\u{1F4A3} ${t3.outcomeLabel}` : `\u{1F6E1}\uFE0F ${t3.outcomeLabel}` })
-                ]
-              },
-              t3.playerIndex
-            )) })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3("aside", { className: "rpz-sidebar-panel", children: [
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: "1. \uCC38\uAC00\uC790 \uBA85\uB2E8 (2~12\uBA85)" }),
-            /* @__PURE__ */ u3(
-              "textarea",
-              {
-                className: "rpz-textarea",
-                rows: 3,
-                value: playersInput,
-                disabled: phase === "running",
-                onChange: (e3) => setPlayersInput(e3.target.value),
-                placeholder: "\uC27C\uD45C(,) \uB610\uB294 \uC904\uBC14\uAFC8\uC73C\uB85C \uAD6C\uBD84",
-                "data-testid": "ladder-players-input"
-              }
-            ),
-            /* @__PURE__ */ u3("div", { className: "rpz-preset-row", children: [
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-btn-xs",
-                  disabled: phase === "running",
-                  onClick: () => setPlayersInput("\uAE40\uC131\uBBFC, \uC774\uC9C0\uD6C8, \uBC15\uC218\uC9C4, \uCD5C\uBBFC\uD638, \uC815\uD558\uB298, \uAC15\uB3D9\uC6D0"),
-                  children: "6\uC778 \uAE30\uBCF8"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-btn-xs",
-                  disabled: phase === "running",
-                  onClick: () => setPlayersInput("\uAE30\uD68D\uD300, \uAC1C\uBC1C\uD300, \uB514\uC790\uC778\uD300, QA\uD300"),
-                  children: "4\uAC1C \uD300"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-btn-xs",
-                  disabled: phase === "running",
-                  onClick: () => setPlayersInput("\uAE40\uC131\uBBFC, \uC774\uC9C0\uD6C8, \uBC15\uC218\uC9C4, \uCD5C\uBBFC\uD638, \uC815\uD558\uB298, \uAC15\uB3D9\uC6D0, \uC724\uC11C\uC5F0, \uD55C\uC9C0\uBBFC"),
-                  children: "8\uC778 \uD30C\uD2F0"
-                }
-              )
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: "2. \uD3ED\uD0C4 \uBC0F \uC0AC\uB2E4\uB9AC \uC635\uC158" }),
-            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
-              /* @__PURE__ */ u3("span", { children: [
-                "\uD3ED\uD0C4 \uAC1C\uC218 (1 ~ ",
-                Math.max(1, parsedPlayers.length - 1),
-                "\uAC1C)"
-              ] }),
-              /* @__PURE__ */ u3(
-                "input",
-                {
-                  type: "number",
-                  className: "rpz-input",
-                  min: 1,
-                  max: Math.max(1, parsedPlayers.length - 1),
-                  value: bombCount,
-                  disabled: phase === "running",
-                  onChange: (e3) => setBombCount(Math.max(1, Math.min(parsedPlayers.length - 1, Number(e3.target.value) || 1))),
-                  "data-testid": "ladder-bomb-count"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
-              /* @__PURE__ */ u3("span", { children: "\uD3ED\uD0C4 \uBC8C\uCE59 \uBB38\uAD6C" }),
-              /* @__PURE__ */ u3(
-                "input",
-                {
-                  type: "text",
-                  className: "rpz-input",
-                  value: bombLabel,
-                  disabled: phase === "running",
-                  onChange: (e3) => setBombLabel(e3.target.value)
-                }
-              )
-            ] }),
-            /* @__PURE__ */ u3("label", { className: "rpz-check-row", children: [
-              /* @__PURE__ */ u3(
-                "input",
-                {
-                  type: "checkbox",
-                  checked: hideRungsUntilStart,
-                  disabled: phase === "running",
-                  onChange: (e3) => setHideRungsUntilStart(e3.target.checked)
-                }
-              ),
-              /* @__PURE__ */ u3("span", { children: "\uCD9C\uBC1C \uC804\uAE4C\uC9C0 \uAC00\uB85C\uC904 \uAC00\uB9AC\uAE30 (\uBE14\uB77C\uC778\uB4DC \uBAA8\uB4DC)" })
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: [
-              "3. \uCD94\uCCA8 \uAE30\uB85D (",
-              history.length,
-              ")"
-            ] }),
-            history.length === 0 ? /* @__PURE__ */ u3("p", { className: "rpz-empty", children: "\uC544\uC9C1 \uC0AC\uB2E4\uB9AC \uCD94\uCCA8 \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4." }) : /* @__PURE__ */ u3("ul", { className: "rpz-history-list", "data-testid": "ladder-history-list", children: history.map((item) => /* @__PURE__ */ u3("li", { children: [
-              /* @__PURE__ */ u3("div", { className: "rpz-history-head", children: [
-                /* @__PURE__ */ u3("strong", { children: [
-                  "\u{1F4A3} ",
-                  item.bombWinners.join(", ")
-                ] }),
-                /* @__PURE__ */ u3("small", { children: item.time })
-              ] }),
-              /* @__PURE__ */ u3("small", { children: [
-                "\uCC38\uAC00 ",
-                item.participantsCount,
-                "\uBA85 \xB7 \uC0DD\uC874: ",
-                item.safeWinners.join(", ")
+              /* @__PURE__ */ u3("div", { "data-sanso-faces": "1", children: [
+                /* @__PURE__ */ u3("div", { "data-f": "front" }),
+                /* @__PURE__ */ u3("div", { "data-f": "spine", children: /* @__PURE__ */ u3("span", { children: game.discLabel || game.name }) }),
+                /* @__PURE__ */ u3("div", { "data-f": "top" }),
+                /* @__PURE__ */ u3("div", { "data-f": "bottom" }),
+                /* @__PURE__ */ u3("div", { "data-f": "right" }),
+                /* @__PURE__ */ u3("div", { "data-f": "back" }),
+                /* @__PURE__ */ u3("div", { "data-f": "shine" })
               ] })
-            ] }, item.id)) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-license-box", children: /* @__PURE__ */ u3("small", { children: [
-            /* @__PURE__ */ u3("strong", { children: "\uC624\uD508\uC18C\uC2A4 \uB77C\uC774\uC120\uC2A4 \uACE0\uC9C0:" }),
-            " \uB09C\uC218 \uC5D4\uC9C4 ",
-            /* @__PURE__ */ u3("code", { children: "Tae-sung-Kim/pickle-eight" }),
-            " (MIT License, Copyright \xA9 2025 Tae-sung Kim) \uD65C\uC6A9 \xB7 \uC544\uBBF8\uB2E4\uCFE0\uC9C0 \uC804\uB2E8\uC0AC \uACBD\uB85C \uCD94\uC801 \uBC0F \uD3ED\uD0C4 \uCDA9\uB3CC \uC5F0\uCD9C \uC790\uCCB4 \uAD6C\uD604."
-          ] }) })
-        ] })
-      ] })
-    ] });
+            ]
+          }
+        )
+      }
+    );
   }
 
   // node_modules/three/build/three.core.js
@@ -15344,7 +15402,7 @@ var ToolBoxGameBox = (() => {
      * @param {Raycaster} raycaster - The raycaster.
      * @param {Array<Object>} intersects - The target array that holds the intersection points.
      */
-    raycast(raycaster, intersects) {
+    raycast(raycaster, intersects2) {
       if (raycaster.camera === null) {
         error('Sprite: "Raycaster.camera" needs to be set in order to raycast against sprites.');
       }
@@ -15379,7 +15437,7 @@ var ToolBoxGameBox = (() => {
       }
       const distance = raycaster.ray.origin.distanceTo(_intersectPoint);
       if (distance < raycaster.near || distance > raycaster.far) return;
-      intersects.push({
+      intersects2.push({
         distance,
         point: _intersectPoint.clone(),
         uv: Triangle.getInterpolation(_intersectPoint, _vA$1, _vB$1, _vC$1, _uvA, _uvB, _uvC, new Vector2()),
@@ -16034,7 +16092,7 @@ var ToolBoxGameBox = (() => {
      * @param {Raycaster} raycaster - The raycaster.
      * @param {Array<Object>} intersects - The target array that holds the intersection points.
      */
-    raycast(raycaster, intersects) {
+    raycast(raycaster, intersects2) {
       const geometry = this.geometry;
       const material = this.material;
       const matrixWorld = this.matrixWorld;
@@ -16052,9 +16110,9 @@ var ToolBoxGameBox = (() => {
       if (geometry.boundingBox !== null) {
         if (_ray$3.intersectsBox(geometry.boundingBox) === false) return;
       }
-      this._computeIntersections(raycaster, intersects, _ray$3);
+      this._computeIntersections(raycaster, intersects2, _ray$3);
     }
-    _computeIntersections(raycaster, intersects, rayLocalSpace) {
+    _computeIntersections(raycaster, intersects2, rayLocalSpace) {
       let intersection;
       const geometry = this.geometry;
       const material = this.material;
@@ -16080,7 +16138,7 @@ var ToolBoxGameBox = (() => {
               if (intersection) {
                 intersection.faceIndex = Math.floor(j4 / 3);
                 intersection.face.materialIndex = group.materialIndex;
-                intersects.push(intersection);
+                intersects2.push(intersection);
               }
             }
           }
@@ -16094,7 +16152,7 @@ var ToolBoxGameBox = (() => {
             intersection = checkGeometryIntersection(this, material, raycaster, rayLocalSpace, uv, uv1, normal, a3, b2, c3);
             if (intersection) {
               intersection.faceIndex = Math.floor(i3 / 3);
-              intersects.push(intersection);
+              intersects2.push(intersection);
             }
           }
         }
@@ -16113,7 +16171,7 @@ var ToolBoxGameBox = (() => {
               if (intersection) {
                 intersection.faceIndex = Math.floor(j4 / 3);
                 intersection.face.materialIndex = group.materialIndex;
-                intersects.push(intersection);
+                intersects2.push(intersection);
               }
             }
           }
@@ -16127,7 +16185,7 @@ var ToolBoxGameBox = (() => {
             intersection = checkGeometryIntersection(this, material, raycaster, rayLocalSpace, uv, uv1, normal, a3, b2, c3);
             if (intersection) {
               intersection.faceIndex = Math.floor(i3 / 3);
-              intersects.push(intersection);
+              intersects2.push(intersection);
             }
           }
         }
@@ -16356,7 +16414,7 @@ var ToolBoxGameBox = (() => {
         objectInfluences[i3] = array[dataIndex + i3];
       }
     }
-    raycast(raycaster, intersects) {
+    raycast(raycaster, intersects2) {
       const matrixWorld = this.matrixWorld;
       const raycastTimes = this.count;
       _mesh$1.geometry = this.geometry;
@@ -16375,7 +16433,7 @@ var ToolBoxGameBox = (() => {
           const intersect = _instanceIntersects[i3];
           intersect.instanceId = instanceId;
           intersect.object = this;
-          intersects.push(intersect);
+          intersects2.push(intersect);
         }
         _instanceIntersects.length = 0;
       }
@@ -17118,10 +17176,10 @@ var ToolBoxGameBox = (() => {
         const vertex2 = new Vector3();
         let groupCount = 0;
         const radius = top === true ? radiusTop : radiusBottom;
-        const sign = top === true ? 1 : -1;
+        const sign2 = top === true ? 1 : -1;
         for (let x3 = 1; x3 <= radialSegments; x3++) {
-          vertices.push(0, halfHeight * sign, 0);
-          normals.push(0, sign, 0);
+          vertices.push(0, halfHeight * sign2, 0);
+          normals.push(0, sign2, 0);
           uvs.push(0.5, 0.5);
           index++;
         }
@@ -17132,12 +17190,12 @@ var ToolBoxGameBox = (() => {
           const cosTheta = Math.cos(theta);
           const sinTheta = Math.sin(theta);
           vertex2.x = radius * sinTheta;
-          vertex2.y = halfHeight * sign;
+          vertex2.y = halfHeight * sign2;
           vertex2.z = radius * cosTheta;
           vertices.push(vertex2.x, vertex2.y, vertex2.z);
-          normals.push(0, sign, 0);
+          normals.push(0, sign2, 0);
           uv.x = cosTheta * 0.5 + 0.5;
-          uv.y = sinTheta * 0.5 * sign + 0.5;
+          uv.y = sinTheta * 0.5 * sign2 + 0.5;
           uvs.push(uv.x, uv.y);
           index++;
         }
@@ -18198,6 +18256,1369 @@ var ToolBoxGameBox = (() => {
     QuadraticBezierCurve3,
     SplineCurve
   });
+  var CurvePath = class extends Curve {
+    /**
+     * Constructs a new curve path.
+     */
+    constructor() {
+      super();
+      this.type = "CurvePath";
+      this.curves = [];
+      this.autoClose = false;
+      this.cacheLengths = null;
+    }
+    /**
+     * Adds a curve to this curve path.
+     *
+     * @param {Curve} curve - The curve to add.
+     */
+    add(curve) {
+      this.curves.push(curve);
+    }
+    /**
+     * Adds a line curve to close the path.
+     *
+     * @return {CurvePath} A reference to this curve path.
+     */
+    closePath() {
+      const startPoint = this.curves[0].getPoint(0);
+      const endPoint = this.curves[this.curves.length - 1].getPoint(1);
+      if (!startPoint.equals(endPoint)) {
+        const lineType = startPoint.isVector2 === true ? "LineCurve" : "LineCurve3";
+        this.curves.push(new Curves[lineType](endPoint, startPoint));
+      }
+      return this;
+    }
+    /**
+     * This method returns a vector in 2D or 3D space (depending on the curve definitions)
+     * for the given interpolation factor.
+     *
+     * @param {number} t - A interpolation factor representing a position on the curve. Must be in the range `[0,1]`.
+     * @param {(Vector2|Vector3)} [optionalTarget] - The optional target vector the result is written to.
+     * @return {?(Vector2|Vector3)} The position on the curve. It can be a 2D or 3D vector depending on the curve definition.
+     */
+    getPoint(t3, optionalTarget) {
+      const d3 = t3 * this.getLength();
+      const curveLengths = this.getCurveLengths();
+      let i3 = 0;
+      while (i3 < curveLengths.length) {
+        if (curveLengths[i3] >= d3) {
+          const diff = curveLengths[i3] - d3;
+          const curve = this.curves[i3];
+          const segmentLength = curve.getLength();
+          const u4 = segmentLength === 0 ? 0 : 1 - diff / segmentLength;
+          return curve.getPointAt(u4, optionalTarget);
+        }
+        i3++;
+      }
+      return null;
+    }
+    getLength() {
+      const lens = this.getCurveLengths();
+      return lens[lens.length - 1];
+    }
+    updateArcLengths() {
+      this.needsUpdate = true;
+      this.cacheLengths = null;
+      this.getCurveLengths();
+    }
+    /**
+     * Returns list of cumulative curve lengths of the defined curves.
+     *
+     * @return {Array<number>} The curve lengths.
+     */
+    getCurveLengths() {
+      if (this.cacheLengths && this.cacheLengths.length === this.curves.length) {
+        return this.cacheLengths;
+      }
+      const lengths = [];
+      let sums = 0;
+      for (let i3 = 0, l3 = this.curves.length; i3 < l3; i3++) {
+        sums += this.curves[i3].getLength();
+        lengths.push(sums);
+      }
+      this.cacheLengths = lengths;
+      return lengths;
+    }
+    getSpacedPoints(divisions = 40) {
+      const points = [];
+      for (let i3 = 0; i3 <= divisions; i3++) {
+        points.push(this.getPoint(i3 / divisions));
+      }
+      if (this.autoClose) {
+        points.push(points[0]);
+      }
+      return points;
+    }
+    getPoints(divisions = 12) {
+      const points = [];
+      let last;
+      for (let i3 = 0, curves = this.curves; i3 < curves.length; i3++) {
+        const curve = curves[i3];
+        const resolution = curve.isEllipseCurve ? divisions * 2 : curve.isLineCurve || curve.isLineCurve3 ? 1 : curve.isSplineCurve ? divisions * curve.points.length : divisions;
+        const pts = curve.getPoints(resolution);
+        for (let j4 = 0; j4 < pts.length; j4++) {
+          const point = pts[j4];
+          if (last && last.equals(point)) continue;
+          points.push(point);
+          last = point;
+        }
+      }
+      if (this.autoClose && points.length > 1 && !points[points.length - 1].equals(points[0])) {
+        points.push(points[0]);
+      }
+      return points;
+    }
+    copy(source) {
+      super.copy(source);
+      this.curves = [];
+      for (let i3 = 0, l3 = source.curves.length; i3 < l3; i3++) {
+        const curve = source.curves[i3];
+        this.curves.push(curve.clone());
+      }
+      this.autoClose = source.autoClose;
+      this.cacheLengths = null;
+      return this;
+    }
+    toJSON() {
+      const data = super.toJSON();
+      data.autoClose = this.autoClose;
+      data.curves = [];
+      for (let i3 = 0, l3 = this.curves.length; i3 < l3; i3++) {
+        const curve = this.curves[i3];
+        data.curves.push(curve.toJSON());
+      }
+      return data;
+    }
+    fromJSON(json) {
+      super.fromJSON(json);
+      this.autoClose = json.autoClose;
+      this.curves = [];
+      for (let i3 = 0, l3 = json.curves.length; i3 < l3; i3++) {
+        const curve = json.curves[i3];
+        this.curves.push(new Curves[curve.type]().fromJSON(curve));
+      }
+      this.cacheLengths = null;
+      return this;
+    }
+  };
+  var Path = class extends CurvePath {
+    /**
+     * Constructs a new path.
+     *
+     * @param {Array<Vector2>} [points] - An array of 2D points defining the path.
+     */
+    constructor(points) {
+      super();
+      this.type = "Path";
+      this.currentPoint = new Vector2();
+      if (points) {
+        this.setFromPoints(points);
+      }
+    }
+    /**
+     * Creates a path from the given list of points. The points are added
+     * to the path as instances of {@link LineCurve}.
+     *
+     * @param {Array<Vector2>} points - An array of 2D points.
+     * @return {Path} A reference to this path.
+     */
+    setFromPoints(points) {
+      this.moveTo(points[0].x, points[0].y);
+      for (let i3 = 1, l3 = points.length; i3 < l3; i3++) {
+        this.lineTo(points[i3].x, points[i3].y);
+      }
+      return this;
+    }
+    /**
+     * Moves {@link Path#currentPoint} to the given point.
+     *
+     * @param {number} x - The x coordinate.
+     * @param {number} y - The y coordinate.
+     * @return {Path} A reference to this path.
+     */
+    moveTo(x3, y3) {
+      this.currentPoint.set(x3, y3);
+      return this;
+    }
+    /**
+     * Adds an instance of {@link LineCurve} to the path by connecting
+     * the current point with the given one.
+     *
+     * @param {number} x - The x coordinate of the end point.
+     * @param {number} y - The y coordinate of the end point.
+     * @return {Path} A reference to this path.
+     */
+    lineTo(x3, y3) {
+      const curve = new LineCurve(this.currentPoint.clone(), new Vector2(x3, y3));
+      this.curves.push(curve);
+      this.currentPoint.set(x3, y3);
+      return this;
+    }
+    /**
+     * Adds an instance of {@link QuadraticBezierCurve} to the path by connecting
+     * the current point with the given one.
+     *
+     * @param {number} aCPx - The x coordinate of the control point.
+     * @param {number} aCPy - The y coordinate of the control point.
+     * @param {number} aX - The x coordinate of the end point.
+     * @param {number} aY - The y coordinate of the end point.
+     * @return {Path} A reference to this path.
+     */
+    quadraticCurveTo(aCPx, aCPy, aX, aY) {
+      const curve = new QuadraticBezierCurve(
+        this.currentPoint.clone(),
+        new Vector2(aCPx, aCPy),
+        new Vector2(aX, aY)
+      );
+      this.curves.push(curve);
+      this.currentPoint.set(aX, aY);
+      return this;
+    }
+    /**
+     * Adds an instance of {@link CubicBezierCurve} to the path by connecting
+     * the current point with the given one.
+     *
+     * @param {number} aCP1x - The x coordinate of the first control point.
+     * @param {number} aCP1y - The y coordinate of the first control point.
+     * @param {number} aCP2x - The x coordinate of the second control point.
+     * @param {number} aCP2y - The y coordinate of the second control point.
+     * @param {number} aX - The x coordinate of the end point.
+     * @param {number} aY - The y coordinate of the end point.
+     * @return {Path} A reference to this path.
+     */
+    bezierCurveTo(aCP1x, aCP1y, aCP2x, aCP2y, aX, aY) {
+      const curve = new CubicBezierCurve(
+        this.currentPoint.clone(),
+        new Vector2(aCP1x, aCP1y),
+        new Vector2(aCP2x, aCP2y),
+        new Vector2(aX, aY)
+      );
+      this.curves.push(curve);
+      this.currentPoint.set(aX, aY);
+      return this;
+    }
+    /**
+     * Adds an instance of {@link SplineCurve} to the path by connecting
+     * the current point with the given list of points.
+     *
+     * @param {Array<Vector2>} pts - An array of points in 2D space.
+     * @return {Path} A reference to this path.
+     */
+    splineThru(pts) {
+      const npts = [this.currentPoint.clone()].concat(pts);
+      const curve = new SplineCurve(npts);
+      this.curves.push(curve);
+      this.currentPoint.copy(pts[pts.length - 1]);
+      return this;
+    }
+    /**
+     * Adds an arc as an instance of {@link EllipseCurve} to the path, positioned relative
+     * to the current point.
+     *
+     * @param {number} [aX=0] - The x coordinate of the center of the arc offsetted from the previous curve.
+     * @param {number} [aY=0] - The y coordinate of the center of the arc offsetted from the previous curve.
+     * @param {number} [aRadius=1] - The radius of the arc.
+     * @param {number} [aStartAngle=0] - The start angle in radians.
+     * @param {number} [aEndAngle=Math.PI*2] - The end angle in radians.
+     * @param {boolean} [aClockwise=false] - Whether to sweep the arc clockwise or not.
+     * @return {Path} A reference to this path.
+     */
+    arc(aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise) {
+      const x0 = this.currentPoint.x;
+      const y0 = this.currentPoint.y;
+      this.absarc(
+        aX + x0,
+        aY + y0,
+        aRadius,
+        aStartAngle,
+        aEndAngle,
+        aClockwise
+      );
+      return this;
+    }
+    /**
+     * Adds an absolutely positioned arc as an instance of {@link EllipseCurve} to the path.
+     *
+     * @param {number} [aX=0] - The x coordinate of the center of the arc.
+     * @param {number} [aY=0] - The y coordinate of the center of the arc.
+     * @param {number} [aRadius=1] - The radius of the arc.
+     * @param {number} [aStartAngle=0] - The start angle in radians.
+     * @param {number} [aEndAngle=Math.PI*2] - The end angle in radians.
+     * @param {boolean} [aClockwise=false] - Whether to sweep the arc clockwise or not.
+     * @return {Path} A reference to this path.
+     */
+    absarc(aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise) {
+      this.absellipse(aX, aY, aRadius, aRadius, aStartAngle, aEndAngle, aClockwise);
+      return this;
+    }
+    /**
+     * Adds an ellipse as an instance of {@link EllipseCurve} to the path, positioned relative
+     * to the current point
+     *
+     * @param {number} [aX=0] - The x coordinate of the center of the ellipse offsetted from the previous curve.
+     * @param {number} [aY=0] - The y coordinate of the center of the ellipse offsetted from the previous curve.
+     * @param {number} [xRadius=1] - The radius of the ellipse in the x axis.
+     * @param {number} [yRadius=1] - The radius of the ellipse in the y axis.
+     * @param {number} [aStartAngle=0] - The start angle in radians.
+     * @param {number} [aEndAngle=Math.PI*2] - The end angle in radians.
+     * @param {boolean} [aClockwise=false] - Whether to sweep the ellipse clockwise or not.
+     * @param {number} [aRotation=0] - The rotation angle of the ellipse in radians, counterclockwise from the positive X axis.
+     * @return {Path} A reference to this path.
+     */
+    ellipse(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation) {
+      const x0 = this.currentPoint.x;
+      const y0 = this.currentPoint.y;
+      this.absellipse(aX + x0, aY + y0, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation);
+      return this;
+    }
+    /**
+     * Adds an absolutely positioned ellipse as an instance of {@link EllipseCurve} to the path.
+     *
+     * @param {number} [aX=0] - The x coordinate of the absolute center of the ellipse.
+     * @param {number} [aY=0] - The y coordinate of the absolute center of the ellipse.
+     * @param {number} [xRadius=1] - The radius of the ellipse in the x axis.
+     * @param {number} [yRadius=1] - The radius of the ellipse in the y axis.
+     * @param {number} [aStartAngle=0] - The start angle in radians.
+     * @param {number} [aEndAngle=Math.PI*2] - The end angle in radians.
+     * @param {boolean} [aClockwise=false] - Whether to sweep the ellipse clockwise or not.
+     * @param {number} [aRotation=0] - The rotation angle of the ellipse in radians, counterclockwise from the positive X axis.
+     * @return {Path} A reference to this path.
+     */
+    absellipse(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation) {
+      const curve = new EllipseCurve(aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation);
+      if (this.curves.length > 0) {
+        const firstPoint = curve.getPoint(0);
+        if (!firstPoint.equals(this.currentPoint)) {
+          this.lineTo(firstPoint.x, firstPoint.y);
+        }
+      }
+      this.curves.push(curve);
+      const lastPoint = curve.getPoint(1);
+      this.currentPoint.copy(lastPoint);
+      return this;
+    }
+    copy(source) {
+      super.copy(source);
+      this.currentPoint.copy(source.currentPoint);
+      return this;
+    }
+    toJSON() {
+      const data = super.toJSON();
+      data.currentPoint = this.currentPoint.toArray();
+      return data;
+    }
+    fromJSON(json) {
+      super.fromJSON(json);
+      this.currentPoint.fromArray(json.currentPoint);
+      return this;
+    }
+  };
+  var Shape = class extends Path {
+    /**
+     * Constructs a new shape.
+     *
+     * @param {Array<Vector2>} [points] - An array of 2D points defining the shape.
+     */
+    constructor(points) {
+      super(points);
+      this.uuid = generateUUID();
+      this.type = "Shape";
+      this.holes = [];
+    }
+    /**
+     * Returns an array representing each contour of the holes
+     * as a list of 2D points.
+     *
+     * @param {number} divisions - The fineness of the result.
+     * @return {Array<Array<Vector2>>} The holes as a series of 2D points.
+     */
+    getPointsHoles(divisions) {
+      const holesPts = [];
+      for (let i3 = 0, l3 = this.holes.length; i3 < l3; i3++) {
+        holesPts[i3] = this.holes[i3].getPoints(divisions);
+      }
+      return holesPts;
+    }
+    // get points of shape and holes (keypoints based on segments parameter)
+    /**
+     * Returns an object that holds contour data for the shape and its holes as
+     * arrays of 2D points.
+     *
+     * @param {number} divisions - The fineness of the result.
+     * @return {{shape:Array<Vector2>,holes:Array<Array<Vector2>>}} An object with contour data.
+     */
+    extractPoints(divisions) {
+      return {
+        shape: this.getPoints(divisions),
+        holes: this.getPointsHoles(divisions)
+      };
+    }
+    copy(source) {
+      super.copy(source);
+      this.holes = [];
+      for (let i3 = 0, l3 = source.holes.length; i3 < l3; i3++) {
+        const hole = source.holes[i3];
+        this.holes.push(hole.clone());
+      }
+      return this;
+    }
+    toJSON() {
+      const data = super.toJSON();
+      data.uuid = this.uuid;
+      data.holes = [];
+      for (let i3 = 0, l3 = this.holes.length; i3 < l3; i3++) {
+        const hole = this.holes[i3];
+        data.holes.push(hole.toJSON());
+      }
+      return data;
+    }
+    fromJSON(json) {
+      super.fromJSON(json);
+      this.uuid = json.uuid;
+      this.holes = [];
+      for (let i3 = 0, l3 = json.holes.length; i3 < l3; i3++) {
+        const hole = json.holes[i3];
+        this.holes.push(new Path().fromJSON(hole));
+      }
+      return this;
+    }
+  };
+  function earcut(data, holeIndices, dim = 2) {
+    const hasHoles = holeIndices && holeIndices.length;
+    const outerLen = hasHoles ? holeIndices[0] * dim : data.length;
+    let outerNode = linkedList(data, 0, outerLen, dim, true);
+    const triangles = [];
+    if (!outerNode || outerNode.next === outerNode.prev) return triangles;
+    let minX, minY, invSize;
+    if (hasHoles) outerNode = eliminateHoles(data, holeIndices, outerNode, dim);
+    if (data.length > 80 * dim) {
+      minX = data[0];
+      minY = data[1];
+      let maxX = minX;
+      let maxY = minY;
+      for (let i3 = dim; i3 < outerLen; i3 += dim) {
+        const x3 = data[i3];
+        const y3 = data[i3 + 1];
+        if (x3 < minX) minX = x3;
+        if (y3 < minY) minY = y3;
+        if (x3 > maxX) maxX = x3;
+        if (y3 > maxY) maxY = y3;
+      }
+      invSize = Math.max(maxX - minX, maxY - minY);
+      invSize = invSize !== 0 ? 32767 / invSize : 0;
+    }
+    earcutLinked(outerNode, triangles, dim, minX, minY, invSize, 0);
+    return triangles;
+  }
+  function linkedList(data, start, end, dim, clockwise) {
+    let last;
+    if (clockwise === signedArea(data, start, end, dim) > 0) {
+      for (let i3 = start; i3 < end; i3 += dim) last = insertNode(i3 / dim | 0, data[i3], data[i3 + 1], last);
+    } else {
+      for (let i3 = end - dim; i3 >= start; i3 -= dim) last = insertNode(i3 / dim | 0, data[i3], data[i3 + 1], last);
+    }
+    if (last && equals(last, last.next)) {
+      removeNode(last);
+      last = last.next;
+    }
+    return last;
+  }
+  function filterPoints(start, end) {
+    if (!start) return start;
+    if (!end) end = start;
+    let p3 = start, again;
+    do {
+      again = false;
+      if (!p3.steiner && (equals(p3, p3.next) || area(p3.prev, p3, p3.next) === 0)) {
+        removeNode(p3);
+        p3 = end = p3.prev;
+        if (p3 === p3.next) break;
+        again = true;
+      } else {
+        p3 = p3.next;
+      }
+    } while (again || p3 !== end);
+    return end;
+  }
+  function earcutLinked(ear, triangles, dim, minX, minY, invSize, pass) {
+    if (!ear) return;
+    if (!pass && invSize) indexCurve(ear, minX, minY, invSize);
+    let stop = ear;
+    while (ear.prev !== ear.next) {
+      const prev = ear.prev;
+      const next = ear.next;
+      if (invSize ? isEarHashed(ear, minX, minY, invSize) : isEar(ear)) {
+        triangles.push(prev.i, ear.i, next.i);
+        removeNode(ear);
+        ear = next.next;
+        stop = next.next;
+        continue;
+      }
+      ear = next;
+      if (ear === stop) {
+        if (!pass) {
+          earcutLinked(filterPoints(ear), triangles, dim, minX, minY, invSize, 1);
+        } else if (pass === 1) {
+          ear = cureLocalIntersections(filterPoints(ear), triangles);
+          earcutLinked(ear, triangles, dim, minX, minY, invSize, 2);
+        } else if (pass === 2) {
+          splitEarcut(ear, triangles, dim, minX, minY, invSize);
+        }
+        break;
+      }
+    }
+  }
+  function isEar(ear) {
+    const a3 = ear.prev, b2 = ear, c3 = ear.next;
+    if (area(a3, b2, c3) >= 0) return false;
+    const ax = a3.x, bx = b2.x, cx = c3.x, ay = a3.y, by = b2.y, cy = c3.y;
+    const x0 = Math.min(ax, bx, cx), y0 = Math.min(ay, by, cy), x1 = Math.max(ax, bx, cx), y1 = Math.max(ay, by, cy);
+    let p3 = c3.next;
+    while (p3 !== a3) {
+      if (p3.x >= x0 && p3.x <= x1 && p3.y >= y0 && p3.y <= y1 && pointInTriangleExceptFirst(ax, ay, bx, by, cx, cy, p3.x, p3.y) && area(p3.prev, p3, p3.next) >= 0) return false;
+      p3 = p3.next;
+    }
+    return true;
+  }
+  function isEarHashed(ear, minX, minY, invSize) {
+    const a3 = ear.prev, b2 = ear, c3 = ear.next;
+    if (area(a3, b2, c3) >= 0) return false;
+    const ax = a3.x, bx = b2.x, cx = c3.x, ay = a3.y, by = b2.y, cy = c3.y;
+    const x0 = Math.min(ax, bx, cx), y0 = Math.min(ay, by, cy), x1 = Math.max(ax, bx, cx), y1 = Math.max(ay, by, cy);
+    const minZ = zOrder(x0, y0, minX, minY, invSize), maxZ = zOrder(x1, y1, minX, minY, invSize);
+    let p3 = ear.prevZ, n2 = ear.nextZ;
+    while (p3 && p3.z >= minZ && n2 && n2.z <= maxZ) {
+      if (p3.x >= x0 && p3.x <= x1 && p3.y >= y0 && p3.y <= y1 && p3 !== a3 && p3 !== c3 && pointInTriangleExceptFirst(ax, ay, bx, by, cx, cy, p3.x, p3.y) && area(p3.prev, p3, p3.next) >= 0) return false;
+      p3 = p3.prevZ;
+      if (n2.x >= x0 && n2.x <= x1 && n2.y >= y0 && n2.y <= y1 && n2 !== a3 && n2 !== c3 && pointInTriangleExceptFirst(ax, ay, bx, by, cx, cy, n2.x, n2.y) && area(n2.prev, n2, n2.next) >= 0) return false;
+      n2 = n2.nextZ;
+    }
+    while (p3 && p3.z >= minZ) {
+      if (p3.x >= x0 && p3.x <= x1 && p3.y >= y0 && p3.y <= y1 && p3 !== a3 && p3 !== c3 && pointInTriangleExceptFirst(ax, ay, bx, by, cx, cy, p3.x, p3.y) && area(p3.prev, p3, p3.next) >= 0) return false;
+      p3 = p3.prevZ;
+    }
+    while (n2 && n2.z <= maxZ) {
+      if (n2.x >= x0 && n2.x <= x1 && n2.y >= y0 && n2.y <= y1 && n2 !== a3 && n2 !== c3 && pointInTriangleExceptFirst(ax, ay, bx, by, cx, cy, n2.x, n2.y) && area(n2.prev, n2, n2.next) >= 0) return false;
+      n2 = n2.nextZ;
+    }
+    return true;
+  }
+  function cureLocalIntersections(start, triangles) {
+    let p3 = start;
+    do {
+      const a3 = p3.prev, b2 = p3.next.next;
+      if (!equals(a3, b2) && intersects(a3, p3, p3.next, b2) && locallyInside(a3, b2) && locallyInside(b2, a3)) {
+        triangles.push(a3.i, p3.i, b2.i);
+        removeNode(p3);
+        removeNode(p3.next);
+        p3 = start = b2;
+      }
+      p3 = p3.next;
+    } while (p3 !== start);
+    return filterPoints(p3);
+  }
+  function splitEarcut(start, triangles, dim, minX, minY, invSize) {
+    let a3 = start;
+    do {
+      let b2 = a3.next.next;
+      while (b2 !== a3.prev) {
+        if (a3.i !== b2.i && isValidDiagonal(a3, b2)) {
+          let c3 = splitPolygon(a3, b2);
+          a3 = filterPoints(a3, a3.next);
+          c3 = filterPoints(c3, c3.next);
+          earcutLinked(a3, triangles, dim, minX, minY, invSize, 0);
+          earcutLinked(c3, triangles, dim, minX, minY, invSize, 0);
+          return;
+        }
+        b2 = b2.next;
+      }
+      a3 = a3.next;
+    } while (a3 !== start);
+  }
+  function eliminateHoles(data, holeIndices, outerNode, dim) {
+    const queue = [];
+    for (let i3 = 0, len = holeIndices.length; i3 < len; i3++) {
+      const start = holeIndices[i3] * dim;
+      const end = i3 < len - 1 ? holeIndices[i3 + 1] * dim : data.length;
+      const list = linkedList(data, start, end, dim, false);
+      if (list === list.next) list.steiner = true;
+      queue.push(getLeftmost(list));
+    }
+    queue.sort(compareXYSlope);
+    for (let i3 = 0; i3 < queue.length; i3++) {
+      outerNode = eliminateHole(queue[i3], outerNode);
+    }
+    return outerNode;
+  }
+  function compareXYSlope(a3, b2) {
+    let result = a3.x - b2.x;
+    if (result === 0) {
+      result = a3.y - b2.y;
+      if (result === 0) {
+        const aSlope = (a3.next.y - a3.y) / (a3.next.x - a3.x);
+        const bSlope = (b2.next.y - b2.y) / (b2.next.x - b2.x);
+        result = aSlope - bSlope;
+      }
+    }
+    return result;
+  }
+  function eliminateHole(hole, outerNode) {
+    const bridge = findHoleBridge(hole, outerNode);
+    if (!bridge) {
+      return outerNode;
+    }
+    const bridgeReverse = splitPolygon(bridge, hole);
+    filterPoints(bridgeReverse, bridgeReverse.next);
+    return filterPoints(bridge, bridge.next);
+  }
+  function findHoleBridge(hole, outerNode) {
+    let p3 = outerNode;
+    const hx = hole.x;
+    const hy = hole.y;
+    let qx = -Infinity;
+    let m3;
+    if (equals(hole, p3)) return p3;
+    do {
+      if (equals(hole, p3.next)) return p3.next;
+      else if (hy <= p3.y && hy >= p3.next.y && p3.next.y !== p3.y) {
+        const x3 = p3.x + (hy - p3.y) * (p3.next.x - p3.x) / (p3.next.y - p3.y);
+        if (x3 <= hx && x3 > qx) {
+          qx = x3;
+          m3 = p3.x < p3.next.x ? p3 : p3.next;
+          if (x3 === hx) return m3;
+        }
+      }
+      p3 = p3.next;
+    } while (p3 !== outerNode);
+    if (!m3) return null;
+    const stop = m3;
+    const mx = m3.x;
+    const my = m3.y;
+    let tanMin = Infinity;
+    p3 = m3;
+    do {
+      if (hx >= p3.x && p3.x >= mx && hx !== p3.x && pointInTriangle(hy < my ? hx : qx, hy, mx, my, hy < my ? qx : hx, hy, p3.x, p3.y)) {
+        const tan = Math.abs(hy - p3.y) / (hx - p3.x);
+        if (locallyInside(p3, hole) && (tan < tanMin || tan === tanMin && (p3.x > m3.x || p3.x === m3.x && sectorContainsSector(m3, p3)))) {
+          m3 = p3;
+          tanMin = tan;
+        }
+      }
+      p3 = p3.next;
+    } while (p3 !== stop);
+    return m3;
+  }
+  function sectorContainsSector(m3, p3) {
+    return area(m3.prev, m3, p3.prev) < 0 && area(p3.next, m3, m3.next) < 0;
+  }
+  function indexCurve(start, minX, minY, invSize) {
+    let p3 = start;
+    do {
+      if (p3.z === 0) p3.z = zOrder(p3.x, p3.y, minX, minY, invSize);
+      p3.prevZ = p3.prev;
+      p3.nextZ = p3.next;
+      p3 = p3.next;
+    } while (p3 !== start);
+    p3.prevZ.nextZ = null;
+    p3.prevZ = null;
+    sortLinked(p3);
+  }
+  function sortLinked(list) {
+    let numMerges;
+    let inSize = 1;
+    do {
+      let p3 = list;
+      let e3;
+      list = null;
+      let tail = null;
+      numMerges = 0;
+      while (p3) {
+        numMerges++;
+        let q4 = p3;
+        let pSize = 0;
+        for (let i3 = 0; i3 < inSize; i3++) {
+          pSize++;
+          q4 = q4.nextZ;
+          if (!q4) break;
+        }
+        let qSize = inSize;
+        while (pSize > 0 || qSize > 0 && q4) {
+          if (pSize !== 0 && (qSize === 0 || !q4 || p3.z <= q4.z)) {
+            e3 = p3;
+            p3 = p3.nextZ;
+            pSize--;
+          } else {
+            e3 = q4;
+            q4 = q4.nextZ;
+            qSize--;
+          }
+          if (tail) tail.nextZ = e3;
+          else list = e3;
+          e3.prevZ = tail;
+          tail = e3;
+        }
+        p3 = q4;
+      }
+      tail.nextZ = null;
+      inSize *= 2;
+    } while (numMerges > 1);
+    return list;
+  }
+  function zOrder(x3, y3, minX, minY, invSize) {
+    x3 = (x3 - minX) * invSize | 0;
+    y3 = (y3 - minY) * invSize | 0;
+    x3 = (x3 | x3 << 8) & 16711935;
+    x3 = (x3 | x3 << 4) & 252645135;
+    x3 = (x3 | x3 << 2) & 858993459;
+    x3 = (x3 | x3 << 1) & 1431655765;
+    y3 = (y3 | y3 << 8) & 16711935;
+    y3 = (y3 | y3 << 4) & 252645135;
+    y3 = (y3 | y3 << 2) & 858993459;
+    y3 = (y3 | y3 << 1) & 1431655765;
+    return x3 | y3 << 1;
+  }
+  function getLeftmost(start) {
+    let p3 = start, leftmost = start;
+    do {
+      if (p3.x < leftmost.x || p3.x === leftmost.x && p3.y < leftmost.y) leftmost = p3;
+      p3 = p3.next;
+    } while (p3 !== start);
+    return leftmost;
+  }
+  function pointInTriangle(ax, ay, bx, by, cx, cy, px2, py2) {
+    return (cx - px2) * (ay - py2) >= (ax - px2) * (cy - py2) && (ax - px2) * (by - py2) >= (bx - px2) * (ay - py2) && (bx - px2) * (cy - py2) >= (cx - px2) * (by - py2);
+  }
+  function pointInTriangleExceptFirst(ax, ay, bx, by, cx, cy, px2, py2) {
+    return !(ax === px2 && ay === py2) && pointInTriangle(ax, ay, bx, by, cx, cy, px2, py2);
+  }
+  function isValidDiagonal(a3, b2) {
+    return a3.next.i !== b2.i && a3.prev.i !== b2.i && !intersectsPolygon(a3, b2) && // doesn't intersect other edges
+    (locallyInside(a3, b2) && locallyInside(b2, a3) && middleInside(a3, b2) && // locally visible
+    (area(a3.prev, a3, b2.prev) || area(a3, b2.prev, b2)) || // does not create opposite-facing sectors
+    equals(a3, b2) && area(a3.prev, a3, a3.next) > 0 && area(b2.prev, b2, b2.next) > 0);
+  }
+  function area(p3, q4, r3) {
+    return (q4.y - p3.y) * (r3.x - q4.x) - (q4.x - p3.x) * (r3.y - q4.y);
+  }
+  function equals(p1, p22) {
+    return p1.x === p22.x && p1.y === p22.y;
+  }
+  function intersects(p1, q1, p22, q22) {
+    const o1 = sign(area(p1, q1, p22));
+    const o22 = sign(area(p1, q1, q22));
+    const o3 = sign(area(p22, q22, p1));
+    const o4 = sign(area(p22, q22, q1));
+    if (o1 !== o22 && o3 !== o4) return true;
+    if (o1 === 0 && onSegment(p1, p22, q1)) return true;
+    if (o22 === 0 && onSegment(p1, q22, q1)) return true;
+    if (o3 === 0 && onSegment(p22, p1, q22)) return true;
+    if (o4 === 0 && onSegment(p22, q1, q22)) return true;
+    return false;
+  }
+  function onSegment(p3, q4, r3) {
+    return q4.x <= Math.max(p3.x, r3.x) && q4.x >= Math.min(p3.x, r3.x) && q4.y <= Math.max(p3.y, r3.y) && q4.y >= Math.min(p3.y, r3.y);
+  }
+  function sign(num) {
+    return num > 0 ? 1 : num < 0 ? -1 : 0;
+  }
+  function intersectsPolygon(a3, b2) {
+    let p3 = a3;
+    do {
+      if (p3.i !== a3.i && p3.next.i !== a3.i && p3.i !== b2.i && p3.next.i !== b2.i && intersects(p3, p3.next, a3, b2)) return true;
+      p3 = p3.next;
+    } while (p3 !== a3);
+    return false;
+  }
+  function locallyInside(a3, b2) {
+    return area(a3.prev, a3, a3.next) < 0 ? area(a3, b2, a3.next) >= 0 && area(a3, a3.prev, b2) >= 0 : area(a3, b2, a3.prev) < 0 || area(a3, a3.next, b2) < 0;
+  }
+  function middleInside(a3, b2) {
+    let p3 = a3;
+    let inside = false;
+    const px2 = (a3.x + b2.x) / 2;
+    const py2 = (a3.y + b2.y) / 2;
+    do {
+      if (p3.y > py2 !== p3.next.y > py2 && p3.next.y !== p3.y && px2 < (p3.next.x - p3.x) * (py2 - p3.y) / (p3.next.y - p3.y) + p3.x)
+        inside = !inside;
+      p3 = p3.next;
+    } while (p3 !== a3);
+    return inside;
+  }
+  function splitPolygon(a3, b2) {
+    const a22 = createNode(a3.i, a3.x, a3.y), b22 = createNode(b2.i, b2.x, b2.y), an = a3.next, bp = b2.prev;
+    a3.next = b2;
+    b2.prev = a3;
+    a22.next = an;
+    an.prev = a22;
+    b22.next = a22;
+    a22.prev = b22;
+    bp.next = b22;
+    b22.prev = bp;
+    return b22;
+  }
+  function insertNode(i3, x3, y3, last) {
+    const p3 = createNode(i3, x3, y3);
+    if (!last) {
+      p3.prev = p3;
+      p3.next = p3;
+    } else {
+      p3.next = last.next;
+      p3.prev = last;
+      last.next.prev = p3;
+      last.next = p3;
+    }
+    return p3;
+  }
+  function removeNode(p3) {
+    p3.next.prev = p3.prev;
+    p3.prev.next = p3.next;
+    if (p3.prevZ) p3.prevZ.nextZ = p3.nextZ;
+    if (p3.nextZ) p3.nextZ.prevZ = p3.prevZ;
+  }
+  function createNode(i3, x3, y3) {
+    return {
+      i: i3,
+      // vertex index in coordinates array
+      x: x3,
+      y: y3,
+      // vertex coordinates
+      prev: null,
+      // previous and next vertex nodes in a polygon ring
+      next: null,
+      z: 0,
+      // z-order curve value
+      prevZ: null,
+      // previous and next nodes in z-order
+      nextZ: null,
+      steiner: false
+      // indicates whether this is a steiner point
+    };
+  }
+  function signedArea(data, start, end, dim) {
+    let sum = 0;
+    for (let i3 = start, j4 = end - dim; i3 < end; i3 += dim) {
+      sum += (data[j4] - data[i3]) * (data[i3 + 1] + data[j4 + 1]);
+      j4 = i3;
+    }
+    return sum;
+  }
+  var Earcut = class {
+    /**
+     * Triangulates the given shape definition by returning an array of triangles.
+     *
+     * @param {Array<number>} data - An array with 2D points.
+     * @param {Array<number>} holeIndices - An array with indices defining holes.
+     * @param {number} [dim=2] - The number of coordinates per vertex in the input array.
+     * @return {Array<number>} An array representing the triangulated faces. Each face is defined by three consecutive numbers
+     * representing vertex indices.
+     */
+    static triangulate(data, holeIndices, dim = 2) {
+      return earcut(data, holeIndices, dim);
+    }
+  };
+  var ShapeUtils = class _ShapeUtils {
+    /**
+     * Calculate area of a ( 2D ) contour polygon.
+     *
+     * @param {Array<Vector2>} contour - An array of 2D points.
+     * @return {number} The area.
+     */
+    static area(contour) {
+      const n2 = contour.length;
+      let a3 = 0;
+      for (let p3 = n2 - 1, q4 = 0; q4 < n2; p3 = q4++) {
+        a3 += contour[p3].x * contour[q4].y - contour[q4].x * contour[p3].y;
+      }
+      return a3 * 0.5;
+    }
+    /**
+     * Returns `true` if the given contour uses a clockwise winding order.
+     *
+     * @param {Array<Vector2>} pts - An array of 2D points defining a polygon.
+     * @return {boolean} Whether the given contour uses a clockwise winding order or not.
+     */
+    static isClockWise(pts) {
+      return _ShapeUtils.area(pts) < 0;
+    }
+    /**
+     * Triangulates the given shape definition.
+     *
+     * @param {Array<Vector2>} contour - An array of 2D points defining the contour.
+     * @param {Array<Array<Vector2>>} holes - An array that holds arrays of 2D points defining the holes.
+     * @return {Array<Array<number>>} An array that holds for each face definition an array with three indices.
+     */
+    static triangulateShape(contour, holes) {
+      const vertices = [];
+      const holeIndices = [];
+      const faces = [];
+      removeDupEndPts(contour);
+      addContour(vertices, contour);
+      let holeIndex = contour.length;
+      holes.forEach(removeDupEndPts);
+      for (let i3 = 0; i3 < holes.length; i3++) {
+        holeIndices.push(holeIndex);
+        holeIndex += holes[i3].length;
+        addContour(vertices, holes[i3]);
+      }
+      const triangles = Earcut.triangulate(vertices, holeIndices);
+      for (let i3 = 0; i3 < triangles.length; i3 += 3) {
+        faces.push(triangles.slice(i3, i3 + 3));
+      }
+      return faces;
+    }
+  };
+  function removeDupEndPts(points) {
+    const l3 = points.length;
+    if (l3 > 2 && points[l3 - 1].equals(points[0])) {
+      points.pop();
+    }
+  }
+  function addContour(vertices, contour) {
+    for (let i3 = 0; i3 < contour.length; i3++) {
+      vertices.push(contour[i3].x);
+      vertices.push(contour[i3].y);
+    }
+  }
+  var ExtrudeGeometry = class _ExtrudeGeometry extends BufferGeometry {
+    /**
+     * Constructs a new extrude geometry.
+     *
+     * @param {Shape|Array<Shape>} [shapes] - A shape or an array of shapes.
+     * @param {ExtrudeGeometry~Options} [options] - The extrude settings.
+     */
+    constructor(shapes = new Shape([new Vector2(0.5, 0.5), new Vector2(-0.5, 0.5), new Vector2(-0.5, -0.5), new Vector2(0.5, -0.5)]), options = {}) {
+      super();
+      this.type = "ExtrudeGeometry";
+      this.parameters = {
+        shapes,
+        options
+      };
+      shapes = Array.isArray(shapes) ? shapes : [shapes];
+      const scope = this;
+      const verticesArray = [];
+      const uvArray = [];
+      for (let i3 = 0, l3 = shapes.length; i3 < l3; i3++) {
+        const shape = shapes[i3];
+        addShape(shape);
+      }
+      this.setAttribute("position", new Float32BufferAttribute(verticesArray, 3));
+      this.setAttribute("uv", new Float32BufferAttribute(uvArray, 2));
+      this.computeVertexNormals();
+      function addShape(shape) {
+        const placeholder = [];
+        const curveSegments = options.curveSegments !== void 0 ? options.curveSegments : 12;
+        const steps = options.steps !== void 0 ? options.steps : 1;
+        const depth = options.depth !== void 0 ? options.depth : 1;
+        let bevelEnabled = options.bevelEnabled !== void 0 ? options.bevelEnabled : true;
+        let bevelThickness = options.bevelThickness !== void 0 ? options.bevelThickness : 0.2;
+        let bevelSize = options.bevelSize !== void 0 ? options.bevelSize : bevelThickness - 0.1;
+        let bevelOffset = options.bevelOffset !== void 0 ? options.bevelOffset : 0;
+        let bevelSegments = options.bevelSegments !== void 0 ? options.bevelSegments : 3;
+        const extrudePath = options.extrudePath;
+        const uvgen = options.UVGenerator !== void 0 ? options.UVGenerator : WorldUVGenerator;
+        let extrudePts, extrudeByPath = false;
+        let splineTube, binormal, normal, position2;
+        if (extrudePath) {
+          extrudePts = extrudePath.getSpacedPoints(steps);
+          extrudeByPath = true;
+          bevelEnabled = false;
+          const isClosed = extrudePath.isCatmullRomCurve3 ? extrudePath.closed : false;
+          splineTube = extrudePath.computeFrenetFrames(steps, isClosed);
+          binormal = new Vector3();
+          normal = new Vector3();
+          position2 = new Vector3();
+        }
+        if (!bevelEnabled) {
+          bevelSegments = 0;
+          bevelThickness = 0;
+          bevelSize = 0;
+          bevelOffset = 0;
+        }
+        const shapePoints = shape.extractPoints(curveSegments);
+        let vertices = shapePoints.shape;
+        const holes = shapePoints.holes;
+        const reverse = !ShapeUtils.isClockWise(vertices);
+        if (reverse) {
+          vertices = vertices.reverse();
+          for (let h3 = 0, hl = holes.length; h3 < hl; h3++) {
+            const ahole = holes[h3];
+            if (ShapeUtils.isClockWise(ahole)) {
+              holes[h3] = ahole.reverse();
+            }
+          }
+        }
+        function mergeOverlappingPoints(points) {
+          const THRESHOLD = 1e-10;
+          const THRESHOLD_SQ = THRESHOLD * THRESHOLD;
+          let prevPos = points[0];
+          for (let i3 = 1; i3 <= points.length; i3++) {
+            const currentIndex = i3 % points.length;
+            const currentPos = points[currentIndex];
+            const dx = currentPos.x - prevPos.x;
+            const dy = currentPos.y - prevPos.y;
+            const distSq = dx * dx + dy * dy;
+            const scalingFactorSqrt = Math.max(
+              Math.abs(currentPos.x),
+              Math.abs(currentPos.y),
+              Math.abs(prevPos.x),
+              Math.abs(prevPos.y)
+            );
+            const thresholdSqScaled = THRESHOLD_SQ * scalingFactorSqrt * scalingFactorSqrt;
+            if (distSq <= thresholdSqScaled) {
+              points.splice(currentIndex, 1);
+              i3--;
+              continue;
+            }
+            prevPos = currentPos;
+          }
+        }
+        mergeOverlappingPoints(vertices);
+        holes.forEach(mergeOverlappingPoints);
+        const numHoles = holes.length;
+        const contour = vertices;
+        for (let h3 = 0; h3 < numHoles; h3++) {
+          const ahole = holes[h3];
+          vertices = vertices.concat(ahole);
+        }
+        function scalePt2(pt, vec, size) {
+          if (!vec) error("ExtrudeGeometry: vec does not exist");
+          return pt.clone().addScaledVector(vec, size);
+        }
+        const vlen = vertices.length;
+        function getBevelVec(inPt, inPrev, inNext) {
+          let v_trans_x, v_trans_y, shrink_by;
+          const v_prev_x = inPt.x - inPrev.x, v_prev_y = inPt.y - inPrev.y;
+          const v_next_x = inNext.x - inPt.x, v_next_y = inNext.y - inPt.y;
+          const v_prev_lensq = v_prev_x * v_prev_x + v_prev_y * v_prev_y;
+          const collinear0 = v_prev_x * v_next_y - v_prev_y * v_next_x;
+          if (Math.abs(collinear0) > Number.EPSILON) {
+            const v_prev_len = Math.sqrt(v_prev_lensq);
+            const v_next_len = Math.sqrt(v_next_x * v_next_x + v_next_y * v_next_y);
+            const ptPrevShift_x = inPrev.x - v_prev_y / v_prev_len;
+            const ptPrevShift_y = inPrev.y + v_prev_x / v_prev_len;
+            const ptNextShift_x = inNext.x - v_next_y / v_next_len;
+            const ptNextShift_y = inNext.y + v_next_x / v_next_len;
+            const sf = ((ptNextShift_x - ptPrevShift_x) * v_next_y - (ptNextShift_y - ptPrevShift_y) * v_next_x) / (v_prev_x * v_next_y - v_prev_y * v_next_x);
+            v_trans_x = ptPrevShift_x + v_prev_x * sf - inPt.x;
+            v_trans_y = ptPrevShift_y + v_prev_y * sf - inPt.y;
+            const v_trans_lensq = v_trans_x * v_trans_x + v_trans_y * v_trans_y;
+            if (v_trans_lensq <= 2) {
+              return new Vector2(v_trans_x, v_trans_y);
+            } else {
+              shrink_by = Math.sqrt(v_trans_lensq / 2);
+            }
+          } else {
+            let direction_eq = false;
+            if (v_prev_x > Number.EPSILON) {
+              if (v_next_x > Number.EPSILON) {
+                direction_eq = true;
+              }
+            } else {
+              if (v_prev_x < -Number.EPSILON) {
+                if (v_next_x < -Number.EPSILON) {
+                  direction_eq = true;
+                }
+              } else {
+                if (Math.sign(v_prev_y) === Math.sign(v_next_y)) {
+                  direction_eq = true;
+                }
+              }
+            }
+            if (direction_eq) {
+              v_trans_x = -v_prev_y;
+              v_trans_y = v_prev_x;
+              shrink_by = Math.sqrt(v_prev_lensq);
+            } else {
+              v_trans_x = v_prev_x;
+              v_trans_y = v_prev_y;
+              shrink_by = Math.sqrt(v_prev_lensq / 2);
+            }
+          }
+          return new Vector2(v_trans_x / shrink_by, v_trans_y / shrink_by);
+        }
+        const contourMovements = [];
+        for (let i3 = 0, il = contour.length, j4 = il - 1, k3 = i3 + 1; i3 < il; i3++, j4++, k3++) {
+          if (j4 === il) j4 = 0;
+          if (k3 === il) k3 = 0;
+          contourMovements[i3] = getBevelVec(contour[i3], contour[j4], contour[k3]);
+        }
+        const holesMovements = [];
+        let oneHoleMovements, verticesMovements = contourMovements.concat();
+        for (let h3 = 0, hl = numHoles; h3 < hl; h3++) {
+          const ahole = holes[h3];
+          oneHoleMovements = [];
+          for (let i3 = 0, il = ahole.length, j4 = il - 1, k3 = i3 + 1; i3 < il; i3++, j4++, k3++) {
+            if (j4 === il) j4 = 0;
+            if (k3 === il) k3 = 0;
+            oneHoleMovements[i3] = getBevelVec(ahole[i3], ahole[j4], ahole[k3]);
+          }
+          holesMovements.push(oneHoleMovements);
+          verticesMovements = verticesMovements.concat(oneHoleMovements);
+        }
+        let faces;
+        if (bevelSegments === 0) {
+          faces = ShapeUtils.triangulateShape(contour, holes);
+        } else {
+          const contractedContourVertices = [];
+          const expandedHoleVertices = [];
+          for (let b2 = 0; b2 < bevelSegments; b2++) {
+            const t3 = b2 / bevelSegments;
+            const z3 = bevelThickness * Math.cos(t3 * Math.PI / 2);
+            const bs2 = bevelSize * Math.sin(t3 * Math.PI / 2) + bevelOffset;
+            for (let i3 = 0, il = contour.length; i3 < il; i3++) {
+              const vert = scalePt2(contour[i3], contourMovements[i3], bs2);
+              v3(vert.x, vert.y, -z3);
+              if (t3 === 0) contractedContourVertices.push(vert);
+            }
+            for (let h3 = 0, hl = numHoles; h3 < hl; h3++) {
+              const ahole = holes[h3];
+              oneHoleMovements = holesMovements[h3];
+              const oneHoleVertices = [];
+              for (let i3 = 0, il = ahole.length; i3 < il; i3++) {
+                const vert = scalePt2(ahole[i3], oneHoleMovements[i3], bs2);
+                v3(vert.x, vert.y, -z3);
+                if (t3 === 0) oneHoleVertices.push(vert);
+              }
+              if (t3 === 0) expandedHoleVertices.push(oneHoleVertices);
+            }
+          }
+          faces = ShapeUtils.triangulateShape(contractedContourVertices, expandedHoleVertices);
+        }
+        const flen = faces.length;
+        const bs = bevelSize + bevelOffset;
+        for (let i3 = 0; i3 < vlen; i3++) {
+          const vert = bevelEnabled ? scalePt2(vertices[i3], verticesMovements[i3], bs) : vertices[i3];
+          if (!extrudeByPath) {
+            v3(vert.x, vert.y, 0);
+          } else {
+            normal.copy(splineTube.normals[0]).multiplyScalar(vert.x);
+            binormal.copy(splineTube.binormals[0]).multiplyScalar(vert.y);
+            position2.copy(extrudePts[0]).add(normal).add(binormal);
+            v3(position2.x, position2.y, position2.z);
+          }
+        }
+        for (let s3 = 1; s3 <= steps; s3++) {
+          for (let i3 = 0; i3 < vlen; i3++) {
+            const vert = bevelEnabled ? scalePt2(vertices[i3], verticesMovements[i3], bs) : vertices[i3];
+            if (!extrudeByPath) {
+              v3(vert.x, vert.y, depth / steps * s3);
+            } else {
+              normal.copy(splineTube.normals[s3]).multiplyScalar(vert.x);
+              binormal.copy(splineTube.binormals[s3]).multiplyScalar(vert.y);
+              position2.copy(extrudePts[s3]).add(normal).add(binormal);
+              v3(position2.x, position2.y, position2.z);
+            }
+          }
+        }
+        for (let b2 = bevelSegments - 1; b2 >= 0; b2--) {
+          const t3 = b2 / bevelSegments;
+          const z3 = bevelThickness * Math.cos(t3 * Math.PI / 2);
+          const bs2 = bevelSize * Math.sin(t3 * Math.PI / 2) + bevelOffset;
+          for (let i3 = 0, il = contour.length; i3 < il; i3++) {
+            const vert = scalePt2(contour[i3], contourMovements[i3], bs2);
+            v3(vert.x, vert.y, depth + z3);
+          }
+          for (let h3 = 0, hl = holes.length; h3 < hl; h3++) {
+            const ahole = holes[h3];
+            oneHoleMovements = holesMovements[h3];
+            for (let i3 = 0, il = ahole.length; i3 < il; i3++) {
+              const vert = scalePt2(ahole[i3], oneHoleMovements[i3], bs2);
+              if (!extrudeByPath) {
+                v3(vert.x, vert.y, depth + z3);
+              } else {
+                v3(vert.x, vert.y + extrudePts[steps - 1].y, extrudePts[steps - 1].x + z3);
+              }
+            }
+          }
+        }
+        buildLidFaces();
+        buildSideFaces();
+        function buildLidFaces() {
+          const start = verticesArray.length / 3;
+          if (bevelEnabled) {
+            let layer = 0;
+            let offset = vlen * layer;
+            for (let i3 = 0; i3 < flen; i3++) {
+              const face = faces[i3];
+              f32(face[2] + offset, face[1] + offset, face[0] + offset);
+            }
+            layer = steps + bevelSegments * 2;
+            offset = vlen * layer;
+            for (let i3 = 0; i3 < flen; i3++) {
+              const face = faces[i3];
+              f32(face[0] + offset, face[1] + offset, face[2] + offset);
+            }
+          } else {
+            for (let i3 = 0; i3 < flen; i3++) {
+              const face = faces[i3];
+              f32(face[2], face[1], face[0]);
+            }
+            for (let i3 = 0; i3 < flen; i3++) {
+              const face = faces[i3];
+              f32(face[0] + vlen * steps, face[1] + vlen * steps, face[2] + vlen * steps);
+            }
+          }
+          scope.addGroup(start, verticesArray.length / 3 - start, 0);
+        }
+        function buildSideFaces() {
+          const start = verticesArray.length / 3;
+          let layeroffset = 0;
+          sidewalls(contour, layeroffset);
+          layeroffset += contour.length;
+          for (let h3 = 0, hl = holes.length; h3 < hl; h3++) {
+            const ahole = holes[h3];
+            sidewalls(ahole, layeroffset);
+            layeroffset += ahole.length;
+          }
+          scope.addGroup(start, verticesArray.length / 3 - start, 1);
+        }
+        function sidewalls(contour2, layeroffset) {
+          let i3 = contour2.length;
+          while (--i3 >= 0) {
+            const j4 = i3;
+            let k3 = i3 - 1;
+            if (k3 < 0) k3 = contour2.length - 1;
+            for (let s3 = 0, sl = steps + bevelSegments * 2; s3 < sl; s3++) {
+              const slen1 = vlen * s3;
+              const slen2 = vlen * (s3 + 1);
+              const a3 = layeroffset + j4 + slen1, b2 = layeroffset + k3 + slen1, c3 = layeroffset + k3 + slen2, d3 = layeroffset + j4 + slen2;
+              f4(a3, b2, c3, d3);
+            }
+          }
+        }
+        function v3(x3, y3, z3) {
+          placeholder.push(x3);
+          placeholder.push(y3);
+          placeholder.push(z3);
+        }
+        function f32(a3, b2, c3) {
+          addVertex(a3);
+          addVertex(b2);
+          addVertex(c3);
+          const nextIndex = verticesArray.length / 3;
+          const uvs = uvgen.generateTopUV(scope, verticesArray, nextIndex - 3, nextIndex - 2, nextIndex - 1);
+          addUV(uvs[0]);
+          addUV(uvs[1]);
+          addUV(uvs[2]);
+        }
+        function f4(a3, b2, c3, d3) {
+          addVertex(a3);
+          addVertex(b2);
+          addVertex(d3);
+          addVertex(b2);
+          addVertex(c3);
+          addVertex(d3);
+          const nextIndex = verticesArray.length / 3;
+          const uvs = uvgen.generateSideWallUV(scope, verticesArray, nextIndex - 6, nextIndex - 3, nextIndex - 2, nextIndex - 1);
+          addUV(uvs[0]);
+          addUV(uvs[1]);
+          addUV(uvs[3]);
+          addUV(uvs[1]);
+          addUV(uvs[2]);
+          addUV(uvs[3]);
+        }
+        function addVertex(index) {
+          verticesArray.push(placeholder[index * 3 + 0]);
+          verticesArray.push(placeholder[index * 3 + 1]);
+          verticesArray.push(placeholder[index * 3 + 2]);
+        }
+        function addUV(vector2) {
+          uvArray.push(vector2.x);
+          uvArray.push(vector2.y);
+        }
+      }
+    }
+    copy(source) {
+      super.copy(source);
+      this.parameters = Object.assign({}, source.parameters);
+      return this;
+    }
+    toJSON() {
+      const data = super.toJSON();
+      const shapes = this.parameters.shapes;
+      const options = this.parameters.options;
+      return toJSON$1(shapes, options, data);
+    }
+    /**
+     * Factory method for creating an instance of this class from the given
+     * JSON object.
+     *
+     * @param {Object} data - A JSON object representing the serialized geometry.
+     * @param {Array<Shape>} shapes - An array of shapes.
+     * @return {ExtrudeGeometry} A new instance.
+     */
+    static fromJSON(data, shapes) {
+      const geometryShapes = [];
+      for (let j4 = 0, jl = data.shapes.length; j4 < jl; j4++) {
+        const shape = shapes[data.shapes[j4]];
+        geometryShapes.push(shape);
+      }
+      const extrudePath = data.options.extrudePath;
+      if (extrudePath !== void 0) {
+        data.options.extrudePath = new Curves[extrudePath.type]().fromJSON(extrudePath);
+      }
+      return new _ExtrudeGeometry(geometryShapes, data.options);
+    }
+  };
+  var WorldUVGenerator = {
+    generateTopUV: function(geometry, vertices, indexA, indexB, indexC) {
+      const a_x = vertices[indexA * 3];
+      const a_y = vertices[indexA * 3 + 1];
+      const b_x = vertices[indexB * 3];
+      const b_y = vertices[indexB * 3 + 1];
+      const c_x = vertices[indexC * 3];
+      const c_y = vertices[indexC * 3 + 1];
+      return [
+        new Vector2(a_x, a_y),
+        new Vector2(b_x, b_y),
+        new Vector2(c_x, c_y)
+      ];
+    },
+    generateSideWallUV: function(geometry, vertices, indexA, indexB, indexC, indexD) {
+      const a_x = vertices[indexA * 3];
+      const a_y = vertices[indexA * 3 + 1];
+      const a_z = vertices[indexA * 3 + 2];
+      const b_x = vertices[indexB * 3];
+      const b_y = vertices[indexB * 3 + 1];
+      const b_z = vertices[indexB * 3 + 2];
+      const c_x = vertices[indexC * 3];
+      const c_y = vertices[indexC * 3 + 1];
+      const c_z = vertices[indexC * 3 + 2];
+      const d_x = vertices[indexD * 3];
+      const d_y = vertices[indexD * 3 + 1];
+      const d_z = vertices[indexD * 3 + 2];
+      if (Math.abs(a_y - b_y) < Math.abs(a_x - b_x)) {
+        return [
+          new Vector2(a_x, 1 - a_z),
+          new Vector2(b_x, 1 - b_z),
+          new Vector2(c_x, 1 - c_z),
+          new Vector2(d_x, 1 - d_z)
+        ];
+      } else {
+        return [
+          new Vector2(a_y, 1 - a_z),
+          new Vector2(b_y, 1 - b_z),
+          new Vector2(c_y, 1 - c_z),
+          new Vector2(d_y, 1 - d_z)
+        ];
+      }
+    }
+  };
+  function toJSON$1(shapes, options, data) {
+    data.shapes = [];
+    if (Array.isArray(shapes)) {
+      for (let i3 = 0, l3 = shapes.length; i3 < l3; i3++) {
+        const shape = shapes[i3];
+        data.shapes.push(shape.uuid);
+      }
+    } else {
+      data.shapes.push(shapes.uuid);
+    }
+    data.options = Object.assign({}, options);
+    if (options.extrudePath !== void 0) data.options.extrudePath = options.extrudePath.toJSON();
+    return data;
+  }
   var PlaneGeometry = class _PlaneGeometry extends BufferGeometry {
     /**
      * Constructs a new plane geometry.
@@ -33479,4907 +34900,6 @@ void main() {
     }
   };
 
-  // tool-box/src/features/game-box/draw/games/Lotto3DGame.jsx
-  var TOTAL_BALLS = 45;
-  var CHAMBER_RADIUS = 3.1;
-  var BALL_RADIUS = 0.27;
-  function getLottoBallColor(num) {
-    if (num <= 10) return "#eab308";
-    if (num <= 20) return "#3b82f6";
-    if (num <= 30) return "#ef4444";
-    if (num <= 40) return "#64748b";
-    return "#22c55e";
-  }
-  function drawUnbiasedLotto645() {
-    const pool2 = Array.from({ length: TOTAL_BALLS }, (_3, i3) => i3 + 1);
-    const shuffled = shuffleUnbiased(pool2);
-    const extractionOrder = shuffled.slice(0, 7);
-    const mainNumbers = [...extractionOrder.slice(0, 6)].sort((a3, b2) => a3 - b2);
-    const bonusNumber = extractionOrder[6];
-    return {
-      extractionOrder,
-      mainNumbers,
-      bonusNumber
-    };
-  }
-  function checkLottoTicketRank(mainNumbers, bonusNumber, myTicket) {
-    if (!Array.isArray(myTicket) || myTicket.length !== 6) return null;
-    const mainSet = new Set(mainNumbers);
-    const matchedMain = myTicket.filter((n2) => mainSet.has(n2));
-    const bonusMatched = myTicket.includes(bonusNumber);
-    const count = matchedMain.length;
-    let rank = 0;
-    let label = "\uBBF8\uB2F9\uCCA8 (\uB2E4\uC74C \uAE30\uD68C\uC5D0)";
-    if (count === 6) {
-      rank = 1;
-      label = "\u{1F3C6} 1\uB4F1 \uB2F9\uCCA8! (6\uAC1C \uBC88\uD638 \uBAA8\uB450 \uC77C\uCE58)";
-    } else if (count === 5 && bonusMatched) {
-      rank = 2;
-      label = "\u{1F948} 2\uB4F1 \uB2F9\uCCA8! (5\uAC1C \uBC88\uD638 + \uBCF4\uB108\uC2A4 \uBCFC \uC77C\uCE58)";
-    } else if (count === 5) {
-      rank = 3;
-      label = "\u{1F949} 3\uB4F1 \uB2F9\uCCA8! (5\uAC1C \uBC88\uD638 \uC77C\uCE58)";
-    } else if (count === 4) {
-      rank = 4;
-      label = "\u{1F389} 4\uB4F1 \uB2F9\uCCA8! (4\uAC1C \uBC88\uD638 \uC77C\uCE58)";
-    } else if (count === 3) {
-      rank = 5;
-      label = "\u{1F388} 5\uB4F1 \uB2F9\uCCA8! (3\uAC1C \uBC88\uD638 \uC77C\uCE58)";
-    }
-    return {
-      rank,
-      label,
-      matchedMain,
-      bonusMatched
-    };
-  }
-  function createNumberedBallTexture(num) {
-    const canvas = document.createElement("canvas");
-    canvas.width = 256;
-    canvas.height = 128;
-    const ctx = canvas.getContext("2d");
-    const baseColor = getLottoBallColor(num);
-    const grad = ctx.createLinearGradient(0, 0, 0, 128);
-    grad.addColorStop(0, baseColor);
-    grad.addColorStop(0.55, baseColor);
-    grad.addColorStop(1, "#0f172a");
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, 256, 128);
-    ctx.fillStyle = "rgba(255, 255, 255, 0.16)";
-    ctx.fillRect(0, 52, 256, 24);
-    [64, 192].forEach((cx) => {
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(cx, 64, 34, 0, Math.PI * 2);
-      ctx.fillStyle = "#ffffff";
-      ctx.fill();
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = "rgba(15, 23, 42, 0.28)";
-      ctx.stroke();
-      ctx.fillStyle = "#0f172a";
-      ctx.font = '900 34px "Arial Black", Pretendard, sans-serif';
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText(String(num), cx, 65);
-      if (num === 6 || num === 9) {
-        ctx.fillRect(cx - 10, 84, 20, 3);
-      }
-      ctx.restore();
-    });
-    const texture = new CanvasTexture(canvas);
-    texture.colorSpace = SRGBColorSpace;
-    texture.needsUpdate = true;
-    return texture;
-  }
-  function Lotto3DGame({ onBack }) {
-    const [drawOutcome, setDrawOutcome] = d2(null);
-    const [phase, setPhase] = d2("idle");
-    const [extractedBalls, setExtractedBalls] = d2([]);
-    const [currentlyRisingBall, setCurrentlyRisingBall] = d2(null);
-    const [blowerPower, setBlowerPower] = d2(1.15);
-    const [myTicket, setMyTicket] = d2([3, 11, 19, 27, 34, 42]);
-    const [history, setHistory] = d2([]);
-    const mountRef = A2(null);
-    const sceneStateRef = A2(null);
-    h2(() => {
-      const container = mountRef.current;
-      if (!container) return void 0;
-      const width = Math.max(480, container.clientWidth || 860);
-      const height = Math.max(360, container.clientHeight || 540);
-      const scene = new Scene();
-      scene.background = new Color(461586);
-      scene.fog = new FogExp2(461586, 0.025);
-      const camera = new PerspectiveCamera(44, width / height, 0.1, 100);
-      camera.position.set(0, -0.35, 13.2);
-      camera.lookAt(0, -0.45, 0);
-      let renderer;
-      try {
-        renderer = new WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
-        renderer.setSize(width, height);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-        renderer.toneMapping = ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.18;
-        container.innerHTML = "";
-        container.appendChild(renderer.domElement);
-      } catch {
-        return void 0;
-      }
-      const ambient = new AmbientLight(14742270, 1.25);
-      scene.add(ambient);
-      const keyLight = new DirectionalLight(16777215, 2.5);
-      keyLight.position.set(6, 10, 9);
-      scene.add(keyLight);
-      const rimLight = new DirectionalLight(3718648, 1.7);
-      rimLight.position.set(-8, 6, -6);
-      scene.add(rimLight);
-      const bottomGlow = new PointLight(959977, 2.4, 12);
-      bottomGlow.position.set(0, -2.9, 0.5);
-      scene.add(bottomGlow);
-      const suctionGlow = new PointLight(16436245, 0.5, 6);
-      suctionGlow.position.set(0, CHAMBER_RADIUS + 0.2, 0);
-      scene.add(suctionGlow);
-      const machineGroup = new Group();
-      machineGroup.position.y = 0.25;
-      scene.add(machineGroup);
-      const baseMat = new MeshStandardMaterial({
-        color: 1976635,
-        metalness: 0.82,
-        roughness: 0.24
-      });
-      const chromeMat = new MeshStandardMaterial({
-        color: 14870768,
-        metalness: 0.92,
-        roughness: 0.12
-      });
-      const goldMat = new MeshStandardMaterial({
-        color: 16096779,
-        metalness: 0.86,
-        roughness: 0.18
-      });
-      const suctionRingMat = new MeshStandardMaterial({
-        color: 3718648,
-        emissive: 165063,
-        emissiveIntensity: 0.6,
-        metalness: 0.7,
-        roughness: 0.2
-      });
-      const floorDisc = new Mesh(
-        new CylinderGeometry(6.8, 7.2, 0.18, 48),
-        new MeshStandardMaterial({ color: 988970, metalness: 0.6, roughness: 0.4 })
-      );
-      floorDisc.position.set(0, -4.35, 0);
-      machineGroup.add(floorDisc);
-      const baseCyl = new Mesh(new CylinderGeometry(2.1, 2.65, 1.05, 40), baseMat);
-      baseCyl.position.set(0, -3.62, 0);
-      machineGroup.add(baseCyl);
-      const baseRing = new Mesh(new TorusGeometry(2.15, 0.09, 16, 48), goldMat);
-      baseRing.rotation.x = Math.PI / 2;
-      baseRing.position.set(0, -3.08, 0);
-      machineGroup.add(baseRing);
-      const nozzleMesh = new Mesh(
-        new CylinderGeometry(0.55, 0.9, 0.45, 24),
-        chromeMat
-      );
-      nozzleMesh.position.set(0, -2.95, 0);
-      machineGroup.add(nozzleMesh);
-      const glassMat = new MeshPhysicalMaterial({
-        color: 14742270,
-        metalness: 0.04,
-        roughness: 0.07,
-        transmission: 0.84,
-        transparent: true,
-        opacity: 0.3,
-        ior: 1.45,
-        reflectivity: 0.9,
-        clearcoat: 1,
-        clearcoatRoughness: 0.05,
-        side: DoubleSide,
-        depthWrite: false
-      });
-      const chamberMesh = new Mesh(
-        new SphereGeometry(CHAMBER_RADIUS, 48, 36),
-        glassMat
-      );
-      machineGroup.add(chamberMesh);
-      const equatorRing = new Mesh(
-        new TorusGeometry(CHAMBER_RADIUS + 0.03, 0.04, 16, 64),
-        chromeMat
-      );
-      equatorRing.rotation.x = Math.PI / 2;
-      machineGroup.add(equatorRing);
-      const meridianRing = new Mesh(
-        new TorusGeometry(CHAMBER_RADIUS + 0.03, 0.035, 16, 64),
-        chromeMat
-      );
-      machineGroup.add(meridianRing);
-      const paddleGroup1 = new Group();
-      const paddleGroup2 = new Group();
-      const bladeGeo = new BoxGeometry(CHAMBER_RADIUS * 1.58, 0.11, 0.2);
-      const blade1 = new Mesh(bladeGeo, chromeMat);
-      const blade2 = new Mesh(bladeGeo, goldMat);
-      paddleGroup1.add(blade1);
-      paddleGroup2.add(blade2);
-      paddleGroup2.rotation.z = Math.PI / 2;
-      machineGroup.add(paddleGroup1);
-      machineGroup.add(paddleGroup2);
-      const centerHub = new Mesh(new SphereGeometry(0.28, 24, 24), goldMat);
-      machineGroup.add(centerHub);
-      const innerSuctionTube = new Mesh(
-        new CylinderGeometry(0.42, 0.58, 0.65, 24, 1, true),
-        new MeshPhysicalMaterial({
-          color: 3718648,
-          transparent: true,
-          opacity: 0.38,
-          roughness: 0.1,
-          side: DoubleSide,
-          depthWrite: false
-        })
-      );
-      innerSuctionTube.position.set(0, CHAMBER_RADIUS - 0.22, 0);
-      machineGroup.add(innerSuctionTube);
-      const suctionLipRing = new Mesh(
-        new TorusGeometry(0.56, 0.045, 14, 32),
-        suctionRingMat
-      );
-      suctionLipRing.rotation.x = Math.PI / 2;
-      suctionLipRing.position.set(0, CHAMBER_RADIUS - 0.54, 0);
-      machineGroup.add(suctionLipRing);
-      const outerFunnelMesh = new Mesh(
-        new CylinderGeometry(0.42, 0.42, 0.45, 24, 1, true),
-        chromeMat
-      );
-      outerFunnelMesh.position.set(0, CHAMBER_RADIUS + 0.22, 0);
-      machineGroup.add(outerFunnelMesh);
-      const chuteCurve = new CatmullRomCurve3([
-        new Vector3(0, CHAMBER_RADIUS - 0.3, 0),
-        new Vector3(0, CHAMBER_RADIUS + 0.48, 0.05),
-        new Vector3(1.75, CHAMBER_RADIUS + 0.55, 0.55),
-        new Vector3(3.85, 1.35, 1.15),
-        new Vector3(3.65, -1.75, 1.65),
-        new Vector3(2.85, -3.65, 2.05)
-      ]);
-      const chuteGeo = new TubeGeometry(chuteCurve, 56, 0.35, 18, false);
-      const chuteMat = new MeshPhysicalMaterial({
-        color: 3718648,
-        transparent: true,
-        opacity: 0.28,
-        roughness: 0.1,
-        metalness: 0.1,
-        side: DoubleSide,
-        depthWrite: false
-      });
-      const chuteMesh = new Mesh(chuteGeo, chuteMat);
-      machineGroup.add(chuteMesh);
-      const trayMesh = new Mesh(
-        new BoxGeometry(6.6, 0.22, 0.86),
-        baseMat
-      );
-      trayMesh.position.set(0, -4.02, 2.05);
-      machineGroup.add(trayMesh);
-      const slotPositions = [
-        new Vector3(-2.6, -3.68, 2.05),
-        new Vector3(-1.76, -3.68, 2.05),
-        new Vector3(-0.92, -3.68, 2.05),
-        new Vector3(-0.08, -3.68, 2.05),
-        new Vector3(0.76, -3.68, 2.05),
-        new Vector3(1.6, -3.68, 2.05),
-        new Vector3(2.65, -3.68, 2.05)
-        // 7th Bonus Slot
-      ];
-      slotPositions.forEach((pos, idx) => {
-        const ring = new Mesh(
-          new TorusGeometry(0.29, 0.04, 12, 24),
-          idx === 6 ? goldMat : chromeMat
-        );
-        ring.rotation.x = Math.PI / 2;
-        ring.position.copy(pos).setY(-3.88);
-        machineGroup.add(ring);
-      });
-      const ballGeo = new SphereGeometry(BALL_RADIUS, 24, 20);
-      const balls = [];
-      for (let i3 = 0; i3 < TOTAL_BALLS; i3 += 1) {
-        const num = i3 + 1;
-        const tex = createNumberedBallTexture(num);
-        const mat = new MeshStandardMaterial({
-          map: tex,
-          roughness: 0.18,
-          metalness: 0.12
-        });
-        const mesh = new Mesh(ballGeo, mat);
-        const layer = Math.floor(i3 / 15);
-        const angle = i3 % 15 * (Math.PI * 2 / 15) + layer * 0.4;
-        const rad = 0.65 + i3 % 3 * 0.62;
-        const px2 = Math.cos(angle) * rad;
-        const pz2 = Math.sin(angle) * rad;
-        const py2 = -1.85 + layer * 0.58;
-        mesh.position.set(px2, py2, pz2);
-        machineGroup.add(mesh);
-        balls.push({
-          num,
-          mesh,
-          pos: new Vector3(px2, py2, pz2),
-          vel: new Vector3(
-            (Math.random() - 0.5) * 2,
-            (Math.random() - 0.5) * 2,
-            (Math.random() - 0.5) * 2
-          ),
-          // Ball lifecycle states:
-          // 'chamber': bouncing & mixing freely in 3D sphere
-          // 'rising': caught by central air-jet suction column, physically rising from its current position into the top intake mouth
-          // 'chute': travelling continuously from the top intake mouth through the curved tube
-          // 'tray': settled on its display rack slot
-          state: "chamber",
-          chuteProgress: 0,
-          traySlotIndex: -1
-        });
-      }
-      const state = {
-        scene,
-        camera,
-        renderer,
-        balls,
-        paddleGroup1,
-        paddleGroup2,
-        chuteCurve,
-        slotPositions,
-        bottomGlow,
-        suctionGlow,
-        suctionRingMat,
-        isBlowing: false,
-        blowerStrength: 1.15,
-        paddleAngle: 0,
-        // Queue of target balls to physically rise & be sucked into the top intake
-        extractionQueue: [],
-        activeRisingBall: null,
-        nextSuctionTimestamp: 0,
-        extractedOrder: [],
-        onBallEnteredChute: null,
-        onAllBallsSettled: null
-      };
-      sceneStateRef.current = state;
-      let rafId = null;
-      let lastTime = performance.now();
-      const maxWallR = CHAMBER_RADIUS - BALL_RADIUS - 0.05;
-      const minDist = BALL_RADIUS * 2;
-      const suctionMouthPos = new Vector3(0, CHAMBER_RADIUS - 0.3, 0);
-      const stepPhysics = (dt, nowMs) => {
-        const subSteps = 3;
-        const subDt = Math.min(0.032, dt) / subSteps;
-        const blowing = state.isBlowing;
-        const power = state.blowerStrength;
-        const paddleSpeed = blowing ? 5.6 * power : 0.65;
-        state.paddleAngle += paddleSpeed * dt;
-        paddleGroup1.rotation.z = state.paddleAngle;
-        paddleGroup2.rotation.z = -state.paddleAngle + Math.PI / 2;
-        paddleGroup1.rotation.y = Math.sin(state.paddleAngle * 0.5) * 0.38;
-        paddleGroup2.rotation.x = Math.cos(state.paddleAngle * 0.5) * 0.38;
-        bottomGlow.intensity = blowing ? 3.5 + Math.sin(state.paddleAngle * 4) * 1.2 : 1.2;
-        if (blowing && !state.activeRisingBall && state.extractionQueue.length > 0 && nowMs >= state.nextSuctionTimestamp) {
-          const nextSpec = state.extractionQueue.shift();
-          const targetBall = balls.find((b2) => b2.num === nextSpec.ballNum && b2.state === "chamber");
-          if (targetBall) {
-            targetBall.state = "rising";
-            targetBall.traySlotIndex = nextSpec.slotIdx;
-            state.activeRisingBall = targetBall;
-            suctionRingMat.emissive.setHex(16436245);
-            suctionRingMat.emissiveIntensity = 1.6;
-            suctionGlow.intensity = 3.5;
-            if (state.onBallRising) state.onBallRising(targetBall.num);
-          }
-        }
-        for (let s3 = 0; s3 < subSteps; s3 += 1) {
-          for (let i3 = 0; i3 < balls.length; i3 += 1) {
-            const b2 = balls[i3];
-            if (b2.state === "rising") {
-              const toMouth = suctionMouthPos.clone().sub(b2.pos);
-              const distToMouth = toMouth.length();
-              if (distToMouth < 0.24) {
-                b2.pos.copy(suctionMouthPos);
-                b2.state = "chute";
-                b2.chuteProgress = 0;
-                state.activeRisingBall = null;
-                state.nextSuctionTimestamp = nowMs + 520;
-                suctionRingMat.emissive.setHex(165063);
-                suctionRingMat.emissiveIntensity = 0.7;
-                suctionGlow.intensity = 1;
-                drawSound.playBallExtract(b2.traySlotIndex === 6);
-                if (state.onBallEnteredChute) {
-                  state.onBallEnteredChute(b2.num, b2.traySlotIndex);
-                }
-              } else {
-                const dir = toMouth.normalize();
-                const pullSpeed = 7.8;
-                b2.vel.lerp(dir.multiplyScalar(pullSpeed), 0.22);
-                b2.pos.x *= 0.94;
-                b2.pos.z *= 0.94;
-                b2.pos.addScaledVector(b2.vel, subDt);
-              }
-              continue;
-            }
-            if (b2.state === "chamber") {
-              b2.vel.y -= 9.8 * subDt;
-              if (blowing) {
-                const distXZ = Math.hypot(b2.pos.x, b2.pos.z) + 1e-3;
-                if (distXZ < 1.95) {
-                  const jetFactor = (1 - distXZ / 1.95) * (21.5 * power);
-                  b2.vel.y += jetFactor * subDt;
-                }
-                b2.vel.x += (-b2.pos.z * 4.2 + Math.sin(state.paddleAngle * 1.7 + i3) * 6.5) * power * subDt;
-                b2.vel.z += (b2.pos.x * 4.2 + Math.cos(state.paddleAngle * 1.4 + i3) * 6.5) * power * subDt;
-                b2.vel.y += Math.sin(state.paddleAngle * 2.3 + i3 * 0.9) * 7.8 * power * subDt;
-                if (b2.pos.y < -1.8) {
-                  b2.vel.y += (8.5 + i3 % 5 * 1.8) * power * subDt;
-                }
-              } else {
-                b2.vel.multiplyScalar(0.982);
-              }
-              const speed = b2.vel.length();
-              const maxSpeed = blowing ? 11.5 * power : 4.5;
-              if (speed > maxSpeed) {
-                b2.vel.multiplyScalar(maxSpeed / speed);
-              }
-              b2.pos.addScaledVector(b2.vel, subDt);
-              const distFromCenter = b2.pos.length();
-              if (distFromCenter > maxWallR) {
-                const normal = b2.pos.clone().divideScalar(distFromCenter || 1);
-                b2.pos.copy(normal).multiplyScalar(maxWallR);
-                const velDot = b2.vel.dot(normal);
-                if (velDot > 0) {
-                  const restitution = blowing ? 0.88 : 0.42;
-                  b2.vel.addScaledVector(normal, -(1 + restitution) * velDot);
-                }
-              }
-              if (distFromCenter < 0.56) {
-                const normal = b2.pos.clone().divideScalar(distFromCenter || 1);
-                b2.pos.copy(normal).multiplyScalar(0.56);
-                const velDot = b2.vel.dot(normal);
-                if (velDot < 0) {
-                  b2.vel.addScaledVector(normal, -1.6 * velDot);
-                }
-              }
-            }
-          }
-          for (let i3 = 0; i3 < balls.length; i3 += 1) {
-            const a3 = balls[i3];
-            if (a3.state !== "chamber" && a3.state !== "rising") continue;
-            for (let j4 = i3 + 1; j4 < balls.length; j4 += 1) {
-              const b2 = balls[j4];
-              if (b2.state !== "chamber" && b2.state !== "rising") continue;
-              const dx = b2.pos.x - a3.pos.x;
-              const dy = b2.pos.y - a3.pos.y;
-              const dz = b2.pos.z - a3.pos.z;
-              const distSq = dx * dx + dy * dy + dz * dz;
-              if (distSq < minDist * minDist && distSq > 1e-5) {
-                const dist = Math.sqrt(distSq);
-                const overlap = (minDist - dist) * 0.5;
-                const nx = dx / dist;
-                const ny = dy / dist;
-                const nz = dz / dist;
-                if (a3.state === "chamber") {
-                  a3.pos.x -= nx * overlap;
-                  a3.pos.y -= ny * overlap;
-                  a3.pos.z -= nz * overlap;
-                }
-                if (b2.state === "chamber") {
-                  b2.pos.x += nx * overlap;
-                  b2.pos.y += ny * overlap;
-                  b2.pos.z += nz * overlap;
-                }
-                const rvx = b2.vel.x - a3.vel.x;
-                const rvy = b2.vel.y - a3.vel.y;
-                const rvz = b2.vel.z - a3.vel.z;
-                const velAlongNormal = rvx * nx + rvy * ny + rvz * nz;
-                if (velAlongNormal < 0) {
-                  const restitution = blowing ? 0.85 : 0.4;
-                  const impulse = -(1 + restitution) * velAlongNormal * 0.5;
-                  if (a3.state === "chamber") {
-                    a3.vel.x -= impulse * nx;
-                    a3.vel.y -= impulse * ny;
-                    a3.vel.z -= impulse * nz;
-                  }
-                  if (b2.state === "chamber") {
-                    b2.vel.x += impulse * nx;
-                    b2.vel.y += impulse * ny;
-                    b2.vel.z += impulse * nz;
-                  }
-                }
-              }
-            }
-          }
-        }
-        let all7InTray = state.extractedOrder.length === 7;
-        for (let i3 = 0; i3 < balls.length; i3 += 1) {
-          const b2 = balls[i3];
-          if (b2.state === "chamber" || b2.state === "rising") {
-            b2.mesh.position.copy(b2.pos);
-            b2.mesh.rotation.x += b2.vel.z * dt * 1.5;
-            b2.mesh.rotation.y += b2.vel.x * dt * 1.5;
-          } else if (b2.state === "chute") {
-            all7InTray = false;
-            b2.chuteProgress = Math.min(1, b2.chuteProgress + dt * 1.35);
-            const pt = chuteCurve.getPointAt(b2.chuteProgress);
-            b2.mesh.position.copy(pt);
-            b2.mesh.rotation.z -= dt * 9;
-            if (b2.chuteProgress >= 1) {
-              b2.state = "tray";
-            }
-          } else if (b2.state === "tray") {
-            const targetSlot = slotPositions[b2.traySlotIndex] || slotPositions[0];
-            b2.mesh.position.lerp(targetSlot, 0.2);
-            b2.mesh.rotation.set(0, 0, 0);
-          }
-        }
-        if (blowing && all7InTray && state.extractionQueue.length === 0 && !state.activeRisingBall) {
-          state.isBlowing = false;
-          if (state.onAllBallsSettled) {
-            state.onAllBallsSettled();
-          }
-        }
-      };
-      const animate = (now) => {
-        const dt = Math.min(0.05, (now - lastTime) / 1e3);
-        lastTime = now;
-        stepPhysics(dt, now);
-        renderer.render(scene, camera);
-        rafId = requestAnimationFrame(animate);
-      };
-      rafId = requestAnimationFrame(animate);
-      const handleResize = () => {
-        if (!container) return;
-        const w3 = Math.max(360, container.clientWidth || 860);
-        const h3 = Math.max(300, container.clientHeight || 500);
-        camera.aspect = w3 / h3;
-        camera.position.z = camera.aspect < 1.35 ? 14.8 : 13;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w3, h3);
-      };
-      const resizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(handleResize) : null;
-      if (resizeObserver) resizeObserver.observe(container);
-      window.addEventListener("resize", handleResize);
-      handleResize();
-      return () => {
-        if (resizeObserver) resizeObserver.disconnect();
-        window.removeEventListener("resize", handleResize);
-        if (rafId) cancelAnimationFrame(rafId);
-        renderer.dispose();
-      };
-    }, []);
-    h2(() => {
-      if (sceneStateRef.current) {
-        sceneStateRef.current.blowerStrength = blowerPower;
-      }
-    }, [blowerPower]);
-    const resetBallsToChamber = () => {
-      const st = sceneStateRef.current;
-      if (!st) return;
-      st.extractionQueue = [];
-      st.activeRisingBall = null;
-      st.extractedOrder = [];
-      st.balls.forEach((b2, i3) => {
-        const layer = Math.floor(i3 / 15);
-        const angle = i3 % 15 * (Math.PI * 2 / 15) + layer * 0.4;
-        const rad = 0.65 + i3 % 3 * 0.62;
-        b2.state = "chamber";
-        b2.chuteProgress = 0;
-        b2.traySlotIndex = -1;
-        b2.pos.set(Math.cos(angle) * rad, -1.8 + layer * 0.58, Math.sin(angle) * rad);
-        b2.vel.set((Math.random() - 0.5) * 6, 3 + Math.random() * 6, (Math.random() - 0.5) * 6);
-      });
-    };
-    const finalizeDrawSession = (lockedOutcome) => {
-      const st = sceneStateRef.current;
-      if (st) {
-        st.isBlowing = false;
-        st.extractionQueue = [];
-        st.activeRisingBall = null;
-        st.onBallEnteredChute = null;
-        st.onAllBallsSettled = null;
-        st.onBallRising = null;
-        lockedOutcome.extractionOrder.forEach((ballNum, idx) => {
-          const ballObj = st.balls.find((b2) => b2.num === ballNum);
-          if (ballObj) {
-            ballObj.state = "tray";
-            ballObj.traySlotIndex = idx;
-          }
-        });
-      }
-      setCurrentlyRisingBall(null);
-      setExtractedBalls(lockedOutcome.extractionOrder);
-      setPhase("completed");
-      drawSound.playFanfare();
-      setHistory((prev) => [
-        {
-          id: `lotto-${Date.now()}`,
-          time: formatDrawTime(),
-          mainNumbers: lockedOutcome.mainNumbers,
-          bonusNumber: lockedOutcome.bonusNumber
-        },
-        ...prev.slice(0, 14)
-      ]);
-    };
-    const handleStartLottoDraw = () => {
-      resetBallsToChamber();
-      const locked = drawUnbiasedLotto645();
-      setDrawOutcome(locked);
-      setExtractedBalls([]);
-      setCurrentlyRisingBall(null);
-      setPhase("blowing");
-      const st = sceneStateRef.current;
-      if (st) {
-        st.isBlowing = true;
-        st.extractedOrder = [];
-        st.extractionQueue = locked.extractionOrder.map((ballNum, slotIdx) => ({
-          ballNum,
-          slotIdx
-        }));
-        st.nextSuctionTimestamp = performance.now() + 800;
-        st.onBallRising = (ballNum) => {
-          setCurrentlyRisingBall(ballNum);
-        };
-        st.onBallEnteredChute = (ballNum) => {
-          st.extractedOrder.push(ballNum);
-          setCurrentlyRisingBall(null);
-          setExtractedBalls([...st.extractedOrder]);
-        };
-        st.onAllBallsSettled = () => {
-          finalizeDrawSession(locked);
-        };
-      }
-    };
-    const handleQuickComplete = () => {
-      if (!drawOutcome) {
-        const locked = drawUnbiasedLotto645();
-        setDrawOutcome(locked);
-        finalizeDrawSession(locked);
-      } else {
-        finalizeDrawSession(drawOutcome);
-      }
-    };
-    const handleAutoPickMyTicket = () => {
-      const picked = drawUnbiasedLotto645().mainNumbers;
-      setMyTicket(picked);
-    };
-    const toggleMyTicketNumber = (num) => {
-      if (myTicket.includes(num)) {
-        if (myTicket.length > 1) {
-          setMyTicket(myTicket.filter((n2) => n2 !== num));
-        }
-      } else if (myTicket.length < 6) {
-        setMyTicket([...myTicket, num].sort((a3, b2) => a3 - b2));
-      }
-    };
-    const visibleMainBalls = extractedBalls.slice(0, 6);
-    const visibleBonusBall = extractedBalls.length >= 7 ? extractedBalls[6] : null;
-    const ticketCheckResult = T2(() => {
-      if (phase !== "completed" || !drawOutcome || myTicket.length !== 6) return null;
-      return checkLottoTicketRank(drawOutcome.mainNumbers, drawOutcome.bonusNumber, myTicket);
-    }, [phase, drawOutcome, myTicket]);
-    return /* @__PURE__ */ u3("div", { className: "rpz-game-shell", "data-testid": "game-lotto-3d", children: [
-      /* @__PURE__ */ u3("header", { className: "rpz-game-topbar", children: [
-        /* @__PURE__ */ u3("div", { className: "rpz-game-title-group", children: [
-          /* @__PURE__ */ u3("button", { type: "button", className: "rpz-back-btn", onClick: onBack, children: "\u2190 \uCD94\uCCA8 \uAC8C\uC784 \uBAA9\uB85D" }),
-          /* @__PURE__ */ u3("div", { children: [
-            /* @__PURE__ */ u3("span", { className: "rpz-game-Tag", children: "GAME 02 \xB7 THREE.JS 3D AIR-JET SUCTION CHAMBER" }),
-            /* @__PURE__ */ u3("h2", { children: "\u{1F3B1} LOTTO 6/45 \u2014 \uC2E4\uC81C 3D \uCD94\uCCA8\uAE30" })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "rpz-top-actions", children: [
-          phase === "idle" && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-primary",
-              "data-testid": "lotto-start-btn",
-              onClick: handleStartLottoDraw,
-              children: "\u{1F32A}\uFE0F \uC5D0\uC5B4\uC81C\uD2B8 \uC1A1\uD48D \uBC0F \uCD94\uCCA8 \uC2DC\uC791"
-            }
-          ),
-          phase === "blowing" && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-accent",
-              "data-testid": "lotto-instant-btn",
-              onClick: handleQuickComplete,
-              children: [
-                "\u26A1 6+1 \uBC88\uD638 \uC989\uC2DC \uBC30\uCD9C \uC644\uB8CC (",
-                extractedBalls.length,
-                "/7)"
-              ]
-            }
-          ),
-          phase === "completed" && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-primary",
-              "data-testid": "lotto-reroll-btn",
-              onClick: handleStartLottoDraw,
-              children: "\u{1F504} \uC0C8 \uD68C\uCC28 3D \uC7AC\uCD94\uCCA8"
-            }
-          )
-        ] })
-      ] }),
-      /* @__PURE__ */ u3("div", { className: "rpz-game-workspace", children: [
-        /* @__PURE__ */ u3("section", { className: "rpz-stage-panel", children: [
-          /* @__PURE__ */ u3("div", { className: "rpz-stage-status-bar", children: [
-            /* @__PURE__ */ u3("span", { className: `rpz-phase-pill phase-${phase}`, "data-testid": "lotto-phase-badge", children: [
-              phase === "idle" && "\uD22C\uBA85 3D \uCD94\uCCA8\uC2E4 \uB300\uAE30 \uC911 \u2014 45\uAC1C \uBC88\uD638 \uACF5(1~45) \uBB3C\uB9AC \uC2DC\uBBAC\uB808\uC774\uC158 \uAC00\uB3D9 \uC911",
-              phase === "blowing" && (currentlyRisingBall ? `\u{1F32A}\uFE0F \uC5D0\uC5B4\uC81C\uD2B8 \uC1A1\uD48D \uC911 \u2014 [${currentlyRisingBall}\uBC88 \uACF5]\uC774 \uC0C1\uB2E8 \uD761\uC785\uAD6C\uB85C \uC0C1\uC2B9 \uD3EC\uD68D \uC911! (${extractedBalls.length}/7\uAD6C \uBC30\uCD9C)` : `\u{1F32A}\uFE0F \uC5D0\uC5B4\uC81C\uD2B8 \uC1A1\uD48D \uAD50\uBC18 \uBC0F \uC0C1\uB2E8 \uBC30\uCD9C \uD1B5\uB85C \uCD94\uCCA8 \uC911 (${extractedBalls.length}/7\uAD6C \uBC30\uCD9C)`),
-              phase === "completed" && drawOutcome && `\u{1F389} \uCD94\uCCA8 \uC644\uB8CC! \uB2F9\uCCA8 \uBC88\uD638: ${drawOutcome.mainNumbers.join(", ")} + \uBCF4\uB108\uC2A4 ${drawOutcome.bonusNumber}`
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "rpz-mode-badges", children: [
-              /* @__PURE__ */ u3("span", { className: "rpz-chip active", children: [
-                "\uCD94\uCCA8\uC2E4 \uC794\uC5EC ",
-                TOTAL_BALLS - extractedBalls.length,
-                "\uAD6C"
-              ] }),
-              /* @__PURE__ */ u3("span", { className: "rpz-chip active", children: "\uC0C1\uB2E8 \uD761\uC785 \u2192 \uBC30\uCD9C \uD30C\uC774\uD504 \uC5F0\uB3D9" })
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-lotto-3d-viewport-wrap", children: /* @__PURE__ */ u3(
-            "div",
-            {
-              ref: mountRef,
-              className: "rpz-lotto-3d-mount",
-              "data-testid": "lotto-3d-canvas-container"
-            }
-          ) }),
-          /* @__PURE__ */ u3("div", { className: "rpz-lotto-bottom-bar", "data-testid": "lotto-ball-rack", children: [
-            /* @__PURE__ */ u3("div", { className: "rpz-rack-group", children: [
-              /* @__PURE__ */ u3("span", { className: "rpz-rack-label", children: "\uB2F9\uCCA8 \uBC88\uD638 (6\uAD6C)" }),
-              /* @__PURE__ */ u3("div", { className: "rpz-rack-slots", children: Array.from({ length: 6 }, (_3, idx) => {
-                const num = phase === "completed" && drawOutcome ? drawOutcome.mainNumbers[idx] : visibleMainBalls[idx];
-                return /* @__PURE__ */ u3(
-                  "div",
-                  {
-                    className: `rpz-lotto-slot ${num ? "filled" : "empty"}`,
-                    "data-testid": `lotto-main-ball-${idx}`,
-                    style: num ? { background: getLottoBallColor(num) } : void 0,
-                    children: num || "?"
-                  },
-                  idx
-                );
-              }) })
-            ] }),
-            /* @__PURE__ */ u3("span", { className: "rpz-rack-plus", children: "+" }),
-            /* @__PURE__ */ u3("div", { className: "rpz-rack-group", children: [
-              /* @__PURE__ */ u3("span", { className: "rpz-rack-label", children: "\uBCF4\uB108\uC2A4" }),
-              /* @__PURE__ */ u3(
-                "div",
-                {
-                  className: `rpz-lotto-slot bonus ${visibleBonusBall ? "filled" : "empty"}`,
-                  "data-testid": "lotto-bonus-ball",
-                  style: visibleBonusBall ? { background: getLottoBallColor(visibleBonusBall) } : void 0,
-                  children: visibleBonusBall || "B"
-                }
-              )
-            ] }),
-            phase === "completed" && drawOutcome && ticketCheckResult && /* @__PURE__ */ u3("div", { className: "rpz-lotto-inline-result", "data-testid": "lotto-result-panel", children: /* @__PURE__ */ u3("span", { "data-testid": "lotto-ticket-check", children: [
-              "\uB0B4 \uBC88\uD638 [",
-              myTicket.join(", "),
-              "] \u2192 ",
-              /* @__PURE__ */ u3("strong", { children: ticketCheckResult.label }),
-              " ",
-              "(\uC77C\uCE58: ",
-              ticketCheckResult.matchedMain.length > 0 ? ticketCheckResult.matchedMain.join(", ") : "\uC5C6\uC74C",
-              ticketCheckResult.bonusMatched ? ` + \uBCF4\uB108\uC2A4 ${drawOutcome.bonusNumber}` : "",
-              ")"
-            ] }) })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3("aside", { className: "rpz-sidebar-panel", children: [
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: "1. 3D \uC5D0\uC5B4\uC81C\uD2B8 \uC1A1\uD48D\uAE30 \uCD9C\uB825 \uC81C\uC5B4" }),
-            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
-              /* @__PURE__ */ u3("span", { children: [
-                "\uC5D0\uC5B4\uC81C\uD2B8 \uC0C1\uC2B9 \uD48D\uC555 (",
-                Math.round(blowerPower * 100),
-                "%)"
-              ] }),
-              /* @__PURE__ */ u3(
-                "input",
-                {
-                  type: "range",
-                  min: "0.8",
-                  max: "1.6",
-                  step: "0.05",
-                  value: blowerPower,
-                  onChange: (e3) => setBlowerPower(Number(e3.target.value))
-                }
-              )
-            ] }),
-            /* @__PURE__ */ u3("p", { className: "rpz-hint", children: "\uD558\uB2E8 \uB178\uC990\uC5D0\uC11C \uBD84\uC0AC\uB418\uB294 \uC0C1\uC2B9 \uAE30\uB958\uC640 \uC591\uBC29\uD5A5 \uD328\uB4E4\uC774 45\uAC1C \uACF5\uC744 \uCD94\uCCA8\uC2E4 \uC0C1\uB2E8\uAE4C\uC9C0 \uC2E4\uC81C\uB85C \uB744\uC6CC \uC62C\uB9AC\uBA70, \uC0C1\uB2E8 \uD761\uC785\uAD6C\uB85C \uBE68\uB824 \uB4E4\uC5B4\uAC04 \uACF5\uC774 \uD22C\uBA85 \uBC30\uCD9C\uAD00\uC744 \uD0C0\uACE0 \uB0B4\uB824\uC635\uB2C8\uB2E4." })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("div", { className: "rpz-card-head-between", children: [
-              /* @__PURE__ */ u3("h3", { children: [
-                "2. \uB0B4 \uB85C\uB610 \uBC88\uD638 \uC120\uD0DD (",
-                myTicket.length,
-                "/6)"
-              ] }),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-btn-xs",
-                  onClick: handleAutoPickMyTicket,
-                  children: "\u{1F3B2} \uC790\uB3D9 \uC120\uD0DD"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "rpz-lotto-number-grid", children: Array.from({ length: 45 }, (_3, i3) => i3 + 1).map((num) => {
-              const selected = myTicket.includes(num);
-              const isDrawnMain = phase === "completed" && drawOutcome?.mainNumbers.includes(num);
-              const isDrawnBonus = phase === "completed" && drawOutcome?.bonusNumber === num;
-              return /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: `rpz-num-cell ${selected ? "selected" : ""} ${isDrawnMain ? "hit-main" : ""} ${isDrawnBonus ? "hit-bonus" : ""}`,
-                  onClick: () => toggleMyTicketNumber(num),
-                  children: num
-                },
-                num
-              );
-            }) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: [
-              "3. \uD68C\uCC28\uBCC4 \uCD94\uCCA8 \uAE30\uB85D (",
-              history.length,
-              ")"
-            ] }),
-            history.length === 0 ? /* @__PURE__ */ u3("p", { className: "rpz-empty", children: "\uC544\uC9C1 3D \uB85C\uB610 \uCD94\uCCA8 \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4." }) : /* @__PURE__ */ u3("ul", { className: "rpz-history-list", "data-testid": "lotto-history-list", children: history.map((item, idx) => /* @__PURE__ */ u3("li", { children: [
-              /* @__PURE__ */ u3("div", { className: "rpz-history-head", children: [
-                /* @__PURE__ */ u3("strong", { children: [
-                  "\uC81C ",
-                  history.length - idx,
-                  "\uD68C \uCD94\uCCA8"
-                ] }),
-                /* @__PURE__ */ u3("small", { children: item.time })
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "rpz-mini-ball-row", children: [
-                item.mainNumbers.map((n2) => /* @__PURE__ */ u3(
-                  "span",
-                  {
-                    className: "rpz-mini-ball",
-                    style: { background: getLottoBallColor(n2) },
-                    children: n2
-                  },
-                  n2
-                )),
-                /* @__PURE__ */ u3("span", { className: "rpz-mini-plus", children: "+" }),
-                /* @__PURE__ */ u3(
-                  "span",
-                  {
-                    className: "rpz-mini-ball bonus",
-                    style: { background: getLottoBallColor(item.bonusNumber) },
-                    children: item.bonusNumber
-                  }
-                )
-              ] })
-            ] }, item.id)) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-license-box", children: /* @__PURE__ */ u3("small", { children: [
-            /* @__PURE__ */ u3("strong", { children: "\uC624\uD508\uC18C\uC2A4 \uB77C\uC774\uC120\uC2A4 \uACE0\uC9C0:" }),
-            " 3D \uCD94\uCCA8\uAE30 \uAD6C\uC870 ",
-            /* @__PURE__ */ u3("code", { children: "steller102/3d-lottery" }),
-            " (MIT License, Copyright \xA9 2025 Steller) \uBC0F \uB85C\uB610 \uCC44\uC810/\uBC88\uD638\uB300 \uADDC\uCE59 ",
-            /* @__PURE__ */ u3("code", { children: "Tae-sung-Kim/pickle-eight" }),
-            " (MIT License) \uD65C\uC6A9 \xB7 45\uAD6C 3D \uAD6C\uCCB4 \uC0C1\uC2B9 \uD761\uC785 \uBC0F 6+1 \uBC30\uCD9C \uD1B5\uB85C \uBB3C\uB9AC \uC5D4\uC9C4 \uAD6C\uD604."
-          ] }) })
-        ] })
-      ] })
-    ] });
-  }
-
-  // tool-box/src/features/game-box/draw/games/TeamDraftGame.jsx
-  var TEAM_PALETTE = [
-    { badge: "ALPHA", color: "#38bdf8", bg: "rgba(56, 189, 248, 0.12)" },
-    { badge: "BRAVO", color: "#f43f5e", bg: "rgba(244, 63, 94, 0.12)" },
-    { badge: "CHARLIE", color: "#22c55e", bg: "rgba(34, 197, 94, 0.12)" },
-    { badge: "DELTA", color: "#a855f7", bg: "rgba(168, 85, 247, 0.12)" },
-    { badge: "ECHO", color: "#f59e0b", bg: "rgba(245, 158, 11, 0.12)" },
-    { badge: "FOXTROT", color: "#ec4899", bg: "rgba(236, 72, 153, 0.12)" },
-    { badge: "GOLF", color: "#14b8a6", bg: "rgba(20, 184, 166, 0.12)" },
-    { badge: "HOTEL", color: "#eab308", bg: "rgba(234, 179, 8, 0.12)" }
-  ];
-  var DEFAULT_ROSTER_TEXT = [
-    "\uAE40\uC131\uBBFC",
-    "\uC774\uC9C0\uD6C8",
-    "\uBC15\uC218\uC9C4",
-    "\uCD5C\uBBFC\uD638",
-    "\uC815\uD558\uB298",
-    "\uAC15\uB3D9\uC6D0",
-    "\uC724\uC11C\uC5F0",
-    "\uD55C\uC9C0\uBBFC",
-    "\uC624\uC2B9\uD658",
-    "\uBC30\uC218\uC9C0",
-    "\uB958\uD604\uC9C4",
-    "\uC190\uD765\uBBFC"
-  ].join(", ");
-  function computeBalancedTeamDraft({
-    participants,
-    teamNames,
-    useRatings = false
-  }) {
-    const numTeams = Math.max(2, teamNames.length);
-    const shuffled = shuffleUnbiased(participants);
-    const ordered = useRatings ? [...shuffled].sort((a3, b2) => (b2.rating || 1) - (a3.rating || 1)) : shuffled;
-    const teams = teamNames.map((name, index) => ({
-      teamIndex: index,
-      teamName: name || `TEAM ${index + 1}`,
-      palette: TEAM_PALETTE[index % TEAM_PALETTE.length],
-      members: [],
-      totalRating: 0
-    }));
-    const draftQueue = [];
-    ordered.forEach((participant, pickIndex) => {
-      const candidateTeams = [...teams].sort((a3, b2) => {
-        if (a3.members.length !== b2.members.length) {
-          return a3.members.length - b2.members.length;
-        }
-        return a3.totalRating - b2.totalRating;
-      });
-      const targetTeam = candidateTeams[0];
-      const memberRecord = {
-        id: participant.id || `p-${pickIndex}`,
-        name: participant.name,
-        rating: Number(participant.rating) || 1,
-        pickNumber: pickIndex + 1,
-        teamIndex: targetTeam.teamIndex,
-        teamName: targetTeam.teamName
-      };
-      targetTeam.members.push(memberRecord);
-      targetTeam.totalRating += memberRecord.rating;
-      draftQueue.push(memberRecord);
-    });
-    const maxMembers = Math.max(...teams.map((t3) => t3.members.length), 0);
-    const revealSequence = [];
-    for (let round = 0; round < maxMembers; round += 1) {
-      for (let t3 = 0; t3 < numTeams; t3 += 1) {
-        const m3 = teams[t3].members[round];
-        if (m3) {
-          revealSequence.push({
-            ...m3,
-            round: round + 1,
-            orderIndex: revealSequence.length + 1
-          });
-        }
-      }
-    }
-    return {
-      teams,
-      revealSequence,
-      totalParticipants: participants.length,
-      useRatings
-    };
-  }
-  function TeamDraftGame({ onBack }) {
-    const [rosterInput, setRosterInput] = d2(DEFAULT_ROSTER_TEXT);
-    const [teamCount, setTeamCount] = d2(3);
-    const [customTeamNames, setCustomTeamNames] = d2([
-      "ALPHA \uD300",
-      "BRAVO \uD300",
-      "CHARLIE \uD300",
-      "DELTA \uD300",
-      "ECHO \uD300",
-      "FOXTROT \uD300",
-      "GOLF \uD300",
-      "HOTEL \uD300"
-    ]);
-    const [useSkillBalance, setUseSkillBalance] = d2(false);
-    const [ratingsMap, setRatingsMap] = d2({});
-    const [draftPlan, setDraftPlan] = d2(null);
-    const [phase, setPhase] = d2("idle");
-    const [revealedCount, setRevealedCount] = d2(0);
-    const [copyFeedback, setCopyFeedback] = d2("");
-    const [history, setHistory] = d2([]);
-    const timerRef = A2(null);
-    const parsedParticipants = T2(() => {
-      const raw = rosterInput.split(/[,\r\n]+/).map((s3) => s3.trim()).filter(Boolean);
-      return raw.map((entry, idx) => {
-        const match = entry.match(/^(.+?)\s*[:/]\s*([1-5])$/);
-        const cleanName = match ? match[1].trim() : entry;
-        const rating = match ? Number(match[2]) : Number(ratingsMap[cleanName]) || 3;
-        return {
-          id: `member-${idx}-${cleanName}`,
-          name: cleanName,
-          rating: Math.max(1, Math.min(5, rating))
-        };
-      });
-    }, [rosterInput, ratingsMap]);
-    const activeTeamNames = T2(
-      () => Array.from({ length: teamCount }, (_3, i3) => customTeamNames[i3] || `TEAM ${i3 + 1}`),
-      [teamCount, customTeamNames]
-    );
-    h2(() => {
-      return () => {
-        if (timerRef.current) clearInterval(timerRef.current);
-      };
-    }, []);
-    const recordHistory = (plan) => {
-      setHistory((prev) => [
-        {
-          id: `draft-${Date.now()}`,
-          time: formatDrawTime(),
-          totalParticipants: plan.totalParticipants,
-          teamCount: plan.teams.length,
-          summary: plan.teams.map((t3) => `${t3.teamName}(${t3.members.length}\uBA85)`).join(" \xB7 "),
-          teams: plan.teams
-        },
-        ...prev.slice(0, 14)
-      ]);
-    };
-    const handleStartDraft = () => {
-      if (parsedParticipants.length < 2) return;
-      if (timerRef.current) clearInterval(timerRef.current);
-      const lockedPlan = computeBalancedTeamDraft({
-        participants: parsedParticipants,
-        teamNames: activeTeamNames,
-        useRatings: useSkillBalance
-      });
-      setDraftPlan(lockedPlan);
-      setPhase("drafting");
-      setRevealedCount(1);
-      setCopyFeedback("");
-      drawSound.playDraftPick();
-      let currentCount = 1;
-      const total = lockedPlan.revealSequence.length;
-      if (total <= 1) {
-        setPhase("completed");
-        drawSound.playFanfare();
-        recordHistory(lockedPlan);
-        return;
-      }
-      timerRef.current = setInterval(() => {
-        currentCount += 1;
-        if (currentCount < total) {
-          setRevealedCount(currentCount);
-          drawSound.playDraftPick();
-        } else {
-          clearInterval(timerRef.current);
-          timerRef.current = null;
-          setRevealedCount(total);
-          setPhase("completed");
-          drawSound.playFanfare();
-          recordHistory(lockedPlan);
-        }
-      }, 340);
-    };
-    const handleRevealAllNow = () => {
-      if (!draftPlan) return;
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-        timerRef.current = null;
-      }
-      setRevealedCount(draftPlan.revealSequence.length);
-      if (phase !== "completed") {
-        setPhase("completed");
-        drawSound.playFanfare();
-        recordHistory(draftPlan);
-      }
-    };
-    const handleCopyResult = async () => {
-      if (!draftPlan) return;
-      const lines = draftPlan.teams.map((t3) => {
-        const names = t3.members.map((m3) => useSkillBalance ? `${m3.name}(\u2605${m3.rating})` : m3.name).join(", ");
-        return `[${t3.teamName}] (${t3.members.length}\uBA85): ${names}`;
-      });
-      const text = `\u{1F3C6} [GAMEBOX TEAM DRAFT \uACB0\uACFC]
-${lines.join("\n")}`;
-      try {
-        await navigator.clipboard?.writeText(text);
-        setCopyFeedback("\u2713 \uD074\uB9BD\uBCF4\uB4DC\uC5D0 \uD300 \uBC30\uC815 \uACB0\uACFC\uAC00 \uBCF5\uC0AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4!");
-      } catch {
-        setCopyFeedback("\u2713 \uACB0\uACFC \uD14D\uC2A4\uD2B8\uAC00 \uC0DD\uC131\uB418\uC5C8\uC2B5\uB2C8\uB2E4.");
-      }
-      setTimeout(() => setCopyFeedback(""), 3e3);
-    };
-    const revealedSet = T2(() => {
-      if (!draftPlan) return /* @__PURE__ */ new Set();
-      return new Set(
-        draftPlan.revealSequence.slice(0, revealedCount).map((item) => item.id)
-      );
-    }, [draftPlan, revealedCount]);
-    const currentPick = T2(() => {
-      if (!draftPlan || revealedCount <= 0) return null;
-      return draftPlan.revealSequence[Math.min(revealedCount - 1, draftPlan.revealSequence.length - 1)] || null;
-    }, [draftPlan, revealedCount]);
-    return /* @__PURE__ */ u3("div", { className: "rpz-game-shell", "data-testid": "game-team-draft", children: [
-      /* @__PURE__ */ u3("header", { className: "rpz-game-topbar", children: [
-        /* @__PURE__ */ u3("div", { className: "rpz-game-title-group", children: [
-          /* @__PURE__ */ u3("button", { type: "button", className: "rpz-back-btn", onClick: onBack, children: "\u2190 RANDOM PLAY ZONE" }),
-          /* @__PURE__ */ u3("div", { children: [
-            /* @__PURE__ */ u3("span", { className: "rpz-game-Tag", children: "GAME 03 \xB7 BALANCED TEAM GENERATOR" }),
-            /* @__PURE__ */ u3("h2", { children: "\u26A1 TEAM DRAFT \u2014 \uD300 \uB098\uB204\uAE30" })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "rpz-top-actions", children: [
-          phase === "idle" && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-primary",
-              "data-testid": "draft-start-btn",
-              onClick: handleStartDraft,
-              disabled: parsedParticipants.length < 2,
-              children: "\u{1F3AF} \uB4DC\uB798\uD504\uD2B8 \uCD94\uCCA8 \uC2DC\uC791"
-            }
-          ),
-          phase === "drafting" && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-accent",
-              "data-testid": "draft-skip-btn",
-              onClick: handleRevealAllNow,
-              children: [
-                "\u26A1 \uC804\uC6D0 \uC989\uC2DC \uACF5\uAC1C (",
-                revealedCount,
-                "/",
-                draftPlan?.totalParticipants || 0,
-                ")"
-              ]
-            }
-          ),
-          phase === "completed" && /* @__PURE__ */ u3(S, { children: [
-            /* @__PURE__ */ u3(
-              "button",
-              {
-                type: "button",
-                className: "rpz-btn rpz-btn-primary",
-                "data-testid": "draft-reroll-btn",
-                onClick: handleStartDraft,
-                children: "\u{1F504} \uD300 \uC7AC\uCD94\uCCA8"
-              }
-            ),
-            /* @__PURE__ */ u3(
-              "button",
-              {
-                type: "button",
-                className: "rpz-btn rpz-btn-accent",
-                "data-testid": "draft-copy-btn",
-                onClick: handleCopyResult,
-                children: "\u{1F4CB} \uACB0\uACFC \uBCF5\uC0AC"
-              }
-            )
-          ] }),
-          phase !== "idle" && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-ghost",
-              onClick: () => {
-                if (timerRef.current) clearInterval(timerRef.current);
-                setPhase("idle");
-                setDraftPlan(null);
-                setRevealedCount(0);
-              },
-              children: "\uBA85\uB2E8 \uD3B8\uC9D1\uC73C\uB85C"
-            }
-          )
-        ] })
-      ] }),
-      /* @__PURE__ */ u3("div", { className: "rpz-game-workspace", children: [
-        /* @__PURE__ */ u3("section", { className: "rpz-stage-panel", children: [
-          /* @__PURE__ */ u3("div", { className: "rpz-stage-status-bar", children: [
-            /* @__PURE__ */ u3("span", { className: `rpz-phase-pill phase-${phase}`, "data-testid": "draft-phase-badge", children: [
-              phase === "idle" && `\uB300\uAE30 \uC911 \u2014 \uCD1D ${parsedParticipants.length}\uBA85\uC744 ${teamCount}\uAC1C \uD300\uC73C\uB85C \uADE0\uB4F1 \uBC30\uC815\uD569\uB2C8\uB2E4`,
-              phase === "drafting" && `LIVE DRAFT PICK #${revealedCount} / ${draftPlan?.totalParticipants} \u2014 \uD55C \uBA85\uC529 \uD300\uC744 \uD638\uBA85\uD558\uB294 \uC911...`,
-              phase === "completed" && `\uB4DC\uB798\uD504\uD2B8 \uC644\uB8CC! \uCD1D ${draftPlan?.totalParticipants}\uBA85 \xB7 ${draftPlan?.teams.length}\uAC1C \uD300 \uADE0\uB4F1 \uBC30\uC815 \uD655\uC815`
-            ] }),
-            copyFeedback && /* @__PURE__ */ u3("span", { className: "rpz-copy-toast", "data-testid": "draft-copy-toast", children: copyFeedback })
-          ] }),
-          currentPick && /* @__PURE__ */ u3("div", { className: "rpz-draft-spotlight", "data-testid": "draft-spotlight", children: [
-            /* @__PURE__ */ u3("div", { className: "rpz-spotlight-badge", children: phase === "drafting" ? `LIVE PICK #${currentPick.orderIndex}` : "FINAL PICK" }),
-            /* @__PURE__ */ u3("div", { className: "rpz-spotlight-main", children: [
-              /* @__PURE__ */ u3("span", { className: "rpz-spotlight-player", children: currentPick.name }),
-              /* @__PURE__ */ u3("span", { className: "rpz-spotlight-arrow", children: "\u2794" }),
-              /* @__PURE__ */ u3(
-                "strong",
-                {
-                  className: "rpz-spotlight-team",
-                  style: { color: TEAM_PALETTE[currentPick.teamIndex % TEAM_PALETTE.length].color },
-                  children: currentPick.teamName
-                }
-              )
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "rpz-spotlight-progress", children: /* @__PURE__ */ u3(
-              "div",
-              {
-                className: "rpz-spotlight-bar",
-                style: {
-                  width: `${Math.round(revealedCount / (draftPlan?.totalParticipants || 1) * 100)}%`
-                }
-              }
-            ) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-teams-board", "data-testid": "draft-teams-board", children: (draftPlan ? draftPlan.teams : activeTeamNames.map((name, i3) => ({
-            teamIndex: i3,
-            teamName: name,
-            palette: TEAM_PALETTE[i3 % TEAM_PALETTE.length],
-            members: [],
-            totalRating: 0
-          }))).map((team) => {
-            const visibleMembers = draftPlan ? team.members.filter((m3) => revealedSet.has(m3.id)) : [];
-            const visibleRating = visibleMembers.reduce((acc, m3) => acc + (m3.rating || 1), 0);
-            return /* @__PURE__ */ u3(
-              "div",
-              {
-                className: "rpz-team-column",
-                "data-testid": `draft-team-card-${team.teamIndex}`,
-                style: {
-                  borderColor: team.palette.color,
-                  background: team.palette.bg
-                },
-                children: [
-                  /* @__PURE__ */ u3("div", { className: "rpz-team-header", children: [
-                    /* @__PURE__ */ u3("div", { children: [
-                      /* @__PURE__ */ u3("span", { className: "rpz-team-code", style: { color: team.palette.color }, children: [
-                        "TEAM 0",
-                        team.teamIndex + 1
-                      ] }),
-                      /* @__PURE__ */ u3("h3", { children: team.teamName })
-                    ] }),
-                    /* @__PURE__ */ u3("div", { className: "rpz-team-meta", children: [
-                      /* @__PURE__ */ u3("span", { className: "rpz-team-count", children: [
-                        visibleMembers.length,
-                        "\uBA85"
-                      ] }),
-                      useSkillBalance && /* @__PURE__ */ u3("span", { className: "rpz-team-rating", children: [
-                        "\u2605 ",
-                        visibleRating
-                      ] })
-                    ] })
-                  ] }),
-                  /* @__PURE__ */ u3("ul", { className: "rpz-team-member-list", children: visibleMembers.length === 0 ? /* @__PURE__ */ u3("li", { className: "rpz-team-placeholder", children: phase === "idle" ? "\uB4DC\uB798\uD504\uD2B8 \uB300\uAE30 \uC911" : "\uD638\uBA85 \uB300\uAE30 \uC911..." }) : visibleMembers.map((member, mIdx) => /* @__PURE__ */ u3(
-                    "li",
-                    {
-                      className: `rpz-team-member-item ${currentPick?.id === member.id && phase === "drafting" ? "just-picked" : ""}`,
-                      children: [
-                        /* @__PURE__ */ u3("span", { className: "rpz-member-order", children: [
-                          "#",
-                          mIdx + 1
-                        ] }),
-                        /* @__PURE__ */ u3("strong", { className: "rpz-member-name", children: member.name }),
-                        useSkillBalance && /* @__PURE__ */ u3("span", { className: "rpz-member-tier", children: [
-                          "\u2605",
-                          member.rating
-                        ] })
-                      ]
-                    },
-                    member.id
-                  )) })
-                ]
-              },
-              team.teamIndex
-            );
-          }) })
-        ] }),
-        /* @__PURE__ */ u3("aside", { className: "rpz-sidebar-panel", children: [
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: [
-              "1. \uCC38\uAC00\uC790 \uBA85\uB2E8 \uB4F1\uB85D (",
-              parsedParticipants.length,
-              "\uBA85)"
-            ] }),
-            /* @__PURE__ */ u3(
-              "textarea",
-              {
-                className: "rpz-textarea",
-                rows: 4,
-                value: rosterInput,
-                disabled: phase === "drafting",
-                onChange: (e3) => setRosterInput(e3.target.value),
-                placeholder: "\uC27C\uD45C(,) \uB610\uB294 \uC904\uBC14\uAFC8\uC73C\uB85C \uC774\uB984 \uC785\uB825 (\uC608: \uAE40\uC131\uBBFC, \uC774\uC9C0\uD6C8, \uBC15\uC218\uC9C4)",
-                "data-testid": "draft-roster-input"
-              }
-            ),
-            /* @__PURE__ */ u3("div", { className: "rpz-preset-row", children: [
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-btn-xs",
-                  disabled: phase === "drafting",
-                  onClick: () => setRosterInput(DEFAULT_ROSTER_TEXT),
-                  children: "12\uC778 \uAE30\uBCF8"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-btn-xs",
-                  disabled: phase === "drafting",
-                  onClick: () => setRosterInput("\uAE40\uC131\uBBFC:5, \uC774\uC9C0\uD6C8:5, \uBC15\uC218\uC9C4:4, \uCD5C\uBBFC\uD638:4, \uC815\uD558\uB298:3, \uAC15\uB3D9\uC6D0:3, \uC724\uC11C\uC5F0:2, \uD55C\uC9C0\uBBFC:2"),
-                  children: "8\uC778 \uC2E4\uB825\uBC38\uB7F0\uC2A4"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-btn-xs",
-                  disabled: phase === "drafting",
-                  onClick: () => setRosterInput("\uAE40\uC131\uBBFC, \uC774\uC9C0\uD6C8, \uBC15\uC218\uC9C4, \uCD5C\uBBFC\uD638, \uC815\uD558\uB298, \uAC15\uB3D9\uC6D0, \uC724\uC11C\uC5F0, \uD55C\uC9C0\uBBFC, \uC624\uC2B9\uD658, \uBC30\uC218\uC9C0, \uB958\uD604\uC9C4, \uC190\uD765\uBBFC, \uBC15\uC9C0\uC131, \uAE40\uC5F0\uC544, \uC774\uC0C1\uD601, \uC815\uC9C0\uD6C8"),
-                  children: "16\uC778 \uD1A0\uB108\uBA3C\uD2B8"
-                }
-              )
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: "2. \uD300 \uC218 \uBC0F \uBC38\uB7F0\uC2A4 \uC124\uC815" }),
-            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
-              /* @__PURE__ */ u3("span", { children: "\uD300 \uAC1C\uC218 \uC124\uC815 (2 ~ 8\uD300)" }),
-              /* @__PURE__ */ u3("div", { className: "rpz-team-count-selector", children: [2, 3, 4, 5, 6].map((n2) => /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  disabled: phase === "drafting",
-                  "data-testid": `draft-team-count-${n2}`,
-                  className: `rpz-count-btn ${teamCount === n2 ? "active" : ""}`,
-                  onClick: () => setTeamCount(n2),
-                  children: [
-                    n2,
-                    "\uD300"
-                  ]
-                },
-                n2
-              )) })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "rpz-team-names-grid", children: Array.from({ length: teamCount }, (_3, idx) => /* @__PURE__ */ u3(
-              "input",
-              {
-                type: "text",
-                className: "rpz-input rpz-input-sm",
-                value: customTeamNames[idx] || "",
-                disabled: phase === "drafting",
-                placeholder: `TEAM ${idx + 1}`,
-                onChange: (e3) => {
-                  const next = [...customTeamNames];
-                  next[idx] = e3.target.value;
-                  setCustomTeamNames(next);
-                }
-              },
-              idx
-            )) }),
-            /* @__PURE__ */ u3("label", { className: "rpz-check-row", children: [
-              /* @__PURE__ */ u3(
-                "input",
-                {
-                  type: "checkbox",
-                  checked: useSkillBalance,
-                  disabled: phase === "drafting",
-                  onChange: (e3) => setUseSkillBalance(e3.target.checked)
-                }
-              ),
-              /* @__PURE__ */ u3("span", { children: "\uC2E4\uB825 \uC810\uC218(\u26051~5) \uADE0\uB4F1 \uBC30\uBD84 \uD65C\uC131\uD654 (\uC774\uB984:\uC810\uC218 \uC9C0\uC6D0)" })
-            ] }),
-            useSkillBalance && /* @__PURE__ */ u3("div", { className: "rpz-rating-editor", children: parsedParticipants.slice(0, 12).map((p3) => /* @__PURE__ */ u3("div", { className: "rpz-rating-row", children: [
-              /* @__PURE__ */ u3("span", { children: p3.name }),
-              /* @__PURE__ */ u3("div", { className: "rpz-star-group", children: [1, 2, 3, 4, 5].map((star) => /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: `rpz-star-btn ${p3.rating >= star ? "lit" : ""}`,
-                  onClick: () => setRatingsMap((prev) => ({ ...prev, [p3.name]: star })),
-                  children: "\u2605"
-                },
-                star
-              )) })
-            ] }, p3.id)) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: [
-              "3. \uB4DC\uB798\uD504\uD2B8 \uAE30\uB85D (",
-              history.length,
-              ")"
-            ] }),
-            history.length === 0 ? /* @__PURE__ */ u3("p", { className: "rpz-empty", children: "\uC544\uC9C1 \uD300 \uCD94\uCCA8 \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4." }) : /* @__PURE__ */ u3("ul", { className: "rpz-history-list", "data-testid": "draft-history-list", children: history.map((item) => /* @__PURE__ */ u3("li", { children: [
-              /* @__PURE__ */ u3("div", { className: "rpz-history-head", children: [
-                /* @__PURE__ */ u3("strong", { children: [
-                  item.teamCount,
-                  "\uAC1C \uD300 (",
-                  item.totalParticipants,
-                  "\uBA85)"
-                ] }),
-                /* @__PURE__ */ u3("small", { children: item.time })
-              ] }),
-              /* @__PURE__ */ u3("small", { children: item.summary })
-            ] }, item.id)) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-license-box", children: /* @__PURE__ */ u3("small", { children: [
-            /* @__PURE__ */ u3("strong", { children: "\uC624\uD508\uC18C\uC2A4 \uB77C\uC774\uC120\uC2A4 \uACE0\uC9C0:" }),
-            " \uD300 \uADE0\uB4F1 \uBC30\uC815 \uC5D4\uC9C4 ",
-            /* @__PURE__ */ u3("code", { children: "iamsujanstha/random-team-generator" }),
-            " (MIT License, Copyright \xA9 2025 Sujan Shrestha) \uC7AC\uC0AC\uC6A9 \xB7 \uD55C \uBA85\uC529 \uB4DC\uB798\uD504\uD2B8 \uACF5\uAC1C \uC5F0\uCD9C \uBC0F \uD074\uB9BD\uBCF4\uB4DC \uBCF5\uC0AC \uD1B5\uD569."
-          ] }) })
-        ] })
-      ] })
-    ] });
-  }
-
-  // vendor/spin-the-wheel/themes.js
-  var THEME_PRESETS = {
-    rainbow: {
-      label: "Rainbow",
-      colors: ["#ff004f", "#ff7f11", "#ffd500", "#38b000", "#00a6fb", "#7b2cbf", "#ff4d8d", "#20c997"],
-      pageDark: { bg: "#0a1024", surface: "#111d3b", elevated: "#1f2f55", accent: "#4ae4ff", accent2: "#ffd166" },
-      pageLight: { bg: "#ecf4ff", surface: "#ffffff", elevated: "#edf2ff", accent: "#0079d1", accent2: "#ff9f1c" }
-    },
-    pastel: {
-      label: "Pastel",
-      colors: ["#ffd6e7", "#caffbf", "#bde0fe", "#ffef9f", "#d9d4ff", "#ffc8a2", "#b5ead7", "#ffcad4"],
-      pageDark: { bg: "#131b2f", surface: "#1c2844", elevated: "#27385e", accent: "#8ae0ff", accent2: "#ffd6a1" },
-      pageLight: { bg: "#f8fbff", surface: "#ffffff", elevated: "#f1f5ff", accent: "#3a80d6", accent2: "#e8934f" }
-    },
-    neon: {
-      label: "Neon",
-      colors: ["#39ff14", "#f72585", "#00f5d4", "#ff9e00", "#9d4edd", "#4cc9f0", "#ff4d6d", "#f3ff4f"],
-      pageDark: { bg: "#06080f", surface: "#121826", elevated: "#1d2842", accent: "#00f5d4", accent2: "#ff9e00" },
-      pageLight: { bg: "#eaf9ff", surface: "#ffffff", elevated: "#eff8ff", accent: "#007a99", accent2: "#bb6300" }
-    },
-    ocean: {
-      label: "Ocean",
-      colors: ["#005f73", "#0a9396", "#94d2bd", "#52b69a", "#34a0a4", "#168aad", "#1a759f", "#76c893"],
-      pageDark: { bg: "#061825", surface: "#0f2436", elevated: "#17364e", accent: "#76c893", accent2: "#52b69a" },
-      pageLight: { bg: "#e7f8ff", surface: "#ffffff", elevated: "#e7f4fb", accent: "#0b7aa8", accent2: "#1d9f97" }
-    },
-    sunset: {
-      label: "Sunset",
-      colors: ["#ff6b35", "#f7b801", "#f18701", "#f35b04", "#ff8fab", "#ffb703", "#fb5607", "#ff7b00"],
-      pageDark: { bg: "#201023", surface: "#2a1730", elevated: "#3a2144", accent: "#ff9e66", accent2: "#ffd166" },
-      pageLight: { bg: "#fff3e6", surface: "#ffffff", elevated: "#fff0dd", accent: "#d45d10", accent2: "#de8d00" }
-    },
-    monochrome: {
-      label: "Monochrome",
-      colors: ["#111111", "#252525", "#3f3f3f", "#595959", "#737373", "#8f8f8f", "#ababab", "#c9c9c9"],
-      pageDark: { bg: "#080808", surface: "#151515", elevated: "#222222", accent: "#d4d4d4", accent2: "#a4a4a4" },
-      pageLight: { bg: "#f5f5f5", surface: "#ffffff", elevated: "#ececec", accent: "#3f3f3f", accent2: "#666666" }
-    },
-    casino: {
-      label: "Casino",
-      colors: ["#b80f0a", "#f7d154", "#0d5930", "#8a0404", "#f4c430", "#147243", "#c50f1f", "#f2d16b"],
-      pageDark: { bg: "#0d1a14", surface: "#173427", elevated: "#214535", accent: "#f7d154", accent2: "#d62828" },
-      pageLight: { bg: "#f5f8ef", surface: "#ffffff", elevated: "#ecf3e0", accent: "#2f7a44", accent2: "#a4282e" }
-    },
-    forest: {
-      label: "Forest",
-      colors: ["#2d6a4f", "#40916c", "#52b788", "#74c69d", "#95d5b2", "#1b4332", "#52796f", "#84a98c"],
-      pageDark: { bg: "#0f1e1a", surface: "#1a2b25", elevated: "#243a33", accent: "#74c69d", accent2: "#95d5b2" },
-      pageLight: { bg: "#edf7ef", surface: "#ffffff", elevated: "#e5f3e8", accent: "#2f7e62", accent2: "#588157" }
-    },
-    candy: {
-      label: "Candy",
-      colors: ["#ff85a1", "#f7aef8", "#b8c0ff", "#caffbf", "#ffd6a5", "#ffadad", "#9bf6ff", "#fdffb6"],
-      pageDark: { bg: "#23162e", surface: "#2d1f39", elevated: "#3a2848", accent: "#ffb4a2", accent2: "#f7aef8" },
-      pageLight: { bg: "#fff4fb", surface: "#ffffff", elevated: "#fff0f7", accent: "#b85fc2", accent2: "#ff7b9c" }
-    },
-    earth: {
-      label: "Earth",
-      colors: ["#6f4e37", "#a47148", "#8c6a43", "#c8ad7f", "#b08968", "#7f5539", "#ddb892", "#9c6644"],
-      pageDark: { bg: "#21170f", surface: "#2d2117", elevated: "#3b2c1f", accent: "#ddb892", accent2: "#b08968" },
-      pageLight: { bg: "#f8efe7", surface: "#ffffff", elevated: "#f4e8dd", accent: "#9c6644", accent2: "#b08968" }
-    },
-    autumn: {
-      label: "Autumn",
-      colors: ["#bc6c25", "#dda15e", "#ee9b00", "#ca6702", "#bb3e03", "#ae2012", "#e85d04", "#dc2f02"],
-      pageDark: { bg: "#25160e", surface: "#332016", elevated: "#462d1f", accent: "#f4a261", accent2: "#ee9b00" },
-      pageLight: { bg: "#fff2e5", surface: "#ffffff", elevated: "#ffe9d0", accent: "#c06014", accent2: "#dd7f0e" }
-    },
-    winter: {
-      label: "Winter",
-      colors: ["#dbe7f0", "#a8dadc", "#7fb3d5", "#bcd4e6", "#6c8ead", "#8ecae6", "#caf0f8", "#9ec5e5"],
-      pageDark: { bg: "#121d2d", surface: "#1a2a3f", elevated: "#233752", accent: "#8ecae6", accent2: "#caf0f8" },
-      pageLight: { bg: "#eef7ff", surface: "#ffffff", elevated: "#e5f2ff", accent: "#3b78a6", accent2: "#679bc2" }
-    },
-    retro: {
-      label: "Retro",
-      colors: ["#f4a261", "#e76f51", "#2a9d8f", "#e9c46a", "#264653", "#ffb703", "#8338ec", "#3a86ff"],
-      pageDark: { bg: "#1b1d2e", surface: "#242741", elevated: "#31365a", accent: "#f4a261", accent2: "#2a9d8f" },
-      pageLight: { bg: "#fff8f0", surface: "#ffffff", elevated: "#fef1dd", accent: "#b45134", accent2: "#1f8174" }
-    },
-    cyberpunk: {
-      label: "Cyberpunk",
-      colors: ["#f72585", "#7209b7", "#3a0ca3", "#4361ee", "#4cc9f0", "#ffbe0b", "#fb5607", "#ff006e"],
-      pageDark: { bg: "#090116", surface: "#17062c", elevated: "#230a3d", accent: "#4cc9f0", accent2: "#f72585" },
-      pageLight: { bg: "#f6f0ff", surface: "#ffffff", elevated: "#efe4ff", accent: "#5f2ac8", accent2: "#d80d73" }
-    },
-    elegant: {
-      label: "Elegant",
-      colors: ["#d4af37", "#c0c0c0", "#f5f5f5", "#8d99ae", "#2b2d42", "#ef233c", "#edf2f4", "#b08968"],
-      pageDark: { bg: "#11121c", surface: "#1b1d2b", elevated: "#25293b", accent: "#d4af37", accent2: "#c0c0c0" },
-      pageLight: { bg: "#faf9f5", surface: "#ffffff", elevated: "#f1efe7", accent: "#7c5d00", accent2: "#5d6375" }
-    },
-    "colorblind-safe": {
-      label: "Color-blind Safe",
-      colors: ["#0072B2", "#E69F00", "#009E73", "#F0E442", "#56B4E9", "#D55E00", "#CC79A7", "#000000"],
-      pageDark: { bg: "#0f1728", surface: "#16233a", elevated: "#213250", accent: "#56B4E9", accent2: "#E69F00" },
-      pageLight: { bg: "#f1f6ff", surface: "#ffffff", elevated: "#e7eefc", accent: "#005b8e", accent2: "#af6f00" }
-    }
-  };
-  var THEME_ORDER = Object.keys(THEME_PRESETS);
-
-  // vendor/spin-the-wheel/utils.js
-  function clamp2(value, min, max) {
-    return Math.min(Math.max(value, min), max);
-  }
-  function normalizeAngle(angle) {
-    const tau = Math.PI * 2;
-    let next = angle % tau;
-    if (next < 0) next += tau;
-    return next;
-  }
-  function autoContrastColor(backgroundHex) {
-    const hex = backgroundHex.replace("#", "");
-    if (![3, 6].includes(hex.length)) return "#FFFFFF";
-    const normalized = hex.length === 3 ? hex.split("").map((x3) => `${x3}${x3}`).join("") : hex;
-    const r3 = Number.parseInt(normalized.slice(0, 2), 16);
-    const g4 = Number.parseInt(normalized.slice(2, 4), 16);
-    const b2 = Number.parseInt(normalized.slice(4, 6), 16);
-    const luminance = (0.2126 * r3 + 0.7152 * g4 + 0.0722 * b2) / 255;
-    return luminance > 0.55 ? "#0b1224" : "#f4f8ff";
-  }
-
-  // vendor/spin-the-wheel/wheel-engine.js
-  var TAU = Math.PI * 2;
-  function easeOutFriction(t3) {
-    return 1 - Math.pow(1 - t3, 3.2);
-  }
-  var WheelEngine = class {
-    constructor({ canvas, container }) {
-      this.canvas = canvas;
-      this.container = container;
-      this.ctx = canvas.getContext("2d");
-      this.rotation = 0;
-      this.segmentData = [];
-      this.activeEntries = [];
-      this.theme = null;
-      this.settings = null;
-      this.spinState = {
-        phase: "idle",
-        rafId: null,
-        targetRotation: 0,
-        startRotation: 0,
-        startTime: 0,
-        durationMs: 1e3,
-        lastTickSegment: -1
-      };
-      this.winnerFlash = { id: null, until: 0 };
-      this.lastVelocity = 0;
-      this.imageCache = /* @__PURE__ */ new Map();
-      this.idle = {
-        enabled: true,
-        rafId: null,
-        lastFrameTime: 0
-      };
-      this.idlePausedByResult = false;
-      this.handleResize = this.resize.bind(this);
-      window.addEventListener("resize", this.handleResize);
-      this.resize();
-    }
-    destroy() {
-      window.removeEventListener("resize", this.handleResize);
-      this.stopAnimation();
-      this.stopIdleLoop();
-    }
-    resize() {
-      const rect = this.canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      this.canvas.width = Math.max(1, Math.round(rect.width * dpr));
-      this.canvas.height = Math.max(1, Math.round(rect.height * dpr));
-      this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      this.render();
-    }
-    setWheelState({ entries, settings, theme }) {
-      this.settings = settings;
-      this.theme = theme;
-      this.activeEntries = entries.filter((entry) => entry.enabled && !entry.eliminated);
-      this.segmentData = buildSegments(this.activeEntries, settings.showWeights, theme.preset);
-      this.idle.enabled = settings?.idleAnimationEnabled !== false;
-      this.render();
-      this.syncIdleLoop();
-    }
-    getSegments() {
-      return this.segmentData;
-    }
-    getRotation() {
-      return this.rotation;
-    }
-    setRotation(nextRotation) {
-      this.rotation = normalizeAngle(nextRotation);
-      this.render();
-    }
-    computeTargetRotationForSegment(segmentIndex) {
-      const segment = this.segmentData[segmentIndex];
-      if (!segment) return this.rotation;
-      const desiredNormalized = normalizeAngle(-segment.center);
-      return desiredNormalized;
-    }
-    isSpinning() {
-      return this.spinState.phase !== "idle";
-    }
-    spinTo({
-      absoluteTargetRotation,
-      durationMs,
-      pauseAtEndMs = 0,
-      reducedMotion = false,
-      onTick = () => {
-      },
-      onResult = () => {
-      }
-    }) {
-      if (!this.segmentData.length) return;
-      this.idlePausedByResult = false;
-      this.stopIdleLoop();
-      this.stopAnimation();
-      if (reducedMotion) {
-        this.rotation = normalizeAngle(absoluteTargetRotation);
-        this.render();
-        this.flashWinner(this.getCurrentSegment()?.entry.id);
-        onResult(this.getCurrentSegment());
-        return;
-      }
-      this.spinState = {
-        phase: "spinning",
-        rafId: null,
-        targetRotation: absoluteTargetRotation,
-        startRotation: this.rotation,
-        startTime: performance.now(),
-        durationMs,
-        lastTickSegment: this.getCurrentSegmentIndex()
-      };
-      this.container.classList.add("is-spinning");
-      const travelDuration = Math.max(1, durationMs - pauseAtEndMs);
-      const frame = (timestamp) => {
-        const elapsed = timestamp - this.spinState.startTime;
-        let nextRotation = this.spinState.startRotation;
-        if (elapsed < travelDuration) {
-          const progress = clamp2(elapsed / travelDuration, 0, 1);
-          const eased = easeOutFriction(progress);
-          nextRotation = this.spinState.startRotation + (absoluteTargetRotation - this.spinState.startRotation) * eased;
-        } else if (elapsed < durationMs) {
-          nextRotation = absoluteTargetRotation;
-        } else {
-          nextRotation = absoluteTargetRotation;
-        }
-        this.lastVelocity = nextRotation - this.rotation;
-        this.rotation = normalizeAngle(nextRotation);
-        const nextSegment = this.getCurrentSegmentIndex();
-        if (nextSegment !== this.spinState.lastTickSegment) {
-          this.spinState.lastTickSegment = nextSegment;
-          onTick(nextSegment, Math.abs(this.lastVelocity));
-        }
-        this.render();
-        if (elapsed < durationMs) {
-          this.spinState.rafId = requestAnimationFrame(frame);
-        } else {
-          this.spinState.phase = "idle";
-          this.container.classList.remove("is-spinning");
-          const segment = this.getCurrentSegment();
-          this.flashWinner(segment?.entry.id || null);
-          onResult(segment);
-          this.syncIdleLoop();
-        }
-      };
-      this.spinState.rafId = requestAnimationFrame(frame);
-    }
-    flashWinner(entryId) {
-      this.winnerFlash = {
-        id: entryId,
-        until: performance.now() + 1800
-      };
-      this.render();
-    }
-    stopAnimation() {
-      if (this.spinState.rafId) {
-        cancelAnimationFrame(this.spinState.rafId);
-      }
-      this.container.classList.remove("is-spinning");
-      this.spinState.phase = "idle";
-      this.spinState.rafId = null;
-      this.syncIdleLoop();
-    }
-    startManualSpin({ onTick = () => {
-    } } = {}) {
-      if (!this.segmentData.length) return;
-      this.idlePausedByResult = false;
-      this.stopIdleLoop();
-      this.stopAnimation();
-      this.spinState = {
-        phase: "manual-loop",
-        rafId: null,
-        targetRotation: 0,
-        startRotation: this.rotation,
-        startTime: performance.now(),
-        durationMs: 0,
-        lastTickSegment: this.getCurrentSegmentIndex(),
-        lastFrameTime: performance.now(),
-        velocity: 0.36,
-        onTick
-      };
-      this.container.classList.add("is-spinning");
-      const frame = (timestamp) => {
-        if (this.spinState.phase !== "manual-loop") return;
-        const dt = Math.max(8, Math.min(34, timestamp - this.spinState.lastFrameTime));
-        this.spinState.lastFrameTime = timestamp;
-        const wobble = 0.08 * Math.sin(timestamp / 520);
-        const velocity = Math.max(0.28, this.spinState.velocity + wobble * 0.02);
-        this.lastVelocity = velocity;
-        this.rotation = normalizeAngle(this.rotation + velocity * (dt / 16.6667));
-        const nextSegment = this.getCurrentSegmentIndex();
-        if (nextSegment !== this.spinState.lastTickSegment) {
-          this.spinState.lastTickSegment = nextSegment;
-          onTick(nextSegment, Math.abs(this.lastVelocity));
-        }
-        this.render();
-        this.spinState.rafId = requestAnimationFrame(frame);
-      };
-      this.spinState.rafId = requestAnimationFrame(frame);
-    }
-    decelerateTo({
-      absoluteTargetRotation,
-      durationMs,
-      pauseAtEndMs = 0,
-      reducedMotion = false,
-      onTick = () => {
-      },
-      onResult = () => {
-      }
-    }) {
-      if (!this.segmentData.length) return;
-      this.idlePausedByResult = false;
-      if (reducedMotion) {
-        this.rotation = normalizeAngle(absoluteTargetRotation);
-        this.render();
-        this.flashWinner(this.getCurrentSegment()?.entry.id);
-        onResult(this.getCurrentSegment());
-        return;
-      }
-      if (this.spinState.rafId) {
-        cancelAnimationFrame(this.spinState.rafId);
-        this.spinState.rafId = null;
-      }
-      this.spinState = {
-        phase: "decelerating",
-        rafId: null,
-        targetRotation: absoluteTargetRotation,
-        startRotation: this.rotation,
-        startTime: performance.now(),
-        durationMs,
-        lastTickSegment: this.getCurrentSegmentIndex()
-      };
-      const travelDuration = Math.max(1, durationMs - pauseAtEndMs);
-      const frame = (timestamp) => {
-        const elapsed = timestamp - this.spinState.startTime;
-        let nextRotation = this.spinState.startRotation;
-        if (elapsed < travelDuration) {
-          const progress = clamp2(elapsed / travelDuration, 0, 1);
-          const eased = easeOutFriction(progress);
-          nextRotation = this.spinState.startRotation + (absoluteTargetRotation - this.spinState.startRotation) * eased;
-        } else if (elapsed < durationMs) {
-          nextRotation = absoluteTargetRotation;
-        } else {
-          nextRotation = absoluteTargetRotation;
-        }
-        this.lastVelocity = nextRotation - this.rotation;
-        this.rotation = normalizeAngle(nextRotation);
-        const nextSegment = this.getCurrentSegmentIndex();
-        if (nextSegment !== this.spinState.lastTickSegment) {
-          this.spinState.lastTickSegment = nextSegment;
-          onTick(nextSegment, Math.abs(this.lastVelocity));
-        }
-        this.render();
-        if (elapsed < durationMs) {
-          this.spinState.rafId = requestAnimationFrame(frame);
-        } else {
-          this.spinState.phase = "idle";
-          this.container.classList.remove("is-spinning");
-          const segment = this.getCurrentSegment();
-          this.flashWinner(segment?.entry.id || null);
-          onResult(segment);
-          this.syncIdleLoop();
-        }
-      };
-      this.spinState.rafId = requestAnimationFrame(frame);
-    }
-    hitTestCenter(clientX, clientY) {
-      const rect = this.canvas.getBoundingClientRect();
-      const x3 = clientX - rect.left;
-      const y3 = clientY - rect.top;
-      const radius = Math.min(rect.width, rect.height) * 0.11;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const distance = Math.hypot(centerX - x3, centerY - y3);
-      return distance <= radius;
-    }
-    getCurrentSegmentIndex() {
-      if (!this.segmentData.length) return -1;
-      const pointerInWheelCoords = normalizeAngle(-this.rotation);
-      return this.segmentData.findIndex((segment) => inSegment(pointerInWheelCoords, segment.start, segment.end));
-    }
-    getCurrentSegment() {
-      const index = this.getCurrentSegmentIndex();
-      if (index < 0) return null;
-      return this.segmentData[index];
-    }
-    render() {
-      const ctx = this.ctx;
-      const width = this.canvas.getBoundingClientRect().width;
-      const height = this.canvas.getBoundingClientRect().height;
-      const centerX = width / 2;
-      const centerY = height / 2;
-      const radius = Math.min(width, height) * 0.48;
-      ctx.clearRect(0, 0, width, height);
-      if (!this.segmentData.length) {
-        drawEmptyState(ctx, centerX, centerY, radius);
-        return;
-      }
-      const performanceMode = Boolean(this.settings?.performanceModeAuto && this.segmentData.length > 500);
-      const overviewMode = Boolean(performanceMode && this.settings?.performanceOverview);
-      const flashStrength = getWinnerFlashStrength(this.winnerFlash);
-      this.segmentData.forEach((segment, index) => {
-        const start = segment.start + this.rotation - Math.PI / 2;
-        const end = segment.end + this.rotation - Math.PI / 2;
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, radius, start, end);
-        ctx.closePath();
-        ctx.fillStyle = segment.color;
-        ctx.fill();
-        const isWinner = this.winnerFlash.id && this.winnerFlash.id === segment.entry.id;
-        if (isWinner && flashStrength > 0) {
-          ctx.save();
-          ctx.globalAlpha = flashStrength * 0.33;
-          ctx.fillStyle = "#ffffff";
-          ctx.fill();
-          ctx.restore();
-        }
-        ctx.strokeStyle = "rgba(0,0,0,0.16)";
-        ctx.lineWidth = performanceMode ? 0.6 : 1.2;
-        ctx.stroke();
-        if (this.theme?.preset === "colorblind-safe") {
-          drawSegmentPattern(ctx, index, start, end, centerX, centerY, radius);
-        }
-        if (!performanceMode) {
-          drawSegmentImage(ctx, this, segment, this.rotation, centerX, centerY, radius);
-        }
-      });
-      drawWheelChrome(ctx, centerX, centerY, radius, flashStrength, this.theme, this, { performanceMode, overviewMode });
-      if (!overviewMode) {
-        this.segmentData.forEach((segment) => {
-          drawSegmentLabel(ctx, segment, this.settings, this.rotation, centerX, centerY, radius, {
-            mysteryWheel: this.settings?.mysteryWheel,
-            simplified: performanceMode
-          });
-        });
-      } else {
-        ctx.save();
-        ctx.fillStyle = "rgba(255,255,255,0.94)";
-        ctx.font = `700 ${Math.max(14, radius * 0.08)}px "Plus Jakarta Sans", sans-serif`;
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText(`${this.segmentData.length} entries`, centerX, centerY + radius * 0.24);
-        ctx.restore();
-      }
-    }
-    getImageBySrc(src) {
-      if (!src) return null;
-      const existing = this.imageCache.get(src);
-      if (existing?.status === "loaded") {
-        return existing.image;
-      }
-      if (existing?.status === "loading") {
-        return null;
-      }
-      const image = new Image();
-      this.imageCache.set(src, { status: "loading", image: null });
-      image.onload = () => {
-        this.imageCache.set(src, { status: "loaded", image });
-        this.render();
-      };
-      image.onerror = () => {
-        this.imageCache.set(src, { status: "error", image: null });
-      };
-      image.src = src;
-      return null;
-    }
-    syncIdleLoop() {
-      if (this.idlePausedByResult || !this.idle.enabled || this.isSpinning() || !this.segmentData.length) {
-        this.stopIdleLoop();
-        return;
-      }
-      this.startIdleLoop();
-    }
-    holdStillAfterResult() {
-      this.idlePausedByResult = true;
-      this.stopIdleLoop();
-    }
-    startIdleLoop() {
-      if (this.idle.rafId) return;
-      this.idle.lastFrameTime = performance.now();
-      const frame = (timestamp) => {
-        if (!this.idle.enabled || this.isSpinning() || !this.segmentData.length) {
-          this.stopIdleLoop();
-          return;
-        }
-        const dt = Math.max(12, Math.min(34, timestamp - this.idle.lastFrameTime));
-        this.idle.lastFrameTime = timestamp;
-        this.rotation = normalizeAngle(this.rotation + dt * 12e-5);
-        this.render();
-        this.idle.rafId = requestAnimationFrame(frame);
-      };
-      this.idle.rafId = requestAnimationFrame(frame);
-    }
-    stopIdleLoop() {
-      if (!this.idle.rafId) return;
-      cancelAnimationFrame(this.idle.rafId);
-      this.idle.rafId = null;
-    }
-  };
-  function drawEmptyState(ctx, centerX, centerY, radius) {
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, radius, 0, TAU);
-    ctx.fillStyle = "#27395e";
-    ctx.fill();
-    ctx.strokeStyle = "rgba(255,255,255,0.22)";
-    ctx.lineWidth = 2;
-    ctx.stroke();
-  }
-  function drawWheelChrome(ctx, centerX, centerY, radius, flashStrength, theme, engine, options = {}) {
-    const performanceMode = Boolean(options.performanceMode);
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, radius + 5, 0, TAU);
-    ctx.strokeStyle = "#f5f9ff22";
-    ctx.lineWidth = 6;
-    ctx.stroke();
-    ctx.restore();
-    const centerRadius = radius * 0.12;
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, centerRadius, 0, TAU);
-    const centerStart = theme?.centerColor || "#f0fbff";
-    const centerEnd = theme?.centerColor ? shadeHex(theme.centerColor, -26) : "#13406e";
-    const centerGradient = ctx.createRadialGradient(centerX - centerRadius * 0.3, centerY - centerRadius * 0.4, centerRadius * 0.2, centerX, centerY, centerRadius);
-    centerGradient.addColorStop(0, centerStart);
-    centerGradient.addColorStop(1, centerEnd);
-    ctx.fillStyle = centerGradient;
-    ctx.fill();
-    ctx.strokeStyle = "rgba(255,255,255,0.35)";
-    ctx.lineWidth = 2;
-    ctx.stroke();
-    if (theme?.centerImage) {
-      const image = engine.getImageBySrc(theme.centerImage);
-      if (image) {
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, centerRadius - 2, 0, TAU);
-        ctx.clip();
-        const drawSize = centerRadius * 1.75;
-        ctx.drawImage(image, centerX - drawSize / 2, centerY - drawSize / 2, drawSize, drawSize);
-        ctx.restore();
-      }
-    }
-    if (flashStrength > 0) {
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius + 8, 0, TAU);
-      ctx.strokeStyle = `rgba(255,255,255,${0.22 * flashStrength})`;
-      ctx.lineWidth = 8;
-      ctx.stroke();
-      ctx.restore();
-    }
-    if (!performanceMode) {
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, TAU);
-      ctx.clip();
-      const shadowGradient = ctx.createRadialGradient(centerX, centerY, radius * 0.56, centerX, centerY, radius);
-      shadowGradient.addColorStop(0, "rgba(0,0,0,0)");
-      shadowGradient.addColorStop(1, "rgba(0,0,0,0.2)");
-      ctx.fillStyle = shadowGradient;
-      ctx.fillRect(centerX - radius, centerY - radius, radius * 2, radius * 2);
-      ctx.restore();
-    }
-  }
-  function drawSegmentLabel(ctx, segment, settings, rotation, centerX, centerY, radius, options = {}) {
-    const mysteryWheel = Boolean(options.mysteryWheel);
-    const simplified = Boolean(options.simplified);
-    if (segment.entry.imageMode === "image-only" && !mysteryWheel && !simplified) {
-      return;
-    }
-    const worldAngle = segment.center + rotation - Math.PI / 2;
-    const labelRadius = radius * 0.61;
-    const x3 = centerX + Math.cos(worldAngle) * labelRadius;
-    const y3 = centerY + Math.sin(worldAngle) * labelRadius;
-    const arcLength = (segment.end - segment.start) * radius;
-    const maxWidth = Math.max(36, arcLength * 0.68);
-    let label = resolveLabel(segment.entry, mysteryWheel);
-    if (simplified && label.length > 10) {
-      label = `${label.slice(0, 9)}\u2026`;
-    }
-    let fontSize = clamp2(arcLength * (simplified ? 0.1 : 0.14), 10, simplified ? 20 : 28);
-    ctx.save();
-    ctx.translate(x3, y3);
-    ctx.rotate(worldAngle + Math.PI / 2);
-    while (fontSize > (simplified ? 9 : 11)) {
-      ctx.font = `700 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
-      if (ctx.measureText(label).width <= maxWidth) break;
-      fontSize -= 1;
-    }
-    let renderLabel = label;
-    ctx.font = `700 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
-    if (ctx.measureText(renderLabel).width > maxWidth) {
-      renderLabel = truncateToFit(ctx, renderLabel, maxWidth);
-    }
-    ctx.fillStyle = segment.textColor;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(renderLabel, 0, 0);
-    ctx.restore();
-  }
-  function drawSegmentPattern(ctx, segmentIndex, start, end, centerX, centerY, radius) {
-    ctx.save();
-    ctx.beginPath();
-    ctx.moveTo(centerX, centerY);
-    ctx.arc(centerX, centerY, radius, start, end);
-    ctx.closePath();
-    ctx.clip();
-    ctx.globalAlpha = 0.2;
-    ctx.strokeStyle = "#ffffff";
-    ctx.lineWidth = 1;
-    const pattern = segmentIndex % 4;
-    if (pattern === 0) {
-      for (let x3 = centerX - radius; x3 <= centerX + radius; x3 += 10) {
-        ctx.beginPath();
-        ctx.moveTo(x3, centerY - radius);
-        ctx.lineTo(x3, centerY + radius);
-        ctx.stroke();
-      }
-    } else if (pattern === 1) {
-      for (let y3 = centerY - radius; y3 <= centerY + radius; y3 += 10) {
-        ctx.beginPath();
-        ctx.moveTo(centerX - radius, y3);
-        ctx.lineTo(centerX + radius, y3);
-        ctx.stroke();
-      }
-    } else if (pattern === 2) {
-      for (let offset = -radius; offset <= radius; offset += 12) {
-        ctx.beginPath();
-        ctx.moveTo(centerX - radius + offset, centerY - radius);
-        ctx.lineTo(centerX + offset, centerY + radius);
-        ctx.stroke();
-      }
-    } else {
-      for (let offset = -radius; offset <= radius; offset += 12) {
-        ctx.beginPath();
-        ctx.moveTo(centerX + radius - offset, centerY - radius);
-        ctx.lineTo(centerX - offset, centerY + radius);
-        ctx.stroke();
-      }
-    }
-    ctx.restore();
-  }
-  function drawSegmentImage(ctx, engine, segment, rotation, centerX, centerY, radius) {
-    if (!segment.entry.image || segment.entry.imageMode === "text-only") return;
-    const image = engine.getImageBySrc(segment.entry.image);
-    if (!image) return;
-    const start = segment.start + rotation - Math.PI / 2;
-    const end = segment.end + rotation - Math.PI / 2;
-    const worldAngle = segment.center + rotation - Math.PI / 2;
-    const centerDistance = radius * 0.6;
-    const widthByArc = Math.max(28, (segment.end - segment.start) * radius * 0.72);
-    const drawSize = clamp2(widthByArc, 28, radius * 0.48);
-    const x3 = centerX + Math.cos(worldAngle) * centerDistance;
-    const y3 = centerY + Math.sin(worldAngle) * centerDistance;
-    ctx.save();
-    ctx.beginPath();
-    ctx.moveTo(centerX, centerY);
-    ctx.arc(centerX, centerY, radius, start, end);
-    ctx.closePath();
-    ctx.clip();
-    ctx.globalAlpha = segment.entry.imageMode === "image-text" ? 0.95 : 1;
-    ctx.drawImage(image, x3 - drawSize / 2, y3 - drawSize / 2, drawSize, drawSize);
-    if (segment.entry.imageMode === "image-text") {
-      ctx.globalAlpha = 0.14;
-      ctx.fillStyle = "#000";
-      ctx.fillRect(x3 - drawSize / 2, y3 - drawSize / 2, drawSize, drawSize);
-    }
-    ctx.restore();
-  }
-  function resolveLabel(entry, mysteryWheel) {
-    if (mysteryWheel) return "?";
-    return entry.label;
-  }
-  function truncateToFit(ctx, label, maxWidth) {
-    let next = label;
-    while (next.length > 1 && ctx.measureText(`${next}\u2026`).width > maxWidth) {
-      next = next.slice(0, -1);
-    }
-    return `${next}\u2026`;
-  }
-  function inSegment(value, start, end) {
-    if (start <= end) {
-      return value >= start && value < end;
-    }
-    return value >= start || value < end;
-  }
-  function getWinnerFlashStrength(flash) {
-    if (!flash.id) return 0;
-    const left = flash.until - performance.now();
-    if (left <= 0) return 0;
-    const normalized = left / 1800;
-    return Math.sin((1 - normalized) * Math.PI * 4) * 0.5 + 0.5;
-  }
-  function shadeHex(hex, amount) {
-    const value = (hex || "").replace("#", "");
-    const normalized = value.length === 3 ? value.split("").map((c3) => `${c3}${c3}`).join("") : value;
-    if (normalized.length !== 6) return hex;
-    const channel = (offset) => {
-      const raw = Number.parseInt(normalized.slice(offset, offset + 2), 16);
-      const next = clamp2(raw + amount, 0, 255);
-      return Math.round(next).toString(16).padStart(2, "0");
-    };
-    return `#${channel(0)}${channel(2)}${channel(4)}`;
-  }
-  function buildSegments(entries, weighted, themePreset) {
-    const presetColors = THEME_PRESETS[themePreset]?.colors || THEME_PRESETS.rainbow.colors;
-    const weights = entries.map((entry) => weighted ? clamp2(Number(entry.weight) || 1, 0.1, 100) : 1);
-    const totalWeight = weights.reduce((sum, weight) => sum + weight, 0) || 1;
-    let cursor = 0;
-    return entries.map((entry, index) => {
-      const ratio = weights[index] / totalWeight;
-      const span = ratio * TAU;
-      const start = cursor;
-      const end = cursor + span;
-      cursor = end;
-      const color = entry.sliceColor || presetColors[index % presetColors.length];
-      const textColor = entry.textColor || autoContrastColor(color);
-      return {
-        entry,
-        start,
-        end,
-        center: start + span / 2,
-        color,
-        textColor
-      };
-    });
-  }
-
-  // vendor/spin-the-wheel/audio-engine.js
-  var AudioEngine = class {
-    constructor() {
-      this.context = null;
-      this.master = null;
-      this.enabledByGesture = false;
-      this.volume = 0.7;
-      this.ambientOsc = null;
-      this.ambientAuxOsc = null;
-      this.ambientGain = null;
-      this.ambientLfo = null;
-      this.noiseBuffer = null;
-    }
-    ensureReady() {
-      if (!this.context) {
-        this.context = new (window.AudioContext || window.webkitAudioContext)();
-        this.master = this.context.createGain();
-        this.master.gain.value = this.volume;
-        this.master.connect(this.context.destination);
-      }
-      if (this.context.state === "suspended") {
-        this.context.resume();
-      }
-      this.enabledByGesture = true;
-    }
-    setVolume(nextVolume) {
-      this.volume = Math.max(0, Math.min(nextVolume, 1));
-      if (this.master) {
-        this.master.gain.value = this.volume;
-      }
-    }
-    playOscillatorLayer({
-      type = "sine",
-      frequency = 440,
-      startTime = this.context?.currentTime ?? 0,
-      duration = 0.3,
-      peak = 0.08,
-      attack = 0.01,
-      detune = 0,
-      filterType = null,
-      filterFrequency = 1800,
-      filterQ = 0.7,
-      endFrequency = null
-    } = {}) {
-      if (!this.enabledByGesture || !this.context || !this.master) return;
-      const endTime = startTime + Math.max(duration, attack + 0.04);
-      const oscillator = this.context.createOscillator();
-      const gain = this.context.createGain();
-      oscillator.type = type;
-      oscillator.frequency.setValueAtTime(frequency, startTime);
-      oscillator.detune.setValueAtTime(detune, startTime);
-      let output = oscillator;
-      if (filterType) {
-        const filter = this.context.createBiquadFilter();
-        filter.type = filterType;
-        filter.frequency.setValueAtTime(filterFrequency, startTime);
-        filter.Q.value = filterQ;
-        output.connect(filter);
-        output = filter;
-      }
-      if (Number.isFinite(endFrequency) && endFrequency > 0 && endFrequency !== frequency) {
-        oscillator.frequency.exponentialRampToValueAtTime(endFrequency, endTime);
-      }
-      gain.gain.setValueAtTime(1e-4, startTime);
-      gain.gain.exponentialRampToValueAtTime(Math.max(11e-5, peak), startTime + Math.max(attack, 1e-3));
-      gain.gain.exponentialRampToValueAtTime(1e-4, endTime);
-      output.connect(gain);
-      gain.connect(this.master);
-      oscillator.start(startTime);
-      oscillator.stop(endTime + 0.02);
-    }
-    playNoiseAccent({
-      startTime = this.context?.currentTime ?? 0,
-      duration = 0.24,
-      peak = 0.05,
-      filterType = "bandpass",
-      filterFrequency = 1800,
-      filterQ = 0.9,
-      playbackRate = 1
-    } = {}) {
-      if (!this.enabledByGesture || !this.context || !this.master) return;
-      const endTime = startTime + duration;
-      const source = this.context.createBufferSource();
-      const filter = this.context.createBiquadFilter();
-      const gain = this.context.createGain();
-      source.buffer = this.getNoiseBuffer();
-      source.playbackRate.value = playbackRate;
-      filter.type = filterType;
-      filter.frequency.setValueAtTime(filterFrequency, startTime);
-      filter.Q.value = filterQ;
-      gain.gain.setValueAtTime(1e-4, startTime);
-      gain.gain.exponentialRampToValueAtTime(Math.max(11e-5, peak), startTime + 0.01);
-      gain.gain.exponentialRampToValueAtTime(1e-4, endTime);
-      source.connect(filter);
-      filter.connect(gain);
-      gain.connect(this.master);
-      source.start(startTime);
-      source.stop(endTime + 0.02);
-    }
-    playTick(speed = 0.2) {
-      if (!this.enabledByGesture || !this.context || !this.master) return;
-      this.playTickVariant("click", speed);
-    }
-    playTickVariant(variant = "click", speed = 0.2) {
-      if (!this.enabledByGesture || !this.context || !this.master) return;
-      const now = this.context.currentTime;
-      const oscillator = this.context.createOscillator();
-      const gain = this.context.createGain();
-      const filter = this.context.createBiquadFilter();
-      if (variant === "pop") {
-        oscillator.type = "sine";
-        oscillator.frequency.value = 460 + Math.min(speed * 1200, 1200);
-        filter.type = "bandpass";
-        filter.frequency.value = 800;
-      } else if (variant === "wooden") {
-        oscillator.type = "triangle";
-        oscillator.frequency.value = 290 + Math.min(speed * 700, 800);
-        filter.type = "lowpass";
-        filter.frequency.value = 1e3;
-      } else if (variant === "digital") {
-        oscillator.type = "sawtooth";
-        oscillator.frequency.value = 900 + Math.min(speed * 2200, 2e3);
-        filter.type = "highpass";
-        filter.frequency.value = 700;
-      } else if (variant === "soft") {
-        oscillator.type = "sine";
-        oscillator.frequency.value = 580 + Math.min(speed * 1e3, 900);
-        filter.type = "lowpass";
-        filter.frequency.value = 1400;
-      } else {
-        oscillator.type = "square";
-        oscillator.frequency.value = 700 + Math.min(speed * 1800, 1800);
-        filter.type = "highpass";
-        filter.frequency.value = 500;
-      }
-      gain.gain.setValueAtTime(0, now);
-      gain.gain.linearRampToValueAtTime(0.13, now + 4e-3);
-      gain.gain.exponentialRampToValueAtTime(1e-4, now + 0.06);
-      oscillator.connect(filter);
-      filter.connect(gain);
-      gain.connect(this.master);
-      oscillator.start(now);
-      oscillator.stop(now + 0.065);
-    }
-    playWin() {
-      if (!this.enabledByGesture || !this.context || !this.master) return;
-      this.playWinVariant("fanfare");
-    }
-    playWinVariant(variant = "fanfare") {
-      if (!this.enabledByGesture || !this.context || !this.master) return;
-      const now = this.context.currentTime;
-      if (variant === "applause") {
-        for (let i3 = 0; i3 < 4; i3 += 1) {
-          const delay = i3 * 0.08;
-          this.playNoiseAccent({
-            startTime: now + delay,
-            duration: 0.34 + i3 * 0.04,
-            peak: 0.06 + i3 * 0.012,
-            filterType: "bandpass",
-            filterFrequency: 1200 + i3 * 220,
-            filterQ: 1.1,
-            playbackRate: 0.86 + i3 * 0.08
-          });
-        }
-        this.playOscillatorLayer({
-          type: "triangle",
-          frequency: 523.25,
-          startTime: now + 0.02,
-          duration: 0.32,
-          peak: 0.045,
-          filterType: "lowpass",
-          filterFrequency: 1800
-        });
-        this.playOscillatorLayer({
-          type: "sine",
-          frequency: 783.99,
-          startTime: now + 0.08,
-          duration: 0.28,
-          peak: 0.03,
-          filterType: "lowpass",
-          filterFrequency: 2200
-        });
-        return;
-      }
-      if (variant === "chime") {
-        const notes2 = [659.25, 783.99, 987.77, 1174.66];
-        notes2.forEach((frequency, index) => {
-          const delay = index * 0.08;
-          this.playOscillatorLayer({
-            type: "sine",
-            frequency,
-            startTime: now + delay,
-            duration: 0.72,
-            peak: 0.09,
-            filterType: "lowpass",
-            filterFrequency: 3200,
-            filterQ: 0.7
-          });
-          this.playOscillatorLayer({
-            type: "triangle",
-            frequency: frequency * 2,
-            startTime: now + delay + 0.015,
-            duration: 0.46,
-            peak: 0.028,
-            filterType: "bandpass",
-            filterFrequency: Math.min(4200, frequency * 2.4),
-            filterQ: 0.9
-          });
-        });
-        this.playNoiseAccent({
-          startTime: now,
-          duration: 0.18,
-          peak: 0.028,
-          filterType: "highpass",
-          filterFrequency: 2400,
-          filterQ: 0.6,
-          playbackRate: 1.2
-        });
-        return;
-      }
-      if (variant === "sparkle") {
-        this.playNoiseAccent({
-          startTime: now,
-          duration: 0.22,
-          peak: 0.05,
-          filterType: "bandpass",
-          filterFrequency: 2600,
-          filterQ: 1,
-          playbackRate: 1.28
-        });
-        [1174.66, 1567.98, 1975.53, 2637.02, 3135.96].forEach((frequency, index) => {
-          this.playOscillatorLayer({
-            type: "triangle",
-            frequency,
-            startTime: now + index * 0.045,
-            duration: 0.22,
-            peak: 0.055,
-            filterType: "bandpass",
-            filterFrequency: Math.min(5200, frequency * 1.4),
-            filterQ: 1.1
-          });
-        });
-        return;
-      }
-      this.playNoiseAccent({
-        startTime: now,
-        duration: 0.18,
-        peak: 0.055,
-        filterType: "highpass",
-        filterFrequency: 1800,
-        filterQ: 0.7,
-        playbackRate: 1.08
-      });
-      this.playOscillatorLayer({
-        type: "sine",
-        frequency: 82.41,
-        endFrequency: 55,
-        startTime: now,
-        duration: 0.28,
-        peak: 0.16,
-        filterType: "lowpass",
-        filterFrequency: 240,
-        filterQ: 0.8
-      });
-      const notes = [392, 523.25, 659.25, 783.99, 1046.5];
-      notes.forEach((frequency, index) => {
-        const delay = index * 0.07;
-        this.playOscillatorLayer({
-          type: "triangle",
-          frequency,
-          startTime: now + delay,
-          duration: 0.38,
-          peak: 0.11,
-          filterType: "lowpass",
-          filterFrequency: 2800,
-          filterQ: 0.8
-        });
-        this.playOscillatorLayer({
-          type: "sawtooth",
-          frequency: frequency * 2,
-          startTime: now + delay + 0.012,
-          duration: 0.22,
-          peak: 0.024,
-          detune: 6,
-          filterType: "bandpass",
-          filterFrequency: Math.min(4200, frequency * 3),
-          filterQ: 1.15
-        });
-      });
-      [1046.5, 1318.51, 1567.98].forEach((frequency, index) => {
-        this.playOscillatorLayer({
-          type: "sine",
-          frequency,
-          startTime: now + 0.2 + index * 0.04,
-          duration: 0.4,
-          peak: 0.03,
-          filterType: "lowpass",
-          filterFrequency: 3600,
-          filterQ: 0.7
-        });
-      });
-    }
-    startSpinAmbient(variant = "whoosh") {
-      if (!this.enabledByGesture || !this.context || !this.master) return;
-      if (this.ambientOsc) return;
-      const now = this.context.currentTime;
-      if (variant === "none") return;
-      const gain = this.context.createGain();
-      gain.gain.setValueAtTime(1e-4, now);
-      gain.gain.exponentialRampToValueAtTime(variant === "hum" ? 0.045 : 0.082, now + 0.18);
-      if (variant === "hum") {
-        const osc = this.context.createOscillator();
-        const shimmer = this.context.createOscillator();
-        const filter2 = this.context.createBiquadFilter();
-        const shimmerGain = this.context.createGain();
-        filter2.type = "lowpass";
-        filter2.frequency.value = 420;
-        osc.type = "sine";
-        osc.frequency.value = 136;
-        shimmer.type = "triangle";
-        shimmer.frequency.value = 272;
-        shimmerGain.gain.value = 0.16;
-        osc.connect(filter2);
-        shimmer.connect(shimmerGain);
-        shimmerGain.connect(filter2);
-        filter2.connect(gain);
-        gain.connect(this.master);
-        osc.start(now);
-        shimmer.start(now);
-        this.ambientOsc = osc;
-        this.ambientAuxOsc = shimmer;
-        this.ambientGain = gain;
-        return;
-      }
-      const source = this.context.createBufferSource();
-      source.buffer = this.getNoiseBuffer();
-      source.loop = true;
-      const filter = this.context.createBiquadFilter();
-      filter.type = "bandpass";
-      const baseFrequency = variant === "wind" ? 420 : 760;
-      const peakFrequency = variant === "wind" ? 760 : 1360;
-      filter.frequency.setValueAtTime(baseFrequency, now);
-      filter.frequency.exponentialRampToValueAtTime(peakFrequency, now + 1.2);
-      filter.Q.value = variant === "wind" ? 0.9 : 1.2;
-      const lfo = this.context.createOscillator();
-      const lfoGain = this.context.createGain();
-      lfo.type = "sine";
-      lfo.frequency.value = variant === "wind" ? 0.18 : 0.32;
-      lfoGain.gain.value = variant === "wind" ? 120 : 210;
-      lfo.connect(lfoGain);
-      lfoGain.connect(filter.frequency);
-      source.connect(filter);
-      filter.connect(gain);
-      if (variant === "whoosh") {
-        const tone = this.context.createOscillator();
-        const toneGain = this.context.createGain();
-        tone.type = "triangle";
-        tone.frequency.setValueAtTime(84, now);
-        tone.frequency.exponentialRampToValueAtTime(132, now + 1.4);
-        toneGain.gain.setValueAtTime(1e-4, now);
-        toneGain.gain.exponentialRampToValueAtTime(0.028, now + 0.22);
-        toneGain.gain.exponentialRampToValueAtTime(0.014, now + 1.4);
-        tone.connect(toneGain);
-        toneGain.connect(gain);
-        tone.start(now);
-        this.ambientAuxOsc = tone;
-      }
-      gain.connect(this.master);
-      source.start(now);
-      lfo.start(now);
-      this.ambientOsc = source;
-      this.ambientGain = gain;
-      this.ambientLfo = lfo;
-    }
-    stopSpinAmbient() {
-      if (!this.context || !this.ambientGain) return;
-      const now = this.context.currentTime;
-      this.ambientGain.gain.cancelScheduledValues(now);
-      this.ambientGain.gain.setValueAtTime(Math.max(1e-4, this.ambientGain.gain.value), now);
-      this.ambientGain.gain.exponentialRampToValueAtTime(1e-4, now + 0.15);
-      [this.ambientOsc, this.ambientAuxOsc, this.ambientLfo].forEach((node) => {
-        if (!node) return;
-        try {
-          node.stop(now + 0.18);
-        } catch {
-        }
-      });
-      this.ambientOsc = null;
-      this.ambientAuxOsc = null;
-      this.ambientGain = null;
-      this.ambientLfo = null;
-    }
-    getNoiseBuffer() {
-      if (this.noiseBuffer || !this.context) {
-        return this.noiseBuffer;
-      }
-      const length = this.context.sampleRate * 1.2;
-      const buffer = this.context.createBuffer(1, length, this.context.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i3 = 0; i3 < length; i3 += 1) {
-        data[i3] = (Math.random() * 2 - 1) * 0.55;
-      }
-      this.noiseBuffer = buffer;
-      return buffer;
-    }
-  };
-
-  // tool-box/src/features/game-box/draw/games/ChaosWheelGame.jsx
-  var TAU2 = Math.PI * 2;
-  var INITIAL_WHEEL_ITEMS = [
-    "\uAE40\uC131\uBBFC",
-    "\uC774\uC9C0\uD6C8",
-    "\uBC15\uC218\uC9C4",
-    "\uCD5C\uBBFC\uD638",
-    "\uC815\uD558\uB298",
-    "\uAC15\uB3D9\uC6D0",
-    "\uC724\uC11C\uC5F0",
-    "\uD55C\uC9C0\uBBFC"
-  ];
-  function buildEntryObjects(labels, eliminatedSet = /* @__PURE__ */ new Set()) {
-    return labels.map((label, idx) => ({
-      id: `entry-${idx}-${label}`,
-      label,
-      weight: 1,
-      enabled: true,
-      eliminated: eliminatedSet.has(label)
-    }));
-  }
-  function ChaosWheelGame({ onBack }) {
-    const [itemsText, setItemsText] = d2(INITIAL_WHEEL_ITEMS.join("\n"));
-    const [newItemInput, setNewItemInput] = d2("");
-    const [eliminatedLabels, setEliminatedLabels] = d2([]);
-    const [mysteryMode, setMysteryMode] = d2(false);
-    const [eliminationMode, setEliminationMode] = d2(false);
-    const [themePreset, setThemePreset] = d2("cyberpunk");
-    const [tickVariant, setTickVariant] = d2("wooden");
-    const [winVariant, setWinVariant] = d2("fanfare");
-    const [spinDurationSec, setSpinDurationSec] = d2(3.2);
-    const [soundEnabled, setSoundEnabled] = d2(true);
-    const [phase, setPhase] = d2("idle");
-    const [lastWinner, setLastWinner] = d2(null);
-    const [history, setHistory] = d2([]);
-    const containerRef = A2(null);
-    const canvasRef = A2(null);
-    const engineRef = A2(null);
-    const audioRef = A2(null);
-    const parsedLabels = T2(() => {
-      const raw = itemsText.split(/[,\r\n]+/).map((s3) => s3.trim()).filter(Boolean);
-      return Array.from(new Set(raw));
-    }, [itemsText]);
-    const eliminatedSet = T2(() => new Set(eliminatedLabels), [eliminatedLabels]);
-    const entries = T2(
-      () => buildEntryObjects(parsedLabels, eliminatedSet),
-      [parsedLabels, eliminatedSet]
-    );
-    const activeEntries = T2(
-      () => entries.filter((e3) => e3.enabled && !e3.eliminated),
-      [entries]
-    );
-    h2(() => {
-      if (!canvasRef.current || !containerRef.current) return void 0;
-      const engine = new WheelEngine({
-        canvas: canvasRef.current,
-        container: containerRef.current
-      });
-      const audio = new AudioEngine();
-      engineRef.current = engine;
-      audioRef.current = audio;
-      const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => engine.resize()) : null;
-      if (ro) ro.observe(containerRef.current);
-      return () => {
-        if (ro) ro.disconnect();
-        engine.destroy();
-        engineRef.current = null;
-      };
-    }, []);
-    h2(() => {
-      const engine = engineRef.current;
-      if (!engine) return;
-      engine.setWheelState({
-        entries,
-        settings: {
-          showWeights: false,
-          mysteryWheel: mysteryMode && phase !== "result",
-          idleAnimationEnabled: phase === "idle"
-        },
-        theme: {
-          preset: themePreset,
-          centerColor: "#0f172a"
-        }
-      });
-    }, [entries, mysteryMode, themePreset, phase]);
-    const handleSpin = () => {
-      const engine = engineRef.current;
-      if (!engine || phase === "spinning" || activeEntries.length < 1) return;
-      let currentEliminatedSet = new Set(eliminatedLabels);
-      let currentEntries = entries;
-      if (eliminationMode && lastWinner && phase === "result" && !currentEliminatedSet.has(lastWinner.label)) {
-        if (activeEntries.length > 2) {
-          const nextElim = [...eliminatedLabels, lastWinner.label];
-          setEliminatedLabels(nextElim);
-          currentEliminatedSet = new Set(nextElim);
-          currentEntries = buildEntryObjects(parsedLabels, currentEliminatedSet);
-        }
-      }
-      engine.setWheelState({
-        entries: currentEntries,
-        settings: {
-          showWeights: false,
-          mysteryWheel: mysteryMode,
-          idleAnimationEnabled: false
-        },
-        theme: {
-          preset: themePreset,
-          centerColor: "#0f172a"
-        }
-      });
-      const segments = engine.getSegments();
-      if (!segments || segments.length === 0) return;
-      if (soundEnabled && audioRef.current) {
-        audioRef.current.ensureReady();
-      }
-      const winningIndex = secureRandomInt(segments.length);
-      const winningSegment = segments[winningIndex];
-      const lockedWinner = {
-        id: winningSegment.entry.id,
-        label: winningSegment.entry.label,
-        color: winningSegment.color,
-        segmentIndex: winningIndex,
-        totalCandidates: segments.length,
-        probabilityPct: (1 / segments.length * 100).toFixed(1)
-      };
-      const currentRot = engine.getRotation();
-      const segSpan = winningSegment.end - winningSegment.start;
-      const jitter = (secureRandomFloat() - 0.5) * segSpan * 0.65;
-      const targetAngleOnWheel = winningSegment.center + jitter;
-      const desiredNormalized = normalizeAngle(-targetAngleOnWheel);
-      const currentNormalized = normalizeAngle(currentRot);
-      let delta = desiredNormalized - currentNormalized;
-      if (delta <= 0) delta += TAU2;
-      const fullTurns = 6 + secureRandomInt(3);
-      const absoluteTargetRotation = currentRot + fullTurns * TAU2 + delta;
-      setPhase("spinning");
-      setLastWinner(null);
-      engine.spinTo({
-        absoluteTargetRotation,
-        durationMs: Math.max(1200, Math.round(spinDurationSec * 1e3)),
-        pauseAtEndMs: 120,
-        reducedMotion: false,
-        onTick: (_segIdx, velocity) => {
-          if (soundEnabled && audioRef.current) {
-            audioRef.current.playTickVariant(tickVariant, velocity);
-          }
-        },
-        onResult: () => {
-          engine.holdStillAfterResult();
-          setLastWinner(lockedWinner);
-          setPhase("result");
-          if (soundEnabled && audioRef.current) {
-            audioRef.current.playWinVariant(winVariant);
-          }
-          setHistory((prev) => [
-            {
-              id: `wheel-${Date.now()}`,
-              time: formatDrawTime(),
-              winner: lockedWinner.label,
-              candidates: lockedWinner.totalCandidates,
-              probabilityPct: lockedWinner.probabilityPct,
-              mystery: mysteryMode,
-              elimination: eliminationMode
-            },
-            ...prev.slice(0, 14)
-          ]);
-        }
-      });
-    };
-    const handleEliminateCurrentWinner = () => {
-      if (!lastWinner) return;
-      if (!eliminatedSet.has(lastWinner.label)) {
-        setEliminatedLabels((prev) => [...prev, lastWinner.label]);
-      }
-      setPhase("idle");
-    };
-    const handleRestoreEliminated = () => {
-      setEliminatedLabels([]);
-      setPhase("idle");
-    };
-    const handleAddSingleItem = (e3) => {
-      e3.preventDefault();
-      const clean = newItemInput.trim();
-      if (!clean) return;
-      const next = [...parsedLabels, clean];
-      setItemsText(Array.from(new Set(next)).join("\n"));
-      setNewItemInput("");
-    };
-    const handleShuffleEntries = () => {
-      const shuffled = shuffleUnbiased(parsedLabels);
-      setItemsText(shuffled.join("\n"));
-    };
-    const handleSortEntries = () => {
-      const sorted = [...parsedLabels].sort((a3, b2) => a3.localeCompare(b2, "ko"));
-      setItemsText(sorted.join("\n"));
-    };
-    return /* @__PURE__ */ u3("div", { className: "rpz-game-shell", "data-testid": "game-chaos-wheel", children: [
-      /* @__PURE__ */ u3("header", { className: "rpz-game-topbar", children: [
-        /* @__PURE__ */ u3("div", { className: "rpz-game-title-group", children: [
-          /* @__PURE__ */ u3("button", { type: "button", className: "rpz-back-btn", onClick: onBack, children: "\u2190 RANDOM PLAY ZONE" }),
-          /* @__PURE__ */ u3("div", { children: [
-            /* @__PURE__ */ u3("span", { className: "rpz-game-Tag", children: "GAME 04 \xB7 SPIN-THE-WHEEL ENGINE" }),
-            /* @__PURE__ */ u3("h2", { children: "\u{1F3A1} CHAOS WHEEL \u2014 \uB8F0\uB81B" })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "rpz-top-actions", children: [
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-primary",
-              "data-testid": "wheel-spin-btn",
-              onClick: handleSpin,
-              disabled: phase === "spinning" || activeEntries.length < 2,
-              children: phase === "spinning" ? "\u{1F300} \uD68C\uC804 \uC911..." : "\u{1F3A1} \uB8F0\uB81B \uB3CC\uB9AC\uAE30 (SPIN!)"
-            }
-          ),
-          phase === "result" && lastWinner && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-accent",
-              "data-testid": "wheel-eliminate-winner-btn",
-              onClick: handleEliminateCurrentWinner,
-              disabled: activeEntries.length <= 2,
-              children: "\u274C \uB2F9\uCCA8\uC790 \uC81C\uC678 \uD6C4 \uACC4\uC18D"
-            }
-          ),
-          eliminatedLabels.length > 0 && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-ghost",
-              "data-testid": "wheel-restore-btn",
-              onClick: handleRestoreEliminated,
-              children: [
-                "\u267B\uFE0F \uC81C\uC678 \uD56D\uBAA9 \uBCF5\uC6D0 (",
-                eliminatedLabels.length,
-                ")"
-              ]
-            }
-          )
-        ] })
-      ] }),
-      /* @__PURE__ */ u3("div", { className: "rpz-game-workspace", children: [
-        /* @__PURE__ */ u3("section", { className: "rpz-stage-panel", children: [
-          /* @__PURE__ */ u3("div", { className: "rpz-stage-status-bar", children: [
-            /* @__PURE__ */ u3("span", { className: `rpz-phase-pill phase-${phase}`, "data-testid": "wheel-phase-badge", children: [
-              phase === "idle" && `\uB300\uAE30 \uC911 \u2014 \uD65C\uC131 \uD56D\uBAA9 ${activeEntries.length}\uAC1C (\uADE0\uB4F1 \uD655\uB960 ${(100 / Math.max(1, activeEntries.length)).toFixed(1)}%)`,
-              phase === "spinning" && "\uAD00\uC131 \uD68C\uC804 \uBB3C\uB9AC \uAC10\uC18D \uC9C4\uD589 \uC911...",
-              phase === "result" && lastWinner && `\u{1F389} \uB2F9\uCCA8 \uD655\uC815: ${lastWinner.label}! (\uACF5\uC815 \uD655\uB960 ${lastWinner.probabilityPct}%)`
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "rpz-mode-badges", children: [
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  "data-testid": "wheel-mystery-toggle",
-                  className: `rpz-chip ${mysteryMode ? "active" : ""}`,
-                  onClick: () => setMysteryMode((v3) => !v3),
-                  children: [
-                    "\u{1F575}\uFE0F \uBBF8\uC2A4\uD130\uB9AC \uBAA8\uB4DC ",
-                    mysteryMode ? "ON" : "OFF"
-                  ]
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  "data-testid": "wheel-elimination-toggle",
-                  className: `rpz-chip ${eliminationMode ? "active" : ""}`,
-                  onClick: () => setEliminationMode((v3) => !v3),
-                  children: [
-                    "\u{1F525} \uC11C\uBC14\uC774\uBC8C \uD0C8\uB77D \uBAA8\uB4DC ",
-                    eliminationMode ? "ON" : "OFF"
-                  ]
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: `rpz-chip ${soundEnabled ? "active" : ""}`,
-                  onClick: () => setSoundEnabled((v3) => !v3),
-                  children: soundEnabled ? "\u{1F50A} \uD6A8\uACFC\uC74C ON" : "\u{1F507} \uD6A8\uACFC\uC74C OFF"
-                }
-              )
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-wheel-stage-wrap", children: [
-            /* @__PURE__ */ u3("div", { ref: containerRef, className: "rpz-wheel-container", children: [
-              /* @__PURE__ */ u3("div", { className: "rpz-wheel-pointer", "aria-hidden": "true", children: "\u25BC" }),
-              /* @__PURE__ */ u3(
-                "canvas",
-                {
-                  ref: canvasRef,
-                  className: "rpz-wheel-canvas",
-                  "data-testid": "wheel-canvas"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-wheel-center-btn",
-                  onClick: handleSpin,
-                  disabled: phase === "spinning" || activeEntries.length < 2,
-                  children: phase === "spinning" ? "\u2022\u2022\u2022" : "SPIN"
-                }
-              )
-            ] }),
-            phase === "result" && lastWinner && /* @__PURE__ */ u3("div", { className: "rpz-wheel-winner-card", "data-testid": "wheel-winner-banner", children: [
-              /* @__PURE__ */ u3("span", { className: "rpz-winner-kicker", children: mysteryMode ? "\u{1F575}\uFE0F \uBBF8\uC2A4\uD130\uB9AC \uC2AC\uB77C\uC774\uC2A4 \uC815\uCCB4 \uACF5\uAC1C!" : "\u{1F38A} CHAOS WHEEL WINNER" }),
-              /* @__PURE__ */ u3("strong", { className: "rpz-winner-name", style: { color: lastWinner.color }, children: lastWinner.label }),
-              /* @__PURE__ */ u3("span", { className: "rpz-winner-meta", children: [
-                "\uD6C4\uBCF4 ",
-                lastWinner.totalCandidates,
-                "\uAC1C \uC911 1/",
-                lastWinner.totalCandidates,
-                " (",
-                lastWinner.probabilityPct,
-                "%) \uBB34\uD3B8\uD5A5 \uCD94\uCCA8"
-              ] }),
-              /* @__PURE__ */ u3("div", { className: "rpz-winner-actions", children: [
-                /* @__PURE__ */ u3(
-                  "button",
-                  {
-                    type: "button",
-                    className: "rpz-btn rpz-btn-primary rpz-btn-sm",
-                    onClick: handleSpin,
-                    children: "\u{1F504} \uB2E4\uC2DC \uB3CC\uB9AC\uAE30"
-                  }
-                ),
-                activeEntries.length > 2 && /* @__PURE__ */ u3(
-                  "button",
-                  {
-                    type: "button",
-                    className: "rpz-btn rpz-btn-accent rpz-btn-sm",
-                    onClick: handleEliminateCurrentWinner,
-                    children: "\u274C \uC774 \uD56D\uBAA9 \uD0C8\uB77D\uC2DC\uD0A4\uAE30"
-                  }
-                )
-              ] })
-            ] })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3("aside", { className: "rpz-sidebar-panel", children: [
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: [
-              "1. \uB8F0\uB81B \uD56D\uBAA9 \uD3B8\uC9D1 (\uD65C\uC131 ",
-              activeEntries.length,
-              "\uAC1C)"
-            ] }),
-            /* @__PURE__ */ u3("form", { className: "rpz-inline-form", onSubmit: handleAddSingleItem, children: [
-              /* @__PURE__ */ u3(
-                "input",
-                {
-                  type: "text",
-                  className: "rpz-input",
-                  value: newItemInput,
-                  disabled: phase === "spinning",
-                  onChange: (e3) => setNewItemInput(e3.target.value),
-                  placeholder: "\uC0C8 \uD56D\uBAA9 \uCD94\uAC00...",
-                  "data-testid": "wheel-add-input"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "submit",
-                  className: "rpz-btn rpz-btn-secondary rpz-btn-sm",
-                  disabled: phase === "spinning",
-                  children: "\uCD94\uAC00"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ u3(
-              "textarea",
-              {
-                className: "rpz-textarea",
-                rows: 4,
-                value: itemsText,
-                disabled: phase === "spinning",
-                onChange: (e3) => setItemsText(e3.target.value),
-                placeholder: "\uC904\uBC14\uAFC8 \uB610\uB294 \uC27C\uD45C(,)\uB85C \uD56D\uBAA9 \uC785\uB825",
-                "data-testid": "wheel-items-textarea"
-              }
-            ),
-            /* @__PURE__ */ u3("div", { className: "rpz-preset-row", children: [
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-btn-xs",
-                  disabled: phase === "spinning",
-                  onClick: handleShuffleEntries,
-                  children: "\u{1F500} \uC154\uD50C"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-btn-xs",
-                  disabled: phase === "spinning",
-                  onClick: handleSortEntries,
-                  children: "\u{1F524} \uC815\uB82C"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-btn-xs",
-                  disabled: phase === "spinning",
-                  onClick: () => {
-                    setEliminatedLabels([]);
-                    setItemsText("\uD55C\uC2DD \uAD6D\uBC25\n\uC218\uC81C \uBC84\uAC70\n\uCD08\uBC25 \uC138\uD2B8\n\uB9C8\uB77C\uD0D5\n\uC300\uAD6D\uC218\n\uB3C8\uAE4C\uC2A4\n\uAE40\uCE58\uCC0C\uAC1C\n\uD53C\uC790");
-                  },
-                  children: "\uC810\uC2EC \uBA54\uB274 \uD504\uB9AC\uC14B"
-                }
-              ),
-              /* @__PURE__ */ u3(
-                "button",
-                {
-                  type: "button",
-                  className: "rpz-btn-xs",
-                  disabled: phase === "spinning",
-                  onClick: () => {
-                    setEliminatedLabels([]);
-                    setItemsText(INITIAL_WHEEL_ITEMS.join("\n"));
-                  },
-                  children: "\uCC38\uAC00\uC790 \uD504\uB9AC\uC14B"
-                }
-              )
-            ] }),
-            eliminatedLabels.length > 0 && /* @__PURE__ */ u3("div", { className: "rpz-eliminated-box", "data-testid": "wheel-eliminated-box", children: /* @__PURE__ */ u3("small", { children: [
-              "\uD0C8\uB77D\uB41C \uD56D\uBAA9 (",
-              eliminatedLabels.length,
-              "): ",
-              eliminatedLabels.join(", ")
-            ] }) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: "2. \uBB3C\uB9AC \xB7 \uD14C\uB9C8 \xB7 \uC0AC\uC6B4\uB4DC \uC124\uC815" }),
-            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
-              /* @__PURE__ */ u3("span", { children: [
-                "\uCEEC\uB7EC \uD14C\uB9C8 (",
-                THEME_PRESETS[themePreset]?.label,
-                ")"
-              ] }),
-              /* @__PURE__ */ u3(
-                "select",
-                {
-                  className: "rpz-select",
-                  value: themePreset,
-                  onChange: (e3) => setThemePreset(e3.target.value),
-                  children: THEME_ORDER.map((key) => /* @__PURE__ */ u3("option", { value: key, children: THEME_PRESETS[key].label }, key))
-                }
-              )
-            ] }),
-            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
-              /* @__PURE__ */ u3("span", { children: [
-                "\uD68C\uC804 \uC2DC\uAC04 (",
-                spinDurationSec,
-                "\uCD08)"
-              ] }),
-              /* @__PURE__ */ u3(
-                "input",
-                {
-                  type: "range",
-                  min: "1.5",
-                  max: "6.0",
-                  step: "0.5",
-                  value: spinDurationSec,
-                  disabled: phase === "spinning",
-                  onChange: (e3) => setSpinDurationSec(Number(e3.target.value))
-                }
-              )
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "rpz-row-2col", children: [
-              /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
-                /* @__PURE__ */ u3("span", { children: "\uD2F1 \uD6A8\uACFC\uC74C" }),
-                /* @__PURE__ */ u3(
-                  "select",
-                  {
-                    className: "rpz-select",
-                    value: tickVariant,
-                    onChange: (e3) => setTickVariant(e3.target.value),
-                    children: [
-                      /* @__PURE__ */ u3("option", { value: "wooden", children: "\uC6B0\uB4DC \uD540 (Wooden)" }),
-                      /* @__PURE__ */ u3("option", { value: "click", children: "\uBA54\uD0C8 \uD074\uB9AD (Click)" }),
-                      /* @__PURE__ */ u3("option", { value: "pop", children: "\uBC84\uBE14 \uD31D (Pop)" }),
-                      /* @__PURE__ */ u3("option", { value: "digital", children: "\uC544\uCF00\uC774\uB4DC (Digital)" })
-                    ]
-                  }
-                )
-              ] }),
-              /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
-                /* @__PURE__ */ u3("span", { children: "\uB2F9\uCCA8 \uD6A8\uACFC\uC74C" }),
-                /* @__PURE__ */ u3(
-                  "select",
-                  {
-                    className: "rpz-select",
-                    value: winVariant,
-                    onChange: (e3) => setWinVariant(e3.target.value),
-                    children: [
-                      /* @__PURE__ */ u3("option", { value: "fanfare", children: "\uD321\uD30C\uB974 (Fanfare)" }),
-                      /* @__PURE__ */ u3("option", { value: "applause", children: "\uBC15\uC218 \uAC08\uCC44 (Applause)" }),
-                      /* @__PURE__ */ u3("option", { value: "chime", children: "\uBCA8 \uCC28\uC784 (Chime)" }),
-                      /* @__PURE__ */ u3("option", { value: "sparkle", children: "\uC2A4\uD30C\uD074 (Sparkle)" })
-                    ]
-                  }
-                )
-              ] })
-            ] })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: [
-              "3. \uCD94\uCCA8 \uAE30\uB85D (",
-              history.length,
-              ")"
-            ] }),
-            history.length === 0 ? /* @__PURE__ */ u3("p", { className: "rpz-empty", children: "\uC544\uC9C1 \uB8F0\uB81B \uCD94\uCCA8 \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4." }) : /* @__PURE__ */ u3("ul", { className: "rpz-history-list", "data-testid": "wheel-history-list", children: history.map((item) => /* @__PURE__ */ u3("li", { children: [
-              /* @__PURE__ */ u3("div", { className: "rpz-history-head", children: [
-                /* @__PURE__ */ u3("strong", { children: [
-                  "\u{1F3AF} ",
-                  item.winner
-                ] }),
-                /* @__PURE__ */ u3("small", { children: item.time })
-              ] }),
-              /* @__PURE__ */ u3("small", { children: [
-                "\uD6C4\uBCF4 ",
-                item.candidates,
-                "\uAC1C (",
-                item.probabilityPct,
-                "%)",
-                item.mystery ? " \xB7 \uBBF8\uC2A4\uD130\uB9AC" : "",
-                item.elimination ? " \xB7 \uD0C8\uB77D\uBAA8\uB4DC" : ""
-              ] })
-            ] }, item.id)) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-license-box", children: /* @__PURE__ */ u3("small", { children: [
-            /* @__PURE__ */ u3("strong", { children: "\uC624\uD508\uC18C\uC2A4 \uB77C\uC774\uC120\uC2A4 \uACE0\uC9C0:" }),
-            " \uD68C\uC804 \uBB3C\uB9AC \uBC0F \uC624\uB514\uC624 \uC5D4\uC9C4 ",
-            /* @__PURE__ */ u3("code", { children: "alsatianco/spin-the-wheel" }),
-            " (MIT License, Copyright \xA9 2026 alsatianco) \uC6D0\uBCF8 \uBAA8\uB4C8 \uC7AC\uC0AC\uC6A9."
-          ] }) })
-        ] })
-      ] })
-    ] });
-  }
-
-  // tool-box/src/features/game-box/draw/games/MysteryBoxGame.jsx
-  var PRESET_MODES = {
-    prize: {
-      label: "\u{1F381} \uACBD\uD488 \xB7 \uB2F9\uCCA8 \uC81C\uBE44 (1\uB4F1~\uAF5D)",
-      text: [
-        "\u{1F3C6} 1\uB4F1: \uBC31\uD654\uC810 \uC0C1\uD488\uAD8C 10\uB9CC\uC6D0",
-        "\u{1F948} 2\uB4F1: \uBB34\uC120 \uB178\uC774\uC988\uCE94\uC2AC\uB9C1 \uC774\uC5B4\uD3F0",
-        "\u{1F949} 3\uB4F1: \uD504\uB9AC\uBBF8\uC5C4 \uCEE4\uD53C \uAE30\uD504\uD2F0\uCF58",
-        "\u{1F949} 3\uB4F1: \uD504\uB9AC\uBBF8\uC5C4 \uCEE4\uD53C \uAE30\uD504\uD2F0\uCF58",
-        "\u{1F36C} \uCC38\uAC00\uC0C1: \uBE44\uD0C0\uBBFC \uC74C\uB8CC",
-        "\u{1F36C} \uCC38\uAC00\uC0C1: \uBE44\uD0C0\uBBFC \uC74C\uB8CC",
-        "\u{1F4A8} \uAF5D! \uB2E4\uC74C \uAE30\uD68C\uC5D0",
-        "\u{1F4A8} \uAF5D! \uB2E4\uC74C \uAE30\uD68C\uC5D0"
-      ].join("\n")
-    },
-    coffee: {
-      label: "\u2615 \uCEE4\uD53C \xB7 \uAC04\uC2DD \uB0B4\uAE30 \uC81C\uBE44",
-      text: [
-        "\u{1F4A3} \uC624\uB298 \uCEE4\uD53C \uC804\uCCB4 \uC3D8\uAE30 \uB2F9\uCCA8!",
-        "\u{1F370} \uB514\uC800\uD2B8 \uC3D8\uAE30 \uB2F9\uCCA8!",
-        "\u{1F6E1}\uFE0F \uC548\uC804 \uD1B5\uACFC (\uBB34\uB8CC \uC2DC\uC74C\uAD8C)",
-        "\u{1F6E1}\uFE0F \uC548\uC804 \uD1B5\uACFC (\uBB34\uB8CC \uC2DC\uC74C\uAD8C)",
-        "\u{1F6E1}\uFE0F \uC548\uC804 \uD1B5\uACFC (\uBB34\uB8CC \uC2DC\uC74C\uAD8C)",
-        "\u{1F6E1}\uFE0F \uC548\uC804 \uD1B5\uACFC (\uBB34\uB8CC \uC2DC\uC74C\uAD8C)"
-      ].join("\n")
-    },
-    names: {
-      label: "\u{1F64B} \uBC1C\uD45C\uC790 \xB7 \uB2F9\uBC88 \uC774\uB984 \uBF51\uAE30",
-      text: [
-        "\uAE40\uC131\uBBFC",
-        "\uC774\uC9C0\uD6C8",
-        "\uBC15\uC218\uC9C4",
-        "\uCD5C\uBBFC\uD638",
-        "\uC815\uD558\uB298",
-        "\uAC15\uB3D9\uC6D0",
-        "\uC724\uC11C\uC5F0",
-        "\uD55C\uC9C0\uBBFC"
-      ].join("\n")
-    },
-    icebreaker: {
-      label: "\u{1F4AC} \uD300 \uBE4C\uB529 \uC9C8\uBB38 \uC81C\uBE44 (\uC6D0\uBCF8 \uC2A4\uD0C0\uC77C)",
-      text: [
-        "\uD558\uB8E8 \uB3D9\uC548 \uC5B4\uB290 \uC2DD\uB2F9\uC774\uB4E0 \uBB34\uB8CC\uB85C \uBA39\uC744 \uC218 \uC788\uB2E4\uBA74 \uC5B4\uB514\uB85C \uAC08\uAE4C\uC694?",
-        "\uBB34\uC778\uB3C4\uC5D0 \uB531 \uD55C \uAC00\uC9C0 \uBB3C\uAC74\uB9CC \uAC00\uC838\uAC08 \uC218 \uC788\uB2E4\uBA74 \uBB34\uC5C7\uC744 \uCC59\uAE30\uACA0\uC2B5\uB2C8\uAE4C?",
-        "\uC21C\uAC04\uC774\uB3D9 \uB2A5\uB825\uC774 \uC0DD\uACA8\uC11C 5\uBD84 \uB3D9\uC548\uB9CC \uC5B4\uB514\uB4E0 \uB2E4\uB140\uC62C \uC218 \uC788\uB2E4\uBA74?",
-        "\uC624\uB298 \uB098\uC758 \uC815\uC2E0 \uC0C1\uD0DC\uB97C \uC74C\uC2DD \uD558\uB098\uB85C \uD45C\uD604\uD55C\uB2E4\uBA74 \uBB34\uC5C7\uC778\uAC00\uC694?",
-        "\uC6B0\uB9AC \uD300\uC5D0\uC11C \uB0B4\uAC00 \uB9E1\uACE0 \uC2F6\uC740 \uC228\uC740 \uCE90\uB9AD\uD130(\uC5ED\uD560)\uB294 \uBB34\uC5C7\uC778\uAC00\uC694?",
-        "\uC62C\uD574 \uC548\uC5D0 \uBC18\uB4DC\uC2DC \uB9C8\uC2A4\uD130\uD558\uACE0 \uC2F6\uC740 \uC0C8\uB85C\uC6B4 \uAE30\uC220\uC774\uB098 \uCDE8\uBBF8\uAC00 \uC788\uB2E4\uBA74?"
-      ].join("\n")
-    }
-  };
-  function MysteryBoxGame({ onBack }) {
-    const [presetKey, setPresetKey] = d2("prize");
-    const [ticketsInput, setTicketsInput] = d2(PRESET_MODES.prize.text);
-    const [preventDuplicates, setPreventDuplicates] = d2(true);
-    const [drawnTicketIds, setDrawnTicketIds] = d2([]);
-    const [boxYaw, setBoxYaw] = d2(-22);
-    const [boxPitch, setBoxPitch] = d2(-16);
-    const [currentTicket, setCurrentTicket] = d2(null);
-    const [phase, setPhase] = d2("idle");
-    const [history, setHistory] = d2([]);
-    const timersRef = A2([]);
-    const clearTimers = () => {
-      timersRef.current.forEach((t3) => clearTimeout(t3));
-      timersRef.current = [];
-    };
-    h2(() => {
-      return () => clearTimers();
-    }, []);
-    const allTickets = T2(() => {
-      const lines = ticketsInput.split(/\r?\n/).map((s3) => s3.trim()).filter(Boolean);
-      return lines.map((label, idx) => {
-        const isHighlight = /1등|2등|3등|당첨|쏘기|🏆|🥈|🥉|💣/.test(label) && !/꽝/.test(label);
-        return {
-          id: `slip-${idx}-${label}`,
-          serialNumber: idx + 1,
-          label,
-          isHighlight
-        };
-      });
-    }, [ticketsInput]);
-    const drawnSet = T2(() => new Set(drawnTicketIds), [drawnTicketIds]);
-    const remainingTickets = T2(() => {
-      if (!preventDuplicates) return allTickets;
-      return allTickets.filter((t3) => !drawnSet.has(t3.id));
-    }, [allTickets, drawnSet, preventDuplicates]);
-    const finalizeTicketReveal = (locked, nextDrawnIds) => {
-      clearTimers();
-      setCurrentTicket(locked);
-      if (preventDuplicates && nextDrawnIds) {
-        setDrawnTicketIds(nextDrawnIds);
-      }
-      setPhase("revealed");
-      drawSound.playFanfare();
-      setHistory((prev) => [
-        {
-          id: `box-${Date.now()}`,
-          time: formatDrawTime(),
-          serialNumber: locked.serialNumber,
-          label: locked.label,
-          remainingAfter: preventDuplicates ? Math.max(0, allTickets.length - (nextDrawnIds?.length || drawnTicketIds.length)) : allTickets.length
-        },
-        ...prev.slice(0, 14)
-      ]);
-    };
-    const handleDrawOneTicket = () => {
-      if (phase === "shaking" || phase === "extracting" || phase === "unfolding") return;
-      if (remainingTickets.length === 0) return;
-      clearTimers();
-      const pickIdx = secureRandomInt(remainingTickets.length);
-      const locked = remainingTickets[pickIdx];
-      const nextDrawnIds = preventDuplicates ? [...drawnTicketIds, locked.id] : drawnTicketIds;
-      setCurrentTicket(locked);
-      setPhase("shaking");
-      drawSound.playBoxShake();
-      const t1 = setTimeout(() => {
-        setPhase("extracting");
-        drawSound.playTick(0.4, "pop");
-      }, 550);
-      const t22 = setTimeout(() => {
-        setPhase("unfolding");
-        drawSound.playPaperUnfold();
-      }, 1100);
-      const t3 = setTimeout(() => {
-        finalizeTicketReveal(locked, nextDrawnIds);
-      }, 1700);
-      timersRef.current.push(t1, t22, t3);
-    };
-    const handleShakeBoxOnly = () => {
-      if (phase !== "idle" && phase !== "revealed") return;
-      clearTimers();
-      setPhase("shaking");
-      drawSound.playBoxShake();
-      const lines = ticketsInput.split(/\r?\n/).map((s3) => s3.trim()).filter(Boolean);
-      const shuffledLines = shuffleUnbiased(lines);
-      setTicketsInput(shuffledLines.join("\n"));
-      const t3 = setTimeout(() => {
-        setPhase("idle");
-      }, 550);
-      timersRef.current.push(t3);
-    };
-    const handleInstantUnfold = () => {
-      if (!currentTicket) return;
-      const nextDrawnIds = preventDuplicates && !drawnSet.has(currentTicket.id) ? [...drawnTicketIds, currentTicket.id] : drawnTicketIds;
-      finalizeTicketReveal(currentTicket, nextDrawnIds);
-    };
-    const handleResetBox = () => {
-      clearTimers();
-      setDrawnTicketIds([]);
-      setCurrentTicket(null);
-      setPhase("idle");
-    };
-    const handleApplyPreset = (key) => {
-      const preset = PRESET_MODES[key];
-      if (!preset) return;
-      clearTimers();
-      setPresetKey(key);
-      setTicketsInput(preset.text);
-      setDrawnTicketIds([]);
-      setCurrentTicket(null);
-      setPhase("idle");
-    };
-    const isLidOpen = phase === "extracting" || phase === "unfolding" || phase === "revealed";
-    return /* @__PURE__ */ u3("div", { className: "rpz-game-shell", "data-testid": "game-mystery-box", children: [
-      /* @__PURE__ */ u3("header", { className: "rpz-game-topbar", children: [
-        /* @__PURE__ */ u3("div", { className: "rpz-game-title-group", children: [
-          /* @__PURE__ */ u3("button", { type: "button", className: "rpz-back-btn", onClick: onBack, children: "\u2190 RANDOM PLAY ZONE" }),
-          /* @__PURE__ */ u3("div", { children: [
-            /* @__PURE__ */ u3("span", { className: "rpz-game-Tag", children: "GAME 05 \xB7 3D MYSTERY LOTTERY BOX" }),
-            /* @__PURE__ */ u3("h2", { children: "\u{1F381} MYSTERY BOX \u2014 3D \uC81C\uBE44\uBF51\uAE30" })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "rpz-top-actions", children: [
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-secondary",
-              "data-testid": "box-shake-btn",
-              onClick: handleShakeBoxOnly,
-              disabled: phase === "shaking" || phase === "extracting" || phase === "unfolding",
-              children: "\u{1FAE8} \uC0C1\uC790 \uD754\uB4E4\uC5B4 \uC11E\uAE30"
-            }
-          ),
-          (phase === "idle" || phase === "revealed") && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-primary",
-              "data-testid": "box-draw-btn",
-              onClick: handleDrawOneTicket,
-              disabled: remainingTickets.length === 0,
-              children: remainingTickets.length === 0 ? "\uBAA8\uB4E0 \uC81C\uBE44 \uC18C\uC9C4\uB428 (\uB9AC\uC14B \uD544\uC694)" : phase === "revealed" ? `\u270B \uB2E4\uC74C \uC81C\uBE44 \uBF51\uAE30 (\uB0A8\uC740 ${remainingTickets.length}\uC7A5)` : `\u270B \uC81C\uBE44 \uD55C \uC7A5 \uBF51\uAE30 (\uB0A8\uC740 ${remainingTickets.length}\uC7A5)`
-            }
-          ),
-          (phase === "shaking" || phase === "extracting" || phase === "unfolding") && /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-accent",
-              "data-testid": "box-instant-btn",
-              onClick: handleInstantUnfold,
-              children: "\u26A1 \uC885\uC774 \uC989\uC2DC \uD3BC\uCE58\uAE30"
-            }
-          ),
-          /* @__PURE__ */ u3(
-            "button",
-            {
-              type: "button",
-              className: "rpz-btn rpz-btn-ghost",
-              "data-testid": "box-reset-btn",
-              onClick: handleResetBox,
-              children: "\u267B\uFE0F \uC0C1\uC790\uC5D0 \uC81C\uBE44 \uBAA8\uB450 \uB2E4\uC2DC \uB123\uAE30"
-            }
-          )
-        ] })
-      ] }),
-      /* @__PURE__ */ u3("div", { className: "rpz-game-workspace", children: [
-        /* @__PURE__ */ u3("section", { className: "rpz-stage-panel", children: [
-          /* @__PURE__ */ u3("div", { className: "rpz-stage-status-bar", children: [
-            /* @__PURE__ */ u3("span", { className: `rpz-phase-pill phase-${phase}`, "data-testid": "box-phase-badge", children: [
-              phase === "idle" && `3D \uC81C\uBE44\uC0C1\uC790 \uB300\uAE30 \uC911 \u2014 \uC0C1\uC790 \uC548 \uB0A8\uC740 \uC81C\uBE44 ${remainingTickets.length}\uC7A5 / \uC804\uCCB4 ${allTickets.length}\uC7A5`,
-              phase === "shaking" && "\u{1FAE8} 3D \uC81C\uBE44\uC0C1\uC790\uB97C \uD754\uB4E4\uC5B4 \uC885\uC774 \uC81C\uBE44\uB97C \uC11E\uB294 \uC911...",
-              phase === "extracting" && "\u2709\uFE0F \uC0C1\uC790 \uD22C\uC785\uAD6C\uC5D0\uC11C \uC811\uD78C \uC885\uC774 \uC81C\uBE44 \uD55C \uC7A5\uC744 \uAEBC\uB0B4\uB294 \uC911...",
-              phase === "unfolding" && "\u{1F4DC} \uC811\uD78C \uC885\uC774 \uC81C\uBE44\uB97C \uD3BC\uCE58\uB294 \uC911...",
-              phase === "revealed" && currentTicket && `\u{1F389} \uC81C\uBE44 \uACF5\uAC1C \uC644\uB8CC! [\uC81C\uBE44 #${currentTicket.serialNumber}] ${currentTicket.label}`
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "rpz-mode-badges", children: /* @__PURE__ */ u3(
-              "button",
-              {
-                type: "button",
-                "data-testid": "box-duplicate-toggle",
-                className: `rpz-chip ${preventDuplicates ? "active" : ""}`,
-                onClick: () => setPreventDuplicates((v3) => !v3),
-                children: [
-                  "\u{1F512} \uC911\uBCF5 \uCD94\uCCA8 \uBC29\uC9C0 ",
-                  preventDuplicates ? "ON (\uBF51\uC740 \uC81C\uBE44 \uC81C\uC678)" : "OFF (\uBCF5\uC6D0 \uCD94\uCD9C)"
-                ]
-              }
-            ) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-mystery-3d-stage", "data-testid": "box-3d-stage", children: [
-            /* @__PURE__ */ u3("div", { className: "rpz-mystery-3d-scene", children: [
-              /* @__PURE__ */ u3(
-                "div",
-                {
-                  className: `rpz-cube-rig phase-${phase}`,
-                  style: {
-                    transform: `rotateX(${boxPitch}deg) rotateY(${boxYaw}deg)`
-                  },
-                  children: [
-                    /* @__PURE__ */ u3("div", { className: "rpz-cube-face rpz-cube-front", children: [
-                      /* @__PURE__ */ u3("span", { className: "rpz-cube-badge", children: "GAMEBOX RANDOM ZONE" }),
-                      /* @__PURE__ */ u3("strong", { children: "MYSTERY BOX" }),
-                      /* @__PURE__ */ u3("span", { className: "rpz-cube-count", children: [
-                        "\uB0A8\uC740 \uC81C\uBE44 ",
-                        /* @__PURE__ */ u3("b", { children: remainingTickets.length }),
-                        " / ",
-                        allTickets.length
-                      ] })
-                    ] }),
-                    /* @__PURE__ */ u3("div", { className: "rpz-cube-face rpz-cube-back", children: /* @__PURE__ */ u3("span", { children: "LUCKY DRAW" }) }),
-                    /* @__PURE__ */ u3("div", { className: "rpz-cube-face rpz-cube-right", children: [
-                      /* @__PURE__ */ u3("span", { children: "\u{1F3B2}" }),
-                      /* @__PURE__ */ u3("small", { children: "NO DUPLICATES" })
-                    ] }),
-                    /* @__PURE__ */ u3("div", { className: "rpz-cube-face rpz-cube-left", children: [
-                      /* @__PURE__ */ u3("span", { children: "\u2709\uFE0F" }),
-                      /* @__PURE__ */ u3("small", { children: "FOLDED SLIPS" })
-                    ] }),
-                    /* @__PURE__ */ u3("div", { className: "rpz-cube-face rpz-cube-bottom" }),
-                    /* @__PURE__ */ u3("div", { className: `rpz-cube-lid-left ${isLidOpen ? "open" : ""}` }),
-                    /* @__PURE__ */ u3("div", { className: `rpz-cube-lid-right ${isLidOpen ? "open" : ""}` }),
-                    /* @__PURE__ */ u3("div", { className: "rpz-cube-interior-slips", children: remainingTickets.slice(0, 12).map((slip, idx) => /* @__PURE__ */ u3(
-                      "span",
-                      {
-                        className: "rpz-mini-slip3d",
-                        style: {
-                          transform: `translate3d(${(idx % 4 - 1.5) * 32}px, ${-10 - idx % 3 * 8}px, ${(Math.floor(idx / 4) - 1) * 32}px) rotateY(${idx * 37}deg) rotateZ(${(idx % 2 === 0 ? 1 : -1) * 18}deg)`
-                        },
-                        children: [
-                          "#",
-                          slip.serialNumber
-                        ]
-                      },
-                      slip.id
-                    )) }),
-                    (phase === "extracting" || phase === "unfolding" || phase === "revealed") && currentTicket && /* @__PURE__ */ u3("div", { className: `rpz-extracting-slip state-${phase}`, children: /* @__PURE__ */ u3("span", { children: [
-                      "\uC81C\uBE44 #",
-                      currentTicket.serialNumber
-                    ] }) })
-                  ]
-                }
-              ),
-              /* @__PURE__ */ u3("div", { className: "rpz-camera-rot-controls", children: [
-                /* @__PURE__ */ u3("button", { type: "button", className: "rpz-btn-xs", onClick: () => setBoxYaw((y3) => y3 - 25), children: "\u25C0 \uC88C\uD68C\uC804" }),
-                /* @__PURE__ */ u3("button", { type: "button", className: "rpz-btn-xs", onClick: () => {
-                  setBoxYaw(-22);
-                  setBoxPitch(-16);
-                }, children: "\uC815\uBA74 3D \uBDF0" }),
-                /* @__PURE__ */ u3("button", { type: "button", className: "rpz-btn-xs", onClick: () => setBoxYaw((y3) => y3 + 25), children: "\uC6B0\uD68C\uC804 \u25B6" })
-              ] })
-            ] }),
-            /* @__PURE__ */ u3("div", { className: "rpz-paper-unfold-zone", children: !currentTicket || phase === "idle" ? /* @__PURE__ */ u3("div", { className: "rpz-paper-placeholder", onClick: handleDrawOneTicket, children: [
-              /* @__PURE__ */ u3("span", { className: "rpz-paper-icon", children: "\u2709\uFE0F" }),
-              /* @__PURE__ */ u3("strong", { children: "3D \uC0C1\uC790\uB97C \uD074\uB9AD\uD558\uAC70\uB098 [\uC81C\uBE44 \uD55C \uC7A5 \uBF51\uAE30]\uB97C \uB204\uB974\uC138\uC694" }),
-              /* @__PURE__ */ u3("p", { children: "\uC0C1\uC790\uB97C \uD754\uB4E0 \uB4A4 \uC811\uD78C \uC885\uC774 \uC81C\uBE44 \uD55C \uC7A5\uC744 \uAEBC\uB0B4 3\uB2E8\uC73C\uB85C \uD3BC\uCCD0 \uACB0\uACFC\uB97C \uACF5\uAC1C\uD569\uB2C8\uB2E4." })
-            ] }) : /* @__PURE__ */ u3(
-              "div",
-              {
-                className: `rpz-folded-paper-card phase-${phase} ${currentTicket.isHighlight ? "is-highlight" : ""}`,
-                "data-testid": "box-paper-slip",
-                children: [
-                  /* @__PURE__ */ u3("div", { className: "rpz-paper-top-flap", children: /* @__PURE__ */ u3("span", { children: [
-                    "GAMEBOX OFFICIAL LOTTERY SLIP \xB7 NO.",
-                    String(currentTicket.serialNumber).padStart(2, "0")
-                  ] }) }),
-                  /* @__PURE__ */ u3("div", { className: "rpz-paper-center-body", children: [
-                    phase === "shaking" && /* @__PURE__ */ u3("div", { className: "rpz-paper-stage-msg", children: "\u{1FAE8} \uC0C1\uC790 \uB0B4\uBD80\uC5D0\uC11C \uC81C\uBE44\uB97C \uC11E\uB294 \uC911..." }),
-                    phase === "extracting" && /* @__PURE__ */ u3("div", { className: "rpz-paper-stage-msg", children: [
-                      "\u2709\uFE0F \uC811\uD78C \uC81C\uBE44(#",
-                      currentTicket.serialNumber,
-                      ")\uB97C \uC0C1\uC790 \uBC16\uC73C\uB85C \uAEBC\uB0C8\uC2B5\uB2C8\uB2E4!"
-                    ] }),
-                    phase === "unfolding" && /* @__PURE__ */ u3("div", { className: "rpz-paper-stage-msg", children: "\u{1F4DC} \uC811\uD78C \uC885\uC774\uB97C \uD3BC\uCE58\uB294 \uC911..." }),
-                    phase === "revealed" && /* @__PURE__ */ u3("div", { className: "rpz-paper-revealed-content", "data-testid": "box-revealed-result", children: [
-                      /* @__PURE__ */ u3("span", { className: "rpz-paper-serial", children: [
-                        "\uC81C\uBE44 \uBC88\uD638 #",
-                        currentTicket.serialNumber
-                      ] }),
-                      /* @__PURE__ */ u3("strong", { className: "rpz-paper-result-text", children: currentTicket.label }),
-                      /* @__PURE__ */ u3("span", { className: "rpz-paper-stamp", children: currentTicket.isHighlight ? "\uB2F9\uCCA8 \uD655\uC815" : "\uD655\uC778 \uC644\uB8CC" })
-                    ] })
-                  ] }),
-                  /* @__PURE__ */ u3("div", { className: "rpz-paper-bottom-flap", children: /* @__PURE__ */ u3("span", { children: preventDuplicates ? `\uC911\uBCF5 \uCD94\uCCA8 \uBC29\uC9C0 \uC801\uC6A9\uB428 \xB7 \uB0A8\uC740 \uC81C\uBE44 ${remainingTickets.length}\uC7A5` : "\uBCF5\uC6D0 \uCD94\uCD9C \uBAA8\uB4DC" }) })
-                ]
-              }
-            ) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-ticket-pool-strip", "data-testid": "box-pool-strip", children: [
-            /* @__PURE__ */ u3("div", { className: "rpz-pool-header", children: /* @__PURE__ */ u3("strong", { children: [
-              "\uC0C1\uC790 \uC18D \uC81C\uBE44 \uD604\uD669 (",
-              remainingTickets.length,
-              "\uC7A5 \uB0A8\uC74C / ",
-              drawnTicketIds.length,
-              "\uC7A5 \uBF51\uD798)"
-            ] }) }),
-            /* @__PURE__ */ u3("div", { className: "rpz-pool-chips", children: allTickets.map((t3) => {
-              const isDrawn = preventDuplicates && drawnSet.has(t3.id);
-              return /* @__PURE__ */ u3(
-                "span",
-                {
-                  className: `rpz-slip-badge ${isDrawn ? "drawn" : "inside"}`,
-                  title: isDrawn ? `\uC774\uBBF8 \uBF51\uD798: ${t3.label}` : "\uC0C1\uC790 \uC548\uC5D0 \uB4E4\uC5B4\uC788\uB294 \uBBF8\uCD94\uCCA8 \uC81C\uBE44",
-                  children: [
-                    "#",
-                    t3.serialNumber,
-                    " ",
-                    isDrawn ? `(${t3.label.slice(0, 10)})` : "\uC811\uD78C \uC81C\uBE44"
-                  ]
-                },
-                t3.id
-              );
-            }) })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3("aside", { className: "rpz-sidebar-panel", children: [
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: "1. \uC81C\uBE44 \uD504\uB9AC\uC14B \uC120\uD0DD" }),
-            /* @__PURE__ */ u3("div", { className: "rpz-preset-col", children: Object.entries(PRESET_MODES).map(([key, item]) => /* @__PURE__ */ u3(
-              "button",
-              {
-                type: "button",
-                className: `rpz-preset-btn ${presetKey === key ? "active" : ""}`,
-                disabled: phase === "shaking" || phase === "extracting" || phase === "unfolding",
-                onClick: () => handleApplyPreset(key),
-                children: item.label
-              },
-              key
-            )) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: [
-              "2. \uC0C1\uC790 \uC18D \uC81C\uBE44 \uBAA9\uB85D \uD3B8\uC9D1 (",
-              allTickets.length,
-              "\uC7A5)"
-            ] }),
-            /* @__PURE__ */ u3(
-              "textarea",
-              {
-                className: "rpz-textarea",
-                rows: 6,
-                value: ticketsInput,
-                disabled: phase === "shaking" || phase === "extracting" || phase === "unfolding",
-                onChange: (e3) => {
-                  setTicketsInput(e3.target.value);
-                  setDrawnTicketIds([]);
-                  setCurrentTicket(null);
-                  setPhase("idle");
-                },
-                placeholder: "\uD55C \uC904\uC5D0 \uC81C\uBE44 \uD55C \uC7A5\uC529 \uB0B4\uC6A9\uC744 \uC785\uB825\uD558\uC138\uC694",
-                "data-testid": "box-tickets-textarea"
-              }
-            ),
-            /* @__PURE__ */ u3("small", { className: "rpz-hint", children: "\uD55C \uC904\uC774 \uC811\uD78C \uC885\uC774 \uC81C\uBE44 1\uC7A5\uC774 \uB429\uB2C8\uB2E4. \uCD94\uCCA8 \uC911\uC5D0\uB294 \uBF51\uD78C \uC81C\uBE44\uAC00 \uC0C1\uC790\uC5D0\uC11C \uC81C\uAC70\uB418\uC5B4 \uC911\uBCF5 \uB2F9\uCCA8\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4." })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
-            /* @__PURE__ */ u3("h3", { children: [
-              "3. \uBF51\uC740 \uC81C\uBE44 \uAE30\uB85D (",
-              history.length,
-              ")"
-            ] }),
-            history.length === 0 ? /* @__PURE__ */ u3("p", { className: "rpz-empty", children: "\uC544\uC9C1 \uBF51\uC740 \uC81C\uBE44\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." }) : /* @__PURE__ */ u3("ul", { className: "rpz-history-list", "data-testid": "box-history-list", children: history.map((item) => /* @__PURE__ */ u3("li", { children: [
-              /* @__PURE__ */ u3("div", { className: "rpz-history-head", children: [
-                /* @__PURE__ */ u3("strong", { children: [
-                  "\uC81C\uBE44 #",
-                  item.serialNumber,
-                  ": ",
-                  item.label
-                ] }),
-                /* @__PURE__ */ u3("small", { children: item.time })
-              ] }),
-              /* @__PURE__ */ u3("small", { children: [
-                "\uCD94\uCCA8 \uD6C4 \uC0C1\uC790 \uC794\uC5EC: ",
-                item.remainingAfter,
-                "\uC7A5"
-              ] })
-            ] }, item.id)) })
-          ] }),
-          /* @__PURE__ */ u3("div", { className: "rpz-license-box", children: /* @__PURE__ */ u3("small", { children: [
-            /* @__PURE__ */ u3("strong", { children: "\uC624\uD508\uC18C\uC2A4 \uB77C\uC774\uC120\uC2A4 \uACE0\uC9C0:" }),
-            " \uBE44\uC911\uBCF5 \uC81C\uBE44 \uD480 \uC0C1\uD0DC \uAD6C\uC870 ",
-            /* @__PURE__ */ u3("code", { children: "hongjiapeng/lottery-draw" }),
-            " (MIT License, Copyright \xA9 2025 hongjiapeng) \uCC38\uACE0 \xB7 6\uBA74 \uC785\uCCB4 CSS 3D \uC81C\uBE44\uC0C1\uC790, \uD754\uB4E4\uAE30, \uC885\uC774 \uCD94\uCD9C \uBC0F 3\uB2E8 \uD3BC\uCE68 \uC5F0\uCD9C \uC790\uCCB4 \uC81C\uC791."
-          ] }) })
-        ] })
-      ] })
-    ] });
-  }
-
-  // tool-box/src/features/game-box/draw/DrawPack.js
-  function MarbleDisplay() {
-    return /* @__PURE__ */ u3("svg", { className: "gb-marble-display", viewBox: "0 0 860 480", role: "img", "aria-label": "\uB9C8\uBE14 \uB8F0\uB81B \uC2E4\uC81C \uAC8C\uC784 \uD654\uBA74 \uAE30\uBC18 \uB808\uC774\uC2A4 \uBBF8\uB9AC\uBCF4\uAE30", children: [
-      /* @__PURE__ */ u3("defs", { children: [
-        /* @__PURE__ */ u3("filter", { id: "neon-glow", x: "-40%", y: "-40%", width: "180%", height: "180%", children: [
-          /* @__PURE__ */ u3("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "5", result: "blur1" }),
-          /* @__PURE__ */ u3("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "2", result: "blur2" }),
-          /* @__PURE__ */ u3("feMerge", { children: [
-            /* @__PURE__ */ u3("feMergeNode", { in: "blur1" }),
-            /* @__PURE__ */ u3("feMergeNode", { in: "blur2" }),
-            /* @__PURE__ */ u3("feMergeNode", { in: "SourceGraphic" })
-          ] })
-        ] }),
-        /* @__PURE__ */ u3("filter", { id: "wall-glow", x: "-20%", y: "-20%", width: "140%", height: "140%", children: [
-          /* @__PURE__ */ u3("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "2.5", result: "blur" }),
-          /* @__PURE__ */ u3("feMerge", { children: [
-            /* @__PURE__ */ u3("feMergeNode", { in: "blur" }),
-            /* @__PURE__ */ u3("feMergeNode", { in: "SourceGraphic" })
-          ] })
-        ] })
-      ] }),
-      /* @__PURE__ */ u3("rect", { width: "860", height: "480", fill: "#000000" }),
-      /* @__PURE__ */ u3("g", { children: [
-        /* @__PURE__ */ u3("rect", { x: "0", y: "0", width: "124", height: "480", fill: "#282828" }),
-        /* @__PURE__ */ u3(
-          "path",
-          {
-            d: "M60 0 L60 22 L36 55 L36 90 L68 125 L68 160 L28 200 L28 245 L60 285 L60 355 L42 405 L42 480",
-            fill: "none",
-            stroke: "#666666",
-            strokeWidth: "2.5"
-          }
-        ),
-        /* @__PURE__ */ u3(
-          "path",
-          {
-            d: "M12 0 L12 30 L68 70 L68 105 L35 140 L35 178 L78 225 L78 268 L45 308 L45 375 L66 422 L66 480",
-            fill: "none",
-            stroke: "#ffffff",
-            strokeWidth: "1.6"
-          }
-        ),
-        /* @__PURE__ */ u3(
-          "path",
-          {
-            d: "M106 0 L106 35 L52 75 L92 120 L92 168 L46 215 L106 272 L106 480",
-            fill: "none",
-            stroke: "#ffffff",
-            strokeWidth: "1.6"
-          }
-        ),
-        /* @__PURE__ */ u3("circle", { cx: "56", cy: "115", r: "1.5", fill: "#80d8ff" }),
-        /* @__PURE__ */ u3("circle", { cx: "68", cy: "115", r: "1.5", fill: "#80d8ff" }),
-        /* @__PURE__ */ u3("circle", { cx: "80", cy: "115", r: "1.5", fill: "#80d8ff" }),
-        /* @__PURE__ */ u3("circle", { cx: "56", cy: "125", r: "1.5", fill: "#80d8ff" }),
-        /* @__PURE__ */ u3("circle", { cx: "68", cy: "125", r: "1.5", fill: "#80d8ff" }),
-        /* @__PURE__ */ u3("circle", { cx: "80", cy: "125", r: "1.5", fill: "#80d8ff" }),
-        /* @__PURE__ */ u3("circle", { cx: "48", cy: "415", r: "1.5", fill: "#80d8ff" }),
-        /* @__PURE__ */ u3("circle", { cx: "60", cy: "415", r: "1.5", fill: "#80d8ff" }),
-        /* @__PURE__ */ u3("circle", { cx: "72", cy: "415", r: "1.5", fill: "#80d8ff" }),
-        /* @__PURE__ */ u3("circle", { cx: "48", cy: "110", r: "3.2", fill: "#ffd54f" }),
-        /* @__PURE__ */ u3("circle", { cx: "54", cy: "250", r: "3.2", fill: "#00e5ff" }),
-        /* @__PURE__ */ u3("circle", { cx: "70", cy: "275", r: "3.2", fill: "#ba68c8" }),
-        /* @__PURE__ */ u3("rect", { x: "6", y: "262", width: "112", height: "70", fill: "rgba(255, 255, 255, 0.04)", stroke: "rgba(255, 255, 255, 0.45)", strokeWidth: "1.2" }),
-        /* @__PURE__ */ u3("path", { d: "M42 278 l6 4 m6 -4 l6 4 m6 -4 l6 4", stroke: "#00f3ff", strokeWidth: "1.5", strokeLinecap: "round" }),
-        /* @__PURE__ */ u3("path", { d: "M42 292 l-6 4 m-6 -4 l-6 4 m-6 -4 l-6 4", stroke: "#00f3ff", strokeWidth: "1.5", strokeLinecap: "round" }),
-        /* @__PURE__ */ u3("circle", { cx: "70", cy: "278", r: "2.8", fill: "#ff4081" }),
-        /* @__PURE__ */ u3("circle", { cx: "82", cy: "285", r: "2.8", fill: "#69f0ae" }),
-        /* @__PURE__ */ u3("circle", { cx: "52", cy: "320", r: "2.8", fill: "#ff5252" })
-      ] }),
-      /* @__PURE__ */ u3("path", { d: "M218 -5 L244 26 L218 62 L218 485", fill: "none", stroke: "#ffffff", strokeWidth: "5.5", strokeLinecap: "round", filter: "url(#wall-glow)" }),
-      /* @__PURE__ */ u3("path", { d: "M682 -5 L656 26 L682 62 L682 485", fill: "none", stroke: "#ffffff", strokeWidth: "5.5", strokeLinecap: "round", filter: "url(#wall-glow)" }),
-      /* @__PURE__ */ u3("g", { filter: "url(#neon-glow)", children: [
-        /* @__PURE__ */ u3("rect", { x: "256", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 262 112)" }),
-        /* @__PURE__ */ u3("rect", { x: "306", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 312 112)" }),
-        /* @__PURE__ */ u3("rect", { x: "356", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 362 112)" }),
-        /* @__PURE__ */ u3("rect", { x: "406", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 412 112)" }),
-        /* @__PURE__ */ u3("rect", { x: "456", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 462 112)" }),
-        /* @__PURE__ */ u3("rect", { x: "506", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 512 112)" }),
-        /* @__PURE__ */ u3("rect", { x: "556", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 562 112)" }),
-        /* @__PURE__ */ u3("rect", { x: "256", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 262 202)" }),
-        /* @__PURE__ */ u3("rect", { x: "306", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 312 202)" }),
-        /* @__PURE__ */ u3("rect", { x: "356", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 362 202)" }),
-        /* @__PURE__ */ u3("rect", { x: "406", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 412 202)" }),
-        /* @__PURE__ */ u3("rect", { x: "456", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 462 202)" }),
-        /* @__PURE__ */ u3("rect", { x: "506", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 512 202)" }),
-        /* @__PURE__ */ u3("rect", { x: "556", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 562 202)" }),
-        /* @__PURE__ */ u3("rect", { x: "195", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(-20 202 415)" }),
-        /* @__PURE__ */ u3("rect", { x: "330", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(20 337 415)" }),
-        /* @__PURE__ */ u3("rect", { x: "430", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(-20 437 415)" }),
-        /* @__PURE__ */ u3("rect", { x: "565", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(20 572 415)" })
-      ] }),
-      /* @__PURE__ */ u3("g", { children: [
-        /* @__PURE__ */ u3("circle", { cx: "478", cy: "85", r: "11", fill: "#ff4081" }),
-        /* @__PURE__ */ u3("circle", { cx: "475", cy: "82", r: "3.5", fill: "#ffffff", opacity: "0.6" }),
-        /* @__PURE__ */ u3(
-          "text",
-          {
-            x: "478",
-            y: "112",
-            textAnchor: "middle",
-            fill: "#ff4081",
-            fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif",
-            fontSize: "13.5",
-            fontWeight: "900",
-            children: "\uD0A4\uC704"
-          }
-        )
-      ] }),
-      /* @__PURE__ */ u3("g", { children: [
-        /* @__PURE__ */ u3("circle", { cx: "538", cy: "140", r: "15", fill: "none", stroke: "#ff1744", strokeWidth: "2.2" }),
-        /* @__PURE__ */ u3("circle", { cx: "538", cy: "140", r: "11", fill: "#69f0ae" }),
-        /* @__PURE__ */ u3("circle", { cx: "535", cy: "137", r: "3.5", fill: "#ffffff", opacity: "0.6" }),
-        /* @__PURE__ */ u3(
-          "text",
-          {
-            x: "538",
-            y: "170",
-            textAnchor: "middle",
-            fill: "#69f0ae",
-            fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif",
-            fontSize: "13.5",
-            fontWeight: "900",
-            children: "\uADE4"
-          }
-        )
-      ] }),
-      /* @__PURE__ */ u3("g", { children: [
-        /* @__PURE__ */ u3("circle", { cx: "282", cy: "410", r: "15", fill: "none", stroke: "#ff1744", strokeWidth: "2.2" }),
-        /* @__PURE__ */ u3("circle", { cx: "282", cy: "410", r: "11", fill: "#ff5252" }),
-        /* @__PURE__ */ u3("circle", { cx: "279", cy: "407", r: "3.5", fill: "#ffffff", opacity: "0.6" }),
-        /* @__PURE__ */ u3(
-          "text",
-          {
-            x: "282",
-            y: "440",
-            textAnchor: "middle",
-            fill: "#ff5252",
-            fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif",
-            fontSize: "13.5",
-            fontWeight: "900",
-            children: "\uD0A4\uC704"
-          }
-        )
-      ] }),
-      /* @__PURE__ */ u3("g", { textAnchor: "end", fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif", fontSize: "14", fontWeight: "800", children: [
-        /* @__PURE__ */ u3("text", { x: "842", y: "22", fill: "#ff4081", children: "\uD0A4\uC704 #1" }),
-        /* @__PURE__ */ u3("text", { x: "842", y: "44", fill: "#69f0ae", children: "\uADE4 #2" }),
-        /* @__PURE__ */ u3("text", { x: "842", y: "66", fill: "#ff4081", children: "\uD0A4\uC704 #3" }),
-        /* @__PURE__ */ u3("text", { x: "842", y: "88", fill: "#00e5ff", children: "\uC218\uBC15 #4" }),
-        /* @__PURE__ */ u3("text", { x: "842", y: "110", fill: "#ffd740", children: "\uADE4 #5" }),
-        /* @__PURE__ */ u3("text", { x: "842", y: "132", fill: "#ba68c8", children: "\uC218\uBC15 #6" })
-      ] })
-    ] });
-  }
-  function TicketArtwork({ gameId }) {
-    if (gameId === "roulette") {
-      return /* @__PURE__ */ u3(MarbleDisplay, {});
-    }
-    if (gameId === "bomb-ladder") {
-      return /* @__PURE__ */ u3("svg", { className: "rpz-preview-svg", viewBox: "0 0 260 170", "aria-hidden": "true", children: [
-        /* @__PURE__ */ u3("rect", { width: "260", height: "170", rx: "8", fill: "#0f172a" }),
-        /* @__PURE__ */ u3("line", { x1: "45", y1: "24", x2: "45", y2: "146", stroke: "#475569", strokeWidth: "4" }),
-        /* @__PURE__ */ u3("line", { x1: "105", y1: "24", x2: "105", y2: "146", stroke: "#475569", strokeWidth: "4" }),
-        /* @__PURE__ */ u3("line", { x1: "165", y1: "24", x2: "165", y2: "146", stroke: "#475569", strokeWidth: "4" }),
-        /* @__PURE__ */ u3("line", { x1: "215", y1: "24", x2: "215", y2: "146", stroke: "#475569", strokeWidth: "4" }),
-        /* @__PURE__ */ u3("line", { x1: "45", y1: "55", x2: "105", y2: "55", stroke: "#94a3b8", strokeWidth: "3.5" }),
-        /* @__PURE__ */ u3("line", { x1: "165", y1: "68", x2: "215", y2: "68", stroke: "#94a3b8", strokeWidth: "3.5" }),
-        /* @__PURE__ */ u3("line", { x1: "105", y1: "96", x2: "165", y2: "96", stroke: "#94a3b8", strokeWidth: "3.5" }),
-        /* @__PURE__ */ u3("line", { x1: "45", y1: "118", x2: "105", y2: "118", stroke: "#94a3b8", strokeWidth: "3.5" }),
-        /* @__PURE__ */ u3("path", { d: "M45 24 L45 55 L105 55 L105 96 L165 96 L165 146", fill: "none", stroke: "#f43f5e", strokeWidth: "4.5" }),
-        /* @__PURE__ */ u3("path", { d: "M215 24 L215 68 L165 68 L165 96 L105 96 L105 118 L45 118 L45 146", fill: "none", stroke: "#38bdf8", strokeWidth: "4" }),
-        /* @__PURE__ */ u3("circle", { cx: "165", cy: "146", r: "14", fill: "#ef4444" }),
-        /* @__PURE__ */ u3("text", { x: "165", y: "151", textAnchor: "middle", fill: "#fff", fontSize: "14", children: "\u{1F4A3}" })
-      ] });
-    }
-    if (gameId === "lotto-645") {
-      return /* @__PURE__ */ u3("svg", { className: "rpz-preview-svg", viewBox: "0 0 260 170", "aria-hidden": "true", children: [
-        /* @__PURE__ */ u3("rect", { width: "260", height: "170", rx: "8", fill: "#080c14" }),
-        /* @__PURE__ */ u3("circle", { cx: "115", cy: "76", r: "54", fill: "rgba(56, 189, 248, 0.12)", stroke: "#38bdf8", strokeWidth: "2.5" }),
-        /* @__PURE__ */ u3("path", { d: "M115 22 Q195 22 205 142", fill: "none", stroke: "#38bdf8", strokeWidth: "8", strokeOpacity: "0.35" }),
-        /* @__PURE__ */ u3("circle", { cx: "94", cy: "68", r: "13", fill: "#eab308" }),
-        /* @__PURE__ */ u3("text", { x: "94", y: "72", textAnchor: "middle", fill: "#0f172a", fontSize: "11", fontWeight: "900", children: "3" }),
-        /* @__PURE__ */ u3("circle", { cx: "115", cy: "36", r: "13", fill: "#3b82f6" }),
-        /* @__PURE__ */ u3("text", { x: "115", y: "40", textAnchor: "middle", fill: "#fff", fontSize: "11", fontWeight: "900", children: "17" }),
-        /* @__PURE__ */ u3("circle", { cx: "112", cy: "96", r: "13", fill: "#ef4444" }),
-        /* @__PURE__ */ u3("text", { x: "112", y: "100", textAnchor: "middle", fill: "#fff", fontSize: "11", fontWeight: "900", children: "29" }),
-        /* @__PURE__ */ u3("circle", { cx: "142", cy: "86", r: "12", fill: "#22c55e" }),
-        /* @__PURE__ */ u3("text", { x: "142", y: "90", textAnchor: "middle", fill: "#fff", fontSize: "10", fontWeight: "900", children: "45" })
-      ] });
-    }
-    if (gameId === "team-draft") {
-      return /* @__PURE__ */ u3("svg", { className: "rpz-preview-svg", viewBox: "0 0 260 170", "aria-hidden": "true", children: [
-        /* @__PURE__ */ u3("rect", { width: "260", height: "170", rx: "8", fill: "#0f172a" }),
-        /* @__PURE__ */ u3("rect", { x: "16", y: "20", width: "108", height: "130", rx: "8", fill: "rgba(56, 189, 248, 0.14)", stroke: "#38bdf8", strokeWidth: "2" }),
-        /* @__PURE__ */ u3("text", { x: "70", y: "44", textAnchor: "middle", fill: "#38bdf8", fontSize: "13", fontWeight: "900", children: "TEAM ALPHA" }),
-        /* @__PURE__ */ u3("rect", { x: "28", y: "58", width: "84", height: "22", rx: "4", fill: "#1e293b" }),
-        /* @__PURE__ */ u3("rect", { x: "28", y: "88", width: "84", height: "22", rx: "4", fill: "#1e293b" }),
-        /* @__PURE__ */ u3("rect", { x: "136", y: "20", width: "108", height: "130", rx: "8", fill: "rgba(34, 197, 94, 0.14)", stroke: "#22c55e", strokeWidth: "2" }),
-        /* @__PURE__ */ u3("text", { x: "190", y: "44", textAnchor: "middle", fill: "#22c55e", fontSize: "13", fontWeight: "900", children: "TEAM BRAVO" }),
-        /* @__PURE__ */ u3("rect", { x: "148", y: "58", width: "84", height: "22", rx: "4", fill: "#1e293b" }),
-        /* @__PURE__ */ u3("rect", { x: "148", y: "88", width: "84", height: "22", rx: "4", fill: "#1e293b" })
-      ] });
-    }
-    if (gameId === "chaos-wheel") {
-      return /* @__PURE__ */ u3("svg", { className: "rpz-preview-svg", viewBox: "0 0 260 170", "aria-hidden": "true", children: [
-        /* @__PURE__ */ u3("rect", { width: "260", height: "170", rx: "8", fill: "#090d16" }),
-        /* @__PURE__ */ u3("circle", { cx: "130", cy: "88", r: "60", fill: "#1e1b4b", stroke: "#a855f7", strokeWidth: "3" }),
-        /* @__PURE__ */ u3("path", { d: "M130 88 L130 28 A60 60 0 0 1 182 58 Z", fill: "#f43f5e" }),
-        /* @__PURE__ */ u3("path", { d: "M130 88 L182 58 A60 60 0 0 1 182 118 Z", fill: "#f59e0b" }),
-        /* @__PURE__ */ u3("path", { d: "M130 88 L182 118 A60 60 0 0 1 130 148 Z", fill: "#22c55e" }),
-        /* @__PURE__ */ u3("path", { d: "M130 88 L130 148 A60 60 0 0 1 78 118 Z", fill: "#38bdf8" }),
-        /* @__PURE__ */ u3("path", { d: "M130 88 L78 118 A60 60 0 0 1 78 58 Z", fill: "#a855f7" }),
-        /* @__PURE__ */ u3("path", { d: "M130 88 L78 58 A60 60 0 0 1 130 28 Z", fill: "#ec4899" }),
-        /* @__PURE__ */ u3("circle", { cx: "130", cy: "88", r: "15", fill: "#0f172a", stroke: "#fff", strokeWidth: "2.5" }),
-        /* @__PURE__ */ u3("polygon", { points: "130,26 122,12 138,12", fill: "#facc15" })
-      ] });
-    }
-    return /* @__PURE__ */ u3("svg", { className: "rpz-preview-svg", viewBox: "0 0 260 170", "aria-hidden": "true", children: [
-      /* @__PURE__ */ u3("rect", { width: "260", height: "170", rx: "8", fill: "#111029" }),
-      /* @__PURE__ */ u3("rect", { x: "85", y: "66", width: "90", height: "78", rx: "8", fill: "#312e81", stroke: "#f59e0b", strokeWidth: "2.5" }),
-      /* @__PURE__ */ u3("rect", { x: "98", y: "24", width: "64", height: "46", rx: "5", fill: "#fef3c7", stroke: "#d97706", strokeWidth: "2" }),
-      /* @__PURE__ */ u3("text", { x: "130", y: "51", textAnchor: "middle", fill: "#78350f", fontSize: "12", fontWeight: "900", children: "\uC81C\uBE44 #01" }),
-      /* @__PURE__ */ u3("text", { x: "130", y: "114", textAnchor: "middle", fill: "#fff", fontSize: "26", children: "\u{1F381}" })
-    ] });
-  }
-  function getInitialGameFromUrl() {
-    if (typeof window === "undefined") return null;
-    const params = new URLSearchParams(window.location.search);
-    const g4 = params.get("game");
-    if (g4 && DRAW_GAMES.some((item) => item.id === g4)) {
-      return g4;
-    }
-    return null;
-  }
-  function DrawPack() {
-    const [activeId, setActiveId] = d2(() => getInitialGameFromUrl());
-    h2(() => {
-      if (typeof window === "undefined") return void 0;
-      const onPopState = () => {
-        setActiveId(getInitialGameFromUrl());
-      };
-      window.addEventListener("popstate", onPopState);
-      return () => window.removeEventListener("popstate", onPopState);
-    }, []);
-    const selectGame = (gameId) => {
-      setActiveId(gameId);
-      if (typeof window !== "undefined") {
-        const url = new URL(window.location.href);
-        if (gameId) {
-          url.searchParams.set("game", gameId);
-        } else {
-          url.searchParams.delete("game");
-        }
-        window.history.pushState({}, "", url.pathname + url.search);
-      }
-    };
-    const activeGame = DRAW_GAMES.find((game) => game.id === activeId);
-    if (activeId === "roulette" && activeGame) {
-      return /* @__PURE__ */ u3("main", { className: "gb-draw-stage", children: /* @__PURE__ */ u3(
-        GameLauncher,
-        {
-          title: activeGame.name,
-          src: activeGame.launchUrl,
-          aspectRatio: activeGame.aspectRatio,
-          onClose: () => selectGame(null)
-        }
-      ) });
-    }
-    if (activeId === "bomb-ladder") {
-      return /* @__PURE__ */ u3(BombLadderGame, { onBack: () => selectGame(null) });
-    }
-    if (activeId === "lotto-645") {
-      return /* @__PURE__ */ u3(Lotto3DGame, { onBack: () => selectGame(null) });
-    }
-    if (activeId === "team-draft") {
-      return /* @__PURE__ */ u3(TeamDraftGame, { onBack: () => selectGame(null) });
-    }
-    if (activeId === "chaos-wheel") {
-      return /* @__PURE__ */ u3(ChaosWheelGame, { onBack: () => selectGame(null) });
-    }
-    if (activeId === "mystery-box") {
-      return /* @__PURE__ */ u3(MysteryBoxGame, { onBack: () => selectGame(null) });
-    }
-    return /* @__PURE__ */ u3("main", { className: "rpz-hub-board", "data-testid": "random-play-zone-hub", children: [
-      /* @__PURE__ */ u3("header", { className: "rpz-hub-header", children: [
-        /* @__PURE__ */ u3("div", { children: [
-          /* @__PURE__ */ u3("span", { className: "rpz-hub-kicker", children: "GAMEBOX \xB7 DRAW PACK & RANDOM PLAY ZONE" }),
-          /* @__PURE__ */ u3("h1", { children: "\uCD94\uCCA8 \uAC8C\uC784 \u2014 \uC624\uB9AC\uC9C0\uB110 \uB9C8\uBE14 \uB8F0\uB81B & \uBBF8\uB2C8\uAC8C\uC784 6\uC885" }),
-          /* @__PURE__ */ u3("p", { children: "\uBAA8\uB450\uAC00 \uC9C0\uCF1C\uBCF4\uB294 \uAC00\uC6B4\uB370 \uC624\uB298\uC758 \uC8FC\uC778\uACF5\uC744 \uBF51\uC544\uBCF4\uC138\uC694. \uAD6C\uC2AC \uB808\uC774\uC2A4\uBD80\uD130 \uD3ED\uD0C4 \uC0AC\uB2E4\uB9AC, \uC2E4\uC81C 3D \uB85C\uB610, \uD300 \uB4DC\uB798\uD504\uD2B8, \uCE74\uC624\uC2A4 \uB8F0\uB81B, 3D \uC81C\uBE44\uC0C1\uC790\uAE4C\uC9C0 \uBAA8\uB450 \uC990\uAE38 \uC218 \uC788\uC2B5\uB2C8\uB2E4." })
-        ] }),
-        /* @__PURE__ */ u3("div", { className: "rpz-hub-quick-tabs", role: "navigation", "aria-label": "\uCD94\uCCA8 \uBBF8\uB2C8\uAC8C\uC784 \uBC14\uB85C\uAC00\uAE30", children: DRAW_GAMES.map((g4, idx) => /* @__PURE__ */ u3(
-          "button",
-          {
-            type: "button",
-            className: "rpz-hub-pill",
-            "data-testid": `rpz-quick-tab-${g4.id}`,
-            onClick: () => selectGame(g4.id),
-            children: [
-              /* @__PURE__ */ u3("span", { children: [
-                "0",
-                idx + 1,
-                ". ",
-                g4.icon
-              ] }),
-              " ",
-              /* @__PURE__ */ u3("strong", { children: g4.shortName })
-            ]
-          },
-          g4.id
-        )) })
-      ] }),
-      /* @__PURE__ */ u3("div", { className: "rpz-tickets-grid", children: DRAW_GAMES.map((game) => /* @__PURE__ */ u3(
-        "button",
-        {
-          type: "button",
-          className: `rpz-game-ticket ${game.id === "roulette" ? "rpz-ticket-featured" : ""}`,
-          "data-testid": `rpz-ticket-${game.id}`,
-          style: { "--ticket-accent": game.caseColor },
-          onClick: () => selectGame(game.id),
-          children: [
-            /* @__PURE__ */ u3("span", { className: "rpz-game-ticket-copy", children: [
-              /* @__PURE__ */ u3("span", { className: "rpz-ticket-top-meta", children: [
-                /* @__PURE__ */ u3("span", { className: "rpz-ticket-genre", children: game.genre }),
-                /* @__PURE__ */ u3("span", { className: "rpz-ticket-players", children: game.playersLabel })
-              ] }),
-              /* @__PURE__ */ u3("span", { children: [
-                /* @__PURE__ */ u3("strong", { children: game.shortName }),
-                /* @__PURE__ */ u3("span", { className: "rpz-ticket-kor", children: game.koreanTitle })
-              ] }),
-              /* @__PURE__ */ u3("span", { className: "rpz-ticket-desc", children: game.description }),
-              /* @__PURE__ */ u3("span", { className: "rpz-ticket-footer", children: [
-                /* @__PURE__ */ u3("span", { className: "rpz-ticket-repo", children: [
-                  "OSS: ",
-                  game.sourceRepo,
-                  " (",
-                  game.license,
-                  ")"
-                ] }),
-                /* @__PURE__ */ u3("span", { className: "rpz-ticket-play-cta", children: [
-                  "\uAC8C\uC784 \uC5F4\uAE30 ",
-                  /* @__PURE__ */ u3("span", { "aria-hidden": "true", children: "\u2197" })
-                ] })
-              ] })
-            ] }),
-            /* @__PURE__ */ u3("span", { className: "rpz-game-ticket-art", "aria-hidden": "true", children: /* @__PURE__ */ u3(TicketArtwork, { gameId: game.id }) }),
-            /* @__PURE__ */ u3("span", { className: "gb-ticket-stub", "aria-hidden": "true", children: game.discLabel })
-          ]
-        },
-        game.id
-      )) })
-    ] });
-  }
-
-  // tool-box/src/features/game-box/GameBoxHome.js
-  var rooms = [
-    { id: "deck", title: "\uAC8C\uC784\uD329 \uB300\uC5EC\uC810", description: "\uC120\uBC18\uC5D0\uC11C \uAC8C\uC784\uD329\uC744 \uACE8\uB77C \uCF58\uC194\uC5D0 \uB514\uC2A4\uD06C\uB97C \uB123\uC5B4\uBCF4\uC138\uC694.", count: ARCADE_GAMES.length },
-    { id: "retro", title: "\uB808\uD2B8\uB85C PC\uBC29", description: "Windows 98\uC5D0\uC11C \uB2E4\uC2DC \uB9CC\uB098\uB294 \uCD94\uC5B5\uC758 \uAC8C\uC784.", count: RETRO_GAMES.length },
-    { id: "draw", title: "\uCD94\uCCA8 \uAC8C\uC784", description: "\uC624\uB298\uC758 \uC8FC\uC778\uACF5\uC744 \uBF51\uC544\uBCF4\uC138\uC694.", count: DRAW_GAMES.length }
-  ];
-  function GameBoxHome({ onNavigate }) {
-    return /* @__PURE__ */ u3("main", { className: "gb-lobby", children: [
-      /* @__PURE__ */ u3("div", { className: "gb-lobby-intro", children: [
-        /* @__PURE__ */ u3("h1", { children: [
-          "GAME",
-          /* @__PURE__ */ u3("span", { children: "BOX" })
-        ] }),
-        /* @__PURE__ */ u3("p", { children: "\uC624\uB298\uC740 \uC5B4\uB514\uC5D0\uC11C \uB180\uAE4C\uC694?" })
-      ] }),
-      /* @__PURE__ */ u3("div", { className: "gb-room-grid", children: rooms.map((room) => /* @__PURE__ */ u3(
-        "button",
-        {
-          type: "button",
-          className: `gb-room gb-room-${room.id}`,
-          onClick: () => onNavigate(`/game-box/${room.id}`),
-          children: [
-            /* @__PURE__ */ u3("span", { className: "gb-room-art", "aria-hidden": "true", children: [
-              room.id === "deck" && /* @__PURE__ */ u3("span", { className: "gb-lobby-cases", children: [ARCADE_GAMES[0], ARCADE_GAMES[2], ARCADE_GAMES[3]].map((game) => /* @__PURE__ */ u3("img", { src: getGameCaseCoverSrc(game), alt: "" }, game.id)) }),
-              room.id === "retro" && /* @__PURE__ */ u3("span", { className: "gb-lobby-monitor", style: { "--retro-preview": "url(/assets/win98-retro-desktop-preview.png)" }, children: /* @__PURE__ */ u3("span", {}) }),
-              room.id === "draw" && /* @__PURE__ */ u3(MarbleDisplay, {})
-            ] }),
-            /* @__PURE__ */ u3("span", { className: "gb-room-copy", children: [
-              /* @__PURE__ */ u3("span", { className: "gb-room-count", children: [
-                "\uAC8C\uC784 ",
-                room.count,
-                "\uAC1C"
-              ] }),
-              /* @__PURE__ */ u3("strong", { children: room.title }),
-              /* @__PURE__ */ u3("span", { children: room.description }),
-              /* @__PURE__ */ u3("span", { className: "gb-room-arrow", "aria-hidden": "true", children: "\u2197" })
-            ] })
-          ]
-        },
-        room.id
-      )) })
-    ] });
-  }
-
-  // tool-box/src/features/game-box/retro/RetroDesktop.js
-  function RetroDesktop({ onNavigate }) {
-    const { identity, openNicknameModal } = useGameIdentity();
-    const iframeRef = A2(null);
-    h2(() => {
-      const iframe = iframeRef.current;
-      if (!iframe || !iframe.contentWindow) return;
-      try {
-        iframe.contentWindow.postMessage(
-          {
-            source: "game-box-host",
-            type: "identity:sync",
-            payload: identity
-          },
-          window.location.origin
-        );
-      } catch {
-      }
-    }, [identity]);
-    const sendCommandToWin98 = (appId) => {
-      const cw = iframeRef.current?.contentWindow;
-      if (cw?.System?.launchApp) {
-        cw.System.launchApp(appId);
-        cw.focus();
-      }
-    };
-    return /* @__PURE__ */ u3("div", { className: "gb-retro-shell", children: /* @__PURE__ */ u3("div", { className: "gb-retro-viewport", children: /* @__PURE__ */ u3(
-      "iframe",
-      {
-        ref: iframeRef,
-        src: "/win98-web/",
-        title: "Windows 98 RETRO DESKTOP",
-        className: "gb-retro-iframe",
-        allow: "autoplay; fullscreen",
-        onLoad: () => {
-          try {
-            iframeRef.current?.contentWindow?.postMessage(
-              {
-                source: "game-box-host",
-                type: "identity:sync",
-                payload: identity
-              },
-              window.location.origin
-            );
-          } catch {
-          }
-        }
-      }
-    ) }) });
-  }
-
-  // tool-box/src/features/game-box/deck/gameDeckConfig.js
-  var GAME_DECK_CATEGORIES = Object.freeze([
-    { id: "all", label: "ALL GAMES (19)" },
-    { id: "ARCADE", label: "ACTION ARCADE (3)" },
-    { id: "PARTY", label: "PARTY GAMES (1)" },
-    { id: "SKILL", label: "PUZZLE & SKILL (15)" }
-  ]);
-  var SINGLE_BASE_ENGINE = Object.freeze({
-    name: "Channel 3 CRT TV & Retro Cartridge Architecture",
-    repo: "dau-in/channel-3",
-    license: "AGPL-3.0",
-    commit: "ab85fff7bcb97b69f9fb90c531cb357ba517e4c9",
-    copyright: "Copyright (c) 2024-2026, dau-in",
-    subLicenses: {
-      silkscreenFont: "OFL-1.1",
-      nesCss: "MIT",
-      peerjs: "MIT",
-      jsnes: "MIT / GPL-2.0"
-    },
-    unmodifiedLabEndpoint: "/game-box/deck-lab-single/",
-    vendorLocation: "vendor/channel-3/dist/",
-    adoptionScope: "\uB2E8\uC77C TV \uCF58\uC194 \uD504\uB808\uC784 \uBC0F \uBE0C\uB77C\uC6B4\uAD00(CRT) \uB798\uC2A4\uD130/\uAE00\uB85C\uC6B0 \uD30C\uC774\uD504\uB77C\uC778, \uCE74\uD2B8\uB9AC\uC9C0 \uAC70\uCE58 \uBC0F \uB799 \uC2DC\uC2A4\uD15C, \uC804\uC6D0 \uB9B4\uB808\uC774/\uBD80\uD2B8 \uC2DC\uD000\uC2A4, \uD1B5\uD569 iframe \uB7F0\uD0C0\uC784 \uD638\uC2A4\uD305"
-  });
-  var PORTED_3D_ENGINES = Object.freeze([
-    {
-      name: "PS2 Web 3D Console Engine",
-      repo: "brayanspagnol/ps2-web",
-      license: "BSD-2-Clause",
-      commit: "654114aed6b85aacb1b3e68793808b3eb3feca13",
-      copyright: "Copyright (c) 2026, Brayan Spagnol",
-      portedFiles: [
-        "public/js/console-scene.js",
-        "public/demo-console.html",
-        "LICENSE",
-        "CREDITS.md"
-      ],
-      adoptionScope: "Three.js \uAE30\uBC18 3D \uCF58\uC194 \uD558\uB4DC\uC6E8\uC5B4 \uBAA8\uB378, \uBAA8\uD130 \uD2B8\uB808\uC774 \uAD6C\uB3D9, \uB514\uC2A4\uD06C \uC0BD\uC785/\uBC30\uCD9C \uC560\uB2C8\uBA54\uC774\uC158, LED \uC804\uC6D0 \uC0C1\uD0DC, \uCE74\uBA54\uB77C \uC870\uC791"
-    },
-    {
-      name: "Finally 3D Game Cases Plugin",
-      repo: "otisabiburada/finally-3d-game-cases-plugin",
-      license: "BSD-3-Clause",
-      commit: "7e748d4bfad4e22ebccb318827724796bfeaf149",
-      copyright: "Copyright (c) 2026, SANSO",
-      portedFiles: [
-        "src/engine.ts",
-        "README.md",
-        "LICENSE"
-      ],
-      adoptionScope: "3D \uAC8C\uC784 \uCF00\uC774\uC2A4 \uC785\uCCB4 \uAE30\uD558\uD559, \uC2A4\uD30C\uC778/\uB450\uAED8/\uAD11\uD0DD/\uC2AC\uB9AC\uBE0C/\uADF8\uB9BC\uC790 \uB80C\uB354\uB9C1, Web Audio \uD569\uC131 \uD6A8\uACFC\uC74C, Web Animations API \uCF00\uC774\uC2A4 \uAC1C\uD3D0 \uBC0F \uB514\uC2A4\uD06C \uCD94\uCD9C \uC5F0\uCD9C"
-    }
-  ]);
-  function filterDeckGames(categoryFilter = "all", query = "") {
-    return ARCADE_GAMES.filter((game) => {
-      if (categoryFilter !== "all" && !game.genre.includes(categoryFilter)) {
-        return false;
-      }
-      if (query.trim()) {
-        const q4 = query.trim().toLowerCase();
-        return game.name.toLowerCase().includes(q4) || game.subtitle.toLowerCase().includes(q4) || game.genre.toLowerCase().includes(q4) || game.discLabel.toLowerCase().includes(q4);
-      }
-      return true;
-    });
-  }
-
-  // tool-box/src/features/game-box/deck/cases/FinallyCaseEngine.js
-  var PALETTE = {
-    black: { a: "#2c2f36", b: "#07080a", band: "#3b3f48", text: "#ffffff", line: "rgba(255,255,255,.22)" },
-    white: { a: "#ffffff", b: "#c9ccd3", band: "#e4e6ea", text: "#1d1f24", line: "rgba(0,0,0,.18)" },
-    red: { a: "#ff2a38", b: "#7d000a", band: "#e60012", text: "#ffffff", line: "rgba(255,255,255,.28)" },
-    blue: { a: "#2b86ff", b: "#05306e", band: "#0070d1", text: "#ffffff", line: "rgba(255,255,255,.28)" },
-    green: { a: "#34c24a", b: "#0b4a16", band: "#107c10", text: "#ffffff", line: "rgba(255,255,255,.28)" },
-    gold: { a: "#f6d365", b: "#8a6a10", band: "#d4a017", text: "#2a1d00", line: "rgba(255,255,255,.35)" },
-    purple: { a: "#a566ee", b: "#3a1566", band: "#7b2fbe", text: "#ffffff", line: "rgba(255,255,255,.28)" },
-    grey: { a: "#c3c7ce", b: "#555961", band: "#8d9199", text: "#101214", line: "rgba(255,255,255,.3)" },
-    ps1: { a: "#9a9da5", b: "#2b2d31", band: "#5b5e66", text: "#ffffff", line: "rgba(255,255,255,.25)" },
-    ps2: { a: "#2547c4", b: "#081552", band: "#0e2a8f", text: "#ffffff", line: "rgba(255,255,255,.25)" },
-    ps3: { a: "rgba(222,227,236,.55)", b: "rgba(118,124,138,.70)", band: "rgba(150,156,170,.75)", text: "#10151c", line: "rgba(255,255,255,.55)" },
-    ps4: { a: "#63bcff", b: "#1f7ae8", band: "#2f94ff", text: "#06203f", line: "rgba(255,255,255,.35)" },
-    ps5: { a: "#3a8fe8", b: "#0b4396", band: "#1560c4", text: "#ffffff", line: "rgba(255,255,255,.28)" },
-    psp: { a: "#34363c", b: "#08080a", band: "#16171a", text: "#ffffff", line: "rgba(255,255,255,.2)" },
-    xbox: { a: "#2e8b2e", b: "#0a380a", band: "#176b17", text: "#ffffff", line: "rgba(255,255,255,.25)" },
-    x360: { a: "#8ae857", b: "#35a81c", band: "#62d42e", text: "#0b2a05", line: "rgba(255,255,255,.4)" },
-    wee: { a: "#fbfcfe", b: "#b7c2cf", band: "#00b4e6", text: "#16202b", line: "rgba(0,0,0,.18)" },
-    wee2: { a: "#52d6ff", b: "#0a7ba8", band: "#00a9e0", text: "#042a3a", line: "rgba(255,255,255,.4)" },
-    dreamcast: { a: "#ffffff", b: "#c9ccd3", band: "#f26a21", text: "#1d1f24", line: "rgba(0,0,0,.18)" },
-    pc: { a: "#2a475e", b: "#0f1a24", band: "#66c0f4", text: "#ffffff", line: "rgba(255,255,255,.25)" },
-    sega: { a: "#30343c", b: "#050507", band: "#0060a8", text: "#ffffff", line: "rgba(255,255,255,.2)" }
-  };
-  var SHAPES = {
-    keepcase: { depth: 1, radius: 2, rim: 0 },
-    cartridge: { depth: 0.5, radius: 5, rim: 0 },
-    jewel: { depth: 0.45, radius: 1, rim: 3 },
-    bigbox: { depth: 2.4, radius: 0, rim: 0 }
-  };
-  var SLEEVE_R = { keepcase: 7, cartridge: 10, jewel: 2, bigbox: 2 };
-  var STYLE_SHAPE = { red: "cartridge", psp: "cartridge", ps1: "jewel", dreamcast: "jewel", pc: "bigbox" };
-  var SCUFF = "repeating-linear-gradient(118deg, rgba(255,255,255,.08) 0 1px, transparent 1px 19px)";
-  var WEAR_CSS = {
-    none: "linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0))",
-    sealed: "linear-gradient(115deg, rgba(255,255,255,.26) 0 7%, transparent 7% 30%, rgba(255,255,255,.16) 30% 33%, transparent 33%), radial-gradient(circle at 86% 91%, #ffd44d 0 4.5%, #b98a12 4.5% 6%, transparent 6.2%), repeating-linear-gradient(0deg, rgba(255,255,255,.06) 0 1px, transparent 1px 5px)",
-    light: `${SCUFF}, repeating-linear-gradient(62deg, rgba(0,0,0,.07) 0 1px, transparent 1px 27px)`,
-    worn: "radial-gradient(circle at 0% 0%, rgba(255,255,255,.38), transparent 14%), radial-gradient(circle at 100% 0%, rgba(255,255,255,.30), transparent 12%), radial-gradient(circle at 100% 100%, rgba(255,255,255,.34), transparent 15%), radial-gradient(circle at 0% 100%, rgba(255,255,255,.30), transparent 12%), repeating-linear-gradient(118deg, rgba(255,255,255,.14) 0 1px, transparent 1px 13px), repeating-linear-gradient(72deg, rgba(0,0,0,.14) 0 1px, transparent 1px 17px), linear-gradient(90deg, rgba(0,0,0,.18), transparent 12%, transparent 88%, rgba(0,0,0,.18))",
-    battered: "radial-gradient(circle at 0% 0%, rgba(255,255,255,.55), transparent 24%), radial-gradient(circle at 100% 0%, rgba(255,255,255,.5), transparent 22%), radial-gradient(circle at 100% 100%, rgba(255,255,255,.55), transparent 26%), radial-gradient(circle at 0% 100%, rgba(255,255,255,.5), transparent 22%), linear-gradient(100deg, transparent 49.6%, rgba(255,255,255,.4) 50%, transparent 50.5%), linear-gradient(0deg, rgba(70,45,20,.30), transparent 34%), repeating-linear-gradient(118deg, rgba(255,255,255,.2) 0 1px, transparent 1px 9px), repeating-linear-gradient(72deg, rgba(0,0,0,.2) 0 1px, transparent 1px 12px), repeating-linear-gradient(160deg, rgba(255,255,255,.12) 0 1px, transparent 1px 21px), linear-gradient(90deg, rgba(0,0,0,.34), transparent 18%, transparent 82%, rgba(0,0,0,.34))",
-    faded: "linear-gradient(180deg, rgba(255,238,200,.34), rgba(255,238,200,.12) 70%, rgba(255,238,200,.05)), linear-gradient(rgba(190,170,120,.12), rgba(190,170,120,.12))",
-    rental: `linear-gradient(90deg, #d33 0 12%, #f3f0e4 12% 100%) 7% 92% / 38% 5.5% no-repeat, ${SCUFF}`
-  };
-  var DEFAULT_CASE_SETTINGS = {
-    enabled: true,
-    angle: 32,
-    depth: 24,
-    color: "black",
-    gloss: true,
-    shadow: true,
-    band: true,
-    spineTitle: true,
-    float: true,
-    idleTilt: 0,
-    shape: "auto",
-    wear: "none",
-    shine: true,
-    sleeve: true,
-    pickup: true,
-    neighbors: true,
-    speed: "normal",
-    insertSound: true,
-    insertTarget: "auto"
-  };
-  function shapeFor(settings, styleId) {
-    if (settings && settings.shape && settings.shape !== "auto") return settings.shape;
-    return STYLE_SHAPE[styleId] || "keepcase";
-  }
-  function paletteFor(styleId) {
-    return PALETTE[styleId] || PALETTE.black;
-  }
-  function lookFor(game, customSettings = {}) {
-    const s3 = { ...DEFAULT_CASE_SETTINGS, ...customSettings };
-    const style = game.caseStyle || game.style || "black";
-    const pal = game.casePalette || paletteFor(style);
-    const shapeId = shapeFor(s3, style);
-    const base = SHAPES[shapeId] || SHAPES.keepcase;
-    const shape = s3.sleeve ? { ...base, radius: SLEEVE_R[shapeId] || base.radius } : base;
-    const depthPx = Math.max(4, Math.round(s3.depth * shape.depth));
-    const wear = game.wear || s3.wear || "none";
-    return {
-      style,
-      pal,
-      shapeId,
-      shape,
-      depthPx,
-      wear
-    };
-  }
-  function buildCss(s3 = DEFAULT_CASE_SETTINGS) {
-    const d3 = Math.round(s3.depth || 24);
-    const T4 = s3.speed === "calm" ? 0.8 : s3.speed === "snappy" ? 0.28 : 0.5;
-    const EASE = "cubic-bezier(.22,.8,.26,1)";
-    const A4 = s3.angle || 32;
-    const STATE = ":is(:hover, .gpfocus, .selected, :focus-within)";
-    const P4 = "[data-sanso-pop]";
-    const ACT = (inner, extra, st) => `${P4}${extra}${st}${inner}, .selected ${P4}${extra}${inner}`;
-    const ACTC = (inner, st) => `[data-sanso-pop]${st} [data-sanso-case]${inner}, [data-sanso-case][data-sanso-pop]${st}${inner}, .selected [data-sanso-case]${inner}`;
-    const ANG = `var(--c3d-ang, ${A4}deg)`;
-    const TR = `transform ${T4}s ${EASE}, rotate ${T4}s ${EASE}, translate ${T4}s ${EASE}, scale ${T4}s ${EASE}, box-shadow ${T4}s ${EASE}, transform-origin ${T4}s ${EASE}`;
-    const XF = (dx, dy, ang) => `perspective(1600px) translate3d(${dx}, ${dy}, 16px) rotateY(${ang})`;
-    const gloss = s3.gloss ? `linear-gradient(112deg, rgba(255,255,255,.36) 0%, rgba(255,255,255,.10) 15%, rgba(255,255,255,0) 32%, rgba(255,255,255,0) 60%, rgba(255,255,255,.12) 72%, rgba(255,255,255,0) 73.5%),
-       linear-gradient(180deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 22%),` : "";
-    const band = s3.band ? `linear-gradient(180deg, var(--c3d-band) 0, var(--c3d-band) 5.2%, rgba(0,0,0,.35) 5.2%, rgba(0,0,0,.35) calc(5.2% + 1px), transparent calc(5.2% + 1px)),` : "";
-    const idleShadow = s3.shadow ? `box-shadow: 4px 6px 12px rgba(0,0,0,.45) !important;` : "";
-    const popShadow = s3.shadow ? `box-shadow: ${Math.round(d3 * 1.1)}px ${Math.round(d3 * 1.5)}px 28px rgba(0,0,0,.65), ${Math.round(d3 * 0.3)}px ${Math.round(d3 * 0.4)}px 8px rgba(0,0,0,.4) !important;` : "";
-    const f4 = Math.min(1, Math.max(0.3, A4 / 32));
-    const x3 = (v3) => `${(v3 * f4).toFixed(1)}px`;
-    const floatKf = s3.float ? `@keyframes sanso-drift {
-  0%, 100% { translate: 0 0 -.4px; rotate: 0 1 0 0deg; }
-  25% { translate: ${x3(-1.5)} -1.5px -.4px; rotate: 0 1 0 ${(1.5 * f4).toFixed(2)}deg; }
-  50% { translate: 0 .5px -.4px; rotate: 0 1 0 0deg; }
-  75% { translate: ${x3(-1)} 1.5px -.4px; rotate: 0 1 0 ${(-1.2 * f4).toFixed(2)}deg; }
-}` : "";
-    const shine = s3.shine ? `
-[data-sanso-faces] > [data-f="shine"] {
-  top: 0; right: 0; bottom: 0; left: 0; transform: translateZ(2px); border-radius: var(--c3d-r, 2px);
-  background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.6) 50%, transparent 62%) 160% 0 / 260% 100% no-repeat;
-}
-@keyframes sanso-shine { from { background-position: 160% 0; } to { background-position: -60% 0; } }` : `[data-sanso-faces] > [data-f="shine"] { display: none; }`;
-    const activeRules = `
-${ACT("", ":not(img)", STATE)}, ${ACTC('[data-sanso-case="box"]', STATE)} { transform-style: preserve-3d !important; }
-${ACT("", "", STATE)} { transition: ${TR}, transform-style 0s linear 0s !important; }
-${ACTC('[data-sanso-case="box"] > img', STATE)} { translate: 0 0 .6px; transition: filter ${T4}s ${EASE}, translate 0s linear 0s; }
-${ACTC('[data-sanso-case="box"]::after', STATE)} { transform: translateZ(1px); transition: transform 0s linear 0s; }
-${ACT("", ":not([data-sanso-own])", STATE)} { rotate: 0 1 0 ${ANG}; translate: 0 8px 16px; transform-origin: 100% 50% !important; z-index: 12; opacity: 1 !important; }
-${ACT("", "[data-sanso-own]", STATE)} { transform: ${XF("0px", "8px", ANG)}; transform-origin: 100% 50% !important; z-index: 12; opacity: 1 !important; }
-${ACT("", ":not(img)", STATE)} { ${popShadow} }
-${s3.float ? `${ACTC(":not([data-sanso-pop])", STATE)} { animation: sanso-drift 6s ease-in-out ${(T4 + 0.05).toFixed(2)}s infinite; }` : ""}
-${ACTC('[data-sanso-case="box"] > img', STATE)} { filter: brightness(1.05); }
-${ACTC('[data-sanso-case="box"]', STATE)} { opacity: 1 !important; }
-${ACTC(" > [data-sanso-faces]", STATE)} { display: block !important; transition-delay: 0s; }
-${s3.shine ? `${ACTC(' > [data-sanso-faces] > [data-f="shine"]', STATE)} { animation: sanso-shine 1.1s ease-out .15s 1 both; }` : ""}
-`;
-    const PICK = (ang, z3, dy) => `perspective(1600px) translate3d(0, ${dy}px, ${z3}px) rotateY(${ang === A4 ? ANG : ang + "deg"})`;
-    const pick = s3.pickup ? `
-@keyframes sanso-pick { 0% { transform: ${PICK(A4, 16, 8)}; } 45% { transform: ${PICK(Math.round(A4 * 0.35), 70, -4)}; } 100% { transform: ${PICK(A4, 16, 8)}; } }
-@keyframes sanso-pick-i { 0% { rotate: 0 1 0 ${ANG}; translate: 0 8px 16px; } 45% { rotate: 0 1 0 ${Math.round(A4 * 0.35)}deg; translate: 0 -4px 70px; } 100% { rotate: 0 1 0 ${ANG}; translate: 0 8px 16px; } }
-${P4}[data-sanso-pick][data-sanso-own] { animation: sanso-pick .42s cubic-bezier(.3,.7,.3,1) both; z-index: 20 !important; }
-${P4}[data-sanso-pick]:not([data-sanso-own]) { animation: sanso-pick-i .42s cubic-bezier(.3,.7,.3,1) both; z-index: 20 !important; }` : "";
-    const LEAN = 9;
-    const NB = (sel, left) => `${sel} ${P4}[data-sanso-own] { transform: perspective(1600px) translateZ(-6px) rotateY(${left ? LEAN : -LEAN}deg); transform-origin: ${left ? "0% 50%" : "100% 50%"} !important; }
-${sel} ${P4}:not([data-sanso-own]) { rotate: 0 1 0 ${left ? LEAN : -LEAN}deg; translate: 0 0 -6px; transform-origin: ${left ? "0% 50%" : "100% 50%"} !important; }`;
-    const neighbors = s3.neighbors ? `
-${NB("[data-sanso-cell]:hover + [data-sanso-cell]", false)}
-${NB("[data-sanso-cell]:has(+ [data-sanso-cell]:hover)", true)}
-${NB("[data-sanso-cell].selected + [data-sanso-cell]", false)}
-${NB("[data-sanso-cell]:has(+ [data-sanso-cell].selected)", true)}` : "";
-    return `
-/* Finally 3D Game Cases Engine CSS - Original Geometry and Lighting */
-${floatKf}
-[data-sanso-stage="big"] { perspective: 1600px !important; perspective-origin: 50% 50% !important; }
-[data-sanso-stage="small"] { perspective: 1100px !important; perspective-origin: 50% -30% !important; }
-[data-sanso-stage="own"] { perspective: none !important; }
-
-[data-sanso-pop] {
-  transform-origin: 100% 50% !important;
-  transition: ${TR}, transform-style 0s linear ${T4}s !important;
-  transition-behavior: allow-discrete !important;
-  display: inline-block;
-  cursor: pointer;
-  position: relative;
-}
-
-[data-sanso-pop]:not(img), [data-sanso-case="box"] {
-  overflow: visible !important;
-  filter: none !important;
-  contain: none !important;
-}
-
-[data-sanso-case="box"] {
-  border-radius: var(--c3d-r, 2px);
-  ${idleShadow}
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  background-color: var(--c3d-b, #111);
-}
-
-[data-sanso-case="box"] img {
-  border-radius: var(--c3d-r, 2px);
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-[data-sanso-case="box"] > img {
-  filter: brightness(.92);
-  transition: filter ${T4}s ${EASE}, translate 0s linear ${T4}s;
-}
-
-/* resting cover: physical overlay with gloss, sleeve seam, and wear textures */
-[data-sanso-case="box"]::after {
-  content: "";
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  pointer-events: none;
-  z-index: 1;
-  border-radius: var(--c3d-r, 2px);
-  transition: transform 0s linear ${T4}s;
-  background:
-    var(--c3d-wear, linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0))),
-    ${gloss}
-    ${band}
-    ${s3.sleeve ? `linear-gradient(90deg, transparent 3.2%, rgba(255,255,255,.34) 3.2%, rgba(255,255,255,.34) 3.9%, rgba(0,0,0,.30) 3.9%, rgba(0,0,0,.30) 5%, rgba(255,255,255,.06) 5%, transparent 9%),
-    linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 1.6%, rgba(255,255,255,0) 98.4%, rgba(0,0,0,.25)),` : ""}
-    linear-gradient(90deg, rgba(0,0,0,.42) 0, rgba(255,255,255,.22) 1.5%, rgba(0,0,0,.16) 3.2%, rgba(0,0,0,0) 7.5%);
-  box-shadow: inset 0 0 0 1px var(--c3d-line), inset 0 0 0 var(--c3d-rim, 0px) rgba(255,255,255,.5), inset 0 0 0 3px rgba(0,0,0,.18)${s3.sleeve ? ", inset 0 0 0 4px rgba(255,255,255,.10), inset 0 0 0 5px rgba(0,0,0,.16)" : ""};
-}
-
-/* 3D Faces */
-[data-sanso-faces] {
-  display: none;
-  transition-property: display;
-  transition-duration: 0s;
-  transition-delay: ${T4}s;
-  transition-behavior: allow-discrete;
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  pointer-events: none;
-  transform-style: preserve-3d;
-  z-index: 3;
-}
-
-[data-sanso-faces] > div {
-  position: absolute;
-  box-sizing: border-box;
-}
-
-[data-sanso-faces] > [data-f="front"] {
-  top: 0; right: 0; bottom: 0; left: 0;
-  transform: translateZ(1px);
-  border-radius: var(--c3d-r, 2px);
-}
-
-[data-sanso-faces] > [data-f="spine"] {
-  top: 0; bottom: 0; left: 0;
-  width: var(--c3d-d, ${d3}px);
-  min-width: 12px;
-  transform-origin: left center;
-  transform: rotateY(90deg);
-  background:
-    linear-gradient(180deg, var(--c3d-band) 0, var(--c3d-band) 5.2%, rgba(0,0,0,.35) 5.2%, rgba(0,0,0,.35) calc(5.2% + 1px), transparent calc(5.2% + 1px)),
-    linear-gradient(90deg, var(--c3d-a), var(--c3d-b));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);
-}
-
-[data-sanso-faces] > [data-f="spine"] > span {
-  writing-mode: vertical-rl;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 86%;
-  margin-top: 8%;
-  font-weight: 800;
-  font-family: sans-serif;
-  line-height: 1;
-  font-size: max(10px, calc(var(--c3d-d, ${d3}px) * .72));
-  color: var(--c3d-text);
-  transform: scaleX(-1);
-  letter-spacing: .05em;
-  text-shadow: 0 0 2px rgba(0,0,0,.75), 0 1px 1px rgba(0,0,0,.6);
-}
-
-[data-sanso-faces] > [data-f="top"] {
-  top: 0; left: 0; right: 0;
-  height: var(--c3d-d, ${d3}px);
-  transform-origin: center top;
-  transform: rotateX(-90deg);
-  background: linear-gradient(0deg, var(--c3d-b), var(--c3d-a));
-}
-
-[data-sanso-faces] > [data-f="bottom"] {
-  bottom: 0; left: 0; right: 0;
-  height: var(--c3d-d, ${d3}px);
-  transform-origin: center bottom;
-  transform: rotateX(90deg);
-  background: linear-gradient(180deg, var(--c3d-b), #000);
-}
-
-[data-sanso-faces] > [data-f="right"] {
-  top: 0; bottom: 0; right: 0;
-  width: var(--c3d-d, ${d3}px);
-  transform-origin: right center;
-  transform: rotateY(-90deg);
-  background: linear-gradient(270deg, var(--c3d-b), var(--c3d-a));
-}
-
-[data-sanso-faces] > [data-f="back"] {
-  top: 0; right: 0; bottom: 0; left: 0;
-  transform: translateZ(calc(var(--c3d-d, ${d3}px) * -1)) rotateY(180deg);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  background: var(--c3d-b);
-}
-
-${shine}
-${activeRules}
-${neighbors}
-${pick}
-`;
-  }
-  function ensureCaseStyle(doc = document, settings = DEFAULT_CASE_SETTINGS) {
-    const STYLE_ID = "sanso-3d-cases-style";
-    let st = doc.getElementById(STYLE_ID);
-    const css = buildCss(settings);
-    if (!st) {
-      st = doc.createElement("style");
-      st.id = STYLE_ID;
-      (doc.head || doc.documentElement).appendChild(st);
-    }
-    if (st.textContent !== css) {
-      st.textContent = css;
-    }
-    return st;
-  }
-  function insertSounds(view = window, card = false, volume = 0.85, mode = "insert", warp = (ms) => ms) {
-    try {
-      const AC = view.AudioContext || view.webkitAudioContext;
-      if (!AC) return;
-      const ctx = new AC();
-      if (ctx.state === "suspended" && ctx.resume) ctx.resume();
-      const master = ctx.createGain();
-      master.gain.value = Math.max(0, Math.min(1, volume));
-      master.connect(ctx.destination);
-      const t0 = ctx.currentTime + 0.03;
-      const noise = (len) => {
-        const b2 = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * len), ctx.sampleRate);
-        const ch = b2.getChannelData(0);
-        for (let i3 = 0; i3 < ch.length; i3++) ch[i3] = Math.random() * 2 - 1;
-        return b2;
-      };
-      const click = (ms, freq, len, gain, q4 = 2) => {
-        const s3 = ctx.createBufferSource();
-        s3.buffer = noise(len);
-        const f4 = ctx.createBiquadFilter();
-        f4.type = "bandpass";
-        f4.frequency.value = freq;
-        f4.Q.value = q4;
-        const g4 = ctx.createGain();
-        const at = t0 + warp(ms) / 1e3;
-        g4.gain.setValueAtTime(0, at);
-        g4.gain.linearRampToValueAtTime(gain, at + 2e-3);
-        g4.gain.exponentialRampToValueAtTime(8e-4, at + len);
-        s3.connect(f4);
-        f4.connect(g4);
-        g4.connect(master);
-        s3.start(at);
-        s3.stop(at + len + 0.02);
-      };
-      const thump = (ms, freq, len, gain) => {
-        const o3 = ctx.createOscillator();
-        o3.type = "sine";
-        const g4 = ctx.createGain();
-        const at = t0 + warp(ms) / 1e3;
-        o3.frequency.setValueAtTime(freq * 1.6, at);
-        o3.frequency.exponentialRampToValueAtTime(freq, at + len * 0.6);
-        g4.gain.setValueAtTime(0, at);
-        g4.gain.linearRampToValueAtTime(gain, at + 4e-3);
-        g4.gain.exponentialRampToValueAtTime(8e-4, at + len);
-        o3.connect(g4);
-        g4.connect(master);
-        o3.start(at);
-        o3.stop(at + len + 0.02);
-      };
-      const slide = (ms, len, f1, f22, gain) => {
-        const s3 = ctx.createBufferSource();
-        s3.buffer = noise(len);
-        const f4 = ctx.createBiquadFilter();
-        f4.type = "bandpass";
-        f4.Q.value = 1.2;
-        const at = t0 + warp(ms) / 1e3;
-        f4.frequency.setValueAtTime(f1, at);
-        f4.frequency.exponentialRampToValueAtTime(f22, at + len);
-        const g4 = ctx.createGain();
-        g4.gain.setValueAtTime(0, at);
-        g4.gain.linearRampToValueAtTime(gain, at + len * 0.3);
-        g4.gain.exponentialRampToValueAtTime(8e-4, at + len);
-        s3.connect(f4);
-        f4.connect(g4);
-        g4.connect(master);
-        s3.start(at);
-        s3.stop(at + len + 0.02);
-      };
-      const motor = (ms, len, gain) => {
-        const o3 = ctx.createOscillator();
-        o3.type = "sawtooth";
-        const lp = ctx.createBiquadFilter();
-        lp.type = "lowpass";
-        lp.frequency.value = 900;
-        const g4 = ctx.createGain();
-        const at = t0 + warp(ms) / 1e3;
-        o3.frequency.setValueAtTime(70, at);
-        o3.frequency.exponentialRampToValueAtTime(240, at + len);
-        g4.gain.setValueAtTime(0, at);
-        g4.gain.linearRampToValueAtTime(gain, at + len * 0.35);
-        g4.gain.exponentialRampToValueAtTime(8e-4, at + len);
-        o3.connect(lp);
-        lp.connect(g4);
-        g4.connect(master);
-        o3.start(at);
-        o3.stop(at + len + 0.02);
-      };
-      if (mode === "eject") {
-        const spinDown = (ms, len, gain) => {
-          const o3 = ctx.createOscillator();
-          o3.type = "sawtooth";
-          const lp = ctx.createBiquadFilter();
-          lp.type = "lowpass";
-          lp.frequency.value = 900;
-          const g4 = ctx.createGain();
-          const at = t0 + warp(ms) / 1e3;
-          o3.frequency.setValueAtTime(240, at);
-          o3.frequency.exponentialRampToValueAtTime(60, at + len);
-          g4.gain.setValueAtTime(0, at);
-          g4.gain.linearRampToValueAtTime(gain, at + 0.05);
-          g4.gain.exponentialRampToValueAtTime(8e-4, at + len);
-          o3.connect(lp);
-          lp.connect(g4);
-          g4.connect(master);
-          o3.start(at);
-          o3.stop(at + len + 0.02);
-        };
-        click(330, 3200, 0.03, 0.5);
-        thump(350, 140, 0.08, 0.22);
-        if (!card) spinDown(420, 0.45, 0.05);
-        click(600, 2200, 0.04, 0.45, 3);
-        thump(610, 110, 0.1, 0.4);
-        slide(620, 0.3, 2600, 900, card ? 0.35 : 0.28);
-        if (card) {
-          click(1300, 4200, 0.025, 0.4);
-        } else {
-          click(1290, 3600, 0.03, 0.3);
-          click(1310, 5200, 0.02, 0.35);
-        }
-        click(1820, 2800, 0.035, 0.55);
-        thump(1840, 160, 0.08, 0.3);
-        view.setTimeout(() => {
-          try {
-            ctx.close();
-          } catch {
-          }
-        }, 3200);
-        return;
-      }
-      click(380, 3200, 0.03, 0.55);
-      thump(400, 140, 0.08, 0.25);
-      click(880, 2400, 0.04, 0.35);
-      if (card) {
-        click(900, 4200, 0.025, 0.4);
-      } else {
-        click(890, 5200, 0.02, 0.35);
-        click(915, 3600, 0.03, 0.3);
-      }
-      slide(1320, 0.3, 900, 2600, card ? 0.35 : 0.28);
-      if (card) {
-        click(1575, 1800, 0.05, 0.6, 3);
-        thump(1580, 110, 0.12, 0.5);
-      } else {
-        thump(1585, 95, 0.14, 0.5);
-        click(1580, 2200, 0.04, 0.45, 3);
-        motor(1600, 0.55, 0.06);
-      }
-      click(1850, 2800, 0.035, 0.5);
-      thump(1855, 160, 0.07, 0.25);
-      view.setTimeout(() => {
-        try {
-          ctx.close();
-        } catch {
-        }
-      }, 3200);
-    } catch {
-    }
-  }
-  function boxEl(doc, css) {
-    const e3 = doc.createElement("div");
-    e3.style.cssText = "position:absolute;box-sizing:border-box;" + css;
-    return e3;
-  }
-  function runInsert(doc = document, src, target = "auto", sound = true, opts = {}) {
-    return new Promise((resolve) => {
-      const view = doc.defaultView || window;
-      if (!view || !doc.body || typeof doc.body.animate !== "function") {
-        resolve(false);
-        return;
-      }
-      const prefersReducedMotion = typeof view.matchMedia === "function" && view.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (prefersReducedMotion) {
-        if (opts.onStateChange) opts.onStateChange("done");
-        resolve(true);
-        return;
-      }
-      const old = doc.getElementById("sanso-insert");
-      if (old) old.remove();
-      const W4 = view.innerWidth, H3 = view.innerHeight;
-      if (W4 < 200 || H3 < 200) {
-        resolve(false);
-        return;
-      }
-      const variant = target === "auto" ? W4 >= 1800 ? "console" : "handheld" : target;
-      const L2 = src.look;
-      const pal = L2.pal;
-      const art = src.art ? `url(${JSON.stringify(src.art)})` : `linear-gradient(160deg, ${pal.a}, ${pal.b})`;
-      const card = L2.shapeId === "cartridge";
-      const rad = Math.max(3, L2.shape.radius + 2);
-      const ch = Math.round(Math.min(H3 * 0.56, W4 * 0.42 * 1.5));
-      const cw = Math.round(ch / 1.5);
-      const cx = Math.round(W4 * 0.54 - cw / 2);
-      const cy = Math.round(H3 * 0.42 - ch / 2);
-      const d3 = Math.max(10, Math.round(cw * (card ? 0.06 : 0.1)));
-      const r0 = src.rect && src.rect.width > 30 && src.rect.top < H3 && src.rect.top + src.rect.height > 0 ? src.rect : null;
-      const s0 = r0 ? r0.width / cw : 0.82;
-      const x0 = r0 ? r0.left + r0.width / 2 - (cx + cw / 2) : 0;
-      const y0 = r0 ? r0.top + r0.height / 2 - (cy + ch / 2) : 30;
-      const root = boxEl(
-        doc,
-        `position:fixed;left:0;top:0;width:${W4}px;height:${H3}px;z-index:2147483000;pointer-events:none;overflow:hidden;perspective:1500px;perspective-origin:50% 38%;`
-      );
-      root.id = "sanso-insert";
-      const shade = boxEl(doc, `inset:0;background:radial-gradient(120% 95% at 55% 40%, rgba(16,21,32,0.85), rgba(3,4,8,0.92));opacity:0;`);
-      root.appendChild(shade);
-      const glow = boxEl(
-        doc,
-        `left:${Math.round(cx - cw * 0.9)}px;top:${Math.round(cy - ch * 0.35)}px;width:${Math.round(cw * 2.8)}px;height:${Math.round(ch * 1.7)}px;border-radius:50%;background:radial-gradient(closest-side, ${pal.a}, transparent);opacity:0;filter:blur(30px);`
-      );
-      root.appendChild(glow);
-      const wrap = boxEl(doc, `left:${cx}px;top:${cy}px;width:${cw}px;height:${ch}px;perspective:1400px;perspective-origin:50% 35%;`);
-      const floor = boxEl(doc, `left:-8%;right:-8%;bottom:-9%;height:12%;border-radius:50%;background:radial-gradient(closest-side, rgba(0,0,0,.7), rgba(0,0,0,0));`);
-      wrap.appendChild(floor);
-      const stage = boxEl(doc, `inset:0;transform-style:preserve-3d;`);
-      wrap.appendChild(stage);
-      const shell = `linear-gradient(135deg, rgba(255,255,255,.10), rgba(0,0,0,.25)), ${pal.b}`;
-      stage.appendChild(boxEl(doc, `inset:0;border-radius:${rad}px;background:${shell};transform:translateZ(-${d3}px);box-shadow:0 30px 60px rgba(0,0,0,.55);`));
-      const tray = card ? `linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.2)), repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 2px, transparent 2px 6px), #15171c` : `radial-gradient(circle at 50% 50%, #3d424b 0 4.5%, #0b0c0f 5% 6.5%, #2c3038 7% 10.5%, #121418 11% 42%, rgba(255,255,255,.07) 42.6% 43.4%, #14161b 44% 100%)`;
-      stage.appendChild(boxEl(doc, `left:4%;top:3%;right:4%;bottom:3%;border-radius:${Math.max(2, rad - 2)}px;background:${tray};transform:translateZ(-${d3 - 2}px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), inset 0 8px 18px rgba(0,0,0,.5);`));
-      stage.appendChild(boxEl(doc, `top:0;bottom:0;left:0;width:${d3}px;transform-origin:left center;transform:rotateY(90deg);background:linear-gradient(90deg, ${pal.a}, ${pal.b});`));
-      stage.appendChild(boxEl(doc, `top:0;bottom:0;right:0;width:${d3}px;transform-origin:right center;transform:rotateY(-90deg);background:linear-gradient(270deg, ${pal.b}, ${pal.a});`));
-      stage.appendChild(boxEl(doc, `left:0;right:0;top:0;height:${d3}px;transform-origin:center top;transform:rotateX(-90deg);background:linear-gradient(0deg, ${pal.b}, ${pal.a});`));
-      stage.appendChild(boxEl(doc, `left:0;right:0;bottom:0;height:${d3}px;transform-origin:center bottom;transform:rotateX(90deg);background:linear-gradient(180deg, ${pal.b}, #000);`));
-      const cover = boxEl(doc, `inset:0;transform-origin:left center;transform-style:preserve-3d;`);
-      cover.appendChild(boxEl(doc, `inset:0;border-radius:${rad}px;backface-visibility:hidden;background:${art} center/cover no-repeat, ${pal.b};box-shadow:inset 0 0 0 1px ${pal.line};`));
-      cover.appendChild(boxEl(doc, `inset:0;border-radius:${rad}px;backface-visibility:hidden;transform:translateZ(.6px);background:linear-gradient(90deg, rgba(0,0,0,.35) 0, rgba(255,255,255,.28) 1.6%, rgba(0,0,0,.15) 3.4%, transparent 7%), linear-gradient(115deg, rgba(255,255,255,.34), rgba(255,255,255,0) 32%, rgba(255,255,255,0) 62%, rgba(255,255,255,.12) 74%, transparent 76%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3), inset 0 0 0 4px rgba(255,255,255,.08);`));
-      const glint = boxEl(doc, `inset:0;border-radius:${rad}px;backface-visibility:hidden;transform:translateZ(.8px);overflow:hidden;`);
-      const glintBar = boxEl(doc, `top:-20%;bottom:-20%;left:-60%;width:45%;background:linear-gradient(100deg, transparent, rgba(255,255,255,.38), transparent);transform:skewX(-14deg);`);
-      glint.appendChild(glintBar);
-      cover.appendChild(glint);
-      cover.appendChild(boxEl(doc, `inset:0;border-radius:${rad}px;backface-visibility:hidden;transform:rotateY(180deg);background:linear-gradient(rgba(12,14,19,.84), rgba(12,14,19,.92)), ${art} center/cover no-repeat;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);`));
-      stage.appendChild(cover);
-      root.appendChild(wrap);
-      const handheld = variant !== "console";
-      let slotY = H3 - 12;
-      let slotX = W4 - 12;
-      if (opts.slotRect) {
-        slotX = Math.round(opts.slotRect.left + opts.slotRect.width / 2);
-        slotY = Math.round(opts.slotRect.top + opts.slotRect.height / 2);
-      }
-      const D5 = Math.round(card ? cw * 0.5 : cw * 0.76);
-      const DH = card ? Math.round(D5 * 1.16) : D5;
-      const dcx = cx + cw / 2;
-      const dcy = cy + ch * (card ? 0.36 : 0.5);
-      const layer = boxEl(doc, `inset:0;${handheld ? `clip-path:inset(0 0 ${Math.max(0, H3 - slotY)}px 0);` : `clip-path:inset(0 ${Math.max(0, W4 - slotX)}px 0 0);`}`);
-      const holder = boxEl(doc, `left:${Math.round(dcx - D5 / 2)}px;top:${Math.round(dcy - DH / 2)}px;width:${D5}px;height:${DH}px;opacity:0;will-change:transform,opacity;`);
-      const shadow = boxEl(doc, `left:6%;top:9%;width:88%;height:88%;border-radius:${card ? "10px" : "50%"};background:rgba(0,0,0,.55);filter:blur(10px);`);
-      holder.appendChild(shadow);
-      const makeItem = () => {
-        const el = boxEl(doc, "inset:0;");
-        if (card) {
-          const c3 = boxEl(doc, `inset:0;border-radius:7px;clip-path:polygon(0 0, 80% 0, 100% 12%, 100% 100%, 0 100%);background:linear-gradient(180deg,#2c2f36,#101216);box-shadow:inset 0 0 0 2px rgba(255,255,255,.18);`);
-          c3.appendChild(boxEl(doc, `left:7%;top:6%;right:7%;height:62%;border-radius:4px;background:${art} center/cover no-repeat;box-shadow:0 0 0 2px rgba(255,255,255,.85);`));
-          c3.appendChild(boxEl(doc, `left:14%;right:14%;bottom:6%;height:10%;background:repeating-linear-gradient(90deg,#e0bf55 0 3px,#8a6d1c 3px 4px,transparent 4px 7px);border-radius:2px;`));
-          c3.appendChild(boxEl(doc, `inset:0;background:linear-gradient(120deg, rgba(255,255,255,.28), rgba(255,255,255,0) 40%);`));
-          el.appendChild(c3);
-          return { el, spin: null };
-        }
-        const hole = "radial-gradient(circle, transparent 0 6.2%, #000 6.6%)";
-        const spin = boxEl(doc, `inset:0;border-radius:50%;background:${art} center/cover no-repeat, ${pal.b};-webkit-mask:${hole};mask:${hole};`);
-        spin.appendChild(boxEl(doc, `inset:0;border-radius:50%;background:radial-gradient(circle, transparent 0 6.4%, rgba(230,236,245,.62) 6.8% 15.2%, rgba(255,255,255,.95) 15.5% 16.1%, rgba(0,0,0,.25) 16.4% 17%, transparent 17.4% 95.6%, rgba(255,255,255,.7) 96.2% 97.4%, rgba(0,0,0,.45) 98%);`));
-        el.appendChild(spin);
-        el.appendChild(boxEl(doc, `inset:0;border-radius:50%;-webkit-mask:${hole};mask:${hole};background:conic-gradient(from 40deg, rgba(255,255,255,0) 0, rgba(255,255,255,.30) 6%, rgba(160,220,255,.14) 11%, rgba(255,255,255,0) 17%, rgba(255,255,255,0) 50%, rgba(255,255,255,.26) 56%, rgba(255,190,240,.12) 61%, rgba(255,255,255,0) 67%);`));
-        return { el, spin };
-      };
-      const flying = makeItem();
-      holder.appendChild(flying.el);
-      const spinner = flying.spin;
-      const seated = makeItem();
-      const seat = boxEl(doc, `left:${Math.round(cw / 2 - D5 / 2)}px;top:${Math.round(ch * (card ? 0.36 : 0.5) - DH / 2)}px;width:${D5}px;height:${DH}px;transform:translateZ(-${d3 - 3}px);`);
-      seat.appendChild(seated.el);
-      stage.appendChild(seat);
-      layer.appendChild(holder);
-      root.appendChild(layer);
-      const slot = handheld ? boxEl(doc, `left:${Math.round(W4 / 2 - D5 * 0.62)}px;top:${slotY - 3}px;width:${Math.round(D5 * 1.24)}px;height:7px;border-radius:4px;background:linear-gradient(180deg,#000,#1b1e24);box-shadow:0 0 0 1px rgba(255,255,255,.16), 0 -1px 0 rgba(255,255,255,.25);opacity:0;`) : boxEl(doc, `left:${slotX - 3}px;top:${Math.round(H3 / 2 - D5 * 0.62)}px;width:7px;height:${Math.round(D5 * 1.24)}px;border-radius:4px;background:linear-gradient(90deg,#000,#1b1e24);box-shadow:0 0 0 1px rgba(255,255,255,.16), -1px 0 0 rgba(255,255,255,.25);opacity:0;`);
-      const bezel = handheld ? boxEl(doc, `left:${Math.round(W4 / 2 - D5 * 0.8)}px;top:${slotY - 12}px;width:${Math.round(D5 * 1.6)}px;height:24px;border-radius:12px;background:linear-gradient(180deg, #2a2e36, #121418);box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 6px 18px rgba(0,0,0,.6);opacity:0;`) : boxEl(doc, `left:${slotX - 12}px;top:${Math.round(H3 / 2 - D5 * 0.8)}px;width:24px;height:${Math.round(D5 * 1.6)}px;border-radius:12px;background:linear-gradient(90deg, #2a2e36, #121418);box-shadow:inset 1px 0 0 rgba(255,255,255,.12), 0 6px 18px rgba(0,0,0,.6);opacity:0;`);
-      const streak = boxEl(
-        doc,
-        handheld ? `left:0;top:2px;width:30%;height:2px;border-radius:2px;background:linear-gradient(90deg, transparent, rgba(150,215,255,.95), transparent);opacity:0;` : `top:0;left:2px;height:30%;width:2px;border-radius:2px;background:linear-gradient(180deg, transparent, rgba(150,215,255,.95), transparent);opacity:0;`
-      );
-      slot.appendChild(streak);
-      root.insertBefore(bezel, layer);
-      root.appendChild(slot);
-      doc.body.appendChild(root);
-      const fx = [];
-      const A4 = (el, kf, opt) => {
-        fx.push(el.animate(kf, { fill: "both", ...opt }));
-      };
-      const eject = !!opts.eject;
-      const T_END = 2200;
-      const at = (ms) => Math.min(1, Math.max(0, ms / T_END));
-      A4(shade, [{ opacity: 0 }, { opacity: 1, offset: at(200) }, { opacity: 1, offset: at(1880) }, { opacity: 0 }], { duration: T_END, easing: "ease-in-out" });
-      A4(seat, [{ opacity: 1 }, { opacity: 1, offset: at(880) }, { opacity: 0, offset: at(881) }, { opacity: 0 }], { duration: T_END, easing: "linear" });
-      const back = r0 ? `translate(${x0}px,${y0}px) scale(${s0})` : `translate(0,${Math.round(ch * 0.08)}px) scale(.88)`;
-      A4(glow, [{ opacity: 0 }, { opacity: 0.55, offset: at(500) }, { opacity: 0.4, offset: at(1500) }, { opacity: 0, offset: at(1900) }, { opacity: 0 }], { duration: T_END, easing: "ease-in-out" });
-      A4(wrap, [
-        { transform: `translate(${x0}px,${y0}px) scale(${s0})`, opacity: 1, easing: "cubic-bezier(.2,.8,.3,1)" },
-        { transform: "translate(0,-6px) scale(1.035)", opacity: 1, offset: at(360), easing: "cubic-bezier(.4,0,.3,1)" },
-        { transform: "translate(0,0) scale(1)", opacity: 1, offset: at(520) },
-        { transform: "translate(0,0) scale(1)", opacity: 1, offset: at(1640), easing: "cubic-bezier(.6,0,.4,1)" },
-        { transform: back, opacity: 1, offset: at(1900), easing: "ease-in" },
-        { transform: back, opacity: 0, offset: at(1990) },
-        { transform: back, opacity: 0 }
-      ], { duration: T_END });
-      A4(floor, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)", offset: at(420) }, { opacity: 1, transform: "scale(1)", offset: at(1640) }, { opacity: 0, transform: "scale(.7)", offset: at(1880) }, { opacity: 0 }], { duration: T_END, easing: "ease-out" });
-      A4(glintBar, [{ transform: "translateX(0) skewX(-14deg)" }, { transform: "translateX(0) skewX(-14deg)", offset: at(80) }, { transform: `translateX(${Math.round(cw * 2.6)}px) skewX(-14deg)`, offset: at(560) }, { transform: `translateX(${Math.round(cw * 2.6)}px) skewX(-14deg)` }], { duration: T_END, easing: "cubic-bezier(.4,0,.2,1)" });
-      A4(stage, [
-        { transform: "rotateX(0deg) rotateY(0deg)", easing: "cubic-bezier(.2,.8,.3,1)" },
-        { transform: "rotateX(8deg) rotateY(-22deg)", offset: at(480), easing: "ease-in-out" },
-        { transform: "rotateX(6deg) rotateY(-14deg)", offset: at(1500), easing: "ease-in-out" },
-        { transform: "rotateX(5deg) rotateY(-10deg)", offset: at(1830), easing: "ease-out" },
-        { transform: "rotateX(3deg) rotateY(-12deg)", offset: at(1870), easing: "ease-in-out" },
-        { transform: "rotateX(0deg) rotateY(0deg)" }
-      ], { duration: T_END });
-      A4(cover, [
-        { transform: "rotateY(0deg)" },
-        { transform: "rotateY(0deg)", offset: at(380), easing: "cubic-bezier(.5,0,.3,1)" },
-        { transform: "rotateY(-168deg)", offset: at(860), easing: "ease-in-out" },
-        { transform: "rotateY(-157deg)", offset: at(960), easing: "ease-in-out" },
-        { transform: "rotateY(-160deg)", offset: at(1040) },
-        { transform: "rotateY(-160deg)", offset: at(1520), easing: "cubic-bezier(.55,0,.85,.35)" },
-        { transform: "rotateY(0deg)", offset: at(1830) },
-        { transform: "rotateY(0deg)" }
-      ], { duration: T_END });
-      const tx = handheld ? W4 / 2 - dcx : slotX + D5 * 0.7 - dcx;
-      const ty = handheld ? slotY + DH * 0.62 - dcy : H3 / 2 - dcy;
-      const preX = handheld ? W4 / 2 - dcx : slotX - D5 * 0.8 - dcx;
-      const preY = handheld ? slotY - DH * 0.75 - dcy : H3 / 2 - dcy;
-      const midX = handheld ? preX * 0.5 - D5 * 0.18 : preX * 0.5;
-      const midY = handheld ? preY * 0.42 : preY * 0.5 - DH * 0.25;
-      const edge = handheld ? card ? "rotateX(0deg)" : "rotateX(72deg)" : card ? "rotateY(0deg)" : "rotateY(72deg)";
-      const half = handheld ? card ? "rotateX(0deg) rotateZ(-6deg)" : "rotateX(30deg) rotateZ(-4deg)" : card ? "rotateY(0deg)" : "rotateY(30deg)";
-      const inTray = "rotateX(6deg) rotateY(-14deg)";
-      const Ppos = (px2, py2, pr, ps) => `perspective(1000px) translate(${Math.round(px2)}px,${Math.round(py2)}px) ${pr} scale(${ps})`;
-      A4(holder, [
-        { opacity: 0, transform: Ppos(0, 0, inTray, 0.97) },
-        { opacity: 0, transform: Ppos(0, 0, inTray, 0.97), offset: at(879) },
-        { opacity: 1, transform: Ppos(0, 0, inTray, 0.97), offset: at(880), easing: "cubic-bezier(.2,.8,.3,1)" },
-        { opacity: 1, transform: Ppos(0, -ch * 0.06, "rotateX(-4deg) rotateY(3deg)", 1.07), offset: at(1010), easing: "ease-in-out" },
-        { opacity: 1, transform: Ppos(0, -ch * 0.055, "rotateX(2deg) rotateY(-2deg)", 1.06), offset: at(1080), easing: "cubic-bezier(.45,0,.55,1)" },
-        { opacity: 1, transform: Ppos(midX, midY, half, 0.95), offset: at(1250), easing: "cubic-bezier(.45,0,.55,1)" },
-        { opacity: 1, transform: Ppos(preX, preY, edge, 0.84), offset: at(1430), easing: "cubic-bezier(.6,0,1,.5)" },
-        { opacity: 1, transform: Ppos(tx, ty, edge, 0.82), offset: at(1580) },
-        { opacity: 0, transform: Ppos(tx, ty, edge, 0.82) }
-      ], { duration: T_END });
-      A4(root, [{ transform: "translate(0,0)" }, { transform: "translate(0,0)", offset: at(1575) }, { transform: "translate(0,2.5px)", offset: at(1605) }, { transform: "translate(0,-1px)", offset: at(1650) }, { transform: "translate(0,0)", offset: at(1700) }, { transform: "translate(0,0)" }], { duration: T_END, easing: "ease-out" });
-      A4(bezel, [{ opacity: 0, transform: "translateY(10px)" }, { opacity: 0, transform: "translateY(10px)", offset: at(900) }, { opacity: 1, transform: "translateY(0)", offset: at(1120) }, { opacity: 1, transform: "translateY(0)", offset: at(1760) }, { opacity: 0, transform: "translateY(8px)", offset: at(2e3) }, { opacity: 0 }], { duration: T_END, easing: "cubic-bezier(.2,.8,.3,1)" });
-      A4(
-        streak,
-        handheld ? [{ opacity: 0, transform: "translateX(0)" }, { opacity: 0, transform: "translateX(0)", offset: at(1560) }, { opacity: 1, transform: `translateX(${Math.round(D5 * 0.6)}px)`, offset: at(1650) }, { opacity: 0, transform: `translateX(${Math.round(D5 * 1.24)}px)`, offset: at(1780) }, { opacity: 0 }] : [{ opacity: 0, transform: "translateY(0)" }, { opacity: 0, transform: "translateY(0)", offset: at(1560) }, { opacity: 1, transform: `translateY(${Math.round(D5 * 0.6)}px)`, offset: at(1650) }, { opacity: 0, transform: `translateY(${Math.round(D5 * 1.24)}px)`, offset: at(1780) }, { opacity: 0 }],
-        { duration: T_END, easing: "linear" }
-      );
-      A4(shadow, [{ opacity: 0.9, transform: "translate(0,0)" }, { opacity: 0.9, transform: "translate(0,0)", offset: at(880) }, { opacity: 0.45, transform: `translate(${Math.round(D5 * 0.06)}px,${Math.round(D5 * 0.1)}px)`, offset: at(1060) }, { opacity: 0, offset: at(1400) }, { opacity: 0 }], { duration: T_END, easing: "linear" });
-      if (spinner) {
-        A4(spinner, [{ transform: "rotate(0deg)" }, { transform: "rotate(0deg)", offset: at(900), easing: "cubic-bezier(.5,0,.8,.5)" }, { transform: "rotate(1080deg)", offset: at(1580) }, { transform: "rotate(1080deg)" }], { duration: T_END });
-      }
-      A4(slot, [
-        { opacity: 0, transform: "scale(.9)" },
-        { opacity: 0, transform: "scale(.9)", offset: at(950) },
-        { opacity: 1, transform: "scale(1)", offset: at(1150) },
-        { opacity: 1, transform: "scale(1)", offset: at(1480) },
-        { opacity: 1, transform: "scale(1.05)", boxShadow: "0 0 0 1px rgba(170,225,255,.95), 0 0 24px 7px rgba(80,170,255,.8)", offset: at(1600) },
-        { opacity: 1, transform: "scale(1)", boxShadow: "0 0 0 1px rgba(170,225,255,.6), 0 0 14px 3px rgba(80,170,255,.4)", offset: at(1800) },
-        { opacity: 0, transform: "scale(1)" }
-      ], { duration: T_END, easing: "ease-out" });
-      if (eject) {
-        fx.forEach((a3) => {
-          try {
-            a3.reverse();
-          } catch {
-          }
-        });
-      }
-      if (sound) {
-        insertSounds(view, card, 0.85, eject ? "eject" : "insert");
-      }
-      if (opts.onStateChange) {
-        if (eject) {
-          setTimeout(() => opts.onStateChange("eject-started"), 50);
-          setTimeout(() => opts.onStateChange("disc-ejected"), 600);
-          setTimeout(() => opts.onStateChange("disc-returned"), 1290);
-          setTimeout(() => opts.onStateChange("case-closed"), 1830);
-        } else {
-          setTimeout(() => opts.onStateChange("case-flying"), 50);
-          setTimeout(() => opts.onStateChange("case-opened"), 860);
-          setTimeout(() => opts.onStateChange("disc-extracted"), 1010);
-          setTimeout(() => opts.onStateChange("disc-inserting"), 1430);
-          setTimeout(() => opts.onStateChange("disc-inserted"), 1580);
-          setTimeout(() => opts.onStateChange("case-closed"), 1830);
-        }
-      }
-      const done = () => {
-        fx.forEach((a3) => {
-          try {
-            a3.cancel();
-          } catch {
-          }
-        });
-        try {
-          if (root.isConnected) root.remove();
-        } catch {
-        }
-        if (opts.onStateChange) opts.onStateChange("done");
-        resolve(true);
-      };
-      setTimeout(done, T_END + 80);
-    });
-  }
-
-  // tool-box/src/features/game-box/deck/cases/GameCaseCard.jsx
-  function GameCaseCard({
-    game,
-    isSelected = false,
-    onClick,
-    onPickup,
-    customSettings = {},
-    width = 160,
-    height = 240,
-    className = ""
-  }) {
-    const look = T2(() => lookFor(game, customSettings), [game, customSettings]);
-    const coverSrc = T2(() => getGameCaseCoverSrc(game), [game]);
-    const handleClick = (e3) => {
-      if (onClick) {
-        onClick(game, e3);
-      }
-    };
-    return /* @__PURE__ */ u3(
-      "div",
-      {
-        className: `gb-3d-case-container ${isSelected ? "selected" : ""} ${className}`,
-        "data-sanso-cell": "1",
-        "data-sanso-pop": "1",
-        "data-sanso-own": "1",
-        style: {
-          width: `${width}px`,
-          height: `${height}px`,
-          display: "inline-block",
-          margin: "12px 10px",
-          verticalAlign: "middle"
-        },
-        onClick: handleClick,
-        role: "button",
-        tabIndex: 0,
-        "aria-label": `${game.name} \uAC8C\uC784\uD329 \uC120\uD0DD`,
-        onKeyDown: (e3) => {
-          if (e3.key === "Enter" || e3.key === " ") {
-            e3.preventDefault();
-            handleClick(e3);
-          }
-        },
-        children: /* @__PURE__ */ u3(
-          "div",
-          {
-            className: "gb-3d-case-box",
-            "data-sanso-case": "box",
-            "data-game-id": game.id,
-            style: {
-              "--c3d-a": look.pal.a,
-              "--c3d-b": look.pal.b,
-              "--c3d-band": look.pal.band,
-              "--c3d-text": look.pal.text,
-              "--c3d-line": look.pal.line,
-              "--c3d-d": `${look.depthPx}px`,
-              "--c3d-r": `${look.shape.radius}px`,
-              "--c3d-rim": `${look.shape.rim}px`,
-              "--c3d-wear": WEAR_CSS[look.wear] || "none",
-              "--c3d-ang": "32deg"
-            },
-            children: [
-              /* @__PURE__ */ u3(
-                "img",
-                {
-                  src: coverSrc,
-                  alt: game.name,
-                  loading: "eager",
-                  className: "gb-3d-case-cover-img"
-                }
-              ),
-              /* @__PURE__ */ u3("div", { "data-sanso-faces": "1", children: [
-                /* @__PURE__ */ u3("div", { "data-f": "front" }),
-                /* @__PURE__ */ u3("div", { "data-f": "spine", children: /* @__PURE__ */ u3("span", { children: game.discLabel || game.name }) }),
-                /* @__PURE__ */ u3("div", { "data-f": "top" }),
-                /* @__PURE__ */ u3("div", { "data-f": "bottom" }),
-                /* @__PURE__ */ u3("div", { "data-f": "right" }),
-                /* @__PURE__ */ u3("div", { "data-f": "back" }),
-                /* @__PURE__ */ u3("div", { "data-f": "shine" })
-              ] })
-            ]
-          }
-        )
-      }
-    );
-  }
-
   // node_modules/three/examples/jsm/environments/RoomEnvironment.js
   var RoomEnvironment = class extends Scene {
     constructor() {
@@ -40024,6 +36544,6501 @@ ${pick}
           ] }, row.userId || index)) })
         ] }) : /* @__PURE__ */ u3("p", { children: "\uC544\uC9C1 \uB4F1\uB85D\uB41C \uAE30\uB85D\uC774 \uC5C6\uC5B4\uC694." })
       ] })
+    ] });
+  }
+
+  // tool-box/src/features/game-box/draw/shared/randomEngine.js
+  var UINT32_RANGE = 4294967296;
+  var POOL_SIZE = 256;
+  var pool = new Uint32Array(POOL_SIZE);
+  var poolIndex = POOL_SIZE;
+  function nextUint32() {
+    if (typeof globalThis.crypto?.getRandomValues === "function") {
+      if (poolIndex >= POOL_SIZE) {
+        globalThis.crypto.getRandomValues(pool);
+        poolIndex = 0;
+      }
+      return pool[poolIndex++];
+    }
+    return Math.floor(Math.random() * UINT32_RANGE);
+  }
+  function secureRandomInt(maxExclusive) {
+    const n2 = Math.floor(Number(maxExclusive));
+    if (!Number.isFinite(n2) || n2 <= 1) return 0;
+    const threshold = Math.floor(UINT32_RANGE / n2) * n2;
+    while (true) {
+      const r3 = nextUint32();
+      if (r3 < threshold) return r3 % n2;
+    }
+  }
+  function secureRandomFloat() {
+    return nextUint32() / UINT32_RANGE;
+  }
+  function shuffleUnbiased(items) {
+    const arr = Array.isArray(items) ? [...items] : [];
+    for (let i3 = arr.length - 1; i3 > 0; i3 -= 1) {
+      const j4 = secureRandomInt(i3 + 1);
+      const tmp3 = arr[i3];
+      arr[i3] = arr[j4];
+      arr[j4] = tmp3;
+    }
+    return arr;
+  }
+  function formatDrawTime(ts = Date.now()) {
+    try {
+      return new Date(ts).toLocaleTimeString("ko-KR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      });
+    } catch {
+      return "";
+    }
+  }
+
+  // tool-box/src/features/game-box/draw/shared/soundEngine.js
+  var DrawSoundEngine = class {
+    constructor() {
+      this.ctx = null;
+      this.master = null;
+      this.muted = false;
+      this.volume = 0.65;
+      this.noiseBuffer = null;
+    }
+    ensureContext() {
+      if (this.muted || typeof window === "undefined") return null;
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return null;
+      if (!this.ctx) {
+        try {
+          this.ctx = new AudioCtx();
+          this.master = this.ctx.createGain();
+          this.master.gain.value = this.volume;
+          this.master.connect(this.ctx.destination);
+        } catch {
+          return null;
+        }
+      }
+      if (this.ctx.state === "suspended") {
+        this.ctx.resume().catch(() => {
+        });
+      }
+      return this.ctx;
+    }
+    setMuted(muted) {
+      this.muted = Boolean(muted);
+      if (this.master && this.ctx) {
+        this.master.gain.setValueAtTime(this.muted ? 0 : this.volume, this.ctx.currentTime);
+      }
+    }
+    setVolume(vol) {
+      this.volume = Math.max(0, Math.min(1, Number(vol) || 0));
+      if (this.master && this.ctx && !this.muted) {
+        this.master.gain.setValueAtTime(this.volume, this.ctx.currentTime);
+      }
+    }
+    getNoiseBuffer() {
+      const ctx = this.ensureContext();
+      if (!ctx) return null;
+      if (this.noiseBuffer) return this.noiseBuffer;
+      const len = Math.floor(ctx.sampleRate * 1);
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i3 = 0; i3 < len; i3 += 1) {
+        data[i3] = (Math.random() * 2 - 1) * 0.6;
+      }
+      this.noiseBuffer = buf;
+      return buf;
+    }
+    playTone({
+      type = "sine",
+      freq = 440,
+      endFreq = null,
+      duration = 0.12,
+      delay = 0,
+      peak = 0.14
+    } = {}) {
+      const ctx = this.ensureContext();
+      if (!ctx || !this.master) return;
+      const start = ctx.currentTime + delay;
+      const end = start + Math.max(0.02, duration);
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, start);
+      if (endFreq && endFreq > 0) {
+        osc.frequency.exponentialRampToValueAtTime(endFreq, end);
+      }
+      gain.gain.setValueAtTime(1e-4, start);
+      gain.gain.linearRampToValueAtTime(peak, start + 8e-3);
+      gain.gain.exponentialRampToValueAtTime(1e-4, end);
+      osc.connect(gain);
+      gain.connect(this.master);
+      osc.start(start);
+      osc.stop(end + 0.01);
+    }
+    playNoise({
+      duration = 0.15,
+      delay = 0,
+      peak = 0.1,
+      filterType = "bandpass",
+      filterFreq = 1200,
+      q: q4 = 1
+    } = {}) {
+      const ctx = this.ensureContext();
+      if (!ctx || !this.master) return;
+      const buf = this.getNoiseBuffer();
+      if (!buf) return;
+      const start = ctx.currentTime + delay;
+      const end = start + Math.max(0.03, duration);
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      const filter = ctx.createBiquadFilter();
+      filter.type = filterType;
+      filter.frequency.setValueAtTime(filterFreq, start);
+      filter.Q.value = q4;
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(1e-4, start);
+      gain.gain.linearRampToValueAtTime(peak, start + 0.01);
+      gain.gain.exponentialRampToValueAtTime(1e-4, end);
+      src.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.master);
+      src.start(start);
+      src.stop(end + 0.01);
+    }
+    // Wheel / Ladder tick
+    playTick(speed = 0.25, variant = "click") {
+      if (variant === "wooden") {
+        this.playTone({ type: "triangle", freq: 310 + Math.min(speed * 600, 650), duration: 0.055, peak: 0.14 });
+      } else if (variant === "pop") {
+        this.playTone({ type: "sine", freq: 480 + Math.min(speed * 900, 1e3), endFreq: 240, duration: 0.05, peak: 0.13 });
+      } else {
+        this.playTone({ type: "square", freq: 680 + Math.min(speed * 1500, 1400), duration: 0.045, peak: 0.1 });
+      }
+    }
+    // Bomb Explosion for BOMB LADDER
+    playExplosion() {
+      this.playNoise({ duration: 0.42, peak: 0.28, filterType: "lowpass", filterFreq: 380, q: 0.8 });
+      this.playTone({ type: "sawtooth", freq: 130, endFreq: 36, duration: 0.38, peak: 0.22 });
+    }
+    // Safe / Winner Fanfare
+    playFanfare() {
+      const notes = [523.25, 659.25, 783.99, 1046.5];
+      notes.forEach((freq, i3) => {
+        this.playTone({ type: "triangle", freq, duration: 0.26, delay: i3 * 0.075, peak: 0.15 });
+      });
+    }
+    // Ball Pop for LOTTO 6/45
+    playBallExtract(isBonus = false) {
+      if (isBonus) {
+        this.playTone({ type: "sine", freq: 587.33, endFreq: 1174.66, duration: 0.22, peak: 0.18 });
+        this.playTone({ type: "triangle", freq: 880, endFreq: 1318.5, duration: 0.28, delay: 0.09, peak: 0.16 });
+      } else {
+        this.playTone({ type: "sine", freq: 420, endFreq: 860, duration: 0.14, peak: 0.16 });
+      }
+    }
+    // Card draft reveal for TEAM DRAFT
+    playDraftPick() {
+      this.playTone({ type: "triangle", freq: 440, endFreq: 660, duration: 0.1, peak: 0.13 });
+    }
+    // Box shake rattle for MYSTERY BOX
+    playBoxShake() {
+      for (let i3 = 0; i3 < 4; i3 += 1) {
+        this.playNoise({
+          duration: 0.07,
+          delay: i3 * 0.085,
+          peak: 0.12,
+          filterType: "bandpass",
+          filterFreq: 950 + i3 * 160,
+          q: 1.4
+        });
+      }
+    }
+    // Paper slip unfold for MYSTERY BOX
+    playPaperUnfold() {
+      this.playNoise({
+        duration: 0.2,
+        peak: 0.11,
+        filterType: "highpass",
+        filterFreq: 1800,
+        q: 0.9
+      });
+      this.playTone({ type: "sine", freq: 660, endFreq: 880, duration: 0.18, delay: 0.06, peak: 0.11 });
+    }
+  };
+  var drawSound = new DrawSoundEngine();
+
+  // tool-box/src/features/game-box/draw/games/BombLadderGame.jsx
+  var PLAYER_COLORS = [
+    "#f43f5e",
+    "#38bdf8",
+    "#a855f7",
+    "#22c55e",
+    "#f59e0b",
+    "#ec4899",
+    "#14b8a6",
+    "#eab308",
+    "#6366f1",
+    "#fb7185",
+    "#34d399",
+    "#60a5fa"
+  ];
+  var DEFAULT_PLAYERS = ["\uAE40\uC131\uBBFC", "\uC774\uC9C0\uD6C8", "\uBC15\uC218\uC9C4", "\uCD5C\uBBFC\uD638", "\uC815\uD558\uB298", "\uAC15\uB3D9\uC6D0"];
+  function buildAmidakujiLadder({
+    participants,
+    outcomes,
+    rowsCount = 12,
+    customRungs = null,
+    verticalJumps = []
+  }) {
+    const numCols = participants.length;
+    let rungs;
+    if (customRungs && customRungs.length === rowsCount && (numCols <= 1 || customRungs[0].length === numCols - 1)) {
+      rungs = customRungs.map((row) => [...row]);
+    } else {
+      rungs = Array.from({ length: rowsCount }, () => Array(Math.max(0, numCols - 1)).fill(false));
+      if (numCols >= 2) {
+        for (let r3 = 0; r3 < rowsCount; r3 += 1) {
+          let c3 = 0;
+          while (c3 < numCols - 1) {
+            const leftHasRung = c3 > 0 && rungs[r3][c3 - 1];
+            if (!leftHasRung && secureRandomFloat() < 0.48) {
+              rungs[r3][c3] = true;
+              c3 += 2;
+            } else {
+              c3 += 1;
+            }
+          }
+        }
+        for (let c3 = 0; c3 < numCols - 1; c3 += 1) {
+          const hasAny = rungs.some((row) => row[c3]);
+          if (!hasAny) {
+            const candidateRows = [];
+            for (let r3 = 0; r3 < rowsCount; r3 += 1) {
+              const leftOccupied = c3 > 0 && rungs[r3][c3 - 1];
+              const rightOccupied = c3 < numCols - 2 && rungs[r3][c3 + 1];
+              if (!leftOccupied && !rightOccupied) candidateRows.push(r3);
+            }
+            if (candidateRows.length > 0) {
+              const pickRow = candidateRows[secureRandomInt(candidateRows.length)];
+              rungs[pickRow][c3] = true;
+            }
+          }
+        }
+      }
+    }
+    const validJumps = (verticalJumps || []).filter(
+      (j4) => j4.col >= 0 && j4.col < numCols && j4.row >= 1 && j4.row <= rowsCount
+    ).map((j4) => {
+      const rIdx = j4.row - 1;
+      const hasRightRung = j4.col < numCols - 1 && rungs[rIdx]?.[j4.col];
+      const hasLeftRung = j4.col > 0 && rungs[rIdx]?.[j4.col - 1];
+      let side = j4.side || 1;
+      if (j4.col === 0) side = -1;
+      else if (j4.col === numCols - 1) side = 1;
+      else if (hasRightRung && !hasLeftRung) side = -1;
+      else if (hasLeftRung && !hasRightRung) side = 1;
+      return { ...j4, side };
+    });
+    const traces = participants.map((name, startCol) => {
+      let curCol = startCol;
+      const points = [{ col: curCol, row: 0 }];
+      for (let r3 = 0; r3 < rowsCount; r3 += 1) {
+        const yLevel = r3 + 1;
+        const arch = validJumps.find((j4) => j4.col === curCol && j4.row === yLevel);
+        if (arch) {
+          const arcSpan = 0.42;
+          const bulge = 0.24 * arch.side;
+          points.push({ col: curCol, row: yLevel - arcSpan });
+          const steps = 6;
+          for (let s3 = 1; s3 < steps; s3 += 1) {
+            const theta = s3 / steps * Math.PI;
+            const offsetX = Math.sin(theta) * bulge;
+            const offsetY = -Math.cos(theta) * arcSpan;
+            points.push({ col: curCol + offsetX, row: yLevel + offsetY, isJump: true });
+          }
+          points.push({ col: curCol, row: yLevel + arcSpan, isJump: true });
+          continue;
+        }
+        points.push({ col: curCol, row: yLevel });
+        if (curCol < numCols - 1 && rungs[r3][curCol]) {
+          curCol += 1;
+          points.push({ col: curCol, row: yLevel, isBridge: true, bridgeRow: r3, bridgeCol: curCol - 1 });
+        } else if (curCol > 0 && rungs[r3][curCol - 1]) {
+          curCol -= 1;
+          points.push({ col: curCol, row: yLevel, isBridge: true, bridgeRow: r3, bridgeCol: curCol });
+        }
+      }
+      points.push({ col: curCol, row: rowsCount + 1 });
+      let totalLength = 0;
+      const segments = [];
+      for (let i3 = 0; i3 < points.length - 1; i3 += 1) {
+        const a3 = points[i3];
+        const b2 = points[i3 + 1];
+        const len = Math.hypot(b2.col - a3.col, b2.row - a3.row) || 1e-3;
+        segments.push({
+          a: a3,
+          b: b2,
+          startDist: totalLength,
+          endDist: totalLength + len,
+          len
+        });
+        totalLength += len;
+      }
+      const destOutcome = outcomes[curCol] || { label: "\uD1B5\uACFC", isBomb: false };
+      return {
+        playerIndex: startCol,
+        playerName: name,
+        color: PLAYER_COLORS[startCol % PLAYER_COLORS.length],
+        startCol,
+        destCol: curCol,
+        outcomeLabel: destOutcome.label,
+        isBomb: Boolean(destOutcome.isBomb),
+        points,
+        segments,
+        totalLength
+      };
+    });
+    return {
+      numCols,
+      rowsCount,
+      participants: [...participants],
+      outcomes: outcomes.map((o3) => ({ ...o3 })),
+      rungs,
+      verticalJumps: validJumps.map((j4) => ({ ...j4 })),
+      traces
+    };
+  }
+  function interpolateTrace(trace, progress01) {
+    const clamped = Math.max(0, Math.min(1, progress01));
+    const targetDist = clamped * trace.totalLength;
+    const walkedPoints = [trace.points[0]];
+    for (let i3 = 0; i3 < trace.segments.length; i3 += 1) {
+      const seg = trace.segments[i3];
+      if (targetDist >= seg.endDist) {
+        walkedPoints.push(seg.b);
+      } else {
+        const localT = (targetDist - seg.startDist) / seg.len;
+        const curPos = {
+          col: seg.a.col + (seg.b.col - seg.a.col) * localT,
+          row: seg.a.row + (seg.b.row - seg.a.row) * localT,
+          onBridge: seg.a.row === seg.b.row
+        };
+        walkedPoints.push(curPos);
+        return { current: curPos, walkedPoints };
+      }
+    }
+    const last = trace.points[trace.points.length - 1];
+    return { current: last, walkedPoints };
+  }
+  function BombLadderGame({ onBack }) {
+    const [playersInput, setPlayersInput] = d2(DEFAULT_PLAYERS.join(", "));
+    const [bombCount, setBombCount] = d2(2);
+    const [bombLabel, setBombLabel] = d2("\u{1F4A3} \uD3ED\uD0C4 \uB2F9\uCCA8!");
+    const [safeLabel, setSafeLabel] = d2("\u{1F6E1}\uFE0F \uC0DD\uC874 \uD1B5\uACFC");
+    const [hideRungsUntilStart, setHideRungsUntilStart] = d2(false);
+    const [focusedPlayerIdx, setFocusedPlayerIdx] = d2(null);
+    const [editMode, setEditMode] = d2(false);
+    const [editTool, setEditTool] = d2("rung");
+    const [hoverTarget, setHoverTarget] = d2(null);
+    const [showResultModal, setShowResultModal] = d2(false);
+    const [ladderData, setLadderData] = d2(null);
+    const [phase, setPhase] = d2("idle");
+    const [progress, setProgress] = d2(0);
+    const [history, setHistory] = d2([]);
+    const canvasRef = A2(null);
+    const rafRef = A2(null);
+    const particlesRef = A2([]);
+    const lastSoundStepRef = A2(-1);
+    const parsedPlayers = T2(() => {
+      const list = playersInput.split(/[,\r\n]+/).map((s3) => s3.trim()).filter(Boolean);
+      return list.slice(0, 12);
+    }, [playersInput]);
+    h2(() => {
+      if (phase === "idle") {
+        const validPlayers = parsedPlayers.length >= 2 ? parsedPlayers : ["\uCC38\uAC00\uC7901", "\uCC38\uAC00\uC7902"];
+        const actualBombs = Math.max(1, Math.min(validPlayers.length - 1, Number(bombCount) || 1));
+        const rawOutcomes = validPlayers.map((_3, idx) => ({
+          label: idx < actualBombs ? bombLabel : safeLabel,
+          isBomb: idx < actualBombs
+        }));
+        const shuffledOutcomes = shuffleUnbiased(rawOutcomes);
+        setLadderData(
+          buildAmidakujiLadder({
+            participants: validPlayers,
+            outcomes: shuffledOutcomes,
+            rowsCount: 12
+          })
+        );
+        setProgress(0);
+        setFocusedPlayerIdx(null);
+      }
+    }, [parsedPlayers.join("|"), bombCount, bombLabel, safeLabel]);
+    h2(() => {
+      return () => {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      };
+    }, []);
+    const spawnBombExplosions = (data, canvasWidth, canvasHeight) => {
+      const numCols = data.numCols;
+      const padX = Math.max(58, canvasWidth * 0.08);
+      const usableW = Math.max(120, canvasWidth - padX * 2);
+      const colX = (c3) => numCols <= 1 ? canvasWidth / 2 : padX + c3 / (numCols - 1) * usableW;
+      const botY = canvasHeight - 46;
+      const nextParticles = [];
+      data.outcomes.forEach((out, colIdx) => {
+        if (!out.isBomb) return;
+        const cx = colX(colIdx);
+        const cy = botY;
+        for (let i3 = 0; i3 < 36; i3 += 1) {
+          const angle = Math.PI * 2 * i3 / 36 + (Math.random() - 0.5) * 0.25;
+          const speed = 1.8 + Math.random() * 5.2;
+          nextParticles.push({
+            x: cx,
+            y: cy,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 1.2,
+            radius: 3 + Math.random() * 5,
+            color: i3 % 3 === 0 ? "#ef4444" : i3 % 3 === 1 ? "#f97316" : "#facc15",
+            alpha: 1
+          });
+        }
+      });
+      particlesRef.current = nextParticles;
+    };
+    const finalizeReveal = (lockedLadder) => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      setProgress(1);
+      setPhase("revealed");
+      setShowResultModal(true);
+      setEditMode(false);
+      const hasBombs = lockedLadder.traces.some((t3) => t3.isBomb);
+      if (hasBombs) {
+        drawSound.playExplosion();
+      } else {
+        drawSound.playFanfare();
+      }
+      const canvas = canvasRef.current;
+      if (canvas) {
+        const rect = canvas.getBoundingClientRect();
+        spawnBombExplosions(lockedLadder, rect.width || 860, rect.height || 480);
+      }
+      const bombWinners = lockedLadder.traces.filter((t3) => t3.isBomb).map((t3) => t3.playerName);
+      const safeWinners = lockedLadder.traces.filter((t3) => !t3.isBomb).map((t3) => t3.playerName);
+      setHistory((prev) => [
+        {
+          id: `ladder-${Date.now()}`,
+          time: formatDrawTime(),
+          participantsCount: lockedLadder.participants.length,
+          bombWinners,
+          safeWinners,
+          pairs: lockedLadder.traces.map((t3) => ({
+            name: t3.playerName,
+            outcome: t3.outcomeLabel,
+            isBomb: t3.isBomb
+          }))
+        },
+        ...prev.slice(0, 14)
+      ]);
+    };
+    const handleRegenerateLadder = () => {
+      if (phase === "running") return;
+      const validPlayers = parsedPlayers.length >= 2 ? parsedPlayers : ["\uCC38\uAC00\uC7901", "\uCC38\uAC00\uC7902"];
+      const actualBombs = Math.max(1, Math.min(validPlayers.length - 1, Number(bombCount) || 1));
+      const rawOutcomes = validPlayers.map((_3, idx) => ({
+        label: idx < actualBombs ? bombLabel : safeLabel,
+        isBomb: idx < actualBombs
+      }));
+      const nextLadder = buildAmidakujiLadder({
+        participants: validPlayers,
+        outcomes: shuffleUnbiased(rawOutcomes),
+        rowsCount: 12,
+        verticalJumps: ladderData?.verticalJumps || []
+      });
+      setLadderData(nextLadder);
+      setPhase("idle");
+      setProgress(0);
+      setFocusedPlayerIdx(null);
+      setShowResultModal(false);
+      drawSound.playTick(0.4, "wooden");
+    };
+    const computeCanvasTarget = (e3) => {
+      if (!ladderData || !canvasRef.current) return null;
+      const rect = canvasRef.current.getBoundingClientRect();
+      const x3 = e3.clientX - rect.left;
+      const y3 = e3.clientY - rect.top;
+      const w3 = Math.max(480, rect.width || 860);
+      const h3 = Math.max(360, rect.height || 480);
+      const numCols = ladderData.numCols;
+      const rowsCount = ladderData.rowsCount;
+      const padX = Math.max(66, w3 * 0.095);
+      const topY = 58;
+      const botY = h3 - 56;
+      const usableW = Math.max(120, w3 - padX * 2);
+      const usableH = Math.max(160, botY - topY);
+      if (y3 < topY + 6 || y3 > botY - 6 || numCols < 2) return null;
+      const colSpan = usableW / (numCols - 1);
+      const rowStep = usableH / (rowsCount + 1);
+      const nearestRow = Math.max(1, Math.min(rowsCount, Math.round((y3 - topY) / rowStep)));
+      if (editTool === "rung") {
+        const rawCol = (x3 - padX) / colSpan;
+        if (rawCol < -0.15 || rawCol > numCols - 0.85) return null;
+        const gapCol = Math.max(0, Math.min(numCols - 2, Math.floor(rawCol)));
+        return { type: "rung", col: gapCol, row: nearestRow };
+      }
+      const nearestCol = Math.max(0, Math.min(numCols - 1, Math.round((x3 - padX) / colSpan)));
+      const railX = padX + nearestCol * colSpan;
+      const preferredSide = x3 >= railX ? 1 : -1;
+      const rIdx = nearestRow - 1;
+      const hasRightRung = nearestCol < numCols - 1 && ladderData.rungs[rIdx]?.[nearestCol];
+      const hasLeftRung = nearestCol > 0 && ladderData.rungs[rIdx]?.[nearestCol - 1];
+      let side = preferredSide;
+      if (nearestCol === 0) side = -1;
+      else if (nearestCol === numCols - 1) side = 1;
+      else if (hasRightRung && !hasLeftRung) side = -1;
+      else if (hasLeftRung && !hasRightRung) side = 1;
+      return { type: "arch", col: nearestCol, row: nearestRow, side };
+    };
+    const handleCanvasEditMove = (e3) => {
+      if (!editMode || phase === "running") {
+        if (hoverTarget) setHoverTarget(null);
+        return;
+      }
+      setHoverTarget(computeCanvasTarget(e3));
+    };
+    const handleCanvasEditClick = (e3) => {
+      if (!editMode || phase === "running" || !ladderData) return;
+      const target = computeCanvasTarget(e3);
+      if (!target) return;
+      const rowsCount = ladderData.rowsCount;
+      if (target.type === "rung") {
+        const rIdx = target.row - 1;
+        const gapCol = target.col;
+        const nextRungs = ladderData.rungs.map((row) => [...row]);
+        if (nextRungs[rIdx][gapCol]) {
+          nextRungs[rIdx][gapCol] = false;
+        } else {
+          if (gapCol > 0) nextRungs[rIdx][gapCol - 1] = false;
+          if (gapCol < ladderData.numCols - 2) nextRungs[rIdx][gapCol + 1] = false;
+          nextRungs[rIdx][gapCol] = true;
+        }
+        setLadderData(buildAmidakujiLadder({
+          participants: ladderData.participants,
+          outcomes: ladderData.outcomes,
+          rowsCount,
+          customRungs: nextRungs,
+          verticalJumps: ladderData.verticalJumps || []
+        }));
+        setPhase("idle");
+        setProgress(0);
+        drawSound.playTick(0.45, "wooden");
+        return;
+      }
+      const existing = ladderData.verticalJumps || [];
+      const hitExisting = existing.find((j4) => j4.col === target.col && j4.row === target.row);
+      const nextJumps = hitExisting ? existing.filter((j4) => j4.id !== hitExisting.id) : [...existing, { id: `arch-${Date.now()}-${target.col}-${target.row}`, col: target.col, row: target.row, side: target.side }];
+      setLadderData(buildAmidakujiLadder({
+        participants: ladderData.participants,
+        outcomes: ladderData.outcomes,
+        rowsCount,
+        customRungs: ladderData.rungs,
+        verticalJumps: nextJumps
+      }));
+      setPhase("idle");
+      setProgress(0);
+      drawSound.playTick(0.55, "pop");
+    };
+    const handleStartAll = (forceFresh = false) => {
+      const validPlayers = parsedPlayers.length >= 2 ? parsedPlayers : ["\uCC38\uAC00\uC7901", "\uCC38\uAC00\uC7902"];
+      const actualBombs = Math.max(1, Math.min(validPlayers.length - 1, Number(bombCount) || 1));
+      let locked;
+      if (!forceFresh && phase === "idle" && ladderData && ladderData.participants.length === validPlayers.length) {
+        locked = buildAmidakujiLadder({
+          participants: validPlayers,
+          outcomes: ladderData.outcomes,
+          rowsCount: ladderData.rowsCount,
+          customRungs: ladderData.rungs,
+          verticalJumps: ladderData.verticalJumps || []
+        });
+      } else {
+        const rawOutcomes = validPlayers.map((_3, idx) => ({
+          label: idx < actualBombs ? bombLabel : safeLabel,
+          isBomb: idx < actualBombs
+        }));
+        locked = buildAmidakujiLadder({
+          participants: validPlayers,
+          outcomes: shuffleUnbiased(rawOutcomes),
+          rowsCount: 12,
+          verticalJumps: ladderData?.verticalJumps || []
+        });
+      }
+      setEditMode(false);
+      setShowResultModal(false);
+      setLadderData(locked);
+      setPhase("running");
+      setProgress(0);
+      setFocusedPlayerIdx(null);
+      particlesRef.current = [];
+      lastSoundStepRef.current = -1;
+      const durationMs = 3200;
+      const startTime = performance.now();
+      const animate = (now) => {
+        const elapsed = now - startTime;
+        const p3 = Math.min(1, elapsed / durationMs);
+        setProgress(p3);
+        const stepBucket = Math.floor(p3 * 18);
+        if (stepBucket !== lastSoundStepRef.current) {
+          lastSoundStepRef.current = stepBucket;
+          drawSound.playTick(0.25 + p3 * 0.5, "wooden");
+        }
+        if (p3 < 1) {
+          rafRef.current = requestAnimationFrame(animate);
+        } else {
+          finalizeReveal(locked);
+        }
+      };
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    const handleInstantReveal = () => {
+      if (!ladderData) return;
+      if (phase === "idle") {
+        const validPlayers = parsedPlayers.length >= 2 ? parsedPlayers : ["\uCC38\uAC00\uC7901", "\uCC38\uAC00\uC7902"];
+        const actualBombs = Math.max(1, Math.min(validPlayers.length - 1, Number(bombCount) || 1));
+        const rawOutcomes = validPlayers.map((_3, idx) => ({
+          label: idx < actualBombs ? bombLabel : safeLabel,
+          isBomb: idx < actualBombs
+        }));
+        const locked = buildAmidakujiLadder({
+          participants: validPlayers,
+          outcomes: shuffleUnbiased(rawOutcomes),
+          rowsCount: 12
+        });
+        setLadderData(locked);
+        finalizeReveal(locked);
+      } else if (phase === "running") {
+        finalizeReveal(ladderData);
+      }
+    };
+    const handleReset = () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      particlesRef.current = [];
+      setPhase("idle");
+      setProgress(0);
+      setFocusedPlayerIdx(null);
+    };
+    h2(() => {
+      const canvas = canvasRef.current;
+      if (!canvas || !ladderData) return void 0;
+      let animId = null;
+      const renderFrame = () => {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        const w3 = Math.max(480, rect.width || 860);
+        const h3 = Math.max(360, rect.height || 480);
+        if (canvas.width !== Math.round(w3 * dpr) || canvas.height !== Math.round(h3 * dpr)) {
+          canvas.width = Math.round(w3 * dpr);
+          canvas.height = Math.round(h3 * dpr);
+        }
+        const ctx = canvas.getContext("2d");
+        ctx.save();
+        ctx.scale(dpr, dpr);
+        ctx.fillStyle = "#141615";
+        ctx.fillRect(0, 0, w3, h3);
+        const numCols = ladderData.numCols;
+        const rowsCount = ladderData.rowsCount;
+        const padX = Math.max(66, w3 * 0.095);
+        const topY = 58;
+        const botY = h3 - 56;
+        const usableW = Math.max(120, w3 - padX * 2);
+        const usableH = Math.max(160, botY - topY);
+        const colX = (c3) => numCols <= 1 ? w3 / 2 : padX + c3 / (numCols - 1) * usableW;
+        const rowY = (r3) => topY + r3 / (rowsCount + 1) * usableH;
+        ctx.strokeStyle = "rgba(238, 233, 223, 0.05)";
+        ctx.lineWidth = 1;
+        for (let r3 = 1; r3 <= rowsCount; r3 += 1) {
+          const y3 = rowY(r3);
+          ctx.beginPath();
+          ctx.moveTo(padX - 24, y3);
+          ctx.lineTo(w3 - padX + 24, y3);
+          ctx.stroke();
+        }
+        for (let c3 = 0; c3 < numCols; c3 += 1) {
+          const x3 = colX(c3);
+          ctx.strokeStyle = "rgba(185, 180, 168, 0.34)";
+          ctx.lineWidth = 3.5;
+          ctx.lineCap = "round";
+          ctx.beginPath();
+          ctx.moveTo(x3, topY);
+          ctx.lineTo(x3, botY);
+          ctx.stroke();
+        }
+        const showRungs = !hideRungsUntilStart || phase !== "idle";
+        if (showRungs) {
+          for (let r3 = 0; r3 < rowsCount; r3 += 1) {
+            const y3 = rowY(r3 + 1);
+            for (let c3 = 0; c3 < numCols - 1; c3 += 1) {
+              if (ladderData.rungs[r3][c3]) {
+                const x1 = colX(c3);
+                const x22 = colX(c3 + 1);
+                ctx.strokeStyle = "rgba(211, 165, 106, 0.45)";
+                ctx.lineWidth = 3.5;
+                ctx.beginPath();
+                ctx.moveTo(x1, y3);
+                ctx.lineTo(x22, y3);
+                ctx.stroke();
+                ctx.fillStyle = "#d3a56a";
+                ctx.beginPath();
+                ctx.arc(x1, y3, 3.2, 0, Math.PI * 2);
+                ctx.arc(x22, y3, 3.2, 0, Math.PI * 2);
+                ctx.fill();
+              }
+            }
+          }
+          const colGapPx = usableW / Math.max(1, numCols - 1);
+          const rowGapPx = usableH / (rowsCount + 1);
+          (ladderData.verticalJumps || []).forEach((arch) => {
+            const baseX = colX(arch.col);
+            const cy = rowY(arch.row);
+            const halfH = rowGapPx * 0.42;
+            const bulgePx = colGapPx * 0.24 * arch.side;
+            ctx.save();
+            ctx.strokeStyle = "#cf8050";
+            ctx.lineWidth = 3.5;
+            ctx.lineCap = "round";
+            ctx.beginPath();
+            ctx.moveTo(baseX, cy - halfH);
+            ctx.quadraticCurveTo(baseX + bulgePx * 1.85, cy, baseX, cy + halfH);
+            ctx.stroke();
+            ctx.fillStyle = "#f5c78e";
+            ctx.beginPath();
+            ctx.arc(baseX, cy - halfH, 3.4, 0, Math.PI * 2);
+            ctx.arc(baseX, cy + halfH, 3.4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+          });
+          if (editMode && hoverTarget) {
+            ctx.save();
+            ctx.strokeStyle = "rgba(245, 199, 142, 0.72)";
+            ctx.lineWidth = 3.5;
+            ctx.setLineDash([5, 4]);
+            if (hoverTarget.type === "rung") {
+              const x1 = colX(hoverTarget.col);
+              const x22 = colX(hoverTarget.col + 1);
+              const y3 = rowY(hoverTarget.row);
+              ctx.beginPath();
+              ctx.moveTo(x1, y3);
+              ctx.lineTo(x22, y3);
+              ctx.stroke();
+            } else if (hoverTarget.type === "arch") {
+              const baseX = colX(hoverTarget.col);
+              const cy = rowY(hoverTarget.row);
+              const halfH = rowGapPx * 0.42;
+              const bulgePx = colGapPx * 0.24 * hoverTarget.side;
+              ctx.beginPath();
+              ctx.moveTo(baseX, cy - halfH);
+              ctx.quadraticCurveTo(baseX + bulgePx * 1.85, cy, baseX, cy + halfH);
+              ctx.stroke();
+            }
+            ctx.setLineDash([]);
+            ctx.restore();
+          }
+        } else {
+          ctx.fillStyle = "rgba(34, 37, 35, 0.92)";
+          ctx.strokeStyle = "rgba(207, 128, 80, 0.55)";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.roundRect(padX - 26, topY + 22, usableW + 52, usableH - 44, 8);
+          ctx.fill();
+          ctx.stroke();
+          ctx.fillStyle = "#eee9df";
+          ctx.font = "800 16px Pretendard, sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("\u{1F4A3} BLIND LADDER MODE \u2014 \uCD9C\uBC1C \uC2DC \uC0AC\uB2E4\uB9AC \uACBD\uB85C\uAC00 \uACF5\uAC1C\uB429\uB2C8\uB2E4", w3 / 2, topY + usableH / 2);
+        }
+        const activeProgress = phase === "idle" ? 0 : phase === "revealed" ? 1 : progress;
+        const runnerPositions = [];
+        if (activeProgress > 0 || focusedPlayerIdx !== null) {
+          ladderData.traces.forEach((trace, idx) => {
+            const isFocused = focusedPlayerIdx === null || focusedPlayerIdx === idx;
+            const traceProg = phase === "idle" && focusedPlayerIdx === idx ? 1 : activeProgress;
+            if (traceProg <= 0) return;
+            const { current, walkedPoints } = interpolateTrace(trace, traceProg);
+            ctx.save();
+            ctx.strokeStyle = trace.color;
+            ctx.lineWidth = isFocused ? 4.5 : 2;
+            ctx.globalAlpha = isFocused ? 0.96 : 0.22;
+            ctx.shadowColor = trace.color;
+            ctx.shadowBlur = isFocused ? 10 : 0;
+            ctx.lineCap = "round";
+            ctx.lineJoin = "round";
+            ctx.beginPath();
+            walkedPoints.forEach((pt, pIdx) => {
+              const px2 = colX(pt.col);
+              const py2 = rowY(pt.row);
+              if (pIdx === 0) ctx.moveTo(px2, py2);
+              else ctx.lineTo(px2, py2);
+            });
+            ctx.stroke();
+            ctx.restore();
+            const curX = colX(current.col);
+            const curY = rowY(current.row);
+            runnerPositions.push({
+              idx,
+              name: trace.playerName,
+              color: trace.color,
+              x: curX,
+              y: curY,
+              onBridge: current.onBridge,
+              isFocused,
+              isBomb: trace.isBomb
+            });
+          });
+        }
+        if (phase === "running") {
+          for (let i3 = 0; i3 < runnerPositions.length; i3 += 1) {
+            for (let j4 = i3 + 1; j4 < runnerPositions.length; j4 += 1) {
+              const a3 = runnerPositions[i3];
+              const b2 = runnerPositions[j4];
+              const dist = Math.hypot(a3.x - b2.x, a3.y - b2.y);
+              if (dist < 38) {
+                const mx = (a3.x + b2.x) / 2;
+                const my = (a3.y + b2.y) / 2;
+                ctx.save();
+                ctx.strokeStyle = "#facc15";
+                ctx.fillStyle = "#fef08a";
+                ctx.lineWidth = 2;
+                for (let k3 = 0; k3 < 6; k3 += 1) {
+                  const ang = Math.PI * 2 * k3 / 6 + activeProgress * 18;
+                  ctx.beginPath();
+                  ctx.moveTo(mx + Math.cos(ang) * 4, my + Math.sin(ang) * 4);
+                  ctx.lineTo(mx + Math.cos(ang) * 14, my + Math.sin(ang) * 14);
+                  ctx.stroke();
+                }
+                ctx.font = "800 11px Pretendard, sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText("\u26A1\uCDA9\uB3CC!", mx, my - 15);
+                ctx.restore();
+              }
+            }
+          }
+        }
+        runnerPositions.forEach((runner) => {
+          if (!runner.isFocused && focusedPlayerIdx !== null) return;
+          ctx.save();
+          ctx.fillStyle = runner.color;
+          ctx.shadowColor = runner.color;
+          ctx.shadowBlur = 12;
+          ctx.beginPath();
+          ctx.arc(runner.x, runner.y, 11, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.lineWidth = 2;
+          ctx.strokeStyle = "#ffffff";
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+          ctx.fillStyle = "#0f172a";
+          ctx.font = "800 10.5px Pretendard, sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText(runner.name.slice(0, 2), runner.x, runner.y);
+          ctx.restore();
+        });
+        ladderData.participants.forEach((name, c3) => {
+          const x3 = colX(c3);
+          const color = PLAYER_COLORS[c3 % PLAYER_COLORS.length];
+          const isFocused = focusedPlayerIdx === c3;
+          ctx.save();
+          ctx.fillStyle = isFocused ? color : "#242725";
+          ctx.strokeStyle = color;
+          ctx.lineWidth = isFocused ? 3 : 2;
+          ctx.beginPath();
+          ctx.roundRect(x3 - 38, 12, 76, 32, 6);
+          ctx.fill();
+          ctx.stroke();
+          ctx.fillStyle = isFocused ? "#141615" : "#eee9df";
+          ctx.font = "800 12.5px Pretendard, sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText(name.length > 5 ? `${name.slice(0, 5)}\u2026` : name, x3, 28);
+          ctx.restore();
+        });
+        ladderData.outcomes.forEach((out, c3) => {
+          const x3 = colX(c3);
+          const arrivedTrace = phase === "revealed" ? ladderData.traces.find((t3) => t3.destCol === c3) : null;
+          ctx.save();
+          const isBomb = out.isBomb;
+          if (phase === "revealed") {
+            ctx.fillStyle = isBomb ? "rgba(155, 56, 38, 0.32)" : "rgba(108, 169, 122, 0.2)";
+            ctx.strokeStyle = isBomb ? "#d9534f" : "#6ca97a";
+          } else {
+            ctx.fillStyle = "#242725";
+            ctx.strokeStyle = isBomb ? "rgba(217, 83, 79, 0.65)" : "rgba(211, 165, 106, 0.5)";
+          }
+          ctx.lineWidth = phase === "revealed" && isBomb ? 3 : 2;
+          ctx.beginPath();
+          ctx.roundRect(x3 - 42, botY + 10, 84, 36, 6);
+          ctx.fill();
+          ctx.stroke();
+          ctx.fillStyle = isBomb ? "#f8b4b4" : "#e6dcc8";
+          ctx.font = "800 11.5px Pretendard, sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          const displayLabel = isBomb ? "\u{1F4A3} \uD3ED\uD0C4" : "\u{1F6E1}\uFE0F \uC0DD\uC874";
+          ctx.fillText(displayLabel, x3, botY + 22);
+          if (arrivedTrace) {
+            ctx.fillStyle = "#fff8eb";
+            ctx.font = "800 11px Pretendard, sans-serif";
+            ctx.fillText(arrivedTrace.playerName.slice(0, 5), x3, botY + 37);
+          }
+          ctx.restore();
+        });
+        if (particlesRef.current.length > 0) {
+          let alive = false;
+          particlesRef.current.forEach((p3) => {
+            if (p3.alpha <= 0.02) return;
+            alive = true;
+            p3.x += p3.vx;
+            p3.y += p3.vy;
+            p3.vy += 0.14;
+            p3.alpha *= 0.94;
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, p3.alpha);
+            ctx.fillStyle = p3.color;
+            ctx.beginPath();
+            ctx.arc(p3.x, p3.y, p3.radius, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+          });
+          if (alive) {
+            animId = requestAnimationFrame(renderFrame);
+          }
+        }
+        ctx.restore();
+      };
+      renderFrame();
+      const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => renderFrame()) : null;
+      if (ro) ro.observe(canvas);
+      window.addEventListener("resize", renderFrame);
+      return () => {
+        if (ro) ro.disconnect();
+        window.removeEventListener("resize", renderFrame);
+        if (animId) cancelAnimationFrame(animId);
+      };
+    }, [ladderData, phase, progress, hideRungsUntilStart, focusedPlayerIdx, editMode, hoverTarget]);
+    const bombTraces = ladderData ? ladderData.traces.filter((t3) => t3.isBomb) : [];
+    return /* @__PURE__ */ u3("div", { className: "rpz-game-shell", "data-testid": "game-bomb-ladder", children: [
+      /* @__PURE__ */ u3("header", { className: "rpz-game-topbar", children: [
+        /* @__PURE__ */ u3("div", { className: "rpz-game-title-group", children: [
+          /* @__PURE__ */ u3("button", { type: "button", className: "rpz-back-btn", onClick: onBack, children: "\u2190 RANDOM PLAY ZONE" }),
+          /* @__PURE__ */ u3("div", { children: [
+            /* @__PURE__ */ u3("span", { className: "rpz-game-Tag", children: "GAME 01 \xB7 AMIDAKUJI BIJECTION ENGINE" }),
+            /* @__PURE__ */ u3("h2", { children: "\u{1F4A3} BOMB LADDER \u2014 \uD3ED\uD0C4 \uC0AC\uB2E4\uB9AC" })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "rpz-top-actions", children: [
+          /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-secondary",
+              "data-testid": "ladder-regen-btn",
+              onClick: handleRegenerateLadder,
+              disabled: phase === "running",
+              children: "\u{1F500} \uC0AC\uB2E4\uB9AC \uC0C8\uB85C \uC9DC\uAE30"
+            }
+          ),
+          /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: `rpz-btn ${editMode ? "rpz-btn-accent" : "rpz-btn-secondary"}`,
+              "data-testid": "ladder-edit-toggle",
+              onClick: () => setEditMode((v3) => !v3),
+              disabled: phase === "running",
+              children: editMode ? "\u2705 \uC218\uC815 \uC644\uB8CC" : "\u270F\uFE0F \uC0AC\uB2E4\uB9AC \uC9C1\uC811 \uC218\uC815"
+            }
+          ),
+          phase === "idle" && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-primary",
+              "data-testid": "ladder-start-btn",
+              onClick: () => handleStartAll(false),
+              disabled: parsedPlayers.length < 2,
+              children: "\u{1F680} \uC804\uC6D0 \uB3D9\uC2DC \uCD9C\uBC1C!"
+            }
+          ),
+          phase === "running" && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-accent",
+              "data-testid": "ladder-instant-btn",
+              onClick: handleInstantReveal,
+              children: "\u26A1 \uACB0\uACFC \uC77C\uAD04 \uACF5\uAC1C"
+            }
+          ),
+          phase === "revealed" && /* @__PURE__ */ u3(S, { children: [
+            !showResultModal && /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                className: "rpz-btn rpz-btn-secondary",
+                onClick: () => setShowResultModal(true),
+                children: "\u{1F3C6} \uACB0\uACFC \uD31D\uC5C5 \uBCF4\uAE30"
+              }
+            ),
+            /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                className: "rpz-btn rpz-btn-primary",
+                "data-testid": "ladder-reroll-btn",
+                onClick: () => handleStartAll(true),
+                children: "\u{1F504} \uC0AC\uB2E4\uB9AC \uC7AC\uCD94\uCCA8"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-ghost",
+              onClick: () => {
+                setShowResultModal(false);
+                setEditMode(false);
+                handleReset();
+              },
+              children: "\uCD08\uAE30\uD654"
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "rpz-game-workspace", children: [
+        /* @__PURE__ */ u3("section", { className: "rpz-stage-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "rpz-stage-status-bar", children: [
+            /* @__PURE__ */ u3("span", { className: `rpz-phase-pill phase-${phase}`, "data-testid": "ladder-phase-badge", children: [
+              phase === "idle" && "\uB300\uAE30 \uC911 \u2014 \uCC38\uAC00\uC790\uC640 \uD3ED\uD0C4 \uC218\uB97C \uC124\uC815\uD558\uACE0 \uCD9C\uBC1C\uD558\uC138\uC694",
+              phase === "running" && `\uCD94\uCCA8 \uC9C4\uD589 \uC911 (${Math.round(progress * 100)}%) \u2014 \uB2E4\uC778 \uB3D9\uC2DC \uACBD\uB85C \uCD94\uC801`,
+              phase === "revealed" && `\uCD94\uCCA8 \uC644\uB8CC! \uD3ED\uD0C4 \uB2F9\uCCA8: ${bombTraces.map((t3) => t3.playerName).join(", ")}`
+            ] }),
+            ladderData && /* @__PURE__ */ u3("div", { className: "rpz-player-filter-chips", children: [
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `rpz-chip ${focusedPlayerIdx === null ? "active" : ""}`,
+                  onClick: () => setFocusedPlayerIdx(null),
+                  children: "\uC804\uCCB4 \uACBD\uB85C \uBCF4\uAE30"
+                }
+              ),
+              ladderData.participants.map((name, idx) => /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `rpz-chip ${focusedPlayerIdx === idx ? "active" : ""}`,
+                  style: { borderColor: PLAYER_COLORS[idx % PLAYER_COLORS.length] },
+                  onClick: () => setFocusedPlayerIdx((prev) => prev === idx ? null : idx),
+                  children: name
+                },
+                `${name}-${idx}`
+              ))
+            ] })
+          ] }),
+          editMode && /* @__PURE__ */ u3("div", { className: "rpz-ladder-edit-bar", "data-testid": "ladder-edit-bar", children: [
+            /* @__PURE__ */ u3("span", { children: "\u270F\uFE0F \uD3B8\uC9D1 \uB3C4\uAD6C:" }),
+            /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                className: `rpz-chip ${editTool === "rung" ? "active" : ""}`,
+                onClick: () => setEditTool("rung"),
+                children: "\u2795 \uAC00\uB85C\uC904 \uCD94\uAC00/\uC0AD\uC81C (\uB77C\uC778\u2194\uB77C\uC778)"
+              }
+            ),
+            /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                className: `rpz-chip ${editTool === "arch" ? "active" : ""}`,
+                onClick: () => setEditTool("arch"),
+                children: "\u27B0 \uAC19\uC740 \uC904 \uC6B0\uD68C \uC544\uCE58 (\uBC18\uC6D0 \uC5F0\uACB0)"
+              }
+            ),
+            (ladderData?.verticalJumps?.length || 0) > 0 && /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                className: "rpz-btn-xs",
+                onClick: () => setLadderData(buildAmidakujiLadder({
+                  participants: ladderData.participants,
+                  outcomes: ladderData.outcomes,
+                  rowsCount: ladderData.rowsCount,
+                  customRungs: ladderData.rungs,
+                  verticalJumps: []
+                })),
+                children: "\u{1F9F9} \uC544\uCE58 \uBE44\uC6B0\uAE30"
+              }
+            ),
+            /* @__PURE__ */ u3("small", { children: "\uBBF8\uB9AC\uBCF4\uAE30 \uC810\uC120\uC744 \uBCF4\uBA70 \uD074\uB9AD\uD558\uBA74 \uAC00\uB85C\uC904\uACFC \uACB9\uCE58\uC9C0 \uC54A\uAC8C \uCD94\uAC00\xB7\uC0AD\uC81C\uB429\uB2C8\uB2E4." })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: `rpz-canvas-box ${editMode ? "is-editing" : ""}`, children: [
+            /* @__PURE__ */ u3(
+              "canvas",
+              {
+                ref: canvasRef,
+                className: "rpz-main-canvas",
+                "data-testid": "ladder-canvas",
+                onMouseMove: handleCanvasEditMove,
+                onMouseLeave: () => setHoverTarget(null),
+                onClick: handleCanvasEditClick
+              }
+            ),
+            phase === "revealed" && showResultModal && ladderData && /* @__PURE__ */ u3("div", { className: "rpz-center-result-overlay", "data-testid": "ladder-result-panel", children: /* @__PURE__ */ u3("div", { className: "rpz-center-result-card", children: [
+              /* @__PURE__ */ u3("span", { className: "rpz-center-kicker", children: "\u{1F4A3} BOMB LADDER RESULT" }),
+              /* @__PURE__ */ u3("h3", { className: "rpz-center-title", children: "\uD3ED\uD0C4 \uB2F9\uCCA8\uC790 \uD655\uC815!" }),
+              /* @__PURE__ */ u3("div", { className: "rpz-center-winners", children: bombTraces.map((t3) => /* @__PURE__ */ u3("span", { className: "rpz-center-winner-badge", children: [
+                "\u{1F4A3} ",
+                t3.playerName
+              ] }, t3.playerIndex)) }),
+              /* @__PURE__ */ u3("p", { className: "rpz-center-sub", children: bombLabel }),
+              /* @__PURE__ */ u3("div", { className: "rpz-center-match-grid", children: ladderData.traces.map((t3) => /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `rpz-result-card ${t3.isBomb ? "is-bomb" : "is-safe"}`,
+                  onClick: () => {
+                    setFocusedPlayerIdx(t3.playerIndex);
+                    setShowResultModal(false);
+                  },
+                  children: [
+                    /* @__PURE__ */ u3("span", { className: "rpz-result-player", style: { color: t3.color }, children: t3.playerName }),
+                    /* @__PURE__ */ u3("span", { className: "rpz-result-arrow", children: "\u2192" }),
+                    /* @__PURE__ */ u3("strong", { className: "rpz-result-outcome", children: t3.isBomb ? "\u{1F4A3} \uD3ED\uD0C4" : "\u{1F6E1}\uFE0F \uC0DD\uC874" })
+                  ]
+                },
+                t3.playerIndex
+              )) }),
+              /* @__PURE__ */ u3("div", { className: "rpz-center-actions", children: [
+                /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: "rpz-btn rpz-btn-secondary",
+                    onClick: () => setShowResultModal(false),
+                    children: "\u{1F50D} \uC0AC\uB2E4\uB9AC \uACBD\uB85C \uBCF4\uAE30"
+                  }
+                ),
+                /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: "rpz-btn rpz-btn-primary",
+                    onClick: () => handleStartAll(true),
+                    children: "\u{1F504} \uC0C8 \uC0AC\uB2E4\uB9AC \uC7AC\uCD94\uCCA8"
+                  }
+                )
+              ] })
+            ] }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("aside", { className: "rpz-sidebar-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: "1. \uCC38\uAC00\uC790 \uBA85\uB2E8 (2~12\uBA85)" }),
+            /* @__PURE__ */ u3(
+              "textarea",
+              {
+                className: "rpz-textarea",
+                rows: 3,
+                value: playersInput,
+                disabled: phase === "running",
+                onChange: (e3) => setPlayersInput(e3.target.value),
+                placeholder: "\uC27C\uD45C(,) \uB610\uB294 \uC904\uBC14\uAFC8\uC73C\uB85C \uAD6C\uBD84",
+                "data-testid": "ladder-players-input"
+              }
+            ),
+            /* @__PURE__ */ u3("div", { className: "rpz-preset-row", children: [
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  disabled: phase === "running",
+                  onClick: () => setPlayersInput("\uAE40\uC131\uBBFC, \uC774\uC9C0\uD6C8, \uBC15\uC218\uC9C4, \uCD5C\uBBFC\uD638, \uC815\uD558\uB298, \uAC15\uB3D9\uC6D0"),
+                  children: "6\uC778 \uAE30\uBCF8"
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  disabled: phase === "running",
+                  onClick: () => setPlayersInput("\uAE30\uD68D\uD300, \uAC1C\uBC1C\uD300, \uB514\uC790\uC778\uD300, QA\uD300"),
+                  children: "4\uAC1C \uD300"
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  disabled: phase === "running",
+                  onClick: () => setPlayersInput("\uAE40\uC131\uBBFC, \uC774\uC9C0\uD6C8, \uBC15\uC218\uC9C4, \uCD5C\uBBFC\uD638, \uC815\uD558\uB298, \uAC15\uB3D9\uC6D0, \uC724\uC11C\uC5F0, \uD55C\uC9C0\uBBFC"),
+                  children: "8\uC778 \uD30C\uD2F0"
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: "2. \uD3ED\uD0C4 \uBC0F \uC0AC\uB2E4\uB9AC \uC635\uC158" }),
+            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+              /* @__PURE__ */ u3("span", { children: [
+                "\uD3ED\uD0C4 \uAC1C\uC218 (1 ~ ",
+                Math.max(1, parsedPlayers.length - 1),
+                "\uAC1C)"
+              ] }),
+              /* @__PURE__ */ u3(
+                "input",
+                {
+                  type: "number",
+                  className: "rpz-input",
+                  min: 1,
+                  max: Math.max(1, parsedPlayers.length - 1),
+                  value: bombCount,
+                  disabled: phase === "running",
+                  onChange: (e3) => setBombCount(Math.max(1, Math.min(parsedPlayers.length - 1, Number(e3.target.value) || 1))),
+                  "data-testid": "ladder-bomb-count"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+              /* @__PURE__ */ u3("span", { children: "\uD3ED\uD0C4 \uBC8C\uCE59 \uBB38\uAD6C" }),
+              /* @__PURE__ */ u3(
+                "input",
+                {
+                  type: "text",
+                  className: "rpz-input",
+                  value: bombLabel,
+                  disabled: phase === "running",
+                  onChange: (e3) => setBombLabel(e3.target.value)
+                }
+              )
+            ] }),
+            /* @__PURE__ */ u3("label", { className: "rpz-check-row", children: [
+              /* @__PURE__ */ u3(
+                "input",
+                {
+                  type: "checkbox",
+                  checked: hideRungsUntilStart,
+                  disabled: phase === "running",
+                  onChange: (e3) => setHideRungsUntilStart(e3.target.checked)
+                }
+              ),
+              /* @__PURE__ */ u3("span", { children: "\uCD9C\uBC1C \uC804\uAE4C\uC9C0 \uAC00\uB85C\uC904 \uAC00\uB9AC\uAE30 (\uBE14\uB77C\uC778\uB4DC \uBAA8\uB4DC)" })
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: [
+              "3. \uCD94\uCCA8 \uAE30\uB85D (",
+              history.length,
+              ")"
+            ] }),
+            history.length === 0 ? /* @__PURE__ */ u3("p", { className: "rpz-empty", children: "\uC544\uC9C1 \uC0AC\uB2E4\uB9AC \uCD94\uCCA8 \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4." }) : /* @__PURE__ */ u3("ul", { className: "rpz-history-list", "data-testid": "ladder-history-list", children: history.map((item) => /* @__PURE__ */ u3("li", { children: [
+              /* @__PURE__ */ u3("div", { className: "rpz-history-head", children: [
+                /* @__PURE__ */ u3("strong", { children: [
+                  "\u{1F4A3} ",
+                  item.bombWinners.join(", ")
+                ] }),
+                /* @__PURE__ */ u3("small", { children: item.time })
+              ] }),
+              /* @__PURE__ */ u3("small", { children: [
+                "\uCC38\uAC00 ",
+                item.participantsCount,
+                "\uBA85 \xB7 \uC0DD\uC874: ",
+                item.safeWinners.join(", ")
+              ] })
+            ] }, item.id)) })
+          ] })
+        ] })
+      ] })
+    ] });
+  }
+
+  // tool-box/src/features/game-box/draw/games/Lotto3DGame.jsx
+  var TOTAL_BALLS = 45;
+  var CHAMBER_RADIUS = 3.1;
+  var BALL_RADIUS = 0.27;
+  var HOLE_RADIUS = 0.62;
+  var NAME_BALL_PALETTE = [
+    "#d97706",
+    "#2563eb",
+    "#dc2626",
+    "#16a34a",
+    "#9333ea",
+    "#0d9488",
+    "#ea580c",
+    "#db2777",
+    "#4f46e5",
+    "#65a30d",
+    "#ca8a04",
+    "#0284c7"
+  ];
+  var LOTTO_MODES = [
+    { id: "lotto645", label: "\u{1F3B1} \uAE30\uBCF8 6/45", desc: "45\uAD6C \uC911 6\uAC1C + \uBCF4\uB108\uC2A4 1\uAC1C" },
+    { id: "customCount", label: "\u{1F522} \uAC1C\uC218 \uC9C0\uC815", desc: "\uC6D0\uD558\uB294 \uC22B\uC790 \uAC1C\uC218(1~10\uAC1C)\uB9CC \uBF51\uAE30" },
+    { id: "redBlue", label: "\u{1F534}\u{1F535} \uB808\uB4DC/\uBE14\uB8E8", desc: "\uBE68\uAC04\uBCFC\xB7\uD30C\uB780\uBCFC \uBE44\uC728 \uB300\uACB0 \uCD94\uCCA8" },
+    { id: "names", label: "\u{1F464} \uC774\uB984 \uACF5 (\uC911\uBCF5)", desc: "\uCC38\uAC00\uC790 \uC774\uB984\uBCC4 \uACF5 \uAC1C\uC218 \uD22C\uC785 \uCD94\uCCA8" }
+  ];
+  var DEFAULT_NAME_ENTRIES = [
+    { id: "n1", name: "\uAE40\uC131\uBBFC", count: 3 },
+    { id: "n2", name: "\uC774\uC9C0\uD6C8", count: 2 },
+    { id: "n3", name: "\uBC15\uC218\uC9C4", count: 2 },
+    { id: "n4", name: "\uCD5C\uBBFC\uD638", count: 1 },
+    { id: "n5", name: "\uC815\uD558\uB298", count: 2 }
+  ];
+  function getLottoBallColor(num) {
+    if (num <= 10) return "#eab308";
+    if (num <= 20) return "#3b82f6";
+    if (num <= 30) return "#ef4444";
+    if (num <= 40) return "#64748b";
+    return "#22c55e";
+  }
+  function drawUnbiasedLotto645() {
+    const pool2 = Array.from({ length: TOTAL_BALLS }, (_3, i3) => i3 + 1);
+    const shuffled = shuffleUnbiased(pool2);
+    const extractionOrder = shuffled.slice(0, 7);
+    const mainNumbers = [...extractionOrder.slice(0, 6)].sort((a3, b2) => a3 - b2);
+    const bonusNumber = extractionOrder[6];
+    return { extractionOrder, mainNumbers, bonusNumber };
+  }
+  function checkLottoTicketRank(mainNumbers, bonusNumber, myTicket) {
+    if (!Array.isArray(myTicket) || myTicket.length !== 6) return null;
+    const mainSet = new Set(mainNumbers);
+    const matchedMain = myTicket.filter((n2) => mainSet.has(n2));
+    const bonusMatched = myTicket.includes(bonusNumber);
+    const count = matchedMain.length;
+    let rank = 0;
+    let label = "\uBBF8\uB2F9\uCCA8 (\uB2E4\uC74C \uAE30\uD68C\uC5D0)";
+    if (count === 6) {
+      rank = 1;
+      label = "\u{1F3C6} 1\uB4F1 \uB2F9\uCCA8! (6\uAC1C \uBC88\uD638 \uBAA8\uB450 \uC77C\uCE58)";
+    } else if (count === 5 && bonusMatched) {
+      rank = 2;
+      label = "\u{1F948} 2\uB4F1 \uB2F9\uCCA8! (5\uAC1C \uBC88\uD638 + \uBCF4\uB108\uC2A4 \uBCFC \uC77C\uCE58)";
+    } else if (count === 5) {
+      rank = 3;
+      label = "\u{1F949} 3\uB4F1 \uB2F9\uCCA8! (5\uAC1C \uBC88\uD638 \uC77C\uCE58)";
+    } else if (count === 4) {
+      rank = 4;
+      label = "\u{1F389} 4\uB4F1 \uB2F9\uCCA8! (4\uAC1C \uBC88\uD638 \uC77C\uCE58)";
+    } else if (count === 3) {
+      rank = 5;
+      label = "\u{1F388} 5\uB4F1 \uB2F9\uCCA8! (3\uAC1C \uBC88\uD638 \uC77C\uCE58)";
+    }
+    return { rank, label, matchedMain, bonusMatched };
+  }
+  function createBallTexture({ label, color, isText = false }) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 256;
+    canvas.height = 128;
+    const ctx = canvas.getContext("2d");
+    const baseColor = color || "#eab308";
+    const grad = ctx.createLinearGradient(0, 0, 0, 128);
+    grad.addColorStop(0, baseColor);
+    grad.addColorStop(0.58, baseColor);
+    grad.addColorStop(1, "#1a1816");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 256, 128);
+    ctx.fillStyle = "rgba(255, 255, 255, 0.16)";
+    ctx.fillRect(0, 50, 256, 28);
+    const textStr = String(label ?? "");
+    const shortText = textStr.length > 5 ? textStr.slice(0, 5) : textStr;
+    [64, 192].forEach((cx) => {
+      ctx.save();
+      ctx.beginPath();
+      if (isText) {
+        ctx.ellipse(cx, 64, 48, 30, 0, 0, Math.PI * 2);
+      } else {
+        ctx.arc(cx, 64, 34, 0, Math.PI * 2);
+      }
+      ctx.fillStyle = "#faf6ef";
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "rgba(25, 27, 27, 0.25)";
+      ctx.stroke();
+      ctx.fillStyle = "#191b1b";
+      const fontSize = isText ? shortText.length >= 4 ? 19 : shortText.length === 3 ? 23 : 27 : shortText.length >= 3 ? 25 : 34;
+      ctx.font = `900 ${fontSize}px "Arial Black", Pretendard, sans-serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(shortText, cx, 65);
+      if (!isText && (shortText === "6" || shortText === "9")) {
+        ctx.fillRect(cx - 10, 84, 20, 3);
+      }
+      ctx.restore();
+    });
+    const texture = new CanvasTexture(canvas);
+    texture.colorSpace = SRGBColorSpace;
+    texture.needsUpdate = true;
+    return texture;
+  }
+  function Lotto3DGame({ onBack }) {
+    const [drawMode, setDrawMode] = d2("lotto645");
+    const [customMaxNum, setCustomMaxNum] = d2("45");
+    const [customDrawCount, setCustomDrawCount] = d2("3");
+    const [redCount, setRedCount] = d2("15");
+    const [blueCount, setBlueCount] = d2("15");
+    const [redBlueDrawCount, setRedBlueDrawCount] = d2("3");
+    const [nameEntries, setNameEntries] = d2(DEFAULT_NAME_ENTRIES);
+    const [nameDrawCount, setNameDrawCount] = d2("1");
+    const [drawOutcome, setDrawOutcome] = d2(null);
+    const [phase, setPhase] = d2("idle");
+    const [extractedBalls, setExtractedBalls] = d2([]);
+    const [gateIsOpen, setGateIsOpen] = d2(false);
+    const [blowerPower, setBlowerPower] = d2(1.2);
+    const [myTicket, setMyTicket] = d2([3, 11, 19, 27, 34, 42]);
+    const [history, setHistory] = d2([]);
+    const mountRef = A2(null);
+    const sceneStateRef = A2(null);
+    const ballPoolConfig = T2(() => {
+      if (drawMode === "lotto645") {
+        return {
+          targetCount: 7,
+          balls: Array.from({ length: 45 }, (_3, i3) => ({
+            id: `num-${i3 + 1}`,
+            num: i3 + 1,
+            label: String(i3 + 1),
+            color: getLottoBallColor(i3 + 1),
+            isText: false,
+            team: null
+          }))
+        };
+      }
+      if (drawMode === "customCount") {
+        const parsedMax = parseInt(customMaxNum, 10);
+        const maxN = Math.max(2, Math.min(60, Number.isFinite(parsedMax) ? parsedMax : 45));
+        const parsedCnt = parseInt(customDrawCount, 10);
+        const count2 = Math.max(1, Math.min(10, Math.min(maxN, Number.isFinite(parsedCnt) ? parsedCnt : 3)));
+        return {
+          targetCount: count2,
+          balls: Array.from({ length: maxN }, (_3, i3) => ({
+            id: `cnum-${i3 + 1}`,
+            num: i3 + 1,
+            label: String(i3 + 1),
+            color: getLottoBallColor(i3 % 45 + 1),
+            isText: false,
+            team: null
+          }))
+        };
+      }
+      if (drawMode === "redBlue") {
+        const parsedR = parseInt(redCount, 10);
+        const parsedB = parseInt(blueCount, 10);
+        const rCnt = Math.max(0, Math.min(30, Number.isFinite(parsedR) ? parsedR : 15));
+        const bCnt = Math.max(0, Math.min(30, Number.isFinite(parsedB) ? parsedB : 15));
+        const list2 = [];
+        for (let i3 = 0; i3 < rCnt; i3 += 1) {
+          list2.push({
+            id: `red-${i3 + 1}`,
+            num: i3 + 1,
+            label: `R${i3 + 1}`,
+            displayName: `\uB808\uB4DC #${i3 + 1}`,
+            color: "#dc2626",
+            isText: true,
+            team: "RED"
+          });
+        }
+        for (let i3 = 0; i3 < bCnt; i3 += 1) {
+          list2.push({
+            id: `blue-${i3 + 1}`,
+            num: rCnt + i3 + 1,
+            label: `B${i3 + 1}`,
+            displayName: `\uBE14\uB8E8 #${i3 + 1}`,
+            color: "#2563eb",
+            isText: true,
+            team: "BLUE"
+          });
+        }
+        if (list2.length === 0) {
+          list2.push({ id: "red-1", num: 1, label: "R1", displayName: "\uB808\uB4DC #1", color: "#dc2626", isText: true, team: "RED" });
+        }
+        const count2 = Math.max(1, Math.min(10, Math.min(list2.length, Number(redBlueDrawCount) || 1)));
+        return { targetCount: count2, balls: list2 };
+      }
+      const validEntries = nameEntries.map((e3, idx) => ({
+        name: String(e3.name || "").trim(),
+        count: Math.max(1, Math.min(15, Number(e3.count) || 1)),
+        color: NAME_BALL_PALETTE[idx % NAME_BALL_PALETTE.length]
+      })).filter((e3) => e3.name.length > 0);
+      const list = [];
+      let serial = 1;
+      validEntries.forEach((entry, pIdx) => {
+        for (let c3 = 0; c3 < entry.count; c3 += 1) {
+          list.push({
+            id: `name-${pIdx}-${c3}-${entry.name}`,
+            num: serial,
+            label: entry.name,
+            displayName: entry.name,
+            color: entry.color,
+            isText: true,
+            team: null
+          });
+          serial += 1;
+        }
+      });
+      if (list.length === 0) {
+        list.push({ id: "name-empty", num: 1, label: "\uCC38\uAC00\uC790", displayName: "\uCC38\uAC00\uC790", color: "#d97706", isText: true, team: null });
+      }
+      const count = Math.max(1, Math.min(10, Math.min(list.length, Number(nameDrawCount) || 1)));
+      return { targetCount: count, balls: list };
+    }, [drawMode, customMaxNum, customDrawCount, redCount, blueCount, redBlueDrawCount, nameEntries, nameDrawCount]);
+    h2(() => {
+      const container = mountRef.current;
+      if (!container) return void 0;
+      const width = Math.max(480, container.clientWidth || 860);
+      const height = Math.max(360, container.clientHeight || 540);
+      const scene = new Scene();
+      scene.background = new Color(1382166);
+      scene.fog = new FogExp2(1382166, 0.022);
+      const camera = new PerspectiveCamera(44, width / height, 0.1, 100);
+      camera.position.set(0, -0.25, 13.8);
+      camera.lookAt(0, -0.45, 0);
+      let renderer;
+      try {
+        renderer = new WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.toneMapping = ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.15;
+        container.innerHTML = "";
+        container.appendChild(renderer.domElement);
+      } catch {
+        return void 0;
+      }
+      const ambient = new AmbientLight(16116443, 1.15);
+      scene.add(ambient);
+      const keyLight = new DirectionalLight(16774628, 2.5);
+      keyLight.position.set(6, 10, 9);
+      scene.add(keyLight);
+      const rimLight = new DirectionalLight(13598800, 1.5);
+      rimLight.position.set(-8, 5, -6);
+      scene.add(rimLight);
+      const bottomGlow = new PointLight(13870442, 2, 11);
+      bottomGlow.position.set(0, -2.9, 0.5);
+      scene.add(bottomGlow);
+      const gateGlow = new PointLight(16436245, 0.4, 5.5);
+      gateGlow.position.set(0, CHAMBER_RADIUS + 0.1, 0);
+      scene.add(gateGlow);
+      const machineGroup = new Group();
+      machineGroup.position.y = 0.25;
+      scene.add(machineGroup);
+      const baseMat = new MeshStandardMaterial({
+        color: 2764075,
+        metalness: 0.72,
+        roughness: 0.28
+      });
+      const chromeMat = new MeshStandardMaterial({
+        color: 14209992,
+        metalness: 0.88,
+        roughness: 0.16
+      });
+      const brassMat = new MeshStandardMaterial({
+        color: 13598800,
+        metalness: 0.82,
+        roughness: 0.22
+      });
+      const gateRingMat = new MeshStandardMaterial({
+        color: 13870442,
+        emissive: 7028510,
+        emissiveIntensity: 0.5,
+        metalness: 0.75,
+        roughness: 0.2
+      });
+      const floorDisc = new Mesh(
+        new CylinderGeometry(7.2, 7.6, 0.18, 48),
+        new MeshStandardMaterial({ color: 1974303, metalness: 0.4, roughness: 0.55 })
+      );
+      floorDisc.position.set(0, -4.35, 0);
+      machineGroup.add(floorDisc);
+      const baseCyl = new Mesh(new CylinderGeometry(1.85, 2.25, 1.05, 40), baseMat);
+      baseCyl.position.set(0, -3.62, -0.15);
+      machineGroup.add(baseCyl);
+      const baseRing = new Mesh(new TorusGeometry(1.9, 0.09, 16, 48), brassMat);
+      baseRing.rotation.x = Math.PI / 2;
+      baseRing.position.set(0, -3.08, -0.15);
+      machineGroup.add(baseRing);
+      const nozzleMesh = new Mesh(
+        new CylinderGeometry(0.55, 0.85, 0.45, 24),
+        chromeMat
+      );
+      nozzleMesh.position.set(0, -2.95, 0);
+      machineGroup.add(nozzleMesh);
+      const glassMat = new MeshPhysicalMaterial({
+        color: 16051940,
+        metalness: 0.04,
+        roughness: 0.07,
+        transmission: 0.85,
+        transparent: true,
+        opacity: 0.28,
+        ior: 1.45,
+        reflectivity: 0.9,
+        clearcoat: 1,
+        clearcoatRoughness: 0.05,
+        side: DoubleSide,
+        depthWrite: false
+      });
+      const chamberMesh = new Mesh(
+        new SphereGeometry(CHAMBER_RADIUS, 48, 36),
+        glassMat
+      );
+      machineGroup.add(chamberMesh);
+      const equatorRing = new Mesh(
+        new TorusGeometry(CHAMBER_RADIUS + 0.03, 0.04, 16, 64),
+        chromeMat
+      );
+      equatorRing.rotation.x = Math.PI / 2;
+      machineGroup.add(equatorRing);
+      const meridianRing = new Mesh(
+        new TorusGeometry(CHAMBER_RADIUS + 0.03, 0.035, 16, 64),
+        chromeMat
+      );
+      machineGroup.add(meridianRing);
+      const paddleGroup1 = new Group();
+      const paddleGroup2 = new Group();
+      const bladeGeo = new BoxGeometry(CHAMBER_RADIUS * 1.56, 0.12, 0.22);
+      const blade1 = new Mesh(bladeGeo, chromeMat);
+      const blade2 = new Mesh(bladeGeo, brassMat);
+      paddleGroup1.add(blade1);
+      paddleGroup2.add(blade2);
+      paddleGroup2.rotation.z = Math.PI / 2;
+      machineGroup.add(paddleGroup1);
+      machineGroup.add(paddleGroup2);
+      const centerHub = new Mesh(new SphereGeometry(0.28, 24, 24), brassMat);
+      machineGroup.add(centerHub);
+      const apertureRim = new Mesh(
+        new TorusGeometry(HOLE_RADIUS, 0.055, 16, 36),
+        gateRingMat
+      );
+      apertureRim.rotation.x = Math.PI / 2;
+      apertureRim.position.set(0, CHAMBER_RADIUS - 0.14, 0);
+      machineGroup.add(apertureRim);
+      const gateDiscMesh = new Mesh(
+        new CylinderGeometry(HOLE_RADIUS * 0.92, HOLE_RADIUS * 0.92, 0.09, 24),
+        new MeshStandardMaterial({ color: 10172454, metalness: 0.7, roughness: 0.25 })
+      );
+      gateDiscMesh.position.set(0, CHAMBER_RADIUS - 0.1, 0);
+      machineGroup.add(gateDiscMesh);
+      const outerFunnelMesh = new Mesh(
+        new CylinderGeometry(0.42, HOLE_RADIUS * 0.92, 0.55, 24, 1, true),
+        chromeMat
+      );
+      outerFunnelMesh.position.set(0, CHAMBER_RADIUS + 0.18, 0);
+      machineGroup.add(outerFunnelMesh);
+      const chuteCurve = new CatmullRomCurve3([
+        new Vector3(0, CHAMBER_RADIUS - 0.1, 0),
+        new Vector3(0, CHAMBER_RADIUS + 0.62, 0.12),
+        new Vector3(2.15, CHAMBER_RADIUS + 0.6, 0.85),
+        new Vector3(4.3, 1.35, 1.72),
+        new Vector3(4.42, -1.95, 2.65),
+        new Vector3(4.26, -3.38, 3.08),
+        new Vector3(3.75, -3.69, 3.15),
+        new Vector3(3.18, -3.69, 3.15)
+      ]);
+      const chuteGeo = new TubeGeometry(chuteCurve, 72, 0.34, 20, false);
+      const chuteMat = new MeshPhysicalMaterial({
+        color: 15129803,
+        transparent: true,
+        opacity: 0.24,
+        roughness: 0.1,
+        metalness: 0.12,
+        side: DoubleSide,
+        depthWrite: false
+      });
+      const chuteMesh = new Mesh(chuteGeo, chuteMat);
+      machineGroup.add(chuteMesh);
+      const exitCollar = new Mesh(
+        new TorusGeometry(0.35, 0.05, 14, 32),
+        brassMat
+      );
+      exitCollar.position.set(3.18, -3.69, 3.15);
+      exitCollar.rotation.set(0, Math.PI / 2, 0);
+      machineGroup.add(exitCollar);
+      const trayMesh = new Mesh(new BoxGeometry(8.2, 0.24, 0.94), baseMat);
+      trayMesh.position.set(0.18, -4.08, 3.15);
+      machineGroup.add(trayMesh);
+      const trayRingsGroup = new Group();
+      machineGroup.add(trayRingsGroup);
+      const ballsGroup = new Group();
+      machineGroup.add(ballsGroup);
+      const ballGeo = new SphereGeometry(BALL_RADIUS, 24, 20);
+      const ringGeo = new TorusGeometry(0.29, 0.045, 12, 24);
+      const state = {
+        scene,
+        camera,
+        renderer,
+        balls: [],
+        ballsGroup,
+        trayRingsGroup,
+        slotPositions: [],
+        paddleGroup1,
+        paddleGroup2,
+        gateDiscMesh,
+        chuteCurve,
+        bottomGlow,
+        gateGlow,
+        gateRingMat,
+        isBlowing: false,
+        blowerStrength: 1.2,
+        paddleAngle: 0,
+        targetDrawCount: 7,
+        isLotto645Mode: true,
+        // Genuine Physics Aperture Gate Control:
+        gateOpen: false,
+        gateOpenedAt: 0,
+        nextGateOpenAt: 0,
+        extractedOrder: [],
+        onGateChange: null,
+        onBallCaptured: null,
+        onAllBallsSettled: null,
+        rebuildBalls: null
+      };
+      const rebuildBalls = (configs, targetCount2, isLotto6452) => {
+        state.balls.forEach((b2) => {
+          if (b2.mesh.material?.map) b2.mesh.material.map.dispose();
+          if (b2.mesh.material) b2.mesh.material.dispose();
+          ballsGroup.remove(b2.mesh);
+        });
+        state.balls = [];
+        while (trayRingsGroup.children.length > 0) {
+          trayRingsGroup.remove(trayRingsGroup.children[0]);
+        }
+        const count = Math.max(1, Math.min(10, targetCount2));
+        state.targetDrawCount = count;
+        state.isLotto645Mode = Boolean(isLotto6452);
+        state.extractedOrder = [];
+        state.gateOpen = false;
+        state.isBlowing = false;
+        const nextSlots = [];
+        if (isLotto6452 && count === 7) {
+          const coords = [-2.95, -2.13, -1.31, -0.49, 0.33, 1.15, 2.25];
+          coords.forEach((x3) => nextSlots.push(new Vector3(x3, -3.69, 3.15)));
+        } else {
+          const spacing = count <= 7 ? 0.84 : 0.66;
+          const totalSpan = (count - 1) * spacing;
+          const centerShift = -0.35;
+          for (let i3 = 0; i3 < count; i3 += 1) {
+            const x3 = centerShift - totalSpan / 2 + i3 * spacing;
+            nextSlots.push(new Vector3(x3, -3.69, 3.15));
+          }
+        }
+        state.slotPositions = nextSlots;
+        nextSlots.forEach((pos, idx) => {
+          const ring = new Mesh(
+            ringGeo,
+            isLotto6452 && idx === 6 ? brassMat : chromeMat
+          );
+          ring.rotation.x = Math.PI / 2;
+          ring.position.copy(pos).setY(-3.93);
+          trayRingsGroup.add(ring);
+        });
+        const slotOrder = shuffleUnbiased(Array.from({ length: configs.length }, (_3, i3) => i3));
+        const perLayer = Math.max(8, Math.ceil(configs.length / 3));
+        configs.forEach((cfg, idx) => {
+          const tex = createBallTexture({ label: cfg.label, color: cfg.color, isText: cfg.isText });
+          const mat = new MeshStandardMaterial({
+            map: tex,
+            roughness: 0.18,
+            metalness: 0.12
+          });
+          const mesh = new Mesh(ballGeo, mat);
+          const posIdx = slotOrder[idx];
+          const layer = Math.floor(posIdx / perLayer);
+          const angle = posIdx % perLayer * (Math.PI * 2 / perLayer) + layer * 0.42;
+          const rad = 0.55 + posIdx % 3 * 0.62;
+          const px2 = Math.cos(angle) * rad;
+          const pz2 = Math.sin(angle) * rad;
+          const py2 = -1.85 + layer * 0.58;
+          mesh.position.set(px2, py2, pz2);
+          ballsGroup.add(mesh);
+          state.balls.push({
+            ...cfg,
+            mesh,
+            pos: new Vector3(px2, py2, pz2),
+            vel: new Vector3(
+              (secureRandomFloat() - 0.5) * 3,
+              (secureRandomFloat() - 0.5) * 3,
+              (secureRandomFloat() - 0.5) * 3
+            ),
+            state: "chamber",
+            // 'chamber' | 'chute' | 'tray'
+            chuteProgress: 0,
+            traySlotIndex: -1
+          });
+        });
+      };
+      state.rebuildBalls = rebuildBalls;
+      sceneStateRef.current = state;
+      rebuildBalls(
+        Array.from({ length: TOTAL_BALLS }, (_3, i3) => ({
+          id: `num-${i3 + 1}`,
+          num: i3 + 1,
+          label: String(i3 + 1),
+          color: getLottoBallColor(i3 + 1),
+          isText: false,
+          team: null
+        })),
+        7,
+        true
+      );
+      let rafId = null;
+      let lastTime = performance.now();
+      const maxWallR = CHAMBER_RADIUS - BALL_RADIUS - 0.04;
+      const minDist = BALL_RADIUS * 2;
+      const stepPhysics = (dt, nowMs) => {
+        const subSteps = 3;
+        const subDt = Math.min(0.032, dt) / subSteps;
+        const blowing = state.isBlowing;
+        const power = state.blowerStrength;
+        const paddleSpeed = blowing ? 4.2 * power : 0.45;
+        state.paddleAngle += paddleSpeed * dt;
+        paddleGroup1.rotation.z = state.paddleAngle;
+        paddleGroup2.rotation.z = -state.paddleAngle + Math.PI / 2;
+        paddleGroup1.rotation.y = 0;
+        paddleGroup2.rotation.x = 0;
+        const p1Cos = Math.cos(state.paddleAngle);
+        const p1Sin = Math.sin(state.paddleAngle);
+        const p2Cos = Math.cos(-state.paddleAngle + Math.PI / 2);
+        const p2Sin = Math.sin(-state.paddleAngle + Math.PI / 2);
+        const bladeHalfLen = CHAMBER_RADIUS * 0.78;
+        bottomGlow.intensity = blowing ? 3.2 + Math.sin(state.paddleAngle * 4) * 1 : 1.1;
+        const balls = state.balls;
+        const slotPositions = state.slotPositions;
+        const targetCount2 = state.targetDrawCount;
+        const hasBallInChute = balls.some((b2) => b2.state === "chute");
+        if (blowing && !state.gateOpen && !hasBallInChute && state.extractedOrder.length < targetCount2 && nowMs >= state.nextGateOpenAt) {
+          state.gateOpen = true;
+          state.gateOpenedAt = nowMs;
+          if (state.onGateChange) state.onGateChange(true);
+        }
+        const targetGateX = state.gateOpen ? -1.15 : 0;
+        gateDiscMesh.position.x += (targetGateX - gateDiscMesh.position.x) * Math.min(1, dt * 14);
+        gateRingMat.emissive.setHex(state.gateOpen ? 14261059 : 6041628);
+        gateRingMat.emissiveIntensity = state.gateOpen ? 1.5 : 0.45;
+        gateGlow.intensity = state.gateOpen ? 3.4 : 0.5;
+        for (let s3 = 0; s3 < subSteps; s3 += 1) {
+          for (let i3 = 0; i3 < balls.length; i3 += 1) {
+            const b2 = balls[i3];
+            if (b2.state !== "chamber") continue;
+            b2.vel.y -= 9.8 * subDt;
+            if (blowing) {
+              const distXZ = Math.hypot(b2.pos.x, b2.pos.z) + 1e-3;
+              if (distXZ < 1.9) {
+                const jetStrength = (1 - distXZ / 1.9) * (32 * power);
+                b2.vel.y += jetStrength * subDt;
+                b2.vel.x -= b2.pos.x * 2.8 * subDt;
+                b2.vel.z -= b2.pos.z * 2.8 * subDt;
+              } else {
+                b2.vel.x -= b2.pos.x * 3.8 * subDt;
+                b2.vel.z -= b2.pos.z * 3.8 * subDt;
+              }
+              b2.vel.x += Math.sin(state.paddleAngle * 2.3 + i3 * 1.7) * 3.2 * power * subDt;
+              b2.vel.z += Math.cos(state.paddleAngle * 2.1 + i3 * 1.3) * 3.2 * power * subDt;
+              if (b2.pos.y < -1.5) {
+                b2.vel.y += (14.5 + i3 % 5 * 2) * power * subDt;
+                b2.vel.x -= b2.pos.x * 4.5 * subDt;
+                b2.vel.z -= b2.pos.z * 4.5 * subDt;
+              }
+              const blades = [
+                { cx: p1Cos, cy: p1Sin, omega: paddleSpeed },
+                { cx: p2Cos, cy: p2Sin, omega: -paddleSpeed }
+              ];
+              for (let k3 = 0; k3 < 2; k3 += 1) {
+                const bl = blades[k3];
+                if (Math.abs(b2.pos.z) < BALL_RADIUS + 0.16) {
+                  const proj = Math.max(-bladeHalfLen, Math.min(bladeHalfLen, b2.pos.x * bl.cx + b2.pos.y * bl.cy));
+                  const closestX = proj * bl.cx;
+                  const closestY = proj * bl.cy;
+                  const dx = b2.pos.x - closestX;
+                  const dy = b2.pos.y - closestY;
+                  const dist2D = Math.hypot(dx, dy);
+                  const hitRadius = BALL_RADIUS + 0.12;
+                  if (dist2D < hitRadius && dist2D > 1e-4) {
+                    const nx = dx / dist2D;
+                    const ny = dy / dist2D;
+                    b2.pos.x += nx * (hitRadius - dist2D);
+                    b2.pos.y += ny * (hitRadius - dist2D);
+                    const tangVx = -bl.cy * proj * bl.omega;
+                    const tangVy = bl.cx * proj * bl.omega;
+                    b2.vel.x = b2.vel.x * 0.4 + tangVx * 0.85 + nx * 2.2;
+                    b2.vel.y = b2.vel.y * 0.4 + Math.abs(tangVy) * 0.9 + 2.8;
+                  }
+                }
+              }
+              if (state.gateOpen) {
+                const openElapsedSec = Math.max(0, (nowMs - (state.gateOpenedAt || nowMs)) / 1e3);
+                const assistBoost = openElapsedSec > 2.6 ? Math.min(1.8, (openElapsedSec - 2.6) * 0.65) : 0;
+                if (b2.pos.y > 1.7 - assistBoost * 0.35 && distXZ < 1.05 + assistBoost * 0.25) {
+                  b2.vel.y += (10.5 + assistBoost * 6.5) * subDt;
+                  b2.vel.x -= b2.pos.x * (3.8 + assistBoost * 2.2) * subDt;
+                  b2.vel.z -= b2.pos.z * (3.8 + assistBoost * 2.2) * subDt;
+                }
+              }
+              b2.vel.x *= 0.992;
+              b2.vel.z *= 0.992;
+            } else {
+              b2.vel.multiplyScalar(0.98);
+            }
+            const speed = b2.vel.length();
+            const maxSpeed = blowing ? 11.4 * power : 4.2;
+            if (speed > maxSpeed) {
+              b2.vel.multiplyScalar(maxSpeed / speed);
+            }
+            b2.pos.addScaledVector(b2.vel, subDt);
+            const horizR = Math.hypot(b2.pos.x, b2.pos.z);
+            if (blowing && state.gateOpen && b2.pos.y >= CHAMBER_RADIUS - 0.52 && horizR <= HOLE_RADIUS) {
+              const slotIdx = state.extractedOrder.length;
+              b2.state = "chute";
+              b2.chuteProgress = 0;
+              b2.traySlotIndex = slotIdx;
+              const ballItem = {
+                id: b2.id,
+                num: b2.num,
+                label: b2.label,
+                displayName: b2.displayName || b2.label,
+                color: b2.color,
+                team: b2.team
+              };
+              state.extractedOrder.push(ballItem);
+              state.gateOpen = false;
+              const isBeforeBonus = state.isLotto645Mode && slotIdx === 5;
+              const cooldownMs = isBeforeBonus ? 2900 : 2100;
+              state.nextGateOpenAt = nowMs + cooldownMs;
+              if (state.onGateChange) state.onGateChange(false);
+              drawSound.playBallExtract(state.isLotto645Mode && slotIdx === 6);
+              if (state.onBallCaptured) {
+                state.onBallCaptured(ballItem, [...state.extractedOrder]);
+              }
+              continue;
+            }
+            const distFromCenter = b2.pos.length();
+            if (distFromCenter > maxWallR) {
+              const normal = b2.pos.clone().divideScalar(distFromCenter || 1);
+              b2.pos.copy(normal).multiplyScalar(maxWallR);
+              const velDot = b2.vel.dot(normal);
+              if (velDot > 0) {
+                const restitution = blowing ? 0.88 : 0.42;
+                b2.vel.addScaledVector(normal, -(1 + restitution) * velDot);
+              }
+            }
+            if (distFromCenter < 0.56) {
+              const normal = b2.pos.clone().divideScalar(distFromCenter || 1);
+              b2.pos.copy(normal).multiplyScalar(0.56);
+              const velDot = b2.vel.dot(normal);
+              if (velDot < 0) {
+                b2.vel.addScaledVector(normal, -1.6 * velDot);
+              }
+            }
+          }
+          for (let i3 = 0; i3 < balls.length; i3 += 1) {
+            const a3 = balls[i3];
+            if (a3.state !== "chamber") continue;
+            for (let j4 = i3 + 1; j4 < balls.length; j4 += 1) {
+              const b2 = balls[j4];
+              if (b2.state !== "chamber") continue;
+              const dx = b2.pos.x - a3.pos.x;
+              const dy = b2.pos.y - a3.pos.y;
+              const dz = b2.pos.z - a3.pos.z;
+              const distSq = dx * dx + dy * dy + dz * dz;
+              if (distSq < minDist * minDist && distSq > 1e-5) {
+                const dist = Math.sqrt(distSq);
+                const overlap = (minDist - dist) * 0.5;
+                const nx = dx / dist;
+                const ny = dy / dist;
+                const nz = dz / dist;
+                a3.pos.x -= nx * overlap;
+                a3.pos.y -= ny * overlap;
+                a3.pos.z -= nz * overlap;
+                b2.pos.x += nx * overlap;
+                b2.pos.y += ny * overlap;
+                b2.pos.z += nz * overlap;
+                const rvx = b2.vel.x - a3.vel.x;
+                const rvy = b2.vel.y - a3.vel.y;
+                const rvz = b2.vel.z - a3.vel.z;
+                const velAlongNormal = rvx * nx + rvy * ny + rvz * nz;
+                if (velAlongNormal < 0) {
+                  const restitution = blowing ? 0.86 : 0.4;
+                  const impulse = -(1 + restitution) * velAlongNormal * 0.5;
+                  a3.vel.x -= impulse * nx;
+                  a3.vel.y -= impulse * ny;
+                  a3.vel.z -= impulse * nz;
+                  b2.vel.x += impulse * nx;
+                  b2.vel.y += impulse * ny;
+                  b2.vel.z += impulse * nz;
+                }
+              }
+            }
+          }
+        }
+        let allInTray = state.extractedOrder.length === targetCount2;
+        for (let i3 = 0; i3 < balls.length; i3 += 1) {
+          const b2 = balls[i3];
+          if (b2.state === "chamber") {
+            b2.mesh.position.copy(b2.pos);
+            b2.mesh.rotation.x += b2.vel.z * dt * 1.5;
+            b2.mesh.rotation.y += b2.vel.x * dt * 1.5;
+          } else if (b2.state === "chute") {
+            allInTray = false;
+            b2.chuteProgress = Math.min(1, b2.chuteProgress + dt * 0.85);
+            const pt = chuteCurve.getPointAt(b2.chuteProgress);
+            b2.mesh.position.copy(pt);
+            b2.mesh.rotation.z -= dt * 7.5;
+            if (b2.chuteProgress >= 1) {
+              b2.state = "tray";
+            }
+          } else if (b2.state === "tray") {
+            const targetSlot = slotPositions[b2.traySlotIndex] || slotPositions[0];
+            if (targetSlot) {
+              b2.mesh.position.lerp(targetSlot, 0.18);
+            }
+            b2.mesh.rotation.set(0, 0, 0);
+          }
+        }
+        if (blowing && allInTray) {
+          state.isBlowing = false;
+          state.gateOpen = false;
+          if (state.onGateChange) state.onGateChange(false);
+          if (state.onAllBallsSettled) {
+            state.onAllBallsSettled([...state.extractedOrder]);
+          }
+        }
+      };
+      const animate = (now) => {
+        const dt = Math.min(0.05, (now - lastTime) / 1e3);
+        lastTime = now;
+        stepPhysics(dt, now);
+        renderer.render(scene, camera);
+        rafId = requestAnimationFrame(animate);
+      };
+      rafId = requestAnimationFrame(animate);
+      const handleResize = () => {
+        if (!container) return;
+        const w3 = Math.max(360, container.clientWidth || 860);
+        const h3 = Math.max(300, container.clientHeight || 500);
+        camera.aspect = w3 / h3;
+        camera.position.z = camera.aspect < 1.35 ? 14.8 : 13;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w3, h3);
+      };
+      const resizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(handleResize) : null;
+      if (resizeObserver) resizeObserver.observe(container);
+      window.addEventListener("resize", handleResize);
+      handleResize();
+      return () => {
+        if (resizeObserver) resizeObserver.disconnect();
+        window.removeEventListener("resize", handleResize);
+        if (rafId) cancelAnimationFrame(rafId);
+        renderer.dispose();
+      };
+    }, []);
+    h2(() => {
+      if (sceneStateRef.current) {
+        sceneStateRef.current.blowerStrength = blowerPower;
+      }
+    }, [blowerPower]);
+    h2(() => {
+      const st = sceneStateRef.current;
+      if (!st || !st.rebuildBalls) return;
+      st.rebuildBalls(ballPoolConfig.balls, ballPoolConfig.targetCount, drawMode === "lotto645");
+      setDrawOutcome(null);
+      setExtractedBalls([]);
+      setGateIsOpen(false);
+      setPhase("idle");
+    }, [ballPoolConfig, drawMode]);
+    const randomizeChamberBalls = () => {
+      const st = sceneStateRef.current;
+      if (!st) return;
+      st.gateOpen = false;
+      st.extractedOrder = [];
+      const total = st.balls.length;
+      const perLayer = Math.max(8, Math.ceil(total / 3));
+      const slotOrder = shuffleUnbiased(Array.from({ length: total }, (_3, i3) => i3));
+      st.balls.forEach((b2, idx) => {
+        const posIdx = slotOrder[idx];
+        const layer = Math.floor(posIdx / perLayer);
+        const angle = posIdx % perLayer * (Math.PI * 2 / perLayer) + layer * 0.42 + secureRandomFloat() * 0.25;
+        const rad = 0.55 + posIdx % 3 * 0.65;
+        b2.state = "chamber";
+        b2.chuteProgress = 0;
+        b2.traySlotIndex = -1;
+        b2.pos.set(Math.cos(angle) * rad, -1.8 + layer * 0.6, Math.sin(angle) * rad);
+        b2.vel.set(
+          (secureRandomFloat() - 0.5) * 9,
+          3 + secureRandomFloat() * 7,
+          (secureRandomFloat() - 0.5) * 9
+        );
+      });
+    };
+    const finalizeDrawOutcome = (finalOrder) => {
+      const isLotto6452 = drawMode === "lotto645";
+      const mainNumbers = isLotto6452 ? [...finalOrder.slice(0, 6).map((b2) => b2.num)].sort((a3, b2) => a3 - b2) : finalOrder.map((b2) => b2.num);
+      const bonusNumber = isLotto6452 && finalOrder[6] ? finalOrder[6].num : null;
+      const outcome = {
+        mode: drawMode,
+        extractionOrder: finalOrder,
+        mainNumbers,
+        bonusNumber
+      };
+      setDrawOutcome(outcome);
+      setExtractedBalls(finalOrder);
+      setGateIsOpen(false);
+      setPhase("completed");
+      drawSound.playFanfare();
+      const modeMeta = LOTTO_MODES.find((m3) => m3.id === drawMode);
+      setHistory((prev) => [
+        {
+          id: `lotto-${Date.now()}`,
+          time: formatDrawTime(),
+          mode: drawMode,
+          modeLabel: modeMeta ? modeMeta.label : drawMode,
+          balls: finalOrder,
+          mainNumbers,
+          bonusNumber
+        },
+        ...prev.slice(0, 14)
+      ]);
+    };
+    const handleStartLottoDraw = () => {
+      randomizeChamberBalls();
+      setDrawOutcome(null);
+      setExtractedBalls([]);
+      setGateIsOpen(false);
+      setPhase("blowing");
+      const st = sceneStateRef.current;
+      if (st) {
+        st.isBlowing = true;
+        st.gateOpen = false;
+        st.extractedOrder = [];
+        st.nextGateOpenAt = performance.now() + 2400;
+        st.onGateChange = (isOpen) => {
+          setGateIsOpen(isOpen);
+        };
+        st.onBallCaptured = (_ballItem, currentList) => {
+          setExtractedBalls(currentList);
+        };
+        st.onAllBallsSettled = (finalOrder) => {
+          st.onGateChange = null;
+          st.onBallCaptured = null;
+          st.onAllBallsSettled = null;
+          finalizeDrawOutcome(finalOrder);
+        };
+      }
+    };
+    const handleQuickComplete = () => {
+      const st = sceneStateRef.current;
+      if (!st) return;
+      st.isBlowing = false;
+      st.gateOpen = false;
+      st.onGateChange = null;
+      st.onBallCaptured = null;
+      st.onAllBallsSettled = null;
+      const already = [...st.extractedOrder];
+      const remainingBalls = st.balls.filter((b2) => b2.state === "chamber");
+      const needed = Math.max(0, st.targetDrawCount - already.length);
+      const extraObjs = shuffleUnbiased(remainingBalls).slice(0, needed);
+      const extraItems = extraObjs.map((b2) => ({
+        id: b2.id,
+        num: b2.num,
+        label: b2.label,
+        displayName: b2.displayName || b2.label,
+        color: b2.color,
+        team: b2.team
+      }));
+      const finalOrder = [...already, ...extraItems];
+      finalOrder.forEach((item, idx) => {
+        const ballObj = st.balls.find((b2) => b2.id === item.id);
+        if (ballObj) {
+          ballObj.state = "tray";
+          ballObj.traySlotIndex = idx;
+        }
+      });
+      st.extractedOrder = finalOrder;
+      finalizeDrawOutcome(finalOrder);
+    };
+    const handleAutoPickMyTicket = () => {
+      const picked = drawUnbiasedLotto645().mainNumbers;
+      setMyTicket(picked);
+    };
+    const toggleMyTicketNumber = (num) => {
+      if (myTicket.includes(num)) {
+        if (myTicket.length > 1) {
+          setMyTicket(myTicket.filter((n2) => n2 !== num));
+        }
+      } else if (myTicket.length < 6) {
+        setMyTicket([...myTicket, num].sort((a3, b2) => a3 - b2));
+      }
+    };
+    const handleUpdateNameEntry = (idx, field, value) => {
+      setNameEntries((prev) => prev.map((row, i3) => i3 === idx ? { ...row, [field]: field === "count" ? Math.max(1, Math.min(15, Number(value) || 1)) : value } : row));
+    };
+    const handleAddNameEntry = () => {
+      setNameEntries((prev) => [...prev, { id: `n-${Date.now()}`, name: "", count: 1 }]);
+    };
+    const handleRemoveNameEntry = (idx) => {
+      setNameEntries((prev) => {
+        const next = prev.filter((_3, i3) => i3 !== idx);
+        return next.length > 0 ? next : [{ id: `n-${Date.now()}`, name: "", count: 1 }];
+      });
+    };
+    const totalBallCount = ballPoolConfig.balls.length;
+    const targetCount = ballPoolConfig.targetCount;
+    const isLotto645 = drawMode === "lotto645";
+    const visibleMainBalls = isLotto645 ? extractedBalls.slice(0, 6) : extractedBalls;
+    const visibleBonusBall = isLotto645 && extractedBalls.length >= 7 ? extractedBalls[6] : null;
+    const ticketCheckResult = T2(() => {
+      if (!isLotto645 || phase !== "completed" || !drawOutcome || myTicket.length !== 6) return null;
+      return checkLottoTicketRank(drawOutcome.mainNumbers, drawOutcome.bonusNumber, myTicket);
+    }, [isLotto645, phase, drawOutcome, myTicket]);
+    const redBlueSummary = T2(() => {
+      if (drawMode !== "redBlue" || extractedBalls.length === 0) return null;
+      const redHits = extractedBalls.filter((b2) => b2.team === "RED").length;
+      const blueHits = extractedBalls.filter((b2) => b2.team === "BLUE").length;
+      return { redHits, blueHits };
+    }, [drawMode, extractedBalls]);
+    return /* @__PURE__ */ u3("div", { className: "rpz-game-shell", "data-testid": "game-lotto-3d", children: [
+      /* @__PURE__ */ u3("header", { className: "rpz-game-topbar", children: [
+        /* @__PURE__ */ u3("div", { className: "rpz-game-title-group", children: [
+          /* @__PURE__ */ u3("button", { type: "button", className: "rpz-back-btn", onClick: onBack, children: "\u2190 \uCD94\uCCA8 \uAC8C\uC784 \uBAA9\uB85D" }),
+          /* @__PURE__ */ u3("div", { children: [
+            /* @__PURE__ */ u3("span", { className: "rpz-game-Tag", children: "GAME 02 \xB7 GENUINE 3D PHYSICS APERTURE LOTTERY" }),
+            /* @__PURE__ */ u3("h2", { children: [
+              "\u{1F3B1} 3D \uBB3C\uB9AC \uCD94\uCCA8\uAE30 \u2014 ",
+              LOTTO_MODES.find((m3) => m3.id === drawMode)?.label
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "rpz-top-actions", children: [
+          phase === "idle" && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-primary",
+              "data-testid": "lotto-start-btn",
+              onClick: handleStartLottoDraw,
+              disabled: totalBallCount < 1,
+              children: "\u{1F32A}\uFE0F \uC1A1\uD48D \uAC00\uB3D9 \uBC0F \uBB3C\uB9AC \uCD94\uCCA8 \uC2DC\uC791"
+            }
+          ),
+          phase === "blowing" && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-accent",
+              "data-testid": "lotto-instant-btn",
+              onClick: handleQuickComplete,
+              children: [
+                "\u26A1 \uB0A8\uC740 \uACF5 \uC989\uC2DC \uC644\uB8CC (",
+                extractedBalls.length,
+                "/",
+                targetCount,
+                ")"
+              ]
+            }
+          ),
+          phase === "completed" && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-primary",
+              "data-testid": "lotto-reroll-btn",
+              onClick: handleStartLottoDraw,
+              children: "\u{1F504} \uC0C8 \uD68C\uCC28 3D \uC7AC\uCD94\uCCA8"
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "rpz-game-workspace", children: [
+        /* @__PURE__ */ u3("section", { className: "rpz-stage-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "rpz-stage-status-bar", children: [
+            /* @__PURE__ */ u3("span", { className: `rpz-phase-pill phase-${phase}`, "data-testid": "lotto-phase-badge", children: [
+              phase === "idle" && `\uD22C\uBA85 3D \uCD94\uCCA8\uC2E4 \uB300\uAE30 \uC911 \u2014 \uCD1D ${totalBallCount}\uAD6C \uC911 ${targetCount}\uAD6C\uB97C \uC2E4\uC81C 3D \uBB3C\uB9AC \uCDA9\uB3CC\uB85C \uBC30\uCD9C\uD569\uB2C8\uB2E4`,
+              phase === "blowing" && (gateIsOpen ? `\u{1F513} \uC0C1\uB2E8 \uBC30\uCD9C \uAD6C\uBA4D OPEN \u2014 \uCDA9\uB3CC \uD6C4 \uAD6C\uBA4D\uC5D0 \uBA3C\uC800 \uC9C4\uC785\uD558\uB294 \uACF5\uC774 \uC2E4\uC81C \uBC30\uCD9C\uB429\uB2C8\uB2E4! (${extractedBalls.length}/${targetCount}\uAD6C)` : `\u{1F512} \uAC8C\uC774\uD2B8 \uB2EB\uD798 \xB7 ${totalBallCount}\uAD6C \uC5D0\uC5B4\uC81C\uD2B8 \uAD50\uBC18 \uC911 (${extractedBalls.length}/${targetCount}\uAD6C \uBC30\uCD9C \uC644\uB8CC)`),
+              phase === "completed" && drawOutcome && (isLotto645 ? `\u{1F389} \uBB3C\uB9AC \uCD94\uCCA8 \uC644\uB8CC! \uB2F9\uCCA8 \uBC88\uD638: ${drawOutcome.mainNumbers.join(", ")} + \uBCF4\uB108\uC2A4 ${drawOutcome.bonusNumber}` : `\u{1F389} \uBB3C\uB9AC \uCD94\uCCA8 \uC644\uB8CC! \uACB0\uACFC (${targetCount}\uAD6C): ${drawOutcome.extractionOrder.map((b2) => b2.displayName || b2.label).join(", ")}`)
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "rpz-mode-badges", children: [
+              /* @__PURE__ */ u3("span", { className: "rpz-chip active", children: [
+                "\uCD94\uCCA8\uC2E4 \uC794\uC5EC ",
+                Math.max(0, totalBallCount - extractedBalls.length),
+                "\uAD6C"
+              ] }),
+              /* @__PURE__ */ u3("span", { className: `rpz-chip ${gateIsOpen ? "active" : ""}`, children: gateIsOpen ? "\u{1F513} \uC0C1\uB2E8 \uBC38\uBE0C \uC5F4\uB9BC" : "\u{1F512} \uC0C1\uB2E8 \uBC38\uBE0C \uB2EB\uD798" })
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-lotto-3d-viewport-wrap", children: /* @__PURE__ */ u3(
+            "div",
+            {
+              ref: mountRef,
+              className: "rpz-lotto-3d-mount",
+              "data-testid": "lotto-3d-canvas-container"
+            }
+          ) }),
+          /* @__PURE__ */ u3("div", { className: "rpz-lotto-bottom-bar", "data-testid": "lotto-ball-rack", children: isLotto645 ? /* @__PURE__ */ u3(S, { children: [
+            /* @__PURE__ */ u3("div", { className: "rpz-rack-group", children: [
+              /* @__PURE__ */ u3("span", { className: "rpz-rack-label", children: "\uB2F9\uCCA8 \uBC88\uD638 (6\uAD6C)" }),
+              /* @__PURE__ */ u3("div", { className: "rpz-rack-slots", children: Array.from({ length: 6 }, (_3, idx) => {
+                const num = phase === "completed" && drawOutcome ? drawOutcome.mainNumbers[idx] : visibleMainBalls[idx]?.num;
+                return /* @__PURE__ */ u3(
+                  "div",
+                  {
+                    className: `rpz-lotto-slot ${num ? "filled" : "empty"}`,
+                    "data-testid": `lotto-main-ball-${idx}`,
+                    style: num ? { background: getLottoBallColor(num) } : void 0,
+                    children: num || "?"
+                  },
+                  idx
+                );
+              }) })
+            ] }),
+            /* @__PURE__ */ u3("span", { className: "rpz-rack-plus", children: "+" }),
+            /* @__PURE__ */ u3("div", { className: "rpz-rack-group", children: [
+              /* @__PURE__ */ u3("span", { className: "rpz-rack-label", children: "\uBCF4\uB108\uC2A4" }),
+              /* @__PURE__ */ u3(
+                "div",
+                {
+                  className: `rpz-lotto-slot bonus ${visibleBonusBall ? "filled" : "empty"}`,
+                  "data-testid": "lotto-bonus-ball",
+                  style: visibleBonusBall ? { background: getLottoBallColor(visibleBonusBall.num) } : void 0,
+                  children: visibleBonusBall ? visibleBonusBall.num : "B"
+                }
+              )
+            ] }),
+            phase === "completed" && drawOutcome && ticketCheckResult && /* @__PURE__ */ u3("div", { className: "rpz-lotto-inline-result", "data-testid": "lotto-result-panel", children: /* @__PURE__ */ u3("span", { "data-testid": "lotto-ticket-check", children: [
+              "\uB0B4 \uBC88\uD638 [",
+              myTicket.join(", "),
+              "] \u2192 ",
+              /* @__PURE__ */ u3("strong", { children: ticketCheckResult.label }),
+              " ",
+              "(\uC77C\uCE58: ",
+              ticketCheckResult.matchedMain.length > 0 ? ticketCheckResult.matchedMain.join(", ") : "\uC5C6\uC74C",
+              ticketCheckResult.bonusMatched ? ` + \uBCF4\uB108\uC2A4 ${drawOutcome.bonusNumber}` : "",
+              ")"
+            ] }) })
+          ] }) : /* @__PURE__ */ u3(S, { children: [
+            /* @__PURE__ */ u3("div", { className: "rpz-rack-group", children: [
+              /* @__PURE__ */ u3("span", { className: "rpz-rack-label", children: [
+                "\uCD94\uCCA8 \uACB0\uACFC (",
+                extractedBalls.length,
+                "/",
+                targetCount,
+                "\uAD6C)"
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "rpz-rack-slots", children: Array.from({ length: targetCount }, (_3, idx) => {
+                const item = visibleMainBalls[idx];
+                const isTextPill = drawMode === "names" || drawMode === "redBlue";
+                return /* @__PURE__ */ u3(
+                  "div",
+                  {
+                    className: `rpz-lotto-slot ${isTextPill ? "is-pill" : ""} ${item ? "filled" : "empty"}`,
+                    "data-testid": `lotto-main-ball-${idx}`,
+                    style: item ? { background: item.color } : void 0,
+                    children: item ? drawMode === "redBlue" ? item.displayName : item.label : idx + 1
+                  },
+                  idx
+                );
+              }) })
+            ] }),
+            redBlueSummary && /* @__PURE__ */ u3("div", { className: "rpz-lotto-inline-result", children: /* @__PURE__ */ u3("span", { children: [
+              "\u{1F534} \uB808\uB4DC ",
+              /* @__PURE__ */ u3("strong", { children: redBlueSummary.redHits }),
+              "\uAD6C vs \u{1F535} \uBE14\uB8E8 ",
+              /* @__PURE__ */ u3("strong", { children: redBlueSummary.blueHits }),
+              "\uAD6C"
+            ] }) })
+          ] }) })
+        ] }),
+        /* @__PURE__ */ u3("aside", { className: "rpz-sidebar-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: "1. \uCD94\uCCA8 \uBAA8\uB4DC \uC120\uD0DD" }),
+            /* @__PURE__ */ u3("div", { className: "rpz-mode-grid-2x2", children: LOTTO_MODES.map((m3) => /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                "data-testid": `lotto-mode-${m3.id}`,
+                className: `rpz-preset-btn ${drawMode === m3.id ? "active" : ""}`,
+                disabled: phase === "blowing",
+                onClick: () => setDrawMode(m3.id),
+                children: /* @__PURE__ */ u3("div", { children: m3.label })
+              },
+              m3.id
+            )) }),
+            drawMode === "customCount" && /* @__PURE__ */ u3("div", { className: "rpz-mode-config-box", children: [
+              /* @__PURE__ */ u3("div", { className: "rpz-row-2col", children: [
+                /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+                  /* @__PURE__ */ u3("span", { children: "\uC804\uCCB4 \uBC88\uD638 (1~N)" }),
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      type: "number",
+                      className: "rpz-input",
+                      min: 2,
+                      max: 60,
+                      value: customMaxNum,
+                      disabled: phase === "blowing",
+                      onChange: (e3) => setCustomMaxNum(e3.target.value),
+                      onBlur: () => {
+                        const v3 = parseInt(customMaxNum, 10);
+                        setCustomMaxNum(String(Math.max(2, Math.min(60, Number.isFinite(v3) ? v3 : 45))));
+                      }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+                  /* @__PURE__ */ u3("span", { children: "\uBF51\uC744 \uAC1C\uC218 (1~10)" }),
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      type: "number",
+                      className: "rpz-input",
+                      min: 1,
+                      max: 10,
+                      value: customDrawCount,
+                      disabled: phase === "blowing",
+                      onChange: (e3) => setCustomDrawCount(e3.target.value),
+                      onBlur: () => {
+                        const v3 = parseInt(customDrawCount, 10);
+                        setCustomDrawCount(String(Math.max(1, Math.min(10, Number.isFinite(v3) ? v3 : 1))));
+                      }
+                    }
+                  )
+                ] })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "rpz-preset-row", children: [1, 2, 3, 5, 6].map((n2) => /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `rpz-btn-xs ${Number(customDrawCount) === n2 ? "active" : ""}`,
+                  disabled: phase === "blowing",
+                  onClick: () => setCustomDrawCount(String(n2)),
+                  children: [
+                    n2,
+                    "\uAC1C \uBF51\uAE30"
+                  ]
+                },
+                n2
+              )) })
+            ] }),
+            drawMode === "redBlue" && /* @__PURE__ */ u3("div", { className: "rpz-mode-config-box", children: [
+              /* @__PURE__ */ u3("div", { className: "rpz-row-2col", children: [
+                /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+                  /* @__PURE__ */ u3("span", { children: "\u{1F534} \uBE68\uAC04 \uACF5 \uAC1C\uC218" }),
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      type: "number",
+                      className: "rpz-input",
+                      min: 0,
+                      max: 30,
+                      value: redCount,
+                      disabled: phase === "blowing",
+                      onChange: (e3) => setRedCount(e3.target.value),
+                      onBlur: () => {
+                        const v3 = parseInt(redCount, 10);
+                        setRedCount(String(Math.max(0, Math.min(30, Number.isFinite(v3) ? v3 : 15))));
+                      }
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+                  /* @__PURE__ */ u3("span", { children: "\u{1F535} \uD30C\uB780 \uACF5 \uAC1C\uC218" }),
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      type: "number",
+                      className: "rpz-input",
+                      min: 0,
+                      max: 30,
+                      value: blueCount,
+                      disabled: phase === "blowing",
+                      onChange: (e3) => setBlueCount(e3.target.value),
+                      onBlur: () => {
+                        const v3 = parseInt(blueCount, 10);
+                        setBlueCount(String(Math.max(0, Math.min(30, Number.isFinite(v3) ? v3 : 15))));
+                      }
+                    }
+                  )
+                ] })
+              ] }),
+              /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+                /* @__PURE__ */ u3("span", { children: "\uBF51\uC744 \uAC1C\uC218 (1~10\uAC1C)" }),
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    type: "number",
+                    className: "rpz-input",
+                    min: 1,
+                    max: 10,
+                    value: redBlueDrawCount,
+                    disabled: phase === "blowing",
+                    onChange: (e3) => setRedBlueDrawCount(e3.target.value),
+                    onBlur: () => {
+                      const v3 = parseInt(redBlueDrawCount, 10);
+                      setRedBlueDrawCount(String(Math.max(1, Math.min(10, Number.isFinite(v3) ? v3 : 1))));
+                    }
+                  }
+                )
+              ] })
+            ] }),
+            drawMode === "names" && /* @__PURE__ */ u3("div", { className: "rpz-mode-config-box", children: [
+              /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+                /* @__PURE__ */ u3("span", { children: [
+                  "\uBF51\uC744 \uAC1C\uC218 (1~10\uAC1C \xB7 \uCD1D \uD22C\uC785 ",
+                  totalBallCount,
+                  "\uAD6C)"
+                ] }),
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    type: "number",
+                    className: "rpz-input",
+                    min: 1,
+                    max: 10,
+                    value: nameDrawCount,
+                    disabled: phase === "blowing",
+                    onChange: (e3) => setNameDrawCount(e3.target.value),
+                    onBlur: () => {
+                      const v3 = parseInt(nameDrawCount, 10);
+                      setNameDrawCount(String(Math.max(1, Math.min(10, Number.isFinite(v3) ? v3 : 1))));
+                    }
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "rpz-item-editor-list", children: nameEntries.map((entry, idx) => /* @__PURE__ */ u3("div", { className: "rpz-item-row", children: [
+                /* @__PURE__ */ u3(
+                  "span",
+                  {
+                    className: "rpz-color-dot",
+                    style: { background: NAME_BALL_PALETTE[idx % NAME_BALL_PALETTE.length] }
+                  }
+                ),
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    type: "text",
+                    className: "rpz-input",
+                    value: entry.name,
+                    disabled: phase === "blowing",
+                    placeholder: "\uCC38\uAC00\uC790 \uC774\uB984",
+                    onChange: (e3) => handleUpdateNameEntry(idx, "name", e3.target.value)
+                  }
+                ),
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    type: "number",
+                    className: "rpz-input rpz-count-input",
+                    min: 1,
+                    max: 15,
+                    title: "\uD22C\uC785\uD560 \uACF5 \uAC1C\uC218 (\uC911\uBCF5 \uD5C8\uC6A9)",
+                    value: entry.count,
+                    disabled: phase === "blowing",
+                    onChange: (e3) => handleUpdateNameEntry(idx, "count", e3.target.value)
+                  }
+                ),
+                /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: "rpz-item-remove-btn",
+                    disabled: phase === "blowing",
+                    onClick: () => handleRemoveNameEntry(idx),
+                    children: "\u2715"
+                  }
+                )
+              ] }, entry.id)) }),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-add-row-btn",
+                  disabled: phase === "blowing",
+                  onClick: handleAddNameEntry,
+                  children: "+ \uCC38\uAC00\uC790 \uACF5 \uCD94\uAC00 (\uC774\uB984\uBCC4 \uC911\uBCF5 \uAC1C\uC218 \uC124\uC815)"
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: "2. 3D \uC5D0\uC5B4\uC81C\uD2B8 \uC1A1\uD48D\uAE30 \uCD9C\uB825" }),
+            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+              /* @__PURE__ */ u3("span", { children: [
+                "\uC5D0\uC5B4\uC81C\uD2B8 \uC0C1\uC2B9 \uD48D\uC555 (",
+                Math.round(blowerPower * 100),
+                "%)"
+              ] }),
+              /* @__PURE__ */ u3(
+                "input",
+                {
+                  type: "range",
+                  min: "0.9",
+                  max: "1.6",
+                  step: "0.05",
+                  value: blowerPower,
+                  onChange: (e3) => setBlowerPower(Number(e3.target.value))
+                }
+              )
+            ] })
+          ] }),
+          isLotto645 && /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("div", { className: "rpz-card-head-between", children: [
+              /* @__PURE__ */ u3("h3", { children: [
+                "3. \uB0B4 \uB85C\uB610 \uBC88\uD638 \uC120\uD0DD (",
+                myTicket.length,
+                "/6)"
+              ] }),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  onClick: handleAutoPickMyTicket,
+                  children: "\u{1F3B2} \uC790\uB3D9 \uC120\uD0DD"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "rpz-lotto-number-grid", children: Array.from({ length: 45 }, (_3, i3) => i3 + 1).map((num) => {
+              const selected = myTicket.includes(num);
+              const isDrawnMain = phase === "completed" && drawOutcome?.mainNumbers.includes(num);
+              const isDrawnBonus = phase === "completed" && drawOutcome?.bonusNumber === num;
+              return /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `rpz-num-cell ${selected ? "selected" : ""} ${isDrawnMain ? "hit-main" : ""} ${isDrawnBonus ? "hit-bonus" : ""}`,
+                  onClick: () => toggleMyTicketNumber(num),
+                  children: num
+                },
+                num
+              );
+            }) })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: [
+              isLotto645 ? "4." : "3.",
+              " \uD68C\uCC28\uBCC4 \uCD94\uCCA8 \uAE30\uB85D (",
+              history.length,
+              ")"
+            ] }),
+            history.length === 0 ? /* @__PURE__ */ u3("p", { className: "rpz-empty", children: "\uC544\uC9C1 3D \uCD94\uCCA8 \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4." }) : /* @__PURE__ */ u3("ul", { className: "rpz-history-list", "data-testid": "lotto-history-list", children: history.map((item, idx) => /* @__PURE__ */ u3("li", { children: [
+              /* @__PURE__ */ u3("div", { className: "rpz-history-head", children: [
+                /* @__PURE__ */ u3("strong", { children: [
+                  "\uC81C ",
+                  history.length - idx,
+                  "\uD68C \xB7 ",
+                  item.modeLabel
+                ] }),
+                /* @__PURE__ */ u3("small", { children: item.time })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "rpz-mini-ball-row", children: item.mode === "lotto645" ? /* @__PURE__ */ u3(S, { children: [
+                item.mainNumbers.map((n2) => /* @__PURE__ */ u3(
+                  "span",
+                  {
+                    className: "rpz-mini-ball",
+                    style: { background: getLottoBallColor(n2) },
+                    children: n2
+                  },
+                  n2
+                )),
+                /* @__PURE__ */ u3("span", { className: "rpz-mini-plus", children: "+" }),
+                /* @__PURE__ */ u3(
+                  "span",
+                  {
+                    className: "rpz-mini-ball bonus",
+                    style: { background: getLottoBallColor(item.bonusNumber) },
+                    children: item.bonusNumber
+                  }
+                )
+              ] }) : item.balls.map((b2, bIdx) => /* @__PURE__ */ u3(
+                "span",
+                {
+                  className: "rpz-mini-ball is-pill",
+                  style: { background: b2.color },
+                  children: b2.label
+                },
+                `${b2.id}-${bIdx}`
+              )) })
+            ] }, item.id)) })
+          ] })
+        ] })
+      ] })
+    ] });
+  }
+
+  // tool-box/src/features/game-box/draw/games/TeamDraftGame.jsx
+  var TEAM_PALETTE = [
+    { badge: "ALPHA", emblem: "\u{1F525}", color: "#cf8050", bg: "rgba(207, 128, 80, 0.12)" },
+    { badge: "BRAVO", emblem: "\u26A1", color: "#d3a56a", bg: "rgba(211, 165, 106, 0.12)" },
+    { badge: "CHARLIE", emblem: "\u{1F6E1}\uFE0F", color: "#6ca97a", bg: "rgba(108, 169, 122, 0.12)" },
+    { badge: "DELTA", emblem: "\u{1F3AF}", color: "#c46b7c", bg: "rgba(196, 107, 124, 0.12)" },
+    { badge: "ECHO", emblem: "\u{1F30A}", color: "#7b9ec4", bg: "rgba(123, 158, 196, 0.12)" },
+    { badge: "FOXTROT", emblem: "\u{1F451}", color: "#b58cc7", bg: "rgba(181, 140, 199, 0.12)" },
+    { badge: "GOLF", emblem: "\u{1F340}", color: "#6fb3a8", bg: "rgba(111, 179, 168, 0.12)" },
+    { badge: "HOTEL", emblem: "\u2B50", color: "#c9b465", bg: "rgba(201, 180, 101, 0.12)" }
+  ];
+  var TEAM_NAME_THEMES = [
+    ["ALPHA \uD300", "BRAVO \uD300", "CHARLIE \uD300", "DELTA \uD300", "ECHO \uD300", "FOXTROT \uD300", "GOLF \uD300", "HOTEL \uD300"],
+    ["\uB808\uB4DC \uB4DC\uB798\uACE4", "\uACE8\uB4E0 \uC774\uAE00", "\uC5D0\uBA54\uB784\uB4DC \uC6B8\uD504", "\uD06C\uB9BC\uC2A8 \uD0C0\uC774\uAC70", "\uBE14\uB8E8 \uC0E4\uD06C", "\uD37C\uD50C \uD53C\uB2C9\uC2A4", "\uC81C\uC774\uB4DC \uBC14\uC774\uD37C", "\uC2E4\uBC84 \uB77C\uC774\uC628"],
+    ["\uBD88\uAF43 \uBC88\uAC1C", "\uD669\uAE08 \uBC29\uD328", "\uC9C8\uD48D \uB178\uB3C4", "\uAC15\uCCA0 \uC2EC\uC7A5", "\uBB34\uC801 \uD568\uB300", "\uC804\uC124\uC758 \uAC80", "\uCD08\uC2E0\uC131", "\uD788\uB4E0 \uCE74\uB4DC"]
+  ];
+  var DEFAULT_ROSTER_TEXT = [
+    "\uAE40\uC131\uBBFC",
+    "\uC774\uC9C0\uD6C8",
+    "\uBC15\uC218\uC9C4",
+    "\uCD5C\uBBFC\uD638",
+    "\uC815\uD558\uB298",
+    "\uAC15\uB3D9\uC6D0",
+    "\uC724\uC11C\uC5F0",
+    "\uD55C\uC9C0\uBBFC",
+    "\uC624\uC2B9\uD658",
+    "\uBC30\uC218\uC9C0",
+    "\uB958\uD604\uC9C4",
+    "\uC190\uD765\uBBFC"
+  ].join(", ");
+  function computeBalancedTeamDraft({
+    participants,
+    teamNames,
+    useRatings = false
+  }) {
+    const numTeams = Math.max(2, teamNames.length);
+    const shuffled = shuffleUnbiased(participants);
+    const ordered = useRatings ? [...shuffled].sort((a3, b2) => (b2.rating || 1) - (a3.rating || 1)) : shuffled;
+    const teams = teamNames.map((name, index) => ({
+      teamIndex: index,
+      teamName: name || `TEAM ${index + 1}`,
+      palette: TEAM_PALETTE[index % TEAM_PALETTE.length],
+      members: [],
+      totalRating: 0
+    }));
+    const draftQueue = [];
+    ordered.forEach((participant, pickIndex) => {
+      const candidateTeams = [...teams].sort((a3, b2) => {
+        if (a3.members.length !== b2.members.length) {
+          return a3.members.length - b2.members.length;
+        }
+        return a3.totalRating - b2.totalRating;
+      });
+      const targetTeam = candidateTeams[0];
+      const memberRecord = {
+        id: participant.id || `p-${pickIndex}`,
+        name: participant.name,
+        rating: Number(participant.rating) || 1,
+        pickNumber: pickIndex + 1,
+        teamIndex: targetTeam.teamIndex,
+        teamName: targetTeam.teamName
+      };
+      targetTeam.members.push(memberRecord);
+      targetTeam.totalRating += memberRecord.rating;
+      draftQueue.push(memberRecord);
+    });
+    const maxMembers = Math.max(...teams.map((t3) => t3.members.length), 0);
+    const revealSequence = [];
+    for (let round = 0; round < maxMembers; round += 1) {
+      for (let t3 = 0; t3 < numTeams; t3 += 1) {
+        const m3 = teams[t3].members[round];
+        if (m3) {
+          revealSequence.push({
+            ...m3,
+            round: round + 1,
+            orderIndex: revealSequence.length + 1
+          });
+        }
+      }
+    }
+    return {
+      teams,
+      revealSequence,
+      totalParticipants: participants.length,
+      useRatings
+    };
+  }
+  function TeamDraftGame({ onBack }) {
+    const [rosterInput, setRosterInput] = d2(DEFAULT_ROSTER_TEXT);
+    const [teamCount, setTeamCount] = d2(3);
+    const [customTeamNames, setCustomTeamNames] = d2([
+      "ALPHA \uD300",
+      "BRAVO \uD300",
+      "CHARLIE \uD300",
+      "DELTA \uD300",
+      "ECHO \uD300",
+      "FOXTROT \uD300",
+      "GOLF \uD300",
+      "HOTEL \uD300"
+    ]);
+    const [useSkillBalance, setUseSkillBalance] = d2(false);
+    const [ratingsMap, setRatingsMap] = d2({});
+    const [draftPlan, setDraftPlan] = d2(null);
+    const [phase, setPhase] = d2("idle");
+    const [revealedCount, setRevealedCount] = d2(0);
+    const [copyFeedback, setCopyFeedback] = d2("");
+    const [history, setHistory] = d2([]);
+    const [tradeSelection, setTradeSelection] = d2(null);
+    const [teamThemeIdx, setTeamThemeIdx] = d2(0);
+    const timerRef = A2(null);
+    const parsedParticipants = T2(() => {
+      const raw = rosterInput.split(/[,\r\n]+/).map((s3) => s3.trim()).filter(Boolean);
+      return raw.map((entry, idx) => {
+        const match = entry.match(/^(.+?)\s*[:/]\s*([1-5])$/);
+        const cleanName = match ? match[1].trim() : entry;
+        const rating = match ? Number(match[2]) : Number(ratingsMap[cleanName]) || 3;
+        return {
+          id: `member-${idx}-${cleanName}`,
+          name: cleanName,
+          rating: Math.max(1, Math.min(5, rating))
+        };
+      });
+    }, [rosterInput, ratingsMap]);
+    const activeTeamNames = T2(
+      () => Array.from({ length: teamCount }, (_3, i3) => customTeamNames[i3] || `TEAM ${i3 + 1}`),
+      [teamCount, customTeamNames]
+    );
+    h2(() => {
+      return () => {
+        if (timerRef.current) clearInterval(timerRef.current);
+      };
+    }, []);
+    const recordHistory = (plan) => {
+      setHistory((prev) => [
+        {
+          id: `draft-${Date.now()}`,
+          time: formatDrawTime(),
+          totalParticipants: plan.totalParticipants,
+          teamCount: plan.teams.length,
+          summary: plan.teams.map((t3) => `${t3.teamName}(${t3.members.length}\uBA85)`).join(" \xB7 "),
+          teams: plan.teams
+        },
+        ...prev.slice(0, 14)
+      ]);
+    };
+    const handleStartDraft = () => {
+      if (parsedParticipants.length < 2) return;
+      if (timerRef.current) clearInterval(timerRef.current);
+      const lockedPlan = computeBalancedTeamDraft({
+        participants: parsedParticipants,
+        teamNames: activeTeamNames,
+        useRatings: useSkillBalance
+      });
+      setDraftPlan(lockedPlan);
+      setPhase("drafting");
+      setRevealedCount(1);
+      setCopyFeedback("");
+      setTradeSelection(null);
+      drawSound.playDraftPick();
+      let currentCount = 1;
+      const total = lockedPlan.revealSequence.length;
+      if (total <= 1) {
+        setPhase("completed");
+        drawSound.playFanfare();
+        recordHistory(lockedPlan);
+        return;
+      }
+      timerRef.current = setInterval(() => {
+        currentCount += 1;
+        if (currentCount < total) {
+          setRevealedCount(currentCount);
+          drawSound.playDraftPick();
+        } else {
+          clearInterval(timerRef.current);
+          timerRef.current = null;
+          setRevealedCount(total);
+          setPhase("completed");
+          drawSound.playFanfare();
+          recordHistory(lockedPlan);
+        }
+      }, 340);
+    };
+    const handleRevealAllNow = () => {
+      if (!draftPlan) return;
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+      setRevealedCount(draftPlan.revealSequence.length);
+      if (phase !== "completed") {
+        setPhase("completed");
+        drawSound.playFanfare();
+        recordHistory(draftPlan);
+      }
+    };
+    const handleMemberTradeClick = (teamIndex, member) => {
+      if (phase !== "completed" || !draftPlan) return;
+      if (!tradeSelection) {
+        setTradeSelection({ teamIndex, memberId: member.id, name: member.name });
+        drawSound.playTick(0.35, "click");
+        return;
+      }
+      if (tradeSelection.memberId === member.id) {
+        setTradeSelection(null);
+        return;
+      }
+      if (tradeSelection.teamIndex === teamIndex) {
+        setTradeSelection({ teamIndex, memberId: member.id, name: member.name });
+        drawSound.playTick(0.35, "click");
+        return;
+      }
+      const nextTeams = draftPlan.teams.map((t3) => ({ ...t3, members: [...t3.members] }));
+      const teamA = nextTeams[tradeSelection.teamIndex];
+      const teamB = nextTeams[teamIndex];
+      const idxA = teamA.members.findIndex((m3) => m3.id === tradeSelection.memberId);
+      const idxB = teamB.members.findIndex((m3) => m3.id === member.id);
+      if (idxA >= 0 && idxB >= 0) {
+        const mA = { ...teamA.members[idxA], teamIndex: teamB.teamIndex, teamName: teamB.teamName };
+        const mB = { ...teamB.members[idxB], teamIndex: teamA.teamIndex, teamName: teamA.teamName };
+        teamA.members[idxA] = mB;
+        teamB.members[idxB] = mA;
+        teamA.totalRating = teamA.members.reduce((acc, m3) => acc + (m3.rating || 1), 0);
+        teamB.totalRating = teamB.members.reduce((acc, m3) => acc + (m3.rating || 1), 0);
+        setDraftPlan({ ...draftPlan, teams: nextTeams });
+        setCopyFeedback(`\u{1F504} \uD2B8\uB808\uC774\uB4DC \uC644\uB8CC: ${mA.name} \u21C4 ${mB.name}`);
+        setTimeout(() => setCopyFeedback(""), 2600);
+        drawSound.playDraftPick();
+      }
+      setTradeSelection(null);
+    };
+    const handleCycleTeamTheme = () => {
+      const nextIdx = (teamThemeIdx + 1) % TEAM_NAME_THEMES.length;
+      setTeamThemeIdx(nextIdx);
+      setCustomTeamNames([...TEAM_NAME_THEMES[nextIdx]]);
+      drawSound.playTick(0.4, "pop");
+    };
+    const handleCopyResult = async () => {
+      if (!draftPlan) return;
+      const lines = draftPlan.teams.map((t3) => {
+        const names = t3.members.map((m3, idx) => {
+          const cap = idx === 0 ? "\u{1F451}" : "";
+          return useSkillBalance ? `${cap}${m3.name}(\u2605${m3.rating})` : `${cap}${m3.name}`;
+        }).join(", ");
+        return `[${t3.teamName}] (${t3.members.length}\uBA85): ${names}`;
+      });
+      const text = `\u{1F3C6} [GAMEBOX TEAM DRAFT \uACB0\uACFC]
+${lines.join("\n")}`;
+      try {
+        await navigator.clipboard?.writeText(text);
+        setCopyFeedback("\u2713 \uD074\uB9BD\uBCF4\uB4DC\uC5D0 \uD300 \uBC30\uC815 \uACB0\uACFC\uAC00 \uBCF5\uC0AC\uB418\uC5C8\uC2B5\uB2C8\uB2E4!");
+      } catch {
+        setCopyFeedback("\u2713 \uACB0\uACFC \uD14D\uC2A4\uD2B8\uAC00 \uC0DD\uC131\uB418\uC5C8\uC2B5\uB2C8\uB2E4.");
+      }
+      setTimeout(() => setCopyFeedback(""), 3e3);
+    };
+    const revealedSet = T2(() => {
+      if (!draftPlan) return /* @__PURE__ */ new Set();
+      return new Set(
+        draftPlan.revealSequence.slice(0, revealedCount).map((item) => item.id)
+      );
+    }, [draftPlan, revealedCount]);
+    const currentPick = T2(() => {
+      if (!draftPlan || revealedCount <= 0) return null;
+      return draftPlan.revealSequence[Math.min(revealedCount - 1, draftPlan.revealSequence.length - 1)] || null;
+    }, [draftPlan, revealedCount]);
+    return /* @__PURE__ */ u3("div", { className: "rpz-game-shell", "data-testid": "game-team-draft", children: [
+      /* @__PURE__ */ u3("header", { className: "rpz-game-topbar", children: [
+        /* @__PURE__ */ u3("div", { className: "rpz-game-title-group", children: [
+          /* @__PURE__ */ u3("button", { type: "button", className: "rpz-back-btn", onClick: onBack, children: "\u2190 RANDOM PLAY ZONE" }),
+          /* @__PURE__ */ u3("div", { children: [
+            /* @__PURE__ */ u3("span", { className: "rpz-game-Tag", children: "GAME 03 \xB7 BALANCED TEAM GENERATOR" }),
+            /* @__PURE__ */ u3("h2", { children: "\u26A1 TEAM DRAFT \u2014 \uD300 \uB098\uB204\uAE30" })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "rpz-top-actions", children: [
+          phase === "idle" && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-primary",
+              "data-testid": "draft-start-btn",
+              onClick: handleStartDraft,
+              disabled: parsedParticipants.length < 2,
+              children: "\u{1F3AF} \uB4DC\uB798\uD504\uD2B8 \uCD94\uCCA8 \uC2DC\uC791"
+            }
+          ),
+          phase === "drafting" && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-accent",
+              "data-testid": "draft-skip-btn",
+              onClick: handleRevealAllNow,
+              children: [
+                "\u26A1 \uC804\uC6D0 \uC989\uC2DC \uACF5\uAC1C (",
+                revealedCount,
+                "/",
+                draftPlan?.totalParticipants || 0,
+                ")"
+              ]
+            }
+          ),
+          phase === "completed" && /* @__PURE__ */ u3(S, { children: [
+            /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                className: "rpz-btn rpz-btn-primary",
+                "data-testid": "draft-reroll-btn",
+                onClick: handleStartDraft,
+                children: "\u{1F504} \uD300 \uC7AC\uCD94\uCCA8"
+              }
+            ),
+            /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                className: "rpz-btn rpz-btn-accent",
+                "data-testid": "draft-copy-btn",
+                onClick: handleCopyResult,
+                children: "\u{1F4CB} \uACB0\uACFC \uBCF5\uC0AC"
+              }
+            )
+          ] }),
+          phase !== "idle" && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-ghost",
+              onClick: () => {
+                if (timerRef.current) clearInterval(timerRef.current);
+                setPhase("idle");
+                setDraftPlan(null);
+                setRevealedCount(0);
+              },
+              children: "\uBA85\uB2E8 \uD3B8\uC9D1\uC73C\uB85C"
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "rpz-game-workspace", children: [
+        /* @__PURE__ */ u3("section", { className: "rpz-stage-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "rpz-stage-status-bar", children: [
+            /* @__PURE__ */ u3("span", { className: `rpz-phase-pill phase-${phase}`, "data-testid": "draft-phase-badge", children: [
+              phase === "idle" && `\uB300\uAE30 \uC911 \u2014 \uCD1D ${parsedParticipants.length}\uBA85\uC744 ${teamCount}\uAC1C \uD300\uC73C\uB85C \uADE0\uB4F1 \uBC30\uC815\uD569\uB2C8\uB2E4`,
+              phase === "drafting" && `LIVE DRAFT PICK #${revealedCount} / ${draftPlan?.totalParticipants} \u2014 \uD55C \uBA85\uC529 \uD300\uC744 \uD638\uBA85\uD558\uB294 \uC911...`,
+              phase === "completed" && `\uB4DC\uB798\uD504\uD2B8 \uC644\uB8CC! \uCD1D ${draftPlan?.totalParticipants}\uBA85 \xB7 ${draftPlan?.teams.length}\uAC1C \uD300 \uADE0\uB4F1 \uBC30\uC815 \uD655\uC815`
+            ] }),
+            copyFeedback && /* @__PURE__ */ u3("span", { className: "rpz-copy-toast", "data-testid": "draft-copy-toast", children: copyFeedback })
+          ] }),
+          phase === "idle" ? /* @__PURE__ */ u3("div", { className: "rpz-draft-waiting-pool", children: [
+            /* @__PURE__ */ u3("div", { className: "rpz-waiting-head", children: [
+              /* @__PURE__ */ u3("strong", { children: [
+                "\u{1F3DF}\uFE0F \uB4DC\uB798\uD504\uD2B8 \uB300\uAE30\uC11D (",
+                parsedParticipants.length,
+                "\uBA85 \uB4F1\uB85D\uB428 \xB7 ",
+                teamCount,
+                "\uAC1C \uD300 \uBC30\uC815 \uC608\uC815)"
+              ] }),
+              /* @__PURE__ */ u3("span", { children: [
+                "\uD300\uB2F9 \uC57D ",
+                Math.ceil(parsedParticipants.length / Math.max(1, teamCount)),
+                "\uBA85 \xB7 \uC8FC\uC7A5 \uC790\uB3D9 \uC120\uCD9C"
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "rpz-waiting-chips", children: parsedParticipants.map((p3, idx) => /* @__PURE__ */ u3("span", { className: "rpz-waiting-chip", children: [
+              /* @__PURE__ */ u3("small", { children: [
+                "#",
+                idx + 1
+              ] }),
+              " ",
+              p3.name,
+              useSkillBalance && /* @__PURE__ */ u3("em", { children: [
+                "\u2605",
+                p3.rating
+              ] })
+            ] }, p3.id)) })
+          ] }) : currentPick && /* @__PURE__ */ u3(
+            "div",
+            {
+              className: "rpz-draft-spotlight",
+              "data-testid": "draft-spotlight",
+              style: {
+                "--pick-accent": TEAM_PALETTE[currentPick.teamIndex % TEAM_PALETTE.length].color
+              },
+              children: [
+                /* @__PURE__ */ u3("div", { className: "rpz-spotlight-badge", children: phase === "drafting" ? `LIVE PICK #${currentPick.orderIndex}` : tradeSelection ? `\u{1F504} \uD2B8\uB808\uC774\uB4DC \uB300\uAE30: ${tradeSelection.name} \u2194 \uB2E4\uB978 \uD300\uC6D0 \uD074\uB9AD` : "\u{1F3C6} DRAFT COMPLETE (\uD300\uC6D0 \uD074\uB9AD \uC2DC 1:1 \uD2B8\uB808\uC774\uB4DC \uAC00\uB2A5)" }),
+                /* @__PURE__ */ u3("div", { className: "rpz-spotlight-main", children: [
+                  /* @__PURE__ */ u3("span", { className: "rpz-spotlight-emblem", children: TEAM_PALETTE[currentPick.teamIndex % TEAM_PALETTE.length].emblem }),
+                  /* @__PURE__ */ u3("span", { className: "rpz-spotlight-player", children: currentPick.name }),
+                  /* @__PURE__ */ u3("span", { className: "rpz-spotlight-arrow", children: "\u2794" }),
+                  /* @__PURE__ */ u3(
+                    "strong",
+                    {
+                      className: "rpz-spotlight-team",
+                      style: { color: TEAM_PALETTE[currentPick.teamIndex % TEAM_PALETTE.length].color },
+                      children: currentPick.teamName
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ u3("div", { className: "rpz-spotlight-progress", children: /* @__PURE__ */ u3(
+                  "div",
+                  {
+                    className: "rpz-spotlight-bar",
+                    style: {
+                      width: `${Math.round(revealedCount / (draftPlan?.totalParticipants || 1) * 100)}%`
+                    }
+                  }
+                ) })
+              ]
+            }
+          ),
+          /* @__PURE__ */ u3("div", { className: "rpz-teams-board", "data-testid": "draft-teams-board", children: (() => {
+            const displayTeams = draftPlan ? draftPlan.teams : activeTeamNames.map((name, i3) => ({
+              teamIndex: i3,
+              teamName: name,
+              palette: TEAM_PALETTE[i3 % TEAM_PALETTE.length],
+              members: [],
+              totalRating: 0
+            }));
+            const maxTeamPower = Math.max(
+              1,
+              ...displayTeams.map((t3) => {
+                const vis = draftPlan ? t3.members.filter((m3) => revealedSet.has(m3.id)) : [];
+                return useSkillBalance ? vis.reduce((acc, m3) => acc + (m3.rating || 1), 0) : vis.length;
+              })
+            );
+            return displayTeams.map((team) => {
+              const visibleMembers = draftPlan ? team.members.filter((m3) => revealedSet.has(m3.id)) : [];
+              const visibleRating = visibleMembers.reduce((acc, m3) => acc + (m3.rating || 1), 0);
+              const powerRatio = Math.round(
+                (useSkillBalance ? visibleRating : visibleMembers.length) / maxTeamPower * 100
+              );
+              return /* @__PURE__ */ u3(
+                "div",
+                {
+                  className: "rpz-team-column",
+                  "data-testid": `draft-team-card-${team.teamIndex}`,
+                  style: {
+                    borderColor: team.palette.color,
+                    background: team.palette.bg
+                  },
+                  children: [
+                    /* @__PURE__ */ u3("div", { className: "rpz-team-header", children: [
+                      /* @__PURE__ */ u3("div", { className: "rpz-team-title-wrap", children: [
+                        /* @__PURE__ */ u3("span", { className: "rpz-team-emblem-badge", style: { borderColor: team.palette.color }, children: team.palette.emblem }),
+                        /* @__PURE__ */ u3("div", { children: [
+                          /* @__PURE__ */ u3("span", { className: "rpz-team-code", style: { color: team.palette.color }, children: [
+                            "TEAM 0",
+                            team.teamIndex + 1
+                          ] }),
+                          /* @__PURE__ */ u3("h3", { children: team.teamName })
+                        ] })
+                      ] }),
+                      /* @__PURE__ */ u3("div", { className: "rpz-team-meta", children: [
+                        /* @__PURE__ */ u3("span", { className: "rpz-team-count", children: [
+                          visibleMembers.length,
+                          "\uBA85"
+                        ] }),
+                        useSkillBalance && /* @__PURE__ */ u3("span", { className: "rpz-team-rating", children: [
+                          "\u2605 ",
+                          visibleRating
+                        ] })
+                      ] })
+                    ] }),
+                    /* @__PURE__ */ u3("div", { className: "rpz-team-power-track", title: "\uD300 \uC804\uB825 \uBC38\uB7F0\uC2A4 \uBE44\uC728", children: /* @__PURE__ */ u3(
+                      "div",
+                      {
+                        className: "rpz-team-power-fill",
+                        style: {
+                          width: `${visibleMembers.length > 0 ? Math.max(14, powerRatio) : 0}%`,
+                          background: team.palette.color
+                        }
+                      }
+                    ) }),
+                    /* @__PURE__ */ u3("ul", { className: "rpz-team-member-list", children: visibleMembers.length === 0 ? /* @__PURE__ */ u3("li", { className: "rpz-team-placeholder", children: phase === "idle" ? "\uB4DC\uB798\uD504\uD2B8 \uB300\uAE30 \uC911" : "\uD638\uBA85 \uB300\uAE30 \uC911..." }) : visibleMembers.map((member, mIdx) => {
+                      const isSelectedForTrade = tradeSelection?.memberId === member.id;
+                      return /* @__PURE__ */ u3(
+                        "li",
+                        {
+                          onClick: () => handleMemberTradeClick(team.teamIndex, member),
+                          title: phase === "completed" ? "\uD074\uB9AD\uD558\uC5EC \uB2E4\uB978 \uD300\uC6D0\uACFC 1:1 \uD2B8\uB808\uC774\uB4DC" : void 0,
+                          className: `rpz-team-member-item ${currentPick?.id === member.id && phase === "drafting" ? "just-picked" : ""} ${phase === "completed" ? "tradeable" : ""} ${isSelectedForTrade ? "trade-selected" : ""}`,
+                          children: [
+                            /* @__PURE__ */ u3("span", { className: "rpz-member-order", children: mIdx === 0 ? "\u{1F451}" : `#${mIdx + 1}` }),
+                            /* @__PURE__ */ u3("strong", { className: "rpz-member-name", children: member.name }),
+                            mIdx === 0 && /* @__PURE__ */ u3("span", { className: "rpz-captain-tag", children: "\uC8FC\uC7A5" }),
+                            useSkillBalance && /* @__PURE__ */ u3("span", { className: "rpz-member-tier", children: [
+                              "\u2605",
+                              member.rating
+                            ] })
+                          ]
+                        },
+                        member.id
+                      );
+                    }) })
+                  ]
+                },
+                team.teamIndex
+              );
+            });
+          })() })
+        ] }),
+        /* @__PURE__ */ u3("aside", { className: "rpz-sidebar-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: [
+              "1. \uCC38\uAC00\uC790 \uBA85\uB2E8 \uB4F1\uB85D (",
+              parsedParticipants.length,
+              "\uBA85)"
+            ] }),
+            /* @__PURE__ */ u3(
+              "textarea",
+              {
+                className: "rpz-textarea",
+                rows: 4,
+                value: rosterInput,
+                disabled: phase === "drafting",
+                onChange: (e3) => setRosterInput(e3.target.value),
+                placeholder: "\uC27C\uD45C(,) \uB610\uB294 \uC904\uBC14\uAFC8\uC73C\uB85C \uC774\uB984 \uC785\uB825 (\uC608: \uAE40\uC131\uBBFC, \uC774\uC9C0\uD6C8, \uBC15\uC218\uC9C4)",
+                "data-testid": "draft-roster-input"
+              }
+            ),
+            /* @__PURE__ */ u3("div", { className: "rpz-preset-row", children: [
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  disabled: phase === "drafting",
+                  onClick: () => setRosterInput(DEFAULT_ROSTER_TEXT),
+                  children: "12\uC778 \uAE30\uBCF8"
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  disabled: phase === "drafting",
+                  onClick: () => setRosterInput("\uAE40\uC131\uBBFC:5, \uC774\uC9C0\uD6C8:5, \uBC15\uC218\uC9C4:4, \uCD5C\uBBFC\uD638:4, \uC815\uD558\uB298:3, \uAC15\uB3D9\uC6D0:3, \uC724\uC11C\uC5F0:2, \uD55C\uC9C0\uBBFC:2"),
+                  children: "8\uC778 \uC2E4\uB825\uBC38\uB7F0\uC2A4"
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  disabled: phase === "drafting",
+                  onClick: () => setRosterInput("\uAE40\uC131\uBBFC, \uC774\uC9C0\uD6C8, \uBC15\uC218\uC9C4, \uCD5C\uBBFC\uD638, \uC815\uD558\uB298, \uAC15\uB3D9\uC6D0, \uC724\uC11C\uC5F0, \uD55C\uC9C0\uBBFC, \uC624\uC2B9\uD658, \uBC30\uC218\uC9C0, \uB958\uD604\uC9C4, \uC190\uD765\uBBFC, \uBC15\uC9C0\uC131, \uAE40\uC5F0\uC544, \uC774\uC0C1\uD601, \uC815\uC9C0\uD6C8"),
+                  children: "16\uC778 \uD1A0\uB108\uBA3C\uD2B8"
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("div", { className: "rpz-card-head-between", children: [
+              /* @__PURE__ */ u3("h3", { children: "2. \uD300 \uC218 \uBC0F \uBC38\uB7F0\uC2A4 \uC124\uC815" }),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  disabled: phase === "drafting",
+                  onClick: handleCycleTeamTheme,
+                  children: "\u{1F3B2} \uB79C\uB364 \uD300\uBA85"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+              /* @__PURE__ */ u3("span", { children: "\uD300 \uAC1C\uC218 \uC124\uC815 (2 ~ 8\uD300)" }),
+              /* @__PURE__ */ u3("div", { className: "rpz-team-count-selector", children: [2, 3, 4, 5, 6].map((n2) => /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  disabled: phase === "drafting",
+                  "data-testid": `draft-team-count-${n2}`,
+                  className: `rpz-count-btn ${teamCount === n2 ? "active" : ""}`,
+                  onClick: () => setTeamCount(n2),
+                  children: [
+                    n2,
+                    "\uD300"
+                  ]
+                },
+                n2
+              )) })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "rpz-team-names-grid", children: Array.from({ length: teamCount }, (_3, idx) => /* @__PURE__ */ u3(
+              "input",
+              {
+                type: "text",
+                className: "rpz-input rpz-input-sm",
+                value: customTeamNames[idx] || "",
+                disabled: phase === "drafting",
+                placeholder: `TEAM ${idx + 1}`,
+                onChange: (e3) => {
+                  const next = [...customTeamNames];
+                  next[idx] = e3.target.value;
+                  setCustomTeamNames(next);
+                }
+              },
+              idx
+            )) }),
+            /* @__PURE__ */ u3("label", { className: "rpz-check-row", children: [
+              /* @__PURE__ */ u3(
+                "input",
+                {
+                  type: "checkbox",
+                  checked: useSkillBalance,
+                  disabled: phase === "drafting",
+                  onChange: (e3) => setUseSkillBalance(e3.target.checked)
+                }
+              ),
+              /* @__PURE__ */ u3("span", { children: "\uC2E4\uB825 \uC810\uC218(\u26051~5) \uADE0\uB4F1 \uBC30\uBD84 \uD65C\uC131\uD654 (\uC774\uB984:\uC810\uC218 \uC9C0\uC6D0)" })
+            ] }),
+            useSkillBalance && /* @__PURE__ */ u3("div", { className: "rpz-rating-editor", children: parsedParticipants.slice(0, 12).map((p3) => /* @__PURE__ */ u3("div", { className: "rpz-rating-row", children: [
+              /* @__PURE__ */ u3("span", { children: p3.name }),
+              /* @__PURE__ */ u3("div", { className: "rpz-star-group", children: [1, 2, 3, 4, 5].map((star) => /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `rpz-star-btn ${p3.rating >= star ? "lit" : ""}`,
+                  onClick: () => setRatingsMap((prev) => ({ ...prev, [p3.name]: star })),
+                  children: "\u2605"
+                },
+                star
+              )) })
+            ] }, p3.id)) })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: [
+              "3. \uB4DC\uB798\uD504\uD2B8 \uAE30\uB85D (",
+              history.length,
+              ")"
+            ] }),
+            history.length === 0 ? /* @__PURE__ */ u3("p", { className: "rpz-empty", children: "\uC544\uC9C1 \uD300 \uCD94\uCCA8 \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4." }) : /* @__PURE__ */ u3("ul", { className: "rpz-history-list", "data-testid": "draft-history-list", children: history.map((item) => /* @__PURE__ */ u3("li", { children: [
+              /* @__PURE__ */ u3("div", { className: "rpz-history-head", children: [
+                /* @__PURE__ */ u3("strong", { children: [
+                  item.teamCount,
+                  "\uAC1C \uD300 (",
+                  item.totalParticipants,
+                  "\uBA85)"
+                ] }),
+                /* @__PURE__ */ u3("small", { children: item.time })
+              ] }),
+              /* @__PURE__ */ u3("small", { children: item.summary })
+            ] }, item.id)) })
+          ] })
+        ] })
+      ] })
+    ] });
+  }
+
+  // vendor/spin-the-wheel/themes.js
+  var THEME_PRESETS = {
+    rainbow: {
+      label: "Rainbow",
+      colors: ["#ff004f", "#ff7f11", "#ffd500", "#38b000", "#00a6fb", "#7b2cbf", "#ff4d8d", "#20c997"],
+      pageDark: { bg: "#0a1024", surface: "#111d3b", elevated: "#1f2f55", accent: "#4ae4ff", accent2: "#ffd166" },
+      pageLight: { bg: "#ecf4ff", surface: "#ffffff", elevated: "#edf2ff", accent: "#0079d1", accent2: "#ff9f1c" }
+    },
+    pastel: {
+      label: "Pastel",
+      colors: ["#ffd6e7", "#caffbf", "#bde0fe", "#ffef9f", "#d9d4ff", "#ffc8a2", "#b5ead7", "#ffcad4"],
+      pageDark: { bg: "#131b2f", surface: "#1c2844", elevated: "#27385e", accent: "#8ae0ff", accent2: "#ffd6a1" },
+      pageLight: { bg: "#f8fbff", surface: "#ffffff", elevated: "#f1f5ff", accent: "#3a80d6", accent2: "#e8934f" }
+    },
+    neon: {
+      label: "Neon",
+      colors: ["#39ff14", "#f72585", "#00f5d4", "#ff9e00", "#9d4edd", "#4cc9f0", "#ff4d6d", "#f3ff4f"],
+      pageDark: { bg: "#06080f", surface: "#121826", elevated: "#1d2842", accent: "#00f5d4", accent2: "#ff9e00" },
+      pageLight: { bg: "#eaf9ff", surface: "#ffffff", elevated: "#eff8ff", accent: "#007a99", accent2: "#bb6300" }
+    },
+    ocean: {
+      label: "Ocean",
+      colors: ["#005f73", "#0a9396", "#94d2bd", "#52b69a", "#34a0a4", "#168aad", "#1a759f", "#76c893"],
+      pageDark: { bg: "#061825", surface: "#0f2436", elevated: "#17364e", accent: "#76c893", accent2: "#52b69a" },
+      pageLight: { bg: "#e7f8ff", surface: "#ffffff", elevated: "#e7f4fb", accent: "#0b7aa8", accent2: "#1d9f97" }
+    },
+    sunset: {
+      label: "Sunset",
+      colors: ["#ff6b35", "#f7b801", "#f18701", "#f35b04", "#ff8fab", "#ffb703", "#fb5607", "#ff7b00"],
+      pageDark: { bg: "#201023", surface: "#2a1730", elevated: "#3a2144", accent: "#ff9e66", accent2: "#ffd166" },
+      pageLight: { bg: "#fff3e6", surface: "#ffffff", elevated: "#fff0dd", accent: "#d45d10", accent2: "#de8d00" }
+    },
+    monochrome: {
+      label: "Monochrome",
+      colors: ["#111111", "#252525", "#3f3f3f", "#595959", "#737373", "#8f8f8f", "#ababab", "#c9c9c9"],
+      pageDark: { bg: "#080808", surface: "#151515", elevated: "#222222", accent: "#d4d4d4", accent2: "#a4a4a4" },
+      pageLight: { bg: "#f5f5f5", surface: "#ffffff", elevated: "#ececec", accent: "#3f3f3f", accent2: "#666666" }
+    },
+    casino: {
+      label: "Casino",
+      colors: ["#b80f0a", "#f7d154", "#0d5930", "#8a0404", "#f4c430", "#147243", "#c50f1f", "#f2d16b"],
+      pageDark: { bg: "#0d1a14", surface: "#173427", elevated: "#214535", accent: "#f7d154", accent2: "#d62828" },
+      pageLight: { bg: "#f5f8ef", surface: "#ffffff", elevated: "#ecf3e0", accent: "#2f7a44", accent2: "#a4282e" }
+    },
+    forest: {
+      label: "Forest",
+      colors: ["#2d6a4f", "#40916c", "#52b788", "#74c69d", "#95d5b2", "#1b4332", "#52796f", "#84a98c"],
+      pageDark: { bg: "#0f1e1a", surface: "#1a2b25", elevated: "#243a33", accent: "#74c69d", accent2: "#95d5b2" },
+      pageLight: { bg: "#edf7ef", surface: "#ffffff", elevated: "#e5f3e8", accent: "#2f7e62", accent2: "#588157" }
+    },
+    candy: {
+      label: "Candy",
+      colors: ["#ff85a1", "#f7aef8", "#b8c0ff", "#caffbf", "#ffd6a5", "#ffadad", "#9bf6ff", "#fdffb6"],
+      pageDark: { bg: "#23162e", surface: "#2d1f39", elevated: "#3a2848", accent: "#ffb4a2", accent2: "#f7aef8" },
+      pageLight: { bg: "#fff4fb", surface: "#ffffff", elevated: "#fff0f7", accent: "#b85fc2", accent2: "#ff7b9c" }
+    },
+    earth: {
+      label: "Earth",
+      colors: ["#6f4e37", "#a47148", "#8c6a43", "#c8ad7f", "#b08968", "#7f5539", "#ddb892", "#9c6644"],
+      pageDark: { bg: "#21170f", surface: "#2d2117", elevated: "#3b2c1f", accent: "#ddb892", accent2: "#b08968" },
+      pageLight: { bg: "#f8efe7", surface: "#ffffff", elevated: "#f4e8dd", accent: "#9c6644", accent2: "#b08968" }
+    },
+    autumn: {
+      label: "Autumn",
+      colors: ["#bc6c25", "#dda15e", "#ee9b00", "#ca6702", "#bb3e03", "#ae2012", "#e85d04", "#dc2f02"],
+      pageDark: { bg: "#25160e", surface: "#332016", elevated: "#462d1f", accent: "#f4a261", accent2: "#ee9b00" },
+      pageLight: { bg: "#fff2e5", surface: "#ffffff", elevated: "#ffe9d0", accent: "#c06014", accent2: "#dd7f0e" }
+    },
+    winter: {
+      label: "Winter",
+      colors: ["#dbe7f0", "#a8dadc", "#7fb3d5", "#bcd4e6", "#6c8ead", "#8ecae6", "#caf0f8", "#9ec5e5"],
+      pageDark: { bg: "#121d2d", surface: "#1a2a3f", elevated: "#233752", accent: "#8ecae6", accent2: "#caf0f8" },
+      pageLight: { bg: "#eef7ff", surface: "#ffffff", elevated: "#e5f2ff", accent: "#3b78a6", accent2: "#679bc2" }
+    },
+    retro: {
+      label: "Retro",
+      colors: ["#f4a261", "#e76f51", "#2a9d8f", "#e9c46a", "#264653", "#ffb703", "#8338ec", "#3a86ff"],
+      pageDark: { bg: "#1b1d2e", surface: "#242741", elevated: "#31365a", accent: "#f4a261", accent2: "#2a9d8f" },
+      pageLight: { bg: "#fff8f0", surface: "#ffffff", elevated: "#fef1dd", accent: "#b45134", accent2: "#1f8174" }
+    },
+    cyberpunk: {
+      label: "Cyberpunk",
+      colors: ["#f72585", "#7209b7", "#3a0ca3", "#4361ee", "#4cc9f0", "#ffbe0b", "#fb5607", "#ff006e"],
+      pageDark: { bg: "#090116", surface: "#17062c", elevated: "#230a3d", accent: "#4cc9f0", accent2: "#f72585" },
+      pageLight: { bg: "#f6f0ff", surface: "#ffffff", elevated: "#efe4ff", accent: "#5f2ac8", accent2: "#d80d73" }
+    },
+    elegant: {
+      label: "Elegant",
+      colors: ["#d4af37", "#c0c0c0", "#f5f5f5", "#8d99ae", "#2b2d42", "#ef233c", "#edf2f4", "#b08968"],
+      pageDark: { bg: "#11121c", surface: "#1b1d2b", elevated: "#25293b", accent: "#d4af37", accent2: "#c0c0c0" },
+      pageLight: { bg: "#faf9f5", surface: "#ffffff", elevated: "#f1efe7", accent: "#7c5d00", accent2: "#5d6375" }
+    },
+    "colorblind-safe": {
+      label: "Color-blind Safe",
+      colors: ["#0072B2", "#E69F00", "#009E73", "#F0E442", "#56B4E9", "#D55E00", "#CC79A7", "#000000"],
+      pageDark: { bg: "#0f1728", surface: "#16233a", elevated: "#213250", accent: "#56B4E9", accent2: "#E69F00" },
+      pageLight: { bg: "#f1f6ff", surface: "#ffffff", elevated: "#e7eefc", accent: "#005b8e", accent2: "#af6f00" }
+    }
+  };
+  var THEME_ORDER = Object.keys(THEME_PRESETS);
+
+  // vendor/spin-the-wheel/utils.js
+  function clamp2(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+  }
+  function normalizeAngle(angle) {
+    const tau = Math.PI * 2;
+    let next = angle % tau;
+    if (next < 0) next += tau;
+    return next;
+  }
+  function autoContrastColor(backgroundHex) {
+    const hex = backgroundHex.replace("#", "");
+    if (![3, 6].includes(hex.length)) return "#FFFFFF";
+    const normalized = hex.length === 3 ? hex.split("").map((x3) => `${x3}${x3}`).join("") : hex;
+    const r3 = Number.parseInt(normalized.slice(0, 2), 16);
+    const g4 = Number.parseInt(normalized.slice(2, 4), 16);
+    const b2 = Number.parseInt(normalized.slice(4, 6), 16);
+    const luminance = (0.2126 * r3 + 0.7152 * g4 + 0.0722 * b2) / 255;
+    return luminance > 0.55 ? "#0b1224" : "#f4f8ff";
+  }
+
+  // vendor/spin-the-wheel/wheel-engine.js
+  var TAU = Math.PI * 2;
+  function easeOutFriction(t3) {
+    return 1 - Math.pow(1 - t3, 3.2);
+  }
+  var WheelEngine = class {
+    constructor({ canvas, container }) {
+      this.canvas = canvas;
+      this.container = container;
+      this.ctx = canvas.getContext("2d");
+      this.rotation = 0;
+      this.segmentData = [];
+      this.activeEntries = [];
+      this.theme = null;
+      this.settings = null;
+      this.spinState = {
+        phase: "idle",
+        rafId: null,
+        targetRotation: 0,
+        startRotation: 0,
+        startTime: 0,
+        durationMs: 1e3,
+        lastTickSegment: -1
+      };
+      this.winnerFlash = { id: null, until: 0 };
+      this.lastVelocity = 0;
+      this.imageCache = /* @__PURE__ */ new Map();
+      this.idle = {
+        enabled: true,
+        rafId: null,
+        lastFrameTime: 0
+      };
+      this.idlePausedByResult = false;
+      this.handleResize = this.resize.bind(this);
+      window.addEventListener("resize", this.handleResize);
+      this.resize();
+    }
+    destroy() {
+      window.removeEventListener("resize", this.handleResize);
+      this.stopAnimation();
+      this.stopIdleLoop();
+    }
+    resize() {
+      const rect = this.canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      this.canvas.width = Math.max(1, Math.round(rect.width * dpr));
+      this.canvas.height = Math.max(1, Math.round(rect.height * dpr));
+      this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      this.render();
+    }
+    setWheelState({ entries, settings, theme }) {
+      this.settings = settings;
+      this.theme = theme;
+      this.activeEntries = entries.filter((entry) => entry.enabled && !entry.eliminated);
+      this.segmentData = buildSegments(this.activeEntries, settings.showWeights, theme.preset);
+      this.idle.enabled = settings?.idleAnimationEnabled !== false;
+      this.render();
+      this.syncIdleLoop();
+    }
+    getSegments() {
+      return this.segmentData;
+    }
+    getRotation() {
+      return this.rotation;
+    }
+    setRotation(nextRotation) {
+      this.rotation = normalizeAngle(nextRotation);
+      this.render();
+    }
+    computeTargetRotationForSegment(segmentIndex) {
+      const segment = this.segmentData[segmentIndex];
+      if (!segment) return this.rotation;
+      const desiredNormalized = normalizeAngle(-segment.center);
+      return desiredNormalized;
+    }
+    isSpinning() {
+      return this.spinState.phase !== "idle";
+    }
+    spinTo({
+      absoluteTargetRotation,
+      durationMs,
+      pauseAtEndMs = 0,
+      reducedMotion = false,
+      onTick = () => {
+      },
+      onResult = () => {
+      }
+    }) {
+      if (!this.segmentData.length) return;
+      this.idlePausedByResult = false;
+      this.stopIdleLoop();
+      this.stopAnimation();
+      if (reducedMotion) {
+        this.rotation = normalizeAngle(absoluteTargetRotation);
+        this.render();
+        this.flashWinner(this.getCurrentSegment()?.entry.id);
+        onResult(this.getCurrentSegment());
+        return;
+      }
+      this.spinState = {
+        phase: "spinning",
+        rafId: null,
+        targetRotation: absoluteTargetRotation,
+        startRotation: this.rotation,
+        startTime: performance.now(),
+        durationMs,
+        lastTickSegment: this.getCurrentSegmentIndex()
+      };
+      this.container.classList.add("is-spinning");
+      const travelDuration = Math.max(1, durationMs - pauseAtEndMs);
+      const frame = (timestamp) => {
+        const elapsed = timestamp - this.spinState.startTime;
+        let nextRotation = this.spinState.startRotation;
+        if (elapsed < travelDuration) {
+          const progress = clamp2(elapsed / travelDuration, 0, 1);
+          const eased = easeOutFriction(progress);
+          nextRotation = this.spinState.startRotation + (absoluteTargetRotation - this.spinState.startRotation) * eased;
+        } else if (elapsed < durationMs) {
+          nextRotation = absoluteTargetRotation;
+        } else {
+          nextRotation = absoluteTargetRotation;
+        }
+        this.lastVelocity = nextRotation - this.rotation;
+        this.rotation = normalizeAngle(nextRotation);
+        const nextSegment = this.getCurrentSegmentIndex();
+        if (nextSegment !== this.spinState.lastTickSegment) {
+          this.spinState.lastTickSegment = nextSegment;
+          onTick(nextSegment, Math.abs(this.lastVelocity));
+        }
+        this.render();
+        if (elapsed < durationMs) {
+          this.spinState.rafId = requestAnimationFrame(frame);
+        } else {
+          this.spinState.phase = "idle";
+          this.container.classList.remove("is-spinning");
+          const segment = this.getCurrentSegment();
+          this.flashWinner(segment?.entry.id || null);
+          onResult(segment);
+          this.syncIdleLoop();
+        }
+      };
+      this.spinState.rafId = requestAnimationFrame(frame);
+    }
+    flashWinner(entryId) {
+      this.winnerFlash = {
+        id: entryId,
+        until: performance.now() + 1800
+      };
+      this.render();
+    }
+    stopAnimation() {
+      if (this.spinState.rafId) {
+        cancelAnimationFrame(this.spinState.rafId);
+      }
+      this.container.classList.remove("is-spinning");
+      this.spinState.phase = "idle";
+      this.spinState.rafId = null;
+      this.syncIdleLoop();
+    }
+    startManualSpin({ onTick = () => {
+    } } = {}) {
+      if (!this.segmentData.length) return;
+      this.idlePausedByResult = false;
+      this.stopIdleLoop();
+      this.stopAnimation();
+      this.spinState = {
+        phase: "manual-loop",
+        rafId: null,
+        targetRotation: 0,
+        startRotation: this.rotation,
+        startTime: performance.now(),
+        durationMs: 0,
+        lastTickSegment: this.getCurrentSegmentIndex(),
+        lastFrameTime: performance.now(),
+        velocity: 0.36,
+        onTick
+      };
+      this.container.classList.add("is-spinning");
+      const frame = (timestamp) => {
+        if (this.spinState.phase !== "manual-loop") return;
+        const dt = Math.max(8, Math.min(34, timestamp - this.spinState.lastFrameTime));
+        this.spinState.lastFrameTime = timestamp;
+        const wobble = 0.08 * Math.sin(timestamp / 520);
+        const velocity = Math.max(0.28, this.spinState.velocity + wobble * 0.02);
+        this.lastVelocity = velocity;
+        this.rotation = normalizeAngle(this.rotation + velocity * (dt / 16.6667));
+        const nextSegment = this.getCurrentSegmentIndex();
+        if (nextSegment !== this.spinState.lastTickSegment) {
+          this.spinState.lastTickSegment = nextSegment;
+          onTick(nextSegment, Math.abs(this.lastVelocity));
+        }
+        this.render();
+        this.spinState.rafId = requestAnimationFrame(frame);
+      };
+      this.spinState.rafId = requestAnimationFrame(frame);
+    }
+    decelerateTo({
+      absoluteTargetRotation,
+      durationMs,
+      pauseAtEndMs = 0,
+      reducedMotion = false,
+      onTick = () => {
+      },
+      onResult = () => {
+      }
+    }) {
+      if (!this.segmentData.length) return;
+      this.idlePausedByResult = false;
+      if (reducedMotion) {
+        this.rotation = normalizeAngle(absoluteTargetRotation);
+        this.render();
+        this.flashWinner(this.getCurrentSegment()?.entry.id);
+        onResult(this.getCurrentSegment());
+        return;
+      }
+      if (this.spinState.rafId) {
+        cancelAnimationFrame(this.spinState.rafId);
+        this.spinState.rafId = null;
+      }
+      this.spinState = {
+        phase: "decelerating",
+        rafId: null,
+        targetRotation: absoluteTargetRotation,
+        startRotation: this.rotation,
+        startTime: performance.now(),
+        durationMs,
+        lastTickSegment: this.getCurrentSegmentIndex()
+      };
+      const travelDuration = Math.max(1, durationMs - pauseAtEndMs);
+      const frame = (timestamp) => {
+        const elapsed = timestamp - this.spinState.startTime;
+        let nextRotation = this.spinState.startRotation;
+        if (elapsed < travelDuration) {
+          const progress = clamp2(elapsed / travelDuration, 0, 1);
+          const eased = easeOutFriction(progress);
+          nextRotation = this.spinState.startRotation + (absoluteTargetRotation - this.spinState.startRotation) * eased;
+        } else if (elapsed < durationMs) {
+          nextRotation = absoluteTargetRotation;
+        } else {
+          nextRotation = absoluteTargetRotation;
+        }
+        this.lastVelocity = nextRotation - this.rotation;
+        this.rotation = normalizeAngle(nextRotation);
+        const nextSegment = this.getCurrentSegmentIndex();
+        if (nextSegment !== this.spinState.lastTickSegment) {
+          this.spinState.lastTickSegment = nextSegment;
+          onTick(nextSegment, Math.abs(this.lastVelocity));
+        }
+        this.render();
+        if (elapsed < durationMs) {
+          this.spinState.rafId = requestAnimationFrame(frame);
+        } else {
+          this.spinState.phase = "idle";
+          this.container.classList.remove("is-spinning");
+          const segment = this.getCurrentSegment();
+          this.flashWinner(segment?.entry.id || null);
+          onResult(segment);
+          this.syncIdleLoop();
+        }
+      };
+      this.spinState.rafId = requestAnimationFrame(frame);
+    }
+    hitTestCenter(clientX, clientY) {
+      const rect = this.canvas.getBoundingClientRect();
+      const x3 = clientX - rect.left;
+      const y3 = clientY - rect.top;
+      const radius = Math.min(rect.width, rect.height) * 0.11;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const distance = Math.hypot(centerX - x3, centerY - y3);
+      return distance <= radius;
+    }
+    getCurrentSegmentIndex() {
+      if (!this.segmentData.length) return -1;
+      const pointerInWheelCoords = normalizeAngle(-this.rotation);
+      return this.segmentData.findIndex((segment) => inSegment(pointerInWheelCoords, segment.start, segment.end));
+    }
+    getCurrentSegment() {
+      const index = this.getCurrentSegmentIndex();
+      if (index < 0) return null;
+      return this.segmentData[index];
+    }
+    render() {
+      const ctx = this.ctx;
+      const width = this.canvas.getBoundingClientRect().width;
+      const height = this.canvas.getBoundingClientRect().height;
+      const centerX = width / 2;
+      const centerY = height / 2;
+      const radius = Math.min(width, height) * 0.48;
+      ctx.clearRect(0, 0, width, height);
+      if (!this.segmentData.length) {
+        drawEmptyState(ctx, centerX, centerY, radius);
+        return;
+      }
+      const performanceMode = Boolean(this.settings?.performanceModeAuto && this.segmentData.length > 500);
+      const overviewMode = Boolean(performanceMode && this.settings?.performanceOverview);
+      const flashStrength = getWinnerFlashStrength(this.winnerFlash);
+      this.segmentData.forEach((segment, index) => {
+        const start = segment.start + this.rotation - Math.PI / 2;
+        const end = segment.end + this.rotation - Math.PI / 2;
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, start, end);
+        ctx.closePath();
+        ctx.fillStyle = segment.color;
+        ctx.fill();
+        const isWinner = this.winnerFlash.id && this.winnerFlash.id === segment.entry.id;
+        if (isWinner && flashStrength > 0) {
+          ctx.save();
+          ctx.globalAlpha = flashStrength * 0.33;
+          ctx.fillStyle = "#ffffff";
+          ctx.fill();
+          ctx.restore();
+        }
+        ctx.strokeStyle = "rgba(0,0,0,0.16)";
+        ctx.lineWidth = performanceMode ? 0.6 : 1.2;
+        ctx.stroke();
+        if (this.theme?.preset === "colorblind-safe") {
+          drawSegmentPattern(ctx, index, start, end, centerX, centerY, radius);
+        }
+        if (!performanceMode) {
+          drawSegmentImage(ctx, this, segment, this.rotation, centerX, centerY, radius);
+        }
+      });
+      drawWheelChrome(ctx, centerX, centerY, radius, flashStrength, this.theme, this, { performanceMode, overviewMode });
+      if (!overviewMode) {
+        this.segmentData.forEach((segment) => {
+          drawSegmentLabel(ctx, segment, this.settings, this.rotation, centerX, centerY, radius, {
+            mysteryWheel: this.settings?.mysteryWheel,
+            simplified: performanceMode
+          });
+        });
+      } else {
+        ctx.save();
+        ctx.fillStyle = "rgba(255,255,255,0.94)";
+        ctx.font = `700 ${Math.max(14, radius * 0.08)}px "Plus Jakarta Sans", sans-serif`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(`${this.segmentData.length} entries`, centerX, centerY + radius * 0.24);
+        ctx.restore();
+      }
+    }
+    getImageBySrc(src) {
+      if (!src) return null;
+      const existing = this.imageCache.get(src);
+      if (existing?.status === "loaded") {
+        return existing.image;
+      }
+      if (existing?.status === "loading") {
+        return null;
+      }
+      const image = new Image();
+      this.imageCache.set(src, { status: "loading", image: null });
+      image.onload = () => {
+        this.imageCache.set(src, { status: "loaded", image });
+        this.render();
+      };
+      image.onerror = () => {
+        this.imageCache.set(src, { status: "error", image: null });
+      };
+      image.src = src;
+      return null;
+    }
+    syncIdleLoop() {
+      if (this.idlePausedByResult || !this.idle.enabled || this.isSpinning() || !this.segmentData.length) {
+        this.stopIdleLoop();
+        return;
+      }
+      this.startIdleLoop();
+    }
+    holdStillAfterResult() {
+      this.idlePausedByResult = true;
+      this.stopIdleLoop();
+    }
+    startIdleLoop() {
+      if (this.idle.rafId) return;
+      this.idle.lastFrameTime = performance.now();
+      const frame = (timestamp) => {
+        if (!this.idle.enabled || this.isSpinning() || !this.segmentData.length) {
+          this.stopIdleLoop();
+          return;
+        }
+        const dt = Math.max(12, Math.min(34, timestamp - this.idle.lastFrameTime));
+        this.idle.lastFrameTime = timestamp;
+        this.rotation = normalizeAngle(this.rotation + dt * 12e-5);
+        this.render();
+        this.idle.rafId = requestAnimationFrame(frame);
+      };
+      this.idle.rafId = requestAnimationFrame(frame);
+    }
+    stopIdleLoop() {
+      if (!this.idle.rafId) return;
+      cancelAnimationFrame(this.idle.rafId);
+      this.idle.rafId = null;
+    }
+  };
+  function drawEmptyState(ctx, centerX, centerY, radius) {
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, TAU);
+    ctx.fillStyle = "#27395e";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255,255,255,0.22)";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+  function drawWheelChrome(ctx, centerX, centerY, radius, flashStrength, theme, engine, options = {}) {
+    const performanceMode = Boolean(options.performanceMode);
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius + 5, 0, TAU);
+    ctx.strokeStyle = "#f5f9ff22";
+    ctx.lineWidth = 6;
+    ctx.stroke();
+    ctx.restore();
+    const centerRadius = radius * 0.12;
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, centerRadius, 0, TAU);
+    const centerStart = theme?.centerColor || "#f0fbff";
+    const centerEnd = theme?.centerColor ? shadeHex(theme.centerColor, -26) : "#13406e";
+    const centerGradient = ctx.createRadialGradient(centerX - centerRadius * 0.3, centerY - centerRadius * 0.4, centerRadius * 0.2, centerX, centerY, centerRadius);
+    centerGradient.addColorStop(0, centerStart);
+    centerGradient.addColorStop(1, centerEnd);
+    ctx.fillStyle = centerGradient;
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255,255,255,0.35)";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    if (theme?.centerImage) {
+      const image = engine.getImageBySrc(theme.centerImage);
+      if (image) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, centerRadius - 2, 0, TAU);
+        ctx.clip();
+        const drawSize = centerRadius * 1.75;
+        ctx.drawImage(image, centerX - drawSize / 2, centerY - drawSize / 2, drawSize, drawSize);
+        ctx.restore();
+      }
+    }
+    if (flashStrength > 0) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius + 8, 0, TAU);
+      ctx.strokeStyle = `rgba(255,255,255,${0.22 * flashStrength})`;
+      ctx.lineWidth = 8;
+      ctx.stroke();
+      ctx.restore();
+    }
+    if (!performanceMode) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, 0, TAU);
+      ctx.clip();
+      const shadowGradient = ctx.createRadialGradient(centerX, centerY, radius * 0.56, centerX, centerY, radius);
+      shadowGradient.addColorStop(0, "rgba(0,0,0,0)");
+      shadowGradient.addColorStop(1, "rgba(0,0,0,0.2)");
+      ctx.fillStyle = shadowGradient;
+      ctx.fillRect(centerX - radius, centerY - radius, radius * 2, radius * 2);
+      ctx.restore();
+    }
+  }
+  function drawSegmentLabel(ctx, segment, settings, rotation, centerX, centerY, radius, options = {}) {
+    const mysteryWheel = Boolean(options.mysteryWheel);
+    const simplified = Boolean(options.simplified);
+    if (segment.entry.imageMode === "image-only" && !mysteryWheel && !simplified) {
+      return;
+    }
+    const worldAngle = segment.center + rotation - Math.PI / 2;
+    const labelRadius = radius * 0.61;
+    const x3 = centerX + Math.cos(worldAngle) * labelRadius;
+    const y3 = centerY + Math.sin(worldAngle) * labelRadius;
+    const arcLength = (segment.end - segment.start) * radius;
+    const maxWidth = Math.max(36, arcLength * 0.68);
+    let label = resolveLabel(segment.entry, mysteryWheel);
+    if (simplified && label.length > 10) {
+      label = `${label.slice(0, 9)}\u2026`;
+    }
+    let fontSize = clamp2(arcLength * (simplified ? 0.1 : 0.14), 10, simplified ? 20 : 28);
+    ctx.save();
+    ctx.translate(x3, y3);
+    ctx.rotate(worldAngle + Math.PI / 2);
+    while (fontSize > (simplified ? 9 : 11)) {
+      ctx.font = `700 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
+      if (ctx.measureText(label).width <= maxWidth) break;
+      fontSize -= 1;
+    }
+    let renderLabel = label;
+    ctx.font = `700 ${fontSize}px "Plus Jakarta Sans", sans-serif`;
+    if (ctx.measureText(renderLabel).width > maxWidth) {
+      renderLabel = truncateToFit(ctx, renderLabel, maxWidth);
+    }
+    ctx.fillStyle = segment.textColor;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(renderLabel, 0, 0);
+    ctx.restore();
+  }
+  function drawSegmentPattern(ctx, segmentIndex, start, end, centerX, centerY, radius) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.arc(centerX, centerY, radius, start, end);
+    ctx.closePath();
+    ctx.clip();
+    ctx.globalAlpha = 0.2;
+    ctx.strokeStyle = "#ffffff";
+    ctx.lineWidth = 1;
+    const pattern = segmentIndex % 4;
+    if (pattern === 0) {
+      for (let x3 = centerX - radius; x3 <= centerX + radius; x3 += 10) {
+        ctx.beginPath();
+        ctx.moveTo(x3, centerY - radius);
+        ctx.lineTo(x3, centerY + radius);
+        ctx.stroke();
+      }
+    } else if (pattern === 1) {
+      for (let y3 = centerY - radius; y3 <= centerY + radius; y3 += 10) {
+        ctx.beginPath();
+        ctx.moveTo(centerX - radius, y3);
+        ctx.lineTo(centerX + radius, y3);
+        ctx.stroke();
+      }
+    } else if (pattern === 2) {
+      for (let offset = -radius; offset <= radius; offset += 12) {
+        ctx.beginPath();
+        ctx.moveTo(centerX - radius + offset, centerY - radius);
+        ctx.lineTo(centerX + offset, centerY + radius);
+        ctx.stroke();
+      }
+    } else {
+      for (let offset = -radius; offset <= radius; offset += 12) {
+        ctx.beginPath();
+        ctx.moveTo(centerX + radius - offset, centerY - radius);
+        ctx.lineTo(centerX - offset, centerY + radius);
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+  }
+  function drawSegmentImage(ctx, engine, segment, rotation, centerX, centerY, radius) {
+    if (!segment.entry.image || segment.entry.imageMode === "text-only") return;
+    const image = engine.getImageBySrc(segment.entry.image);
+    if (!image) return;
+    const start = segment.start + rotation - Math.PI / 2;
+    const end = segment.end + rotation - Math.PI / 2;
+    const worldAngle = segment.center + rotation - Math.PI / 2;
+    const centerDistance = radius * 0.6;
+    const widthByArc = Math.max(28, (segment.end - segment.start) * radius * 0.72);
+    const drawSize = clamp2(widthByArc, 28, radius * 0.48);
+    const x3 = centerX + Math.cos(worldAngle) * centerDistance;
+    const y3 = centerY + Math.sin(worldAngle) * centerDistance;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.arc(centerX, centerY, radius, start, end);
+    ctx.closePath();
+    ctx.clip();
+    ctx.globalAlpha = segment.entry.imageMode === "image-text" ? 0.95 : 1;
+    ctx.drawImage(image, x3 - drawSize / 2, y3 - drawSize / 2, drawSize, drawSize);
+    if (segment.entry.imageMode === "image-text") {
+      ctx.globalAlpha = 0.14;
+      ctx.fillStyle = "#000";
+      ctx.fillRect(x3 - drawSize / 2, y3 - drawSize / 2, drawSize, drawSize);
+    }
+    ctx.restore();
+  }
+  function resolveLabel(entry, mysteryWheel) {
+    if (mysteryWheel) return "?";
+    return entry.label;
+  }
+  function truncateToFit(ctx, label, maxWidth) {
+    let next = label;
+    while (next.length > 1 && ctx.measureText(`${next}\u2026`).width > maxWidth) {
+      next = next.slice(0, -1);
+    }
+    return `${next}\u2026`;
+  }
+  function inSegment(value, start, end) {
+    if (start <= end) {
+      return value >= start && value < end;
+    }
+    return value >= start || value < end;
+  }
+  function getWinnerFlashStrength(flash) {
+    if (!flash.id) return 0;
+    const left = flash.until - performance.now();
+    if (left <= 0) return 0;
+    const normalized = left / 1800;
+    return Math.sin((1 - normalized) * Math.PI * 4) * 0.5 + 0.5;
+  }
+  function shadeHex(hex, amount) {
+    const value = (hex || "").replace("#", "");
+    const normalized = value.length === 3 ? value.split("").map((c3) => `${c3}${c3}`).join("") : value;
+    if (normalized.length !== 6) return hex;
+    const channel = (offset) => {
+      const raw = Number.parseInt(normalized.slice(offset, offset + 2), 16);
+      const next = clamp2(raw + amount, 0, 255);
+      return Math.round(next).toString(16).padStart(2, "0");
+    };
+    return `#${channel(0)}${channel(2)}${channel(4)}`;
+  }
+  function buildSegments(entries, weighted, themePreset) {
+    const presetColors = THEME_PRESETS[themePreset]?.colors || THEME_PRESETS.rainbow.colors;
+    const weights = entries.map((entry) => weighted ? clamp2(Number(entry.weight) || 1, 0.1, 100) : 1);
+    const totalWeight = weights.reduce((sum, weight) => sum + weight, 0) || 1;
+    let cursor = 0;
+    return entries.map((entry, index) => {
+      const ratio = weights[index] / totalWeight;
+      const span = ratio * TAU;
+      const start = cursor;
+      const end = cursor + span;
+      cursor = end;
+      const color = entry.sliceColor || presetColors[index % presetColors.length];
+      const textColor = entry.textColor || autoContrastColor(color);
+      return {
+        entry,
+        start,
+        end,
+        center: start + span / 2,
+        color,
+        textColor
+      };
+    });
+  }
+
+  // vendor/spin-the-wheel/audio-engine.js
+  var AudioEngine = class {
+    constructor() {
+      this.context = null;
+      this.master = null;
+      this.enabledByGesture = false;
+      this.volume = 0.7;
+      this.ambientOsc = null;
+      this.ambientAuxOsc = null;
+      this.ambientGain = null;
+      this.ambientLfo = null;
+      this.noiseBuffer = null;
+    }
+    ensureReady() {
+      if (!this.context) {
+        this.context = new (window.AudioContext || window.webkitAudioContext)();
+        this.master = this.context.createGain();
+        this.master.gain.value = this.volume;
+        this.master.connect(this.context.destination);
+      }
+      if (this.context.state === "suspended") {
+        this.context.resume();
+      }
+      this.enabledByGesture = true;
+    }
+    setVolume(nextVolume) {
+      this.volume = Math.max(0, Math.min(nextVolume, 1));
+      if (this.master) {
+        this.master.gain.value = this.volume;
+      }
+    }
+    playOscillatorLayer({
+      type = "sine",
+      frequency = 440,
+      startTime = this.context?.currentTime ?? 0,
+      duration = 0.3,
+      peak = 0.08,
+      attack = 0.01,
+      detune = 0,
+      filterType = null,
+      filterFrequency = 1800,
+      filterQ = 0.7,
+      endFrequency = null
+    } = {}) {
+      if (!this.enabledByGesture || !this.context || !this.master) return;
+      const endTime = startTime + Math.max(duration, attack + 0.04);
+      const oscillator = this.context.createOscillator();
+      const gain = this.context.createGain();
+      oscillator.type = type;
+      oscillator.frequency.setValueAtTime(frequency, startTime);
+      oscillator.detune.setValueAtTime(detune, startTime);
+      let output = oscillator;
+      if (filterType) {
+        const filter = this.context.createBiquadFilter();
+        filter.type = filterType;
+        filter.frequency.setValueAtTime(filterFrequency, startTime);
+        filter.Q.value = filterQ;
+        output.connect(filter);
+        output = filter;
+      }
+      if (Number.isFinite(endFrequency) && endFrequency > 0 && endFrequency !== frequency) {
+        oscillator.frequency.exponentialRampToValueAtTime(endFrequency, endTime);
+      }
+      gain.gain.setValueAtTime(1e-4, startTime);
+      gain.gain.exponentialRampToValueAtTime(Math.max(11e-5, peak), startTime + Math.max(attack, 1e-3));
+      gain.gain.exponentialRampToValueAtTime(1e-4, endTime);
+      output.connect(gain);
+      gain.connect(this.master);
+      oscillator.start(startTime);
+      oscillator.stop(endTime + 0.02);
+    }
+    playNoiseAccent({
+      startTime = this.context?.currentTime ?? 0,
+      duration = 0.24,
+      peak = 0.05,
+      filterType = "bandpass",
+      filterFrequency = 1800,
+      filterQ = 0.9,
+      playbackRate = 1
+    } = {}) {
+      if (!this.enabledByGesture || !this.context || !this.master) return;
+      const endTime = startTime + duration;
+      const source = this.context.createBufferSource();
+      const filter = this.context.createBiquadFilter();
+      const gain = this.context.createGain();
+      source.buffer = this.getNoiseBuffer();
+      source.playbackRate.value = playbackRate;
+      filter.type = filterType;
+      filter.frequency.setValueAtTime(filterFrequency, startTime);
+      filter.Q.value = filterQ;
+      gain.gain.setValueAtTime(1e-4, startTime);
+      gain.gain.exponentialRampToValueAtTime(Math.max(11e-5, peak), startTime + 0.01);
+      gain.gain.exponentialRampToValueAtTime(1e-4, endTime);
+      source.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.master);
+      source.start(startTime);
+      source.stop(endTime + 0.02);
+    }
+    playTick(speed = 0.2) {
+      if (!this.enabledByGesture || !this.context || !this.master) return;
+      this.playTickVariant("click", speed);
+    }
+    playTickVariant(variant = "click", speed = 0.2) {
+      if (!this.enabledByGesture || !this.context || !this.master) return;
+      const now = this.context.currentTime;
+      const oscillator = this.context.createOscillator();
+      const gain = this.context.createGain();
+      const filter = this.context.createBiquadFilter();
+      if (variant === "pop") {
+        oscillator.type = "sine";
+        oscillator.frequency.value = 460 + Math.min(speed * 1200, 1200);
+        filter.type = "bandpass";
+        filter.frequency.value = 800;
+      } else if (variant === "wooden") {
+        oscillator.type = "triangle";
+        oscillator.frequency.value = 290 + Math.min(speed * 700, 800);
+        filter.type = "lowpass";
+        filter.frequency.value = 1e3;
+      } else if (variant === "digital") {
+        oscillator.type = "sawtooth";
+        oscillator.frequency.value = 900 + Math.min(speed * 2200, 2e3);
+        filter.type = "highpass";
+        filter.frequency.value = 700;
+      } else if (variant === "soft") {
+        oscillator.type = "sine";
+        oscillator.frequency.value = 580 + Math.min(speed * 1e3, 900);
+        filter.type = "lowpass";
+        filter.frequency.value = 1400;
+      } else {
+        oscillator.type = "square";
+        oscillator.frequency.value = 700 + Math.min(speed * 1800, 1800);
+        filter.type = "highpass";
+        filter.frequency.value = 500;
+      }
+      gain.gain.setValueAtTime(0, now);
+      gain.gain.linearRampToValueAtTime(0.13, now + 4e-3);
+      gain.gain.exponentialRampToValueAtTime(1e-4, now + 0.06);
+      oscillator.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.master);
+      oscillator.start(now);
+      oscillator.stop(now + 0.065);
+    }
+    playWin() {
+      if (!this.enabledByGesture || !this.context || !this.master) return;
+      this.playWinVariant("fanfare");
+    }
+    playWinVariant(variant = "fanfare") {
+      if (!this.enabledByGesture || !this.context || !this.master) return;
+      const now = this.context.currentTime;
+      if (variant === "applause") {
+        for (let i3 = 0; i3 < 4; i3 += 1) {
+          const delay = i3 * 0.08;
+          this.playNoiseAccent({
+            startTime: now + delay,
+            duration: 0.34 + i3 * 0.04,
+            peak: 0.06 + i3 * 0.012,
+            filterType: "bandpass",
+            filterFrequency: 1200 + i3 * 220,
+            filterQ: 1.1,
+            playbackRate: 0.86 + i3 * 0.08
+          });
+        }
+        this.playOscillatorLayer({
+          type: "triangle",
+          frequency: 523.25,
+          startTime: now + 0.02,
+          duration: 0.32,
+          peak: 0.045,
+          filterType: "lowpass",
+          filterFrequency: 1800
+        });
+        this.playOscillatorLayer({
+          type: "sine",
+          frequency: 783.99,
+          startTime: now + 0.08,
+          duration: 0.28,
+          peak: 0.03,
+          filterType: "lowpass",
+          filterFrequency: 2200
+        });
+        return;
+      }
+      if (variant === "chime") {
+        const notes2 = [659.25, 783.99, 987.77, 1174.66];
+        notes2.forEach((frequency, index) => {
+          const delay = index * 0.08;
+          this.playOscillatorLayer({
+            type: "sine",
+            frequency,
+            startTime: now + delay,
+            duration: 0.72,
+            peak: 0.09,
+            filterType: "lowpass",
+            filterFrequency: 3200,
+            filterQ: 0.7
+          });
+          this.playOscillatorLayer({
+            type: "triangle",
+            frequency: frequency * 2,
+            startTime: now + delay + 0.015,
+            duration: 0.46,
+            peak: 0.028,
+            filterType: "bandpass",
+            filterFrequency: Math.min(4200, frequency * 2.4),
+            filterQ: 0.9
+          });
+        });
+        this.playNoiseAccent({
+          startTime: now,
+          duration: 0.18,
+          peak: 0.028,
+          filterType: "highpass",
+          filterFrequency: 2400,
+          filterQ: 0.6,
+          playbackRate: 1.2
+        });
+        return;
+      }
+      if (variant === "sparkle") {
+        this.playNoiseAccent({
+          startTime: now,
+          duration: 0.22,
+          peak: 0.05,
+          filterType: "bandpass",
+          filterFrequency: 2600,
+          filterQ: 1,
+          playbackRate: 1.28
+        });
+        [1174.66, 1567.98, 1975.53, 2637.02, 3135.96].forEach((frequency, index) => {
+          this.playOscillatorLayer({
+            type: "triangle",
+            frequency,
+            startTime: now + index * 0.045,
+            duration: 0.22,
+            peak: 0.055,
+            filterType: "bandpass",
+            filterFrequency: Math.min(5200, frequency * 1.4),
+            filterQ: 1.1
+          });
+        });
+        return;
+      }
+      this.playNoiseAccent({
+        startTime: now,
+        duration: 0.18,
+        peak: 0.055,
+        filterType: "highpass",
+        filterFrequency: 1800,
+        filterQ: 0.7,
+        playbackRate: 1.08
+      });
+      this.playOscillatorLayer({
+        type: "sine",
+        frequency: 82.41,
+        endFrequency: 55,
+        startTime: now,
+        duration: 0.28,
+        peak: 0.16,
+        filterType: "lowpass",
+        filterFrequency: 240,
+        filterQ: 0.8
+      });
+      const notes = [392, 523.25, 659.25, 783.99, 1046.5];
+      notes.forEach((frequency, index) => {
+        const delay = index * 0.07;
+        this.playOscillatorLayer({
+          type: "triangle",
+          frequency,
+          startTime: now + delay,
+          duration: 0.38,
+          peak: 0.11,
+          filterType: "lowpass",
+          filterFrequency: 2800,
+          filterQ: 0.8
+        });
+        this.playOscillatorLayer({
+          type: "sawtooth",
+          frequency: frequency * 2,
+          startTime: now + delay + 0.012,
+          duration: 0.22,
+          peak: 0.024,
+          detune: 6,
+          filterType: "bandpass",
+          filterFrequency: Math.min(4200, frequency * 3),
+          filterQ: 1.15
+        });
+      });
+      [1046.5, 1318.51, 1567.98].forEach((frequency, index) => {
+        this.playOscillatorLayer({
+          type: "sine",
+          frequency,
+          startTime: now + 0.2 + index * 0.04,
+          duration: 0.4,
+          peak: 0.03,
+          filterType: "lowpass",
+          filterFrequency: 3600,
+          filterQ: 0.7
+        });
+      });
+    }
+    startSpinAmbient(variant = "whoosh") {
+      if (!this.enabledByGesture || !this.context || !this.master) return;
+      if (this.ambientOsc) return;
+      const now = this.context.currentTime;
+      if (variant === "none") return;
+      const gain = this.context.createGain();
+      gain.gain.setValueAtTime(1e-4, now);
+      gain.gain.exponentialRampToValueAtTime(variant === "hum" ? 0.045 : 0.082, now + 0.18);
+      if (variant === "hum") {
+        const osc = this.context.createOscillator();
+        const shimmer = this.context.createOscillator();
+        const filter2 = this.context.createBiquadFilter();
+        const shimmerGain = this.context.createGain();
+        filter2.type = "lowpass";
+        filter2.frequency.value = 420;
+        osc.type = "sine";
+        osc.frequency.value = 136;
+        shimmer.type = "triangle";
+        shimmer.frequency.value = 272;
+        shimmerGain.gain.value = 0.16;
+        osc.connect(filter2);
+        shimmer.connect(shimmerGain);
+        shimmerGain.connect(filter2);
+        filter2.connect(gain);
+        gain.connect(this.master);
+        osc.start(now);
+        shimmer.start(now);
+        this.ambientOsc = osc;
+        this.ambientAuxOsc = shimmer;
+        this.ambientGain = gain;
+        return;
+      }
+      const source = this.context.createBufferSource();
+      source.buffer = this.getNoiseBuffer();
+      source.loop = true;
+      const filter = this.context.createBiquadFilter();
+      filter.type = "bandpass";
+      const baseFrequency = variant === "wind" ? 420 : 760;
+      const peakFrequency = variant === "wind" ? 760 : 1360;
+      filter.frequency.setValueAtTime(baseFrequency, now);
+      filter.frequency.exponentialRampToValueAtTime(peakFrequency, now + 1.2);
+      filter.Q.value = variant === "wind" ? 0.9 : 1.2;
+      const lfo = this.context.createOscillator();
+      const lfoGain = this.context.createGain();
+      lfo.type = "sine";
+      lfo.frequency.value = variant === "wind" ? 0.18 : 0.32;
+      lfoGain.gain.value = variant === "wind" ? 120 : 210;
+      lfo.connect(lfoGain);
+      lfoGain.connect(filter.frequency);
+      source.connect(filter);
+      filter.connect(gain);
+      if (variant === "whoosh") {
+        const tone = this.context.createOscillator();
+        const toneGain = this.context.createGain();
+        tone.type = "triangle";
+        tone.frequency.setValueAtTime(84, now);
+        tone.frequency.exponentialRampToValueAtTime(132, now + 1.4);
+        toneGain.gain.setValueAtTime(1e-4, now);
+        toneGain.gain.exponentialRampToValueAtTime(0.028, now + 0.22);
+        toneGain.gain.exponentialRampToValueAtTime(0.014, now + 1.4);
+        tone.connect(toneGain);
+        toneGain.connect(gain);
+        tone.start(now);
+        this.ambientAuxOsc = tone;
+      }
+      gain.connect(this.master);
+      source.start(now);
+      lfo.start(now);
+      this.ambientOsc = source;
+      this.ambientGain = gain;
+      this.ambientLfo = lfo;
+    }
+    stopSpinAmbient() {
+      if (!this.context || !this.ambientGain) return;
+      const now = this.context.currentTime;
+      this.ambientGain.gain.cancelScheduledValues(now);
+      this.ambientGain.gain.setValueAtTime(Math.max(1e-4, this.ambientGain.gain.value), now);
+      this.ambientGain.gain.exponentialRampToValueAtTime(1e-4, now + 0.15);
+      [this.ambientOsc, this.ambientAuxOsc, this.ambientLfo].forEach((node) => {
+        if (!node) return;
+        try {
+          node.stop(now + 0.18);
+        } catch {
+        }
+      });
+      this.ambientOsc = null;
+      this.ambientAuxOsc = null;
+      this.ambientGain = null;
+      this.ambientLfo = null;
+    }
+    getNoiseBuffer() {
+      if (this.noiseBuffer || !this.context) {
+        return this.noiseBuffer;
+      }
+      const length = this.context.sampleRate * 1.2;
+      const buffer = this.context.createBuffer(1, length, this.context.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i3 = 0; i3 < length; i3 += 1) {
+        data[i3] = (Math.random() * 2 - 1) * 0.55;
+      }
+      this.noiseBuffer = buffer;
+      return buffer;
+    }
+  };
+
+  // tool-box/src/features/game-box/draw/games/ChaosWheelGame.jsx
+  var TAU2 = Math.PI * 2;
+  var INITIAL_WHEEL_ITEMS = [
+    "\uAE40\uC131\uBBFC",
+    "\uC774\uC9C0\uD6C8",
+    "\uBC15\uC218\uC9C4",
+    "\uCD5C\uBBFC\uD638",
+    "\uC815\uD558\uB298",
+    "\uAC15\uB3D9\uC6D0",
+    "\uC724\uC11C\uC5F0",
+    "\uD55C\uC9C0\uBBFC"
+  ];
+  function buildEntryObjects(labels, eliminatedSet = /* @__PURE__ */ new Set()) {
+    return labels.map((label, idx) => ({
+      id: `entry-${idx}-${label}`,
+      label,
+      weight: 1,
+      enabled: true,
+      eliminated: eliminatedSet.has(label)
+    }));
+  }
+  function ChaosWheelGame({ onBack }) {
+    const [itemsText, setItemsText] = d2(INITIAL_WHEEL_ITEMS.join("\n"));
+    const [newItemInput, setNewItemInput] = d2("");
+    const [eliminatedLabels, setEliminatedLabels] = d2([]);
+    const [mysteryMode, setMysteryMode] = d2(false);
+    const [eliminationMode, setEliminationMode] = d2(false);
+    const [themePreset, setThemePreset] = d2("retro");
+    const [tickVariant, setTickVariant] = d2("wooden");
+    const [winVariant, setWinVariant] = d2("fanfare");
+    const [spinDurationSec, setSpinDurationSec] = d2(3.2);
+    const [soundEnabled, setSoundEnabled] = d2(true);
+    const [view3D, setView3D] = d2(true);
+    const [pointerKick, setPointerKick] = d2(false);
+    const [phase, setPhase] = d2("idle");
+    const [lastWinner, setLastWinner] = d2(null);
+    const [history, setHistory] = d2([]);
+    const containerRef = A2(null);
+    const canvasRef = A2(null);
+    const pegRingRef = A2(null);
+    const engineRef = A2(null);
+    const audioRef = A2(null);
+    const previewTimersRef = A2([]);
+    const pointerTimerRef = A2(null);
+    const clearPreviewTimers = () => {
+      previewTimersRef.current.forEach((t3) => clearTimeout(t3));
+      previewTimersRef.current = [];
+    };
+    h2(() => {
+      return () => {
+        clearPreviewTimers();
+        if (pointerTimerRef.current) clearTimeout(pointerTimerRef.current);
+      };
+    }, []);
+    const triggerPointerKick = () => {
+      setPointerKick(true);
+      if (pointerTimerRef.current) clearTimeout(pointerTimerRef.current);
+      pointerTimerRef.current = setTimeout(() => setPointerKick(false), 75);
+    };
+    const playTickPreview = (variant) => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      clearPreviewTimers();
+      audio.ensureReady();
+      const pattern = [
+        { delay: 0, vel: 0.92 },
+        { delay: 95, vel: 0.74 },
+        { delay: 210, vel: 0.56 },
+        { delay: 350, vel: 0.38 },
+        { delay: 520, vel: 0.22 }
+      ];
+      pattern.forEach(({ delay, vel }) => {
+        const t3 = setTimeout(() => {
+          audio.playTickVariant(variant, vel);
+          triggerPointerKick();
+        }, delay);
+        previewTimersRef.current.push(t3);
+      });
+    };
+    const playWinPreview = (variant) => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      clearPreviewTimers();
+      audio.ensureReady();
+      audio.playWinVariant(variant);
+    };
+    const parsedLabels = T2(() => {
+      const raw = itemsText.split(/[,\r\n]+/).map((s3) => s3.trim()).filter(Boolean);
+      return Array.from(new Set(raw));
+    }, [itemsText]);
+    const eliminatedSet = T2(() => new Set(eliminatedLabels), [eliminatedLabels]);
+    const entries = T2(
+      () => buildEntryObjects(parsedLabels, eliminatedSet),
+      [parsedLabels, eliminatedSet]
+    );
+    const activeEntries = T2(
+      () => entries.filter((e3) => e3.enabled && !e3.eliminated),
+      [entries]
+    );
+    h2(() => {
+      if (!canvasRef.current || !containerRef.current) return void 0;
+      const engine = new WheelEngine({
+        canvas: canvasRef.current,
+        container: containerRef.current
+      });
+      const audio = new AudioEngine();
+      engineRef.current = engine;
+      audioRef.current = audio;
+      const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => engine.resize()) : null;
+      if (ro) ro.observe(containerRef.current);
+      let pegRaf = null;
+      const syncPegs = () => {
+        if (pegRingRef.current && engineRef.current) {
+          pegRingRef.current.style.transform = `rotate(${engineRef.current.getRotation()}rad)`;
+        }
+        pegRaf = requestAnimationFrame(syncPegs);
+      };
+      pegRaf = requestAnimationFrame(syncPegs);
+      return () => {
+        if (pegRaf) cancelAnimationFrame(pegRaf);
+        if (ro) ro.disconnect();
+        engine.destroy();
+        engineRef.current = null;
+      };
+    }, []);
+    h2(() => {
+      const engine = engineRef.current;
+      if (!engine) return;
+      engine.setWheelState({
+        entries,
+        settings: {
+          showWeights: false,
+          mysteryWheel: mysteryMode && phase !== "result",
+          idleAnimationEnabled: phase === "idle"
+        },
+        theme: {
+          preset: themePreset,
+          centerColor: "#0f172a"
+        }
+      });
+    }, [entries, mysteryMode, themePreset, phase]);
+    const handleSpin = () => {
+      const engine = engineRef.current;
+      if (!engine || phase === "spinning" || activeEntries.length < 1) return;
+      let currentEliminatedSet = new Set(eliminatedLabels);
+      let currentEntries = entries;
+      if (eliminationMode && lastWinner && phase === "result" && !currentEliminatedSet.has(lastWinner.label)) {
+        if (activeEntries.length > 2) {
+          const nextElim = [...eliminatedLabels, lastWinner.label];
+          setEliminatedLabels(nextElim);
+          currentEliminatedSet = new Set(nextElim);
+          currentEntries = buildEntryObjects(parsedLabels, currentEliminatedSet);
+        }
+      }
+      engine.setWheelState({
+        entries: currentEntries,
+        settings: {
+          showWeights: false,
+          mysteryWheel: mysteryMode,
+          idleAnimationEnabled: false
+        },
+        theme: {
+          preset: themePreset,
+          centerColor: "#0f172a"
+        }
+      });
+      const segments = engine.getSegments();
+      if (!segments || segments.length === 0) return;
+      if (soundEnabled && audioRef.current) {
+        audioRef.current.ensureReady();
+      }
+      const winningIndex = secureRandomInt(segments.length);
+      const winningSegment = segments[winningIndex];
+      const lockedWinner = {
+        id: winningSegment.entry.id,
+        label: winningSegment.entry.label,
+        color: winningSegment.color,
+        segmentIndex: winningIndex,
+        totalCandidates: segments.length,
+        probabilityPct: (1 / segments.length * 100).toFixed(1)
+      };
+      const currentRot = engine.getRotation();
+      const segSpan = winningSegment.end - winningSegment.start;
+      const jitter = (secureRandomFloat() - 0.5) * segSpan * 0.65;
+      const targetAngleOnWheel = winningSegment.center + jitter;
+      const desiredNormalized = normalizeAngle(-targetAngleOnWheel);
+      const currentNormalized = normalizeAngle(currentRot);
+      let delta = desiredNormalized - currentNormalized;
+      if (delta <= 0) delta += TAU2;
+      const fullTurns = 6 + secureRandomInt(3);
+      const absoluteTargetRotation = currentRot + fullTurns * TAU2 + delta;
+      setPhase("spinning");
+      setLastWinner(null);
+      engine.spinTo({
+        absoluteTargetRotation,
+        durationMs: Math.max(1200, Math.round(spinDurationSec * 1e3)),
+        pauseAtEndMs: 120,
+        reducedMotion: false,
+        onTick: (_segIdx, velocity) => {
+          triggerPointerKick();
+          if (soundEnabled && audioRef.current) {
+            audioRef.current.playTickVariant(tickVariant, velocity);
+          }
+        },
+        onResult: () => {
+          engine.holdStillAfterResult();
+          setLastWinner(lockedWinner);
+          setPhase("result");
+          if (soundEnabled && audioRef.current) {
+            audioRef.current.playWinVariant(winVariant);
+          }
+          setHistory((prev) => [
+            {
+              id: `wheel-${Date.now()}`,
+              time: formatDrawTime(),
+              winner: lockedWinner.label,
+              candidates: lockedWinner.totalCandidates,
+              probabilityPct: lockedWinner.probabilityPct,
+              mystery: mysteryMode,
+              elimination: eliminationMode
+            },
+            ...prev.slice(0, 14)
+          ]);
+        }
+      });
+    };
+    const handleEliminateCurrentWinner = () => {
+      if (!lastWinner) return;
+      if (!eliminatedSet.has(lastWinner.label)) {
+        setEliminatedLabels((prev) => [...prev, lastWinner.label]);
+      }
+      setPhase("idle");
+    };
+    const handleRestoreEliminated = () => {
+      setEliminatedLabels([]);
+      setPhase("idle");
+    };
+    const handleAddSingleItem = (e3) => {
+      e3.preventDefault();
+      const clean = newItemInput.trim();
+      if (!clean) return;
+      const next = [...parsedLabels, clean];
+      setItemsText(Array.from(new Set(next)).join("\n"));
+      setNewItemInput("");
+    };
+    const handleShuffleEntries = () => {
+      const shuffled = shuffleUnbiased(parsedLabels);
+      setItemsText(shuffled.join("\n"));
+    };
+    const handleSortEntries = () => {
+      const sorted = [...parsedLabels].sort((a3, b2) => a3.localeCompare(b2, "ko"));
+      setItemsText(sorted.join("\n"));
+    };
+    return /* @__PURE__ */ u3("div", { className: "rpz-game-shell", "data-testid": "game-chaos-wheel", children: [
+      /* @__PURE__ */ u3("header", { className: "rpz-game-topbar", children: [
+        /* @__PURE__ */ u3("div", { className: "rpz-game-title-group", children: [
+          /* @__PURE__ */ u3("button", { type: "button", className: "rpz-back-btn", onClick: onBack, children: "\u2190 RANDOM PLAY ZONE" }),
+          /* @__PURE__ */ u3("div", { children: [
+            /* @__PURE__ */ u3("span", { className: "rpz-game-Tag", children: "GAME 04 \xB7 SPIN-THE-WHEEL ENGINE" }),
+            /* @__PURE__ */ u3("h2", { children: "\u{1F3A1} CHAOS WHEEL \u2014 \uB8F0\uB81B" })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "rpz-top-actions", children: [
+          /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-primary",
+              "data-testid": "wheel-spin-btn",
+              onClick: handleSpin,
+              disabled: phase === "spinning" || activeEntries.length < 2,
+              children: phase === "spinning" ? "\u{1F300} \uD68C\uC804 \uC911..." : "\u{1F3A1} \uB8F0\uB81B \uB3CC\uB9AC\uAE30 (SPIN!)"
+            }
+          ),
+          phase === "result" && lastWinner && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-accent",
+              "data-testid": "wheel-eliminate-winner-btn",
+              onClick: handleEliminateCurrentWinner,
+              disabled: activeEntries.length <= 2,
+              children: "\u274C \uB2F9\uCCA8\uC790 \uC81C\uC678 \uD6C4 \uACC4\uC18D"
+            }
+          ),
+          eliminatedLabels.length > 0 && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-ghost",
+              "data-testid": "wheel-restore-btn",
+              onClick: handleRestoreEliminated,
+              children: [
+                "\u267B\uFE0F \uC81C\uC678 \uD56D\uBAA9 \uBCF5\uC6D0 (",
+                eliminatedLabels.length,
+                ")"
+              ]
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "rpz-game-workspace", children: [
+        /* @__PURE__ */ u3("section", { className: "rpz-stage-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "rpz-stage-status-bar", children: [
+            /* @__PURE__ */ u3("span", { className: `rpz-phase-pill phase-${phase}`, "data-testid": "wheel-phase-badge", children: [
+              phase === "idle" && `\uB300\uAE30 \uC911 \u2014 \uD65C\uC131 \uD56D\uBAA9 ${activeEntries.length}\uAC1C (\uADE0\uB4F1 \uD655\uB960 ${(100 / Math.max(1, activeEntries.length)).toFixed(1)}%)`,
+              phase === "spinning" && "\uAD00\uC131 \uD68C\uC804 \uBB3C\uB9AC \uAC10\uC18D \uC9C4\uD589 \uC911...",
+              phase === "result" && lastWinner && `\u{1F389} \uB2F9\uCCA8 \uD655\uC815: ${lastWinner.label}! (\uACF5\uC815 \uD655\uB960 ${lastWinner.probabilityPct}%)`
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "rpz-mode-badges", children: [
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  "data-testid": "wheel-mystery-toggle",
+                  className: `rpz-chip ${mysteryMode ? "active" : ""}`,
+                  onClick: () => setMysteryMode((v3) => !v3),
+                  children: [
+                    "\u{1F575}\uFE0F \uBBF8\uC2A4\uD130\uB9AC \uBAA8\uB4DC ",
+                    mysteryMode ? "ON" : "OFF"
+                  ]
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  "data-testid": "wheel-elimination-toggle",
+                  className: `rpz-chip ${eliminationMode ? "active" : ""}`,
+                  onClick: () => setEliminationMode((v3) => !v3),
+                  children: [
+                    "\u{1F525} \uC11C\uBC14\uC774\uBC8C \uD0C8\uB77D \uBAA8\uB4DC ",
+                    eliminationMode ? "ON" : "OFF"
+                  ]
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `rpz-chip ${view3D ? "active" : ""}`,
+                  onClick: () => setView3D((v3) => !v3),
+                  children: [
+                    "\u{1F9CA} 3D \uC785\uCCB4 \uBDF0 ",
+                    view3D ? "ON" : "OFF"
+                  ]
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: `rpz-chip ${soundEnabled ? "active" : ""}`,
+                  onClick: () => setSoundEnabled((v3) => !v3),
+                  children: soundEnabled ? "\u{1F50A} \uD6A8\uACFC\uC74C ON" : "\u{1F507} \uD6A8\uACFC\uC74C OFF"
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: `rpz-wheel-stage-wrap ${view3D ? "mode-3d" : ""} phase-${phase}`, children: [
+            /* @__PURE__ */ u3("div", { className: "rpz-wheel-3d-rig", children: [
+              /* @__PURE__ */ u3("div", { className: `rpz-wheel-bezel-3d ${view3D ? "tilted" : ""} ${phase === "spinning" ? "spinning" : ""}`, children: [
+                /* @__PURE__ */ u3("div", { className: "rpz-wheel-bulbs", "aria-hidden": "true", children: Array.from({ length: 16 }, (_3, i3) => /* @__PURE__ */ u3(
+                  "span",
+                  {
+                    className: "rpz-wheel-bulb",
+                    style: { "--bulb-angle": `${i3 * 22.5}deg`, "--bulb-idx": i3 }
+                  },
+                  i3
+                )) }),
+                /* @__PURE__ */ u3("div", { className: `rpz-wheel-flapper ${pointerKick ? "kicked" : ""}`, "aria-hidden": "true", children: /* @__PURE__ */ u3("svg", { viewBox: "0 0 46 58", width: "42", height: "52", children: [
+                  /* @__PURE__ */ u3("defs", { children: /* @__PURE__ */ u3("linearGradient", { id: "rpzPtrGrad", x1: "0%", y1: "0%", x2: "100%", y2: "100%", children: [
+                    /* @__PURE__ */ u3("stop", { offset: "0%", stopColor: "#f5d59c" }),
+                    /* @__PURE__ */ u3("stop", { offset: "55%", stopColor: "#cf8050" }),
+                    /* @__PURE__ */ u3("stop", { offset: "100%", stopColor: "#8a3420" })
+                  ] }) }),
+                  /* @__PURE__ */ u3("path", { d: "M23,55 L6,18 C4,10 11,3 23,3 C35,3 42,10 40,18 Z", fill: "url(#rpzPtrGrad)", stroke: "#1a1816", strokeWidth: "2.5" }),
+                  /* @__PURE__ */ u3("circle", { cx: "23", cy: "16", r: "6", fill: "#2a2824", stroke: "#f5d59c", strokeWidth: "2" })
+                ] }) }),
+                /* @__PURE__ */ u3("div", { ref: containerRef, className: "rpz-wheel-container", children: [
+                  /* @__PURE__ */ u3(
+                    "canvas",
+                    {
+                      ref: canvasRef,
+                      className: "rpz-wheel-canvas",
+                      "data-testid": "wheel-canvas"
+                    }
+                  ),
+                  /* @__PURE__ */ u3("div", { ref: pegRingRef, className: "rpz-wheel-peg-ring", "aria-hidden": "true", children: activeEntries.map((entry, idx) => /* @__PURE__ */ u3(
+                    "span",
+                    {
+                      className: "rpz-wheel-peg",
+                      style: { "--peg-angle": `${idx * 360 / Math.max(1, activeEntries.length)}deg` }
+                    },
+                    entry.id
+                  )) }),
+                  /* @__PURE__ */ u3("div", { className: "rpz-wheel-gloss-overlay", "aria-hidden": "true" }),
+                  /* @__PURE__ */ u3(
+                    "button",
+                    {
+                      type: "button",
+                      className: "rpz-wheel-center-btn",
+                      onClick: handleSpin,
+                      disabled: phase === "spinning" || activeEntries.length < 2,
+                      children: /* @__PURE__ */ u3("span", { children: phase === "spinning" ? "\u2022\u2022\u2022" : "SPIN" })
+                    }
+                  )
+                ] })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "rpz-wheel-stand", "aria-hidden": "true", children: [
+                /* @__PURE__ */ u3("div", { className: "rpz-wheel-stand-neck" }),
+                /* @__PURE__ */ u3("div", { className: "rpz-wheel-stand-base" })
+              ] })
+            ] }),
+            phase === "result" && lastWinner && /* @__PURE__ */ u3("div", { className: "rpz-wheel-winner-card", "data-testid": "wheel-winner-banner", children: [
+              /* @__PURE__ */ u3("span", { className: "rpz-winner-kicker", children: mysteryMode ? "\u{1F575}\uFE0F \uBBF8\uC2A4\uD130\uB9AC \uC2AC\uB77C\uC774\uC2A4 \uC815\uCCB4 \uACF5\uAC1C!" : "\u{1F38A} CHAOS WHEEL WINNER" }),
+              /* @__PURE__ */ u3("strong", { className: "rpz-winner-name", style: { color: lastWinner.color }, children: lastWinner.label }),
+              /* @__PURE__ */ u3("span", { className: "rpz-winner-meta", children: [
+                "\uD6C4\uBCF4 ",
+                lastWinner.totalCandidates,
+                "\uAC1C \uC911 1/",
+                lastWinner.totalCandidates,
+                " (",
+                lastWinner.probabilityPct,
+                "%) \uBB34\uD3B8\uD5A5 \uCD94\uCCA8"
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "rpz-winner-actions", children: [
+                /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: "rpz-btn rpz-btn-primary rpz-btn-sm",
+                    onClick: handleSpin,
+                    children: "\u{1F504} \uB2E4\uC2DC \uB3CC\uB9AC\uAE30"
+                  }
+                ),
+                activeEntries.length > 2 && /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: "rpz-btn rpz-btn-accent rpz-btn-sm",
+                    onClick: handleEliminateCurrentWinner,
+                    children: "\u274C \uC774 \uD56D\uBAA9 \uD0C8\uB77D\uC2DC\uD0A4\uAE30"
+                  }
+                )
+              ] })
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("aside", { className: "rpz-sidebar-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: [
+              "1. \uB8F0\uB81B \uD56D\uBAA9 \uD3B8\uC9D1 (\uD65C\uC131 ",
+              activeEntries.length,
+              "\uAC1C)"
+            ] }),
+            /* @__PURE__ */ u3("form", { className: "rpz-inline-form", onSubmit: handleAddSingleItem, children: [
+              /* @__PURE__ */ u3(
+                "input",
+                {
+                  type: "text",
+                  className: "rpz-input",
+                  value: newItemInput,
+                  disabled: phase === "spinning",
+                  onChange: (e3) => setNewItemInput(e3.target.value),
+                  placeholder: "\uC0C8 \uD56D\uBAA9 \uCD94\uAC00...",
+                  "data-testid": "wheel-add-input"
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "submit",
+                  className: "rpz-btn rpz-btn-secondary rpz-btn-sm",
+                  disabled: phase === "spinning",
+                  children: "\uCD94\uAC00"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ u3(
+              "textarea",
+              {
+                className: "rpz-textarea",
+                rows: 4,
+                value: itemsText,
+                disabled: phase === "spinning",
+                onChange: (e3) => setItemsText(e3.target.value),
+                placeholder: "\uC904\uBC14\uAFC8 \uB610\uB294 \uC27C\uD45C(,)\uB85C \uD56D\uBAA9 \uC785\uB825",
+                "data-testid": "wheel-items-textarea"
+              }
+            ),
+            /* @__PURE__ */ u3("div", { className: "rpz-preset-row", children: [
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  disabled: phase === "spinning",
+                  onClick: handleShuffleEntries,
+                  children: "\u{1F500} \uC154\uD50C"
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  disabled: phase === "spinning",
+                  onClick: handleSortEntries,
+                  children: "\u{1F524} \uC815\uB82C"
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  disabled: phase === "spinning",
+                  onClick: () => {
+                    setEliminatedLabels([]);
+                    setItemsText("\uD55C\uC2DD \uAD6D\uBC25\n\uC218\uC81C \uBC84\uAC70\n\uCD08\uBC25 \uC138\uD2B8\n\uB9C8\uB77C\uD0D5\n\uC300\uAD6D\uC218\n\uB3C8\uAE4C\uC2A4\n\uAE40\uCE58\uCC0C\uAC1C\n\uD53C\uC790");
+                  },
+                  children: "\uC810\uC2EC \uBA54\uB274 \uD504\uB9AC\uC14B"
+                }
+              ),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-btn-xs",
+                  disabled: phase === "spinning",
+                  onClick: () => {
+                    setEliminatedLabels([]);
+                    setItemsText(INITIAL_WHEEL_ITEMS.join("\n"));
+                  },
+                  children: "\uCC38\uAC00\uC790 \uD504\uB9AC\uC14B"
+                }
+              )
+            ] }),
+            eliminatedLabels.length > 0 && /* @__PURE__ */ u3("div", { className: "rpz-eliminated-box", "data-testid": "wheel-eliminated-box", children: /* @__PURE__ */ u3("small", { children: [
+              "\uD0C8\uB77D\uB41C \uD56D\uBAA9 (",
+              eliminatedLabels.length,
+              "): ",
+              eliminatedLabels.join(", ")
+            ] }) })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: "2. \uBB3C\uB9AC \xB7 \uD14C\uB9C8 \xB7 \uC0AC\uC6B4\uB4DC \uC124\uC815" }),
+            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+              /* @__PURE__ */ u3("span", { children: [
+                "\uCEEC\uB7EC \uD14C\uB9C8 (",
+                THEME_PRESETS[themePreset]?.label,
+                ")"
+              ] }),
+              /* @__PURE__ */ u3(
+                "select",
+                {
+                  className: "rpz-select",
+                  value: themePreset,
+                  onChange: (e3) => setThemePreset(e3.target.value),
+                  children: THEME_ORDER.map((key) => /* @__PURE__ */ u3("option", { value: key, children: THEME_PRESETS[key].label }, key))
+                }
+              )
+            ] }),
+            /* @__PURE__ */ u3("label", { className: "rpz-field", children: [
+              /* @__PURE__ */ u3("span", { children: [
+                "\uD68C\uC804 \uC2DC\uAC04 (",
+                spinDurationSec,
+                "\uCD08)"
+              ] }),
+              /* @__PURE__ */ u3(
+                "input",
+                {
+                  type: "range",
+                  min: "1.5",
+                  max: "6.0",
+                  step: "0.5",
+                  value: spinDurationSec,
+                  disabled: phase === "spinning",
+                  onChange: (e3) => setSpinDurationSec(Number(e3.target.value))
+                }
+              )
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "rpz-sound-preview-group", children: [
+              /* @__PURE__ */ u3("div", { className: "rpz-field", children: [
+                /* @__PURE__ */ u3("span", { children: "\uD2F1 \uD6A8\uACFC\uC74C (\uC120\uD0DD \uC2DC 5\uD68C \uCCAD\uC74C)" }),
+                /* @__PURE__ */ u3("div", { className: "rpz-sound-row", children: [
+                  /* @__PURE__ */ u3(
+                    "select",
+                    {
+                      className: "rpz-select",
+                      value: tickVariant,
+                      "data-testid": "wheel-tick-select",
+                      onChange: (e3) => {
+                        const next = e3.target.value;
+                        setTickVariant(next);
+                        playTickPreview(next);
+                      },
+                      children: [
+                        /* @__PURE__ */ u3("option", { value: "wooden", children: "\uC6B0\uB4DC \uD540 (Wooden)" }),
+                        /* @__PURE__ */ u3("option", { value: "click", children: "\uBA54\uD0C8 \uD074\uB9AD (Click)" }),
+                        /* @__PURE__ */ u3("option", { value: "pop", children: "\uBC84\uBE14 \uD31D (Pop)" }),
+                        /* @__PURE__ */ u3("option", { value: "digital", children: "\uC544\uCF00\uC774\uB4DC (Digital)" })
+                      ]
+                    }
+                  ),
+                  /* @__PURE__ */ u3(
+                    "button",
+                    {
+                      type: "button",
+                      className: "rpz-btn-xs",
+                      "data-testid": "wheel-tick-preview-btn",
+                      onClick: () => playTickPreview(tickVariant),
+                      children: "\u{1F50A} \uCCAD\uC74C"
+                    }
+                  )
+                ] })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "rpz-field", children: [
+                /* @__PURE__ */ u3("span", { children: "\uB2F9\uCCA8 \uD6A8\uACFC\uC74C (\uC120\uD0DD \uC2DC \uC989\uC2DC \uCCAD\uC74C)" }),
+                /* @__PURE__ */ u3("div", { className: "rpz-sound-row", children: [
+                  /* @__PURE__ */ u3(
+                    "select",
+                    {
+                      className: "rpz-select",
+                      value: winVariant,
+                      "data-testid": "wheel-win-select",
+                      onChange: (e3) => {
+                        const next = e3.target.value;
+                        setWinVariant(next);
+                        playWinPreview(next);
+                      },
+                      children: [
+                        /* @__PURE__ */ u3("option", { value: "fanfare", children: "\uD321\uD30C\uB974 (Fanfare)" }),
+                        /* @__PURE__ */ u3("option", { value: "applause", children: "\uBC15\uC218 \uAC08\uCC44 (Applause)" }),
+                        /* @__PURE__ */ u3("option", { value: "chime", children: "\uBCA8 \uCC28\uC784 (Chime)" }),
+                        /* @__PURE__ */ u3("option", { value: "sparkle", children: "\uC2A4\uD30C\uD074 (Sparkle)" })
+                      ]
+                    }
+                  ),
+                  /* @__PURE__ */ u3(
+                    "button",
+                    {
+                      type: "button",
+                      className: "rpz-btn-xs",
+                      "data-testid": "wheel-win-preview-btn",
+                      onClick: () => playWinPreview(winVariant),
+                      children: "\u{1F50A} \uCCAD\uC74C"
+                    }
+                  )
+                ] })
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: [
+              "3. \uCD94\uCCA8 \uAE30\uB85D (",
+              history.length,
+              ")"
+            ] }),
+            history.length === 0 ? /* @__PURE__ */ u3("p", { className: "rpz-empty", children: "\uC544\uC9C1 \uB8F0\uB81B \uCD94\uCCA8 \uAE30\uB85D\uC774 \uC5C6\uC2B5\uB2C8\uB2E4." }) : /* @__PURE__ */ u3("ul", { className: "rpz-history-list", "data-testid": "wheel-history-list", children: history.map((item) => /* @__PURE__ */ u3("li", { children: [
+              /* @__PURE__ */ u3("div", { className: "rpz-history-head", children: [
+                /* @__PURE__ */ u3("strong", { children: [
+                  "\u{1F3AF} ",
+                  item.winner
+                ] }),
+                /* @__PURE__ */ u3("small", { children: item.time })
+              ] }),
+              /* @__PURE__ */ u3("small", { children: [
+                "\uD6C4\uBCF4 ",
+                item.candidates,
+                "\uAC1C (",
+                item.probabilityPct,
+                "%)",
+                item.mystery ? " \xB7 \uBBF8\uC2A4\uD130\uB9AC" : "",
+                item.elimination ? " \xB7 \uD0C8\uB77D\uBAA8\uB4DC" : ""
+              ] })
+            ] }, item.id)) })
+          ] })
+        ] })
+      ] })
+    ] });
+  }
+
+  // tool-box/src/features/game-box/draw/games/MysteryBoxGame.jsx
+  var PRESET_MODES = {
+    prize: {
+      label: "\u{1F381} \uACBD\uD488 \xB7 \uB2F9\uCCA8 \uC81C\uBE44 (1\uB4F1~\uAF5D)",
+      items: [
+        "\u{1F3C6} 1\uB4F1: \uBC31\uD654\uC810 \uC0C1\uD488\uAD8C 10\uB9CC\uC6D0",
+        "\u{1F948} 2\uB4F1: \uBB34\uC120 \uB178\uC774\uC988\uCE94\uC2AC\uB9C1 \uC774\uC5B4\uD3F0",
+        "\u{1F949} 3\uB4F1: \uD504\uB9AC\uBBF8\uC5C4 \uCEE4\uD53C \uAE30\uD504\uD2F0\uCF58",
+        "\u{1F949} 3\uB4F1: \uD504\uB9AC\uBBF8\uC5C4 \uCEE4\uD53C \uAE30\uD504\uD2F0\uCF58",
+        "\u{1F36C} \uCC38\uAC00\uC0C1: \uBE44\uD0C0\uBBFC \uC74C\uB8CC",
+        "\u{1F36C} \uCC38\uAC00\uC0C1: \uBE44\uD0C0\uBBFC \uC74C\uB8CC",
+        "\u{1F4A8} \uAF5D! \uB2E4\uC74C \uAE30\uD68C\uC5D0",
+        "\u{1F4A8} \uAF5D! \uB2E4\uC74C \uAE30\uD68C\uC5D0"
+      ]
+    },
+    coffee: {
+      label: "\u2615 \uCEE4\uD53C \xB7 \uAC04\uC2DD \uB0B4\uAE30 \uC81C\uBE44",
+      items: [
+        "\u{1F4A3} \uC624\uB298 \uCEE4\uD53C \uC804\uCCB4 \uC3D8\uAE30 \uB2F9\uCCA8!",
+        "\u{1F370} \uB514\uC800\uD2B8 \uC3D8\uAE30 \uB2F9\uCCA8!",
+        "\u{1F6E1}\uFE0F \uC548\uC804 \uD1B5\uACFC (\uBB34\uB8CC \uC2DC\uC74C\uAD8C)",
+        "\u{1F6E1}\uFE0F \uC548\uC804 \uD1B5\uACFC (\uBB34\uB8CC \uC2DC\uC74C\uAD8C)",
+        "\u{1F6E1}\uFE0F \uC548\uC804 \uD1B5\uACFC (\uBB34\uB8CC \uC2DC\uC74C\uAD8C)",
+        "\u{1F6E1}\uFE0F \uC548\uC804 \uD1B5\uACFC (\uBB34\uB8CC \uC2DC\uC74C\uAD8C)"
+      ]
+    },
+    names: {
+      label: "\u{1F64B} \uBC1C\uD45C\uC790 \xB7 \uB2F9\uBC88 \uC774\uB984 \uBF51\uAE30",
+      items: ["\uAE40\uC131\uBBFC", "\uC774\uC9C0\uD6C8", "\uBC15\uC218\uC9C4", "\uCD5C\uBBFC\uD638", "\uC815\uD558\uB298", "\uAC15\uB3D9\uC6D0", "\uC724\uC11C\uC5F0", "\uD55C\uC9C0\uBBFC"]
+    },
+    icebreaker: {
+      label: "\u{1F4AC} \uD300 \uBE4C\uB529 \uC9C8\uBB38 \uC81C\uBE44 (\uC6D0\uBCF8 \uC2A4\uD0C0\uC77C)",
+      items: [
+        "\uD558\uB8E8 \uB3D9\uC548 \uC5B4\uB290 \uC2DD\uB2F9\uC774\uB4E0 \uBB34\uB8CC\uB85C \uBA39\uC744 \uC218 \uC788\uB2E4\uBA74 \uC5B4\uB514\uB85C \uAC08\uAE4C\uC694?",
+        "\uBB34\uC778\uB3C4\uC5D0 \uB531 \uD55C \uAC00\uC9C0 \uBB3C\uAC74\uB9CC \uAC00\uC838\uAC08 \uC218 \uC788\uB2E4\uBA74 \uBB34\uC5C7\uC744 \uCC59\uAE30\uACA0\uC2B5\uB2C8\uAE4C?",
+        "\uC21C\uAC04\uC774\uB3D9 \uB2A5\uB825\uC774 \uC0DD\uACA8\uC11C 5\uBD84 \uB3D9\uC548\uB9CC \uC5B4\uB514\uB4E0 \uB2E4\uB140\uC62C \uC218 \uC788\uB2E4\uBA74?",
+        "\uC624\uB298 \uB098\uC758 \uC815\uC2E0 \uC0C1\uD0DC\uB97C \uC74C\uC2DD \uD558\uB098\uB85C \uD45C\uD604\uD55C\uB2E4\uBA74 \uBB34\uC5C7\uC778\uAC00\uC694?",
+        "\uC6B0\uB9AC \uD300\uC5D0\uC11C \uB0B4\uAC00 \uB9E1\uACE0 \uC2F6\uC740 \uC228\uC740 \uCE90\uB9AD\uD130(\uC5ED\uD560)\uB294 \uBB34\uC5C7\uC778\uAC00\uC694?",
+        "\uC62C\uD574 \uC548\uC5D0 \uBC18\uB4DC\uC2DC \uB9C8\uC2A4\uD130\uD558\uACE0 \uC2F6\uC740 \uC0C8\uB85C\uC6B4 \uAE30\uC220\uC774\uB098 \uCDE8\uBBF8\uAC00 \uC788\uB2E4\uBA74?"
+      ]
+    },
+    custom: {
+      label: "\u270F\uFE0F \uC9C1\uC811 \uC785\uB825 (\uCEE4\uC2A4\uD140 \uBE48 \uC0C1\uC790)",
+      items: ["", "", ""]
+    }
+  };
+  function MysteryBoxGame({ onBack }) {
+    const [presetKey, setPresetKey] = d2("prize");
+    const [itemRows, setItemRows] = d2(() => [...PRESET_MODES.prize.items]);
+    const [inputMode, setInputMode] = d2("rows");
+    const [bulkText, setBulkText] = d2(() => PRESET_MODES.prize.items.join("\n"));
+    const [preventDuplicates, setPreventDuplicates] = d2(true);
+    const [drawnTicketIds, setDrawnTicketIds] = d2([]);
+    const [currentTicket, setCurrentTicket] = d2(null);
+    const [phase, setPhase] = d2("idle");
+    const [flyOffset, setFlyOffset] = d2({ x: -340, y: -60 });
+    const [history, setHistory] = d2([]);
+    const timersRef = A2([]);
+    const webglMountRef = A2(null);
+    const unfoldZoneRef = A2(null);
+    const threeStateRef = A2(null);
+    const clearTimers = () => {
+      timersRef.current.forEach((t3) => clearTimeout(t3));
+      timersRef.current = [];
+    };
+    h2(() => {
+      return () => clearTimers();
+    }, []);
+    const allTickets = T2(() => {
+      const clean = itemRows.map((s3) => String(s3 || "").trim()).filter(Boolean);
+      return clean.map((label, idx) => {
+        const isHighlight = /1등|2등|3등|당첨|쏘기|🏆|🥈|🥉|💣/.test(label) && !/꽝/.test(label);
+        return {
+          id: `slip-${idx}-${label}`,
+          serialNumber: idx + 1,
+          label,
+          isHighlight
+        };
+      });
+    }, [itemRows]);
+    const drawnSet = T2(() => new Set(drawnTicketIds), [drawnTicketIds]);
+    const remainingTickets = T2(() => {
+      if (!preventDuplicates) return allTickets;
+      return allTickets.filter((t3) => !drawnSet.has(t3.id));
+    }, [allTickets, drawnSet, preventDuplicates]);
+    h2(() => {
+      const container = webglMountRef.current;
+      if (!container) return void 0;
+      const width = Math.max(320, container.clientWidth || 520);
+      const height = Math.max(280, container.clientHeight || 420);
+      const scene = new Scene();
+      scene.background = new Color(1447959);
+      const camera = new PerspectiveCamera(40, width / height, 0.1, 100);
+      camera.position.set(0, 2.3, 8.2);
+      camera.lookAt(0, 0.25, 0);
+      let renderer;
+      try {
+        renderer = new WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.toneMapping = ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.18;
+        container.innerHTML = "";
+        container.appendChild(renderer.domElement);
+      } catch {
+        return void 0;
+      }
+      scene.add(new AmbientLight(16182492, 1.1));
+      const keyLight = new DirectionalLight(16774368, 2.4);
+      keyLight.position.set(5, 9, 7);
+      scene.add(keyLight);
+      const fillLight = new DirectionalLight(13598800, 1.3);
+      fillLight.position.set(-6, 4, 4);
+      scene.add(fillLight);
+      const rimLight = new PointLight(13870442, 1.8, 12);
+      rimLight.position.set(0, 3.6, -2);
+      scene.add(rimLight);
+      const tableMesh = new Mesh(
+        new CylinderGeometry(4.4, 4.8, 0.25, 48),
+        new MeshStandardMaterial({ color: 2105888, metalness: 0.25, roughness: 0.65 })
+      );
+      tableMesh.position.set(0, -1.78, 0);
+      scene.add(tableMesh);
+      const boxRig = new Group();
+      scene.add(boxRig);
+      const woodMat = new MeshStandardMaterial({
+        color: 4928548,
+        roughness: 0.48,
+        metalness: 0.12
+      });
+      const darkWoodMat = new MeshStandardMaterial({
+        color: 2957078,
+        roughness: 0.6,
+        metalness: 0.1
+      });
+      const brassMat = new MeshStandardMaterial({
+        color: 13870442,
+        metalness: 0.85,
+        roughness: 0.22
+      });
+      const acrylicMat = new MeshPhysicalMaterial({
+        color: 16446955,
+        transparent: true,
+        opacity: 0.22,
+        roughness: 0.06,
+        metalness: 0.05,
+        transmission: 0.82,
+        ior: 1.48,
+        clearcoat: 1,
+        side: DoubleSide,
+        depthWrite: false
+      });
+      const W4 = 3.2;
+      const H3 = 3;
+      const D5 = 3;
+      const T4 = 0.14;
+      const bottomPanel = new Mesh(new BoxGeometry(W4, T4, D5), darkWoodMat);
+      bottomPanel.position.set(0, -H3 / 2, 0);
+      boxRig.add(bottomPanel);
+      const backPanel = new Mesh(new BoxGeometry(W4, H3, T4), woodMat);
+      backPanel.position.set(0, 0, -D5 / 2);
+      boxRig.add(backPanel);
+      const leftPanel = new Mesh(new BoxGeometry(T4, H3, D5), woodMat);
+      leftPanel.position.set(-W4 / 2, 0, 0);
+      boxRig.add(leftPanel);
+      const rightPanel = new Mesh(new BoxGeometry(T4, H3, D5), woodMat);
+      rightPanel.position.set(W4 / 2, 0, 0);
+      boxRig.add(rightPanel);
+      const frontGlass = new Mesh(new PlaneGeometry(W4 - 0.36, H3 - 0.36), acrylicMat);
+      frontGlass.position.set(0, 0, D5 / 2 - 0.02);
+      boxRig.add(frontGlass);
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([sx, sz]) => {
+        const pillar = new Mesh(new BoxGeometry(0.18, H3 + 0.12, 0.18), brassMat);
+        pillar.position.set(sx * (W4 / 2), 0, sz * (D5 / 2));
+        boxRig.add(pillar);
+      });
+      const frontTopBar = new Mesh(new BoxGeometry(W4 + 0.08, 0.18, 0.18), brassMat);
+      frontTopBar.position.set(0, H3 / 2, D5 / 2);
+      boxRig.add(frontTopBar);
+      const frontBotBar = new Mesh(new BoxGeometry(W4 + 0.08, 0.18, 0.18), brassMat);
+      frontBotBar.position.set(0, -H3 / 2, D5 / 2);
+      boxRig.add(frontBotBar);
+      const topShape = new Shape();
+      topShape.moveTo(-W4 / 2, -D5 / 2);
+      topShape.lineTo(W4 / 2, -D5 / 2);
+      topShape.lineTo(W4 / 2, D5 / 2);
+      topShape.lineTo(-W4 / 2, D5 / 2);
+      topShape.closePath();
+      const holePath = new Path();
+      holePath.absarc(0, 0, 0.82, 0, Math.PI * 2, true);
+      topShape.holes.push(holePath);
+      const topLidGeo = new ExtrudeGeometry(topShape, {
+        depth: 0.16,
+        bevelEnabled: true,
+        bevelThickness: 0.03,
+        bevelSize: 0.03,
+        bevelSegments: 2
+      });
+      const topLidMesh = new Mesh(topLidGeo, woodMat);
+      topLidMesh.rotation.x = Math.PI / 2;
+      topLidMesh.position.set(0, H3 / 2 + 0.08, 0);
+      boxRig.add(topLidMesh);
+      const holeRim = new Mesh(new TorusGeometry(0.84, 0.065, 16, 40), brassMat);
+      holeRim.rotation.x = Math.PI / 2;
+      holeRim.position.set(0, H3 / 2 + 0.08, 0);
+      boxRig.add(holeRim);
+      const foldSpineGeo = new CylinderGeometry(0.016, 0.016, 0.28, 8);
+      const leafGeo = new BoxGeometry(0.46, 0.014, 0.28);
+      const bandGeo = new BoxGeometry(0.09, 0.018, 0.285);
+      const creaseMat = new MeshStandardMaterial({ color: 13285006, roughness: 0.85, metalness: 0.02 });
+      const stampRedMat = new MeshStandardMaterial({ color: 10172454, roughness: 0.45, metalness: 0.1 });
+      const createFoldedSlipMesh = (paperHex, scale = 1, withRedSeal = false) => {
+        const grp = new Group();
+        const paperMat = new MeshStandardMaterial({
+          color: paperHex,
+          roughness: 0.72,
+          metalness: 0.04
+        });
+        const leaf1 = new Mesh(leafGeo, paperMat);
+        leaf1.position.set(0, -0.032, 0);
+        leaf1.rotation.z = -0.05;
+        grp.add(leaf1);
+        const hinge1 = new Mesh(foldSpineGeo, creaseMat);
+        hinge1.rotation.x = Math.PI / 2;
+        hinge1.position.set(0.225, -0.012, 0);
+        grp.add(hinge1);
+        const leaf2 = new Mesh(leafGeo, paperMat);
+        leaf2.position.set(0, 8e-3, 0);
+        leaf2.rotation.z = 0.09;
+        grp.add(leaf2);
+        const hinge2 = new Mesh(foldSpineGeo, creaseMat);
+        hinge2.rotation.x = Math.PI / 2;
+        hinge2.position.set(-0.225, 0.028, 0);
+        grp.add(hinge2);
+        const leaf3 = new Mesh(leafGeo, paperMat);
+        leaf3.position.set(0.01, 0.046, 0);
+        leaf3.rotation.z = -0.08;
+        grp.add(leaf3);
+        if (withRedSeal) {
+          const band = new Mesh(bandGeo, stampRedMat);
+          band.position.set(0.01, 0.048, 0);
+          band.rotation.z = -0.08;
+          grp.add(band);
+        }
+        grp.scale.setScalar(scale);
+        return grp;
+      };
+      const slipsGroup = new Group();
+      boxRig.add(slipsGroup);
+      const slipColors = [16248536, 15918014, 15390120, 16446694, 15256729];
+      const interiorSlips = [];
+      for (let i3 = 0; i3 < 24; i3 += 1) {
+        const mesh = createFoldedSlipMesh(slipColors[i3 % slipColors.length], 1, i3 % 3 === 0);
+        const px2 = (Math.random() - 0.5) * 2.05;
+        const pz2 = (Math.random() - 0.5) * 1.85;
+        const py2 = -1.24 + Math.floor(i3 / 6) * 0.19 + Math.random() * 0.1;
+        mesh.position.set(px2, py2, pz2);
+        mesh.rotation.set(
+          (Math.random() - 0.5) * 0.65,
+          Math.random() * Math.PI * 2,
+          (Math.random() - 0.5) * 0.65
+        );
+        slipsGroup.add(mesh);
+        interiorSlips.push({
+          mesh,
+          basePos: new Vector3(px2, py2, pz2),
+          vel: new Vector3()
+        });
+      }
+      const heroSlipGroup = createFoldedSlipMesh(16512227, 1.55, true);
+      heroSlipGroup.visible = false;
+      boxRig.add(heroSlipGroup);
+      const state = {
+        phase: "idle",
+        remainingCount: 8,
+        yawOffset: -0.35,
+        extractProgress: 0,
+        shakeTime: 0
+      };
+      threeStateRef.current = state;
+      let rafId = null;
+      let lastTime = performance.now();
+      const animate = (now) => {
+        const dt = Math.min(0.05, (now - lastTime) / 1e3);
+        lastTime = now;
+        const visCount = Math.min(interiorSlips.length, Math.max(0, state.remainingCount * 2));
+        for (let i3 = 0; i3 < interiorSlips.length; i3 += 1) {
+          interiorSlips[i3].mesh.visible = i3 < visCount;
+        }
+        if (state.phase === "shaking") {
+          state.shakeTime += dt;
+          const s3 = state.shakeTime * 26;
+          boxRig.position.x = Math.sin(s3) * 0.24;
+          boxRig.position.y = Math.abs(Math.cos(s3 * 0.85)) * 0.26;
+          boxRig.rotation.z = Math.sin(s3 * 0.9) * 0.18;
+          boxRig.rotation.x = Math.cos(s3 * 0.7) * 0.12;
+          boxRig.rotation.y = state.yawOffset + Math.sin(s3 * 0.5) * 0.25;
+          interiorSlips.forEach((sl, idx) => {
+            if (!sl.mesh.visible) return;
+            sl.mesh.position.y = -0.3 + Math.sin(s3 * 0.7 + idx * 1.3) * 0.9;
+            sl.mesh.position.x = Math.cos(s3 * 0.5 + idx * 1.7) * 1.05;
+            sl.mesh.position.z = Math.sin(s3 * 0.6 + idx * 1.1) * 0.95;
+            sl.mesh.rotation.x += dt * 7;
+            sl.mesh.rotation.y += dt * 6;
+          });
+          heroSlipGroup.visible = false;
+        } else {
+          boxRig.position.lerp(new Vector3(0, 0, 0), 0.12);
+          boxRig.rotation.x += (0 - boxRig.rotation.x) * 0.12;
+          boxRig.rotation.z += (0 - boxRig.rotation.z) * 0.12;
+          const idleY = state.yawOffset + Math.sin(now * 7e-4) * 0.14;
+          boxRig.rotation.y += (idleY - boxRig.rotation.y) * 0.08;
+          interiorSlips.forEach((sl) => {
+            if (!sl.mesh.visible) return;
+            sl.mesh.position.lerp(sl.basePos, 0.1);
+          });
+          if (state.phase === "pulling") {
+            heroSlipGroup.visible = true;
+            state.extractProgress = Math.min(1, state.extractProgress + dt * 2.2);
+            const ease2 = 1 - Math.pow(1 - state.extractProgress, 3);
+            const riseY = 0.25 + ease2 * 2.15;
+            heroSlipGroup.position.set(0, riseY, ease2 * 0.45);
+            heroSlipGroup.rotation.x = 0.45 + (1 - ease2) * 0.9;
+            heroSlipGroup.rotation.y = ease2 * 0.6;
+            heroSlipGroup.rotation.z = Math.sin(ease2 * Math.PI) * 0.12;
+          } else {
+            heroSlipGroup.visible = false;
+            if (state.phase === "idle") {
+              state.extractProgress = 0;
+            }
+          }
+        }
+        renderer.render(scene, camera);
+        rafId = requestAnimationFrame(animate);
+      };
+      rafId = requestAnimationFrame(animate);
+      const handleResize = () => {
+        if (!container) return;
+        const w3 = Math.max(280, container.clientWidth || 500);
+        const h3 = Math.max(240, container.clientHeight || 400);
+        camera.aspect = w3 / h3;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w3, h3);
+      };
+      const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(handleResize) : null;
+      if (ro) ro.observe(container);
+      window.addEventListener("resize", handleResize);
+      handleResize();
+      return () => {
+        if (ro) ro.disconnect();
+        window.removeEventListener("resize", handleResize);
+        if (rafId) cancelAnimationFrame(rafId);
+        renderer.dispose();
+      };
+    }, []);
+    h2(() => {
+      if (threeStateRef.current) {
+        threeStateRef.current.phase = phase;
+        threeStateRef.current.remainingCount = remainingTickets.length;
+        if (phase === "shaking") {
+          threeStateRef.current.shakeTime = 0;
+          threeStateRef.current.extractProgress = 0;
+        }
+      }
+    }, [phase, remainingTickets.length]);
+    const finalizeTicketReveal = (locked, nextDrawnIds) => {
+      clearTimers();
+      setCurrentTicket(locked);
+      if (preventDuplicates && nextDrawnIds) {
+        setDrawnTicketIds(nextDrawnIds);
+      }
+      setPhase("revealed");
+      drawSound.playFanfare();
+      setHistory((prev) => [
+        {
+          id: `box-${Date.now()}`,
+          time: formatDrawTime(),
+          serialNumber: locked.serialNumber,
+          label: locked.label,
+          remainingAfter: preventDuplicates ? Math.max(0, allTickets.length - (nextDrawnIds?.length || drawnTicketIds.length)) : allTickets.length
+        },
+        ...prev.slice(0, 14)
+      ]);
+    };
+    const computeBoxToRevealOffset = () => {
+      const leftEl = webglMountRef.current;
+      const rightEl = unfoldZoneRef.current;
+      if (!leftEl || !rightEl) return { x: -340, y: -60 };
+      const lr = leftEl.getBoundingClientRect();
+      const rr = rightEl.getBoundingClientRect();
+      const startX = lr.left + lr.width * 0.5;
+      const startY = lr.top + lr.height * 0.26;
+      const endX = rr.left + rr.width * 0.5;
+      const endY = rr.top + rr.height * 0.5;
+      return {
+        x: Math.round(startX - endX),
+        y: Math.round(startY - endY)
+      };
+    };
+    const handleDrawOneTicket = () => {
+      if (phase === "shaking" || phase === "pulling" || phase === "flying" || phase === "unfolding") return;
+      if (remainingTickets.length === 0) return;
+      clearTimers();
+      setFlyOffset(computeBoxToRevealOffset());
+      const pickIdx = secureRandomInt(remainingTickets.length);
+      const locked = remainingTickets[pickIdx];
+      const nextDrawnIds = preventDuplicates ? [...drawnTicketIds, locked.id] : drawnTicketIds;
+      setCurrentTicket(locked);
+      setPhase("shaking");
+      drawSound.playBoxShake();
+      const t1 = setTimeout(() => {
+        setPhase("pulling");
+        drawSound.playTick(0.45, "pop");
+      }, 650);
+      const t22 = setTimeout(() => {
+        setFlyOffset(computeBoxToRevealOffset());
+        setPhase("flying");
+      }, 1150);
+      const t3 = setTimeout(() => {
+        setPhase("unfolding");
+        drawSound.playPaperUnfold();
+      }, 1780);
+      const t4 = setTimeout(() => {
+        finalizeTicketReveal(locked, nextDrawnIds);
+      }, 2400);
+      timersRef.current.push(t1, t22, t3, t4);
+    };
+    const handleShakeBoxOnly = () => {
+      if (phase !== "idle" && phase !== "revealed") return;
+      if (allTickets.length < 2) return;
+      clearTimers();
+      setPhase("shaking");
+      drawSound.playBoxShake();
+      const shuffled = shuffleUnbiased(itemRows.filter((s3) => s3.trim()));
+      setItemRows(shuffled);
+      setBulkText(shuffled.join("\n"));
+      const t3 = setTimeout(() => {
+        setPhase("idle");
+      }, 600);
+      timersRef.current.push(t3);
+    };
+    const handleInstantUnfold = () => {
+      if (!currentTicket) return;
+      const nextDrawnIds = preventDuplicates && !drawnSet.has(currentTicket.id) ? [...drawnTicketIds, currentTicket.id] : drawnTicketIds;
+      finalizeTicketReveal(currentTicket, nextDrawnIds);
+    };
+    const handleResetBox = () => {
+      clearTimers();
+      setDrawnTicketIds([]);
+      setCurrentTicket(null);
+      setPhase("idle");
+    };
+    const handleApplyPreset = (key) => {
+      const preset = PRESET_MODES[key];
+      if (!preset) return;
+      clearTimers();
+      setPresetKey(key);
+      setItemRows([...preset.items]);
+      setBulkText(preset.items.filter(Boolean).join("\n"));
+      setDrawnTicketIds([]);
+      setCurrentTicket(null);
+      setPhase("idle");
+    };
+    const handleRowChange = (idx, value) => {
+      const next = [...itemRows];
+      next[idx] = value;
+      setItemRows(next);
+      setBulkText(next.filter(Boolean).join("\n"));
+      setDrawnTicketIds([]);
+      setCurrentTicket(null);
+      setPhase("idle");
+    };
+    const handleAddRow = () => {
+      const next = [...itemRows, ""];
+      setItemRows(next);
+    };
+    const handleRemoveRow = (idx) => {
+      const next = itemRows.filter((_3, i3) => i3 !== idx);
+      setItemRows(next.length > 0 ? next : [""]);
+      setBulkText(next.filter(Boolean).join("\n"));
+      setDrawnTicketIds([]);
+      setCurrentTicket(null);
+      setPhase("idle");
+    };
+    const handleBulkChange = (text) => {
+      setBulkText(text);
+      const parsed = text.split(/[,\r\n]+/).map((s3) => s3.trim()).filter(Boolean);
+      setItemRows(parsed.length > 0 ? parsed : [""]);
+      setDrawnTicketIds([]);
+      setCurrentTicket(null);
+      setPhase("idle");
+    };
+    const isBusy = phase === "shaking" || phase === "pulling" || phase === "flying" || phase === "unfolding";
+    return /* @__PURE__ */ u3("div", { className: "rpz-game-shell", "data-testid": "game-mystery-box", children: [
+      /* @__PURE__ */ u3("header", { className: "rpz-game-topbar", children: [
+        /* @__PURE__ */ u3("div", { className: "rpz-game-title-group", children: [
+          /* @__PURE__ */ u3("button", { type: "button", className: "rpz-back-btn", onClick: onBack, children: "\u2190 \uCD94\uCCA8 \uAC8C\uC784 \uBAA9\uB85D" }),
+          /* @__PURE__ */ u3("div", { children: [
+            /* @__PURE__ */ u3("span", { className: "rpz-game-Tag", children: "GAME 05 \xB7 REAL 3D WALNUT & ACRYLIC LOTTERY BOX" }),
+            /* @__PURE__ */ u3("h2", { children: "\u{1F381} MYSTERY BOX \u2014 3D \uC81C\uBE44\uBF51\uAE30" })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "rpz-top-actions", children: [
+          /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-secondary",
+              "data-testid": "box-shake-btn",
+              onClick: handleShakeBoxOnly,
+              disabled: isBusy || allTickets.length < 2,
+              children: "\u{1FAE8} \uC0C1\uC790 \uD754\uB4E4\uC5B4 \uC11E\uAE30"
+            }
+          ),
+          (phase === "idle" || phase === "revealed") && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-primary",
+              "data-testid": "box-draw-btn",
+              onClick: handleDrawOneTicket,
+              disabled: remainingTickets.length === 0,
+              children: allTickets.length === 0 ? "\uC81C\uBE44 \uD56D\uBAA9\uC744 \uC785\uB825\uD558\uC138\uC694" : remainingTickets.length === 0 ? "\uBAA8\uB4E0 \uC81C\uBE44 \uC18C\uC9C4\uB428 (\uB9AC\uC14B \uD544\uC694)" : phase === "revealed" ? `\u270B \uB2E4\uC74C \uC81C\uBE44 \uBF51\uAE30 (\uB0A8\uC740 ${remainingTickets.length}\uC7A5)` : `\u270B \uC81C\uBE44 \uD55C \uC7A5 \uBF51\uAE30 (\uB0A8\uC740 ${remainingTickets.length}\uC7A5)`
+            }
+          ),
+          isBusy && /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-accent",
+              "data-testid": "box-instant-btn",
+              onClick: handleInstantUnfold,
+              children: "\u26A1 \uC885\uC774 \uC989\uC2DC \uD3BC\uCE58\uAE30"
+            }
+          ),
+          /* @__PURE__ */ u3(
+            "button",
+            {
+              type: "button",
+              className: "rpz-btn rpz-btn-ghost",
+              "data-testid": "box-reset-btn",
+              onClick: handleResetBox,
+              children: "\u267B\uFE0F \uC81C\uBE44 \uC804\uCCB4 \uB2E4\uC2DC \uB123\uAE30"
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "rpz-game-workspace", children: [
+        /* @__PURE__ */ u3("section", { className: "rpz-stage-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "rpz-stage-status-bar", children: [
+            /* @__PURE__ */ u3("span", { className: `rpz-phase-pill phase-${phase}`, "data-testid": "box-phase-badge", children: [
+              phase === "idle" && (allTickets.length === 0 ? "\uCEE4\uC2A4\uD140 \uC0C1\uC790\uAC00 \uBE44\uC5B4 \uC788\uC2B5\uB2C8\uB2E4 \u2014 \uC6B0\uCE21\uC5D0\uC11C \uC81C\uBE44 \uD56D\uBAA9\uC744 \uC785\uB825\uD558\uACE0 + \uCD94\uAC00\uD558\uC138\uC694" : `3D \uC6D0\uBAA9 \uC544\uD06C\uB9B4 \uCD94\uCCA8\uD568 \uB300\uAE30 \uC911 \u2014 \uC0C1\uC790 \uC548 \uB0A8\uC740 \uC81C\uBE44 ${remainingTickets.length}\uC7A5 / \uC804\uCCB4 ${allTickets.length}\uC7A5`),
+              phase === "shaking" && "\u{1FAE8} 3D \uCD94\uCCA8\uD568\uC744 \uD754\uB4E4\uC5B4 \uB0B4\uBD80 \uC811\uD78C \uC885\uC774 \uC81C\uBE44\uB97C \uC11E\uB294 \uC911...",
+              phase === "pulling" && "\u2709\uFE0F \uC0C1\uB2E8 \uC6D0\uD615 \uD22C\uC785\uAD6C\uC5D0\uC11C \uC811\uD78C \uC885\uC774 \uC81C\uBE44 \uD55C \uC7A5\uC744 \uAEBC\uB0B4\uB294 \uC911...",
+              phase === "flying" && "\u{1F4E8} \uAEBC\uB0B8 \uC811\uD78C \uC885\uC774\uB97C \uC624\uB978\uCABD \uD3BC\uCE68 \uC601\uC5ED\uC73C\uB85C \uC62E\uAE30\uB294 \uC911...",
+              phase === "unfolding" && "\u{1F4DC} \uC811\uD78C \uD55C\uC9C0 \uC81C\uBE44\uB97C 3\uB2E8\uC73C\uB85C \uD3BC\uCE58\uB294 \uC911...",
+              phase === "revealed" && currentTicket && `\u{1F389} \uC81C\uBE44 \uACF5\uAC1C \uC644\uB8CC! [\uC81C\uBE44 #${currentTicket.serialNumber}] ${currentTicket.label}`
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "rpz-mode-badges", children: /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                "data-testid": "box-duplicate-toggle",
+                className: `rpz-chip ${preventDuplicates ? "active" : ""}`,
+                onClick: () => setPreventDuplicates((v3) => !v3),
+                children: [
+                  "\u{1F512} \uC911\uBCF5 \uCD94\uCCA8 \uBC29\uC9C0 ",
+                  preventDuplicates ? "ON" : "OFF"
+                ]
+              }
+            ) })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-mystery-3d-stage", "data-testid": "box-3d-stage", children: [
+            /* @__PURE__ */ u3("div", { className: "rpz-mystery-webgl-wrap", children: [
+              /* @__PURE__ */ u3(
+                "div",
+                {
+                  ref: webglMountRef,
+                  className: "rpz-mystery-webgl-mount",
+                  onClick: handleDrawOneTicket,
+                  title: "\uD074\uB9AD\uD558\uC5EC 3D \uCD94\uCCA8\uD568\uC5D0\uC11C \uC81C\uBE44 \uD55C \uC7A5 \uBF51\uAE30"
+                }
+              ),
+              /* @__PURE__ */ u3("div", { className: "rpz-mystery-3d-hud", children: [
+                /* @__PURE__ */ u3("span", { children: [
+                  "\uB0A8\uC740 \uC81C\uBE44 ",
+                  /* @__PURE__ */ u3("strong", { children: remainingTickets.length }),
+                  " / ",
+                  allTickets.length,
+                  "\uC7A5"
+                ] }),
+                /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: "rpz-btn-xs",
+                    onClick: () => {
+                      if (threeStateRef.current) threeStateRef.current.yawOffset -= 0.45;
+                    },
+                    children: "\u25C0 \uC88C\uD68C\uC804"
+                  }
+                ),
+                /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: "rpz-btn-xs",
+                    onClick: () => {
+                      if (threeStateRef.current) threeStateRef.current.yawOffset += 0.45;
+                    },
+                    children: "\uC6B0\uD68C\uC804 \u25B6"
+                  }
+                )
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "rpz-paper-unfold-zone", ref: unfoldZoneRef, children: !currentTicket || phase === "idle" || phase === "shaking" || phase === "pulling" ? /* @__PURE__ */ u3("div", { className: "rpz-paper-placeholder", onClick: handleDrawOneTicket, children: [
+              /* @__PURE__ */ u3("span", { className: "rpz-paper-icon", children: phase === "shaking" ? "\u{1FAE8}" : phase === "pulling" ? "\u270B" : "\u2709\uFE0F" }),
+              /* @__PURE__ */ u3("strong", { children: phase === "shaking" ? "\uC67C\uCABD 3D \uCD94\uCCA8\uD568\uC744 \uD754\uB4E4\uC5B4 \uC811\uD78C \uC81C\uBE44\uB97C \uC11E\uB294 \uC911..." : phase === "pulling" ? "\uC67C\uCABD \uC0C1\uC790 \uD22C\uC785\uAD6C\uC5D0\uC11C \uC811\uD78C \uC885\uC774 \uD55C \uC7A5\uC744 \uAEBC\uB0B4\uB294 \uC911..." : allTickets.length === 0 ? "\uC6B0\uCE21 [2. \uC0C1\uC790 \uC18D \uC81C\uBE44 \uBAA9\uB85D \uD3B8\uC9D1]\uC5D0 \uD56D\uBAA9\uC744 \uC785\uB825\uD558\uC138\uC694" : "\uC67C\uCABD 3D \uCD94\uCCA8\uD568\uC744 \uD074\uB9AD\uD558\uAC70\uB098 [\uC81C\uBE44 \uD55C \uC7A5 \uBF51\uAE30]\uB97C \uB204\uB974\uC138\uC694" }),
+              /* @__PURE__ */ u3("p", { children: "\uC67C\uCABD \uC0C1\uC790\uC5D0\uC11C \uBF51\uD78C \uC811\uD78C \uC885\uC774\uAC00 \uB04A\uAE40 \uC5C6\uC774 \uC774\uACF3\uC73C\uB85C \uB0A0\uC544\uC640 3\uB2E8 \uC811\uD798\uC744 \uD3BC\uCE58\uBA70 \uACB0\uACFC\uB97C \uACF5\uAC1C\uD569\uB2C8\uB2E4." })
+            ] }) : /* @__PURE__ */ u3(
+              "div",
+              {
+                className: `rpz-tri-fold-stage phase-${phase}`,
+                "data-testid": "box-paper-slip",
+                style: {
+                  "--fly-start-x": `${flyOffset.x}px`,
+                  "--fly-start-y": `${flyOffset.y}px`
+                },
+                children: [
+                  /* @__PURE__ */ u3("div", { className: "rpz-fold-panel rpz-fold-top", children: [
+                    /* @__PURE__ */ u3("div", { className: "rpz-fold-face rpz-fold-front", children: [
+                      /* @__PURE__ */ u3("span", { children: [
+                        "GAMEBOX OFFICIAL DRAW SLIP \xB7 NO.",
+                        String(currentTicket.serialNumber).padStart(2, "0")
+                      ] }),
+                      /* @__PURE__ */ u3("span", { className: "rpz-fold-seal-tag", children: "\uBC00\uBD09 \uD574\uC81C" })
+                    ] }),
+                    /* @__PURE__ */ u3("div", { className: "rpz-fold-face rpz-fold-back", children: /* @__PURE__ */ u3("span", { children: [
+                      "\uC81C\uBE44 #",
+                      currentTicket.serialNumber
+                    ] }) })
+                  ] }),
+                  /* @__PURE__ */ u3("div", { className: "rpz-fold-panel rpz-fold-center", children: [
+                    /* @__PURE__ */ u3("div", { className: "rpz-paper-crease-v", "aria-hidden": "true" }),
+                    /* @__PURE__ */ u3("div", { className: "rpz-paper-crease-h top", "aria-hidden": "true" }),
+                    /* @__PURE__ */ u3("div", { className: "rpz-paper-crease-h bottom", "aria-hidden": "true" }),
+                    phase === "flying" && /* @__PURE__ */ u3("div", { className: "rpz-paper-stage-msg", children: [
+                      "\u2709\uFE0F \uC811\uD78C \uC81C\uBE44(#",
+                      currentTicket.serialNumber,
+                      ") \uC774\uB3D9 \uC911..."
+                    ] }),
+                    phase === "unfolding" && /* @__PURE__ */ u3("div", { className: "rpz-paper-stage-msg", children: "\u{1F4DC} \uC811\uD78C \uC885\uC774\uB97C \uD3BC\uCE58\uB294 \uC911..." }),
+                    phase === "revealed" && /* @__PURE__ */ u3("div", { className: "rpz-paper-revealed-content", "data-testid": "box-revealed-result", children: [
+                      /* @__PURE__ */ u3("span", { className: "rpz-paper-serial", children: [
+                        "\uC81C\uBE44 \uBC88\uD638 #",
+                        currentTicket.serialNumber
+                      ] }),
+                      /* @__PURE__ */ u3("strong", { className: "rpz-paper-result-text", children: currentTicket.label }),
+                      /* @__PURE__ */ u3("span", { className: "rpz-paper-stamp", children: currentTicket.isHighlight ? "\uB2F9\uCCA8 \uD655\uC815" : "\uCD94\uCCA8 \uD655\uC778" })
+                    ] })
+                  ] }),
+                  /* @__PURE__ */ u3("div", { className: "rpz-fold-panel rpz-fold-bottom", children: [
+                    /* @__PURE__ */ u3("div", { className: "rpz-fold-face rpz-fold-front", children: /* @__PURE__ */ u3("span", { children: preventDuplicates ? `\uC911\uBCF5 \uCD94\uCCA8 \uBC29\uC9C0 \uC801\uC6A9 \xB7 \uC0C1\uC790 \uC794\uC5EC ${remainingTickets.length}\uC7A5` : "\uBCF5\uC6D0 \uCD94\uCD9C \uBAA8\uB4DC" }) }),
+                    /* @__PURE__ */ u3("div", { className: "rpz-fold-face rpz-fold-back", children: /* @__PURE__ */ u3("span", { children: "GAMEBOX RANDOM ZONE" }) })
+                  ] })
+                ]
+              }
+            ) })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-ticket-pool-strip", "data-testid": "box-pool-strip", children: [
+            /* @__PURE__ */ u3("div", { className: "rpz-pool-header", children: /* @__PURE__ */ u3("strong", { children: [
+              "\uC0C1\uC790 \uC18D \uC81C\uBE44 \uD604\uD669 (",
+              remainingTickets.length,
+              "\uC7A5 \uB0A8\uC74C / ",
+              drawnTicketIds.length,
+              "\uC7A5 \uBF51\uD798)"
+            ] }) }),
+            /* @__PURE__ */ u3("div", { className: "rpz-pool-chips", children: allTickets.length === 0 ? /* @__PURE__ */ u3("span", { className: "rpz-empty", children: "\uB4F1\uB85D\uB41C \uC81C\uBE44\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." }) : allTickets.map((t3) => {
+              const isDrawn = preventDuplicates && drawnSet.has(t3.id);
+              return /* @__PURE__ */ u3(
+                "span",
+                {
+                  className: `rpz-slip-badge ${isDrawn ? "drawn" : "inside"}`,
+                  title: isDrawn ? `\uC774\uBBF8 \uBF51\uD798: ${t3.label}` : "\uC0C1\uC790 \uC548\uC5D0 \uB4E4\uC5B4\uC788\uB294 \uBBF8\uCD94\uCCA8 \uC81C\uBE44",
+                  children: [
+                    "#",
+                    t3.serialNumber,
+                    " ",
+                    isDrawn ? `(${t3.label.slice(0, 12)})` : "\uC811\uD78C \uC81C\uBE44"
+                  ]
+                },
+                t3.id
+              );
+            }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("aside", { className: "rpz-sidebar-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: "1. \uC81C\uBE44 \uD504\uB9AC\uC14B / \uCEE4\uC2A4\uD140 \uC120\uD0DD" }),
+            /* @__PURE__ */ u3("div", { className: "rpz-preset-col", children: Object.entries(PRESET_MODES).map(([key, item]) => /* @__PURE__ */ u3(
+              "button",
+              {
+                type: "button",
+                "data-testid": `box-preset-${key}`,
+                className: `rpz-preset-btn ${presetKey === key ? "active" : ""}`,
+                disabled: isBusy,
+                onClick: () => handleApplyPreset(key),
+                children: item.label
+              },
+              key
+            )) })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("div", { className: "rpz-card-head-between", children: [
+              /* @__PURE__ */ u3("h3", { children: [
+                "2. \uC0C1\uC790 \uC18D \uC81C\uBE44 \uBAA9\uB85D \uD3B8\uC9D1 (",
+                allTickets.length,
+                "\uC7A5)"
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "rpz-preset-row", children: [
+                /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: `rpz-btn-xs ${inputMode === "rows" ? "active" : ""}`,
+                    onClick: () => setInputMode("rows"),
+                    children: "\uAC1C\uBCC4 \uC785\uB825"
+                  }
+                ),
+                /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: `rpz-btn-xs ${inputMode === "bulk" ? "active" : ""}`,
+                    onClick: () => {
+                      setBulkText(itemRows.filter(Boolean).join("\n"));
+                      setInputMode("bulk");
+                    },
+                    children: "\uC5D4\uD130/\uC27C\uD45C \uC77C\uAD04"
+                  }
+                )
+              ] })
+            ] }),
+            inputMode === "rows" ? /* @__PURE__ */ u3(S, { children: [
+              /* @__PURE__ */ u3("div", { className: "rpz-item-editor-list", "data-testid": "box-rows-editor", children: itemRows.map((val, idx) => /* @__PURE__ */ u3("div", { className: "rpz-item-row", children: [
+                /* @__PURE__ */ u3("span", { className: "rpz-item-index", children: [
+                  "#",
+                  String(idx + 1).padStart(2, "0")
+                ] }),
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    type: "text",
+                    className: "rpz-input",
+                    value: val,
+                    disabled: isBusy,
+                    placeholder: `\uC81C\uBE44 #${idx + 1} \uB0B4\uC6A9 \uC785\uB825...`,
+                    onChange: (e3) => handleRowChange(idx, e3.target.value),
+                    onKeyDown: (e3) => {
+                      if (e3.key === "Enter") {
+                        e3.preventDefault();
+                        handleAddRow();
+                      }
+                    }
+                  }
+                ),
+                /* @__PURE__ */ u3(
+                  "button",
+                  {
+                    type: "button",
+                    className: "rpz-item-remove-btn",
+                    disabled: isBusy,
+                    title: "\uD56D\uBAA9 \uC0AD\uC81C",
+                    onClick: () => handleRemoveRow(idx),
+                    children: "\u2715"
+                  }
+                )
+              ] }, idx)) }),
+              /* @__PURE__ */ u3(
+                "button",
+                {
+                  type: "button",
+                  className: "rpz-add-row-btn",
+                  "data-testid": "box-add-item-btn",
+                  disabled: isBusy,
+                  onClick: handleAddRow,
+                  children: "+ \uC81C\uBE44 \uD56D\uBAA9 \uCD94\uAC00"
+                }
+              )
+            ] }) : /* @__PURE__ */ u3(S, { children: [
+              /* @__PURE__ */ u3(
+                "textarea",
+                {
+                  className: "rpz-textarea",
+                  rows: 6,
+                  value: bulkText,
+                  disabled: isBusy,
+                  onChange: (e3) => handleBulkChange(e3.target.value),
+                  placeholder: "\uC5D4\uD130(\uC904\uBC14\uAFC8) \uB610\uB294 \uC27C\uD45C(,)\uB85C \uAD6C\uBD84\uD558\uC5EC \uC5EC\uB7EC \uC81C\uBE44\uB97C \uD55C \uBC88\uC5D0 \uC785\uB825\uD558\uC138\uC694",
+                  "data-testid": "box-tickets-textarea"
+                }
+              ),
+              /* @__PURE__ */ u3("small", { className: "rpz-hint", children: "\uC5D4\uD130(\uC904\uBC14\uAFC8) \uB610\uB294 \uC27C\uD45C(,)\uB85C \uAD6C\uBD84\uB41C \uAC01 \uD56D\uBAA9\uC774 \uC811\uD78C \uC885\uC774 \uC81C\uBE44 1\uC7A5\uC774 \uB429\uB2C8\uB2E4." })
+            ] })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "rpz-card", children: [
+            /* @__PURE__ */ u3("h3", { children: [
+              "3. \uBF51\uC740 \uC81C\uBE44 \uAE30\uB85D (",
+              history.length,
+              ")"
+            ] }),
+            history.length === 0 ? /* @__PURE__ */ u3("p", { className: "rpz-empty", children: "\uC544\uC9C1 \uBF51\uC740 \uC81C\uBE44\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4." }) : /* @__PURE__ */ u3("ul", { className: "rpz-history-list", "data-testid": "box-history-list", children: history.map((item) => /* @__PURE__ */ u3("li", { children: [
+              /* @__PURE__ */ u3("div", { className: "rpz-history-head", children: [
+                /* @__PURE__ */ u3("strong", { children: [
+                  "\uC81C\uBE44 #",
+                  item.serialNumber,
+                  ": ",
+                  item.label
+                ] }),
+                /* @__PURE__ */ u3("small", { children: item.time })
+              ] }),
+              /* @__PURE__ */ u3("small", { children: [
+                "\uCD94\uCCA8 \uD6C4 \uC0C1\uC790 \uC794\uC5EC: ",
+                item.remainingAfter,
+                "\uC7A5"
+              ] })
+            ] }, item.id)) })
+          ] })
+        ] })
+      ] })
+    ] });
+  }
+
+  // tool-box/src/features/game-box/draw/DrawPack.js
+  function MarbleDisplay() {
+    return /* @__PURE__ */ u3("svg", { className: "gb-marble-display", viewBox: "0 0 860 480", role: "img", "aria-label": "\uB9C8\uBE14 \uB8F0\uB81B \uC2E4\uC81C \uAC8C\uC784 \uD654\uBA74 \uAE30\uBC18 \uB808\uC774\uC2A4 \uBBF8\uB9AC\uBCF4\uAE30", children: [
+      /* @__PURE__ */ u3("defs", { children: [
+        /* @__PURE__ */ u3("filter", { id: "neon-glow", x: "-40%", y: "-40%", width: "180%", height: "180%", children: [
+          /* @__PURE__ */ u3("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "5", result: "blur1" }),
+          /* @__PURE__ */ u3("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "2", result: "blur2" }),
+          /* @__PURE__ */ u3("feMerge", { children: [
+            /* @__PURE__ */ u3("feMergeNode", { in: "blur1" }),
+            /* @__PURE__ */ u3("feMergeNode", { in: "blur2" }),
+            /* @__PURE__ */ u3("feMergeNode", { in: "SourceGraphic" })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("filter", { id: "wall-glow", x: "-20%", y: "-20%", width: "140%", height: "140%", children: [
+          /* @__PURE__ */ u3("feGaussianBlur", { in: "SourceGraphic", stdDeviation: "2.5", result: "blur" }),
+          /* @__PURE__ */ u3("feMerge", { children: [
+            /* @__PURE__ */ u3("feMergeNode", { in: "blur" }),
+            /* @__PURE__ */ u3("feMergeNode", { in: "SourceGraphic" })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("rect", { width: "860", height: "480", fill: "#000000" }),
+      /* @__PURE__ */ u3("g", { children: [
+        /* @__PURE__ */ u3("rect", { x: "0", y: "0", width: "124", height: "480", fill: "#282828" }),
+        /* @__PURE__ */ u3(
+          "path",
+          {
+            d: "M60 0 L60 22 L36 55 L36 90 L68 125 L68 160 L28 200 L28 245 L60 285 L60 355 L42 405 L42 480",
+            fill: "none",
+            stroke: "#666666",
+            strokeWidth: "2.5"
+          }
+        ),
+        /* @__PURE__ */ u3(
+          "path",
+          {
+            d: "M12 0 L12 30 L68 70 L68 105 L35 140 L35 178 L78 225 L78 268 L45 308 L45 375 L66 422 L66 480",
+            fill: "none",
+            stroke: "#ffffff",
+            strokeWidth: "1.6"
+          }
+        ),
+        /* @__PURE__ */ u3(
+          "path",
+          {
+            d: "M106 0 L106 35 L52 75 L92 120 L92 168 L46 215 L106 272 L106 480",
+            fill: "none",
+            stroke: "#ffffff",
+            strokeWidth: "1.6"
+          }
+        ),
+        /* @__PURE__ */ u3("circle", { cx: "56", cy: "115", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "68", cy: "115", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "80", cy: "115", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "56", cy: "125", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "68", cy: "125", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "80", cy: "125", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "48", cy: "415", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "60", cy: "415", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "72", cy: "415", r: "1.5", fill: "#80d8ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "48", cy: "110", r: "3.2", fill: "#ffd54f" }),
+        /* @__PURE__ */ u3("circle", { cx: "54", cy: "250", r: "3.2", fill: "#00e5ff" }),
+        /* @__PURE__ */ u3("circle", { cx: "70", cy: "275", r: "3.2", fill: "#ba68c8" }),
+        /* @__PURE__ */ u3("rect", { x: "6", y: "262", width: "112", height: "70", fill: "rgba(255, 255, 255, 0.04)", stroke: "rgba(255, 255, 255, 0.45)", strokeWidth: "1.2" }),
+        /* @__PURE__ */ u3("path", { d: "M42 278 l6 4 m6 -4 l6 4 m6 -4 l6 4", stroke: "#00f3ff", strokeWidth: "1.5", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("path", { d: "M42 292 l-6 4 m-6 -4 l-6 4 m-6 -4 l-6 4", stroke: "#00f3ff", strokeWidth: "1.5", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("circle", { cx: "70", cy: "278", r: "2.8", fill: "#ff4081" }),
+        /* @__PURE__ */ u3("circle", { cx: "82", cy: "285", r: "2.8", fill: "#69f0ae" }),
+        /* @__PURE__ */ u3("circle", { cx: "52", cy: "320", r: "2.8", fill: "#ff5252" })
+      ] }),
+      /* @__PURE__ */ u3("path", { d: "M218 -5 L244 26 L218 62 L218 485", fill: "none", stroke: "#ffffff", strokeWidth: "5.5", strokeLinecap: "round", filter: "url(#wall-glow)" }),
+      /* @__PURE__ */ u3("path", { d: "M682 -5 L656 26 L682 62 L682 485", fill: "none", stroke: "#ffffff", strokeWidth: "5.5", strokeLinecap: "round", filter: "url(#wall-glow)" }),
+      /* @__PURE__ */ u3("g", { filter: "url(#neon-glow)", children: [
+        /* @__PURE__ */ u3("rect", { x: "256", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 262 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "306", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 312 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "356", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 362 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "406", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 412 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "456", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 462 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "506", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 512 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "556", y: "90", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(-30 562 112)" }),
+        /* @__PURE__ */ u3("rect", { x: "256", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 262 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "306", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 312 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "356", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 362 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "406", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 412 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "456", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 462 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "506", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 512 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "556", y: "180", width: "13", height: "44", rx: "4.5", fill: "#00f3ff", transform: "rotate(30 562 202)" }),
+        /* @__PURE__ */ u3("rect", { x: "195", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(-20 202 415)" }),
+        /* @__PURE__ */ u3("rect", { x: "330", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(20 337 415)" }),
+        /* @__PURE__ */ u3("rect", { x: "430", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(-20 437 415)" }),
+        /* @__PURE__ */ u3("rect", { x: "565", y: "340", width: "15", height: "150", rx: "5", fill: "#00f3ff", transform: "rotate(20 572 415)" })
+      ] }),
+      /* @__PURE__ */ u3("g", { children: [
+        /* @__PURE__ */ u3("circle", { cx: "478", cy: "85", r: "11", fill: "#ff4081" }),
+        /* @__PURE__ */ u3("circle", { cx: "475", cy: "82", r: "3.5", fill: "#ffffff", opacity: "0.6" }),
+        /* @__PURE__ */ u3(
+          "text",
+          {
+            x: "478",
+            y: "112",
+            textAnchor: "middle",
+            fill: "#ff4081",
+            fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif",
+            fontSize: "13.5",
+            fontWeight: "900",
+            children: "\uD0A4\uC704"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ u3("g", { children: [
+        /* @__PURE__ */ u3("circle", { cx: "538", cy: "140", r: "15", fill: "none", stroke: "#ff1744", strokeWidth: "2.2" }),
+        /* @__PURE__ */ u3("circle", { cx: "538", cy: "140", r: "11", fill: "#69f0ae" }),
+        /* @__PURE__ */ u3("circle", { cx: "535", cy: "137", r: "3.5", fill: "#ffffff", opacity: "0.6" }),
+        /* @__PURE__ */ u3(
+          "text",
+          {
+            x: "538",
+            y: "170",
+            textAnchor: "middle",
+            fill: "#69f0ae",
+            fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif",
+            fontSize: "13.5",
+            fontWeight: "900",
+            children: "\uADE4"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ u3("g", { children: [
+        /* @__PURE__ */ u3("circle", { cx: "282", cy: "410", r: "15", fill: "none", stroke: "#ff1744", strokeWidth: "2.2" }),
+        /* @__PURE__ */ u3("circle", { cx: "282", cy: "410", r: "11", fill: "#ff5252" }),
+        /* @__PURE__ */ u3("circle", { cx: "279", cy: "407", r: "3.5", fill: "#ffffff", opacity: "0.6" }),
+        /* @__PURE__ */ u3(
+          "text",
+          {
+            x: "282",
+            y: "440",
+            textAnchor: "middle",
+            fill: "#ff5252",
+            fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif",
+            fontSize: "13.5",
+            fontWeight: "900",
+            children: "\uD0A4\uC704"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ u3("g", { textAnchor: "end", fontFamily: "Apple SD Gothic Neo, Pretendard, sans-serif", fontSize: "14", fontWeight: "800", children: [
+        /* @__PURE__ */ u3("text", { x: "842", y: "22", fill: "#ff4081", children: "\uD0A4\uC704 #1" }),
+        /* @__PURE__ */ u3("text", { x: "842", y: "44", fill: "#69f0ae", children: "\uADE4 #2" }),
+        /* @__PURE__ */ u3("text", { x: "842", y: "66", fill: "#ff4081", children: "\uD0A4\uC704 #3" }),
+        /* @__PURE__ */ u3("text", { x: "842", y: "88", fill: "#00e5ff", children: "\uC218\uBC15 #4" }),
+        /* @__PURE__ */ u3("text", { x: "842", y: "110", fill: "#ffd740", children: "\uADE4 #5" }),
+        /* @__PURE__ */ u3("text", { x: "842", y: "132", fill: "#ba68c8", children: "\uC218\uBC15 #6" })
+      ] })
+    ] });
+  }
+  function TicketArtwork({ gameId }) {
+    if (gameId === "roulette") {
+      return /* @__PURE__ */ u3("span", { className: "rpz-art-wrap rpz-art-marble", children: /* @__PURE__ */ u3(MarbleDisplay, {}) });
+    }
+    if (gameId === "bomb-ladder") {
+      return /* @__PURE__ */ u3("svg", { className: "rpz-preview-svg rpz-art-ladder", viewBox: "0 0 320 200", "aria-hidden": "true", children: [
+        /* @__PURE__ */ u3("rect", { width: "320", height: "200", rx: "6", fill: "#141615" }),
+        [
+          { x: 42, name: "\uAE40\uC131\uBBFC", c: "#f43f5e" },
+          { x: 101, name: "\uC774\uC9C0\uD6C8", c: "#38bdf8" },
+          { x: 160, name: "\uBC15\uC218\uC9C4", c: "#a855f7" },
+          { x: 219, name: "\uCD5C\uBBFC\uD638", c: "#22c55e" },
+          { x: 278, name: "\uC815\uD558\uB298", c: "#f59e0b" }
+        ].map((p3) => /* @__PURE__ */ u3("g", { children: [
+          /* @__PURE__ */ u3("rect", { x: p3.x - 22, y: "10", width: "44", height: "18", rx: "4", fill: "#242725", stroke: p3.c, strokeWidth: "1.5" }),
+          /* @__PURE__ */ u3("text", { x: p3.x, y: "22", textAnchor: "middle", fill: "#eee9df", fontSize: "8.5", fontWeight: "800", children: p3.name }),
+          /* @__PURE__ */ u3("line", { x1: p3.x, y1: "28", x2: p3.x, y2: "162", stroke: "#4b4f4a", strokeWidth: "2.5" })
+        ] }, p3.name)),
+        /* @__PURE__ */ u3("line", { x1: "42", y1: "54", x2: "101", y2: "54", stroke: "#d3a56a", strokeWidth: "2.5" }),
+        /* @__PURE__ */ u3("line", { x1: "160", y1: "68", x2: "219", y2: "68", stroke: "#d3a56a", strokeWidth: "2.5" }),
+        /* @__PURE__ */ u3("line", { x1: "101", y1: "94", x2: "160", y2: "94", stroke: "#d3a56a", strokeWidth: "2.5" }),
+        /* @__PURE__ */ u3("line", { x1: "219", y1: "114", x2: "278", y2: "114", stroke: "#d3a56a", strokeWidth: "2.5" }),
+        /* @__PURE__ */ u3("line", { x1: "42", y1: "134", x2: "101", y2: "134", stroke: "#d3a56a", strokeWidth: "2.5" }),
+        /* @__PURE__ */ u3("path", { d: "M101 112 Q84 124 101 136", fill: "none", stroke: "#cf8050", strokeWidth: "2.6", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("path", { d: "M278 62 Q296 74 278 86", fill: "none", stroke: "#cf8050", strokeWidth: "2.6", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("path", { className: "rpz-hv-trace", d: "M42 28 L42 54 L101 54 L101 94 L160 94 L160 162", fill: "none", stroke: "#f43f5e", strokeWidth: "3.5", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("path", { className: "rpz-hv-trace", d: "M219 28 L219 68 L160 68 L160 94 L101 94 L101 134 L42 134 L42 162", fill: "none", stroke: "#22c55e", strokeWidth: "3", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("circle", { className: "rpz-hv-runner-1", cx: "101", cy: "74", r: "6", fill: "#f43f5e", stroke: "#fff", strokeWidth: "1.5" }),
+        /* @__PURE__ */ u3("circle", { className: "rpz-hv-runner-2", cx: "160", cy: "82", r: "6", fill: "#22c55e", stroke: "#fff", strokeWidth: "1.5" }),
+        /* @__PURE__ */ u3("circle", { className: "rpz-hv-spark", cx: "160", cy: "94", r: "5", fill: "#facc15" }),
+        [42, 101, 160, 219, 278].map((x3, idx) => {
+          const isBomb = idx === 2 || idx === 3;
+          return /* @__PURE__ */ u3("g", { className: isBomb ? "rpz-hv-bomb-slot" : "", children: [
+            /* @__PURE__ */ u3("rect", { x: x3 - 22, y: "166", width: "44", height: "22", rx: "4", fill: isBomb ? "rgba(155,56,38,0.42)" : "#242725", stroke: isBomb ? "#d9534f" : "#6ca97a", strokeWidth: "1.5" }),
+            /* @__PURE__ */ u3("text", { x: x3, y: "180", textAnchor: "middle", fill: isBomb ? "#ffd5cf" : "#cce8d1", fontSize: "8.5", fontWeight: "800", children: isBomb ? "\u{1F4A3} \uD3ED\uD0C4" : "\u{1F6E1}\uFE0F \uC0DD\uC874" })
+          ] }, x3);
+        })
+      ] });
+    }
+    if (gameId === "lotto-645") {
+      return /* @__PURE__ */ u3("svg", { className: "rpz-preview-svg rpz-art-lotto", viewBox: "0 0 320 200", "aria-hidden": "true", children: [
+        /* @__PURE__ */ u3("rect", { width: "320", height: "200", rx: "6", fill: "#151716" }),
+        /* @__PURE__ */ u3("ellipse", { cx: "144", cy: "176", rx: "116", ry: "18", fill: "#1f2220" }),
+        /* @__PURE__ */ u3("path", { d: "M108 154 L180 154 L190 174 L98 174 Z", fill: "#2b2e2c", stroke: "#cf8050", strokeWidth: "1.5" }),
+        /* @__PURE__ */ u3("path", { d: "M144 24 C215 24 252 60 254 128 C255 162 252 178 228 178", fill: "none", stroke: "#e6dccb", strokeWidth: "13", strokeOpacity: "0.24", strokeLinecap: "round" }),
+        /* @__PURE__ */ u3("ellipse", { cx: "226", cy: "178", rx: "4", ry: "8", fill: "none", stroke: "#cf8050", strokeWidth: "2.2" }),
+        /* @__PURE__ */ u3("ellipse", { cx: "144", cy: "26", rx: "16", ry: "5", fill: "none", stroke: "#d99b43", strokeWidth: "2.5" }),
+        /* @__PURE__ */ u3("rect", { className: "rpz-hv-gate", x: "110", y: "21", width: "20", height: "5", rx: "2", fill: "#9b3826" }),
+        /* @__PURE__ */ u3("g", { className: "rpz-hv-paddles", children: [
+          /* @__PURE__ */ u3("line", { x1: "104", y1: "62", x2: "184", y2: "122", stroke: "#d8d3c8", strokeWidth: "3.5", opacity: "0.72" }),
+          /* @__PURE__ */ u3("line", { x1: "108", y1: "126", x2: "180", y2: "58", stroke: "#cf8050", strokeWidth: "3.5", opacity: "0.82" }),
+          /* @__PURE__ */ u3("circle", { cx: "144", cy: "92", r: "5", fill: "#cf8050" })
+        ] }),
+        [
+          { x: 144, y: 44, n: 12, c: "#3b82f6", cls: "rpz-hv-lball-1" },
+          { x: 118, y: 84, n: 7, c: "#eab308", cls: "rpz-hv-lball-2" },
+          { x: 166, y: 78, n: 23, c: "#ef4444", cls: "rpz-hv-lball-3" },
+          { x: 134, y: 112, n: 34, c: "#64748b", cls: "rpz-hv-lball-1" },
+          { x: 160, y: 116, n: 45, c: "#22c55e", cls: "rpz-hv-lball-2" }
+        ].map((b2) => /* @__PURE__ */ u3("g", { className: `rpz-hv-lball ${b2.cls}`, children: [
+          /* @__PURE__ */ u3("circle", { cx: b2.x, cy: b2.y, r: "10.5", fill: b2.c }),
+          /* @__PURE__ */ u3("circle", { cx: b2.x, cy: b2.y, r: "6.5", fill: "#faf6ef" }),
+          /* @__PURE__ */ u3("text", { x: b2.x, y: b2.y + 3, textAnchor: "middle", fill: "#191b1b", fontSize: "7.5", fontWeight: "900", children: b2.n })
+        ] }, b2.n)),
+        /* @__PURE__ */ u3("circle", { cx: "144", cy: "92", r: "64", fill: "rgba(244,238,228,0.07)", stroke: "#b9b4a8", strokeWidth: "2" }),
+        /* @__PURE__ */ u3("ellipse", { cx: "144", cy: "92", rx: "64", ry: "12", fill: "none", stroke: "#d8d3c8", strokeWidth: "1.2", opacity: "0.55" }),
+        /* @__PURE__ */ u3("rect", { x: "46", y: "170", width: "184", height: "22", rx: "4", fill: "#222523", stroke: "#424642" }),
+        [64, 86, 108, 130, 152, 174, 204].map((x3, i3) => /* @__PURE__ */ u3("circle", { className: i3 === 6 ? "rpz-hv-exit-ball" : "", cx: x3, cy: "181", r: "7.5", fill: ["#eab308", "#3b82f6", "#ef4444", "#64748b", "#22c55e", "#3b82f6", "#eab308"][i3], stroke: i3 === 6 ? "#facc15" : "#eee9df", strokeWidth: "1.2" }, x3))
+      ] });
+    }
+    if (gameId === "team-draft") {
+      return /* @__PURE__ */ u3("svg", { className: "rpz-preview-svg rpz-art-draft", viewBox: "0 0 320 200", "aria-hidden": "true", children: [
+        /* @__PURE__ */ u3("rect", { width: "320", height: "200", rx: "6", fill: "#141615" }),
+        /* @__PURE__ */ u3("g", { className: "rpz-hv-draft-bar", children: [
+          /* @__PURE__ */ u3("rect", { x: "14", y: "10", width: "292", height: "32", rx: "5", fill: "#252826", stroke: "#cf8050", strokeWidth: "1.5" }),
+          /* @__PURE__ */ u3("rect", { x: "22", y: "18", width: "60", height: "16", rx: "3", fill: "#cf8050" }),
+          /* @__PURE__ */ u3("text", { x: "52", y: "29", textAnchor: "middle", fill: "#191b1b", fontSize: "8", fontWeight: "900", children: "LIVE PICK #5" }),
+          /* @__PURE__ */ u3("text", { x: "184", y: "30", textAnchor: "middle", fill: "#eee9df", fontSize: "11", fontWeight: "800", children: "\u{1F525} \uAE40\uC131\uBBFC \u2794 ALPHA \uD300" })
+        ] }),
+        [
+          { x: 14, title: "\u{1F525} ALPHA", c: "#cf8050", m: ["\u{1F451} \uBC15\uC218\uC9C4", "\uAE40\uC131\uBBFC", "\uC774\uC9C0\uD6C8"] },
+          { x: 114, title: "\u26A1 BRAVO", c: "#d3a56a", m: ["\u{1F451} \uB958\uD604\uC9C4", "\uCD5C\uBBFC\uD638", "\uC815\uD558\uB298"] },
+          { x: 214, title: "\u{1F6E1}\uFE0F CHARLIE", c: "#6ca97a", m: ["\u{1F451} \uC624\uC2B9\uD658", "\uAC15\uB3D9\uC6D0", "\uD55C\uC9C0\uBBFC"] }
+        ].map((t3, tIdx) => /* @__PURE__ */ u3("g", { className: `rpz-hv-team-col rpz-hv-team-${tIdx}`, children: [
+          /* @__PURE__ */ u3("rect", { x: t3.x, y: "50", width: "92", height: "140", rx: "5", fill: "rgba(37,40,38,0.85)", stroke: t3.c, strokeWidth: "1.5" }),
+          /* @__PURE__ */ u3("text", { x: t3.x + 8, y: "67", fill: t3.c, fontSize: "9.5", fontWeight: "900", children: t3.title }),
+          /* @__PURE__ */ u3("rect", { x: t3.x + 8, y: "73", width: "76", height: "4", rx: "2", fill: "#191b1b" }),
+          /* @__PURE__ */ u3("rect", { className: "rpz-hv-power-bar", x: t3.x + 8, y: "73", width: "64", height: "4", rx: "2", fill: t3.c }),
+          t3.m.map((name, idx) => /* @__PURE__ */ u3("g", { children: [
+            /* @__PURE__ */ u3("rect", { x: t3.x + 8, y: 84 + idx * 32, width: "76", height: "24", rx: "3", fill: "#191b1b", stroke: idx === 0 ? t3.c : "#3c403c" }),
+            /* @__PURE__ */ u3("text", { x: t3.x + 14, y: 99 + idx * 32, fill: "#eee9df", fontSize: "9", fontWeight: "700", children: name })
+          ] }, name))
+        ] }, t3.title))
+      ] });
+    }
+    if (gameId === "chaos-wheel") {
+      return /* @__PURE__ */ u3("svg", { className: "rpz-preview-svg rpz-art-wheel", viewBox: "0 0 320 200", "aria-hidden": "true", children: [
+        /* @__PURE__ */ u3("rect", { width: "320", height: "200", rx: "6", fill: "#161817" }),
+        /* @__PURE__ */ u3("rect", { x: "94", y: "168", width: "32", height: "14", fill: "#3b332c" }),
+        /* @__PURE__ */ u3("rect", { x: "66", y: "180", width: "88", height: "10", rx: "4", fill: "#252220", stroke: "#c9945a", strokeWidth: "1.5" }),
+        /* @__PURE__ */ u3("circle", { cx: "110", cy: "100", r: "76", fill: "#3a2d22", stroke: "#d3a56a", strokeWidth: "4" }),
+        /* @__PURE__ */ u3("g", { className: "rpz-hv-wheel-spin", children: /* @__PURE__ */ u3("g", { transform: "translate(110, 100)", children: [
+          /* @__PURE__ */ u3("path", { d: "M0 0 L0 -68 A68 68 0 0 1 60 -34 Z", fill: "#f4a261" }),
+          /* @__PURE__ */ u3("path", { d: "M0 0 L60 -34 A68 68 0 0 1 60 34 Z", fill: "#e76f51" }),
+          /* @__PURE__ */ u3("path", { d: "M0 0 L60 34 A68 68 0 0 1 0 68 Z", fill: "#2a9d8f" }),
+          /* @__PURE__ */ u3("path", { d: "M0 0 L0 68 A68 68 0 0 1 -60 34 Z", fill: "#e9c46a" }),
+          /* @__PURE__ */ u3("path", { d: "M0 0 L-60 34 A68 68 0 0 1 -60 -34 Z", fill: "#264653" }),
+          /* @__PURE__ */ u3("path", { d: "M0 0 L-60 -34 A68 68 0 0 1 0 -68 Z", fill: "#ffb703" }),
+          [0, 60, 120, 180, 240, 300].map((deg) => /* @__PURE__ */ u3(
+            "rect",
+            {
+              x: "-2.5",
+              y: "-70",
+              width: "5",
+              height: "9",
+              rx: "2.5",
+              fill: "#fff6df",
+              stroke: "#1c1915",
+              strokeWidth: "1.2",
+              transform: `rotate(${deg})`
+            },
+            deg
+          ))
+        ] }) }),
+        /* @__PURE__ */ u3("circle", { cx: "110", cy: "100", r: "18", fill: "#9b3826", stroke: "#f7ecd6", strokeWidth: "2.5" }),
+        /* @__PURE__ */ u3("text", { x: "110", y: "104", textAnchor: "middle", fill: "#fff", fontSize: "9", fontWeight: "900", children: "SPIN" }),
+        /* @__PURE__ */ u3("g", { className: "rpz-hv-flapper", children: [
+          /* @__PURE__ */ u3("polygon", { points: "110,34 101,15 119,15", fill: "#cf8050", stroke: "#181614", strokeWidth: "1.8" }),
+          /* @__PURE__ */ u3("circle", { cx: "110", cy: "21", r: "2.8", fill: "#222", stroke: "#f5d59c", strokeWidth: "1" })
+        ] }),
+        /* @__PURE__ */ u3("g", { className: "rpz-hv-winner-card", children: [
+          /* @__PURE__ */ u3("rect", { x: "200", y: "54", width: "106", height: "92", rx: "6", fill: "#222523", stroke: "#cf8050", strokeWidth: "1.5" }),
+          /* @__PURE__ */ u3("text", { x: "212", y: "74", fill: "#d3a56a", fontSize: "8", fontWeight: "900", children: "WINNER" }),
+          /* @__PURE__ */ u3("text", { x: "212", y: "100", fill: "#eee9df", fontSize: "15", fontWeight: "900", children: "\uBC15\uC218\uC9C4" }),
+          /* @__PURE__ */ u3("text", { x: "212", y: "116", fill: "#b9b4a8", fontSize: "8", children: "\uACF5\uC815 \uD655\uB960 12.5%" }),
+          /* @__PURE__ */ u3("rect", { x: "212", y: "126", width: "82", height: "12", rx: "2", fill: "#9b3826" })
+        ] })
+      ] });
+    }
+    return /* @__PURE__ */ u3("svg", { className: "rpz-preview-svg rpz-art-box", viewBox: "0 0 320 200", "aria-hidden": "true", children: [
+      /* @__PURE__ */ u3("rect", { width: "320", height: "200", rx: "6", fill: "#161817" }),
+      /* @__PURE__ */ u3("g", { className: "rpz-hv-mbox", transform: "translate(20, 48)", children: [
+        /* @__PURE__ */ u3("polygon", { points: "10,22 96,22 114,6 28,6", fill: "#5e412c", stroke: "#d3a56a", strokeWidth: "1.5" }),
+        /* @__PURE__ */ u3("ellipse", { cx: "62", cy: "14", rx: "22", ry: "6", fill: "#191b1b", stroke: "#d3a56a", strokeWidth: "2" }),
+        /* @__PURE__ */ u3("g", { className: "rpz-hv-mslip", children: [
+          /* @__PURE__ */ u3("rect", { x: "52", y: "-10", width: "20", height: "24", rx: "1.5", fill: "#fbf4e3", stroke: "#bfa57b", strokeWidth: "1", transform: "rotate(-8 62 2)" }),
+          /* @__PURE__ */ u3("rect", { x: "54", y: "-3", width: "16", height: "4", fill: "#9b3826", transform: "rotate(-8 62 2)" })
+        ] }),
+        /* @__PURE__ */ u3("rect", { x: "10", y: "22", width: "86", height: "94", fill: "#3a281c", stroke: "#d3a56a", strokeWidth: "2" }),
+        /* @__PURE__ */ u3("polygon", { points: "96,22 114,6 114,100 96,116", fill: "#2d1f16", stroke: "#d3a56a", strokeWidth: "1.5" }),
+        /* @__PURE__ */ u3("rect", { x: "20", y: "34", width: "66", height: "70", fill: "rgba(250,245,235,0.12)", stroke: "#8c7a62" }),
+        /* @__PURE__ */ u3("rect", { x: "28", y: "84", width: "22", height: "10", rx: "1", fill: "#f7eed8", transform: "rotate(-12 39 89)" }),
+        /* @__PURE__ */ u3("rect", { x: "48", y: "88", width: "22", height: "10", rx: "1", fill: "#ead5a8", transform: "rotate(14 59 93)" }),
+        /* @__PURE__ */ u3("rect", { x: "36", y: "76", width: "22", height: "10", rx: "1", fill: "#f2e3be", transform: "rotate(5 47 81)" })
+      ] }),
+      /* @__PURE__ */ u3("path", { d: "M98 34 Q138 10 166 50", fill: "none", stroke: "#cf8050", strokeWidth: "2", strokeDasharray: "4 3" }),
+      /* @__PURE__ */ u3("g", { className: "rpz-hv-parchment", transform: "translate(166, 36)", children: [
+        /* @__PURE__ */ u3("rect", { width: "136", height: "128", rx: "4", fill: "#f5ebd6", stroke: "#c7b28a", strokeWidth: "1.8" }),
+        /* @__PURE__ */ u3("line", { x1: "0", y1: "28", x2: "136", y2: "28", stroke: "#bfa57b", strokeWidth: "1.5", strokeDasharray: "3 2" }),
+        /* @__PURE__ */ u3("line", { x1: "0", y1: "102", x2: "136", y2: "102", stroke: "#bfa57b", strokeWidth: "1.5", strokeDasharray: "3 2" }),
+        /* @__PURE__ */ u3("line", { x1: "68", y1: "28", x2: "68", y2: "102", stroke: "rgba(92,65,32,0.22)", strokeWidth: "2" }),
+        /* @__PURE__ */ u3("text", { x: "68", y: "18", textAnchor: "middle", fill: "#6b4e2b", fontSize: "8", fontWeight: "800", children: "DRAW SLIP \xB7 NO.02" }),
+        /* @__PURE__ */ u3("text", { x: "68", y: "64", textAnchor: "middle", fill: "#1f1b16", fontSize: "13", fontWeight: "900", children: "\u{1F3C6} 1\uB4F1 \uB2F9\uCCA8!" }),
+        /* @__PURE__ */ u3("rect", { x: "44", y: "76", width: "48", height: "16", rx: "2", fill: "none", stroke: "#9b3826", strokeWidth: "1.5", transform: "rotate(-4 68 84)" }),
+        /* @__PURE__ */ u3("text", { x: "68", y: "87", textAnchor: "middle", fill: "#9b3826", fontSize: "8", fontWeight: "900", transform: "rotate(-4 68 84)", children: "\uB2F9\uCCA8 \uD655\uC815" })
+      ] })
+    ] });
+  }
+  function getInitialGameFromUrl() {
+    if (typeof window === "undefined") return null;
+    const params = new URLSearchParams(window.location.search);
+    const g4 = params.get("game");
+    if (g4 && DRAW_GAMES.some((item) => item.id === g4)) {
+      return g4;
+    }
+    return null;
+  }
+  function DrawPack() {
+    const [activeId, setActiveId] = d2(() => getInitialGameFromUrl());
+    h2(() => {
+      if (typeof window === "undefined") return void 0;
+      const onPopState = () => {
+        setActiveId(getInitialGameFromUrl());
+      };
+      window.addEventListener("popstate", onPopState);
+      return () => window.removeEventListener("popstate", onPopState);
+    }, []);
+    const selectGame = (gameId) => {
+      setActiveId(gameId);
+      if (typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        if (gameId) {
+          url.searchParams.set("game", gameId);
+        } else {
+          url.searchParams.delete("game");
+        }
+        window.history.pushState({}, "", url.pathname + url.search);
+      }
+    };
+    const activeGame = DRAW_GAMES.find((game) => game.id === activeId);
+    if (activeId === "roulette" && activeGame) {
+      return /* @__PURE__ */ u3("main", { className: "gb-draw-stage", children: /* @__PURE__ */ u3(
+        GameLauncher,
+        {
+          title: activeGame.name,
+          src: activeGame.launchUrl,
+          aspectRatio: activeGame.aspectRatio,
+          onClose: () => selectGame(null)
+        }
+      ) });
+    }
+    if (activeId === "bomb-ladder") {
+      return /* @__PURE__ */ u3(BombLadderGame, { onBack: () => selectGame(null) });
+    }
+    if (activeId === "lotto-645") {
+      return /* @__PURE__ */ u3(Lotto3DGame, { onBack: () => selectGame(null) });
+    }
+    if (activeId === "team-draft") {
+      return /* @__PURE__ */ u3(TeamDraftGame, { onBack: () => selectGame(null) });
+    }
+    if (activeId === "chaos-wheel") {
+      return /* @__PURE__ */ u3(ChaosWheelGame, { onBack: () => selectGame(null) });
+    }
+    if (activeId === "mystery-box") {
+      return /* @__PURE__ */ u3(MysteryBoxGame, { onBack: () => selectGame(null) });
+    }
+    return /* @__PURE__ */ u3("main", { className: "rpz-hub-board", "data-testid": "random-play-zone-hub", children: [
+      /* @__PURE__ */ u3("header", { className: "rpz-hub-header", children: [
+        /* @__PURE__ */ u3("div", { children: [
+          /* @__PURE__ */ u3("span", { className: "rpz-hub-kicker", children: "GAMEBOX \xB7 DRAW PACK & RANDOM PLAY ZONE" }),
+          /* @__PURE__ */ u3("h1", { children: "\uCD94\uCCA8 \uAC8C\uC784 \u2014 \uC624\uB9AC\uC9C0\uB110 \uB9C8\uBE14 \uB8F0\uB81B & \uBBF8\uB2C8\uAC8C\uC784 6\uC885" }),
+          /* @__PURE__ */ u3("p", { children: "\uBAA8\uB450\uAC00 \uC9C0\uCF1C\uBCF4\uB294 \uAC00\uC6B4\uB370 \uC624\uB298\uC758 \uC8FC\uC778\uACF5\uC744 \uBF51\uC544\uBCF4\uC138\uC694. \uAD6C\uC2AC \uB808\uC774\uC2A4\uBD80\uD130 \uD3ED\uD0C4 \uC0AC\uB2E4\uB9AC, \uC2E4\uC81C 3D \uB85C\uB610, \uD300 \uB4DC\uB798\uD504\uD2B8, \uCE74\uC624\uC2A4 \uB8F0\uB81B, 3D \uC81C\uBE44\uC0C1\uC790\uAE4C\uC9C0 \uBAA8\uB450 \uC990\uAE38 \uC218 \uC788\uC2B5\uB2C8\uB2E4." })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "rpz-hub-quick-tabs", role: "navigation", "aria-label": "\uCD94\uCCA8 \uBBF8\uB2C8\uAC8C\uC784 \uBC14\uB85C\uAC00\uAE30", children: DRAW_GAMES.map((g4, idx) => /* @__PURE__ */ u3(
+          "button",
+          {
+            type: "button",
+            className: "rpz-hub-pill",
+            "data-testid": `rpz-quick-tab-${g4.id}`,
+            onClick: () => selectGame(g4.id),
+            children: [
+              /* @__PURE__ */ u3("span", { children: [
+                "0",
+                idx + 1,
+                ". ",
+                g4.icon
+              ] }),
+              " ",
+              /* @__PURE__ */ u3("strong", { children: g4.shortName })
+            ]
+          },
+          g4.id
+        )) })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "rpz-tickets-grid", children: DRAW_GAMES.map((game) => /* @__PURE__ */ u3(
+        "button",
+        {
+          type: "button",
+          className: `rpz-game-ticket ${game.id === "roulette" ? "rpz-ticket-featured" : ""}`,
+          "data-testid": `rpz-ticket-${game.id}`,
+          style: { "--ticket-accent": game.caseColor },
+          onClick: () => selectGame(game.id),
+          children: [
+            /* @__PURE__ */ u3("span", { className: "rpz-game-ticket-copy", children: [
+              /* @__PURE__ */ u3("span", { className: "rpz-ticket-top-meta", children: [
+                /* @__PURE__ */ u3("span", { className: "rpz-ticket-genre", children: game.genre }),
+                /* @__PURE__ */ u3("span", { className: "rpz-ticket-players", children: game.playersLabel })
+              ] }),
+              /* @__PURE__ */ u3("span", { children: [
+                /* @__PURE__ */ u3("strong", { children: game.shortName }),
+                /* @__PURE__ */ u3("span", { className: "rpz-ticket-kor", children: game.koreanTitle })
+              ] }),
+              /* @__PURE__ */ u3("span", { className: "rpz-ticket-desc", children: game.description }),
+              /* @__PURE__ */ u3("span", { className: "rpz-ticket-footer", children: /* @__PURE__ */ u3("span", { className: "rpz-ticket-play-cta", children: [
+                "\uAC8C\uC784 \uC5F4\uAE30 ",
+                /* @__PURE__ */ u3("span", { "aria-hidden": "true", children: "\u2197" })
+              ] }) })
+            ] }),
+            /* @__PURE__ */ u3("span", { className: "rpz-game-ticket-art", "aria-hidden": "true", children: /* @__PURE__ */ u3(TicketArtwork, { gameId: game.id }) }),
+            /* @__PURE__ */ u3("span", { className: "gb-ticket-stub", "aria-hidden": "true", children: game.discLabel })
+          ]
+        },
+        game.id
+      )) })
     ] });
   }
 
